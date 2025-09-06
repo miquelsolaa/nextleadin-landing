@@ -5,8 +5,7 @@ import Image from 'next/image'
 
 const Header = () => {
   const navigation = [
-    { name: 'Solucions', href: '/' },
-    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Funcionalitats', href: '/#funcionalitats' },
     { name: 'Preus', href: '/pricing' },
     { name: 'Blog', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
@@ -19,11 +18,15 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-sm"></div>
-              </div>
-              <span className="text-xl font-bold text-gray-900">Sierra</span>
+            <Link href="/" className="flex items-center space-x-3">
+              <Image
+                src="/images/logo/logo-icon.svg"
+                alt="NextLeadIn Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
+              <span className="text-xl font-bold text-gray-900">NextLeadIn</span>
             </Link>
           </div>
 
@@ -44,10 +47,10 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="flex items-center space-x-4">
             <Link
-              href="/contact"
+              href="https://nextleadin-app.netlify.app"
               className="header-cta-button bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-3 text-sm font-medium border border-gray-200 hover:border-gray-300"
             >
-              Parla amb vendes
+              Iniciar sessió
             </Link>
             <Link
               href="/get-started"

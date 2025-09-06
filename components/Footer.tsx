@@ -81,12 +81,12 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
             {/* Brand Section */}
             <div className="lg:col-span-2">
-              <Link href="/" className="inline-block mb-6">
+              <Link href="/" className="inline-block mb-6 flex items-center space-x-3">
                 <Image
-                  src="/favicon-32x32.png"
-                  alt="LeadGen IA"
-                  width={993}
-                  height={240}
+                  src="/images/logo/logo-dark.svg"
+                  alt="NextLeadIn"
+                  width={200}
+                  height={40}
                   className="h-10 w-auto"
                 />
               </Link>
@@ -195,7 +195,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2025 LeadGen IA. Tots els drets reservats.
+              © 2025 NextLeadIn. Tots els drets reservats.
             </p>
             <div className="flex space-x-6">
               <Link

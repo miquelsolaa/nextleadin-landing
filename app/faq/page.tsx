@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import FAQPageSection from '@/components/FAQPageSection'
 
 export const metadata: Metadata = {
-  title: 'FAQ - LeadGen IA',
+  title: 'FAQ - NextLeadIn',
   description: 'Preguntes freqüents sobre generació de leads, IA, dades i integracions.',
 }
 

@@ -213,7 +213,7 @@ export default function ContactPage() {
               <div className="bg-white rounded-2xl border border-gray-200 p-6">
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Contacte directe</h4>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="font-medium">Email:</span> <a className="text-green-600 hover:text-green-700" href="mailto:contact@leadgenia.com">contact@leadgenia.com</a></li>
+                  <li><span className="font-medium">Email:</span> <a className="text-green-600 hover:text-green-700" href="mailto:contact@nextleadin.com">contact@nextleadin.com</a></li>
                   <li><span className="font-medium">Telèfon:</span> <a className="text-green-600 hover:text-green-700" href="tel:+34999999999">+34 999 999 999</a></li>
                   <li><span className="font-medium">Horari:</span> Dl-Dv 9:00–18:00</li>
                 </ul>

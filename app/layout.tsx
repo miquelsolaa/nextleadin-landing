@@ -13,8 +13,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'LeadGen IA - Generació de leads hipersegmentats amb IA',
-    template: '%s | LeadGen IA'
+    default: 'NextLeadIn - Generació de leads hipersegmentats amb IA',
+    template: '%s | NextLeadIn'
   },
   description: 'Genera leads qualificats per zona i sector i prepara trucades amb informes intel·ligents creats per IA. Més qualitat, menys temps perdut.',
   keywords: [
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
     'vendes B2B',
     'equip comercial'
   ],
-  authors: [{ name: 'LeadGen IA Team' }],
-  creator: 'LeadGen IA',
-  publisher: 'LeadGen IA',
+  authors: [{ name: 'NextLeadIn Team' }],
+  creator: 'NextLeadIn',
+  publisher: 'NextLeadIn',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://leadgen-ia.com'),
+  metadataBase: new URL('https://nextleadin.com'),
   alternates: {
     canonical: '/',
     languages: {
@@ -45,25 +45,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ca_ES',
-    url: 'https://leadgen-ia.com',
-    title: 'LeadGen IA - Generació de leads hipersegmentats amb IA',
+    url: 'https://nextleadin.com',
+    title: 'NextLeadIn - Generació de leads hipersegmentats amb IA',
     description: 'Segmentació precisa per zona i sector i informes amb IA per vendre més.',
-    siteName: 'LeadGen IA',
+    siteName: 'NextLeadIn',
     images: [
       {
         url: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-dashboard.png',
         width: 1292,
         height: 1012,
-        alt: 'LeadGen IA Dashboard',
+        alt: 'NextLeadIn Dashboard',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LeadGen IA - Generació de leads amb IA',
+    title: 'NextLeadIn - Generació de leads amb IA',
     description: 'Genera leads qualificats i prepara trucades amb informes per IA.',
     images: ['https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-dashboard.png'],
-    creator: '@leadgenia',
+    creator: '@nextleadin',
   },
   robots: {
     index: true,

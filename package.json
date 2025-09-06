@@ -1,5 +1,5 @@
 {
-  "name": "lead-gen-saas-v2",
+  "name": "nextleadin",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -28,5 +28,5 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.9.2"
-  },
+  }
 }

@@ -160,7 +160,7 @@ export default function Home() {
       <StickyNavigation services={services} />
 
       {/* Services Tabbed Section */}
-      <section className="section-padding bg-gray-50">
+      <section id="funcionalitats" className="section-padding bg-gray-50">
         <div className="container-custom">
           {services.map((service, index) => (
             <div 

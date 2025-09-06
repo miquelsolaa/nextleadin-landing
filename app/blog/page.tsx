@@ -7,8 +7,8 @@ import BlogTags from '@/components/BlogTags'
 import BlogPagination from '@/components/BlogPagination'
 
 export const metadata: Metadata = {
-  title: 'Blog - Sierra CRM',
-  description: 'Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends.',
+  title: 'Blog - NextLeadIn',
+  description: 'Descobreix materials informatius sobre generació de leads, IA i vendes B2B per accelerar el teu creixement.',
 }
 
 // Mock data - en una aplicació real això vindria d'una API o CMS
@@ -92,8 +92,7 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Blog</h1>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Discover a wealth of insightful materials meticulously crafted to provide you with 
-            a comprehensive understanding of the latest trends.
+            Descobreix materials informatius sobre generació de leads, IA i vendes B2B per accelerar el teu creixement.
           </p>
           <nav className="text-sm text-gray-500">
             <span>Home</span>
