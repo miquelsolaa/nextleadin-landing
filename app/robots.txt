@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sierra-crm.com/sitemap.xml
