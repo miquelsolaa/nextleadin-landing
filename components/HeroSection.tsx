@@ -140,7 +140,7 @@ const HeroSection = () => {
           <div className="relative w-full h-full min-h-[500px] flex items-center py-8">
             <div className="relative w-full max-w-none px-8">
               <Image
-                src="https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-dashboard.png"
+                src="/images/hero/hero.png"
                 alt="Panell de generació de leads i anàlisi"
                 width={1292}
                 height={1012}
