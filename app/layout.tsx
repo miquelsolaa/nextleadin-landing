@@ -54,9 +54,7 @@ export const metadata: Metadata = {
     siteName: 'NextLeadIn',
     images: [
       {
-        url: 'https://nextleadin.com/og/nextleadin-og.jpg',
-        width: 1200,
-        height: 630,
+        url: '/images/logo/logo.png',
         alt: 'NextLeadIn — Plataforma de generació de leads amb IA',
       },
     ],
@@ -65,7 +63,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'NextLeadIn — Generació de leads amb IA',
     description: 'Troba clients potencials per zona i sector amb informes d’IA per convertir millor.',
-    images: ['https://nextleadin.com/og/nextleadin-og.jpg'],
+    images: ['/images/logo/logo.png'],
     creator: '@nextleadin',
   },
   robots: {
