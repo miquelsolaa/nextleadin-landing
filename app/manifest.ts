@@ -4,9 +4,9 @@ export const dynamic = 'force-static'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'LeadGen IA - Generació de leads amb IA',
-    short_name: 'LeadGen IA',
-    description: 'Genera leads qualificats i informes amb IA per preparar trucades.',
+    name: 'NextLeadIn — Generació de leads amb IA',
+    short_name: 'NextLeadIn',
+    description: 'Troba leads per negoci, ubicació i paraules clau. Rep informes d’IA per preparar trucades.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sierra-crm.com/sitemap.xml
+Sitemap: https://nextleadin.com/sitemap.xml

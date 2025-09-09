@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'FAQ',
-  description: 'FAQs, quick fixes, and official info on every feature. Can\'t find your question here, try our support forums.',
+  title: 'Preguntes freqüents — NextLeadIn',
+  description: 'Resol dubtes sobre generació de leads per zona i sector, informes amb IA, integracions i suport.',
 }
 
 export default function FAQLayout({

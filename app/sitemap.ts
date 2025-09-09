@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://leadgenia.netlify.app'
+  const baseUrl = 'https://nextleadin.com'
 
   return [
     {
@@ -12,12 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 1,
     },
-    {
-      url: `${baseUrl}/solutions`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+    // Afegiu rutes reals quan existeixin
     {
       url: `${baseUrl}/pricing`,
       lastModified: new Date(),

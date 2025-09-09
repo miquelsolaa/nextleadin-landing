@@ -13,17 +13,20 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'NextLeadIn - Generació de leads hipersegmentats amb IA',
+    default: 'NextLeadIn — Generació de leads hipersegmentats amb IA',
     template: '%s | NextLeadIn'
   },
-  description: 'Genera leads qualificats per zona i sector i prepara trucades amb informes intel·ligents creats per IA. Més qualitat, menys temps perdut.',
+  description: 'Plataforma per trobar leads per tipus de negoci, zona (ciutat/país) i paraules clau, amb informes d’IA per preparar trucades i tancar més oportunitats.',
   keywords: [
     'generació de leads',
     'intel·ligència artificial',
     'segmentació geogràfica',
     'qualificació de leads',
     'vendes B2B',
-    'equip comercial'
+    'equip comercial',
+    'prospectar empreses',
+    'buscar clients potencials',
+    'enriquiment de dades amb IA'
   ],
   authors: [{ name: 'NextLeadIn Team' }],
   creator: 'NextLeadIn',
@@ -35,34 +38,34 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://nextleadin.com'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://nextleadin.com/',
     languages: {
-      'ca-ES': '/ca',
-      'es-ES': '/es',
-      'en-US': '/en',
+      'ca-ES': 'https://nextleadin.com/',
+      'es-ES': 'https://nextleadin.com/es',
+      'en-US': 'https://nextleadin.com/en',
     },
   },
   openGraph: {
     type: 'website',
     locale: 'ca_ES',
     url: 'https://nextleadin.com',
-    title: 'NextLeadIn - Generació de leads hipersegmentats amb IA',
-    description: 'Segmentació precisa per zona i sector i informes amb IA per vendre més.',
+    title: 'NextLeadIn — Generació de leads hipersegmentats amb IA',
+    description: 'Troba leads per tipus de negoci, ubicació i paraules clau. Rep dossiers amb IA per preparar trucades.',
     siteName: 'NextLeadIn',
     images: [
       {
-        url: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-dashboard.png',
-        width: 1292,
-        height: 1012,
-        alt: 'NextLeadIn Dashboard',
+        url: 'https://nextleadin.com/og/nextleadin-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'NextLeadIn — Plataforma de generació de leads amb IA',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NextLeadIn - Generació de leads amb IA',
-    description: 'Genera leads qualificats i prepara trucades amb informes per IA.',
-    images: ['https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-dashboard.png'],
+    title: 'NextLeadIn — Generació de leads amb IA',
+    description: 'Troba clients potencials per zona i sector amb informes d’IA per convertir millor.',
+    images: ['https://nextleadin.com/og/nextleadin-og.jpg'],
     creator: '@nextleadin',
   },
   robots: {
@@ -77,8 +80,8 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
+    google: '',
+    yandex: '',
   },
 }
 

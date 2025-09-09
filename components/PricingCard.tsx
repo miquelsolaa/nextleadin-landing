@@ -1,4 +1,7 @@
+"use client"
 import Link from 'next/link'
+import { useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface PricingCardProps {
   title: string
@@ -21,6 +24,29 @@ export default function PricingCard({
   popular = false,
   delay = 0
 }: PricingCardProps) {
+  const router = useRouter()
+  const [isPending, startTransition] = useTransition()
+
+  const handleSubscribe = async () => {
+    const plan = title.toLowerCase() === 'pro' ? 'pro' : title.toLowerCase() === 'empresa' ? 'empresa' : null
+    if (!plan) {
+      router.push(buttonHref)
+      return
+    }
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      }
+    } catch (e) {
+      router.push('/pricing')
+    }
+  }
   return (
     <div 
       className={`relative bg-white rounded-2xl shadow-lg border-2 hover:shadow-xl transition-all duration-300 ${
@@ -56,16 +82,30 @@ export default function PricingCard({
           ))}
         </ul>
         
-        <Link 
-          href={buttonHref}
-          className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
-            popular 
-              ? 'bg-primary-600 text-white hover:bg-primary-700' 
-              : 'bg-gray-100 text-gray-900 hover:bg-primary-600 hover:text-white'
-          }`}
-        >
-          {buttonText}
-        </Link>
+        {title.toLowerCase() === 'pro' || title.toLowerCase() === 'empresa' ? (
+          <button
+            onClick={() => startTransition(handleSubscribe)}
+            className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
+              popular 
+                ? 'bg-primary-600 text-white hover:bg-primary-700' 
+                : 'bg-gray-100 text-gray-900 hover:bg-primary-600 hover:text-white'
+            }`}
+            disabled={isPending}
+          >
+            {isPending ? 'Redirigint…' : buttonText}
+          </button>
+        ) : (
+          <Link 
+            href={buttonHref}
+            className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
+              popular 
+                ? 'bg-primary-600 text-white hover:bg-primary-700' 
+                : 'bg-gray-100 text-gray-900 hover:bg-primary-600 hover:text-white'
+            }`}
+          >
+            {buttonText}
+          </Link>
+        )}
       </div>
     </div>
   )

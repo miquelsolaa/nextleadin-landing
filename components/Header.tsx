@@ -47,7 +47,7 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="flex items-center space-x-4">
             <Link
-              href="https://nextleadin-app.netlify.app"
+              href="https://app.nextleadin.com"
               className="header-cta-button bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-3 text-sm font-medium border border-gray-200 hover:border-gray-300"
             >
               Iniciar sessió
