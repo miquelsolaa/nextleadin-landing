@@ -1,0 +1,21 @@
+{
+  "name": "NextLeadIn — Generació de leads amb IA",
+  "short_name": "NextLeadIn",
+  "description": "Troba leads per negoci, ubicació i paraules clau. Rep informes d’IA per preparar trucades.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0284c7",
+  "lang": "ca",
+  "icons": [
+    {
+      "src": "/images/logo/logo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
+

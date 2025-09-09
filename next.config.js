@@ -28,13 +28,12 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
-  serverExternalPackages: [],
+  serverExternalPackages: ['stripe'],
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
-  // Configuració específica per a Netlify
-  trailingSlash: true,
-  output: 'export',
+  // Configuració per a Netlify (SSR amb plugin)
+  trailingSlash: false,
 }
 
 module.exports = nextConfig
