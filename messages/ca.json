@@ -123,12 +123,61 @@
         "bullet2": "Angles de contacte personalitzats",
         "bullet3": "Notes per objeccions freqüents"
       }
+    },
+    "integrations": {
+      "title": "Integracions",
+      "subtitle": "amb el teu stack",
+      "description": "Connecta amb CRM, automatització d'email, pagaments i eines de col·laboració. Exporta leads i mantén el seguiment actualitzat.",
+      "cta": "Descobreix-ne més"
+    },
+    "testimonials": {
+      "title": "Històries d'",
+      "titleHighlight": "èxit real",
+      "description": "Comercialitzar més ràpid: equips que han duplicat el ritme de trucades i han millorat la qualificació amb informes generats per IA.",
+      "cta": "Veure totes les històries",
+      "readMore": "Llegir més ressenyes"
+    },
+    "blogSection": {
+      "title": "Tendències en ",
+      "titleHighlight": "generació de leads",
+      "titleSuffix": " amb IA",
+      "description": "Guies i insights pràctics per captar clients potencials qualificats, optimitzar trucades i escalar el teu pipeline comercial.",
+      "cta": "Veure tots els articles",
+      "readMore": "Llegir més"
     }
   },
   "metadata": {
     "title": "NextLeadIn — Generació de leads amb IA",
-    "description": "Plataforma per trobar leads per negoci, zona i paraules clau amb informes d’IA.",
+    "description": "Plataforma per trobar leads per negoci, zona i paraules clau amb informes d'IA.",
     "keywords": "generació de leads,intel·ligència artificial,vendes B2B,segmentació geogràfica"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Descobreix materials informatius sobre generació de leads, IA i vendes B2B per accelerar el teu creixement.",
+    "readMore": "Llegir més",
+    "backToBlog": "Tornar al blog",
+    "relatedPosts": "Articles Relacionats",
+    "featuredPost": "Article Destacat",
+    "noPostsFound": "No s'han trobat articles",
+    "noPostsDescription": "Torna a provar més tard o explora altres categories.",
+    "by": "per",
+    "publishedOn": "Publicat el",
+    "categories": "Categories",
+    "tags": "Tags",
+    "recentPosts": "Articles Recents",
+    "search": "Cercar articles...",
+    "allCategories": "Totes les categories",
+    "allTags": "Tots els tags",
+    "breadcrumbHome": "Inici",
+    "breadcrumbBlog": "Blog",
+    "shareOn": "Compartir a",
+    "previousPost": "Anterior",
+    "nextPost": "Següent",
+    "author": "Autor",
+    "tagsLabel": "Tags:",
+    "authorDescription": "Expert en generació de leads i vendes B2B. Comparteixo coneixements i estratègies per ajudar empreses a accelerar el seu creixement.",
+    "relatedPostsTitle": "Posts Relacionats",
+    "relatedPostsDescription": "Descobreix més contingut interessant"
   }
 }
 

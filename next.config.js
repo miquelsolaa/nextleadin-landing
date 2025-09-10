@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const withNextIntl = require('next-intl/plugin')()
+const withNextIntl = require('next-intl/plugin')('./i18n/request.ts')
 
 const nextConfig = {
   eslint: {
@@ -17,11 +17,23 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    domains: ['sierra.keydesign.xyz'],
+    domains: ['sierra.keydesign.xyz', 'images.pexels.com', 'ui-avatars.com'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'sierra.keydesign.xyz',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ui-avatars.com',
         port: '',
         pathname: '/**',
       },

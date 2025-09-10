@@ -1,156 +1,55 @@
 import { MetadataRoute } from 'next'
+import { getAllPosts } from '@/lib/blog'
 
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nextleadin.com'
+  const posts = getAllPosts()
+
+  // Generar URLs per als articles del blog
+  const blogUrls = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
+  // Generar URLs per a cada idioma
+  const locales = ['', '/en', '/ca']
+  const pages = [
+    { path: '', priority: 1, changeFrequency: 'monthly' as const },
+    { path: '/pricing', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/blog', priority: 0.7, changeFrequency: 'weekly' as const },
+    { path: '/faq', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' as const },
+    { path: '/terms-and-conditions', priority: 0.3, changeFrequency: 'yearly' as const },
+    { path: '/cookie-policy', priority: 0.3, changeFrequency: 'yearly' as const },
+  ]
+
+  // Generar URLs per a cada pàgina i idioma
+  const staticUrls = pages.flatMap(page => 
+    locales.map(locale => ({
+      url: `${baseUrl}${locale}${page.path}`,
+      lastModified: new Date(),
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+    }))
+  )
+
+  // Generar URLs per als articles del blog amb idiomes
+  const blogUrlsWithLocales = posts.flatMap(post => 
+    locales.map(locale => ({
+      url: `${baseUrl}${locale}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
+  )
 
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/en`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/ca`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    // Afegiu rutes reals quan existeixin
-    {
-      url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/pricing`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ca/pricing`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/en/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/ca/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/en/faq`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/ca/faq`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/en/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ca/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    // Legals
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/en/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/ca/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms-and-conditions`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/en/terms-and-conditions`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/ca/terms-and-conditions`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/cookie-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/en/cookie-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/ca/cookie-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+    ...staticUrls,
+    ...blogUrlsWithLocales,
   ]
 }

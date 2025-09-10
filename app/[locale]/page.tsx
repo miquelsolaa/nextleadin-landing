@@ -6,56 +6,34 @@ import TestimonialsSection from '@/components/TestimonialsSection'
 import StickyNavigation from '@/components/StickyNavigation'
 import TrustedBySection from '@/components/TrustedBySection'
 import FeaturesSection from '@/components/FeaturesSection'
-import Image from 'next/image'
-import Link from 'next/link'
+import IntegrationsSection from '@/components/IntegrationsSection'
 import ServicesSection from '@/components/ServicesSection'
+import { getAllPosts } from '@/lib/blog'
 import CTASection from '@/components/CTASection'
+import { getTranslations } from 'next-intl/server'
 
 export default async function Home({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params
-  // Testimonials data
-  const testimonials = [
-    {
-      content: 'Hem duplicat la taxa de conversió a reunió. Les fitxes amb IA ens han estalviat hores de preparació per comercial.',
-      author: {
-        name: 'Marta Rovira',
-        role: 'Head of Sales',
-        image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review2.jpg'
-      }
-    },
-    {
-      content: 'La segmentació per zona i sector és ultra precisa. En una setmana vam obrir tres oportunitats al nostre nínxol B2B.',
-      author: {
-        name: 'Jordi Pons',
-        role: 'Business Development',
-        image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review3.jpg'
-      }
-    },
-    {
-      content: 'Les trucades són molt més rellevants. Els informes suggereixen angles i objeccions clau que abans descobríem massa tard.',
-      author: {
-        name: 'Núria Serra',
-        role: 'Account Executive',
-        image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review4.jpg'
-      }
-    },
-    {
-      content: 'Implementació en dos dies i integració amb el nostre CRM sense friccions. Pipeline sempre ple i prioritzat.',
-      author: {
-        name: 'Pol Garcia',
-        role: 'Revenue Operations',
-        image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review1.jpg'
-      }
-    },
-    {
-      content: 'Ideal per a equips petits que necessiten escalar ràpid. Hem passat de prospecció manual a converses de valor.',
-      author: {
-        name: 'Laura Vidal',
-        role: 'Marketing Manager',
-        image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review2.jpg'
-      }
-    }
-  ]
+  const t = await getTranslations({ locale, namespace: 'home.testimonials' })
+  
+  // Carregar últims posts del blog
+  const allPosts = getAllPosts()
+  const latestPosts = allPosts.slice(0, 3).map(post => ({
+    title: post.title,
+    excerpt: post.description,
+    image: post.featuredImage || '/images/hero/hero.png',
+    categories: post.categories || [],
+    author: { name: post.author },
+    date: new Date(post.date).toLocaleDateString(locale, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }),
+    comments: 0,
+    slug: post.slug
+  }))
+  
+  // Testimonials are now handled by the TestimonialsSection component
 
   // Integration partners data
   const integrations = [
@@ -70,8 +48,6 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
     { name: 'Shopify', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-9.png' },
     { name: 'WordPress', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-10.png' },
   ]
-
-  const isEs = locale === 'es'
 
   return (
     <>
@@ -91,54 +67,13 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
       <ServicesSection />
 
       {/* Integrations Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              {isEs ? (
-                <>
-                  <span className="gradient-text">Integraciones</span> con tu stack
-                </>
-              ) : (
-                <>
-                  <span className="gradient-text">Integracions</span> amb el teu stack
-                </>
-              )}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              {isEs 
-                ? 'Conecta con CRM, automatización de email, pagos y herramientas de colaboración. Exporta leads y mantén el seguimiento actualizado.' 
-                : 'Connecta amb CRM, automatització d’email, pagaments i eines de col·laboració. Exporta leads i mantén el seguiment actualitzat.'}
-            </p>
-            <Link href="/solutions" className="btn-primary">
-              {isEs ? 'Descubre más' : 'Descobreix-ne més'}
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center justify-items-center">
-            {integrations.map((integration, index) => (
-              <div
-                key={integration.name}
-                className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 w-full flex items-center justify-center group"
-              >
-                <Image
-                  src={integration.logo}
-                  alt={`${integration.name} integration`}
-                  width={80}
-                  height={80}
-                  className="w-12 h-12 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <IntegrationsSection integrations={integrations} />
 
       {/* Blog Section */}
-      <BlogSection blogPosts={[]} />
+      <BlogSection blogPosts={latestPosts} />
 
       {/* Testimonials Section */}
-      <TestimonialsSection testimonials={testimonials} />
+      <TestimonialsSection />
 
       {/* CTA Section */}
       <CTASection />

@@ -1,5 +1,5 @@
 const locales = ['es', 'en', 'ca'] as const
-const defaultLocale = 'ca' as const
+const defaultLocale = 'es' as const
 
 export default async function getRequestConfig({locale}: {locale?: string}) {
   const isSupported = typeof locale === 'string' && locales.includes(locale as any)

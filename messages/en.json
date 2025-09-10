@@ -123,12 +123,61 @@
         "bullet2": "Personalized contact angles",
         "bullet3": "Notes for common objections"
       }
+    },
+    "integrations": {
+      "title": "Integrations",
+      "subtitle": "with your stack",
+      "description": "Connect with CRM, email automation, payments and collaboration tools. Export leads and keep tracking updated.",
+      "cta": "Discover more"
+    },
+    "testimonials": {
+      "title": "Real ",
+      "titleHighlight": "success stories",
+      "description": "Sell faster: teams that have doubled their call rate and improved qualification with AI-generated reports.",
+      "cta": "See all stories",
+      "readMore": "Read more reviews"
+    },
+    "blogSection": {
+      "title": "Trends in ",
+      "titleHighlight": "lead generation",
+      "titleSuffix": " with AI",
+      "description": "Practical guides and insights to capture qualified potential clients, optimize calls and scale your commercial pipeline.",
+      "cta": "See all articles",
+      "readMore": "Read more"
     }
   },
   "metadata": {
     "title": "NextLeadIn — Lead generation with AI",
     "description": "Platform to find leads by business, area and keywords with AI reports.",
     "keywords": "lead generation,artificial intelligence,B2B sales,geographic segmentation"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Discover informative materials about lead generation, AI and B2B sales to accelerate your growth.",
+    "readMore": "Read more",
+    "backToBlog": "Back to blog",
+    "relatedPosts": "Related Articles",
+    "featuredPost": "Featured Article",
+    "noPostsFound": "No articles found",
+    "noPostsDescription": "Try again later or explore other categories.",
+    "by": "by",
+    "publishedOn": "Published on",
+    "categories": "Categories",
+    "tags": "Tags",
+    "recentPosts": "Recent Articles",
+    "search": "Search articles...",
+    "allCategories": "All categories",
+    "allTags": "All tags",
+    "breadcrumbHome": "Home",
+    "breadcrumbBlog": "Blog",
+    "shareOn": "Share on",
+    "previousPost": "Previous",
+    "nextPost": "Next",
+    "author": "Author",
+    "tagsLabel": "Tags:",
+    "authorDescription": "Expert in lead generation and B2B sales. I share knowledge and strategies to help companies accelerate their growth.",
+    "relatedPostsTitle": "Related Posts",
+    "relatedPostsDescription": "Discover more interesting content"
   }
 }
 

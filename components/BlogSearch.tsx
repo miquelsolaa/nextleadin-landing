@@ -1,26 +1,16 @@
-'use client'
-
-import { useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { getTranslations } from 'next-intl/server'
 
-const BlogSearch = () => {
-  const [searchQuery, setSearchQuery] = useState('')
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Aquí aniria la lògica de cerca
-    console.log('Searching for:', searchQuery)
-  }
+const BlogSearch = async () => {
+  const t = await getTranslations('blog')
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-      <h4 className="text-lg font-semibold text-gray-900 mb-4">Search</h4>
-      <form onSubmit={handleSearch} className="relative">
+      <h4 className="text-lg font-semibold text-gray-900 mb-4">{t('search')}</h4>
+      <form className="relative">
         <input
           type="text"
-          placeholder="Search …"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder={t('search')}
           className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
         />
         <button

@@ -1,7 +1,13 @@
 import createMiddleware from 'next-intl/middleware'
 import {routing} from './i18n/routing'
 
-export default createMiddleware(routing)
+const middleware = createMiddleware(routing)
+
+export default function(request: any) {
+  console.log('🔍 Middleware - URL:', request.nextUrl.pathname)
+  console.log('🔍 Middleware - Locale from URL:', request.nextUrl.pathname.split('/')[1])
+  return middleware(request)
+}
 
 export const config = {
   matcher: [

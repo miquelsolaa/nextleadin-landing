@@ -5,22 +5,20 @@ function isSupportedLocale(locale: string | undefined | null): locale is AppLoca
   return !!locale && (locales as readonly string[]).includes(locale)
 }
 
-const getRequestConfig = async () => {
-  let detected: string | undefined
-  try {
-    const mod: any = await import('next-intl/server')
-    if (typeof mod.requestLocale === 'function') {
-      detected = await mod.requestLocale()
-    }
-  } catch {
-    detected = undefined
-  }
-  const resolvedLocale: AppLocale = isSupportedLocale(detected) ? (detected as AppLocale) : defaultLocale
+const getRequestConfig = async ({locale}: {locale?: string}) => {
+  console.log('🔍 Request config - Input locale:', locale)
+  
+  // Utilitzar el locale passat com a paràmetre o el per defecte
+  const resolvedLocale: AppLocale = isSupportedLocale(locale) ? (locale as AppLocale) : defaultLocale
+  
+  console.log('🔍 Request config - Resolved locale:', resolvedLocale)
 
   try {
     const messages = (await import(`../messages/${resolvedLocale}.json`)).default
+    console.log('🔍 Request config - Loaded messages for:', resolvedLocale)
     return {locale: resolvedLocale, messages}
   } catch (error) {
+    console.log('🔍 Request config - Error loading messages, using fallback')
     // Fallback robust a espanyol
     const fallbackLocale: AppLocale = 'es'
     const messages = (await import(`../messages/${fallbackLocale}.json`)).default

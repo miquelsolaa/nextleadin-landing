@@ -123,12 +123,61 @@
         "bullet2": "Ángulos de contacto personalizados",
         "bullet3": "Notas para objeciones frecuentes"
       }
+    },
+    "integrations": {
+      "title": "Integraciones",
+      "subtitle": "con tu stack",
+      "description": "Conecta con CRM, automatización de email, pagos y herramientas de colaboración. Exporta leads y mantén el seguimiento actualizado.",
+      "cta": "Descubre más"
+    },
+    "testimonials": {
+      "title": "Historias de ",
+      "titleHighlight": "éxito real",
+      "description": "Comercializar más rápido: equipos que han duplicado el ritmo de llamadas y han mejorado la calificación con informes generados por IA.",
+      "cta": "Ver todas las historias",
+      "readMore": "Leer más reseñas"
+    },
+    "blogSection": {
+      "title": "Tendencias en ",
+      "titleHighlight": "generación de leads",
+      "titleSuffix": " con IA",
+      "description": "Guías e insights prácticos para captar clientes potenciales cualificados, optimizar llamadas y escalar tu pipeline comercial.",
+      "cta": "Ver todos los artículos",
+      "readMore": "Leer más"
     }
   },
   "metadata": {
     "title": "NextLeadIn — Generación de leads con IA",
     "description": "Plataforma para encontrar leads por negocio, zona y palabras clave con informes de IA.",
     "keywords": "generación de leads,inteligencia artificial,ventas B2B,segmentación geográfica"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Descubre materiales informativos sobre generación de leads, IA y ventas B2B para acelerar tu crecimiento.",
+    "readMore": "Leer más",
+    "backToBlog": "Volver al blog",
+    "relatedPosts": "Artículos Relacionados",
+    "featuredPost": "Artículo Destacado",
+    "noPostsFound": "No se encontraron artículos",
+    "noPostsDescription": "Inténtalo más tarde o explora otras categorías.",
+    "by": "por",
+    "publishedOn": "Publicado el",
+    "categories": "Categorías",
+    "tags": "Etiquetas",
+    "recentPosts": "Artículos Recientes",
+    "search": "Buscar artículos...",
+    "allCategories": "Todas las categorías",
+    "allTags": "Todas las etiquetas",
+    "breadcrumbHome": "Inicio",
+    "breadcrumbBlog": "Blog",
+    "shareOn": "Compartir en",
+    "previousPost": "Anterior",
+    "nextPost": "Siguiente",
+    "author": "Autor",
+    "tagsLabel": "Etiquetas:",
+    "authorDescription": "Experto en generación de leads y ventas B2B. Comparto conocimientos y estrategias para ayudar empresas a acelerar su crecimiento.",
+    "relatedPostsTitle": "Posts Relacionados",
+    "relatedPostsDescription": "Descubre más contenido interesante"
   }
 }
 

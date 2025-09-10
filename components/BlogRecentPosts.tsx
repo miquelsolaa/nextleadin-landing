@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
 
 interface RecentPost {
   title: string
@@ -11,10 +12,12 @@ interface BlogRecentPostsProps {
   posts: RecentPost[]
 }
 
-const BlogRecentPosts = ({ posts }: BlogRecentPostsProps) => {
+const BlogRecentPosts = async ({ posts }: BlogRecentPostsProps) => {
+  const t = await getTranslations('blog')
+  
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-      <h4 className="text-lg font-semibold text-gray-900 mb-4">Recent posts</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-4">{t('recentPosts')}</h4>
       <ul className="space-y-4">
         {posts.map((post, index) => (
           <li key={index}>

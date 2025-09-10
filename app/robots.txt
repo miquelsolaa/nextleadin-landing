@@ -1,4 +1,54 @@
+# robots.txt per NextLeadIn
+# https://nextleadin.com
+
+# Permetre a tots els bots indexar el contingut
 User-agent: *
 Allow: /
 
+# Bloquejar directoris no desitjats
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /out/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.map$
+
+# Permetre específicament les pàgines importants
+Allow: /blog/
+Allow: /pricing/
+Allow: /contact/
+Allow: /faq/
+Allow: /privacy-policy/
+Allow: /terms-and-conditions/
+Allow: /cookie-policy/
+
+# Configuració específica per Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Configuració específica per Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Bloquejar bots maliciosos o innecessaris
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap principal
 Sitemap: https://nextleadin.com/sitemap.xml
+
+# Sitemaps addicionals per idiomes (si es necessari)
+# Sitemap: https://nextleadin.com/sitemap-ca.xml
+# Sitemap: https://nextleadin.com/sitemap-es.xml
+# Sitemap: https://nextleadin.com/sitemap-en.xml
