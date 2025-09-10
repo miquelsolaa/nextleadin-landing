@@ -1,16 +1,34 @@
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { getTranslations } from 'next-intl/server'
+'use client'
 
-const BlogSearch = async () => {
-  const t = await getTranslations('blog')
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { useLocale } from 'next-intl'
+
+const BlogSearch = () => {
+  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+
+  const translations = (() => {
+    if (locale === 'es') {
+      return {
+        search: 'Buscar artículos'
+      }
+    }
+    if (locale === 'en') {
+      return {
+        search: 'Search articles'
+      }
+    }
+    return {
+      search: 'Cercar articles'
+    }
+  })()
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-      <h4 className="text-lg font-semibold text-gray-900 mb-4">{t('search')}</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-4">{translations.search}</h4>
       <form className="relative">
         <input
           type="text"
-          placeholder={t('search')}
+          placeholder={translations.search}
           className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
         />
         <button

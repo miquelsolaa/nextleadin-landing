@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
 import { getAllPosts, getAllCategories, getAllTags } from '@/lib/blog'
 import BlogPageSection from '@/components/BlogPageSection'
 import BlogSearch from '@/components/BlogSearch'
@@ -13,9 +12,31 @@ import BlogPagination from '@/components/BlogPagination'
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   console.log('🔍 Blog page locale:', locale)
-  const t = await getTranslations({ locale, namespace: 'pages.blog' })
-  console.log('🔍 Blog title:', t('title'))
-  console.log('🔍 Blog description:', t('description'))
+  
+  const translations = (() => {
+    if (locale === 'es') {
+      return {
+        title: 'Blog',
+        description: 'Descubre estrategias, consejos y tendencias para mejorar tu generación de leads y ventas B2B.',
+        breadcrumbHome: 'Inicio'
+      }
+    }
+    if (locale === 'en') {
+      return {
+        title: 'Blog',
+        description: 'Discover strategies, tips and trends to improve your B2B lead generation and sales.',
+        breadcrumbHome: 'Home'
+      }
+    }
+    return {
+      title: 'Blog',
+      description: 'Descobreix estratègies, consells i tendències per millorar la teva generació de leads i vendes B2B.',
+      breadcrumbHome: 'Inici'
+    }
+  })()
+  
+  console.log('🔍 Blog title:', translations.title)
+  console.log('🔍 Blog description:', translations.description)
   const allPosts = getAllPosts()
   const categories = getAllCategories()
   const tags = getAllTags()
@@ -49,14 +70,14 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       {/* Page Header */}
       <div className="bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('title')}</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{translations.title}</h1>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            {t('description')}
+            {translations.description}
           </p>
           <nav className="text-sm text-gray-500">
-            <span>{t('breadcrumbHome')}</span>
+            <span>{translations.breadcrumbHome}</span>
             <span className="mx-2">›</span>
-            <span>{t('title')}</span>
+            <span>{translations.title}</span>
           </nav>
         </div>
       </div>

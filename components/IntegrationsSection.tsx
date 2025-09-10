@@ -1,6 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 
 interface Integration {
   name: string
@@ -12,20 +14,45 @@ interface IntegrationsSectionProps {
 }
 
 export default function IntegrationsSection({ integrations }: IntegrationsSectionProps) {
-  const t = useTranslations('home.integrations')
+  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+
+  const translations = (() => {
+    if (locale === 'es') {
+      return {
+        title: 'Integraciones',
+        subtitle: 'potentes',
+        description: 'Conecta NextLeadIn con tus herramientas favoritas y automatiza tu flujo de trabajo de generación de leads.',
+        cta: 'Ver todas las integraciones'
+      }
+    }
+    if (locale === 'en') {
+      return {
+        title: 'Powerful',
+        subtitle: 'integrations',
+        description: 'Connect NextLeadIn with your favorite tools and automate your lead generation workflow.',
+        cta: 'View all integrations'
+      }
+    }
+    return {
+      title: 'Integracions',
+      subtitle: 'potents',
+      description: 'Connecta NextLeadIn amb les teves eines favorites i automatitza el teu flux de treball de generació de leads.',
+      cta: 'Veure totes les integracions'
+    }
+  })()
 
   return (
     <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-            <span className="gradient-text">{t('title')}</span> {t('subtitle')}
+            <span className="gradient-text">{translations.title}</span> {translations.subtitle}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            {t('description')}
+            {translations.description}
           </p>
           <Link href="/solutions" className="btn-primary">
-            {t('cta')}
+            {translations.cta}
           </Link>
         </div>
 

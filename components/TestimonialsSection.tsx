@@ -1,6 +1,7 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 import { useLocale } from 'next-intl'
 
 interface Testimonial {
@@ -17,8 +18,36 @@ interface TestimonialsSectionProps {
 }
 
 const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
-  const t = useTranslations('home.testimonials')
-  const locale = useLocale()
+  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+
+  const translations = (() => {
+    if (locale === 'es') {
+      return {
+        title: 'Lo que dicen nuestros',
+        titleHighlight: 'clientes',
+        description: 'Descubre cómo NextLeadIn está transformando la generación de leads para empresas de todos los tamaños.',
+        cta: 'Ver más testimonios',
+        readMore: 'Ver más reseñas'
+      }
+    }
+    if (locale === 'en') {
+      return {
+        title: 'What our',
+        titleHighlight: 'clients',
+        titleSuffix: ' say',
+        description: 'Discover how NextLeadIn is transforming lead generation for companies of all sizes.',
+        cta: 'View more testimonials',
+        readMore: 'Read more reviews'
+      }
+    }
+    return {
+      title: 'El que diuen els nostres',
+      titleHighlight: 'clients',
+      description: 'Descobreix com NextLeadIn està transformant la generació de leads per a empreses de tots els mides.',
+      cta: 'Veure més testimonis',
+      readMore: 'Veure més ressenyes'
+    }
+  })()
   
   // Testimonials data with different images for each - multilingual
   const getTestimonials = (): Testimonial[] => {
@@ -166,21 +195,21 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
           {/* Left Column - Title */}
           <div className="header-title-column">
             <h2 className="ekit-heading--title elementskit-section-title">
-              {t('title')}<span className="case-studies-underline">{t('titleHighlight')}</span>
+              {translations.title}{" "}<span className="case-studies-underline">{translations.titleHighlight}</span>
             </h2>
           </div>
           
           {/* Center Column - Description */}
           <div className="header-description-column">
             <p className="ekit-heading__description">
-              {t('description')}
+              {translations.description}
             </p>
           </div>
           
           {/* Right Column - Button */}
           <div className="header-button-column">
             <Link href="#" className="elementskit-btn">
-              <span className="button-wrapper">{t('cta')}</span>
+              <span className="button-wrapper">{translations.cta}</span>
             </Link>
           </div>
         </div>
@@ -240,7 +269,7 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
             <div className="testimonial-card read-more-card animated fadeInUp" style={{ animationDelay: '600ms' }}>
               <Link href="#" className="read-more-link">
                 <div className="read-more-content">
-                  <span className="read-more-text">{t('readMore')}</span>
+                  <span className="read-more-text">{translations.readMore}</span>
                   <span className="arrow-icon">→</span>
                 </div>
               </Link>

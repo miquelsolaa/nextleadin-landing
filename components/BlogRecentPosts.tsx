@@ -1,6 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server'
+import { useLocale } from 'next-intl'
 
 interface RecentPost {
   title: string
@@ -12,12 +14,28 @@ interface BlogRecentPostsProps {
   posts: RecentPost[]
 }
 
-const BlogRecentPosts = async ({ posts }: BlogRecentPostsProps) => {
-  const t = await getTranslations('blog')
+const BlogRecentPosts = ({ posts }: BlogRecentPostsProps) => {
+  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+
+  const translations = (() => {
+    if (locale === 'es') {
+      return {
+        recentPosts: 'Artículos recientes'
+      }
+    }
+    if (locale === 'en') {
+      return {
+        recentPosts: 'Recent posts'
+      }
+    }
+    return {
+      recentPosts: 'Articles recents'
+    }
+  })()
   
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-      <h4 className="text-lg font-semibold text-gray-900 mb-4">{t('recentPosts')}</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-4">{translations.recentPosts}</h4>
       <ul className="space-y-4">
         {posts.map((post, index) => (
           <li key={index}>

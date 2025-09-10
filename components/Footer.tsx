@@ -204,7 +204,7 @@ const Footer = () => {
                 {dict.sections.features}
               </h3>
               <ul role="list" className="space-y-3">
-                {footerNavigation.features.map((item) => (
+                {(footerNavigation.features || []).map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -225,7 +225,7 @@ const Footer = () => {
                 {dict.sections.resources}
               </h3>
               <ul role="list" className="space-y-3">
-                {footerNavigation.resources.map((item) => (
+                {(footerNavigation.resources || []).map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -246,7 +246,7 @@ const Footer = () => {
                 {dict.sections.company}
               </h3>
               <ul role="list" className="space-y-3">
-                {footerNavigation.company.map((item) => (
+                {(footerNavigation.company || []).map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -265,7 +265,7 @@ const Footer = () => {
                 {dict.sections.social}
               </h3>
               <ul role="list" className="space-y-3">
-                {footerNavigation.social.map((item) => (
+                {(footerNavigation.social || []).map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}

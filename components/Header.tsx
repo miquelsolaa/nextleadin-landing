@@ -3,14 +3,59 @@
 import {Link} from '@/i18n/routing'
 import Image from 'next/image'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
-import {useTranslations} from 'next-intl'
+import {useLocale} from 'next-intl'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
 const Header = () => {
-  const tNav = useTranslations('nav')
-  const tCommon = useTranslations('common.cta')
+  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const translations = (() => {
+    if (locale === 'es') {
+      return {
+        nav: {
+          features: 'Funcionalidades',
+          pricing: 'Precios',
+          blog: 'Blog',
+          faq: 'FAQ',
+          contact: 'Contacto'
+        },
+        common: {
+          login: 'Iniciar sesión',
+          getStarted: 'Comenzar'
+        }
+      }
+    }
+    if (locale === 'en') {
+      return {
+        nav: {
+          features: 'Features',
+          pricing: 'Pricing',
+          blog: 'Blog',
+          faq: 'FAQ',
+          contact: 'Contact'
+        },
+        common: {
+          login: 'Login',
+          getStarted: 'Get Started'
+        }
+      }
+    }
+    return {
+      nav: {
+        features: 'Funcionalitats',
+        pricing: 'Preus',
+        blog: 'Blog',
+        faq: 'FAQ',
+        contact: 'Contacte'
+      },
+      common: {
+        login: 'Iniciar sessió',
+        getStarted: 'Començar'
+      }
+    }
+  })()
 
   // Bloqueja scroll quan el menú mòbil és obert
   useEffect(() => {
@@ -25,11 +70,11 @@ const Header = () => {
   }, [mobileOpen])
 
   const navigation = [
-    { name: tNav('features'), href: {pathname: '/', hash: 'funcionalitats'} as any },
-    { name: tNav('pricing'), href: '/pricing' },
-    { name: tNav('blog'), href: '/blog' },
-    { name: tNav('faq'), href: '/faq' },
-    { name: tNav('contact'), href: '/contact' },
+    { name: translations.nav.features, href: {pathname: '/', hash: 'funcionalitats'} as any },
+    { name: translations.nav.pricing, href: '/pricing' },
+    { name: translations.nav.blog, href: '/blog' },
+    { name: translations.nav.faq, href: '/faq' },
+    { name: translations.nav.contact, href: '/contact' },
   ]
 
   return (
@@ -72,13 +117,13 @@ const Header = () => {
                 href="https://app.nextleadin.com"
                 className="header-cta-button bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-3 text-sm font-medium border border-gray-200 hover:border-gray-300"
               >
-                {tCommon('login')}
+                {translations.common.login}
               </Link>
               <Link
                 href="/get-started"
                 className="header-cta-button primary bg-green-500 hover:bg-green-600 text-white px-5 py-3 text-sm font-medium"
               >
-                {tCommon('getStarted')}
+                {translations.common.getStarted}
               </Link>
             </div>
             {/* Burger menu button (mobile) */}
@@ -122,14 +167,14 @@ const Header = () => {
                 className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 text-sm font-medium border border-gray-200 hover:border-gray-300 rounded-md"
                 onClick={() => setMobileOpen(false)}
               >
-                {tCommon('login')}
+                {translations.common.login}
               </Link>
               <Link
                 href="/get-started"
                 className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-sm font-medium rounded-md"
                 onClick={() => setMobileOpen(false)}
               >
-                {tCommon('getStarted')}
+                {translations.common.getStarted}
               </Link>
             </div>
           </div>

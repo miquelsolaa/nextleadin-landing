@@ -1,5 +1,7 @@
+'use client'
+
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import Image from 'next/image'
 
 interface BlogPost {
@@ -18,7 +20,38 @@ interface BlogSectionProps {
 }
 
 const BlogSection = ({ blogPosts }: BlogSectionProps) => {
-  const t = useTranslations('home.blogSection')
+  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+
+  const translations = (() => {
+    if (locale === 'es') {
+      return {
+        title: 'Últimos artículos del',
+        titleHighlight: 'blog',
+        titleSuffix: '',
+        description: 'Descubre estrategias, consejos y tendencias para mejorar tu generación de leads y ventas B2B.',
+        cta: 'Ver todos los artículos',
+        readMore: 'Leer más'
+      }
+    }
+    if (locale === 'en') {
+      return {
+        title: 'Latest',
+        titleHighlight: 'blog',
+        titleSuffix: ' articles',
+        description: 'Discover strategies, tips and trends to improve your B2B lead generation and sales.',
+        cta: 'View all articles',
+        readMore: 'Read more'
+      }
+    }
+    return {
+      title: 'Últims articles del',
+      titleHighlight: 'blog',
+      titleSuffix: '',
+      description: 'Descobreix estratègies, consells i tendències per millorar la teva generació de leads i vendes B2B.',
+      cta: 'Veure tots els articles',
+      readMore: 'Llegir més'
+    }
+  })()
   
   // Si no hi ha posts, no mostrar la secció
   if (blogPosts.length === 0) {
@@ -36,7 +69,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                 <div className="ekit-wid-con">
                   <div className="ekit-heading elementskit-section-title-wraper text_left ekit_heading_tablet- ekit_heading_mobile-">
                     <h2 className="ekit-heading--title elementskit-section-title">
-                      {t('title')}<span><span>{t('titleHighlight')}</span></span>{t('titleSuffix')}
+                      {translations.title}<span>{" "}<span>{translations.titleHighlight}</span></span>{translations.titleSuffix}
                     </h2>
                   </div>
                 </div>
@@ -50,7 +83,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                     <div className="ekit-wid-con">
                       <div className="ekit-heading elementskit-section-title-wraper text_left ekit_heading_tablet- ekit_heading_mobile-">
                         <div className="ekit-heading__description">
-                          <p>{t('description')}</p>
+                          <p>{translations.description}</p>
                         </div>
                       </div>
                     </div>
@@ -63,8 +96,8 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                   <div className="elementor-widget-container">
                     <div className="ekit-wid-con">
                       <div className="ekit-btn-wraper">
-                        <Link href="/blog" className="elementskit-btn whitespace--normal" id="" data-text={t('cta')}>
-                          <span className="button-wrapper">{t('cta')}</span>
+                        <Link href="/blog" className="elementskit-btn whitespace--normal" id="" data-text={translations.cta}>
+                          <span className="button-wrapper">{translations.cta}</span>
                         </Link>
                       </div>
                     </div>
@@ -139,9 +172,9 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                               <Link 
                                 href={`/blog/${post.slug}`} 
                                 className="elementskit-btn keydesign-underline whitespace--normal" 
-                                data-text={t('readMore')}
+                                data-text={translations.readMore}
                               >
-                                <span className="button-wrapper">{t('readMore')}</span>
+                                <span className="button-wrapper">{translations.readMore}</span>
                               </Link>
                             </div>
                           </div>

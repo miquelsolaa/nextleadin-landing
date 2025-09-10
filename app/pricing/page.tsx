@@ -8,49 +8,163 @@ export default function PricingPage() {
   // Dades dels plans de preus orientats a generació de leads
   const pricingPlans = [
     {
-      title: 'Inici',
+      id: 'start',
+      name: {
+        ca: 'Inici',
+        es: 'Inicio',
+        en: 'Start'
+      },
       price: 19,
-      period: 'mes',
-      features: [
-        'Fins a 500 leads/mes amb segmentació per zona',
-        'Selecció de sector per paraules clau i CNAE bàsic',
-        'Enriquiment amb IA: fitxa resum per lead',
-        'Exportació CSV i importació manual al CRM'
-      ],
-      buttonText: 'Comença ara',
+      period: {
+        ca: 'mes',
+        es: 'mes',
+        en: 'month'
+      },
+      description: {
+        ca: 'Perfecte per a empreses que comencen amb la generació de leads',
+        es: 'Perfecto para empresas que comienzan con la generación de leads',
+        en: 'Perfect for businesses starting with lead generation'
+      },
+      features: {
+        ca: [
+          'Fins a 500 leads/mes amb segmentació per zona',
+          'Selecció de sector per paraules clau i CNAE bàsic',
+          'Enriquiment amb IA: fitxa resum per lead',
+          'Exportació CSV i importació manual al CRM'
+        ],
+        es: [
+          'Hasta 500 leads/mes con segmentación por zona',
+          'Selección de sector por palabras clave y CNAE básico',
+          'Enriquecimiento con IA: ficha resumen por lead',
+          'Exportación CSV e importación manual al CRM'
+        ],
+        en: [
+          'Up to 500 leads/month with zone segmentation',
+          'Sector selection by keywords and basic CNAE',
+          'AI enrichment: summary sheet per lead',
+          'CSV export and manual CRM import'
+        ]
+      },
+      buttonText: {
+        ca: 'Comença ara',
+        es: 'Comenzar ahora',
+        en: 'Start now'
+      },
       buttonHref: '/get-started',
       popular: false,
-      delay: 100
+      delay: 100,
+      limits: {
+        leads: 500,
+        aiCredits: 500,
+        users: 3,
+        searches: 20
+      }
     },
     {
-      title: 'Pro',
+      id: 'pro',
+      name: {
+        ca: 'Pro',
+        es: 'Pro',
+        en: 'Pro'
+      },
       price: 49,
-      period: 'mes',
-      features: [
-        'Fins a 2.500 leads/mes amb filtres avançats',
-        'Informes amb IA per empresa: angles de contacte i objeccions',
-        'Integracions amb CRM i email màrqueting (Zapier/HubSpot)',
-        'Dades actualitzades setmanalment'
-      ],
-      buttonText: 'Comença ara',
+      period: {
+        ca: 'mes',
+        es: 'mes',
+        en: 'month'
+      },
+      description: {
+        ca: 'Ideal per a equips comercials que necessiten més volum i funcionalitats avançades',
+        es: 'Ideal para equipos comerciales que necesitan más volumen y funcionalidades avanzadas',
+        en: 'Ideal for sales teams that need more volume and advanced features'
+      },
+      features: {
+        ca: [
+          'Fins a 2.500 leads/mes amb filtres avançats',
+          'Informes amb IA per empresa: angles de contacte i objeccions',
+          'Integracions amb CRM i email màrqueting (Zapier/HubSpot)',
+          'Dades actualitzades setmanalment'
+        ],
+        es: [
+          'Hasta 2.500 leads/mes con filtros avanzados',
+          'Informes con IA por empresa: ángulos de contacto y objeciones',
+          'Integraciones con CRM y email marketing (Zapier/HubSpot)',
+          'Datos actualizados semanalmente'
+        ],
+        en: [
+          'Up to 2,500 leads/month with advanced filters',
+          'AI reports per company: contact angles and objections',
+          'CRM and email marketing integrations (Zapier/HubSpot)',
+          'Weekly updated data'
+        ]
+      },
+      buttonText: {
+        ca: 'Comença ara',
+        es: 'Comenzar ahora',
+        en: 'Start now'
+      },
       buttonHref: '/get-started',
       popular: true,
-      delay: 200
+      delay: 200,
+      limits: {
+        leads: 2500,
+        aiCredits: 2500,
+        users: 10,
+        searches: 100
+      }
     },
     {
-      title: 'Empresa',
+      id: 'elite',
+      name: {
+        ca: 'Empresa',
+        es: 'Empresa',
+        en: 'Enterprise'
+      },
       price: 99,
-      period: 'mes',
-      features: [
-        'Leads il·limitats i nínxols personalitzats',
-        'Enriquiment IA avançat: punts de conversa i proper pas',
-        'Accés API, SSO i assistència prioritària (SLA)',
-        'Dades actualitzades diàriament'
-      ],
-      buttonText: 'Parla amb vendes',
+      period: {
+        ca: 'mes',
+        es: 'mes',
+        en: 'month'
+      },
+      description: {
+        ca: 'Solució completa per a empreses que necessiten màxima capacitat i personalització',
+        es: 'Solución completa para empresas que necesitan máxima capacidad y personalización',
+        en: 'Complete solution for businesses that need maximum capacity and customization'
+      },
+      features: {
+        ca: [
+          'Leads il·limitats i nínxols personalitzats',
+          'Enriquiment IA avançat: punts de conversa i proper pas',
+          'Accés API, SSO i assistència prioritària (SLA)',
+          'Dades actualitzades diàriament'
+        ],
+        es: [
+          'Leads ilimitados y nichos personalizados',
+          'Enriquecimiento IA avanzado: puntos de conversación y próximo paso',
+          'Acceso API, SSO y asistencia prioritaria (SLA)',
+          'Datos actualizados diariamente'
+        ],
+        en: [
+          'Unlimited leads and custom niches',
+          'Advanced AI enrichment: conversation points and next step',
+          'API access, SSO and priority support (SLA)',
+          'Daily updated data'
+        ]
+      },
+      buttonText: {
+        ca: 'Parla amb vendes',
+        es: 'Habla con ventas',
+        en: 'Talk to sales'
+      },
       buttonHref: '/contact',
       popular: false,
-      delay: 300
+      delay: 300,
+      limits: {
+        leads: 'Il·limitats',
+        aiCredits: 'Il·limitats',
+        users: 'Il·limitats',
+        searches: 'Il·limitats'
+      }
     }
   ]
 
@@ -170,14 +284,9 @@ export default function PricingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingPlans.map((plan, index) => (
               <PricingCard
-                key={index}
-                title={plan.title}
-                price={plan.price}
-                period={plan.period}
-                features={plan.features}
-                buttonText={plan.buttonText}
-                buttonHref={plan.buttonHref}
-                popular={plan.popular}
+                key={plan.id}
+                plan={plan}
+                locale="ca"
                 delay={plan.delay}
               />
             ))}
@@ -193,7 +302,7 @@ export default function PricingPage() {
             <p className="text-xl text-gray-600">Funcionalitats i límits adaptats a cada etapa del teu creixement.</p>
           </div>
           
-          <PricingComparisonTable features={comparisonFeatures} />
+          <PricingComparisonTable locale="ca" />
         </div>
       </section>
 
