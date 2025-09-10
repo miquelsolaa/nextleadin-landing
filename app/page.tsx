@@ -22,7 +22,7 @@ export default function Home() {
         'Volum estimat de leads disponibles',
         'Exportació ràpida a CSV/CRM'
       ],
-      image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-service-1.png',
+      image: '/images/features/location.png',
       badge: null
     },
     {
@@ -35,7 +35,7 @@ export default function Home() {
         'Exclusió de sectors no desitjats',
         'Suggeriments intel·ligents de nínxols'
       ],
-      image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-service-5.png',
+      image: '/images/features/business.png',
       badge: 'NOU'
     },
     {
@@ -48,7 +48,7 @@ export default function Home() {
         'Angles de contacte personalitzats',
         'Notes per objeccions freqüents'
       ],
-      image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-service-3.png',
+      image: '/images/features/report.png',
       badge: null
     }
   ]
