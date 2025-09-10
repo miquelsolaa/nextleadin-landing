@@ -14,7 +14,8 @@ import { getTranslations } from 'next-intl/server'
 
 export default async function Home({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params
-  const t = await getTranslations({ locale, namespace: 'home.testimonials' })
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
+  const t = await getTranslations({ locale: validLocale, namespace: 'home.testimonials' })
   
   // Carregar últims posts del blog
   const allPosts = getAllPosts()
@@ -52,7 +53,7 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
   return (
     <>
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection locale={validLocale} />
 
       {/* Trusted By Section */}
       <TrustedBySection />

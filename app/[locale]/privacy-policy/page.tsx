@@ -1,9 +1,13 @@
-"use client"
-import {useLocale} from 'next-intl'
+import { setRequestLocale } from 'next-intl/server'
 
-export default function PrivacyPolicyPage() {
-  const raw = (useLocale() as string) || 'es'
-  const lang = (raw.split('-')[0] as 'es' | 'ca' | 'en')
+interface PrivacyPolicyPageProps {
+  params: Promise<{ locale: string }>
+}
+
+export default async function PrivacyPolicyPage({ params }: PrivacyPolicyPageProps) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const lang = (locale.split('-')[0] as 'es' | 'ca' | 'en')
   const t = {
     es: {
       h1: 'Política de Privacidad', updated: 'Última actualización', date: 'es-ES',

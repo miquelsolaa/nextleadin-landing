@@ -1,11 +1,13 @@
-"use client"
-import {useLocale} from 'next-intl'
+import { setRequestLocale } from 'next-intl/server'
 
-// Metadata per a Server Components només. Aquesta pàgina és client, per tant, no exportem metadata aquí.
+interface TermsAndConditionsPageProps {
+  params: Promise<{ locale: string }>
+}
 
-export default function TermsAndConditionsPage() {
-  const raw = (useLocale() as string) || 'es'
-  const lang = (raw.split('-')[0] as 'es' | 'ca' | 'en')
+export default async function TermsAndConditionsPage({ params }: TermsAndConditionsPageProps) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const lang = (locale.split('-')[0] as 'es' | 'ca' | 'en')
   const t = {
     es: {
       title: 'Términos y Condiciones',

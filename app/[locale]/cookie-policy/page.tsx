@@ -1,9 +1,13 @@
-"use client"
-import {useLocale} from 'next-intl'
+import { setRequestLocale } from 'next-intl/server'
 
-export default function CookiePolicyPage() {
-  const raw = (useLocale() as string) || 'ca'
-  const lang = (raw.split('-')[0] as 'es' | 'ca' | 'en')
+interface CookiePolicyPageProps {
+  params: Promise<{ locale: string }>
+}
+
+export default async function CookiePolicyPage({ params }: CookiePolicyPageProps) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const lang = (locale.split('-')[0] as 'es' | 'ca' | 'en')
   const t = {
     es: { h1: 'Política de Cookies', updated: 'Última actualización', date: 'es-ES',
       s1: '1. Qué son las Cookies',

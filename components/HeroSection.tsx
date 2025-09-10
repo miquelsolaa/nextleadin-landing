@@ -2,10 +2,12 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import {useLocale} from 'next-intl'
 
-const HeroSection = () => {
-  const locale = useLocale() as 'es' | 'ca' | 'en'
+interface HeroSectionProps {
+  locale: 'es' | 'ca' | 'en'
+}
+
+const HeroSection = ({ locale }: HeroSectionProps) => {
   const [email, setEmail] = useState('')
   const [isAnimating, setIsAnimating] = useState(false)
 
