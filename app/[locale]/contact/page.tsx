@@ -61,7 +61,7 @@ export default function ContactPage() {
         consent: formData.consent ? 'yes' : 'no',
       } as Record<string, string | boolean>
 
-      const res = await fetch('/', {
+      const res = await fetch('/netlify-forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode(payload),
@@ -95,7 +95,7 @@ export default function ContactPage() {
             {/* Formulari */}
             <div className="lg:col-span-2">
               {!submitted ? (
-                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+                <form name="contact" method="POST" action="/netlify-forms.html" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
                   <input type="hidden" name="form-name" value="contact" />
                   <input type="hidden" name="locale" value={locale} />
                   <p className="hidden">

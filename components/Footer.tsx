@@ -361,7 +361,7 @@ function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: Ne
         locale,
         email,
       }
-      const res = await fetch('/', {
+      const res = await fetch('/netlify-forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode(payload),
@@ -377,7 +377,7 @@ function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: Ne
   }
 
   return (
-    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md lg:max-w-none">
+    <form name="newsletter" method="POST" action="/netlify-forms.html" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md lg:max-w-none">
       <input type="hidden" name="form-name" value="newsletter" />
       <input type="hidden" name="locale" value={locale} />
       <p className="hidden">

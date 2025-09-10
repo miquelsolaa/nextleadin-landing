@@ -23,6 +23,17 @@
       <input type="checkbox" name="consent" />
       <button type="submit">Send</button>
     </form>
+
+    <!-- Newsletter shadow form -->
+    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter" />
+      <p class="hidden">
+        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+      </p>
+      <input type="email" name="email" />
+      <input type="hidden" name="locale" value="es" />
+      <button type="submit">Subscribe</button>
+    </form>
   </body>
   <!-- This file is only for Netlify build-time form detection. -->
 </html>
