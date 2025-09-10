@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import {useTranslations, useLocale} from 'next-intl'
+import AIStructuredData from '@/components/AIStructuredData'
 
 export default function ContactPage() {
   const t = useTranslations('pages.contact')
@@ -76,8 +77,25 @@ export default function ContactPage() {
     }
   }
 
+  // Breadcrumbs per a SEO
+  const breadcrumbs = [
+    { 
+      name: locale === 'ca' ? 'Inici' : locale === 'es' ? 'Inicio' : 'Home', 
+      url: locale === 'ca' ? 'https://nextleadin.com' : `https://nextleadin.com/${locale}` 
+    },
+    { 
+      name: locale === 'ca' ? 'Contacte' : locale === 'es' ? 'Contacto' : 'Contact', 
+      url: locale === 'ca' ? 'https://nextleadin.com/contact' : `https://nextleadin.com/${locale}/contact` 
+    }
+  ]
+
   return (
     <>
+      <AIStructuredData 
+        page="contact" 
+        locale={locale as 'ca' | 'es' | 'en'} 
+        breadcrumbs={breadcrumbs}
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 bg-white">
         <div className="container-custom">

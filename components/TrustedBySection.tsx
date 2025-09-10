@@ -13,7 +13,7 @@ const TrustedBySection = () => {
   const [lastX, setLastX] = useState(0)
   const [lastTime, setLastTime] = useState(0)
   const sliderRef = useRef<HTMLDivElement>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | null>(null)
   const [hoveredLogoIndex, setHoveredLogoIndex] = useState<number | null>(null)
   
   const partnerLogos = [
@@ -54,16 +54,20 @@ const TrustedBySection = () => {
     }
   ]
 
-  // Auto-scroll effect (desactivat - només moviment manual)
-  // useEffect(() => {
-  //   if (isDragging) return
+  // Auto-scroll effect - moviment automàtic continu
+  useEffect(() => {
+    if (isDragging) return
     
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prevIndex: number) => (prevIndex + 1) % partnerLogos.length)
-  //   }, 3000)
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex: number) => {
+        // Incrementa l'índex per crear moviment continu
+        const newIndex = prevIndex + 0.095 // Moviment més lent
+        return newIndex
+      })
+    }, 100) // Interval menys freqüent per moviment més lent
 
-  //   return () => clearInterval(interval)
-  // }, [partnerLogos.length, isDragging])
+    return () => clearInterval(interval)
+  }, [isDragging])
 
   // Smooth animation with inertia
   const animateToIndex = useCallback((targetIndex: number, duration: number = 500) => {
@@ -142,16 +146,16 @@ const TrustedBySection = () => {
     // Don't snap back - let logos stay exactly where they are
     // The logos will stay at the current position without forcing them back
     
-    // Optional: Apply minimal momentum if velocity is very high
-    if (Math.abs(velocity) > 2.0) {
+    // Aplicar momentum suau quan l'usuari fa drag
+    if (Math.abs(velocity) > 1.0) {
       const slideWidth = 187
-      const momentumDistance = velocity * 50 // Reduced sensitivity
+      const momentumDistance = velocity * 30 // Sensibilitat ajustada
       const targetIndex = currentIndex - (momentumDistance / slideWidth)
       
-      // Only apply momentum if it's a significant movement
-      if (Math.abs(targetIndex - currentIndex) > 0.5) {
+      // Aplicar momentum si hi ha moviment significatiu
+      if (Math.abs(targetIndex - currentIndex) > 0.3) {
         const finalIndex = Math.max(0, targetIndex)
-        animateToIndex(Math.round(finalIndex), 400)
+        animateToIndex(finalIndex, 300)
       }
     }
     
@@ -222,16 +226,16 @@ const TrustedBySection = () => {
       // Don't snap back - let logos stay exactly where they are
       setIsDragging(false)
       
-      // Optional: Apply minimal momentum if velocity is very high
-      if (Math.abs(velocity) > 2.0) {
+      // Aplicar momentum suau quan l'usuari fa touch
+      if (Math.abs(velocity) > 1.0) {
         const slideWidth = 187
-        const momentumDistance = velocity * 50 // Reduced sensitivity
+        const momentumDistance = velocity * 30 // Sensibilitat ajustada
         const targetIndex = currentIndex - (momentumDistance / slideWidth)
         
-        // Only apply momentum if it's a significant movement
-        if (Math.abs(targetIndex - currentIndex) > 0.5) {
+        // Aplicar momentum si hi ha moviment significatiu
+        if (Math.abs(targetIndex - currentIndex) > 0.3) {
           const finalIndex = Math.max(0, targetIndex)
-          animateToIndex(Math.round(finalIndex), 400)
+          animateToIndex(finalIndex, 300)
         }
       }
     }

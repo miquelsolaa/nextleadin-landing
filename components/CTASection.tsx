@@ -47,7 +47,7 @@ const CTASection = () => {
               {t.desc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="/get-started" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+              <Link href="/contact" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
                 {t.primary}
               </Link>
               <Link href="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600">
@@ -58,7 +58,7 @@ const CTASection = () => {
 
           <div className="relative">
             <Image
-              src="https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-mockup-cta.png"
+              src="/images/cta/mockup.png"
               alt="CTA illustration"
               width={752}
               height={423}

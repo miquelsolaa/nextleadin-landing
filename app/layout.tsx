@@ -1,79 +1,12 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+
 const inter = Inter({subsets: ['latin'], display: 'swap', variable: '--font-inter'})
 
-export const metadata: Metadata = {
-  title: {
-    default: 'NextLeadIn — Generació de leads hipersegmentats amb IA',
-    template: '%s | NextLeadIn'
-  },
-  description: 'Plataforma per trobar leads per tipus de negoci, zona (ciutat/país) i paraules clau, amb informes d’IA per preparar trucades i tancar més oportunitats.',
-  keywords: [
-    'generació de leads',
-    'intel·ligència artificial',
-    'segmentació geogràfica',
-    'qualificació de leads',
-    'vendes B2B',
-    'equip comercial',
-    'prospectar empreses',
-    'buscar clients potencials',
-    'enriquiment de dades amb IA'
-  ],
-  authors: [{ name: 'NextLeadIn Team' }],
-  creator: 'NextLeadIn',
-  publisher: 'NextLeadIn',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://nextleadin.com'),
-  alternates: {
-    canonical: 'https://nextleadin.com/',
-    languages: {
-      'ca-ES': 'https://nextleadin.com/',
-      'es-ES': 'https://nextleadin.com/es',
-      'en-US': 'https://nextleadin.com/en',
-    },
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'ca_ES',
-    url: 'https://nextleadin.com',
-    title: 'NextLeadIn — Generació de leads hipersegmentats amb IA',
-    description: 'Troba leads per tipus de negoci, ubicació i paraules clau. Rep dossiers amb IA per preparar trucades.',
-    siteName: 'NextLeadIn',
-    images: [
-      {
-        url: '/images/logo/logo.png',
-        alt: 'NextLeadIn — Plataforma de generació de leads amb IA',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'NextLeadIn — Generació de leads amb IA',
-    description: 'Troba clients potencials per zona i sector amb informes d’IA per convertir millor.',
-    images: ['/images/logo/logo.png'],
-    creator: '@nextleadin',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: '',
-    yandex: '',
-  },
-}
+// Metadata per defecte optimitzat per a AI
+export const metadata: Metadata = generateAIOptimizedMetadata('home', 'ca')
 
 export default function RootLayout({
   children,

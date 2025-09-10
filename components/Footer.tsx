@@ -43,7 +43,7 @@ const Footer = () => {
           { name: 'Empleo', href: '#' }
         ],
         social: [
-          { name: 'Linkedin', href: '#' }
+          { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' }
         ]
       },
       copyright: '© 2025 NextLeadIn. Todos los derechos reservados.',
@@ -85,10 +85,7 @@ const Footer = () => {
           { name: 'Carreres', href: '#' }
         ],
         social: [
-          { name: 'Behance', href: '#' },
-          { name: 'Dribbble', href: '#' },
-          { name: 'Facebook', href: '#' },
-          { name: 'Instagram', href: '#' }
+          { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' }
         ]
       },
       copyright: '© 2025 NextLeadIn. Tots els drets reservats.',
@@ -130,7 +127,7 @@ const Footer = () => {
           { name: 'Careers', href: '#' }
         ],
         social: [
-          { name: 'Linkedin', href: '#' }
+          { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' }
         ]
       },
       copyright: '© 2025 NextLeadIn. All rights reserved.',
@@ -145,7 +142,7 @@ const Footer = () => {
   const footerNavigation = dict.nav
 
   const socialLinks = [
-    { name: 'Linkedin', href: '#', icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z' }
+    { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin', icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z' }
   ]
 
   return (

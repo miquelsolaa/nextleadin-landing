@@ -2,22 +2,25 @@
 
 import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
-
-interface Question {
-  id: number
-  question: string
-  answer: string
-  isOpen: boolean
-}
+import { FAQItem } from '@/lib/faq-data'
 
 interface FAQPageSectionProps {
   id: string
-  title: string
-  description: string
-  questions: Question[]
+  title: {
+    ca: string
+    es: string
+    en: string
+  }
+  description: {
+    ca: string
+    es: string
+    en: string
+  }
+  questions: FAQItem[]
+  locale: 'ca' | 'es' | 'en'
 }
 
-const FAQPageSection = ({ id, title, description, questions }: FAQPageSectionProps) => {
+const FAQPageSection = ({ id, title, description, questions, locale }: FAQPageSectionProps) => {
   const [openQuestions, setOpenQuestions] = useState<Set<number>>(
     new Set(questions.filter(q => q.isOpen).map(q => q.id))
   )
@@ -36,8 +39,8 @@ const FAQPageSection = ({ id, title, description, questions }: FAQPageSectionPro
     <section id={id} className="scroll-mt-32">
       {/* Section Header */}
       <div className="mb-8">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">{title}</h3>
-        <p className="text-gray-600 max-w-3xl">{description}</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">{title[locale]}</h3>
+        <p className="text-gray-600 max-w-3xl">{description[locale]}</p>
       </div>
 
       {/* Questions */}
@@ -49,7 +52,7 @@ const FAQPageSection = ({ id, title, description, questions }: FAQPageSectionPro
               className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
             >
               <span className="text-base font-medium text-gray-900 pr-4">
-                {index + 1}. {question.question}
+                {index + 1}. {question.question[locale]}
               </span>
               <div className="flex-shrink-0">
                 <ChevronDownIcon
@@ -69,7 +72,7 @@ const FAQPageSection = ({ id, title, description, questions }: FAQPageSectionPro
             >
               <div className="px-6 pb-4">
                 <div className="pt-2 border-t border-gray-100">
-                  <p className="text-gray-600 leading-relaxed">{question.answer}</p>
+                  <p className="text-gray-600 leading-relaxed">{question.answer[locale]}</p>
                 </div>
               </div>
             </div>
