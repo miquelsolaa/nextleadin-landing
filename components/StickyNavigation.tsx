@@ -1,16 +1,31 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import {useLocale} from 'next-intl'
 
-interface StickyNavigationProps {
-  services: Array<{
-    id: string
-    title: string
-    badge?: string | null
-  }>
-}
-
-const StickyNavigation = ({ services }: StickyNavigationProps) => {
+const StickyNavigation = () => {
+  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+  const services = (() => {
+    if (locale === 'es') {
+      return [
+        {id: 'segmentacio', title: 'Segmentación geográfica', badge: null},
+        {id: 'sector', title: 'Selección de sector', badge: 'NUEVO'},
+        {id: 'informes-ia', title: 'Informes con IA', badge: null}
+      ]
+    }
+    if (locale === 'en') {
+      return [
+        {id: 'segmentacio', title: 'Geographic targeting', badge: null},
+        {id: 'sector', title: 'Sector selection', badge: 'NEW'},
+        {id: 'informes-ia', title: 'AI reports', badge: null}
+      ]
+    }
+    return [
+      {id: 'segmentacio', title: 'Segmentació geogràfica', badge: null},
+      {id: 'sector', title: 'Selecció de sector', badge: 'NOU'},
+      {id: 'informes-ia', title: 'Informes amb IA', badge: null}
+    ]
+  })()
   const [activeSection, setActiveSection] = useState<string>(services[0]?.id || '')
 
   useEffect(() => {

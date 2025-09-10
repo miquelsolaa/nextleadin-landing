@@ -1,24 +1,85 @@
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Política de Cookies | NextLeadIn',
-  description: 'Política de cookies i tecnologies similars de NextLeadIn',
-}
+"use client"
+import {useLocale} from 'next-intl'
 
 export default function CookiePolicyPage() {
+  const raw = (useLocale() as string) || 'ca'
+  const lang = (raw.split('-')[0] as 'es' | 'ca' | 'en')
+  const t = {
+    es: { h1: 'Política de Cookies', updated: 'Última actualización', date: 'es-ES',
+      s1: '1. Qué son las Cookies',
+      p11: 'Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita un sitio web. Permiten recordar información sobre su visita, como sus preferencias y configuración.',
+      p12: 'NextLeadIn utiliza cookies y tecnologías similares para mejorar la experiencia de usuario, analizar el uso del sitio web y personalizar el contenido.',
+      s2: '2. Tipos de Cookies que Utilizamos',
+      s21: '2.1 Cookies Técnicas (Necesarias)',
+      s22: '2.2 Cookies de Funcionalidad',
+      s23: '2.3 Cookies de Análisis',
+      s24: '2.4 Cookies de Marketing',
+      s3: '3. Cookies de Terceros',
+      p31: 'Utilizamos servicios de terceros que pueden establecer cookies en su dispositivo:',
+      s4: '4. Gestión de Cookies',
+      s41: '4.1 Configuración del Navegador',
+      s42: '4.2 Centro de Preferencias de Cookies',
+      s5: '5. Consecuencias de Desactivar Cookies',
+      s6: '6. Cookies en Dispositivos Móviles',
+      s7: '7. Actualizaciones de esta Política',
+      s8: '8. Base Legal',
+      s9: '9. Contacto',
+      s10: '10. Enlaces Útiles'
+    },
+    ca: { h1: 'Política de Cookies', updated: 'Última actualització', date: 'ca-ES',
+      s1: '1. Què són les Cookies',
+      p11: 'Les cookies són petits arxius de text que s’emmagatzemen al dispositiu quan visiteu un lloc web. Permeten recordar informació de la visita, com preferències i configuració.',
+      p12: 'NextLeadIn utilitza cookies i tecnologies similars per millorar l’experiència, analitzar l’ús del lloc i personalitzar el contingut.',
+      s2: '2. Tipus de Cookies que Utilitzem',
+      s21: '2.1 Cookies Tècniques (Necessàries)',
+      s22: '2.2 Cookies de Funcionalitat',
+      s23: '2.3 Cookies d’Anàlisi',
+      s24: '2.4 Cookies de Màrqueting',
+      s3: '3. Cookies de Tercers',
+      p31: 'Utilitzem serveis de tercers que poden establir cookies al vostre dispositiu:',
+      s4: '4. Gestió de Cookies',
+      s41: '4.1 Configuració del Navegador',
+      s42: '4.2 Centre de Preferències de Cookies',
+      s5: '5. Conseqüències de Desactivar Cookies',
+      s6: '6. Cookies en Dispositius Mòbils',
+      s7: '7. Actualitzacions d’aquesta Política',
+      s8: '8. Base Legal',
+      s9: '9. Contacte',
+      s10: '10. Enllaços Útils'
+    },
+    en: { h1: 'Cookie Policy', updated: 'Last updated', date: 'en-US',
+      s1: '1. What are Cookies',
+      p11: 'Cookies are small text files stored on your device when you visit a website. They allow the site to remember your visit information, such as preferences and settings.',
+      p12: 'NextLeadIn uses cookies and similar technologies to improve user experience, analyse site usage, and personalise content.',
+      s2: '2. Types of Cookies We Use',
+      s21: '2.1 Technical (Necessary) Cookies',
+      s22: '2.2 Functionality Cookies',
+      s23: '2.3 Analytics Cookies',
+      s24: '2.4 Marketing Cookies',
+      s3: '3. Third-Party Cookies',
+      p31: 'We use third-party services that may set cookies on your device:',
+      s4: '4. Managing Cookies',
+      s41: '4.1 Browser Settings',
+      s42: '4.2 Cookie Preference Center',
+      s5: '5. Consequences of Disabling Cookies',
+      s6: '6. Cookies on Mobile Devices',
+      s7: '7. Updates to this Policy',
+      s8: '8. Legal Basis',
+      s9: '9. Contact',
+      s10: '10. Useful Links'
+    }
+  }[lang]
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container-custom py-16">
+    <div className="min-h-screen bg-gray-50 pb-24 md:pb-32">
+      <div className="container-custom pt-28 md:pt-10">
         <div className="max-w-4xl mx-auto">
           <div className="mt-20 mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">
-              Política de Cookies
-            </h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">{t.h1}</h1>
           </div>
           
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 mb-8">
-              <strong>Última actualització:</strong> {new Date().toLocaleDateString('ca-ES')}
+              <strong>{t.updated}:</strong> {new Date().toLocaleDateString(t.date)}
             </p>
 
             <section className="mb-8">
@@ -205,10 +266,10 @@ export default function CookiePolicyPage() {
                 La majoria de navegadors permeten controlar les cookies:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li><strong>Chrome:</strong> Configuració > Privadesa i seguretat > Cookies</li>
-                <li><strong>Firefox:</strong> Opcions > Privadesa i seguretat > Cookies</li>
-                <li><strong>Safari:</strong> Preferències > Privadesa > Cookies</li>
-                <li><strong>Edge:</strong> Configuració > Cookies i permisos del lloc</li>
+                <li><strong>Chrome:</strong> Configuració &gt; Privadesa i seguretat &gt; Cookies</li>
+                <li><strong>Firefox:</strong> Opcions &gt; Privadesa i seguretat &gt; Cookies</li>
+                <li><strong>Safari:</strong> Preferències &gt; Privadesa &gt; Cookies</li>
+                <li><strong>Edge:</strong> Configuració &gt; Cookies i permisos del lloc</li>
               </ul>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -277,9 +338,9 @@ export default function CookiePolicyPage() {
                 Si teniu preguntes sobre aquesta política de cookies:
               </p>
               <p className="text-gray-700 mb-4">
-                <strong>Correu electrònic:</strong> privacy@nextleadin.com<br />
-                <strong>Adreça:</strong> [DIRECCIÓ]<br />
-                <strong>Telèfon:</strong> [TELÈFON]
+                <strong>Email:</strong> contacto@nextleadin.com<br />
+                {/* <strong>Adreça:</strong> [DIRECCIÓ]<br /> */}
+                <strong>Telèfon:</strong> +34 684 781 855
               </p>
             </section>
 

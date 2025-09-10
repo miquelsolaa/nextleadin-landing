@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const withNextIntl = require('next-intl/plugin')()
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -27,6 +29,8 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    // Workaround per a Next 15 + next-intl perquè registri els aliases correctament
+    turbo: {},
   },
   serverExternalPackages: ['stripe'],
   compress: true,
@@ -36,4 +40,4 @@ const nextConfig = {
   trailingSlash: false,
 }
 
-module.exports = nextConfig
+module.exports = withNextIntl(nextConfig)

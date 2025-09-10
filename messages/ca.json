@@ -1,0 +1,83 @@
+{
+  "common": {
+    "brand": "NextLeadIn",
+    "cta": {
+      "getStarted": "Comença ara",
+      "talkToSales": "Parla amb vendes",
+      "login": "Iniciar sessió"
+    }
+  },
+  "pages": {
+    "blog": {
+      "title": "Blog",
+      "description": "Descobreix materials informatius sobre generació de leads, IA i vendes B2B per accelerar el teu creixement.",
+      "breadcrumbHome": "Inici"
+    },
+    "contact": {
+      "title": "Parla amb el nostre equip",
+      "subtitle": "Generació de leads hipersegmentats i informes amb IA per preparar trucades i tancar més oportunitats.",
+      "submit": "Envia la sol·licitud",
+      "seePricing": "Consulta els preus"
+    },
+    "faq": {
+      "title": "Tens dubtes? Som aquí.",
+      "subtitle": "Tot sobre la generació de leads, IA, integracions i suport.",
+      "newsletter": "Vols rebre novetats i actualitzacions?",
+      "subscribe": "Subscriu-te"
+    },
+    "pricing": {
+      "title": "Plans pensats per escalejar els teus leads",
+      "breadcrumbHome": "Inici",
+      "breadcrumb": "Preus",
+      "compare": "Comparar plans"
+    }
+  },
+  "nav": {
+    "home": "Inici",
+    "features": "Funcionalitats",
+    "blog": "Blog",
+    "pricing": "Preus",
+    "contact": "Contacte",
+    "faq": "Preguntes freqüents"
+  },
+  "home": {
+    "hero": {
+      "title": "Generació de leads hipersegmentats amb IA",
+      "subtitle": "Troba clients per zona, sector i paraules clau"
+    },
+    "features": {
+      "location": {
+        "title": "Segmentació geogràfica",
+        "subtitle": "Tria la zona i troba les empreses clau",
+        "desc": "Barcelona, Girona o on necessitis. Localitza negocis amb potencial amb filtres avançats.",
+        "bullet1": "Mapa i filtres per barri/municipi",
+        "bullet2": "Volum estimat de leads disponibles",
+        "bullet3": "Exportació ràpida a CSV/CRM"
+      },
+      "business": {
+        "title": "Selecció de sector",
+        "subtitle": "Defineix nínxols i verticals amb precisió",
+        "desc": "Segmenta per CNAE, keywords i intenció.",
+        "bullet1": "Filtres per activitat i mida",
+        "bullet2": "Exclusió de sectors no desitjats",
+        "bullet3": "Suggeriments intel·ligents de nínxols",
+        "badge": "NOU"
+      },
+      "report": {
+        "title": "Informes amb IA",
+        "subtitle": "Enriquiment automàtic per convertir millor",
+        "desc": "La nostra IA genera dossiers amb punts de conversa i angles de contacte.",
+        "bullet1": "Resums executius per empresa",
+        "bullet2": "Angles de contacte personalitzats",
+        "bullet3": "Notes per objeccions freqüents"
+      }
+    }
+  },
+  "metadata": {
+    "title": "NextLeadIn — Generació de leads amb IA",
+    "description": "Plataforma per trobar leads per negoci, zona i paraules clau amb informes d’IA.",
+    "keywords": "generació de leads,intel·ligència artificial,vendes B2B,segmentació geogràfica"
+  }
+}
+
+

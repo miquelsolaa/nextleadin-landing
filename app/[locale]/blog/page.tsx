@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import {useTranslations} from 'next-intl'
 import BlogPageSection from '@/components/BlogPageSection'
 import BlogSearch from '@/components/BlogSearch'
 import BlogCategories from '@/components/BlogCategories'
@@ -85,17 +86,16 @@ const tags = [
 ]
 
 export default function BlogPage() {
+  const t = useTranslations('pages.blog')
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Page Header */}
       <div className="bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Blog</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Descobreix materials informatius sobre generació de leads, IA i vendes B2B per accelerar el teu creixement.
-          </p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('title')}</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-8">{t('description')}</p>
           <nav className="text-sm text-gray-500">
-            <span>Home</span>
+            <span>{t('breadcrumbHome')}</span>
             <span className="mx-2">›</span>
             <span>Blog</span>
           </nav>
@@ -123,3 +123,5 @@ export default function BlogPage() {
     </div>
   )
 }
+
+

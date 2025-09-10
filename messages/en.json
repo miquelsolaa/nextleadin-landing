@@ -1,0 +1,83 @@
+{
+  "common": {
+    "brand": "NextLeadIn",
+    "cta": {
+      "getStarted": "Get started",
+      "talkToSales": "Talk to sales",
+      "login": "Log in"
+    }
+  },
+  "pages": {
+    "blog": {
+      "title": "Blog",
+      "description": "Discover insights about lead generation, AI and B2B sales to accelerate your growth.",
+      "breadcrumbHome": "Home"
+    },
+    "contact": {
+      "title": "Talk to our team",
+      "subtitle": "Hyper-segmented lead generation and AI reports to prep calls and close more opportunities.",
+      "submit": "Submit request",
+      "seePricing": "See pricing"
+    },
+    "faq": {
+      "title": "Got questions? We’re here.",
+      "subtitle": "All about lead generation, AI, integrations and support.",
+      "newsletter": "Want to get news and updates?",
+      "subscribe": "Subscribe"
+    },
+    "pricing": {
+      "title": "Plans designed to scale your leads",
+      "breadcrumbHome": "Home",
+      "breadcrumb": "Pricing",
+      "compare": "Compare plans"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "faq": "FAQ"
+  },
+  "home": {
+    "hero": {
+      "title": "Hyper-segmented lead generation with AI",
+      "subtitle": "Find clients by area, industry and keywords"
+    },
+    "features": {
+      "location": {
+        "title": "Geographic segmentation",
+        "subtitle": "Choose the area and find key companies",
+        "desc": "Barcelona, Girona or wherever you need. Locate potential businesses with advanced filters.",
+        "bullet1": "Map and filters by neighborhood/municipality",
+        "bullet2": "Estimated volume of available leads",
+        "bullet3": "Quick export to CSV/CRM"
+      },
+      "business": {
+        "title": "Sector selection",
+        "subtitle": "Define niches and verticals precisely",
+        "desc": "Segment by CNAE, keywords and intent.",
+        "bullet1": "Filters by activity and size",
+        "bullet2": "Exclude undesired sectors",
+        "bullet3": "Smart niche suggestions",
+        "badge": "NEW"
+      },
+      "report": {
+        "title": "AI reports",
+        "subtitle": "Automatic enrichment to convert better",
+        "desc": "Our AI generates dossiers with talking points and contact angles.",
+        "bullet1": "Executive summaries per company",
+        "bullet2": "Personalized contact angles",
+        "bullet3": "Notes for common objections"
+      }
+    }
+  },
+  "metadata": {
+    "title": "NextLeadIn — Lead generation with AI",
+    "description": "Platform to find leads by business, area and keywords with AI reports.",
+    "keywords": "lead generation,artificial intelligence,B2B sales,geographic segmentation"
+  }
+}
+
+

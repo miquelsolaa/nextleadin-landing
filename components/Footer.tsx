@@ -1,33 +1,153 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import {useLocale} from 'next-intl'
 
 const Footer = () => {
-  const footerNavigation = {
-    features: [
-      { name: 'Segmentació per zona', href: '#' },
-      { name: 'Enriquiment amb IA', href: '#' },
-      { name: 'Informes per trucades', href: '#' },
-      { name: 'Integracions', href: '#' },
-    ],
-    resources: [
-      { name: 'Centre de suport', href: '#' },
-      { name: 'Documentació', href: '#' },
-      { name: 'Comunitat', href: '#' },
-      { name: 'Kit de recursos', href: '#' },
-    ],
-    company: [
-      { name: 'Sobre nosaltres', href: '#' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Contacte', href: '/contact' },
-      { name: 'Carreres', href: '#' },
-    ],
-    social: [
-      { name: 'Behance', href: '#' },
-      { name: 'Dribbble', href: '#' },
-      { name: 'Facebook', href: '#' },
-      { name: 'Instagram', href: '#' },
-    ],
-  }
+  const rawLocale = (useLocale() as string) || 'es'
+  const base = rawLocale.split('-')[0] as 'es' | 'ca' | 'en'
+  const locale = (['es','ca','en'].includes(base) ? base : 'es') as 'es' | 'ca' | 'en'
+
+  const dict = {
+    es: {
+      newsletterTitle: '¿Quieres recibir novedades y actualizaciones?',
+      emailLabel: 'Correo electrónico',
+      emailPlaceholder: 'tu-correo@empresa.com',
+      subscribe: 'Suscríbete',
+      brandDesc: 'Genera leads hipersegmentados y prepara llamadas con informes creados por IA. Más calidad, menos tiempo perdido.',
+      sections: {
+        features: 'Funcionalidades',
+        resources: 'Recursos',
+        company: 'Empresa',
+        social: 'Redes'
+      },
+      nav: {
+        features: [
+          { name: 'Segmentación por zona', href: '#' },
+          { name: 'Enriquecimiento con IA', href: '#' },
+          { name: 'Informes para llamadas', href: '#' },
+          { name: 'Integraciones', href: '#' }
+        ],
+        resources: [
+          { name: 'Centro de soporte', href: '#' },
+          { name: 'Documentación', href: '#' },
+          { name: 'Comunidad', href: '#' },
+          { name: 'Kit de recursos', href: '#' }
+        ],
+        company: [
+          { name: 'Sobre nosotros', href: '#' },
+          { name: 'Blog', href: '/blog' },
+          { name: 'Contacto', href: '/contact' },
+          { name: 'Empleo', href: '#' }
+        ],
+        social: [
+          { name: 'Behance', href: '#' },
+          { name: 'Dribbble', href: '#' },
+          { name: 'Facebook', href: '#' },
+          { name: 'Instagram', href: '#' }
+        ]
+      },
+      copyright: '© 2025 NextLeadIn. Todos los derechos reservados.',
+      legal: {
+        terms: 'Términos y condiciones',
+        privacy: 'Política de privacidad',
+        cookies: 'Política de cookies'
+      }
+    },
+    ca: {
+      newsletterTitle: 'Vols rebre novetats i actualitzacions?',
+      emailLabel: 'Correu electrònic',
+      emailPlaceholder: 'el-teu-correu@empresa.com',
+      subscribe: 'Subscriu-te',
+      brandDesc: 'Genera leads hipersegmentats i prepara trucades amb informes creats per IA. Més qualitat, menys temps perdut.',
+      sections: {
+        features: 'Característiques',
+        resources: 'Recursos',
+        company: 'Empresa',
+        social: 'Xarxes'
+      },
+      nav: {
+        features: [
+          { name: 'Segmentació per zona', href: '#' },
+          { name: 'Enriquiment amb IA', href: '#' },
+          { name: 'Informes per trucades', href: '#' },
+          { name: 'Integracions', href: '#' }
+        ],
+        resources: [
+          { name: 'Centre de suport', href: '#' },
+          { name: 'Documentació', href: '#' },
+          { name: 'Comunitat', href: '#' },
+          { name: 'Kit de recursos', href: '#' }
+        ],
+        company: [
+          { name: 'Sobre nosaltres', href: '#' },
+          { name: 'Blog', href: '/blog' },
+          { name: 'Contacte', href: '/contact' },
+          { name: 'Carreres', href: '#' }
+        ],
+        social: [
+          { name: 'Behance', href: '#' },
+          { name: 'Dribbble', href: '#' },
+          { name: 'Facebook', href: '#' },
+          { name: 'Instagram', href: '#' }
+        ]
+      },
+      copyright: '© 2025 NextLeadIn. Tots els drets reservats.',
+      legal: {
+        terms: 'Termes i condicions',
+        privacy: 'Política de privacitat',
+        cookies: 'Política de cookies'
+      }
+    },
+    en: {
+      newsletterTitle: 'Want to receive news and updates?',
+      emailLabel: 'Email address',
+      emailPlaceholder: 'your-email@company.com',
+      subscribe: 'Subscribe',
+      brandDesc: 'Generate hyper-targeted leads and prepare calls with AI-generated reports. More quality, less wasted time.',
+      sections: {
+        features: 'Features',
+        resources: 'Resources',
+        company: 'Company',
+        social: 'Social'
+      },
+      nav: {
+        features: [
+          { name: 'Area targeting', href: '#' },
+          { name: 'AI enrichment', href: '#' },
+          { name: 'Call reports', href: '#' },
+          { name: 'Integrations', href: '#' }
+        ],
+        resources: [
+          { name: 'Support center', href: '#' },
+          { name: 'Documentation', href: '#' },
+          { name: 'Community', href: '#' },
+          { name: 'Resource kit', href: '#' }
+        ],
+        company: [
+          { name: 'About us', href: '#' },
+          { name: 'Blog', href: '/blog' },
+          { name: 'Contact', href: '/contact' },
+          { name: 'Careers', href: '#' }
+        ],
+        social: [
+          { name: 'Behance', href: '#' },
+          { name: 'Dribbble', href: '#' },
+          { name: 'Facebook', href: '#' },
+          { name: 'Instagram', href: '#' }
+        ]
+      },
+      copyright: '© 2025 NextLeadIn. All rights reserved.',
+      legal: {
+        terms: 'Terms and conditions',
+        privacy: 'Privacy policy',
+        cookies: 'Cookie policy'
+      }
+    }
+  }[locale]
+
+  const footerNavigation = dict.nav
 
   const socialLinks = [
     { name: 'Facebook', href: '#', icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z' },
@@ -46,14 +166,14 @@ const Footer = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-bold text-white mb-2">
-                Vols rebre novetats i actualitzacions?
+                {dict.newsletterTitle}
               </h3>
             </div>
             <div>
               <form className="flex gap-4 max-w-md lg:max-w-none">
                 <div className="flex-1">
                   <label htmlFor="email-address" className="sr-only">
-                    Correu electrònic
+                    {dict.emailLabel}
                   </label>
                   <input
                     id="email-address"
@@ -62,14 +182,14 @@ const Footer = () => {
                     autoComplete="email"
                     required
                     className="w-full rounded-lg border-0 bg-white/10 px-4 py-3 text-white placeholder:text-gray-300 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    placeholder="el-teu-correu@empresa.com"
+                    placeholder={dict.emailPlaceholder}
                   />
                 </div>
                 <button
                   type="submit"
                   className="btn-primary whitespace-nowrap"
                 >
-                  Subscriu-te
+                  {dict.subscribe}
                 </button>
               </form>
             </div>
@@ -91,7 +211,7 @@ const Footer = () => {
                 />
               </Link>
               <p className="text-gray-400 mb-6 max-w-md">
-                Genera leads hipersegmentats i prepara trucades amb informes creats per IA. Més qualitat, menys temps perdut.
+                {dict.brandDesc}
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((item) => (
@@ -112,7 +232,7 @@ const Footer = () => {
             {/* Features */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Característiques
+                {dict.sections.features}
               </h3>
               <ul role="list" className="space-y-3">
                 {footerNavigation.features.map((item) => (
@@ -133,7 +253,7 @@ const Footer = () => {
             {/* Resources */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Recursos
+                {dict.sections.resources}
               </h3>
               <ul role="list" className="space-y-3">
                 {footerNavigation.resources.map((item) => (
@@ -154,7 +274,7 @@ const Footer = () => {
             {/* Company */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Empresa
+                {dict.sections.company}
               </h3>
               <ul role="list" className="space-y-3">
                 {footerNavigation.company.map((item) => (
@@ -173,7 +293,7 @@ const Footer = () => {
             {/* Social */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Xarxes
+                {dict.sections.social}
               </h3>
               <ul role="list" className="space-y-3">
                 {footerNavigation.social.map((item) => (
@@ -195,26 +315,26 @@ const Footer = () => {
         <div className="border-t border-gray-700 py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2025 NextLeadIn. Tots els drets reservats.
+              {dict.copyright}
             </p>
             <div className="flex space-x-6">
               <Link
                 href="/terms-and-conditions"
                 className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
               >
-                Termes i condicions
+                {dict.legal.terms}
               </Link>
               <Link
                 href="/privacy-policy"
                 className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
               >
-                Política de privacitat
+                {dict.legal.privacy}
               </Link>
               <Link
                 href="/cookie-policy"
                 className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
               >
-                Política de cookies
+                {dict.legal.cookies}
               </Link>
             </div>
           </div>
