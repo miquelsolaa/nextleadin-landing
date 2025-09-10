@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import {useTranslations} from 'next-intl'
+import {useTranslations, useLocale} from 'next-intl'
 
 export default function ContactPage() {
   const t = useTranslations('pages.contact')
+  const locale = useLocale()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,14 +20,16 @@ export default function ContactPage() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const validate = () => {
     const newErrors: Record<string, string> = {}
-    if (!formData.name.trim()) newErrors.name = 'El nom és obligatori'
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Introdueix un correu vàlid'
-    if (!formData.company.trim()) newErrors.company = 'L\'empresa és obligatòria'
-    if (!formData.message.trim()) newErrors.message = 'Explica\'ns breument la teva necessitat'
-    if (!formData.consent) newErrors.consent = 'Cal acceptar la política de privacitat'
+    if (!formData.name.trim()) newErrors.name = t('errors.name')
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = t('errors.email')
+    if (!formData.company.trim()) newErrors.company = t('errors.company')
+    if (!formData.message.trim()) newErrors.message = t('errors.message')
+    if (!formData.consent) newErrors.consent = t('errors.consent')
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -39,10 +42,38 @@ export default function ContactPage() {
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const encode = (data: Record<string, string | boolean>) =>
+    Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(String(data[key] ?? '')))
+      .join('&')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setSubmitError(null)
     if (!validate()) return
-    setSubmitted(true)
+    setIsSubmitting(true)
+    try {
+      const payload = {
+        'form-name': 'contact',
+        'bot-field': '',
+        locale,
+        ...formData,
+        consent: formData.consent ? 'yes' : 'no',
+      } as Record<string, string | boolean>
+
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode(payload),
+      })
+
+      if (!res.ok) throw new Error('Network response was not ok')
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(t('submitError'))
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -64,10 +95,17 @@ export default function ContactPage() {
             {/* Formulari */}
             <div className="lg:col-span-2">
               {!submitted ? (
-                <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <input type="hidden" name="locale" value={locale} />
+                  <p className="hidden">
+                    <label>
+                      Don’t fill this out if you’re human: <input name="bot-field" />
+                    </label>
+                  </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Nom complet</label>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">{t('labels.name')}</label>
                       <input
                         id="name"
                         name="name"
@@ -75,13 +113,13 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={onChange}
                         className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${errors.name ? 'border-red-400' : 'border-gray-300'}`}
-                        placeholder="Nom i cognoms"
+                        placeholder={t('placeholders.name')}
                         required
                       />
                       {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Correu electrònic</label>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">{t('labels.email')}</label>
                       <input
                         id="email"
                         name="email"
@@ -89,13 +127,13 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={onChange}
                         className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${errors.email ? 'border-red-400' : 'border-gray-300'}`}
-                        placeholder="el-teu@correu.com"
+                        placeholder={t('placeholders.email')}
                         required
                       />
                       {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">{t('labels.company')}</label>
                       <input
                         id="company"
                         name="company"
@@ -103,13 +141,13 @@ export default function ContactPage() {
                         value={formData.company}
                         onChange={onChange}
                         className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${errors.company ? 'border-red-400' : 'border-gray-300'}`}
-                        placeholder="Nom de l'empresa"
+                        placeholder={t('placeholders.company')}
                         required
                       />
                       {errors.company && <p className="mt-1 text-sm text-red-600">{errors.company}</p>}
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Telèfon (opcional)</label>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">{t('labels.phone')}</label>
                       <input
                         id="phone"
                         name="phone"
@@ -117,11 +155,11 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={onChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                        placeholder="+34 600 000 000"
+                        placeholder={t('placeholders.phone')}
                       />
                     </div>
                     <div>
-                      <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">Càrrec</label>
+                      <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">{t('labels.role')}</label>
                       <input
                         id="role"
                         name="role"
@@ -129,11 +167,11 @@ export default function ContactPage() {
                         value={formData.role}
                         onChange={onChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                        placeholder="Ex. Head of Sales"
+                        placeholder={t('placeholders.role')}
                       />
                     </div>
                     <div>
-                      <label htmlFor="region" className="block text-sm font-medium text-gray-700 mb-2">Zona d'interès</label>
+                      <label htmlFor="region" className="block text-sm font-medium text-gray-700 mb-2">{t('labels.region')}</label>
                       <input
                         id="region"
                         name="region"
@@ -141,11 +179,11 @@ export default function ContactPage() {
                         value={formData.region}
                         onChange={onChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                        placeholder="Ex. Barcelona, Girona..."
+                        placeholder={t('placeholders.region')}
                       />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="sector" className="block text-sm font-medium text-gray-700 mb-2">Sector / nínxol</label>
+                      <label htmlFor="sector" className="block text-sm font-medium text-gray-700 mb-2">{t('labels.sector')}</label>
                       <input
                         id="sector"
                         name="sector"
@@ -153,11 +191,11 @@ export default function ContactPage() {
                         value={formData.sector}
                         onChange={onChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                        placeholder="Ex. restaurants vegetarians, fabricants de pressfittings, doctors..."
+                        placeholder={t('placeholders.sector')}
                       />
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Com podem ajudar-te?</label>
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">{t('labels.message')}</label>
                       <textarea
                         id="message"
                         name="message"
@@ -165,7 +203,7 @@ export default function ContactPage() {
                         value={formData.message}
                         onChange={onChange}
                         className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${errors.message ? 'border-red-400' : 'border-gray-300'}`}
-                        placeholder="Explica'ns objectius, volum de leads esperat i terminis."
+                        placeholder={t('placeholders.message')}
                         required
                       />
                       {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
@@ -179,24 +217,27 @@ export default function ContactPage() {
                           onChange={onChange}
                           className={`mt-1 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500 ${errors.consent ? 'ring-1 ring-red-400' : ''}`}
                         />
-                        <span className="text-sm text-gray-700">Accepto la <Link href="/privacy-policy" className="text-green-600 hover:text-green-700 underline">política de privacitat</Link>.</span>
+                        <span className="text-sm text-gray-700">{t('labels.consent')} <Link href="/privacy-policy" className="text-green-600 hover:text-green-700 underline">{t('links.privacy')}</Link>.</span>
                       </label>
                       {errors.consent && <p className="mt-1 text-sm text-red-600">{errors.consent}</p>}
                     </div>
                   </div>
 
+                  {submitError && <p className="mt-4 text-sm text-red-600" role="alert" aria-live="polite">{submitError}</p>}
                   <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                    <button type="submit" className="btn-primary">{t('submit')}</button>
+                    <button type="submit" className="btn-primary" disabled={isSubmitting}>
+                      {isSubmitting ? '...' : t('submit')}
+                    </button>
                     <Link href="/pricing" className="btn-secondary">{t('seePricing')}</Link>
                   </div>
                 </form>
               ) : (
                 <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Gràcies pel teu interès</h3>
-                  <p className="text-gray-600 mb-6">Hem rebut la teva sol·licitud. Un especialista et contactarà aviat per entendre el teu cas i proposar els propers passos.</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('success.title')}</h3>
+                  <p className="text-gray-600 mb-6">{t('success.description')}</p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link href="/pricing" className="btn-secondary">Veure plans i funcionalitats</Link>
-                    <Link href="/faq" className="btn-primary">Preguntes freqüents</Link>
+                    <Link href="/pricing" className="btn-secondary">{t('success.seePlans')}</Link>
+                    <Link href="/faq" className="btn-primary">{t('success.goToFaq')}</Link>
                   </div>
                 </div>
               )}
@@ -205,27 +246,27 @@ export default function ContactPage() {
             {/* Aside: info de contacte i confiança */}
             <aside className="space-y-6">
               <div className="bg-white rounded-2xl border border-gray-200 p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">Contacte directe</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('aside.directTitle')}</h4>
                 <ul className="space-y-2 text-gray-700">
-                  <li><span className="font-medium">Email:</span> <a className="text-green-600 hover:text-green-700" href="mailto:contact@nextleadin.com">contact@nextleadin.com</a></li>
-                  <li><span className="font-medium">Telèfon:</span> <a className="text-green-600 hover:text-green-700" href="tel:+34999999999">+34 999 999 999</a></li>
-                  <li><span className="font-medium">Horari:</span> Dl-Dv 9:00–18:00</li>
+                  <li><span className="font-medium">{t('aside.emailLabel')}:</span> <a className="text-green-600 hover:text-green-700" href="mailto:contacto@nextleadin.com">contacto@nextleadin.com</a></li>
+                  <li><span className="font-medium">{t('aside.phoneLabel')}:</span> <a className="text-green-600 hover:text-green-700" href="tel:+34684781855">+34 684 781 855</a></li>
+                  <li><span className="font-medium">{t('aside.hoursLabel')}:</span> {t('aside.hoursValue')}</li>
                 </ul>
               </div>
 
               <div className="bg-white rounded-2xl border border-gray-200 p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Per què parlar amb nosaltres?</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('aside.whyTitle')}</h4>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                  <li>Segmentació de leads per zona i sector amb precisió</li>
-                  <li>Informes intel·ligents per IA per a cada empresa</li>
-                  <li>Integracions i suport per al teu equip comercial</li>
+                  <li>{t('aside.why1')}</li>
+                  <li>{t('aside.why2')}</li>
+                  <li>{t('aside.why3')}</li>
                 </ul>
               </div>
 
               <div className="bg-white rounded-2xl border border-gray-200 p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">Preferies una demo?</h4>
-                <p className="text-gray-700 mb-4">Programa una sessió per veure com generem llistes i informes en temps real.</p>
-                <Link href="/get-started" className="btn-primary">Sol·licita una demo</Link>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('aside.demoTitle')}</h4>
+                <p className="text-gray-700 mb-4">{t('aside.demoDesc')}</p>
+                <Link href="/contact" className="btn-primary">{t('aside.demoCta')}</Link>
               </div>
             </aside>
           </div>

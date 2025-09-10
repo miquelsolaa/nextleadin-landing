@@ -17,7 +17,59 @@
       "title": "Habla con nuestro equipo",
       "subtitle": "Generación de leads hipersegmentados e informes con IA para preparar llamadas y cerrar más oportunidades.",
       "submit": "Enviar solicitud",
-      "seePricing": "Ver precios"
+      "seePricing": "Ver precios",
+      "labels": {
+        "name": "Nombre completo",
+        "email": "Correo electrónico",
+        "company": "Empresa",
+        "phone": "Teléfono (opcional)",
+        "role": "Cargo",
+        "region": "Zona de interés",
+        "sector": "Sector / nicho",
+        "message": "¿Cómo podemos ayudarte?",
+        "consent": "Acepto la"
+      },
+      "placeholders": {
+        "name": "Nombre y apellidos",
+        "email": "tu@correo.com",
+        "company": "Nombre de la empresa",
+        "phone": "+34 600 000 000",
+        "role": "Ej. Head of Sales",
+        "region": "Ej. Barcelona, Girona...",
+        "sector": "Ej. restaurantes vegetarianos, fabricantes de pressfittings, doctores...",
+        "message": "Cuéntanos objetivos, volumen de leads esperado y plazos."
+      },
+      "errors": {
+        "name": "El nombre es obligatorio",
+        "email": "Introduce un correo válido",
+        "company": "La empresa es obligatoria",
+        "message": "Explícanos brevemente tu necesidad",
+        "consent": "Debes aceptar la política de privacidad"
+      },
+      "success": {
+        "title": "Gracias por tu interés",
+        "description": "Hemos recibido tu solicitud. Un especialista te contactará pronto para entender tu caso y proponer los siguientes pasos.",
+        "seePlans": "Ver planes y funcionalidades",
+        "goToFaq": "Preguntas frecuentes"
+      },
+      "submitError": "Ha ocurrido un problema al enviar el formulario. Vuelve a intentarlo.",
+      "aside": {
+        "directTitle": "Contacto directo",
+        "emailLabel": "Email",
+        "phoneLabel": "Teléfono",
+        "hoursLabel": "Horario",
+        "hoursValue": "Lu-Vi 9:00–18:00",
+        "whyTitle": "¿Por qué hablar con nosotros?",
+        "why1": "Segmentación de leads por zona y sector con precisión",
+        "why2": "Informes inteligentes por IA para cada empresa",
+        "why3": "Integraciones y soporte para tu equipo comercial",
+        "demoTitle": "¿Prefieres una demo?",
+        "demoDesc": "Programa una sesión para ver cómo generamos listas e informes en tiempo real.",
+        "demoCta": "Solicitar una demo"
+      },
+      "links": {
+        "privacy": "política de privacidad"
+      }
     },
     "faq": {
       "title": "¿Dudas? Estamos aquí.",

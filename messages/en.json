@@ -17,7 +17,59 @@
       "title": "Talk to our team",
       "subtitle": "Hyper-segmented lead generation and AI reports to prep calls and close more opportunities.",
       "submit": "Submit request",
-      "seePricing": "See pricing"
+      "seePricing": "See pricing",
+      "labels": {
+        "name": "Full name",
+        "email": "Email",
+        "company": "Company",
+        "phone": "Phone (optional)",
+        "role": "Role",
+        "region": "Area of interest",
+        "sector": "Sector / niche",
+        "message": "How can we help?",
+        "consent": "I accept the"
+      },
+      "placeholders": {
+        "name": "First and last name",
+        "email": "you@email.com",
+        "company": "Company name",
+        "phone": "+34 600 000 000",
+        "role": "e.g. Head of Sales",
+        "region": "e.g. Barcelona, Girona...",
+        "sector": "e.g. vegetarian restaurants, pressfittings manufacturers, doctors...",
+        "message": "Tell us goals, expected lead volume and timelines."
+      },
+      "errors": {
+        "name": "Name is required",
+        "email": "Enter a valid email",
+        "company": "Company is required",
+        "message": "Please explain your need briefly",
+        "consent": "Privacy policy must be accepted"
+      },
+      "success": {
+        "title": "Thanks for your interest",
+        "description": "We’ve received your request. A specialist will contact you soon to understand your case and propose next steps.",
+        "seePlans": "See plans and features",
+        "goToFaq": "Frequently asked questions"
+      },
+      "submitError": "There was a problem submitting the form. Please try again.",
+      "aside": {
+        "directTitle": "Direct contact",
+        "emailLabel": "Email",
+        "phoneLabel": "Phone",
+        "hoursLabel": "Hours",
+        "hoursValue": "Mon–Fri 9:00–18:00",
+        "whyTitle": "Why talk to us?",
+        "why1": "Lead segmentation by area and sector with precision",
+        "why2": "Smart AI reports for every company",
+        "why3": "Integrations and support for your sales team",
+        "demoTitle": "Would you prefer a demo?",
+        "demoDesc": "Schedule a session to see how we generate lists and reports in real time.",
+        "demoCta": "Request a demo"
+      },
+      "links": {
+        "privacy": "privacy policy"
+      }
     },
     "faq": {
       "title": "Got questions? We’re here.",

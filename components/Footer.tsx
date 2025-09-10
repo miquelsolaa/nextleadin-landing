@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {useLocale} from 'next-intl'
+import { useState } from 'react'
 
 const Footer = () => {
   const rawLocale = (useLocale() as string) || 'es'
@@ -170,28 +171,7 @@ const Footer = () => {
               </h3>
             </div>
             <div>
-              <form className="flex gap-4 max-w-md lg:max-w-none">
-                <div className="flex-1">
-                  <label htmlFor="email-address" className="sr-only">
-                    {dict.emailLabel}
-                  </label>
-                  <input
-                    id="email-address"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    className="w-full rounded-lg border-0 bg-white/10 px-4 py-3 text-white placeholder:text-gray-300 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    placeholder={dict.emailPlaceholder}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn-primary whitespace-nowrap"
-                >
-                  {dict.subscribe}
-                </button>
-              </form>
+              <NewsletterForm locale={locale} dict={dict} />
             </div>
           </div>
         </div>
@@ -345,3 +325,90 @@ const Footer = () => {
 }
 
 export default Footer
+
+type NewsletterDict = {
+  emailLabel: string
+  emailPlaceholder: string
+  subscribe: string
+}
+
+function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: NewsletterDict }) {
+  const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [success, setSuccess] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  const encode = (data: Record<string, string>) =>
+    Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(String(data[key] ?? '')))
+      .join('&')
+
+  const messages: Record<typeof locale, { success: string; error: string }> = {
+    es: { success: '¡Gracias! Te hemos suscrito a la newsletter.', error: 'No se pudo suscribir. Inténtalo de nuevo.' },
+    ca: { success: 'Gràcies! T’hem subscrit al butlletí.', error: 'No s’ha pogut subscriure. Torna-ho a provar.' },
+    en: { success: 'Thanks! You are subscribed to the newsletter.', error: 'Subscription failed. Please try again.' },
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSuccess(null)
+    setError(null)
+    setIsSubmitting(true)
+    try {
+      const payload = {
+        'form-name': 'newsletter',
+        'bot-field': '',
+        locale,
+        email,
+      }
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode(payload),
+      })
+      if (!res.ok) throw new Error('Network error')
+      setSuccess(messages[locale].success)
+      setEmail('')
+    } catch (err) {
+      setError(messages[locale].error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md lg:max-w-none">
+      <input type="hidden" name="form-name" value="newsletter" />
+      <input type="hidden" name="locale" value={locale} />
+      <p className="hidden">
+        <label>
+          Don’t fill this out if you’re human: <input name="bot-field" />
+        </label>
+      </p>
+      <div className="flex-1">
+        <label htmlFor="newsletter-email" className="sr-only">
+          {dict.emailLabel}
+        </label>
+        <input
+          id="newsletter-email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full rounded-lg border-0 bg-white/10 px-4 py-3 text-white placeholder:text-gray-300 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          placeholder={dict.emailPlaceholder}
+        />
+      </div>
+      <button type="submit" className="btn-primary whitespace-nowrap" disabled={isSubmitting}>
+        {isSubmitting ? '...' : dict.subscribe}
+      </button>
+      {(success || error) && (
+        <p className={`text-sm ${success ? 'text-green-400' : 'text-red-400'}`} role={success ? 'status' : 'alert'} aria-live="polite">
+          {success ?? error}
+        </p>
+      )}
+    </form>
+  )
+}

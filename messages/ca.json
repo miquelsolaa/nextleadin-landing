@@ -17,7 +17,59 @@
       "title": "Parla amb el nostre equip",
       "subtitle": "Generació de leads hipersegmentats i informes amb IA per preparar trucades i tancar més oportunitats.",
       "submit": "Envia la sol·licitud",
-      "seePricing": "Consulta els preus"
+      "seePricing": "Consulta els preus",
+      "labels": {
+        "name": "Nom complet",
+        "email": "Correu electrònic",
+        "company": "Empresa",
+        "phone": "Telèfon (opcional)",
+        "role": "Càrrec",
+        "region": "Zona d'interès",
+        "sector": "Sector / nínxol",
+        "message": "Com podem ajudar-te?",
+        "consent": "Accepto la"
+      },
+      "placeholders": {
+        "name": "Nom i cognoms",
+        "email": "el-teu@correu.com",
+        "company": "Nom de l'empresa",
+        "phone": "+34 600 000 000",
+        "role": "Ex. Head of Sales",
+        "region": "Ex. Barcelona, Girona...",
+        "sector": "Ex. restaurants vegetarians, fabricants de pressfittings, doctors...",
+        "message": "Explica'ns objectius, volum de leads esperat i terminis."
+      },
+      "errors": {
+        "name": "El nom és obligatori",
+        "email": "Introdueix un correu vàlid",
+        "company": "L'empresa és obligatòria",
+        "message": "Explica'ns breument la teva necessitat",
+        "consent": "Cal acceptar la política de privacitat"
+      },
+      "success": {
+        "title": "Gràcies pel teu interès",
+        "description": "Hem rebut la teva sol·licitud. Un especialista et contactarà aviat per entendre el teu cas i proposar els propers passos.",
+        "seePlans": "Veure plans i funcionalitats",
+        "goToFaq": "Preguntes freqüents"
+      },
+      "submitError": "Hi ha hagut un problema en enviar el formulari. Torna-ho a provar.",
+      "aside": {
+        "directTitle": "Contacte directe",
+        "emailLabel": "Email",
+        "phoneLabel": "Telèfon",
+        "hoursLabel": "Horari",
+        "hoursValue": "Dl-Dv 9:00–18:00",
+        "whyTitle": "Per què parlar amb nosaltres?",
+        "why1": "Segmentació de leads per zona i sector amb precisió",
+        "why2": "Informes intel·ligents per IA per a cada empresa",
+        "why3": "Integracions i suport per al teu equip comercial",
+        "demoTitle": "Preferies una demo?",
+        "demoDesc": "Programa una sessió per veure com generem llistes i informes en temps real.",
+        "demoCta": "Sol·licita una demo"
+      },
+      "links": {
+        "privacy": "política de privacitat"
+      }
     },
     "faq": {
       "title": "Tens dubtes? Som aquí.",
