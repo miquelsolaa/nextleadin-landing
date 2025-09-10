@@ -192,8 +192,8 @@ export default function PricingComparisonTable({ locale }: PricingComparisonTabl
         </div>
         {pricingPlans.map((plan) => (
           <div key={plan.id} className="p-6 text-center">
-            <h4 className="text-lg font-semibold text-gray-900">{plan.name[locale]}</h4>
-            <p className="text-sm text-gray-600">€{plan.price} /{plan.period[locale]}</p>
+            <h4 className="text-lg font-semibold text-gray-900">{plan.name?.[locale] || plan.name?.ca || 'Plan'}</h4>
+            <p className="text-sm text-gray-600">€{plan.price || 0} /{plan.period?.[locale] || plan.period?.ca || 'mes'}</p>
           </div>
         ))}
       </div>
@@ -267,7 +267,7 @@ export default function PricingComparisonTable({ locale }: PricingComparisonTabl
                 : 'bg-gray-100 text-gray-900 hover:bg-primary-600 hover:text-white'
             }`}
           >
-            {buttonText[locale].select} {plan.name[locale]}
+            {buttonText[locale].select} {plan.name?.[locale] || plan.name?.ca || 'Plan'}
           </button>
         ))}
       </div>

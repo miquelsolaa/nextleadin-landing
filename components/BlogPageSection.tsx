@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 interface BlogPost {
   id: number
@@ -18,6 +19,8 @@ interface BlogPageSectionProps {
 }
 
 const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
+  const t = useTranslations('blog')
+  
   return (
     <div className="space-y-8">
       {posts.map((post) => (
@@ -87,7 +90,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                     href={`/blog/${post.slug}#comments`}
                     className="hover:text-green-600 transition-colors"
                   >
-                    {post.comments} comments
+                    {post.comments} {t('comments')}
                   </Link>
                 </span>
               </div>
