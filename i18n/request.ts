@@ -5,11 +5,11 @@ function isSupportedLocale(locale: string | undefined | null): locale is AppLoca
   return !!locale && (locales as readonly string[]).includes(locale)
 }
 
-const getRequestConfig = async ({locale}: {locale?: string}) => {
-  console.log('🔍 Request config - Input locale:', locale)
+const getRequestConfig = async ({requestLocale}: {requestLocale?: string}) => {
+  console.log('🔍 Request config - Input locale:', requestLocale)
   
   // Utilitzar el locale passat com a paràmetre o el per defecte
-  const resolvedLocale: AppLocale = isSupportedLocale(locale) ? (locale as AppLocale) : defaultLocale
+  const resolvedLocale: AppLocale = isSupportedLocale(requestLocale) ? (requestLocale as AppLocale) : defaultLocale
   
   console.log('🔍 Request config - Resolved locale:', resolvedLocale)
 

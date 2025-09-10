@@ -3,10 +3,13 @@ import PricingComparisonTable from '@/components/PricingComparisonTable'
 import FAQSection from '@/components/FAQSection'
 import Image from 'next/image'
 import Link from 'next/link'
-import {useTranslations} from 'next-intl'
+import { setRequestLocale } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
-export default function PricingPage() {
-  const t = useTranslations('pages.pricing')
+export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations('pages.pricing')
   // Dades dels plans de preus orientats a generació de leads
   const pricingPlans = [
     {
@@ -14,10 +17,11 @@ export default function PricingPage() {
       price: 19,
       period: 'mes',
       features: [
-        'Fins a 500 leads/mes amb segmentació per zona',
-        'Selecció de sector per paraules clau i CNAE bàsic',
-        'Enriquiment amb IA: fitxa resum per lead',
-        'Exportació CSV i importació manual al CRM'
+        'Fins a 5 cerques al mes',
+        'Cerca bàsica de leads',
+        'Cerca bàsica amb keywords',
+        'Suport per email',
+        'Dashboard bàsic'
       ],
       buttonText: 'Comença ara',
       buttonHref: '/get-started',
@@ -29,10 +33,11 @@ export default function PricingPage() {
       price: 49,
       period: 'mes',
       features: [
-        'Fins a 2.500 leads/mes amb filtres avançats',
-        'Informes amb IA per empresa: angles de contacte i objeccions',
-        'Integracions amb CRM i email màrqueting (Zapier/HubSpot)',
-        'Dades actualitzades setmanalment'
+        'Fins a 20 cerques al mes',
+        'Cerca avançada amb keywords',
+        'Informes IA personalitzats',
+        'Suport prioritari',
+        'Exportació de dades'
       ],
       buttonText: 'Comença ara',
       buttonHref: '/get-started',
@@ -44,10 +49,12 @@ export default function PricingPage() {
       price: 99,
       period: 'mes',
       features: [
-        'Leads il·limitats i nínxols personalitzats',
-        'Enriquiment IA avançat: punts de conversa i proper pas',
-        'Accés API, SSO i assistència prioritària (SLA)',
-        'Dades actualitzades diàriament'
+        'Fins a 50 cerques al mes',
+        'Totes les funcionalitats Pro',
+        'Suport dedicat 24/5',
+        'Integracions personalitzades',
+        'Anàlisi avançada',
+        'Integració amb CRM'
       ],
       buttonText: 'Parla amb vendes',
       buttonHref: '/contact',

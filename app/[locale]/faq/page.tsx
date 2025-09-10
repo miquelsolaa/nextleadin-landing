@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import FAQPageSection from '@/components/FAQPageSection'
-import {useTranslations} from 'next-intl'
+import { setRequestLocale } from 'next-intl/server'
+import { getTranslations } from 'next-intl/server'
 
 export const metadata: Metadata = {
   title: 'FAQ - NextLeadIn',
@@ -92,8 +93,10 @@ const navigationItems = [
   { id: 'integracions-suport', title: 'Integracions i suport' }
 ]
 
-export default function FAQPage() {
-  const t = useTranslations('pages.faq')
+export default async function FAQPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations('pages.faq')
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Page Header */}
