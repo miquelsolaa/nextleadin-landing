@@ -2,10 +2,11 @@
   command = "npm run build"
   publish = ".next"
 
-  [build.environment]
-    NODE_VERSION = "18.20.3"
-    NEXT_TELEMETRY_DISABLED = "1"
-    PNPM_FLAGS = "--no-frozen-lockfile"
+[build.environment]
+  NODE_VERSION = "18.20.3"
+  NEXT_TELEMETRY_DISABLED = "1"
+  PNPM_FLAGS = "--no-frozen-lockfile"
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_STRIPE_CANCEL_URL,NEXT_PUBLIC_STRIPE_SUCCESS_URL,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
