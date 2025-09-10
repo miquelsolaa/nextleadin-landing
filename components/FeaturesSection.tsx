@@ -1,24 +1,25 @@
 'use client'
 
 import styles from './FeaturesSection.module.css'
+import { Target, BarChart3, Workflow } from 'lucide-react'
 
 const FeaturesSection = () => {
   // Features data
   const features = [
     {
-      icon: 'icon-target-2',
+      icon: Target,
       title: 'Segmentació hiperprecisa',
       description: 'Defineix zona i sector. La plataforma identifica negocis amb intenció i ajusta el target amb criteris avançats.',
     },
     {
-      icon: 'icon-stats-1',
+      icon: BarChart3,
       title: 'Informes amb IA per a cada empresa',
       description: 'Enriquiment automàtic amb punts clau, insights i angle de contacte perquè cada trucada sigui rellevant.',
     },
     {
-      icon: 'icon-internet',
+      icon: Workflow,
       title: 'Flux de treball comercial ràpid',
-      description: 'Llistes de leads preparades per exportar, integracions i seguiment perquè l’equip no perdi temps.',
+      description: 'Llistes de leads preparades per exportar, integracions i seguiment perquè l\'equip no perdi temps.',
     },
   ]
 
@@ -56,43 +57,47 @@ const FeaturesSection = () => {
         
         {/* Features a sota en 3 columnes */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div 
-              key={index} 
-              className={`${styles['animated-fast']} ${styles.fadeInUp}`}
-              style={{ animationDelay: `${(index + 1) * 100}ms` }}
-            >
-              <div className={styles['elementskit-infobox']}>
-                <div className={styles['elementskit-box-header']}>
-                  <div className={styles['elementskit-info-box-icon']}>
-                    <i 
-                      aria-hidden="true" 
-                      className={`${styles['elementkit-infobox-icon']} ${feature.icon}`}
-                    ></i>
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon
+            return (
+              <div 
+                key={index} 
+                className={`${styles['animated-fast']} ${styles.fadeInUp}`}
+                style={{ animationDelay: `${(index + 1) * 100}ms` }}
+              >
+                <div className={styles['elementskit-infobox']}>
+                  <div className={styles['elementskit-box-header']}>
+                    <div className={styles['elementskit-info-box-icon']}>
+                      <IconComponent 
+                        size={48}
+                        className="text-white"
+                        aria-hidden="true"
+                      />
+                    </div>
                   </div>
-                </div>
                 
-                <div className={styles['box-body']}>
-                  <h3 className={styles['elementskit-info-box-title']}>
-                    {feature.title}
-                  </h3>
-                  <p>{feature.description}</p>
-                  
-                  <div className={styles['box-footer']}>
-                    <div className={styles['btn-wraper']}>
-                      <a 
-                        className={styles['elementskit-btn']}
-                        href="#" 
-                        data-text="Més informació"
-                      >
-                        <span className={styles['button-wrapper']}>Més informació</span>
-                      </a>
+                  <div className={styles['box-body']}>
+                    <h3 className={styles['elementskit-info-box-title']}>
+                      {feature.title}
+                    </h3>
+                    <p>{feature.description}</p>
+                    
+                    <div className={styles['box-footer']}>
+                      <div className={styles['btn-wraper']}>
+                        <a 
+                          className={styles['elementskit-btn']}
+                          href="#" 
+                          data-text="Més informació"
+                        >
+                          <span className={styles['button-wrapper']}>Més informació</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

@@ -210,6 +210,12 @@ const Footer = () => {
               >
                 Política de privacitat
               </Link>
+              <Link
+                href="/cookie-policy"
+                className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
+              >
+                Política de cookies
+              </Link>
             </div>
           </div>
         </div>
