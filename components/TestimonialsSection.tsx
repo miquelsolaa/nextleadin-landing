@@ -32,9 +32,8 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
     }
     if (locale === 'en') {
       return {
-        title: 'What our',
-        titleHighlight: 'clients',
-        titleSuffix: ' say',
+        title: 'What our clients',
+        titleHighlight: 'think',
         description: 'Discover how NextLeadIn is transforming lead generation for companies of all sizes.',
         cta: 'View more testimonials',
         readMore: 'Read more reviews'
@@ -86,11 +85,11 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
           }
         },
         {
-          content: "Ideal per a equips petits que necessiten escalar ràpid. Hem passat de prospecció manual a converses de valor.",
+          content: "Ideal per a SaaS que volen créixer ràpid i captar clients de manera efectiva. Amb NextLeadIn hem passat de contactes dispersos a converses de valor que generen oportunitats reals.",
           author: {
-            name: "Laura Vidal",
-            role: "Marketing Manager",
-            image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review1.jpg'
+            name: "Ramon Solà",
+            role: "CTO",
+            image: '/images/testimonials/ramon.jpg'
           }
         }
       ],
@@ -128,11 +127,11 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
           }
         },
         {
-          content: "Ideal para equipos pequeños que necesitan escalar rápido. Hemos pasado de prospección manual a conversaciones de valor.",
+          content: "Ideal para SaaS que quieren crecer rápido y captar clientes de manera efectiva. Con NextLeadIn hemos pasado de contactos dispersos a conversaciones de valor que generan oportunidades reales.",
           author: {
-            name: "Laura Vidal",
-            role: "Marketing Manager",
-            image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review1.jpg'
+            name: "Ramon Solà",
+            role: "CTO",
+            image: '/images/testimonials/ramon.jpg'
           }
         }
       ],
@@ -170,11 +169,11 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
           }
         },
         {
-          content: "Perfect for small teams that need to scale quickly. We've gone from manual prospecting to value conversations.",
+          content: "Ideal for SaaS companies looking to grow quickly and attract clients effectively. With NextLeadIn, we moved from scattered leads to valuable conversations that generate real opportunities.",
           author: {
-            name: "Laura Vidal",
-            role: "Marketing Manager",
-            image: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review1.jpg'
+            name: "Ramon Solà",
+            role: "CTO",
+            image: '/images/testimonials/ramon.jpg'
           }
         }
       ]

@@ -18,10 +18,10 @@ const TrustedBySection = () => {
   
   const partnerLogos = [
     {
-      src: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/logo-1-black.svg",
+      src: "/images/testimonials/clmanager.png",
       alt: "Partner logo",
-      width: 98,
-      height: 40,
+      width: 150,
+      height: 150,
       title: "Logo #1"
     },
     {
