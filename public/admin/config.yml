@@ -5,6 +5,9 @@ backend:
 media_folder: "public/images/blog"
 public_folder: "/images/blog"
 
+# Configuració per a l'autenticació
+publish_mode: editorial_workflow
+
 collections:
   - name: "blog"
     label: "Articles del Blog"

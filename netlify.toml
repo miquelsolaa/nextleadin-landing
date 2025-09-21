@@ -1,4 +1,4 @@
-    [build]
+[build]
   command = "npm run build"
   publish = ".next"
 
@@ -7,6 +7,20 @@
   NEXT_TELEMETRY_DISABLED = "1"
   PNPM_FLAGS = "--no-frozen-lockfile"
   SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_STRIPE_CANCEL_URL,NEXT_PUBLIC_STRIPE_SUCCESS_URL,NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+
+# Configuració per DecapCMS
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+# Configuració per servir fitxers estàtics
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
