@@ -1,7 +1,7 @@
 ---
 title: "Estrategias para Enriquecer Leads con IA: Guía Práctica 2025"
 description: "Aprende cómo usar la inteligencia artificial para enriquecer tus leads y aumentar las conversiones. Técnicas avanzadas de personalización y automatización."
-date: 2025-09-10T10:00:00.000Z
+date: "2025-09-10"
 author: "NextLeadIn Team"
 image: "https://images.pexels.com/photos/33844309/pexels-photo-33844309.jpeg"
 categories: ["IA", "Leads", "Personalización"]

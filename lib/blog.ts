@@ -161,7 +161,13 @@ export function getAllPosts(locale?: Locale): BlogPostMeta[] {
         } as BlogPostMeta
       })
       .filter((post) => post.published !== false)
-      .sort((a, b) => (a.date < b.date ? 1 : -1))
+      .sort((a, b) => {
+        // Convertir dates a Date objects per comparació consistent
+        const dateA = new Date(a.date).getTime()
+        const dateB = new Date(b.date).getTime()
+        // Ordenar del més nou al més antic (descendent: dates més grans primer)
+        return dateB - dateA
+      })
 
     return allPostsData
   } catch (error) {
