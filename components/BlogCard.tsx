@@ -1,5 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useLocale } from 'next-intl'
+import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 
 interface BlogCardProps {
   title: string
@@ -27,6 +31,9 @@ const BlogCard = ({
   slug,
   className = ''
 }: BlogCardProps) => {
+  const locale = (useLocale() as Locale) ?? 'ca'
+  const postUrl = getBlogPostUrl(slug, locale)
+  
   return (
     <article className={`card hover:shadow-lg transition-all duration-300 group ${className}`}>
       <div className="relative overflow-hidden rounded-t-xl">
@@ -80,7 +87,7 @@ const BlogCard = ({
         {/* Title */}
         <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
           <Link 
-            href={`/blog/${slug}`}
+            href={postUrl}
             className="hover:text-primary-600 transition-colors duration-200"
           >
             {title}
@@ -94,7 +101,7 @@ const BlogCard = ({
         
         {/* Read more link */}
         <Link
-          href={`/blog/${slug}`}
+          href={postUrl}
           className="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors duration-200 group-hover:translate-x-1 transform transition-transform"
         >
           Llegeix més

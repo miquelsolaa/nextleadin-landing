@@ -1,7 +1,11 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { CalendarDays, User, Tag } from 'lucide-react'
-import { BlogPost } from '@/lib/blog'
+import { useLocale } from 'next-intl'
+import type { BlogPost } from '@/lib/blog'
+import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 
 interface BlogPostProps {
   post: BlogPost
@@ -10,13 +14,18 @@ interface BlogPostProps {
 }
 
 export default function BlogPost({ post, showExcerpt = true, featured = false }: BlogPostProps) {
+  const currentLocale = useLocale() as Locale
+  
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ca-ES', {
+    const dateLocale = currentLocale === 'ca' ? 'ca-ES' : currentLocale === 'en' ? 'en-US' : 'es-ES'
+    return new Date(dateString).toLocaleDateString(dateLocale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     })
   }
+
+  const postUrl = getBlogPostUrl(post.slug, currentLocale)
 
   return (
     <article className={`group ${featured ? 'lg:col-span-2' : ''}`}>
@@ -52,7 +61,7 @@ export default function BlogPost({ post, showExcerpt = true, featured = false }:
           <h2 className={`font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 ${
             featured ? 'text-2xl lg:text-3xl' : 'text-xl'
           } mb-3`}>
-            <Link href={`/blog/${post.slug}`} className="hover:underline">
+            <Link href={postUrl} className="hover:underline">
               {post.title}
             </Link>
           </h2>

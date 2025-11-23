@@ -1,10 +1,14 @@
-import { BlogPost } from '@/lib/blog'
+import type { BlogPost } from '@/lib/blog'
+import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 
 interface BlogJsonLdProps {
   post: BlogPost
+  locale?: Locale
 }
 
-export default function BlogJsonLd({ post }: BlogJsonLdProps) {
+export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
+  const postUrl = getBlogPostUrl(post.slug, locale)
+  
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -27,7 +31,7 @@ export default function BlogJsonLd({ post }: BlogJsonLdProps) {
     dateModified: post.date,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://nextleadin.com/blog/${post.slug}`,
+      '@id': `https://nextleadin.com${postUrl}`,
     },
     keywords: post.tags?.join(', ') || '',
     articleSection: post.categories?.join(', ') || '',

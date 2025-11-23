@@ -159,19 +159,6 @@ const secuenciaNutricion = {
 | Pardot | Marketing Automation | Desde 1.250€/mes | ⭐⭐⭐⭐ |
 | Marketo | Enterprise Automation | Desde 1.000€/mes | ⭐⭐⭐ |
 
-### Integraciones Necesarias
-
-```javascript
-// Stack de automatización completo
-const stackAutomatizacion = {
-  generacion: "NextLeadIn + LinkedIn + Google",
-  crm: "HubSpot / Salesforce",
-  email: "Mailchimp / SendGrid",
-  llamadas: "Aircall / RingCentral",
-  analitica: "Google Analytics + Mixpanel"
-}
-```
-
 ## Casos de Éxito Reales
 
 ### 1. Startup de Software B2B

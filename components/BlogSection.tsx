@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import Image from 'next/image'
+import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 
 interface BlogPost {
   title: string
@@ -20,7 +21,7 @@ interface BlogSectionProps {
 }
 
 const BlogSection = ({ blogPosts }: BlogSectionProps) => {
-  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+  const locale = (useLocale() as Locale) ?? 'ca'
 
   const translations = (() => {
     if (locale === 'es') {
@@ -118,7 +119,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                       <div key={index} className="col-lg-4 col-md-6">
                         <div className="elementskit-post-image-card">
                           <div className="elementskit-entry-header">
-                            <Link href={`/blog/${post.slug}`} className="elementskit-entry-thumb">
+                            <Link href={getBlogPostUrl(post.slug, locale)} className="elementskit-entry-thumb">
                               <Image 
                                 src={post.image} 
                                 alt={post.title}
@@ -156,12 +157,12 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                               </span>
                               <span className="post-comment">
                                 <i aria-hidden="true" className="far fa-comment-alt"></i>
-                                <Link href={`/blog/${post.slug}#comments`}>{post.comments}</Link>
+                                <Link href={`${getBlogPostUrl(post.slug, locale)}#comments`}>{post.comments}</Link>
                               </span>
                             </div>
                             
                             <h2 className="entry-title">
-                              <Link href={`/blog/${post.slug}`}>
+                              <Link href={getBlogPostUrl(post.slug, locale)}>
                                 {post.title}
                               </Link>
                             </h2>
@@ -170,7 +171,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                             
                             <div className="btn-wraper">
                               <Link 
-                                href={`/blog/${post.slug}`} 
+                                href={getBlogPostUrl(post.slug, locale)} 
                                 className="elementskit-btn keydesign-underline whitespace--normal" 
                                 data-text={translations.readMore}
                               >

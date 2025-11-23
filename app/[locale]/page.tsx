@@ -18,14 +18,14 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
   const t = await getTranslations({ locale: validLocale, namespace: 'home.testimonials' })
   
   // Carregar últims posts del blog
-  const allPosts = getAllPosts()
+  const allPosts = getAllPosts(validLocale as 'ca' | 'es' | 'en')
   const latestPosts = allPosts.slice(0, 3).map(post => ({
     title: post.title,
     excerpt: post.description,
     image: post.featuredImage || '/images/hero/hero.png',
     categories: post.categories || [],
     author: { name: post.author },
-    date: new Date(post.date).toLocaleDateString(locale, {
+    date: new Date(post.date).toLocaleDateString(validLocale === 'ca' ? 'ca-ES' : validLocale === 'en' ? 'en-US' : 'es-ES', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

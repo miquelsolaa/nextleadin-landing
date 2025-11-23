@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { getAllPosts, getAllCategories, getAllTags } from '@/lib/blog'
+import { getAllPosts, getAllCategories, getAllTags, getBlogPostUrl, type Locale } from '@/lib/blog'
 import BlogPageSection from '@/components/BlogPageSection'
 import BlogSearch from '@/components/BlogSearch'
 import BlogCategories from '@/components/BlogCategories'
@@ -11,17 +11,17 @@ import BlogPagination from '@/components/BlogPagination'
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  console.log('🔍 Blog page locale:', locale)
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'ca'
   
   const translations = (() => {
-    if (locale === 'es') {
+    if (validLocale === 'es') {
       return {
         title: 'Blog',
         description: 'Descubre estrategias, consejos y tendencias para mejorar tu generación de leads y ventas B2B.',
         breadcrumbHome: 'Inicio'
       }
     }
-    if (locale === 'en') {
+    if (validLocale === 'en') {
       return {
         title: 'Blog',
         description: 'Discover strategies, tips and trends to improve your B2B lead generation and sales.',
@@ -35,11 +35,15 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
     }
   })()
   
-  console.log('🔍 Blog title:', translations.title)
-  console.log('🔍 Blog description:', translations.description)
-  const allPosts = getAllPosts()
-  const categories = getAllCategories()
-  const tags = getAllTags()
+  const allPosts = getAllPosts(validLocale)
+  const categories = getAllCategories(validLocale)
+  const tags = getAllTags(validLocale)
+  
+  // Format de data segons l'idioma
+  const dateLocale = validLocale === 'ca' ? 'ca-ES' : validLocale === 'en' ? 'en-US' : 'es-ES'
+  
+  // URL base per al blog segons l'idioma
+  const blogBaseUrl = validLocale === 'ca' ? '/blog' : `/${validLocale}/blog`
   
   // Mapejar posts reals al format esperat per BlogPageSection
   const blogPosts = allPosts.map((post, index) => ({
@@ -50,19 +54,21 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
     image: post.featuredImage || '/images/hero/hero.png',
     categories: post.categories || [],
     author: post.author,
-    date: new Date(post.date).toLocaleDateString(locale, {
+    date: new Date(post.date).toLocaleDateString(dateLocale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     }),
-    comments: 0
+    comments: 0,
+    url: getBlogPostUrl(post.slug, validLocale)
   }))
   
   // Posts recents per al sidebar
   const recentPosts = allPosts.slice(0, 3).map(post => ({
     title: post.title,
     image: post.featuredImage || '/images/hero/hero.png',
-    slug: post.slug
+    slug: post.slug,
+    url: getBlogPostUrl(post.slug, validLocale)
   }))
 
   return (
@@ -75,7 +81,9 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
             {translations.description}
           </p>
           <nav className="text-sm text-gray-500">
-            <span>{translations.breadcrumbHome}</span>
+            <a href={validLocale === 'ca' ? '/' : `/${validLocale}`} className="hover:text-green-600 transition-colors">
+              {translations.breadcrumbHome}
+            </a>
             <span className="mx-2">›</span>
             <span>{translations.title}</span>
           </nav>

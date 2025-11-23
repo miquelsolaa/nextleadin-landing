@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
+import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 
 interface BlogPost {
   id: number
@@ -12,6 +15,7 @@ interface BlogPost {
   author: string
   date: string
   comments: number
+  url?: string
 }
 
 interface BlogPageSectionProps {
@@ -20,10 +24,16 @@ interface BlogPageSectionProps {
 
 const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
   const t = useTranslations('blog')
+  const locale = (useLocale() as Locale) ?? 'ca'
+  
+  // URL base per al blog segons l'idioma
+  const blogBaseUrl = locale === 'ca' ? '/blog' : `/${locale}/blog`
   
   return (
     <div className="space-y-8">
-      {posts.map((post) => (
+      {posts.map((post) => {
+        const postUrl = post.url || getBlogPostUrl(post.slug, locale)
+        return (
         <article
           key={post.id}
           className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-300"
@@ -31,7 +41,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
           <div className="md:flex">
             {/* Image */}
             <div className="md:w-1/3">
-              <Link href={`/blog/${post.slug}`}>
+              <Link href={postUrl}>
                 <div className="relative h-64 md:h-full">
                   <Image
                     src={post.image}
@@ -50,7 +60,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                 {post.categories.map((category, index) => (
                   <span key={index}>
                     <Link
-                      href={`/blog/category/${category.toLowerCase()}`}
+                      href={`${blogBaseUrl}/category/${category.toLowerCase()}`}
                       className="text-sm font-medium text-green-600 hover:text-green-700 uppercase tracking-wide"
                     >
                       {category}
@@ -64,7 +74,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
 
               {/* Title */}
               <h2 className="text-xl font-bold text-gray-900 mb-3 hover:text-green-600 transition-colors">
-                <Link href={`/blog/${post.slug}`}>
+                <Link href={postUrl}>
                   {post.title}
                 </Link>
               </h2>
@@ -78,7 +88,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                 <span className="flex items-center">
                   <span className="mr-1">👤</span>
                   <Link
-                    href={`/blog/author/${post.author.toLowerCase().replace(' ', '-')}`}
+                    href={`${blogBaseUrl}/author/${post.author.toLowerCase().replace(' ', '-')}`}
                     className="hover:text-green-600 transition-colors"
                   >
                     {post.author}
@@ -87,7 +97,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                 <span className="flex items-center">
                   <span className="mr-1">💬</span>
                   <Link
-                    href={`/blog/${post.slug}#comments`}
+                    href={`${postUrl}#comments`}
                     className="hover:text-green-600 transition-colors"
                   >
                     {post.comments} {t('comments')}
@@ -102,7 +112,8 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
             </div>
           </div>
         </article>
-      ))}
+        )
+      })}
     </div>
   )
 }

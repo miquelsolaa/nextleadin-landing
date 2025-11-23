@@ -3,11 +3,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLocale } from 'next-intl'
+import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 
 interface RecentPost {
   title: string
   image: string
   slug: string
+  url?: string
 }
 
 interface BlogRecentPostsProps {
@@ -15,7 +17,7 @@ interface BlogRecentPostsProps {
 }
 
 const BlogRecentPosts = ({ posts }: BlogRecentPostsProps) => {
-  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+  const locale = (useLocale() as Locale) ?? 'ca'
 
   const translations = (() => {
     if (locale === 'es') {
@@ -37,10 +39,12 @@ const BlogRecentPosts = ({ posts }: BlogRecentPostsProps) => {
     <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
       <h4 className="text-lg font-semibold text-gray-900 mb-4">{translations.recentPosts}</h4>
       <ul className="space-y-4">
-        {posts.map((post, index) => (
+        {posts.map((post, index) => {
+          const postUrl = post.url || getBlogPostUrl(post.slug, locale)
+          return (
           <li key={index}>
             <Link
-              href={`/blog/${post.slug}`}
+              href={postUrl}
               className="flex items-start space-x-3 group"
             >
               <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden">
@@ -59,7 +63,8 @@ const BlogRecentPosts = ({ posts }: BlogRecentPostsProps) => {
               </div>
             </Link>
           </li>
-        ))}
+          )
+        })}
       </ul>
     </div>
   )
