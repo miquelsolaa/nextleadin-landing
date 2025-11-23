@@ -2,9 +2,8 @@
 title: "Optimitza les teves vendes B2B amb la generació de leads impulsada per la IA"
 description: "Descobreix com la generació de leads basada en la IA pot transformar la teva estratègia de vendes B2B. Obtén informació útil i automatitza el teu procés de prospecció avui mateix!"
 date: "2025-11-23"
-image: "https://images.pexels.com/photos/6172586/pexels-photo-6172586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"
-featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
+image: "https://images.pexels.com/photos/6172586/pexels-photo-6172586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 categories: ["Generació de Leads", "IA de Vendes"]
 tags: ["Generació de leads amb IA", "Vendes B2B", "Automatització de vendes"]
 published: true

@@ -3,7 +3,7 @@ title: "Automatización de Leads: Guía Completa para Escalar tu Pipeline 2025"
 description: "Descubre cómo automatizar completamente tu proceso de generación de leads. Estrategias, herramientas y casos de éxito para maximizar conversiones."
 date: 2025-09-08T10:00:00.000Z
 author: "NextLeadIn Team"
-featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
+image: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["Automatización", "Leads", "Escalado"]
 tags: ["automatización de leads", "pipeline de ventas", "escalado", "workflow"]
 published: true

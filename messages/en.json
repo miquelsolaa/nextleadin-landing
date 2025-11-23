@@ -179,6 +179,50 @@
     "relatedPostsTitle": "Related Posts",
     "relatedPostsDescription": "Discover more interesting content",
     "comments": "comments"
+  },
+  "cookieConsent": {
+    "consentModal": {
+      "title": "We use cookies",
+      "description": "We use cookies to enhance your experience, analyze site traffic and personalize content. By clicking \"Accept all\", you consent to the use of cookies for advertising and analytics. Learn more in our {cookiePolicyLink}.",
+      "acceptAllBtn": "Accept all",
+      "acceptNecessaryBtn": "Necessary only",
+      "showPreferencesBtn": "Manage preferences"
+    },
+    "preferencesModal": {
+      "title": "Cookie preference management",
+      "acceptAllBtn": "Accept all",
+      "acceptNecessaryBtn": "Reject all",
+      "savePreferencesBtn": "Save preferences",
+      "closeIconLabel": "Close",
+      "sections": [
+        {
+          "title": "Cookie Usage",
+          "description": "We use different types of cookies to optimize the experience on our website. You can customize your preferences below."
+        },
+        {
+          "title": "Strictly necessary cookies",
+          "description": "These cookies are essential for the website to function and cannot be disabled. They are usually only set in response to actions made by you, such as setting your privacy preferences, logging in or filling in forms."
+        },
+        {
+          "title": "Analytics cookies",
+          "description": "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve how our website works."
+        }
+      ]
+    },
+    "categories": {
+      "necessary": {
+        "title": "Strictly necessary cookies",
+        "description": "These cookies are necessary for the website to function and cannot be disabled in our system.",
+        "enabled": true,
+        "readOnly": true
+      },
+      "analytics": {
+        "title": "Analytics cookies",
+        "description": "These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.",
+        "enabled": false,
+        "readOnly": false
+      }
+    }
   }
 }
 

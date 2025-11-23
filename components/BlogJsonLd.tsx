@@ -14,7 +14,7 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
-    image: post.featuredImage ? [post.featuredImage] : [],
+    image: post.image ? [post.image] : [],
     author: {
       '@type': 'Person',
       name: post.author,

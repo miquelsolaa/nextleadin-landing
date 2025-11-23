@@ -179,6 +179,50 @@
     "relatedPostsTitle": "Posts Relacionats",
     "relatedPostsDescription": "Descobreix més contingut interessant",
     "comments": "comentaris"
+  },
+  "cookieConsent": {
+    "consentModal": {
+      "title": "Utilitzem cookies",
+      "description": "Utilitzem cookies per millorar la teva experiència, analitzar el trànsit del lloc i personalitzar el contingut. En fer clic a \"Acceptar totes\", acceptes l'ús de cookies per a publicitat i anàlisi. Més informació a la nostra {cookiePolicyLink}.",
+      "acceptAllBtn": "Acceptar totes",
+      "acceptNecessaryBtn": "Només necessàries",
+      "showPreferencesBtn": "Gestionar preferències"
+    },
+    "preferencesModal": {
+      "title": "Gestió de preferències de cookies",
+      "acceptAllBtn": "Acceptar totes",
+      "acceptNecessaryBtn": "Rebutjar totes",
+      "savePreferencesBtn": "Guardar preferències",
+      "closeIconLabel": "Tancar",
+      "sections": [
+        {
+          "title": "Ús de cookies",
+          "description": "Utilitzem diferents tipus de cookies per optimitzar l'experiència al nostre lloc web. Pots personalitzar les teves preferències a continuació."
+        },
+        {
+          "title": "Cookies estrictament necessàries",
+          "description": "Aquestes cookies són essencials per al funcionament del lloc web i no es poden desactivar. Normalment només es configuren en resposta a les teves accions, com ara establir les teves preferències de privacitat, iniciar sessió o omplir formularis."
+        },
+        {
+          "title": "Cookies analítiques",
+          "description": "Aquestes cookies ens ajuden a entendre com els visitants interactuen amb el nostre lloc web recopilant i informant informació de manera anònima. Això ens ajuda a millorar la manera en què funciona el nostre lloc web."
+        }
+      ]
+    },
+    "categories": {
+      "necessary": {
+        "title": "Cookies estrictament necessàries",
+        "description": "Aquestes cookies són necessàries per al funcionament del lloc web i no es poden desactivar al nostre sistema.",
+        "enabled": true,
+        "readOnly": true
+      },
+      "analytics": {
+        "title": "Cookies analítiques",
+        "description": "Aquestes cookies ens permeten comptar les visites i fonts de trànsit per poder mesurar i millorar el rendiment del nostre lloc.",
+        "enabled": false,
+        "readOnly": false
+      }
+    }
   }
 }
 

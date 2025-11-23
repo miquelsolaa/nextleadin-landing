@@ -179,6 +179,50 @@
     "relatedPostsTitle": "Posts Relacionados",
     "relatedPostsDescription": "Descubre más contenido interesante",
     "comments": "comentarios"
+  },
+  "cookieConsent": {
+    "consentModal": {
+      "title": "Utilizamos cookies",
+      "description": "Utilizamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y personalizar el contenido. Al hacer clic en \"Aceptar todas\", aceptas el uso de cookies para publicidad y análisis. Más información en nuestra {cookiePolicyLink}.",
+      "acceptAllBtn": "Aceptar todas",
+      "acceptNecessaryBtn": "Solo necesarias",
+      "showPreferencesBtn": "Gestionar preferencias"
+    },
+    "preferencesModal": {
+      "title": "Gestión de preferencias de cookies",
+      "acceptAllBtn": "Aceptar todas",
+      "acceptNecessaryBtn": "Rechazar todas",
+      "savePreferencesBtn": "Guardar preferencias",
+      "closeIconLabel": "Cerrar",
+      "sections": [
+        {
+          "title": "Uso de cookies",
+          "description": "Utilizamos diferentes tipos de cookies para optimizar la experiencia en nuestro sitio web. Puedes personalizar tus preferencias a continuación."
+        },
+        {
+          "title": "Cookies estrictamente necesarias",
+          "description": "Estas cookies son esenciales para el funcionamiento del sitio web y no se pueden desactivar. Normalmente solo se configuran en respuesta a tus acciones, como establecer tus preferencias de privacidad, iniciar sesión o rellenar formularios."
+        },
+        {
+          "title": "Cookies analíticas",
+          "description": "Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web recopilando e informando información de manera anónima. Esto nos ayuda a mejorar la manera en que funciona nuestro sitio web."
+        }
+      ]
+    },
+    "categories": {
+      "necessary": {
+        "title": "Cookies estrictamente necesarias",
+        "description": "Estas cookies son necesarias para el funcionamiento del sitio web y no se pueden desactivar en nuestro sistema.",
+        "enabled": true,
+        "readOnly": true
+      },
+      "analytics": {
+        "title": "Cookies analíticas",
+        "description": "Estas cookies nos permiten contar las visitas y fuentes de tráfico para poder medir y mejorar el rendimiento de nuestro sitio.",
+        "enabled": false,
+        "readOnly": false
+      }
+    }
   }
 }
 

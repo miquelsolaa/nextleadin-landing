@@ -2,9 +2,8 @@
 title: "Potencia tus ventas B2B con la generación de leads impulsada por la IA"
 description: "Descubre cómo la generación de leads basada en la IA puede transformar tu estrategia de ventas B2B. Obtén información útil y automatiza tu proceso de prospección hoy mismo."
 date: "2025-11-23"
-image: "https://images.pexels.com/photos/6172586/pexels-photo-6172586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"
-featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
+image: "https://images.pexels.com/photos/6172586/pexels-photo-6172586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 categories: ["Generación de Leads", "IA de Ventas"]
 tags: ["Generación de leads con IA", "Ventas B2B", "Automatización de ventas"]
 published: true

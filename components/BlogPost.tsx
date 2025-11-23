@@ -31,10 +31,10 @@ export default function BlogPost({ post, showExcerpt = true, featured = false }:
     <article className={`group ${featured ? 'lg:col-span-2' : ''}`}>
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
         {/* Imatge destacada */}
-        {post.featuredImage && (
+        {post.image && (
           <div className={`relative ${featured ? 'h-64' : 'h-48'} overflow-hidden`}>
             <Image
-              src={post.featuredImage}
+              src={post.image}
               alt={post.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"

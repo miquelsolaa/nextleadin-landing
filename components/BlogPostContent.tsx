@@ -74,10 +74,10 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
         )}
 
         {/* Imatge destacada */}
-        {post.featuredImage && (
+        {post.image && (
           <div className="relative w-full h-64 lg:h-96 mb-8 rounded-lg overflow-hidden">
             <Image
-              src={post.featuredImage}
+              src={post.image}
               alt={post.title}
               fill
               className="object-cover"

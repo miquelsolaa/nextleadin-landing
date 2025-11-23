@@ -32,10 +32,10 @@ export default function BlogPostCard({ post, showExcerpt = true, featured = fals
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
         <div className="flex flex-col md:flex-row">
           {/* Imatge destacada */}
-          {post.featuredImage && (
+          {post.image && (
             <div className="relative md:w-80 h-48 md:h-auto overflow-hidden flex-shrink-0">
               <Image
-                src={post.featuredImage}
+                src={post.image}
                 alt={post.title}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"

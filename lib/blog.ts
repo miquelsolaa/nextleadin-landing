@@ -18,7 +18,7 @@ export interface BlogPost {
   description: string
   date: string
   author: string
-  featuredImage?: string
+  image?: string
   categories: string[]
   tags: string[]
   published: boolean
@@ -32,7 +32,7 @@ export interface BlogPostMeta {
   description: string
   date: string
   author: string
-  featuredImage?: string
+  image?: string
   categories: string[]
   tags: string[]
   published: boolean

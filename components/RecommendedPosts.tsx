@@ -58,7 +58,7 @@ export default function RecommendedPosts({ posts, currentSlug }: RecommendedPost
               <Link href={getPostUrl(post.slug)}>
                 <div className="relative h-48">
                   <Image
-                    src={post.featuredImage || '/images/hero/hero.png'}
+                    src={post.image || '/images/hero/hero.png'}
                     alt={post.title}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"

@@ -50,9 +50,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         type: 'article',
         publishedTime: post.date,
         authors: [post.author],
-        images: post.featuredImage ? [
+        images: post.image ? [
           {
-            url: post.featuredImage,
+            url: post.image,
             width: 1200,
             height: 630,
             alt: post.title,
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         card: 'summary_large_image',
         title: post.title,
         description: post.description,
-        images: post.featuredImage ? [post.featuredImage] : [],
+        images: post.image ? [post.image] : [],
       },
     }
   } catch (error) {
@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     // Posts recents per al sidebar
     const recentPosts = allPosts.slice(0, 3).map(p => ({
       title: p.title,
-      image: p.featuredImage || '/images/hero/hero.png',
+      image: p.image || '/images/hero/hero.png',
       slug: p.slug
     }))
 
@@ -222,11 +222,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </div>
 
                   {/* Imatge destacada */}
-                  {post.featuredImage && (
+                  {post.image && (
                     <div className="px-8 mb-8">
                       <div className="relative w-full h-96 rounded-lg overflow-hidden">
                         <img
-                          src={post.featuredImage}
+                          src={post.image}
                           alt={post.title}
                           className="w-full h-full object-cover"
                         />

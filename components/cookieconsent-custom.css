@@ -1,0 +1,100 @@
+/* Custom styles for Cookie Consent - NextLeadIn Theme */
+
+/* Override colors to match NextLeadIn green theme */
+#cc-main .cc-btn.cc-accept-all,
+#cc-main .cc-btn.cc-save-preferences {
+  background-color: #00CC61 !important;
+  color: #ffffff !important;
+  border-color: #00CC61 !important;
+}
+
+#cc-main .cc-btn.cc-accept-all:hover,
+#cc-main .cc-btn.cc-save-preferences:hover {
+  background-color: #00B359 !important;
+  border-color: #00B359 !important;
+}
+
+#cc-main .cc-btn.cc-accept-necessary,
+#cc-main .cc-btn.cc-reject-all {
+  background-color: transparent !important;
+  color: #004050 !important;
+  border-color: #004050 !important;
+}
+
+#cc-main .cc-btn.cc-accept-necessary:hover,
+#cc-main .cc-btn.cc-reject-all:hover {
+  background-color: #DFF9EB !important;
+  border-color: #004050 !important;
+}
+
+/* Consent modal styling */
+#cc-main .cc-consent-modal {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+#cc-main .cc-consent-modal .cc-message {
+  color: #1f2937;
+}
+
+/* Preferences modal styling */
+#cc-main .cc-preferences-modal {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+#cc-main .cc-preferences-modal .cc-section-title {
+  color: #004050;
+  font-weight: 600;
+}
+
+#cc-main .cc-preferences-modal .cc-section-description {
+  color: #6b7280;
+}
+
+/* Switch/Toggle styling */
+#cc-main .cc-toggle {
+  background-color: #e5e7eb;
+}
+
+#cc-main .cc-toggle.cc-active {
+  background-color: #00CC61;
+}
+
+#cc-main .cc-toggle:focus {
+  box-shadow: 0 0 0 3px rgba(0, 204, 97, 0.1);
+}
+
+/* Links */
+#cc-main .cc-link {
+  color: #00CC61;
+  text-decoration: underline;
+}
+
+#cc-main .cc-link:hover {
+  color: #00B359;
+}
+
+/* Close button */
+#cc-main .cc-close {
+  color: #6b7280;
+}
+
+#cc-main .cc-close:hover {
+  color: #004050;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  #cc-main .cc-consent-modal {
+    border-radius: 0;
+  }
+  
+  #cc-main .cc-preferences-modal {
+    border-radius: 0;
+    max-height: 100vh;
+  }
+}
+

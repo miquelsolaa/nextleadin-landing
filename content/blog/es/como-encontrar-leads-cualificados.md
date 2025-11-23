@@ -3,7 +3,7 @@ title: "Cómo Encontrar Leads Cualificados: Guía Definitiva 2025"
 description: "Descubre las mejores estrategias para encontrar leads cualificados que realmente conviertan. Técnicas probadas para segmentar y calificar prospectos."
 date: 2025-09-09T10:00:00.000Z
 author: "NextLeadIn Team"
-featuredImage: "https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg"
+image: "https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg"
 categories: ["Leads", "Ventas", "Segmentación"]
 tags: ["leads cualificados", "prospección", "segmentación geográfica", "B2B"]
 published: true
