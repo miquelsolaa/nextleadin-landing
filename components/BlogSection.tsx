@@ -133,8 +133,8 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                               <span className="elementskit-meta-wraper">
                                 {post.categories.map((category, catIndex) => (
                                   <span key={catIndex}>
-                                    <Link href={`/category/${category.toLowerCase()}`} rel="category tag">
-                                      {category}
+                                    <Link href={`/category/${(category || '').toLowerCase()}`} rel="category tag">
+                                      {category || ''}
                                     </Link>
                                   </span>
                                 ))}
@@ -147,8 +147,8 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                             <div className="post-meta-list">
                               <span className="meta-author">
                                 <i aria-hidden="true" className="far fa-user"></i>
-                                <Link href={`/author/${post.author.name.toLowerCase()}`} className="author-name">
-                                  {post.author.name}
+                                <Link href={`/author/${(post.author?.name || 'unknown').toLowerCase().replace(' ', '-')}`} className="author-name">
+                                  {post.author?.name || 'Unknown'}
                                 </Link>
                               </span>
                               <span className="meta-date">

@@ -212,10 +212,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       <span className="flex items-center">
                         <User className="w-4 h-4 mr-2" />
                         <Link
-                          href={`${blogBaseUrl}/author/${post.author.toLowerCase().replace(' ', '-')}`}
+                          href={`${blogBaseUrl}/author/${(post.author || 'unknown').toLowerCase().replace(' ', '-')}`}
                           className="hover:text-green-600 transition-colors"
                         >
-                          {post.author}
+                          {post.author || 'Unknown'}
                         </Link>
                       </span>
                     </div>
@@ -272,14 +272,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       </div>
                       <div className="author-desc-wrapper flex-1">
                         <div className="author-name">
-                          <h5 className="text-lg font-semibold text-gray-900">
-                            <Link
-                              href={`${blogBaseUrl}/author/${post.author.toLowerCase().replace(' ', '-')}`}
-                              className="hover:text-green-600 transition-colors"
-                            >
-                              {post.author}
-                            </Link>
-                          </h5>
+                        <h5 className="text-lg font-semibold text-gray-900">
+                          <Link
+                            href={`${blogBaseUrl}/author/${(post.author || 'unknown').toLowerCase().replace(' ', '-')}`}
+                            className="hover:text-green-600 transition-colors"
+                          >
+                            {post.author || 'Unknown'}
+                          </Link>
+                        </h5>
                         </div>
                         <div className="author-description">
                           <p className="text-gray-600 mt-2">

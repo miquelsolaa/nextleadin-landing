@@ -88,10 +88,10 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                 <span className="flex items-center">
                   <span className="mr-1">👤</span>
                   <Link
-                    href={`${blogBaseUrl}/author/${post.author.toLowerCase().replace(' ', '-')}`}
+                    href={`${blogBaseUrl}/author/${(post.author || 'unknown').toLowerCase().replace(' ', '-')}`}
                     className="hover:text-green-600 transition-colors"
                   >
-                    {post.author}
+                    {post.author || 'Unknown'}
                   </Link>
                 </span>
                 <span className="flex items-center">
