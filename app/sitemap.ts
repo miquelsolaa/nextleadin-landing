@@ -1,9 +1,8 @@
-import { MetadataRoute } from 'next'
 import { getAllPostSlugs, getBlogPostUrl, getAllPosts, type Locale } from '@/lib/blog'
 
 export const dynamic = 'force-static'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default function sitemap() {
   const baseUrl = 'https://nextleadin.com'
   const allPostSlugs = getAllPostSlugs()
   
@@ -85,8 +84,51 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   )
 
-  return [
+  const allUrls = [
     ...staticUrls,
     ...blogUrls,
   ]
+
+  // Generar XML manualment amb format correcte
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${allUrls.map(url => {
+    const lastMod = url.lastModified.toISOString().split('T')[0]
+    const priority = url.priority.toFixed(1)
+    const changeFreq = url.changeFrequency
+    
+    let xmlContent = `  <url>
+    <loc>${escapeXml(url.url)}</loc>
+    <lastmod>${lastMod}</lastmod>
+    <changefreq>${changeFreq}</changefreq>
+    <priority>${priority}</priority>`
+    
+    // Afegir hreflang alternates si existeixen
+    if (url.alternates?.languages) {
+      Object.entries(url.alternates.languages).forEach(([lang, href]) => {
+        xmlContent += `\n    <xhtml:link rel="alternate" hreflang="${lang}" href="${escapeXml(href)}" />`
+      })
+    }
+    
+    xmlContent += `\n  </url>`
+    return xmlContent
+  }).join('\n')}
+</urlset>`
+
+  return new Response(xml, {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8',
+    },
+  })
+}
+
+// Funció per escapar caràcters especials en XML
+function escapeXml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
 }
