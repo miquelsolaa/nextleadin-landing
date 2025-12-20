@@ -39,11 +39,8 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
-    // Workaround per a Next 15 + next-intl perquè registri els aliases correctament
-    turbo: {},
-  },
+  // optimizePackageImports ara és estable a Next.js 16
+  optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   serverExternalPackages: ['stripe'],
   compress: true,
   poweredByHeader: false,

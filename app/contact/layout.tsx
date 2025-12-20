@@ -1,15 +1,8 @@
 import type { Metadata } from 'next'
+import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 
-export const metadata: Metadata = {
-  title: 'Contacte — Parla amb vendes',
-  description: 'Parla amb el nostre equip per veure com NextLeadIn troba leads per tipus de negoci, ubicació i paraules clau, amb informes d’IA per preparar trucades.',
-  openGraph: {
-    title: 'Contacte — NextLeadIn',
-    description: 'Programa una demo o sol·licita informació sobre preus i integracions.',
-    type: 'website',
-    url: 'https://nextleadin.com/contact',
-  },
-}
+// Utilitzar la nova configuració SEO optimitzada per a AI
+export const metadata: Metadata = generateAIOptimizedMetadata('contact', 'ca')
 
 export default function ContactLayout({
   children,

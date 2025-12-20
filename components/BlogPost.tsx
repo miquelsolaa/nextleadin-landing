@@ -35,9 +35,11 @@ export default function BlogPost({ post, showExcerpt = true, featured = false }:
           <div className={`relative ${featured ? 'h-64' : 'h-48'} overflow-hidden`}>
             <Image
               src={post.image}
-              alt={post.title}
+              alt={`${post.title} - Imatge destacada`}
               fill
+              sizes={featured ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"}
               className="object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
             />
           </div>
         )}

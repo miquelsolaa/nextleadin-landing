@@ -36,9 +36,11 @@ export default function BlogPostCard({ post, showExcerpt = true, featured = fals
             <div className="relative md:w-80 h-48 md:h-auto overflow-hidden flex-shrink-0">
               <Image
                 src={post.image}
-                alt={post.title}
+                alt={`${post.title} - Imatge destacada`}
                 fill
+                sizes="(max-width: 768px) 100vw, 320px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
               />
             </div>
           )}

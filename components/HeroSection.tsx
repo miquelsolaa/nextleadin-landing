@@ -204,9 +204,10 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
             <div className="relative w-full max-w-none px-8">
               <Image
                 src="/images/hero/hero.png"
-                alt="Panell de generació de leads i anàlisi"
+                alt="Panell de control NextLeadIn - Visualització de la plataforma de generació de leads amb IA, segmentació geogràfica i informes intel·ligents"
                 width={1292}
                 height={1012}
+                sizes="(max-width: 1024px) 0px, (max-width: 1280px) 90vw, 1292px"
                 className="w-full h-auto object-contain"
                 priority
               />

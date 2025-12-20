@@ -1,27 +1,32 @@
-# Sierra CRM - Plataforma CRM Moderna
+# NextLeadIn - Plataforma de Generació de Leads amb IA
 
-Una plataforma CRM moderna i responsiva construïda amb Next.js 14 (App Router), React, TypeScript i TailwindCSS.
+Una plataforma SaaS moderna i responsiva construïda amb Next.js 16 (App Router), React 19, TypeScript i TailwindCSS per a la generació de leads amb intel·ligència artificial.
 
 ## 🚀 Característiques
 
-- **Next.js 14** amb App Router per a màxim rendiment
+- **Next.js 16.1.0** amb App Router per a màxim rendiment
+- **React 19.2.3** amb les últimes millores de rendiment
 - **TypeScript** per a desenvolupament type-safe
 - **TailwindCSS** per a estils moderns i responsiu
+- **SEO/AEO optimitzat** amb metadata completa i structured data per AI search engines
+- **Internacionalització** completa (Català, Espanyol, Anglès) amb next-intl 4.6.1
 - **Components reutilitzables** i modulars
-- **SEO optimitzat** amb metadata completa
 - **Accessibilitat** millorada amb ARIA labels
 - **Disseny responsive** per a tots els dispositius
-- **Imatges optimitzades** amb Next.js Image
+- **Imatges optimitzades** amb Next.js Image (sizes, lazy loading, alt texts descriptius)
 - **Animacions suaus** amb CSS i Tailwind
+- **Blog integrat** amb DecapCMS i Markdown
+- **PWA ready** amb manifest optimitzat
 
 ## 🛠️ Tecnologies
 
-- [Next.js 14](https://nextjs.org/) - Framework React
-- [React 18](https://reactjs.org/) - Biblioteca UI
-- [TypeScript](https://www.typescriptlang.org/) - Llenguatge tipat
+- [Next.js 16.1.0](https://nextjs.org/) - Framework React amb App Router
+- [React 19.2.3](https://reactjs.org/) - Biblioteca UI
+- [TypeScript 5.9.3](https://www.typescriptlang.org/) - Llenguatge tipat
+- [next-intl 4.6.1](https://next-intl-docs.vercel.app/) - Internacionalització
 - [TailwindCSS](https://tailwindcss.com/) - Framework CSS utility-first
-- [Heroicons](https://heroicons.com/) - Icones SVG
-- [Inter Font](https://fonts.google.com/specimen/Inter) - Tipografia moderna
+- [Lucide React](https://lucide.dev/) - Icones SVG
+- [Inter Font](https://fonts.google.com/specimen/Inter) - Tipografia moderna optimitzada
 
 ## 📦 Instal·lació
 
@@ -55,23 +60,34 @@ Una plataforma CRM moderna i responsiva construïda amb Next.js 14 (App Router),
 ## 📂 Estructura del Projecte
 
 ```
-lead-gen-saas-v2/
-├── app/                    # App Router (Next.js 14)
+nextleadin-landing/
+├── app/                    # App Router (Next.js 16)
+│   ├── [locale]/          # Rutes localitzades (ca, es, en)
 │   ├── globals.css        # Estils globals
 │   ├── layout.tsx         # Layout principal
-│   └── page.tsx           # Pàgina principal
+│   ├── robots.ts          # Robots.txt dinàmic
+│   ├── sitemap.ts         # Sitemap dinàmic amb hreflang
+│   └── manifest.ts        # Manifest PWA
 ├── components/             # Components reutilitzables
 │   ├── Header.tsx         # Capçalera amb navegació
 │   ├── Footer.tsx         # Peu de pàgina
 │   ├── HeroSection.tsx    # Secció hero
-│   ├── FeatureCard.tsx    # Targeta de característica
-│   ├── TestimonialCard.tsx# Targeta de testimoni
-│   └── BlogCard.tsx       # Targeta de blog
+│   ├── AIStructuredData.tsx # Structured data per SEO/AEO
+│   ├── BlogJsonLd.tsx     # Schema JSON-LD per articles
+│   └── ...                # Altres components
+├── lib/                   # Utilitats i helpers
+│   ├── seo-metadata.ts    # Generació de metadata SEO
+│   ├── blog.ts            # Funcions per gestionar blog
+│   └── blog-utils.ts      # Utilitats del blog
+├── content/               # Contingut Markdown
+│   └── blog/              # Articles del blog per idioma
 ├── public/                # Assets estàtics
+├── i18n/                  # Configuració internacionalització
 ├── package.json           # Dependències del projecte
 ├── tailwind.config.ts     # Configuració Tailwind
 ├── tsconfig.json          # Configuració TypeScript
-└── next.config.js         # Configuració Next.js
+├── next.config.js         # Configuració Next.js 16
+└── middleware.ts          # Middleware per i18n
 ```
 
 ## 🎨 Components
@@ -120,13 +136,50 @@ El projecte utilitza TailwindCSS amb configuració personalitzada:
 - Animacions personalitzades
 - Classes d'utilitat personalitzades
 
-### SEO
-Metadata completa configurada a `app/layout.tsx`:
-- Open Graph tags
-- Twitter Card
-- Schema markup
-- Meta descriptions
-- Canonical URLs
+### SEO/AEO (Answer Engine Optimization)
+
+Metadata completa i optimitzada per a AI search engines:
+
+- **Metadata API** (`lib/seo-metadata.ts`):
+  - Títols i descripcions AI-friendly
+  - Authors, category, keywords
+  - Twitter Card complet (site, creator)
+  - Directives robots optimitzades
+  - Open Graph tags per a xarxes socials
+
+- **Structured Data** (`components/AIStructuredData.tsx`):
+  - Organization schema
+  - LocalBusiness schema (GEO signals)
+  - SoftwareApplication schema
+  - Product schema amb preus detallats
+  - Review schema amb testimonials
+  - HowTo schema per guies pas a pas
+  - FAQPage schema amb 8+ preguntes per idioma
+  - BreadcrumbList automàtic
+  - WebPage schema per a cada pàgina
+
+- **Blog Schema** (`components/BlogJsonLd.tsx`):
+  - Article schema complet (BlogPosting)
+  - Author i Publisher information complet
+  - Dates optimitzades (published, modified)
+  - MainEntityOfPage millorat amb breadcrumbs
+  - Speakable schema per assistents de veu
+  - Publisher amb contactPoint i foundingDate
+
+- **Robots** (`app/robots.ts`):
+  - Robots.txt dinàmic
+  - Regles de crawl per idiomes
+  - Sitemap automàtic
+
+- **Sitemap** (`app/sitemap.ts`):
+  - Dates reals dels articles
+  - Alternates hreflang automàtics
+  - Priority optimitzada
+
+- **Manifest** (`app/manifest.ts`):
+  - PWA optimitzat
+  - Icons i screenshots
+  - Categories i shortcuts
 
 ### Accessibilitat
 - ARIA labels en tots els elements interactius

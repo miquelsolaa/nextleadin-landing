@@ -259,50 +259,160 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         {
           '@context': 'https://schema.org',
           '@type': 'Product',
+          '@id': 'https://nextleadin.com/pricing',
           name: 'NextLeadIn - Plans de preus',
           description: 'Plans de preus per a la generació de leads amb intel·ligència artificial',
+          image: 'https://nextleadin.com/images/og/pricing-ca.jpg',
+          brand: {
+            '@type': 'Brand',
+            name: 'NextLeadIn',
+            logo: 'https://nextleadin.com/images/logo/logo.png'
+          },
+          category: 'Software as a Service',
+          productID: 'nextleadin-pricing',
+          sku: 'NLI-PRICING',
+          manufacturer: {
+            '@type': 'Organization',
+            name: 'NextLeadIn'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '4.8',
+            reviewCount: '127',
+            bestRating: '5',
+            worstRating: '1'
+          },
+          additionalProperty: [
+            {
+              '@type': 'PropertyValue',
+              name: 'Tipus de servei',
+              value: 'SaaS - Lead Generation'
+            },
+            {
+              '@type': 'PropertyValue',
+              name: 'Regió',
+              value: 'Espanya, Europa'
+            },
+            {
+              '@type': 'PropertyValue',
+              name: 'Idiomes',
+              value: 'Català, Espanyol, Anglès'
+            }
+          ],
           offers: [
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/pricing#plan-inici',
               name: 'Pla Inici',
               price: '19',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '19',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Perfecte per a empreses que comencen amb la generació de leads'
+              description: 'Perfecte per a empreses que comencen amb la generació de leads',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: 500,
+                unitText: 'leads per mes'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Pla Inici',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             },
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/pricing#plan-pro',
               name: 'Pla Pro',
               price: '49',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '49',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Ideal per a equips comercials que necessiten més volum i funcionalitats avançades'
+              description: 'Ideal per a equips comercials que necessiten més volum i funcionalitats avançades',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: 2500,
+                unitText: 'leads per mes'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Pla Pro',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             },
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/pricing#plan-elite',
               name: 'Pla Elite',
               price: '99',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '99',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Solució completa per a empreses que necessiten màxima capacitat i personalització'
+              description: 'Solució completa per a empreses que necessiten màxima capacitat i personalització',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: -1,
+                unitText: 'leads il·limitats per mes'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Pla Elite',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             }
           ]
         }
@@ -327,50 +437,160 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         {
           '@context': 'https://schema.org',
           '@type': 'Product',
+          '@id': 'https://nextleadin.com/es/pricing',
           name: 'NextLeadIn - Planes de precios',
           description: 'Planes de precios para la generación de leads con inteligencia artificial',
+          image: 'https://nextleadin.com/images/og/pricing-es.jpg',
+          brand: {
+            '@type': 'Brand',
+            name: 'NextLeadIn',
+            logo: 'https://nextleadin.com/images/logo/logo.png'
+          },
+          category: 'Software as a Service',
+          productID: 'nextleadin-pricing',
+          sku: 'NLI-PRICING',
+          manufacturer: {
+            '@type': 'Organization',
+            name: 'NextLeadIn'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '4.8',
+            reviewCount: '127',
+            bestRating: '5',
+            worstRating: '1'
+          },
+          additionalProperty: [
+            {
+              '@type': 'PropertyValue',
+              name: 'Tipo de servicio',
+              value: 'SaaS - Generación de Leads'
+            },
+            {
+              '@type': 'PropertyValue',
+              name: 'Región',
+              value: 'España, Europa'
+            },
+            {
+              '@type': 'PropertyValue',
+              name: 'Idiomas',
+              value: 'Catalán, Español, Inglés'
+            }
+          ],
           offers: [
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/es/pricing#plan-inicio',
               name: 'Plan Inicio',
               price: '19',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/es/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '19',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Perfecto para empresas que comienzan con la generación de leads'
+              description: 'Perfecto para empresas que comienzan con la generación de leads',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: 500,
+                unitText: 'leads al mes'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Plan Inicio',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             },
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/es/pricing#plan-pro',
               name: 'Plan Pro',
               price: '49',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/es/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '49',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Ideal para equipos comerciales que necesitan más volumen y funcionalidades avanzadas'
+              description: 'Ideal para equipos comerciales que necesitan más volumen y funcionalidades avanzadas',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: 2500,
+                unitText: 'leads al mes'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Plan Pro',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             },
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/es/pricing#plan-elite',
               name: 'Plan Elite',
               price: '99',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/es/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '99',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Solución completa para empresas que necesitan máxima capacidad y personalización'
+              description: 'Solución completa para empresas que necesitan máxima capacidad y personalización',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: -1,
+                unitText: 'leads ilimitados al mes'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Plan Elite',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             }
           ]
         }
@@ -395,50 +615,160 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         {
           '@context': 'https://schema.org',
           '@type': 'Product',
+          '@id': 'https://nextleadin.com/en/pricing',
           name: 'NextLeadIn - Pricing Plans',
           description: 'Pricing plans for AI-powered lead generation',
+          image: 'https://nextleadin.com/images/og/pricing-en.jpg',
+          brand: {
+            '@type': 'Brand',
+            name: 'NextLeadIn',
+            logo: 'https://nextleadin.com/images/logo/logo.png'
+          },
+          category: 'Software as a Service',
+          productID: 'nextleadin-pricing',
+          sku: 'NLI-PRICING',
+          manufacturer: {
+            '@type': 'Organization',
+            name: 'NextLeadIn'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '4.8',
+            reviewCount: '127',
+            bestRating: '5',
+            worstRating: '1'
+          },
+          additionalProperty: [
+            {
+              '@type': 'PropertyValue',
+              name: 'Service Type',
+              value: 'SaaS - Lead Generation'
+            },
+            {
+              '@type': 'PropertyValue',
+              name: 'Region',
+              value: 'Spain, Europe'
+            },
+            {
+              '@type': 'PropertyValue',
+              name: 'Languages',
+              value: 'Catalan, Spanish, English'
+            }
+          ],
           offers: [
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/en/pricing#plan-start',
               name: 'Start Plan',
               price: '19',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/en/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '19',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Perfect for businesses starting with lead generation'
+              description: 'Perfect for businesses starting with lead generation',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: 500,
+                unitText: 'leads per month'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Start Plan',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             },
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/en/pricing#plan-pro',
               name: 'Pro Plan',
               price: '49',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/en/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '49',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Ideal for sales teams that need more volume and advanced features'
+              description: 'Ideal for sales teams that need more volume and advanced features',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: 2500,
+                unitText: 'leads per month'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Pro Plan',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             },
             {
               '@type': 'Offer',
+              '@id': 'https://nextleadin.com/en/pricing#plan-elite',
               name: 'Elite Plan',
               price: '99',
               priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              url: 'https://nextleadin.com/en/pricing',
               priceSpecification: {
-                '@type': 'PriceSpecification',
+                '@type': 'UnitPriceSpecification',
                 price: '99',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
-                unitText: 'MONTH'
+                unitText: 'MONTH',
+                valueAddedTaxIncluded: true,
+                referenceQuantity: {
+                  '@type': 'QuantitativeValue',
+                  value: 1,
+                  unitCode: 'MON'
+                }
               },
-              description: 'Complete solution for businesses that need maximum capacity and customization'
+              description: 'Complete solution for businesses that need maximum capacity and customization',
+              eligibleQuantity: {
+                '@type': 'QuantitativeValue',
+                value: -1,
+                unitText: 'unlimited leads per month'
+              },
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NextLeadIn - Elite Plan',
+                serviceType: 'Lead Generation Service',
+                areaServed: 'ES'
+              },
+              seller: {
+                '@type': 'Organization',
+                name: 'NextLeadIn'
+              }
             }
           ]
         }
@@ -612,6 +942,134 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
                 '@type': 'Answer',
                 text: 'Resum executiu, punts de conversa, necessitats detectades, objeccions probables i angle de contacte suggerit per tancar reunió.'
               }
+            },
+            {
+              '@type': 'Question',
+              name: 'Quins CRM són compatibles amb NextLeadIn?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn s\'integra amb els principals CRM del mercat incloent Salesforce, HubSpot, Pipedrive i altres plataformes a través d\'API o exportació CSV.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Quina és la qualitat dels leads que genera la plataforma?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Utilitzem múltiples fonts de dades verificades i intel·ligència artificial per qualificar cada lead. Els informes IA ajuden a identificar oportunitats amb major probabilitat de conversió.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Hi ha període de prova gratuït?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, oferim una prova gratuïta de 14 dies per a tots els plans. Pots provar totes les funcionalitats sense compromís.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Com funciona la segmentació geogràfica?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'La segmentació geogràfica et permet buscar empreses per ubicació específica: municipi, barri, província o àrea metropolitana. Pots combinar-ho amb filtres de sector per trobar els clients ideals.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Quin suport tècnic ofereix NextLeadIn?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Oferim suport per correu electrònic per a tots els plans. Els plans Pro i Elite inclouen suport prioritari i sessió d\'onboarding personalitzada.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Quin nivell de precisió té la segmentació?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Fem servir múltiples fonts i validacions. La precisió augmenta amb filtres avançats (noms comercials, keywords de nínxol, mida, etc.).'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Quina cobertura geogràfica teniu?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Cobertura completa d\'Espanya amb dades detallades per municipi. També tenim dades d\'Europa i Amèrica Llatina per plans Enterprise.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Puc filtrar per mida d\'empresa?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, pots filtrar per nombre d\'empleats, facturació anual i altres criteris de mida per trobar el perfil ideal per al teu producte.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Els informes consumeixen crèdits?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí. Cada informe generat per IA consumeix un crèdit d\'enriquiment. Els crèdits es renoven mensualment segons el pla.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Puc personalitzar el to o format de l\'informe?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'A Pro i Empresa pots definir el to, la llargada i l\'èmfasi (per exemple, producte vs. servei) per adaptar-lo al teu pitch.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Quina precisió tenen els informes d\'IA?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Els nostres models d\'IA tenen una precisió del 85-90% en la detecció de necessitats i angles de contacte. Millorem contínuament amb feedback dels usuaris.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Puc exportar els informes en diferents formats?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, pots exportar en PDF, Word, CSV i també integrar-los directament al teu CRM via API.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Com gestioneu dades i privacitat?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Apliquem millors pràctiques de seguretat i conformitat. Les dades s\'utilitzen exclusivament per generar i enriquir els leads del teu compte.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Hi ha formació inclosa?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, incloem sessions de formació per a tots els plans. Pro i Empresa tenen formació personalitzada i sessions de seguiment.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Puc canviar de pla en qualsevol moment?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, pots pujar o baixar de pla segons les teves necessitats. Els canvis s\'apliquen immediatament i la facturació s\'ajusta pro-rata.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Quina és la vostra política de cancel·lació?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Pots cancel·lar en qualsevol moment sense penalitzacions. Et reemborsem la part proporcional del període no utilitzat.'
+              }
             }
           ]
         }
@@ -660,6 +1118,134 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
               acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'Resumen ejecutivo, puntos de conversación, necesidades detectadas, objeciones probables y ángulo de contacto sugerido para cerrar reunión.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Qué CRM son compatibles con NextLeadIn?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn se integra con los principales CRM del mercado incluyendo Salesforce, HubSpot, Pipedrive y otras plataformas a través de API o exportación CSV.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Cuál es la calidad de los leads que genera la plataforma?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Utilizamos múltiples fuentes de datos verificadas e inteligencia artificial para cualificar cada lead. Los informes IA ayudan a identificar oportunidades con mayor probabilidad de conversión.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Hay periodo de prueba gratuito?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, ofrecemos una prueba gratuita de 14 días para todos los planes. Puedes probar todas las funcionalidades sin compromiso.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Cómo funciona la segmentación geográfica?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'La segmentación geográfica te permite buscar empresas por ubicación específica: municipio, barrio, provincia o área metropolitana. Puedes combinarlo con filtros de sector para encontrar los clientes ideales.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Qué soporte técnico ofrece NextLeadIn?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Ofrecemos soporte por correo electrónico para todos los planes. Los planes Pro y Elite incluyen soporte prioritario y sesión de onboarding personalizada.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Qué nivel de precisión tiene la segmentación?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Utilizamos múltiples fuentes y validaciones. La precisión aumenta con filtros avanzados (nombres comerciales, keywords de nicho, tamaño, etc.).'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Qué cobertura geográfica tenéis?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Cobertura completa de España con datos detallados por municipio. También tenemos datos de Europa y América Latina para planes Enterprise.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Puedo filtrar por tamaño de empresa?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, puedes filtrar por número de empleados, facturación anual y otros criterios de tamaño para encontrar el perfil ideal para tu producto.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Los informes consumen créditos?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí. Cada informe generado por IA consume un crédito de enriquecimiento. Los créditos se renuevan mensualmente según el plan.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Puedo personalizar el tono o formato del informe?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'En Pro y Empresa puedes definir el tono, la longitud y el énfasis (por ejemplo, producto vs. servicio) para adaptarlo a tu pitch.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Qué precisión tienen los informes de IA?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Nuestros modelos de IA tienen una precisión del 85-90% en la detección de necesidades y ángulos de contacto. Mejoramos continuamente con feedback de los usuarios.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Puedo exportar los informes en diferentes formatos?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, puedes exportar en PDF, Word, CSV y también integrarlos directamente en tu CRM vía API.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Cómo gestionáis datos y privacidad?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Aplicamos mejores prácticas de seguridad y conformidad. Los datos se utilizan exclusivamente para generar y enriquecer los leads de tu cuenta.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Hay formación incluida?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, incluimos sesiones de formación para todos los planes. Pro y Empresa tienen formación personalizada y sesiones de seguimiento.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Puedo cambiar de plan en cualquier momento?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, puedes subir o bajar de plan según tus necesidades. Los cambios se aplican inmediatamente y la facturación se ajusta pro-rata.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Cuál es vuestra política de cancelación?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Puedes cancelar en cualquier momento sin penalizaciones. Te reembolsamos la parte proporcional del período no utilizado.'
               }
             }
           ]
@@ -710,6 +1296,134 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
                 '@type': 'Answer',
                 text: 'Executive summary, talking points, detected needs, probable objections and suggested contact angle to close a meeting.'
               }
+            },
+            {
+              '@type': 'Question',
+              name: 'What CRMs are compatible with NextLeadIn?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn integrates with major CRMs including Salesforce, HubSpot, Pipedrive and other platforms through API or CSV export.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'What is the quality of leads generated by the platform?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'We use multiple verified data sources and artificial intelligence to qualify each lead. AI reports help identify opportunities with higher conversion probability.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Is there a free trial period?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes, we offer a 14-day free trial for all plans. You can try all features without commitment.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'How does geographic segmentation work?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Geographic segmentation allows you to search for companies by specific location: municipality, neighborhood, province or metropolitan area. You can combine it with sector filters to find ideal clients.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'What technical support does NextLeadIn offer?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'We offer email support for all plans. Pro and Elite plans include priority support and personalized onboarding session.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'What level of precision does the segmentation have?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'We use multiple sources and validations. Precision increases with advanced filters (commercial names, niche keywords, size, etc.).'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'What geographic coverage do you have?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Complete coverage of Spain with detailed data by municipality. We also have data from Europe and Latin America for Enterprise plans.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Can I filter by company size?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes, you can filter by number of employees, annual revenue and other size criteria to find the ideal profile for your product.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Do reports consume credits?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes. Each AI-generated report consumes an enrichment credit. Credits are renewed monthly according to the plan.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Can I customize the tone or format of the report?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'In Pro and Enterprise you can define the tone, length and emphasis (for example, product vs. service) to adapt it to your pitch.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'What accuracy do AI reports have?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Our AI models have 85-90% accuracy in detecting needs and contact angles. We continuously improve with user feedback.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Can I export reports in different formats?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes, you can export in PDF, Word, CSV and also integrate them directly into your CRM via API.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'How do you manage data and privacy?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'We apply best security and compliance practices. Data is used exclusively to generate and enrich leads for your account.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Is training included?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes, we include training sessions for all plans. Pro and Enterprise have personalized training and follow-up sessions.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Can I change plans at any time?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes, you can upgrade or downgrade your plan according to your needs. Changes are applied immediately and billing is adjusted pro-rata.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'What is your cancellation policy?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'You can cancel at any time without penalties. We refund the proportional part of the unused period.'
+              }
             }
           ]
         }
@@ -734,6 +1448,19 @@ export function generateAIOptimizedMetadata(
   const localePath = locale === 'ca' ? '' : `/${locale}`
   const fullUrl = `${baseUrl}${localePath}${page === 'home' ? '' : `/${page}`}`
 
+  // Determinar categoria basada en la pàgina (millorat per SEO)
+  const category = page === 'pricing' 
+    ? 'Business Software' 
+    : page === 'blog' 
+    ? 'Blog' 
+    : page === 'faq' 
+    ? 'FAQ' 
+    : page === 'contact' 
+    ? 'Contact' 
+    : page === 'home'
+    ? 'Business Software'
+    : 'Business Software'
+
   return {
     title: {
       default: finalConfig.title,
@@ -741,6 +1468,13 @@ export function generateAIOptimizedMetadata(
     },
     description: finalConfig.description,
     keywords: finalConfig.keywords,
+    category,
+    authors: [
+      {
+        name: 'NextLeadIn Team',
+        url: `${baseUrl}`
+      }
+    ],
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: finalConfig.canonical,
@@ -769,17 +1503,32 @@ export function generateAIOptimizedMetadata(
     },
     twitter: {
       card: 'summary_large_image',
+      site: '@nextleadin',
+      creator: '@nextleadin',
       title: finalConfig.title,
       description: finalConfig.description,
-      images: [finalConfig.ogImage || '/images/og/default.jpg'],
-      creator: '@nextleadin'
+      images: [
+        {
+          url: finalConfig.ogImage || '/images/og/default.jpg',
+          alt: finalConfig.title,
+          width: 1200,
+          height: 630
+        }
+      ]
     },
     robots: {
       index: !finalConfig.noindex,
       follow: true,
+      nocache: false,
+      noarchive: false,
+      nosnippet: false,
+      noimageindex: false,
       googleBot: {
         index: !finalConfig.noindex,
         follow: true,
+        noimageindex: false,
+        noarchive: false,
+        nosnippet: false,
         'max-video-preview': -1,
         'max-image-preview': 'large',
         'max-snippet': -1

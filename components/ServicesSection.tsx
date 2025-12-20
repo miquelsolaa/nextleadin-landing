@@ -179,10 +179,12 @@ const ServicesSection = () => {
             <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
               <Image
                 src={service.image}
-                alt={`${service.title} dashboard interface`}
+                alt={`${service.title} - Interfície del panell de control i funcionalitats`}
                 width={550}
                 height={385}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 550px"
                 className="w-full h-auto rounded-xl shadow-2xl"
+                loading="lazy"
               />
             </div>
           </div>

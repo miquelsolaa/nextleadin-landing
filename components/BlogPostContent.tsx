@@ -78,8 +78,9 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
           <div className="relative w-full h-64 lg:h-96 mb-8 rounded-lg overflow-hidden">
             <Image
               src={post.image}
-              alt={post.title}
+              alt={`${post.title} - Imatge destacada de l'article`}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
               className="object-cover"
               priority
             />

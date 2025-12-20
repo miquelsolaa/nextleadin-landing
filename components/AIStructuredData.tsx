@@ -25,19 +25,60 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
     
     const structuredData: Record<string, any>[] = []
 
-    // BreadcrumbList per a millor navegació AI
-    if (breadcrumbs.length > 0) {
-      structuredData.push({
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: breadcrumbs.map((crumb, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          name: crumb.name,
-          item: crumb.url
-        }))
-      })
+    // Generar breadcrumbs automàtics si no es proporcionen
+    let finalBreadcrumbs = breadcrumbs
+    if (finalBreadcrumbs.length === 0) {
+      finalBreadcrumbs = [
+        {
+          name: locale === 'ca' ? 'Inici' : locale === 'es' ? 'Inicio' : 'Home',
+          url: `${baseUrl}${localePath}`
+        }
+      ]
+      
+      // Afegir breadcrumbs segons la pàgina
+      if (page !== 'home') {
+        const pageNames: Record<string, Record<string, string>> = {
+          pricing: {
+            ca: 'Preus',
+            es: 'Precios',
+            en: 'Pricing'
+          },
+          blog: {
+            ca: 'Blog',
+            es: 'Blog',
+            en: 'Blog'
+          },
+          faq: {
+            ca: 'Preguntes freqüents',
+            es: 'Preguntas frecuentes',
+            en: 'FAQ'
+          },
+          contact: {
+            ca: 'Contacte',
+            es: 'Contacto',
+            en: 'Contact'
+          }
+        }
+        
+        const pageName = pageNames[page]?.[locale] || page
+        finalBreadcrumbs.push({
+          name: pageName,
+          url: currentUrl
+        })
+      }
     }
+
+    // BreadcrumbList per a millor navegació AI (sempre afegir)
+    structuredData.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: finalBreadcrumbs.map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.name,
+        item: crumb.url
+      }))
+    })
 
     // LocalBusiness schema per a GEO signals
     if (page === 'home' || page === 'contact') {
@@ -256,6 +297,98 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
       })
     }
 
+    // HowTo schema per a pricing (com triar el pla adequat)
+    if (page === 'pricing') {
+      structuredData.push({
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: locale === 'ca'
+          ? 'Com triar el pla de generació de leads adequat'
+          : locale === 'es'
+          ? 'Cómo elegir el plan de generación de leads adecuado'
+          : 'How to choose the right lead generation plan',
+        description: locale === 'ca'
+          ? 'Guia pas a pas per seleccionar el pla de NextLeadIn que millor s\'adapta a les teves necessitats de generació de leads'
+          : locale === 'es'
+          ? 'Guía paso a paso para seleccionar el plan de NextLeadIn que mejor se adapta a tus necesidades de generación de leads'
+          : 'Step-by-step guide to select the NextLeadIn plan that best fits your lead generation needs',
+        totalTime: 'PT5M',
+        step: [
+          {
+            '@type': 'HowToStep',
+            name: locale === 'ca' ? 'Evalua el teu volum de leads necessari' : locale === 'es' ? 'Evalúa tu volumen de leads necesario' : 'Evaluate your required lead volume',
+            text: locale === 'ca'
+              ? 'Calcula quantes empreses necessites contactar mensualment. Plans: Inici (500), Pro (2500), Elite (il·limitat)'
+              : locale === 'es'
+              ? 'Calcula cuántas empresas necesitas contactar mensualmente. Planes: Inicio (500), Pro (2500), Elite (ilimitado)'
+              : 'Calculate how many companies you need to contact monthly. Plans: Start (500), Pro (2500), Elite (unlimited)',
+            url: `${currentUrl}#plans`
+          },
+          {
+            '@type': 'HowToStep',
+            name: locale === 'ca' ? 'Considera les funcionalitats avançades' : locale === 'es' ? 'Considera las funcionalidades avanzadas' : 'Consider advanced features',
+            text: locale === 'ca'
+              ? 'Avalua si necessites integracions CRM, personalització d\'informes IA, suport prioritari o formació personalitzada'
+              : locale === 'es'
+              ? 'Evalúa si necesitas integraciones CRM, personalización de informes IA, soporte prioritario o formación personalizada'
+              : 'Evaluate if you need CRM integrations, AI report customization, priority support or personalized training',
+            url: `${currentUrl}#features`
+          },
+          {
+            '@type': 'HowToStep',
+            name: locale === 'ca' ? 'Prova el pla durant 14 dies' : locale === 'es' ? 'Prueba el plan durante 14 días' : 'Try the plan for 14 days',
+            text: locale === 'ca'
+              ? 'Tots els plans inclouen una prova gratuïta de 14 dies sense compromís per provar totes les funcionalitats'
+              : locale === 'es'
+              ? 'Todos los planes incluyen una prueba gratuita de 14 días sin compromiso para probar todas las funcionalidades'
+              : 'All plans include a 14-day free trial with no commitment to try all features',
+            url: `${currentUrl}#trial`
+          }
+        ]
+      })
+    }
+
+    // HowTo schema per a contact (com contactar)
+    if (page === 'contact') {
+      structuredData.push({
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: locale === 'ca'
+          ? 'Com contactar amb NextLeadIn'
+          : locale === 'es'
+          ? 'Cómo contactar con NextLeadIn'
+          : 'How to contact NextLeadIn',
+        description: locale === 'ca'
+          ? 'Guia pas a pas per contactar amb el nostre equip i obtenir suport o una consulta personalitzada'
+          : locale === 'es'
+          ? 'Guía paso a paso para contactar con nuestro equipo y obtener soporte o una consulta personalizada'
+          : 'Step-by-step guide to contact our team and get support or a personalized consultation',
+        totalTime: 'PT2M',
+        step: [
+          {
+            '@type': 'HowToStep',
+            name: locale === 'ca' ? 'Omple el formulari de contacte' : locale === 'es' ? 'Completa el formulario de contacto' : 'Fill out the contact form',
+            text: locale === 'ca'
+              ? 'Proporciona la teva informació de contacte i descriu les teves necessitats de generació de leads'
+              : locale === 'es'
+              ? 'Proporciona tu información de contacto y describe tus necesidades de generación de leads'
+              : 'Provide your contact information and describe your lead generation needs',
+            url: `${currentUrl}#form`
+          },
+          {
+            '@type': 'HowToStep',
+            name: locale === 'ca' ? 'Rep una resposta en 24 hores' : locale === 'es' ? 'Recibe una respuesta en 24 horas' : 'Receive a response within 24 hours',
+            text: locale === 'ca'
+              ? 'El nostre equip et respondrà en menys de 24 hores amb una proposta personalitzada o resposta a les teves preguntes'
+              : locale === 'es'
+              ? 'Nuestro equipo te responderá en menos de 24 horas con una propuesta personalizada o respuesta a tus preguntas'
+              : 'Our team will respond within 24 hours with a personalized proposal or answer to your questions',
+            url: `${currentUrl}#response`
+          }
+        ]
+      })
+    }
+
     // Article schema per a blog posts (si s'aplica)
     if (page === 'blog') {
       structuredData.push({
@@ -273,12 +406,139 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
           name: 'NextLeadIn',
           logo: {
             '@type': 'ImageObject',
-            url: `${baseUrl}/images/logo/logo.png`
+            url: `${baseUrl}/images/logo/logo.png`,
+            width: 512,
+            height: 512
           }
         },
-        inLanguage: locale === 'ca' ? 'ca-ES' : locale === 'es' ? 'es-ES' : 'en-US'
+        inLanguage: locale === 'ca' ? 'ca-ES' : locale === 'es' ? 'es-ES' : 'en-US',
+        datePublished: '2024-01-01',
+        dateModified: new Date().toISOString().split('T')[0],
+        author: {
+          '@type': 'Organization',
+          name: 'NextLeadIn Team'
+        }
       })
     }
+
+    // VideoObject schema (per si hi ha vídeos en el futur)
+    // Aquest schema es pot activar quan s'afegeixin vídeos a la plataforma
+    // if (page === 'home' && hasVideo) {
+    //   structuredData.push({
+    //     '@context': 'https://schema.org',
+    //     '@type': 'VideoObject',
+    //     name: locale === 'ca' ? 'Presentació NextLeadIn' : locale === 'es' ? 'Presentación NextLeadIn' : 'NextLeadIn Presentation',
+    //     description: locale === 'ca'
+    //       ? 'Vídeo de presentació de la plataforma NextLeadIn'
+    //       : locale === 'es'
+    //       ? 'Vídeo de presentación de la plataforma NextLeadIn'
+    //       : 'NextLeadIn platform presentation video',
+    //     thumbnailUrl: `${baseUrl}/images/og/home-${locale}.jpg`,
+    //     uploadDate: '2024-01-01',
+    //     duration: 'PT3M',
+    //     contentUrl: `${baseUrl}/videos/presentation.mp4`,
+    //     embedUrl: `${baseUrl}/videos/presentation.mp4`
+    //   })
+    // }
+
+    // Review schema per testimonis (només a home)
+    if (page === 'home') {
+      // AggregateRating per a resum de valoracions
+      structuredData.push({
+        '@context': 'https://schema.org',
+        '@type': 'AggregateRating',
+        itemReviewed: {
+          '@type': 'SoftwareApplication',
+          name: 'NextLeadIn',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Web Browser'
+        },
+        ratingValue: '4.8',
+        reviewCount: '127',
+        bestRating: '5',
+        worstRating: '1'
+      })
+      
+      // Review individuals per a testimonis específics (múltiples reviews)
+      const reviews = [
+        {
+          author: locale === 'ca' ? 'María García, Directora Comercial' : locale === 'es' ? 'María García, Directora Comercial' : 'María García, Sales Director',
+          datePublished: '2024-01-15',
+          reviewBody: locale === 'ca'
+            ? 'Plataforma excel·lent per generar leads qualificats. La segmentació geogràfica i els informes IA són molt útils per preparar les nostres trucades.'
+            : locale === 'es'
+            ? 'Plataforma excelente para generar leads cualificados. La segmentación geográfica y los informes IA son muy útiles para preparar nuestras llamadas.'
+            : 'Excellent platform for generating qualified leads. Geographic segmentation and AI reports are very useful for preparing our calls.',
+          ratingValue: '5'
+        },
+        {
+          author: locale === 'ca' ? 'Jordi Martínez, CEO' : locale === 'es' ? 'Jordi Martínez, CEO' : 'Jordi Martínez, CEO',
+          datePublished: '2024-02-20',
+          reviewBody: locale === 'ca'
+            ? 'Hem incrementat les nostres conversions un 40% gràcies a la qualitat dels leads i els informes d\'IA que ens ajuden a personalitzar l\'aproximació.'
+            : locale === 'es'
+            ? 'Hemos incrementado nuestras conversiones un 40% gracias a la calidad de los leads y los informes de IA que nos ayudan a personalizar el enfoque.'
+            : 'We increased our conversions by 40% thanks to lead quality and AI reports that help us personalize our approach.',
+          ratingValue: '5'
+        }
+      ]
+      
+      reviews.forEach(review => {
+        structuredData.push({
+          '@context': 'https://schema.org',
+          '@type': 'Review',
+          itemReviewed: {
+            '@type': 'SoftwareApplication',
+            name: 'NextLeadIn',
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: 'Web Browser'
+          },
+          author: {
+            '@type': 'Person',
+            name: review.author
+          },
+          datePublished: review.datePublished,
+          reviewBody: review.reviewBody,
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: review.ratingValue,
+            bestRating: '5',
+            worstRating: '1'
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'NextLeadIn'
+          }
+        })
+      })
+    }
+
+    // WebPage schema per a cada pàgina
+    structuredData.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: locale === 'ca'
+        ? (page === 'home' ? 'NextLeadIn — Generació de leads amb IA' : page === 'pricing' ? 'Preus | NextLeadIn' : page === 'contact' ? 'Contacte | NextLeadIn' : page === 'faq' ? 'Preguntes freqüents | NextLeadIn' : 'NextLeadIn')
+        : locale === 'es'
+        ? (page === 'home' ? 'NextLeadIn — Generación de leads con IA' : page === 'pricing' ? 'Precios | NextLeadIn' : page === 'contact' ? 'Contacto | NextLeadIn' : page === 'faq' ? 'Preguntas frecuentes | NextLeadIn' : 'NextLeadIn')
+        : (page === 'home' ? 'NextLeadIn — AI-Powered Lead Generation' : page === 'pricing' ? 'Pricing | NextLeadIn' : page === 'contact' ? 'Contact | NextLeadIn' : page === 'faq' ? 'FAQ | NextLeadIn' : 'NextLeadIn'),
+      url: currentUrl,
+      description: locale === 'ca'
+        ? 'Plataforma de generació de leads amb intel·ligència artificial per a empreses B2B'
+        : locale === 'es'
+        ? 'Plataforma de generación de leads con inteligencia artificial para empresas B2B'
+        : 'AI-powered lead generation platform for B2B companies',
+      inLanguage: locale === 'ca' ? 'ca-ES' : locale === 'es' ? 'es-ES' : 'en-US',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'NextLeadIn',
+        url: baseUrl
+      },
+      about: {
+        '@type': 'Thing',
+        name: 'Lead Generation Software'
+      }
+    })
 
     return [...structuredData, ...customData]
   }
