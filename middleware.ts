@@ -13,14 +13,20 @@ export default function(request: NextRequest) {
     return NextResponse.next()
   }
   
+  // Excloure sitemap.xml del processament d'i18n
+  if (request.nextUrl.pathname === '/sitemap.xml') {
+    console.log('🔍 Middleware - Skipping i18n for /sitemap.xml route')
+    return NextResponse.next()
+  }
+  
   console.log('🔍 Middleware - Locale from URL:', request.nextUrl.pathname.split('/')[1])
   return intlMiddleware(request)
 }
 
 export const config = {
   matcher: [
-    // Exclou API, _next, _vercel, admin i QUALSSEVOL camí amb extensió (.*\..*) per no interceptar imatges, SVG, manifest, etc.
-    '/((?!api|_next|_vercel|admin|.*\\..*).*)'
+    // Exclou API, _next, _vercel, admin, sitemap.xml i QUALSSEVOL camí amb extensió (.*\..*) per no interceptar imatges, SVG, manifest, etc.
+    '/((?!api|_next|_vercel|admin|sitemap\\.xml|.*\\..*).*)'
   ]
 }
 

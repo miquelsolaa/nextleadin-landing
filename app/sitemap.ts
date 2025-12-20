@@ -1,8 +1,9 @@
+import { MetadataRoute } from 'next'
 import { getAllPostSlugs, getBlogPostUrl, getAllPosts, type Locale } from '@/lib/blog'
 
 export const dynamic = 'force-static'
 
-export default function sitemap() {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nextleadin.com'
   const allPostSlugs = getAllPostSlugs()
   
@@ -13,24 +14,11 @@ export default function sitemap() {
     en: getAllPosts('en')
   }
 
-  // Generar URLs per als articles del blog amb dates reals i hreflang
+  // Generar URLs per als articles del blog amb dates reals
   const blogUrls = allPostSlugs.map(({ slug, locale }) => {
     const post = allPosts[locale as Locale]?.find(p => p.slug === slug)
     const postDate = post?.date ? new Date(post.date) : new Date()
     
-    // Generar alternates per hreflang
-    const alternates: Record<string, string> = {}
-    const locales: Locale[] = ['ca', 'es', 'en']
-    
-    locales.forEach(loc => {
-      const altPost = allPosts[loc]?.find(p => p.slug === slug)
-      if (altPost) {
-        const localePath = loc === 'ca' ? '' : `/${loc}`
-        alternates[loc === 'ca' ? 'ca-ES' : loc === 'es' ? 'es-ES' : 'en-US'] = 
-          `${baseUrl}${localePath}${getBlogPostUrl(slug, loc)}`
-      }
-    })
-
     // Calcular priority basat en l'antiguitat del post (posts més recents tenen més priority)
     const daysSincePublished = Math.floor((Date.now() - postDate.getTime()) / (1000 * 60 * 60 * 24))
     const priority = daysSincePublished < 30 ? 0.8 : daysSincePublished < 90 ? 0.7 : 0.6
@@ -40,13 +28,10 @@ export default function sitemap() {
       lastModified: postDate,
       changeFrequency: 'monthly' as const,
       priority,
-      alternates: Object.keys(alternates).length > 0 ? {
-        languages: alternates
-      } : undefined,
     }
   })
 
-  // Generar URLs per a cada idioma amb hreflang
+  // Generar URLs per a cada idioma
   const localePaths = [
     { locale: '', lang: 'ca-ES' },
     { locale: '/en', lang: 'en-US' },
@@ -64,71 +49,19 @@ export default function sitemap() {
     { path: '/cookie-policy', priority: 0.2, changeFrequency: 'yearly' as const },
   ]
 
-  // Generar URLs per a cada pàgina i idioma amb hreflang alternates
+  // Generar URLs per a cada pàgina i idioma
   const staticUrls = pages.flatMap(page => 
-    localePaths.map(({ locale, lang }) => {
-      const alternates: Record<string, string> = {}
-      localePaths.forEach(({ locale: altLocale, lang: altLang }) => {
-        alternates[altLang] = `${baseUrl}${altLocale}${page.path}`
-      })
-
-      return {
-        url: `${baseUrl}${locale}${page.path}`,
-        lastModified: new Date(), // Pàgines estàtiques - usar data actual
-        changeFrequency: page.changeFrequency,
-        priority: page.priority,
-        alternates: {
-          languages: alternates
-        }
-      }
-    })
+    localePaths.map(({ locale }) => ({
+      url: `${baseUrl}${locale}${page.path}`,
+      lastModified: new Date(),
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+    }))
   )
 
-  const allUrls = [
+  return [
     ...staticUrls,
     ...blogUrls,
   ]
-
-  // Generar XML manualment amb format correcte
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${allUrls.map(url => {
-    const lastMod = url.lastModified.toISOString().split('T')[0]
-    const priority = url.priority.toFixed(1)
-    const changeFreq = url.changeFrequency
-    
-    let xmlContent = `  <url>
-    <loc>${escapeXml(url.url)}</loc>
-    <lastmod>${lastMod}</lastmod>
-    <changefreq>${changeFreq}</changefreq>
-    <priority>${priority}</priority>`
-    
-    // Afegir hreflang alternates si existeixen
-    if (url.alternates?.languages) {
-      Object.entries(url.alternates.languages).forEach(([lang, href]) => {
-        xmlContent += `\n    <xhtml:link rel="alternate" hreflang="${lang}" href="${escapeXml(href)}" />`
-      })
-    }
-    
-    xmlContent += `\n  </url>`
-    return xmlContent
-  }).join('\n')}
-</urlset>`
-
-  return new Response(xml, {
-    headers: {
-      'Content-Type': 'application/xml; charset=utf-8',
-    },
-  })
 }
 
-// Funció per escapar caràcters especials en XML
-function escapeXml(unsafe: string): string {
-  return unsafe
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
-}
