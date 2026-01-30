@@ -46,7 +46,7 @@ const Footer = () => {
           { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' }
         ]
       },
-      copyright: '© 2025 NextLeadIn. Todos los derechos reservados.',
+      copyright: '© 2026 NextLeadIn. Todos los derechos reservados.',
       legal: {
         terms: 'Términos y condiciones',
         privacy: 'Política de privacidad',
@@ -88,7 +88,7 @@ const Footer = () => {
           { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' }
         ]
       },
-      copyright: '© 2025 NextLeadIn. Tots els drets reservats.',
+      copyright: '© 2026 NextLeadIn. Tots els drets reservats.',
       legal: {
         terms: 'Termes i condicions',
         privacy: 'Política de privacitat',
@@ -130,7 +130,7 @@ const Footer = () => {
           { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' }
         ]
       },
-      copyright: '© 2025 NextLeadIn. All rights reserved.',
+      copyright: '© 2026 NextLeadIn. All rights reserved.',
       legal: {
         terms: 'Terms and conditions',
         privacy: 'Privacy policy',

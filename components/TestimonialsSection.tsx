@@ -87,7 +87,7 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
         {
           content: "Ideal per a SaaS que volen créixer ràpid i captar clients de manera efectiva. Amb NextLeadIn hem passat de contactes dispersos a converses de valor que generen oportunitats reals.",
           author: {
-            name: "Ramon Solà",
+            name: "Agustí Navarro",
             role: "CTO",
             image: '/images/testimonials/ramon.jpg'
           }
@@ -129,7 +129,7 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
         {
           content: "Ideal para SaaS que quieren crecer rápido y captar clientes de manera efectiva. Con NextLeadIn hemos pasado de contactos dispersos a conversaciones de valor que generan oportunidades reales.",
           author: {
-            name: "Ramon Solà",
+            name: "Agustí Navarro",
             role: "CTO",
             image: '/images/testimonials/ramon.jpg'
           }
@@ -171,7 +171,7 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
         {
           content: "Ideal for SaaS companies looking to grow quickly and attract clients effectively. With NextLeadIn, we moved from scattered leads to valuable conversations that generate real opportunities.",
           author: {
-            name: "Ramon Solà",
+            name: "Agustí Navarro",
             role: "CTO",
             image: '/images/testimonials/ramon.jpg'
           }

@@ -5,7 +5,6 @@ import AIStructuredData from '@/components/AIStructuredData'
 import Image from 'next/image'
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
-import { getTranslations } from 'next-intl/server'
 import { pricingPlans, faqData } from '@/lib/pricing-data'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 import type { Metadata } from 'next'
@@ -19,59 +18,157 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const t = await getTranslations('pages.pricing')
-  
   // Validar que el locale sigui vàlid
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
   
   // Textos multiidioma per a la pàgina
   const pageTexts = {
     ca: {
-      heroTitle: 'Preus que s\'adapten al teu creixement',
-      heroSubtitle: 'Tria el volum de leads i el nivell d\'IA que necessites. Comença petit i creix sense límits.',
+      heroKicker: 'Prova gratuïta de 14 dies',
+      heroTitle: 'Plans dissenyats per tancar més negocis, més ràpid',
+      heroSubtitle: 'Sense compromís: pots canviar de pla en qualsevol moment.',
+      heroNote: 'Facturació mensual o anual · Estalvia fins al 42 % amb l\'anual',
       breadcrumbHome: 'Inici',
       breadcrumb: 'Preus',
       compare: 'Compara plans',
-      compareSubtitle: 'Funcionalitats i límits adaptats a cada etapa del teu creixement.',
+      compareSubtitle: 'Funcionalitats clau per a cada etapa del teu equip comercial.',
+      addOnsTitle: 'Completa el teu pla amb complements',
+      addOnsSubtitle: 'Afegeix funcionalitats especialitzades quan les necessitis.',
       faqTitle: 'Preguntes freqüents',
-      faqSubtitle: 'Preus, límits i tecnologia IA',
-      faqDescription: 'Tot el que cal per decidir el teu pla i posar en marxa el teu pipeline.',
+      faqSubtitle: 'Preus, facturació i complements',
+      faqDescription: 'Tot el que cal saber abans de començar la prova gratuïta.',
+      ctaEyebrow: 'Uneix-te als experts en vendes',
       ctaTitle: 'Multiplica els teus leads qualificats',
-      ctaDescription: 'Segmentació precisa, informes amb IA i integracions per accelerar trucades i reunions. Estalvia temps i tanca més oportunitats.',
-      ctaButton1: 'Comença ara',
+      ctaDescription: 'Automatitza seguiments, ordena el pipeline i converteix més oportunitats en reunions.',
+      ctaButton1: 'Prova-ho gratis',
       ctaButton2: 'Parla amb vendes'
     },
     es: {
-      heroTitle: 'Precios que se adaptan a tu crecimiento',
-      heroSubtitle: 'Elige el volumen de leads y el nivel de IA que necesitas. Comienza pequeño y crece sin límites.',
+      heroKicker: 'Prueba gratuita de 14 días',
+      heroTitle: 'Planes diseñados para cerrar más negocios, más rápido',
+      heroSubtitle: 'Sin compromiso: puedes cambiar de plan en cualquier momento.',
+      heroNote: 'Facturación mensual o anual · Ahorra hasta un 42 % con la anual',
       breadcrumbHome: 'Inicio',
       breadcrumb: 'Precios',
       compare: 'Compara planes',
-      compareSubtitle: 'Funcionalidades y límites adaptados a cada etapa de tu crecimiento.',
+      compareSubtitle: 'Funcionalidades clave para cada etapa de tu equipo comercial.',
+      addOnsTitle: 'Completa tu plan con complementos',
+      addOnsSubtitle: 'Añade funcionalidades especializadas cuando las necesites.',
       faqTitle: 'Preguntas frecuentes',
-      faqSubtitle: 'Precios, límites y tecnología IA',
-      faqDescription: 'Todo lo que necesitas para decidir tu plan y poner en marcha tu pipeline.',
+      faqSubtitle: 'Precios, facturación y complementos',
+      faqDescription: 'Todo lo que necesitas saber antes de iniciar la prueba gratuita.',
+      ctaEyebrow: 'Únete a los expertos en ventas',
       ctaTitle: 'Multiplica tus leads cualificados',
-      ctaDescription: 'Segmentación precisa, informes con IA e integraciones para acelerar llamadas y reuniones. Ahorra tiempo y cierra más oportunidades.',
-      ctaButton1: 'Comenzar ahora',
+      ctaDescription: 'Automatiza seguimientos, ordena el pipeline y convierte más oportunidades en reuniones.',
+      ctaButton1: 'Pruébalo gratis',
       ctaButton2: 'Habla con ventas'
     },
     en: {
-      heroTitle: 'Pricing that scales with your growth',
-      heroSubtitle: 'Choose the lead volume and AI level you need. Start small and grow without limits.',
+      heroKicker: '14-day free trial',
+      heroTitle: 'Plans designed to close more deals, faster',
+      heroSubtitle: 'No commitment: change plans anytime.',
+      heroNote: 'Monthly or annual billing · Save up to 42% with annual',
       breadcrumbHome: 'Home',
       breadcrumb: 'Pricing',
       compare: 'Compare plans',
-      compareSubtitle: 'Features and limits adapted to each stage of your growth.',
+      compareSubtitle: 'Key features for every stage of your sales team.',
+      addOnsTitle: 'Complete your plan with add-ons',
+      addOnsSubtitle: 'Add specialized capabilities when you need them.',
       faqTitle: 'Frequently asked questions',
-      faqSubtitle: 'Pricing, limits and AI technology',
-      faqDescription: 'Everything you need to decide on your plan and get your pipeline running.',
+      faqSubtitle: 'Pricing, billing and add-ons',
+      faqDescription: 'Everything you need to know before starting your free trial.',
+      ctaEyebrow: 'Join sales experts',
       ctaTitle: 'Multiply your qualified leads',
-      ctaDescription: 'Precise segmentation, AI reports and integrations to accelerate calls and meetings. Save time and close more opportunities.',
-      ctaButton1: 'Start now',
+      ctaDescription: 'Automate follow-ups, organize your pipeline and convert more opportunities into meetings.',
+      ctaButton1: 'Try free',
       ctaButton2: 'Talk to sales'
     }
   }
+
+  const addOns = {
+    ca: [
+      {
+        title: 'LeadBooster',
+        description: 'Captura més prospectes amb formularis, xatbot i prospecció.',
+        price: 'Des de 32,50 €'
+      },
+      {
+        title: 'Projects',
+        description: 'Gestió de projectes per entregar treballs i fer-ne seguiment.',
+        price: 'Des de 6,67 €'
+      },
+      {
+        title: 'Campaigns',
+        description: 'Envia campanyes de màrqueting per email amb segmentació.',
+        price: 'Des de 13,33 €'
+      },
+      {
+        title: 'Web Visitors',
+        description: 'Descobreix qui visita el teu web i prioritza contactes.',
+        price: 'Des de 41 €'
+      },
+      {
+        title: 'Smart Docs',
+        description: 'Gestiona documents i propostes en un sol lloc.',
+        price: 'Des de 32,50 €'
+      }
+    ],
+    es: [
+      {
+        title: 'LeadBooster',
+        description: 'Captura más prospectos con formularios, chatbot y prospección.',
+        price: 'Desde 32,50 €'
+      },
+      {
+        title: 'Projects',
+        description: 'Gestión de proyectos para entregar trabajos y hacer seguimiento.',
+        price: 'Desde 6,67 €'
+      },
+      {
+        title: 'Campaigns',
+        description: 'Envía campañas de marketing por email con segmentación.',
+        price: 'Desde 13,33 €'
+      },
+      {
+        title: 'Web Visitors',
+        description: 'Descubre quién visita tu web y prioriza contactos.',
+        price: 'Desde 41 €'
+      },
+      {
+        title: 'Smart Docs',
+        description: 'Gestiona documentos y propuestas en un solo lugar.',
+        price: 'Desde 32,50 €'
+      }
+    ],
+    en: [
+      {
+        title: 'LeadBooster',
+        description: 'Capture more prospects with forms, chatbot and prospecting.',
+        price: 'From €32.50'
+      },
+      {
+        title: 'Projects',
+        description: 'Project management to deliver work and track outcomes.',
+        price: 'From €6.67'
+      },
+      {
+        title: 'Campaigns',
+        description: 'Send email marketing campaigns with segmentation.',
+        price: 'From €13.33'
+      },
+      {
+        title: 'Web Visitors',
+        description: 'See who visits your website and prioritize contacts.',
+        price: 'From €41'
+      },
+      {
+        title: 'Smart Docs',
+        description: 'Manage documents and proposals in one place.',
+        price: 'From €32.50'
+      }
+    ]
+  }
+
 
   // Breadcrumbs per a SEO
   const breadcrumbs = [
@@ -96,11 +193,17 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
       <section className="pt-32 pb-20 bg-white">
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary-600 mb-4">
+              {pageTexts[validLocale].heroKicker}
+            </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               {pageTexts[validLocale].heroTitle}
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
               {pageTexts[validLocale].heroSubtitle}
+            </p>
+            <p className="text-sm text-gray-500 mt-4">
+              {pageTexts[validLocale].heroNote}
             </p>
           </div>
         </div>
@@ -122,7 +225,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
       {/* Pricing Cards Section */}
       <section className="py-20 bg-gradient-to-br from-primary-50 to-primary-100">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pricingPlans.map((plan, index) => (
               <PricingCard
                 key={plan.id}
@@ -144,6 +247,25 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           </div>
           
           <PricingComparisonTable locale={validLocale} />
+        </div>
+      </section>
+
+      {/* Add-ons Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">{pageTexts[validLocale].addOnsTitle}</h3>
+            <p className="text-xl text-gray-600">{pageTexts[validLocale].addOnsSubtitle}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {addOns[validLocale].map((addOn) => (
+              <div key={addOn.title} className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">{addOn.title}</h4>
+                <p className="text-sm text-gray-600 mb-4">{addOn.description}</p>
+                <p className="text-sm font-semibold text-primary-600">{addOn.price}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -170,7 +292,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h6 className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-4">
-                {pageTexts[validLocale].ctaButton1}
+                {pageTexts[validLocale].ctaEyebrow}
               </h6>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 {pageTexts[validLocale].ctaTitle.split(' ').map((word, index) => 

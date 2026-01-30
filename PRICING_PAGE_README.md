@@ -37,17 +37,18 @@ Aquesta és una pàgina de preus completa i moderna per a la plataforma Sierra C
 `app/pricing/page.tsx`
 
 ### Estructura
-1. **Hero Section**: Títol principal i descripció
+1. **Hero Section**: Títol principal, prova gratuïta i nota de facturació
 2. **Breadcrumb**: Navegació de mig de pa
-3. **Pricing Cards**: Tres plans de preus (Personal, Professional, Empresa)
+3. **Pricing Cards**: Tres plans de preus (Growth, Premium, Ultimate)
 4. **Comparison Table**: Taula detallada de comparació
-5. **FAQ Section**: Preguntes freqüents
-6. **CTA Section**: Call-to-action final
+5. **Add-ons Section**: Complements per ampliar funcionalitats
+6. **FAQ Section**: Preguntes freqüents
+7. **CTA Section**: Call-to-action final
 
 ### Dades dels Plans
-- **Personal**: €19/mes - Gestió bàsica i col·laboració
-- **Professional**: €49/mes - Característiques avançades (PLA POPULAR)
-- **Empresa**: €99/mes - Solucions completes i API
+- **Growth**: €39/seient/mes - Automatitzacions i seguiment
+- **Premium**: €59/seient/mes - Cicle complet de vendes (PLA POPULAR)
+- **Ultimate**: €79/seient/mes - Seguretat i suport ampliat
 
 ## Característiques Tècniques
 
@@ -74,15 +75,16 @@ Aquesta és una pàgina de preus completa i moderna per a la plataforma Sierra C
 La pàgina és accessible des del header principal via el link "Pricing"
 
 ### 2. Personalització
-Per modificar els preus o característiques, edita les dades en `app/pricing/page.tsx`:
+Per modificar els preus o característiques, edita les dades en `lib/pricing-data.ts`:
 
 ```typescript
 const pricingPlans = [
   {
-    title: 'Nou Pla',
+    id: 'nou-pla',
+    name: { ca: 'Nou Pla', es: 'Nuevo Plan', en: 'New Plan' },
     price: 29,
-    period: 'mes',
-    features: ['Característica 1', 'Característica 2'],
+    period: { ca: 'seient/mes', es: 'puesto/mes', en: 'seat/month' },
+    features: { ca: ['Característica 1'], es: ['Característica 1'], en: ['Feature 1'] },
     // ... altres propietats
   }
 ]

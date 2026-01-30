@@ -16,7 +16,6 @@ const nextConfig = {
     return config;
   },
   images: {
-    unoptimized: true,
     domains: ['sierra.keydesign.xyz', 'images.pexels.com', 'ui-avatars.com'],
     remotePatterns: [
       {

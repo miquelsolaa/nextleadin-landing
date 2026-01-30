@@ -4,8 +4,8 @@ Una plataforma SaaS moderna i responsiva construïda amb Next.js 16 (App Router)
 
 ## 🚀 Característiques
 
-- **Next.js 16.1.0** amb App Router per a màxim rendiment
-- **React 19.2.3** amb les últimes millores de rendiment
+- **Next.js 16.1.6** amb App Router per a màxim rendiment
+- **React 19.2.4** amb les últimes millores de rendiment
 - **TypeScript** per a desenvolupament type-safe
 - **TailwindCSS** per a estils moderns i responsiu
 - **SEO/AEO optimitzat** amb metadata completa i structured data per AI search engines
@@ -20,8 +20,8 @@ Una plataforma SaaS moderna i responsiva construïda amb Next.js 16 (App Router)
 
 ## 🛠️ Tecnologies
 
-- [Next.js 16.1.0](https://nextjs.org/) - Framework React amb App Router
-- [React 19.2.3](https://reactjs.org/) - Biblioteca UI
+- [Next.js 16.1.6](https://nextjs.org/) - Framework React amb App Router
+- [React 19.2.4](https://reactjs.org/) - Biblioteca UI
 - [TypeScript 5.9.3](https://www.typescriptlang.org/) - Llenguatge tipat
 - [next-intl 4.6.1](https://next-intl-docs.vercel.app/) - Internacionalització
 - [TailwindCSS](https://tailwindcss.com/) - Framework CSS utility-first

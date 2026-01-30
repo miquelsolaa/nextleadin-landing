@@ -5,7 +5,12 @@ export interface PricingPlan {
     es: string
     en: string
   }
-  price: number
+  price: number | null
+  priceLabel?: {
+    ca: string
+    es: string
+    en: string
+  }
   period: {
     ca: string
     es: string
@@ -27,6 +32,17 @@ export interface PricingPlan {
     en: string
   }
   buttonHref: string
+  billingNote?: {
+    ca: string
+    es: string
+    en: string
+  }
+  trialNote?: {
+    ca: string
+    es: string
+    en: string
+  }
+  checkoutPlanId?: string
   popular: boolean
   delay: number
   limits: {
@@ -49,293 +65,379 @@ export interface ComparisonFeature {
     es: string
     en: string
   }
-  start: boolean | string
-  pro: boolean | string
-  elite: boolean | string
+  values: Record<string, boolean | string>
 }
 
 export const pricingPlans: PricingPlan[] = [
   {
-    id: 'start',
+    id: 'growth',
     name: {
-      ca: 'Inici',
-      es: 'Inicio',
-      en: 'Start'
+      ca: 'Growth',
+      es: 'Growth',
+      en: 'Growth'
     },
-    price: 19,
+    price: 59,
     period: {
-      ca: 'mes',
-      es: 'mes',
-      en: 'month'
+      ca: 'seient/mes',
+      es: 'puesto/mes',
+      en: 'seat/month'
     },
     description: {
-      ca: 'Perfecte per a empreses que comencen amb la generació de leads',
-      es: 'Perfecto para empresas que comienzan con la generación de leads',
-      en: 'Perfect for businesses starting with lead generation'
+      ca: 'Ara amb IA. Automatitza correus i seguiments per tancar més ràpid.',
+      es: 'Ahora con IA. Automatiza correos y seguimientos para cerrar más rápido.',
+      en: 'Now with AI. Automate emails and follow-ups to close faster.'
     },
     features: {
       ca: [
-        'Fins a 500 leads únics al mes',
-        '500 crèdits d\'enriquiment amb IA',
-        'Cerca bàsica amb keywords',
-        'Filtres per ubicació i sector',
-        'Exportació CSV',
-        'Suport per email',
-        'Dashboard bàsic',
-        'Fins a 3 usuaris',
-        'Actualització mensual de dades'
+        'Gestió de prospectes, calendaris i embuts',
+        'Informes amb IA',
+        'Entrada de vendes en temps real',
+        'Sincronització completa de correu amb seguiment',
+        'Automatitzacions i seqüències de nutrició',
+        'Subscripcions i informes de previsió',
+        'Planificador de reunions i cronograma de contactes',
+        'Assistència amb xat en viu'
       ],
       es: [
-        'Hasta 500 leads únicos al mes',
-        '500 créditos de enriquecimiento con IA',
-        'Búsqueda básica con palabras clave',
-        'Filtros por ubicación y sector',
-        'Exportación CSV',
-        'Soporte por email',
-        'Dashboard básico',
-        'Hasta 3 usuarios',
-        'Actualización mensual de datos'
+        'Gestión de prospectos, calendarios y embudos',
+        'Informes con IA',
+        'Entrada de ventas en tiempo real',
+        'Sincronización completa de correo con seguimiento',
+        'Automatizaciones y secuencias de nutrición',
+        'Suscripciones e informes de previsión',
+        'Planificador de reuniones y cronograma de contactos',
+        'Asistencia con chat en vivo'
       ],
       en: [
-        'Up to 500 unique leads per month',
-        '500 AI enrichment credits',
-        'Basic keyword search',
-        'Location and sector filters',
-        'CSV export',
-        'Email support',
-        'Basic dashboard',
-        'Up to 3 users',
-        'Monthly data updates'
+        'Lead management, calendars and pipelines',
+        'AI insights',
+        'Real-time sales updates',
+        'Full email sync with tracking',
+        'Automations and nurturing sequences',
+        'Subscriptions and forecasting reports',
+        'Meeting scheduler and contact timeline',
+        'Live chat support'
       ]
     },
     buttonText: {
-      ca: 'Comença ara',
-      es: 'Comenzar ahora',
-      en: 'Start now'
+      ca: 'Prova-ho gratis',
+      es: 'Pruébalo gratis',
+      en: 'Try free'
     },
     buttonHref: '/get-started',
+    billingNote: {
+      ca: 'Facturat anualment · Estalvia fins al 42 %',
+      es: 'Facturado anualmente · Ahorra hasta un 42 %',
+      en: 'Billed annually · Save up to 42%'
+    },
+    trialNote: {
+      ca: 'Prova gratuïta de 14 dies. Sense targeta.',
+      es: 'Prueba gratuita de 14 días. Sin tarjeta.',
+      en: '14-day free trial. No card required.'
+    },
     popular: false,
-    delay: 100,
-    limits: {
-      leads: 500,
-      aiCredits: 500,
-      users: 3,
-      searches: 20
-    }
-  },
-  {
-    id: 'pro',
-    name: {
-      ca: 'Pro',
-      es: 'Pro',
-      en: 'Pro'
-    },
-    price: 49,
-    period: {
-      ca: 'mes',
-      es: 'mes',
-      en: 'month'
-    },
-    description: {
-      ca: 'Ideal per a equips comercials que necessiten més volum i funcionalitats avançades',
-      es: 'Ideal para equipos comerciales que necesitan más volumen y funcionalidades avanzadas',
-      en: 'Ideal for sales teams that need more volume and advanced features'
-    },
-    features: {
-      ca: [
-        'Fins a 2.500 leads únics al mes',
-        '2.500 crèdits d\'enriquiment amb IA',
-        'Cerca avançada amb múltiples filtres',
-        'Informes IA personalitzats',
-        'Integració amb Zapier i HubSpot',
-        'Suport prioritari (email i xat)',
-        'Dashboard avançat amb analytics',
-        'Fins a 10 usuaris',
-        'Actualització setmanal de dades',
-        'Segmentació per intenció de compra',
-        'Alertes personalitzades',
-        'API bàsica'
-      ],
-      es: [
-        'Hasta 2.500 leads únicos al mes',
-        '2.500 créditos de enriquecimiento con IA',
-        'Búsqueda avanzada con múltiples filtros',
-        'Informes IA personalizados',
-        'Integración con Zapier y HubSpot',
-        'Soporte prioritario (email y chat)',
-        'Dashboard avanzado con analytics',
-        'Hasta 10 usuarios',
-        'Actualización semanal de datos',
-        'Segmentación por intención de compra',
-        'Alertas personalizadas',
-        'API básica'
-      ],
-      en: [
-        'Up to 2,500 unique leads per month',
-        '2,500 AI enrichment credits',
-        'Advanced search with multiple filters',
-        'Custom AI reports',
-        'Zapier and HubSpot integration',
-        'Priority support (email and chat)',
-        'Advanced dashboard with analytics',
-        'Up to 10 users',
-        'Weekly data updates',
-        'Purchase intent segmentation',
-        'Custom alerts',
-        'Basic API'
-      ]
-    },
-    buttonText: {
-      ca: 'Comença ara',
-      es: 'Comenzar ahora',
-      en: 'Start now'
-    },
-    buttonHref: '/get-started',
-    popular: true,
     delay: 200,
     limits: {
-      leads: 2500,
-      aiCredits: 2500,
-      users: 10,
-      searches: 100
+      leads: '-',
+      aiCredits: '-',
+      users: '-',
+      searches: '-'
     }
   },
   {
-    id: 'elite',
+    id: 'premium',
     name: {
-      ca: 'Elite',
-      es: 'Elite',
-      en: 'Elite'
+      ca: 'Premium',
+      es: 'Premium',
+      en: 'Premium'
     },
-    price: 99,
+    price: 79,
     period: {
-      ca: 'mes',
-      es: 'mes',
-      en: 'month'
+      ca: 'seient/mes',
+      es: 'puesto/mes',
+      en: 'seat/month'
     },
     description: {
-      ca: 'Solució completa per a empreses que necessiten màxima capacitat i personalització',
-      es: 'Solución completa para empresas que necesitan máxima capacidad y personalización',
-      en: 'Complete solution for businesses that need maximum capacity and customization'
+      ca: 'Ara amb IA. Impulsa el cicle complet de vendes amb eines avançades.',
+      es: 'Ahora con IA. Impulsa el ciclo completo de ventas con herramientas avanzadas.',
+      en: 'Now with AI. Power the full sales cycle with advanced tools.'
     },
     features: {
       ca: [
-        'Leads il·limitats al mes',
-        'Crèdits d\'IA il·limitats',
-        'Totes les funcionalitats Pro',
-        'API completa i SSO',
-        'Integracions personalitzades',
-        'Suport dedicat 24/5',
-        'Dashboard personalitzat',
-        'Usuaris il·limitats',
-        'Actualització diària de dades',
-        'Segmentació avançada amb IA',
-        'Alertes intel·ligents',
-        'Integració amb CRM personalitzat',
-        'Anàlisi predictiva',
-        'Formació personalitzada',
-        'SLA garantit'
+        'Tot el Growth',
+        'Generació i transferència de leads',
+        'Puntuació i enriquiment de dades d\'empresa',
+        'Eines de correu múltiple amb IA',
+        'Personalització avançada per equips, informes i camps'
       ],
       es: [
-        'Leads ilimitados al mes',
-        'Créditos de IA ilimitados',
-        'Todas las funcionalidades Pro',
-        'API completa y SSO',
-        'Integraciones personalizadas',
-        'Soporte dedicado 24/5',
-        'Dashboard personalizado',
-        'Usuarios ilimitados',
-        'Actualización diaria de datos',
-        'Segmentación avanzada con IA',
-        'Alertas inteligentes',
-        'Integración con CRM personalizado',
-        'Análisis predictivo',
-        'Formación personalizada',
-        'SLA garantizado'
+        'Todo lo de Growth',
+        'Generación y transferencia de leads',
+        'Puntuación y enriquecimiento de datos de empresa',
+        'Herramientas de correo múltiple con IA',
+        'Personalización avanzada para equipos, informes y campos'
       ],
       en: [
-        'Unlimited leads per month',
-        'Unlimited AI credits',
-        'All Pro features',
-        'Full API and SSO',
-        'Custom integrations',
-        'Dedicated 24/5 support',
-        'Custom dashboard',
-        'Unlimited users',
-        'Daily data updates',
-        'Advanced AI segmentation',
-        'Smart alerts',
-        'Custom CRM integration',
-        'Predictive analytics',
-        'Custom training',
-        'Guaranteed SLA'
+        'Everything in Growth',
+        'Lead generation and routing',
+        'Company scoring and enrichment',
+        'Multi-email tools with AI',
+        'Advanced team, report and field customization'
       ]
     },
     buttonText: {
-      ca: 'Parla amb vendes',
-      es: 'Habla con ventas',
-      en: 'Talk to sales'
+      ca: 'Prova-ho gratis',
+      es: 'Pruébalo gratis',
+      en: 'Try free'
+    },
+    buttonHref: '/get-started',
+    billingNote: {
+      ca: 'Facturat anualment · Estalvia fins al 42 %',
+      es: 'Facturado anualmente · Ahorra hasta un 42 %',
+      en: 'Billed annually · Save up to 42%'
+    },
+    trialNote: {
+      ca: 'Prova gratuïta de 14 dies. Sense targeta.',
+      es: 'Prueba gratuita de 14 días. Sin tarjeta.',
+      en: '14-day free trial. No card required.'
+    },
+    popular: true,
+    delay: 300,
+    limits: {
+      leads: '-',
+      aiCredits: '-',
+      users: '-',
+      searches: '-'
+    }
+  },
+  {
+    id: 'ultimate',
+    name: {
+      ca: 'Ultimate',
+      es: 'Ultimate',
+      en: 'Ultimate'
+    },
+    price: null,
+    priceLabel: {
+      ca: 'Contacta amb vendes',
+      es: 'Contacta con ventas',
+      en: 'Contact with sales'
+    },
+    period: {
+      ca: 'seient/mes',
+      es: 'puesto/mes',
+      en: 'seat/month'
+    },
+    description: {
+      ca: 'Ara amb IA. Optimitza el rendiment amb el conjunt complet de capacitats.',
+      es: 'Ahora con IA. Optimiza el rendimiento con el conjunto completo de capacidades.',
+      en: 'Now with AI. Optimize performance with a complete feature set.'
+    },
+    features: {
+      ca: [
+        'Tot el Premium',
+        'Seguretat reforçada amb regles i alertes',
+        'Enriquiment de dades de correu i telèfon',
+        'Entorn de prova Sandbox',
+        'Suport telefònic ampliat',
+        'Descomptes per associació'
+      ],
+      es: [
+        'Todo lo de Premium',
+        'Seguridad reforzada con reglas y alertas',
+        'Enriquecimiento de datos de correo y teléfono',
+        'Entorno de prueba Sandbox',
+        'Soporte telefónico ampliado',
+        'Descuentos por asociación'
+      ],
+      en: [
+        'Everything in Premium',
+        'Enhanced security with rules and alerts',
+        'Email and phone data enrichment',
+        'Sandbox test environment',
+        'Extended phone support',
+        'Partner discounts'
+      ]
+    },
+    buttonText: {
+      ca: 'Contacta amb vendes',
+      es: 'Contacta con ventas',
+      en: 'Contact with sales'
     },
     buttonHref: '/contact',
     popular: false,
-    delay: 300,
+    delay: 400,
     limits: {
-      leads: 'Il·limitats',
-      aiCredits: 'Il·limitats',
-      users: 'Il·limitats',
-      searches: 'Il·limitats'
+      leads: '-',
+      aiCredits: '-',
+      users: '-',
+      searches: '-'
     }
   }
 ]
 
 export const comparisonFeatures: ComparisonFeature[] = [
   {
-    id: 'leads',
+    id: 'lead-management',
     name: {
-      ca: 'Leads al mes',
-      es: 'Leads al mes',
-      en: 'Leads per month'
+      ca: 'Gestió de prospectes',
+      es: 'Gestión de prospectos',
+      en: 'Lead management'
     },
     description: {
-      ca: 'Volum de contactes únics generats cada mes',
-      es: 'Volumen de contactos únicos generados cada mes',
-      en: 'Volume of unique contacts generated each month'
+      ca: 'Organització de calendari i embuts de vendes.',
+      es: 'Organización de calendario y embudos de ventas.',
+      en: 'Calendars and sales pipeline organization.'
     },
-    start: '500',
-    pro: '2.500',
-    elite: 'Il·limitats'
+    values: {
+      growth: true,
+      premium: true,
+      ultimate: true
+    }
   },
   {
-    id: 'ai-credits',
+    id: 'ai-insights',
     name: {
-      ca: 'Crèdits d\'enriquiment amb IA',
-      es: 'Créditos de enriquecimiento con IA',
-      en: 'AI enrichment credits'
+      ca: 'Informes amb IA',
+      es: 'Informes con IA',
+      en: 'AI insights'
     },
     description: {
-      ca: 'Nombre de fitxes amb informe IA generades per mes',
-      es: 'Número de fichas con informe IA generadas por mes',
-      en: 'Number of AI report profiles generated per month'
+      ca: 'Nivell d\'informes i resums amb IA.',
+      es: 'Nivel de informes y resúmenes con IA.',
+      en: 'Level of AI insights and summaries.'
     },
-    start: '500',
-    pro: '2.500',
-    elite: 'Il·limitats'
+    values: {
+      growth: 'Bàsics',
+      premium: 'Avançats',
+      ultimate: 'Avançats'
+    }
   },
   {
-    id: 'precision',
+    id: 'email-sync',
     name: {
-      ca: 'Precisió de segmentació',
-      es: 'Precisión de segmentación',
-      en: 'Segmentation precision'
+      ca: 'Sincronització de correu',
+      es: 'Sincronización de correo',
+      en: 'Email sync'
     },
     description: {
-      ca: 'Qualitat dels filtres per zona, sector i intenció',
-      es: 'Calidad de los filtros por zona, sector e intención',
-      en: 'Quality of filters by location, sector and intent'
+      ca: 'Sincronització completa amb seguiment d\'emails.',
+      es: 'Sincronización completa con seguimiento de emails.',
+      en: 'Full sync with email tracking.'
     },
-    start: 'Alta',
-    pro: 'Molt alta',
-    elite: 'Màxima'
+    values: {
+      growth: true,
+      premium: true,
+      ultimate: true
+    }
+  },
+  {
+    id: 'automations',
+    name: {
+      ca: 'Automatitzacions',
+      es: 'Automatizaciones',
+      en: 'Automations'
+    },
+    description: {
+      ca: 'Seqüències de nutrició i fluxos automatitzats.',
+      es: 'Secuencias de nutrición y flujos automatizados.',
+      en: 'Nurturing sequences and automated workflows.'
+    },
+    values: {
+      growth: true,
+      premium: true,
+      ultimate: true
+    }
+  },
+  {
+    id: 'scheduler',
+    name: {
+      ca: 'Planificador de reunions',
+      es: 'Planificador de reuniones',
+      en: 'Meeting scheduler'
+    },
+    description: {
+      ca: 'Disponibilitats, calendaris i línia temporal.',
+      es: 'Disponibilidad, calendarios y línea temporal.',
+      en: 'Availability, calendars and timeline.'
+    },
+    values: {
+      growth: true,
+      premium: true,
+      ultimate: true
+    }
+  },
+  {
+    id: 'lead-routing',
+    name: {
+      ca: 'Generació i transferència de leads',
+      es: 'Generación y transferencia de leads',
+      en: 'Lead generation and routing'
+    },
+    description: {
+      ca: 'Captura i assignació de nous prospects.',
+      es: 'Captura y asignación de nuevos prospectos.',
+      en: 'Capture and assign new prospects.'
+    },
+    values: {
+      growth: false,
+      premium: true,
+      ultimate: true
+    }
+  },
+  {
+    id: 'security',
+    name: {
+      ca: 'Seguretat avançada',
+      es: 'Seguridad avanzada',
+      en: 'Advanced security'
+    },
+    description: {
+      ca: 'Regles, alertes i controls de compte.',
+      es: 'Reglas, alertas y controles de cuenta.',
+      en: 'Rules, alerts and account controls.'
+    },
+    values: {
+      growth: false,
+      premium: false,
+      ultimate: true
+    }
+  },
+  {
+    id: 'sandbox',
+    name: {
+      ca: 'Entorn Sandbox',
+      es: 'Entorno Sandbox',
+      en: 'Sandbox environment'
+    },
+    description: {
+      ca: 'Espai de prova abans de publicar canvis.',
+      es: 'Espacio de prueba antes de publicar cambios.',
+      en: 'Test environment before rolling out changes.'
+    },
+    values: {
+      growth: false,
+      premium: false,
+      ultimate: true
+    }
+  },
+  {
+    id: 'support',
+    name: {
+      ca: 'Suport',
+      es: 'Soporte',
+      en: 'Support'
+    },
+    description: {
+      ca: 'Canals i nivell d\'assistència.',
+      es: 'Canales y nivel de asistencia.',
+      en: 'Support channels and level.'
+    },
+    values: {
+      growth: 'Email + xat',
+      premium: 'Xat en viu',
+      ultimate: 'Telèfon ampliat'
+    }
   },
   {
     id: 'integrations',
@@ -345,189 +447,95 @@ export const comparisonFeatures: ComparisonFeature[] = [
       en: 'Integrations'
     },
     description: {
-      ca: 'Connexió amb CRM i eines d\'automatització',
-      es: 'Conexión con CRM y herramientas de automatización',
-      en: 'Connection with CRM and automation tools'
+      ca: 'Aplicacions disponibles per connectar fluxos.',
+      es: 'Aplicaciones disponibles para conectar flujos.',
+      en: 'Apps available to connect workflows.'
     },
-    start: 'CSV',
-    pro: 'Zapier, HubSpot',
-    elite: 'API, SSO'
-  },
-  {
-    id: 'users',
-    name: {
-      ca: 'Seients inclosos',
-      es: 'Asientos incluidos',
-      en: 'Seats included'
-    },
-    description: {
-      ca: 'Nombre d\'usuaris del teu equip',
-      es: 'Número de usuarios de tu equipo',
-      en: 'Number of users on your team'
-    },
-    start: '3',
-    pro: '10',
-    elite: 'Il·limitats'
-  },
-  {
-    id: 'update-frequency',
-    name: {
-      ca: 'Freqüència d\'actualització',
-      es: 'Frecuencia de actualización',
-      en: 'Update frequency'
-    },
-    description: {
-      ca: 'Periodicitat de refresc del catàleg de dades',
-      es: 'Periodicidad de actualización del catálogo de datos',
-      en: 'Frequency of data catalog refresh'
-    },
-    start: 'Mensual',
-    pro: 'Setmanal',
-    elite: 'Diària'
-  },
-  {
-    id: 'support',
-    name: {
-      ca: 'Assistència',
-      es: 'Asistencia',
-      en: 'Support'
-    },
-    description: {
-      ca: 'Canals i SLA de suport',
-      es: 'Canales y SLA de soporte',
-      en: 'Support channels and SLA'
-    },
-    start: 'Email',
-    pro: 'Email i xat',
-    elite: 'Dedicada (SLA)'
-  },
-  {
-    id: 'api',
-    name: {
-      ca: 'API i integracions',
-      es: 'API e integraciones',
-      en: 'API and integrations'
-    },
-    description: {
-      ca: 'Accés a API i capacitats d\'integració',
-      es: 'Acceso a API y capacidades de integración',
-      en: 'API access and integration capabilities'
-    },
-    start: false,
-    pro: 'API bàsica',
-    elite: 'API completa + SSO'
-  },
-  {
-    id: 'analytics',
-    name: {
-      ca: 'Analytics avançats',
-      es: 'Analytics avanzados',
-      en: 'Advanced analytics'
-    },
-    description: {
-      ca: 'Eines d\'anàlisi i reporting avançat',
-      es: 'Herramientas de análisis y reporting avanzado',
-      en: 'Advanced analytics and reporting tools'
-    },
-    start: false,
-    pro: 'Analytics bàsics',
-    elite: 'Analytics predictius'
-  },
-  {
-    id: 'customization',
-    name: {
-      ca: 'Personalització',
-      es: 'Personalización',
-      en: 'Customization'
-    },
-    description: {
-      ca: 'Nivell de personalització disponible',
-      es: 'Nivel de personalización disponible',
-      en: 'Level of customization available'
-    },
-    start: 'Bàsic',
-    pro: 'Moderat',
-    elite: 'Complet'
+    values: {
+      growth: '500+',
+      premium: '500+',
+      ultimate: '500+'
+    }
   }
 ]
 
 export const faqData = {
   ca: [
     {
-      question: 'Hi ha una prova gratuïta disponible?',
-      answer: 'Sí, pots provar-nos gratis durant 30 dies. Si vols, et proporcionarem una trucada d\'incorporació gratuïta de 30 minuts per posar-te en marxa.'
+      question: 'Què inclou la prova gratuïta?',
+      answer: 'Accés complet durant 14 dies i sense targeta. Pots convidar el teu equip i provar totes les funcions del pla.'
     },
     {
-      question: 'Puc canviar el meu pla més endavant?',
-      answer: 'Per descomptat que pots! Els nostres preus s\'escalen amb la teva empresa. Parla amb el nostre equip amable per trobar una solució que funcioni per a tu mentre creixes.'
+      question: 'Quina diferència hi ha entre facturació anual i mensual?',
+      answer: 'La mensual es cobra cada mes. L\'anual es cobra en un sol pagament i inclou descompte.'
     },
     {
-      question: 'Quina és la vostra política de cancel·lació?',
-      answer: 'Entenem que les coses canvien. Pots cancel·lar el teu pla en qualsevol moment i et reemborsarem la diferència ja pagada.'
+      question: 'Els preus inclouen l\'IVA?',
+      answer: 'No. Per a clients de la UE, s\'aplica l\'IVA segons el país si no es facilita un NIF-IVA vàlid.'
     },
     {
-      question: 'Com funciona la facturació?',
-      answer: 'Els plans són per espai de treball, no per compte. Pots actualitzar un espai de treball i encara tenir qualsevol nombre d\'espais de treball gratuïts.'
+      question: 'Puc afegir complements al meu pla?',
+      answer: 'Sí, pots afegir LeadBooster, Projects, Campaigns, Web Visitors o Smart Docs a qualsevol pla.'
     },
     {
-      question: 'Com es compten els leads i els crèdits d\'IA?',
-      answer: 'Cada empresa única exportada compta com a lead. Cada fitxa d\'informe generada per IA consumeix un crèdit d\'enriquiment.'
+      question: 'Quins mètodes de pagament accepteu?',
+      answer: 'Targetes de crèdit/dèbit i PayPal, segons el país.'
     },
     {
-      question: 'Em puc integrar amb el meu CRM?',
-      answer: 'Sí. Pro: Zapier i HubSpot. Elite: API directa i SSO. Sempre pots exportar CSV.'
+      question: 'Puc canviar o cancel·lar el pla quan vulgui?',
+      answer: 'Sí, pots canviar de pla o cancel·lar en qualsevol moment. Els canvis s\'apliquen al següent període.'
     }
   ],
   es: [
     {
-      question: '¿Hay una prueba gratuita disponible?',
-      answer: 'Sí, puedes probarnos gratis durante 30 días. Si quieres, te proporcionaremos una llamada de incorporación gratuita de 30 minutos para ponerte en marcha.'
+      question: '¿Qué incluye la prueba gratuita?',
+      answer: 'Acceso completo durante 14 días y sin tarjeta. Puedes invitar a tu equipo y probar todas las funciones del plan.'
     },
     {
-      question: '¿Puedo cambiar mi plan más adelante?',
-      answer: '¡Por supuesto que puedes! Nuestros precios se escalan con tu empresa. Habla con nuestro equipo amable para encontrar una solución que funcione para ti mientras creces.'
+      question: '¿Cuál es la diferencia entre facturación anual y mensual?',
+      answer: 'La mensual se cobra cada mes. La anual se cobra en un solo pago e incluye descuento.'
     },
     {
-      question: '¿Cuál es vuestra política de cancelación?',
-      answer: 'Entendemos que las cosas cambian. Puedes cancelar tu plan en cualquier momento y te reembolsaremos la diferencia ya pagada.'
+      question: '¿Los precios incluyen el IVA?',
+      answer: 'No. Para clientes de la UE, se aplica IVA según el país si no se facilita un NIF-IVA válido.'
     },
     {
-      question: '¿Cómo funciona la facturación?',
-      answer: 'Los planes son por espacio de trabajo, no por cuenta. Puedes actualizar un espacio de trabajo y aún tener cualquier número de espacios de trabajo gratuitos.'
+      question: '¿Puedo añadir complementos a mi plan?',
+      answer: 'Sí, puedes añadir LeadBooster, Projects, Campaigns, Web Visitors o Smart Docs a cualquier plan.'
     },
     {
-      question: '¿Cómo se cuentan los leads y los créditos de IA?',
-      answer: 'Cada empresa única exportada cuenta como lead. Cada ficha de informe generada por IA consume un crédito de enriquecimiento.'
+      question: '¿Qué métodos de pago aceptáis?',
+      answer: 'Tarjetas de crédito/débito y PayPal, según el país.'
     },
     {
-      question: '¿Me puedo integrar con mi CRM?',
-      answer: 'Sí. Pro: Zapier y HubSpot. Elite: API directa y SSO. Siempre puedes exportar CSV.'
+      question: '¿Puedo cambiar o cancelar el plan cuando quiera?',
+      answer: 'Sí, puedes cambiar de plan o cancelar en cualquier momento. Los cambios se aplican al siguiente período.'
     }
   ],
   en: [
     {
-      question: 'Is there a free trial available?',
-      answer: 'Yes, you can try us for free for 30 days. If you want, we\'ll provide you with a free 30-minute onboarding call to get you started.'
+      question: 'What does the free trial include?',
+      answer: 'Full access for 14 days with no card required. Invite your team and try all plan features.'
     },
     {
-      question: 'Can I change my plan later?',
-      answer: 'Of course you can! Our prices scale with your business. Talk to our friendly team to find a solution that works for you as you grow.'
+      question: 'What is the difference between annual and monthly billing?',
+      answer: 'Monthly is charged every month. Annual is charged in one payment and includes a discount.'
     },
     {
-      question: 'What is your cancellation policy?',
-      answer: 'We understand that things change. You can cancel your plan at any time and we\'ll refund the difference already paid.'
+      question: 'Do prices include VAT?',
+      answer: 'No. For EU customers, VAT is applied based on country unless a valid VAT ID is provided.'
     },
     {
-      question: 'How does billing work?',
-      answer: 'Plans are per workspace, not per account. You can upgrade a workspace and still have any number of free workspaces.'
+      question: 'Can I add add-ons to my plan?',
+      answer: 'Yes, you can add LeadBooster, Projects, Campaigns, Web Visitors or Smart Docs to any plan.'
     },
     {
-      question: 'How are leads and AI credits counted?',
-      answer: 'Each unique company exported counts as a lead. Each AI-generated report profile consumes an enrichment credit.'
+      question: 'What payment methods do you accept?',
+      answer: 'Credit/debit cards and PayPal, depending on your country.'
     },
     {
-      question: 'Can I integrate with my CRM?',
-      answer: 'Yes. Pro: Zapier and HubSpot. Elite: Direct API and SSO. You can always export CSV.'
+      question: 'Can I change or cancel anytime?',
+      answer: 'Yes, you can change plans or cancel anytime. Changes apply to the next billing period.'
     }
   ]
 }

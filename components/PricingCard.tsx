@@ -19,7 +19,7 @@ export default function PricingCard({
   const [isPending, startTransition] = useTransition()
 
   const handleSubscribe = async () => {
-    if (plan.id === 'start') {
+    if (!plan.checkoutPlanId) {
       router.push(plan.buttonHref)
       return
     }
@@ -27,14 +27,14 @@ export default function PricingCard({
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: plan.id }),
+        body: JSON.stringify({ plan: plan.checkoutPlanId }),
       })
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
       }
     } catch (e) {
-      router.push('/pricing')
+      router.push(plan.buttonHref)
     }
   }
   const popularText = {
@@ -69,9 +69,21 @@ export default function PricingCard({
           <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name?.[locale] || plan.name?.ca || 'Plan'}</h3>
           <p className="text-sm text-gray-600 mb-4">{plan.description?.[locale] || plan.description?.ca || ''}</p>
           <div className="flex items-baseline justify-center">
-            <span className="text-4xl font-bold text-gray-900">€{plan.price || 0}</span>
-            <span className="text-lg text-gray-600 ml-2">/{plan.period?.[locale] || plan.period?.ca || 'mes'}</span>
+            {plan.priceLabel?.[locale] ? (
+              <span className="text-2xl font-semibold text-gray-900">{plan.priceLabel[locale]}</span>
+            ) : (
+              <>
+                <span className="text-4xl font-bold text-gray-900">€{plan.price ?? 0}</span>
+                <span className="text-lg text-gray-600 ml-2">/{plan.period?.[locale] || plan.period?.ca || 'mes'}</span>
+              </>
+            )}
           </div>
+          {plan.billingNote?.[locale] && (
+            <p className="text-xs text-gray-500 mt-2">{plan.billingNote[locale]}</p>
+          )}
+          {plan.trialNote?.[locale] && (
+            <p className="text-xs text-primary-600 mt-1">{plan.trialNote[locale]}</p>
+          )}
         </div>
         
         <ul className="space-y-3 mb-8">
@@ -85,7 +97,7 @@ export default function PricingCard({
           ))}
         </ul>
         
-        {plan.id === 'pro' || plan.id === 'elite' ? (
+        {plan.checkoutPlanId ? (
           <button
             onClick={() => startTransition(handleSubscribe)}
             className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
