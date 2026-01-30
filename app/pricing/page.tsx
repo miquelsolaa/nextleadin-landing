@@ -184,7 +184,7 @@ export default function PricingPage() {
             
             <div className="relative">
               <Image
-                src="https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-mockup-cta.png"
+                src="/images/cta/mockup.png"
                 alt="Mockup de la plataforma CRM mostrant el tauler i analytics"
                 width={752}
                 height={423}
