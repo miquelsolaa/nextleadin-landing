@@ -18,7 +18,7 @@ export const pathnames: Pathnames<typeof locales> = {
   '/': '/',
   '/blog': '/blog',
   '/contact': '/contact',
-  '/comparador': '/comparador',
+  '/compare': '/compare',
   '/pricing': '/pricing',
   '/faq': '/faq'
 }

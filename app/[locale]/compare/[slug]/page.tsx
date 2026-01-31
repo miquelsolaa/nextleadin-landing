@@ -37,8 +37,8 @@ export async function generateMetadata({ params }: ComparisonPageProps): Promise
   }
 
   const canonical = validLocale === 'ca'
-    ? `https://nextleadin.com/comparador/${comparison.slug}`
-    : `https://nextleadin.com/${validLocale}/comparador/${comparison.slug}`
+    ? `https://nextleadin.com/compare/${comparison.slug}`
+    : `https://nextleadin.com/${validLocale}/compare/${comparison.slug}`
 
   return generateAIOptimizedMetadata('comparador', validLocale, {
     title: comparison.title,
@@ -95,7 +95,7 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
 
   const baseUrl = 'https://nextleadin.com'
   const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
-  const currentUrl = `${baseUrl}${localePath}/comparador/${comparison.slug}`
+  const currentUrl = `${baseUrl}${localePath}/compare/${comparison.slug}`
   const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
 
   const breadcrumbs = [

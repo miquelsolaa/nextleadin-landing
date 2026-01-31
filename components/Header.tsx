@@ -74,7 +74,7 @@ const Header = () => {
 
   const navigation = [
     { name: translations.nav.features, href: {pathname: '/', hash: 'funcionalitats'} as any },
-    { name: translations.nav.comparator, href: '/comparador' },
+    { name: translations.nav.comparator, href: '/compare' },
     { name: translations.nav.pricing, href: '/pricing' },
     { name: translations.nav.blog, href: '/blog' },
     { name: translations.nav.faq, href: '/faq' },

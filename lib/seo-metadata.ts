@@ -255,15 +255,15 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'nextleadin vs',
         'comparativa sales engagement'
       ],
-      canonical: 'https://nextleadin.com/comparador',
-      ogImage: '/images/og/comparador-ca.jpg',
+      canonical: 'https://nextleadin.com/compare',
+      ogImage: '/images/og/compare-ca.jpg',
       structuredData: [
         {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
           name: 'Comparador NextLeadIn',
           description: 'Comparatives entre eines de lead acquisition i NextLeadIn',
-          url: 'https://nextleadin.com/comparador'
+          url: 'https://nextleadin.com/compare'
         }
       ]
     },
@@ -282,15 +282,15 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'nextleadin vs',
         'comparativa sales engagement'
       ],
-      canonical: 'https://nextleadin.com/es/comparador',
-      ogImage: '/images/og/comparador-es.jpg',
+      canonical: 'https://nextleadin.com/es/compare',
+      ogImage: '/images/og/compare-es.jpg',
       structuredData: [
         {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
           name: 'Comparador NextLeadIn',
           description: 'Comparativas entre herramientas de lead acquisition y NextLeadIn',
-          url: 'https://nextleadin.com/es/comparador'
+          url: 'https://nextleadin.com/es/compare'
         }
       ]
     },
@@ -309,15 +309,15 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'nextleadin vs',
         'sales engagement comparison'
       ],
-      canonical: 'https://nextleadin.com/en/comparador',
-      ogImage: '/images/og/comparador-en.jpg',
+      canonical: 'https://nextleadin.com/en/compare',
+      ogImage: '/images/og/compare-en.jpg',
       structuredData: [
         {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
           name: 'NextLeadIn Comparisons',
           description: 'Comparisons between lead acquisition tools and NextLeadIn',
-          url: 'https://nextleadin.com/en/comparador'
+          url: 'https://nextleadin.com/en/compare'
         }
       ]
     }

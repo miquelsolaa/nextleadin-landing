@@ -59,7 +59,7 @@ export default async function ComparadorIndexPage({ params }: { params: Promise<
     },
     {
       name: validLocale === 'ca' ? 'Comparador' : validLocale === 'es' ? 'Comparador' : 'Comparisons',
-      url: validLocale === 'ca' ? 'https://nextleadin.com/comparador' : `https://nextleadin.com/${validLocale}/comparador`
+      url: validLocale === 'ca' ? 'https://nextleadin.com/compare' : `https://nextleadin.com/${validLocale}/compare`
     }
   ]
 
