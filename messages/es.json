@@ -15,7 +15,7 @@
     },
     "contact": {
       "title": "Habla con nuestro equipo",
-      "subtitle": "Generación de leads hipersegmentados e informes con IA para preparar llamadas y cerrar más oportunidades.",
+      "subtitle": "Leads de negocios locales: restaurantes, talleres, comercios. Datos enriquecidos y análisis de reseñas con IA.",
       "submit": "Enviar solicitud",
       "seePricing": "Ver precios",
       "labels": {
@@ -60,9 +60,9 @@
         "hoursLabel": "Horario",
         "hoursValue": "Lu-Vi 9:00–18:00",
         "whyTitle": "¿Por qué hablar con nosotros?",
-        "why1": "Segmentación de leads por zona y sector con precisión",
-        "why2": "Informes inteligentes por IA para cada empresa",
-        "why3": "Integraciones y soporte para tu equipo comercial",
+        "why1": "Encuentra negocios locales que LinkedIn no tiene",
+        "why2": "Datos enriquecidos: valoración, reseñas, horarios y análisis con IA",
+        "why3": "Mapa visual, alertas de nuevas aperturas e integraciones CRM",
         "demoTitle": "¿Prefieres una demo?",
         "demoDesc": "Programa una sesión para ver cómo generamos listas e informes en tiempo real.",
         "demoCta": "Solicitar una demo"
@@ -78,7 +78,7 @@
       "subscribe": "Suscríbete"
     },
     "pricing": {
-      "title": "Planes pensados para escalar tus leads",
+      "title": "Planes para encontrar negocios locales",
       "breadcrumbHome": "Inicio",
       "breadcrumb": "Precios",
       "compare": "Comparar planes"
@@ -94,34 +94,34 @@
   },
   "home": {
     "hero": {
-      "title": "Generación de leads hipersegmentados con IA",
-      "subtitle": "Encuentra clientes por zona, sector y palabras clave"
+      "title": "Leads de negocios locales",
+      "subtitle": "Encuentra TODOS los restaurantes, talleres, comercios y negocios locales que LinkedIn no tiene"
     },
     "features": {
       "location": {
-        "title": "Segmentación geográfica",
-        "subtitle": "Elige la zona y encuentra empresas clave",
-        "desc": "Barcelona, Girona o donde necesites. Localiza negocios potenciales con filtros avanzados.",
-        "bullet1": "Mapa y filtros por barrio/municipio",
-        "bullet2": "Volumen estimado de leads disponibles",
-        "bullet3": "Exportación rápida a CSV/CRM"
+        "title": "Búsqueda por zona y radio",
+        "subtitle": "Ciudad, barrio, código postal o radio en km",
+        "desc": "Amplia cobertura de negocios locales: talleres, restaurantes, peluquerías, inmobiliarias… que otras plataformas no encuentran.",
+        "bullet1": "Búsqueda por radio, barrio, calle o código postal",
+        "bullet2": "Mapa interactivo y planificación de rutas",
+        "bullet3": "Exportación a CSV, Excel, KML y CRM"
       },
       "business": {
-        "title": "Selección de sector",
-        "subtitle": "Define nichos y verticales con precisión",
-        "desc": "Segmenta por CNAE, keywords e intención.",
-        "bullet1": "Filtros por actividad y tamaño",
-        "bullet2": "Exclusión de sectores no deseados",
-        "bullet3": "Sugerencias inteligentes de nichos",
-        "badge": "NUEVO"
+        "title": "Datos enriquecidos y reseñas",
+        "subtitle": "Valoración, horarios, fotos y análisis con IA",
+        "desc": "Valoración, número de reseñas, horarios, nivel de precios. Análisis de reseñas con IA para detectar oportunidades y pain points.",
+        "bullet1": "Filtros por valoración, reseñas y precio",
+        "bullet2": "Análisis de reseñas: sentimiento y keywords",
+        "bullet3": "Alertas de nuevas aperturas",
+        "badge": "NEGOCIOS LOCALES"
       },
       "report": {
-        "title": "Informes con IA",
-        "subtitle": "Enriquecimiento automático para convertir mejor",
-        "desc": "Nuestra IA genera dosieres con puntos de conversación y ángulos de contacto.",
-        "bullet1": "Resúmenes ejecutivos por empresa",
-        "bullet2": "Ángulos de contacto personalizados",
-        "bullet3": "Notas para objeciones frecuentes"
+        "title": "Análisis competitivo y scoring",
+        "subtitle": "Benchmark vs competencia local y potencial de negocio",
+        "desc": "Comparativa automática con la competencia y scoring predictivo para priorizar los mejores leads.",
+        "bullet1": "Benchmark de valoración y reseñas vs competencia",
+        "bullet2": "Scoring de potencial (tamaño, crecimiento, ubicación)",
+        "bullet3": "Informes para preparar el pitch"
       }
     },
     "integrations": {
@@ -133,23 +133,23 @@
     "testimonials": {
       "title": "Historias de ",
       "titleHighlight": "éxito real",
-      "description": "Comercializar más rápido: equipos que han duplicado el ritmo de llamadas y han mejorado la calificación con informes generados por IA.",
+      "description": "Vendedores y agencias que encuentran clientes en restaurantes, talleres y comercios locales gracias al análisis de reseñas con IA.",
       "cta": "Ver todas las historias",
       "readMore": "Leer más reseñas"
     },
     "blogSection": {
       "title": "Tendencias en ",
-      "titleHighlight": "generación de leads",
-      "titleSuffix": " con IA",
-      "description": "Guías e insights prácticos para captar clientes potenciales cualificados, optimizar llamadas y escalar tu pipeline comercial.",
+      "titleHighlight": "leads locales",
+      "titleSuffix": " y negocios locales",
+      "description": "Guías e insights para encontrar negocios locales, analizar reseñas y cerrar más oportunidades.",
       "cta": "Ver todos los artículos",
       "readMore": "Leer más"
     }
   },
   "metadata": {
-    "title": "NextLeadIn — Generación de leads con IA",
-    "description": "Plataforma para encontrar leads por negocio, zona y palabras clave con informes de IA.",
-    "keywords": "generación de leads,inteligencia artificial,ventas B2B,segmentación geográfica"
+    "title": "NextLeadIn — Leads de negocios locales",
+    "description": "Encuentra TODOS los negocios locales (restaurantes, talleres, comercios). Datos enriquecidos y análisis de reseñas con IA. Alternativa a LinkedIn para negocios tradicionales.",
+    "keywords": "leads negocios locales,negocios locales,generación de leads,restaurantes talleres comercios,prospección local,IA reseñas,segmentación geográfica"
   },
   "blog": {
     "title": "Blog",

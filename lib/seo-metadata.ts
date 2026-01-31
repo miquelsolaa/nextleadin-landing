@@ -20,23 +20,23 @@ export interface LocalizedSEOConfig {
 export const seoConfig: Record<string, LocalizedSEOConfig> = {
   home: {
     ca: {
-      title: 'NextLeadIn — Generació de leads hipersegmentats amb IA',
-      description: 'Plataforma avançada de generació de leads amb intel·ligència artificial. Troba clients qualificats per zona, sector i paraules clau amb informes IA per preparar trucades i tancar més oportunitats.',
+      title: 'NextLeadIn — Leads de negocis locals',
+      description: 'Troba TOTS els negocis locals (restaurants, tallers, comerços). Dades enriquides (rating, ressenyes, horaris) i anàlisi de ressenyes amb IA. Alternativa a LinkedIn per negocis tradicionals.',
       keywords: [
+        'leads negocis locals',
+        'negocis locals',
         'generació de leads',
-        'intel·ligència artificial',
+        'restaurants tallers comerços',
+        'prospecció local',
+        'anàlisi ressenyes IA',
         'segmentació geogràfica',
-        'qualificació de leads',
-        'vendes B2B',
-        'equip comercial',
-        'prospectar empreses',
-        'buscar clients potencials',
-        'enriquiment de dades amb IA',
-        'automatització de vendes',
-        'CRM integració',
-        'leads qualificats',
-        'conversió de vendes',
-        'pipeline comercial'
+        'vendes B2B locals',
+        'empreses LinkedIn no té',
+        'dades enriquides',
+        'mapa visual leads',
+        'alertes noves obertures',
+        'anàlisi competitiva local',
+        'scoring potencial negoci'
       ],
       canonical: 'https://nextleadin.com/',
       ogImage: '/images/og/home-ca.jpg',
@@ -47,14 +47,14 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           name: 'NextLeadIn',
           url: 'https://nextleadin.com',
           logo: 'https://nextleadin.com/images/logo/logo.png',
-          description: 'Plataforma avançada de generació de leads amb intel·ligència artificial per a empreses B2B',
+          description: 'Plataforma de leads de negocis locals per a vendes B2B i agències',
           foundingDate: '2024',
           areaServed: ['ES', 'EU'],
           serviceType: 'Lead Generation Software',
           offers: {
             '@type': 'Offer',
-            name: 'Plataforma de generació de leads amb IA',
-            description: 'Troba clients qualificats per zona, sector i paraules clau amb informes IA',
+            name: 'Leads de negocis locals',
+            description: 'Troba negocis locals amb dades enriquides i anàlisi de ressenyes amb IA',
             category: 'Software as a Service'
           },
           contactPoint: {
@@ -90,44 +90,44 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           description: 'Plataforma de generació de leads amb intel·ligència artificial',
           offers: {
             '@type': 'Offer',
-            price: '19',
+            price: '0',
             priceCurrency: 'EUR',
             priceSpecification: {
               '@type': 'PriceSpecification',
-              price: '19',
+              price: '0',
               priceCurrency: 'EUR',
               billingIncrement: '1',
               unitText: 'MONTH'
             }
           },
           featureList: [
-            'Segmentació geogràfica avançada',
-            'Informes generats per IA',
-            'Integració amb CRM',
-            'Qualificació automàtica de leads',
-            'Analytics de conversió'
+            'Leads de negocis locals',
+            'Cerca per radi, barri, codi postal',
+            'Anàlisi de ressenyes amb IA',
+            'Mapa visual i alertes noves obertures',
+            'Anàlisi competitiva i scoring predictiu'
           ]
         }
       ]
     },
     es: {
-      title: 'NextLeadIn — Generación de leads hipersegmentados con IA',
-      description: 'Plataforma avanzada de generación de leads con inteligencia artificial. Encuentra clientes cualificados por zona, sector y palabras clave con informes IA para preparar llamadas y cerrar más oportunidades.',
+      title: 'NextLeadIn — Leads de negocios locales',
+      description: 'Encuentra TODOS los negocios locales (restaurantes, talleres, comercios). Datos enriquecidos (valoración, reseñas, horarios) y análisis de reseñas con IA. Alternativa a LinkedIn para negocios tradicionales.',
       keywords: [
+        'leads negocios locales',
+        'negocios locales',
         'generación de leads',
-        'inteligencia artificial',
+        'restaurantes talleres comercios',
+        'prospección local',
+        'análisis reseñas IA',
         'segmentación geográfica',
-        'calificación de leads',
-        'ventas B2B',
-        'equipo comercial',
-        'prospectar empresas',
-        'buscar clientes potenciales',
-        'enriquecimiento de datos con IA',
-        'automatización de ventas',
-        'integración CRM',
-        'leads cualificados',
-        'conversión de ventas',
-        'pipeline comercial'
+        'ventas B2B locales',
+        'empresas LinkedIn no tiene',
+        'datos enriquecidos',
+        'mapa visual leads',
+        'alertas nuevas aperturas',
+        'análisis competitivo local',
+        'scoring potencial negocio'
       ],
       canonical: 'https://nextleadin.com/es',
       ogImage: '/images/og/home-es.jpg',
@@ -138,14 +138,14 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           name: 'NextLeadIn',
           url: 'https://nextleadin.com',
           logo: 'https://nextleadin.com/images/logo/logo.png',
-          description: 'Plataforma avanzada de generación de leads con inteligencia artificial para empresas B2B',
+          description: 'Plataforma de leads de negocios locales para ventas B2B y agencias',
           foundingDate: '2024',
           areaServed: ['ES', 'EU'],
           serviceType: 'Lead Generation Software',
           offers: {
             '@type': 'Offer',
-            name: 'Plataforma de generación de leads con IA',
-            description: 'Encuentra clientes cualificados por zona, sector y palabras clave con informes IA',
+            name: 'Leads de negocios locales',
+            description: 'Encuentra negocios locales con datos enriquecidos y análisis de reseñas con IA',
             category: 'Software as a Service'
           },
           contactPoint: {
@@ -202,14 +202,14 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           name: 'NextLeadIn',
           url: 'https://nextleadin.com',
           logo: 'https://nextleadin.com/images/logo/logo.png',
-          description: 'Advanced lead generation platform with artificial intelligence for B2B companies',
+          description: 'Local business leads platform for B2B sales and agencies',
           foundingDate: '2024',
           areaServed: ['ES', 'EU'],
           serviceType: 'Lead Generation Software',
           offers: {
             '@type': 'Offer',
-            name: 'AI-Powered Lead Generation Platform',
-            description: 'Find qualified clients by location, sector and keywords with AI reports',
+            name: 'Local Business Leads',
+            description: 'Find local businesses with enriched data and AI review analysis',
             category: 'Software as a Service'
           },
           contactPoint: {
@@ -241,19 +241,17 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
   },
   comparador: {
     ca: {
-      title: 'Comparador de Lead Acquisition | NextLeadIn',
-      description: 'Comparatives clares entre eines de prospecció i NextLeadIn. Descobreix diferències en dades, automatització, multicanalitat i qualitat dels leads.',
+      title: 'Comparador NextLeadIn vs Enginy AI, Apollo, Lusha',
+      description: 'Comparativa NextLeadIn vs Enginy AI, Apollo, Lusha. NextLeadIn troba negocis locals; la competència només LinkedIn. Rating, ressenyes, horaris i anàlisi IA.',
       keywords: [
-        'comparador lead acquisition',
-        'comparativa prospecció',
-        'alternatives hunter io',
+        'nextleadin vs enginy ai',
+        'nextleadin vs apollo',
+        'nextleadin vs lusha',
+        'leads negocis locals vs LinkedIn',
+        'negocis locals prospecció',
+        'comparativa generació leads',
         'alternatives apollo io',
-        'eines generació de leads',
-        'software outbound',
-        'prospecció b2b',
-        'captació de leads',
-        'nextleadin vs',
-        'comparativa sales engagement'
+        'eines negocis locals'
       ],
       canonical: 'https://nextleadin.com/compare',
       ogImage: '/images/og/compare-ca.jpg',
@@ -268,19 +266,17 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     es: {
-      title: 'Comparador de Lead Acquisition | NextLeadIn',
-      description: 'Comparativas claras entre herramientas de prospección y NextLeadIn. Descubre diferencias en datos, automatización, multicanalidad y calidad de leads.',
+      title: 'Comparador NextLeadIn vs Enginy AI, Apollo, Lusha',
+      description: 'Comparativa NextLeadIn vs Enginy AI, Apollo, Lusha. NextLeadIn encuentra negocios locales; la competencia solo LinkedIn. Valoración, reseñas, horarios y análisis IA.',
       keywords: [
-        'comparador lead acquisition',
-        'comparativa prospección',
-        'alternativas hunter io',
+        'nextleadin vs enginy ai',
+        'nextleadin vs apollo',
+        'nextleadin vs lusha',
+        'leads negocios locales vs LinkedIn',
+        'negocios locales prospección',
+        'comparativa generación leads',
         'alternativas apollo io',
-        'herramientas generación de leads',
-        'software outbound',
-        'prospección b2b',
-        'captación de leads',
-        'nextleadin vs',
-        'comparativa sales engagement'
+        'herramientas negocios locales'
       ],
       canonical: 'https://nextleadin.com/es/compare',
       ogImage: '/images/og/compare-es.jpg',
@@ -295,19 +291,17 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     en: {
-      title: 'Lead Acquisition Comparisons | NextLeadIn',
-      description: 'Clear comparisons between prospecting tools and NextLeadIn. See differences in data quality, automation, multichannel outreach and lead fit.',
+      title: 'NextLeadIn vs Enginy AI, Apollo, Lusha',
+      description: 'NextLeadIn vs Enginy AI, Apollo, Lusha comparison. NextLeadIn finds local businesses; competitors use LinkedIn only. Rating, reviews, hours and AI analysis.',
       keywords: [
-        'lead acquisition comparisons',
-        'prospecting tools comparison',
-        'hunter io alternatives',
+        'nextleadin vs enginy ai',
+        'nextleadin vs apollo',
+        'nextleadin vs lusha',
+        'local business leads vs LinkedIn',
+        'local business prospecting',
+        'lead generation comparison',
         'apollo io alternatives',
-        'lead generation software',
-        'outbound software',
-        'b2b prospecting',
-        'lead acquisition',
-        'nextleadin vs',
-        'sales engagement comparison'
+        'local business tools'
       ],
       canonical: 'https://nextleadin.com/en/compare',
       ogImage: '/images/og/compare-en.jpg',
@@ -325,16 +319,16 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
   pricing: {
     ca: {
       title: 'Preus | NextLeadIn',
-      description: 'Plans de preus per a la generació de leads amb IA. Des de 19€/mes per a empreses que comencen fins a solucions empresarials il·limitades. Tria el volum de leads i funcionalitats que necessites.',
+      description: 'Plans per trobar negocis locals. Local Business €79/mes (500 leads, dades enriquides, anàlisi ressenyes IA). Professional €199/mes. Enterprise a mida.',
       keywords: [
-        'preus generació leads',
-        'plans IA',
-        'costos CRM',
-        'preus vendes B2B',
-        'tarifes leads qualificats',
-        'preus automatització',
-        'costos segmentació',
-        'preus integració CRM'
+        'preus leads negocis locals',
+        'plans negocis locals',
+        'preus Local Business',
+        'costos generació leads',
+        'preus vendes B2B locals',
+        'tarifes anàlisi ressenyes',
+        'preus mapa visual',
+        'preus NextLeadIn'
       ],
       canonical: 'https://nextleadin.com/pricing',
       ogImage: '/images/og/pricing-ca.jpg',
@@ -385,117 +379,69 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           offers: [
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/pricing#plan-inici',
-              name: 'Pla Inici',
-              price: '19',
+              '@id': 'https://nextleadin.com/pricing#plan-local-business',
+              name: 'Local Business',
+              price: '79',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/pricing',
               priceSpecification: {
                 '@type': 'UnitPriceSpecification',
-                price: '19',
+                price: '79',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
                 unitText: 'MONTH',
                 valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
+                referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' }
               },
-              description: 'Perfecte per a empreses que comencen amb la generació de leads',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: 500,
-                unitText: 'leads per mes'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Pla Inici',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              description: '500 leads/mes, dades enriquides, anàlisi ressenyes IA, mapa visual',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: 500, unitText: 'leads per mes' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Local Business', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/pricing#plan-pro',
-              name: 'Pla Pro',
-              price: '49',
+              '@id': 'https://nextleadin.com/pricing#plan-professional',
+              name: 'Professional',
+              price: '199',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/pricing',
               priceSpecification: {
                 '@type': 'UnitPriceSpecification',
-                price: '49',
+                price: '199',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
                 unitText: 'MONTH',
                 valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
+                referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' }
               },
-              description: 'Ideal per a equips comercials que necessiten més volum i funcionalitats avançades',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: 2500,
-                unitText: 'leads per mes'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Pla Pro',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              description: '2.000 leads/mes, anàlisi competitiva, scoring predictiu, integracions CRM',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: 2000, unitText: 'leads per mes' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Professional', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/pricing#plan-elite',
-              name: 'Pla Elite',
-              price: '99',
+              '@id': 'https://nextleadin.com/pricing#plan-enterprise',
+              name: 'Enterprise',
+              price: '599',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/pricing',
               priceSpecification: {
                 '@type': 'UnitPriceSpecification',
-                price: '99',
+                price: '599',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
                 unitText: 'MONTH',
                 valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
+                referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' }
               },
-              description: 'Solució completa per a empreses que necessiten màxima capacitat i personalització',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: -1,
-                unitText: 'leads il·limitats per mes'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Pla Elite',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              description: 'Leads il·limitats, API, white-label, account manager',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: -1, unitText: 'leads il·limitats' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Enterprise', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             }
           ]
         }
@@ -503,16 +449,16 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
     },
     es: {
       title: 'Precios | NextLeadIn',
-      description: 'Planes de precios para la generación de leads con IA. Desde 19€/mes para empresas que comienzan hasta soluciones empresariales ilimitadas. Elige el volumen de leads y funcionalidades que necesitas.',
+      description: 'Planes para encontrar negocios locales. Local Business €79/mes (500 leads, datos enriquecidos, análisis reseñas IA). Professional €199/mes. Enterprise a medida.',
       keywords: [
-        'precios generación leads',
-        'planes IA',
-        'costos CRM',
-        'precios ventas B2B',
-        'tarifas leads cualificados',
-        'precios automatización',
-        'costos segmentación',
-        'precios integración CRM'
+        'precios leads negocios locales',
+        'planes negocios locales',
+        'precios Local Business',
+        'costos generación leads',
+        'precios ventas B2B locales',
+        'tarifas análisis reseñas',
+        'precios mapa visual',
+        'precios NextLeadIn'
       ],
       canonical: 'https://nextleadin.com/es/pricing',
       ogImage: '/images/og/pricing-es.jpg',
@@ -563,117 +509,45 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           offers: [
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/es/pricing#plan-inicio',
-              name: 'Plan Inicio',
-              price: '19',
+              '@id': 'https://nextleadin.com/es/pricing#plan-local-business',
+              name: 'Local Business',
+              price: '79',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/es/pricing',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                price: '19',
-                priceCurrency: 'EUR',
-                billingIncrement: '1',
-                unitText: 'MONTH',
-                valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
-              },
-              description: 'Perfecto para empresas que comienzan con la generación de leads',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: 500,
-                unitText: 'leads al mes'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Plan Inicio',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              priceSpecification: { '@type': 'UnitPriceSpecification', price: '79', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
+              description: '500 leads/mes, datos enriquecidos, análisis reseñas IA, mapa visual',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: 500, unitText: 'leads al mes' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Local Business', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/es/pricing#plan-pro',
-              name: 'Plan Pro',
-              price: '49',
+              '@id': 'https://nextleadin.com/es/pricing#plan-professional',
+              name: 'Professional',
+              price: '199',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/es/pricing',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                price: '49',
-                priceCurrency: 'EUR',
-                billingIncrement: '1',
-                unitText: 'MONTH',
-                valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
-              },
-              description: 'Ideal para equipos comerciales que necesitan más volumen y funcionalidades avanzadas',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: 2500,
-                unitText: 'leads al mes'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Plan Pro',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              priceSpecification: { '@type': 'UnitPriceSpecification', price: '199', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
+              description: '2.000 leads/mes, análisis competitivo, scoring predictivo, integraciones CRM',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: 2000, unitText: 'leads al mes' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Professional', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/es/pricing#plan-elite',
-              name: 'Plan Elite',
-              price: '99',
+              '@id': 'https://nextleadin.com/es/pricing#plan-enterprise',
+              name: 'Enterprise',
+              price: '599',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/es/pricing',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                price: '99',
-                priceCurrency: 'EUR',
-                billingIncrement: '1',
-                unitText: 'MONTH',
-                valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
-              },
-              description: 'Solución completa para empresas que necesitan máxima capacidad y personalización',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: -1,
-                unitText: 'leads ilimitados al mes'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Plan Elite',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              priceSpecification: { '@type': 'UnitPriceSpecification', price: '599', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
+              description: 'Leads ilimitados, API, white-label, account manager',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: -1, unitText: 'leads ilimitados' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Enterprise', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             }
           ]
         }
@@ -681,16 +555,16 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
     },
     en: {
       title: 'Pricing | NextLeadIn',
-      description: 'Pricing plans for AI-powered lead generation. From €19/month for starting businesses to unlimited enterprise solutions. Choose the lead volume and features you need.',
+      description: 'Plans to find local businesses. Local Business €79/month (500 leads, enriched data, AI review analysis). Professional €199/month. Enterprise custom.',
       keywords: [
-        'lead generation pricing',
-        'AI plans',
-        'CRM costs',
-        'B2B sales pricing',
-        'qualified leads pricing',
-        'automation pricing',
-        'segmentation costs',
-        'CRM integration pricing'
+        'local business leads pricing',
+        'local business plans',
+        'Local Business price',
+        'lead generation costs',
+        'B2B local sales pricing',
+        'review analysis pricing',
+        'visual map pricing',
+        'NextLeadIn pricing'
       ],
       canonical: 'https://nextleadin.com/en/pricing',
       ogImage: '/images/og/pricing-en.jpg',
@@ -741,117 +615,45 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           offers: [
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/en/pricing#plan-start',
-              name: 'Start Plan',
-              price: '19',
+              '@id': 'https://nextleadin.com/en/pricing#plan-local-business',
+              name: 'Local Business',
+              price: '79',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/en/pricing',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                price: '19',
-                priceCurrency: 'EUR',
-                billingIncrement: '1',
-                unitText: 'MONTH',
-                valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
-              },
-              description: 'Perfect for businesses starting with lead generation',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: 500,
-                unitText: 'leads per month'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Start Plan',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              priceSpecification: { '@type': 'UnitPriceSpecification', price: '79', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
+              description: '500 leads/month, enriched data, AI review analysis, visual map',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: 500, unitText: 'leads per month' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Local Business', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/en/pricing#plan-pro',
-              name: 'Pro Plan',
-              price: '49',
+              '@id': 'https://nextleadin.com/en/pricing#plan-professional',
+              name: 'Professional',
+              price: '199',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/en/pricing',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                price: '49',
-                priceCurrency: 'EUR',
-                billingIncrement: '1',
-                unitText: 'MONTH',
-                valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
-              },
-              description: 'Ideal for sales teams that need more volume and advanced features',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: 2500,
-                unitText: 'leads per month'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Pro Plan',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              priceSpecification: { '@type': 'UnitPriceSpecification', price: '199', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
+              description: '2,000 leads/month, competitive analysis, predictive scoring, CRM integrations',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: 2000, unitText: 'leads per month' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Professional', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/en/pricing#plan-elite',
-              name: 'Elite Plan',
-              price: '99',
+              '@id': 'https://nextleadin.com/en/pricing#plan-enterprise',
+              name: 'Enterprise',
+              price: '599',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/en/pricing',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                price: '99',
-                priceCurrency: 'EUR',
-                billingIncrement: '1',
-                unitText: 'MONTH',
-                valueAddedTaxIncluded: true,
-                referenceQuantity: {
-                  '@type': 'QuantitativeValue',
-                  value: 1,
-                  unitCode: 'MON'
-                }
-              },
-              description: 'Complete solution for businesses that need maximum capacity and customization',
-              eligibleQuantity: {
-                '@type': 'QuantitativeValue',
-                value: -1,
-                unitText: 'unlimited leads per month'
-              },
-              itemOffered: {
-                '@type': 'Service',
-                name: 'NextLeadIn - Elite Plan',
-                serviceType: 'Lead Generation Service',
-                areaServed: 'ES'
-              },
-              seller: {
-                '@type': 'Organization',
-                name: 'NextLeadIn'
-              }
+              priceSpecification: { '@type': 'UnitPriceSpecification', price: '599', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
+              description: 'Unlimited leads, API, white-label, account manager',
+              eligibleQuantity: { '@type': 'QuantitativeValue', value: -1, unitText: 'unlimited leads' },
+              itemOffered: { '@type': 'Service', name: 'NextLeadIn - Enterprise', serviceType: 'Lead Generation Service', areaServed: 'ES' },
+              seller: { '@type': 'Organization', name: 'NextLeadIn' }
             }
           ]
         }
@@ -1531,6 +1333,12 @@ export function generateAIOptimizedMetadata(
   const localePath = locale === 'ca' ? '' : `/${locale}`
   const fullUrl = `${baseUrl}${localePath}${page === 'home' ? '' : `/${page}`}`
 
+  // Evitar duplicació "| NextLeadIn | NextLeadIn": el layout aplica template '%s | NextLeadIn',
+  // per tant retornem només la part curta (titleBase) com a default; el sufix l'afegeix el layout.
+  const titleBase = (finalConfig.title || '').replace(/\s*\|\s*NextLeadIn\s*$/i, '').trim()
+  const titleForLayout = titleBase || 'NextLeadIn'
+  const titleFull = titleBase ? `${titleBase} | NextLeadIn` : 'NextLeadIn'
+
   // Determinar categoria basada en la pàgina (millorat per SEO)
   const category = page === 'pricing' 
     ? 'Business Software' 
@@ -1546,7 +1354,7 @@ export function generateAIOptimizedMetadata(
 
   return {
     title: {
-      default: finalConfig.title,
+      default: titleForLayout,
       template: '%s | NextLeadIn'
     },
     description: finalConfig.description,
@@ -1572,13 +1380,13 @@ export function generateAIOptimizedMetadata(
       type: 'website',
       locale: locale === 'ca' ? 'ca_ES' : locale === 'es' ? 'es_ES' : 'en_US',
       url: finalConfig.canonical,
-      title: finalConfig.title,
+      title: titleFull,
       description: finalConfig.description,
       siteName: 'NextLeadIn',
       images: [
         {
           url: finalConfig.ogImage || '/images/og/default.jpg',
-          alt: finalConfig.title,
+          alt: titleFull,
           width: 1200,
           height: 630
         }
@@ -1588,12 +1396,12 @@ export function generateAIOptimizedMetadata(
       card: 'summary_large_image',
       site: '@nextleadin',
       creator: '@nextleadin',
-      title: finalConfig.title,
+      title: titleFull,
       description: finalConfig.description,
       images: [
         {
           url: finalConfig.ogImage || '/images/og/default.jpg',
-          alt: finalConfig.title,
+          alt: titleFull,
           width: 1200,
           height: 630
         }

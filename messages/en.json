@@ -15,7 +15,7 @@
     },
     "contact": {
       "title": "Talk to our team",
-      "subtitle": "Hyper-segmented lead generation and AI reports to prep calls and close more opportunities.",
+      "subtitle": "Local business leads: restaurants, workshops, shops. Enriched data and AI review analysis.",
       "submit": "Submit request",
       "seePricing": "See pricing",
       "labels": {
@@ -60,9 +60,9 @@
         "hoursLabel": "Hours",
         "hoursValue": "Mon–Fri 9:00–18:00",
         "whyTitle": "Why talk to us?",
-        "why1": "Lead segmentation by area and sector with precision",
-        "why2": "Smart AI reports for every company",
-        "why3": "Integrations and support for your sales team",
+        "why1": "Find local businesses LinkedIn doesn't have",
+        "why2": "Enriched data: rating, reviews, hours and AI analysis",
+        "why3": "Visual map, new business alerts and CRM integrations",
         "demoTitle": "Would you prefer a demo?",
         "demoDesc": "Schedule a session to see how we generate lists and reports in real time.",
         "demoCta": "Request a demo"
@@ -78,7 +78,7 @@
       "subscribe": "Subscribe"
     },
     "pricing": {
-      "title": "Plans designed to scale your leads",
+      "title": "Plans to find local businesses",
       "breadcrumbHome": "Home",
       "breadcrumb": "Pricing",
       "compare": "Compare plans"
@@ -94,34 +94,34 @@
   },
   "home": {
     "hero": {
-      "title": "Hyper-segmented lead generation with AI",
-      "subtitle": "Find clients by area, industry and keywords"
+      "title": "Local business leads",
+      "subtitle": "Find ALL restaurants, workshops, shops and local businesses that LinkedIn doesn't have"
     },
     "features": {
       "location": {
-        "title": "Geographic segmentation",
-        "subtitle": "Choose the area and find key companies",
-        "desc": "Barcelona, Girona or wherever you need. Locate potential businesses with advanced filters.",
-        "bullet1": "Map and filters by neighborhood/municipality",
-        "bullet2": "Estimated volume of available leads",
-        "bullet3": "Quick export to CSV/CRM"
+        "title": "Search by area and radius",
+        "subtitle": "City, neighborhood, postal code or radius in km",
+        "desc": "Wide coverage of local businesses: workshops, restaurants, salons, real estate… that other platforms miss.",
+        "bullet1": "Search by radius, neighborhood, street or postal code",
+        "bullet2": "Interactive map and route planning",
+        "bullet3": "Export to CSV, Excel, KML and CRM"
       },
       "business": {
-        "title": "Sector selection",
-        "subtitle": "Define niches and verticals precisely",
-        "desc": "Segment by CNAE, keywords and intent.",
-        "bullet1": "Filters by activity and size",
-        "bullet2": "Exclude undesired sectors",
-        "bullet3": "Smart niche suggestions",
-        "badge": "NEW"
+        "title": "Enriched data and reviews",
+        "subtitle": "Rating, hours, photos and AI analysis",
+        "desc": "Rating, review count, opening hours, price level. AI review analysis to spot opportunities and pain points.",
+        "bullet1": "Filters by rating, reviews and price",
+        "bullet2": "Review analysis: sentiment and keywords",
+        "bullet3": "New business alerts",
+        "badge": "LOCAL BUSINESSES"
       },
       "report": {
-        "title": "AI reports",
-        "subtitle": "Automatic enrichment to convert better",
-        "desc": "Our AI generates dossiers with talking points and contact angles.",
-        "bullet1": "Executive summaries per company",
-        "bullet2": "Personalized contact angles",
-        "bullet3": "Notes for common objections"
+        "title": "Competitive analysis and scoring",
+        "subtitle": "Benchmark vs local competition and business potential",
+        "desc": "Automatic comparison with competitors and predictive scoring to prioritize the best leads.",
+        "bullet1": "Rating and review benchmark vs competition",
+        "bullet2": "Potential scoring (size, growth, location)",
+        "bullet3": "Reports to prepare your pitch"
       }
     },
     "integrations": {
@@ -133,23 +133,23 @@
     "testimonials": {
       "title": "Real ",
       "titleHighlight": "success stories",
-      "description": "Sell faster: teams that have doubled their call rate and improved qualification with AI-generated reports.",
+      "description": "Sales reps and agencies finding clients at restaurants, workshops and local shops thanks to AI review analysis.",
       "cta": "See all stories",
       "readMore": "Read more reviews"
     },
     "blogSection": {
       "title": "Trends in ",
-      "titleHighlight": "lead generation",
-      "titleSuffix": " with AI",
-      "description": "Practical guides and insights to capture qualified potential clients, optimize calls and scale your commercial pipeline.",
+      "titleHighlight": "local leads",
+      "titleSuffix": " and local businesses",
+      "description": "Guides and insights to find local businesses, analyze reviews and close more opportunities.",
       "cta": "See all articles",
       "readMore": "Read more"
     }
   },
   "metadata": {
-    "title": "NextLeadIn — Lead generation with AI",
-    "description": "Platform to find leads by business, area and keywords with AI reports.",
-    "keywords": "lead generation,artificial intelligence,B2B sales,geographic segmentation"
+    "title": "NextLeadIn — Local business leads",
+    "description": "Find ALL local businesses (restaurants, workshops, shops). Enriched data and AI review analysis. LinkedIn alternative for traditional businesses.",
+    "keywords": "local business leads,local businesses,lead generation,restaurants workshops shops,local prospecting,AI reviews,geographic segmentation"
   },
   "blog": {
     "title": "Blog",

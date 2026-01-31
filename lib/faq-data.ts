@@ -46,50 +46,50 @@ export const faqSections: FAQSection[] = [
       en: 'Product and coverage'
     },
     description: {
-      ca: 'Com segmentem els leads per zona i sector, i quina cobertura de dades oferim.',
-      es: 'Cómo segmentamos los leads por zona y sector, y qué cobertura de datos ofrecemos.',
-      en: 'How we segment leads by location and sector, and what data coverage we offer.'
+      ca: 'Com treballem les dades, quina cobertura de negocis locals oferim i com es diferencia de LinkedIn.',
+      es: 'Cómo trabajamos los datos, qué cobertura de negocios locales ofrecemos y cómo se diferencia de LinkedIn.',
+      en: 'How we work with data, what local business coverage we offer and how it differs from LinkedIn.'
     },
     questions: [
       {
         id: 1,
         question: {
-          ca: 'Com seleccioneu les empreses per zona i sector?',
-          es: '¿Cómo seleccionáis las empresas por zona y sector?',
-          en: 'How do you select companies by location and sector?'
+          ca: 'D\'on provenen les dades dels leads?',
+          es: '¿De dónde provienen los datos de los leads?',
+          en: 'Where do lead data come from?'
         },
         answer: {
-          ca: 'Pots triar municipi, barri o província i afinar per sector amb CNAE i paraules clau. El sistema calcula el volum estimat de leads i en mostra la llista perquè la revisis abans d\'exportar.',
-          es: 'Puedes elegir municipio, barrio o provincia y afinar por sector con CNAE y palabras clave. El sistema calcula el volumen estimado de leads y muestra la lista para que la revises antes de exportar.',
-          en: 'You can choose municipality, neighborhood or province and refine by sector with CNAE and keywords. The system calculates the estimated lead volume and shows the list for you to review before exporting.'
+          ca: 'Disposem d\'una amplia base de dades de negocis locals amb ubicació verificada, horaris, ressenyes i dades actualitzades constantment. Trobes restaurants, tallers, comerços i altres negocis tradicionals que LinkedIn i altres plataformes B2B no tenen.',
+          es: 'Disponemos de una amplia base de datos de negocios locales con ubicación verificada, horarios, reseñas y datos actualizados constantemente. Encuentras restaurantes, talleres, comercios y otros negocios tradicionales que LinkedIn y otras plataformas B2B no tienen.',
+          en: 'We have a wide database of local businesses with verified location, opening hours, reviews and data updated constantly. You find restaurants, workshops, shops and other traditional businesses that LinkedIn and other B2B platforms don\'t have.'
         },
         isOpen: true
       },
       {
         id: 2,
         question: {
-          ca: 'Amb quina freqüència s\'actualitzen les dades?',
-          es: '¿Con qué frecuencia se actualizan los datos?',
-          en: 'How often are the data updated?'
+          ca: 'Com cerco per zona i tipus de negoci?',
+          es: '¿Cómo busco por zona y tipo de negocio?',
+          en: 'How do I search by area and business type?'
         },
         answer: {
-          ca: 'Depèn del pla: Inici (mensual), Pro (setmanal), Empresa (diària). Ens centrem a mantenir qualitat, cobertura i informació accionable.',
-          es: 'Depende del plan: Inicio (mensual), Pro (semanal), Empresa (diario). Nos centramos en mantener calidad, cobertura e información accionable.',
-          en: 'It depends on the plan: Start (monthly), Pro (weekly), Enterprise (daily). We focus on maintaining quality, coverage and actionable information.'
+          ca: 'Pots cercar per ciutat, barri, codi postal, radi en km o dibuixar una àrea al mapa. Afegeix el tipus de negoci (ex: restaurants, tallers mecànics) i filtres com rating mínim, nombre de ressenyes o horaris.',
+          es: 'Puedes buscar por ciudad, barrio, código postal, radio en km o dibujar un área en el mapa. Añade el tipo de negocio (ej: restaurantes, talleres mecánicos) y filtros como valoración mínima, número de reseñas u horarios.',
+          en: 'You can search by city, neighborhood, postal code, radius in km or draw an area on the map. Add business type (e.g. restaurants, workshops) and filters like minimum rating, review count or opening hours.'
         },
         isOpen: false
       },
       {
         id: 3,
         question: {
-          ca: 'Quin nivell de precisió té la segmentació?',
-          es: '¿Qué nivel de precisión tiene la segmentación?',
-          en: 'What level of precision does the segmentation have?'
+          ca: 'Amb quina freqüència s\'actualitzen les dades?',
+          es: '¿Con qué frecuencia se actualizan los datos?',
+          en: 'How often are the data updated?'
         },
         answer: {
-          ca: 'Fem servir múltiples fonts i validacions. La precisió augmenta amb filtres avançats (noms comercials, keywords de nínxol, mida, etc.).',
-          es: 'Utilizamos múltiples fuentes y validaciones. La precisión aumenta con filtros avanzados (nombres comerciales, keywords de nicho, tamaño, etc.).',
-          en: 'We use multiple sources and validations. Precision increases with advanced filters (commercial names, niche keywords, size, etc.).'
+          ca: 'Les dades es van actualitzant constantment. Nosaltres enriquim i verifiquem les dades segons el pla: Local Business i Professional inclouen alertes de noves obertures i, a Professional i Enterprise, monitorització de canvis periòdica.',
+          es: 'Los datos se actualizan constantemente. Nosotros enriquecemos y verificamos los datos según el plan: Local Business y Professional incluyen alertas de nuevas aperturas y, en Professional y Enterprise, monitorización de cambios periódica.',
+          en: 'Data is updated constantly. We enrich and verify data according to plan: Local Business and Professional include new business alerts and, on Professional and Enterprise, periodic change monitoring.'
         },
         isOpen: false
       },
@@ -101,23 +101,23 @@ export const faqSections: FAQSection[] = [
           en: 'What geographic coverage do you have?'
         },
         answer: {
-          ca: 'Cobertura completa d\'Espanya amb dades detallades per municipi. També tenim dades d\'Europa i Amèrica Llatina per plans Enterprise.',
-          es: 'Cobertura completa de España con datos detallados por municipio. También tenemos datos de Europa y América Latina para planes Enterprise.',
-          en: 'Complete coverage of Spain with detailed data by municipality. We also have data from Europe and Latin America for Enterprise plans.'
+          ca: 'Cobertura amplia amb focus especial a Espanya i Europa, dades detallades per municipi, barri i codi postal. Els plans Enterprise inclouen anàlisi territorial avançada.',
+          es: 'Cobertura amplia con enfoque especial en España y Europa, datos detallados por municipio, barrio y código postal. Los planes Enterprise incluyen análisis territorial avanzado.',
+          en: 'Wide coverage with special focus on Spain and Europe, detailed data by municipality, neighborhood and postal code. Enterprise plans include advanced territory analysis.'
         },
         isOpen: false
       },
       {
         id: 5,
         question: {
-          ca: 'Puc filtrar per mida d\'empresa?',
-          es: '¿Puedo filtrar por tamaño de empresa?',
-          en: 'Can I filter by company size?'
+          ca: 'Puc filtrar per rating o nombre de ressenyes?',
+          es: '¿Puedo filtrar por valoración o número de reseñas?',
+          en: 'Can I filter by rating or number of reviews?'
         },
         answer: {
-          ca: 'Sí, pots filtrar per nombre d\'empleats, facturació anual i altres criteris de mida per trobar el perfil ideal per al teu producte.',
-          es: 'Sí, puedes filtrar por número de empleados, facturación anual y otros criterios de tamaño para encontrar el perfil ideal para tu producto.',
-          en: 'Yes, you can filter by number of employees, annual revenue and other size criteria to find the ideal profile for your product.'
+          ca: 'Sí. A partir del pla Local Business pots filtrar per rating mínim (ex: només 4+ estrelles), nombre de ressenyes, nivell de preus ($ $$ $$$), horaris (obert ara), si tenen web o telèfon i negocis oberts recentment.',
+          es: 'Sí. A partir del plan Local Business puedes filtrar por valoración mínima (ej: solo 4+ estrellas), número de reseñas, nivel de precios ($ $$ $$$), horarios (abierto ahora), si tienen web o teléfono y negocios abiertos recientemente.',
+          en: 'Yes. From the Local Business plan you can filter by minimum rating (e.g. 4+ stars), review count, price level ($ $$ $$$), opening hours (open now), has website or phone and recently opened businesses.'
         },
         isOpen: false
       }
@@ -126,27 +126,27 @@ export const faqSections: FAQSection[] = [
   {
     id: 'ia',
     title: {
-      ca: 'IA i informes per a trucades',
-      es: 'IA e informes para llamadas',
-      en: 'AI and reports for calls'
+      ca: 'IA: anàlisi de ressenyes i scoring',
+      es: 'IA: análisis de reseñas y scoring',
+      en: 'AI: review analysis and scoring'
     },
     description: {
-      ca: 'Com es generen els informes i com ajuden a preparar la conversa comercial.',
-      es: 'Cómo se generan los informes y cómo ayudan a preparar la conversación comercial.',
-      en: 'How reports are generated and how they help prepare the commercial conversation.'
+      ca: 'Anàlisi de ressenyes amb IA, detecció d\'oportunitats i scoring predictiu de potencial de negoci.',
+      es: 'Análisis de reseñas con IA, detección de oportunidades y scoring predictivo de potencial de negocio.',
+      en: 'AI review analysis, opportunity detection and predictive business potential scoring.'
     },
     questions: [
       {
         id: 6,
         question: {
-          ca: 'Què inclou l\'informe per empresa?',
-          es: '¿Qué incluye el informe por empresa?',
-          en: 'What does the company report include?'
+          ca: 'Què és l\'anàlisi de ressenyes amb IA?',
+          es: '¿Qué es el análisis de reseñas con IA?',
+          en: 'What is AI review analysis?'
         },
         answer: {
-          ca: 'Resum executiu, punts de conversa, necessitats detectades, objeccions probables i angle de contacte suggerit per tancar reunió.',
-          es: 'Resumen ejecutivo, puntos de conversación, necesidades detectadas, objeciones probables y ángulo de contacto sugerido para cerrar reunión.',
-          en: 'Executive summary, talking points, detected needs, probable objections and suggested contact angle to close a meeting.'
+          ca: 'La IA analitza les ressenyes públiques del negoci: sentiment (positiu/negatiu), keywords, problemes recurrents i oportunitats (ex: "no accepten targeta" → vendre TPV). Això et permet preparar un pitch personalitzat i identificar pain points reals.',
+          es: 'La IA analiza las reseñas públicas del negocio: sentimiento (positivo/negativo), keywords, problemas recurrentes y oportunidades (ej: "no aceptan tarjeta" → vender TPV). Esto te permite preparar un pitch personalizado e identificar pain points reales.',
+          en: 'The AI analyses the business\'s public reviews: sentiment (positive/negative), keywords, recurring problems and opportunities (e.g. "don\'t accept cards" → sell POS). This lets you prepare a tailored pitch and identify real pain points.'
         },
         isOpen: true
       },
@@ -321,9 +321,9 @@ export const navigationItems: NavigationItem[] = [
   { 
     id: 'ia', 
     title: {
-      ca: 'IA i informes',
-      es: 'IA e informes',
-      en: 'AI and reports'
+      ca: 'IA: ressenyes i scoring',
+      es: 'IA: reseñas y scoring',
+      en: 'AI: reviews and scoring'
     }
   },
   { 

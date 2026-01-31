@@ -26,46 +26,46 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
     helper: string
   }> = {
     es: {
-      badge: '🚀 Nuevo: Integración con IA para mejores resultados',
-      titlePrefix: 'Tu plataforma ',
-      animatedWords: ['hipersegmentada', 'impulsada por IA', 'precisa'],
-      titleMid: 'de generación de ',
-      titleSuffix: 'leads',
-      description: 'La plataforma más avanzada para encontrar leads cualificados y hacer crecer tu negocio.',
+      badge: '🗺️ Leads de negocios locales verificados',
+      titlePrefix: 'Encuentra ',
+      animatedWords: ['restaurantes', 'talleres', 'comercios'],
+      titleMid: 'y negocios locales que ',
+      titleSuffix: 'LinkedIn no tiene',
+      description: 'La única plataforma que encuentra TODOS los negocios locales: rating, reseñas, horarios y análisis con IA.',
       trust1: 'Configuración en 5 minutos',
-      trust2: 'No se requiere tarjeta de crédito',
+      trust2: 'Sin tarjeta de crédito',
       emailLabel: 'Correo electrónico',
       emailPlaceholder: 'Introduce tu email',
-      primaryCta: 'Empezar gratis',
-      helper: 'Empieza con 100 leads gratis. No se requiere tarjeta de crédito.'
+      primaryCta: 'Empezar ahora',
+      helper: 'Prueba la plataforma con leads de negocios locales. Sin tarjeta de crédito.'
     },
     ca: {
-      badge: '🚀 Nou: Integració amb IA per a millors resultats',
-      titlePrefix: 'La teva plataforma ',
-      animatedWords: ['hipersegmentada', 'impulsada per IA', 'precisa'],
-      titleMid: 'de generació de ',
-      titleSuffix: 'leads',
-      description: 'La plataforma més avançada per trobar leads qualificats i fer créixer el teu negoci.',
-      trust1: 'Setup en 5 minuts',
-      trust2: 'No cal targeta de crèdit',
+      badge: '🗺️ Leads de negocis locals verificats',
+      titlePrefix: 'Troba ',
+      animatedWords: ['restaurants', 'tallers', 'comerços'],
+      titleMid: 'i negocis locals que ',
+      titleSuffix: 'LinkedIn no té',
+      description: 'L\'única plataforma que troba TOTS els negocis locals: rating, ressenyes, horaris i anàlisi amb IA.',
+      trust1: 'Configuració en 5 minuts',
+      trust2: 'Sense targeta de crèdit',
       emailLabel: 'Adreça electrònica',
       emailPlaceholder: 'Introdueix el teu email',
-      primaryCta: 'Començar gratis',
-      helper: 'Comença amb 100 leads gratuïts. No cal targeta de crèdit.'
+      primaryCta: 'Començar ara',
+      helper: 'Prova la plataforma amb leads de negocis locals. Sense targeta de crèdit.'
     },
     en: {
-      badge: '🚀 New: AI integration for better results',
-      titlePrefix: 'Your ',
-      animatedWords: ['hyper-targeted', 'AI-powered', 'precise'],
-      titleMid: 'lead generation ',
-      titleSuffix: 'platform',
-      description: 'The most advanced platform to find qualified leads and grow your business.',
+      badge: '🗺️ Verified local business leads',
+      titlePrefix: 'Find ',
+      animatedWords: ['restaurants', 'workshops', 'shops'],
+      titleMid: 'and local businesses ',
+      titleSuffix: "LinkedIn doesn't have",
+      description: 'The only platform that finds ALL local businesses: rating, reviews, opening hours and AI analysis.',
       trust1: 'Setup in 5 minutes',
       trust2: 'No credit card required',
       emailLabel: 'Email address',
       emailPlaceholder: 'Enter your email',
-      primaryCta: 'Start for free',
-      helper: 'Start with 100 free leads. No credit card required.'
+      primaryCta: 'Get started',
+      helper: 'Try the platform with local business leads. No credit card required.'
     }
   }
 

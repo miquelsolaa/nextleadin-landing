@@ -15,7 +15,7 @@
     },
     "contact": {
       "title": "Parla amb el nostre equip",
-      "subtitle": "Generació de leads hipersegmentats i informes amb IA per preparar trucades i tancar més oportunitats.",
+      "subtitle": "Leads de negocis locals: restaurants, tallers, comerços. Dades enriquides i anàlisi de ressenyes amb IA.",
       "submit": "Envia la sol·licitud",
       "seePricing": "Consulta els preus",
       "labels": {
@@ -60,9 +60,9 @@
         "hoursLabel": "Horari",
         "hoursValue": "Dl-Dv 9:00–18:00",
         "whyTitle": "Per què parlar amb nosaltres?",
-        "why1": "Segmentació de leads per zona i sector amb precisió",
-        "why2": "Informes intel·ligents per IA per a cada empresa",
-        "why3": "Integracions i suport per al teu equip comercial",
+        "why1": "Troba negocis locals que LinkedIn no té",
+        "why2": "Dades enriquides: rating, ressenyes, horaris i anàlisi amb IA",
+        "why3": "Mapa visual, alertes de noves obertures i integracions CRM",
         "demoTitle": "Preferies una demo?",
         "demoDesc": "Programa una sessió per veure com generem llistes i informes en temps real.",
         "demoCta": "Sol·licita una demo"
@@ -78,7 +78,7 @@
       "subscribe": "Subscriu-te"
     },
     "pricing": {
-      "title": "Plans pensats per escalejar els teus leads",
+      "title": "Plans per trobar negocis locals",
       "breadcrumbHome": "Inici",
       "breadcrumb": "Preus",
       "compare": "Comparar plans"
@@ -94,34 +94,34 @@
   },
   "home": {
     "hero": {
-      "title": "Generació de leads hipersegmentats amb IA",
-      "subtitle": "Troba clients per zona, sector i paraules clau"
+      "title": "Leads de negocis locals",
+      "subtitle": "Troba TOTS els restaurants, tallers, comerços i negocis locals que LinkedIn no té"
     },
     "features": {
       "location": {
-        "title": "Segmentació geogràfica",
-        "subtitle": "Tria la zona i troba les empreses clau",
-        "desc": "Barcelona, Girona o on necessitis. Localitza negocis amb potencial amb filtres avançats.",
-        "bullet1": "Mapa i filtres per barri/municipi",
-        "bullet2": "Volum estimat de leads disponibles",
-        "bullet3": "Exportació ràpida a CSV/CRM"
+        "title": "Cerca per zona i radi",
+        "subtitle": "Ciutat, barri, codi postal o radi en km",
+        "desc": "Amplia cobertura de negocis locals: tallers, restaurants, perruqueries, immobiliàries… que altres plataformes no troben.",
+        "bullet1": "Cerca per radi, barri, carrer o codi postal",
+        "bullet2": "Mapa interactiu i planificació de rutes",
+        "bullet3": "Exportació a CSV, Excel, KML i CRM"
       },
       "business": {
-        "title": "Selecció de sector",
-        "subtitle": "Defineix nínxols i verticals amb precisió",
-        "desc": "Segmenta per CNAE, keywords i intenció.",
-        "bullet1": "Filtres per activitat i mida",
-        "bullet2": "Exclusió de sectors no desitjats",
-        "bullet3": "Suggeriments intel·ligents de nínxols",
-        "badge": "NOU"
+        "title": "Dades enriquides i ressenyes",
+        "subtitle": "Rating, horaris, fotos i anàlisi amb IA",
+        "desc": "Rating, nombre de ressenyes, horaris, nivell de preus. Anàlisi de ressenyes amb IA per detectar oportunitats i pain points.",
+        "bullet1": "Filtres per rating, ressenyes i preu",
+        "bullet2": "Anàlisi de ressenyes: sentiment i keywords",
+        "bullet3": "Alertes de noves obertures",
+        "badge": "NEGOCIS LOCALS"
       },
       "report": {
-        "title": "Informes amb IA",
-        "subtitle": "Enriquiment automàtic per convertir millor",
-        "desc": "La nostra IA genera dossiers amb punts de conversa i angles de contacte.",
-        "bullet1": "Resums executius per empresa",
-        "bullet2": "Angles de contacte personalitzats",
-        "bullet3": "Notes per objeccions freqüents"
+        "title": "Anàlisi competitiva i scoring",
+        "subtitle": "Benchmark vs competència local i potencial de negoci",
+        "desc": "Comparativa automàtica amb la competència i scoring predictiu per prioritzar els millors leads.",
+        "bullet1": "Benchmark de rating i ressenyes vs competència",
+        "bullet2": "Scoring de potencial (mida, creixement, ubicació)",
+        "bullet3": "Informes per preparar el pitch"
       }
     },
     "integrations": {
@@ -133,23 +133,23 @@
     "testimonials": {
       "title": "Històries d'",
       "titleHighlight": "èxit real",
-      "description": "Comercialitzar més ràpid: equips que han duplicat el ritme de trucades i han millorat la qualificació amb informes generats per IA.",
+      "description": "Venedors i agències que troben clients a restaurants, tallers i comerços locals gràcies a l'anàlisi de ressenyes amb IA.",
       "cta": "Veure totes les històries",
       "readMore": "Llegir més ressenyes"
     },
     "blogSection": {
       "title": "Tendències en ",
-      "titleHighlight": "generació de leads",
-      "titleSuffix": " amb IA",
-      "description": "Guies i insights pràctics per captar clients potencials qualificats, optimitzar trucades i escalar el teu pipeline comercial.",
+      "titleHighlight": "leads locals",
+      "titleSuffix": " i negocis locals",
+      "description": "Guies i insights per trobar negocis locals, analitzar ressenyes i tancar més oportunitats.",
       "cta": "Veure tots els articles",
       "readMore": "Llegir més"
     }
   },
   "metadata": {
-    "title": "NextLeadIn — Generació de leads amb IA",
-    "description": "Plataforma per trobar leads per negoci, zona i paraules clau amb informes d'IA.",
-    "keywords": "generació de leads,intel·ligència artificial,vendes B2B,segmentació geogràfica"
+    "title": "NextLeadIn — Leads de negocis locals",
+    "description": "Troba TOTS els negocis locals (restaurants, tallers, comerços). Dades enriquides i anàlisi de ressenyes amb IA. Alternativa a LinkedIn per negocis tradicionals.",
+    "keywords": "leads negocis locals,negocis locals,generació de leads,restaurants tallers comerços,prospecció local,IA ressenyes,segmentació geogràfica"
   },
   "blog": {
     "title": "Blog",

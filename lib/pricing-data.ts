@@ -70,359 +70,388 @@ export interface ComparisonFeature {
 
 export const pricingPlans: PricingPlan[] = [
   {
-    id: 'growth',
+    id: 'localBusiness',
     name: {
-      ca: 'Growth',
-      es: 'Growth',
-      en: 'Growth'
-    },
-    price: 59,
-    period: {
-      ca: 'seient/mes',
-      es: 'puesto/mes',
-      en: 'seat/month'
-    },
-    description: {
-      ca: 'Ara amb IA. Automatitza correus i seguiments per tancar més ràpid.',
-      es: 'Ahora con IA. Automatiza correos y seguimientos para cerrar más rápido.',
-      en: 'Now with AI. Automate emails and follow-ups to close faster.'
-    },
-    features: {
-      ca: [
-        'Gestió de prospectes, calendaris i embuts',
-        'Informes amb IA',
-        'Entrada de vendes en temps real',
-        'Sincronització completa de correu amb seguiment',
-        'Automatitzacions i seqüències de nutrició',
-        'Subscripcions i informes de previsió',
-        'Planificador de reunions i cronograma de contactes',
-        'Assistència amb xat en viu'
-      ],
-      es: [
-        'Gestión de prospectos, calendarios y embudos',
-        'Informes con IA',
-        'Entrada de ventas en tiempo real',
-        'Sincronización completa de correo con seguimiento',
-        'Automatizaciones y secuencias de nutrición',
-        'Suscripciones e informes de previsión',
-        'Planificador de reuniones y cronograma de contactos',
-        'Asistencia con chat en vivo'
-      ],
-      en: [
-        'Lead management, calendars and pipelines',
-        'AI insights',
-        'Real-time sales updates',
-        'Full email sync with tracking',
-        'Automations and nurturing sequences',
-        'Subscriptions and forecasting reports',
-        'Meeting scheduler and contact timeline',
-        'Live chat support'
-      ]
-    },
-    buttonText: {
-      ca: 'Prova-ho gratis',
-      es: 'Pruébalo gratis',
-      en: 'Try free'
-    },
-    buttonHref: '/get-started',
-    billingNote: {
-      ca: 'Facturat anualment · Estalvia fins al 42 %',
-      es: 'Facturado anualmente · Ahorra hasta un 42 %',
-      en: 'Billed annually · Save up to 42%'
-    },
-    trialNote: {
-      ca: 'Prova gratuïta de 14 dies. Sense targeta.',
-      es: 'Prueba gratuita de 14 días. Sin tarjeta.',
-      en: '14-day free trial. No card required.'
-    },
-    popular: false,
-    delay: 200,
-    limits: {
-      leads: '-',
-      aiCredits: '-',
-      users: '-',
-      searches: '-'
-    }
-  },
-  {
-    id: 'premium',
-    name: {
-      ca: 'Premium',
-      es: 'Premium',
-      en: 'Premium'
+      ca: 'Local Business',
+      es: 'Local Business',
+      en: 'Local Business'
     },
     price: 79,
     period: {
-      ca: 'seient/mes',
-      es: 'puesto/mes',
-      en: 'seat/month'
+      ca: 'mes',
+      es: 'mes',
+      en: 'month'
     },
     description: {
-      ca: 'Ara amb IA. Impulsa el cicle complet de vendes amb eines avançades.',
-      es: 'Ahora con IA. Impulsa el ciclo completo de ventas con herramientas avanzadas.',
-      en: 'Now with AI. Power the full sales cycle with advanced tools.'
+      ca: 'Per freelancers i comercials: dades enriquides, mapa i anàlisi de ressenyes amb IA.',
+      es: 'Para freelancers y comerciales: datos enriquecidos, mapa y análisis de reseñas con IA.',
+      en: 'For freelancers and sales reps: enriched data, map and AI review analysis.'
     },
     features: {
       ca: [
-        'Tot el Growth',
-        'Generació i transferència de leads',
-        'Puntuació i enriquiment de dades d\'empresa',
-        'Eines de correu múltiple amb IA',
-        'Personalització avançada per equips, informes i camps'
+        '500 leads/mes de negocis locals',
+        'Dades enriquides: rating, ressenyes, fotos, horaris',
+        'Anàlisi de ressenyes amb IA (100 anàlisis/mes)',
+        'Mapa visual interactiu',
+        '5 campanyes actives',
+        'Alertes de noves obertures',
+        'Exportació avançada (CSV, Excel, KML)',
+        'Suport per email'
       ],
       es: [
-        'Todo lo de Growth',
-        'Generación y transferencia de leads',
-        'Puntuación y enriquecimiento de datos de empresa',
-        'Herramientas de correo múltiple con IA',
-        'Personalización avanzada para equipos, informes y campos'
+        '500 leads/mes de negocis locals',
+        'Datos enriquecidos: valoración, reseñas, fotos, horarios',
+        'Análisis de reseñas con IA (100 análisis/mes)',
+        'Mapa visual interactivo',
+        '5 campañas activas',
+        'Alertas de nuevas aperturas',
+        'Exportación avanzada (CSV, Excel, KML)',
+        'Soporte por email'
       ],
       en: [
-        'Everything in Growth',
-        'Lead generation and routing',
-        'Company scoring and enrichment',
-        'Multi-email tools with AI',
-        'Advanced team, report and field customization'
+        '500 local business leads/month',
+        'Enriched data: rating, reviews, photos, opening hours',
+        'AI review analysis (100 analyses/month)',
+        'Interactive visual map',
+        '5 active campaigns',
+        'New business alerts',
+        'Advanced export (CSV, Excel, KML)',
+        'Email support'
       ]
     },
     buttonText: {
-      ca: 'Prova-ho gratis',
-      es: 'Pruébalo gratis',
-      en: 'Try free'
+      ca: 'Començar ara',
+      es: 'Empezar ahora',
+      en: 'Get started'
     },
     buttonHref: '/get-started',
     billingNote: {
-      ca: 'Facturat anualment · Estalvia fins al 42 %',
-      es: 'Facturado anualmente · Ahorra hasta un 42 %',
-      en: 'Billed annually · Save up to 42%'
-    },
-    trialNote: {
-      ca: 'Prova gratuïta de 14 dies. Sense targeta.',
-      es: 'Prueba gratuita de 14 días. Sin tarjeta.',
-      en: '14-day free trial. No card required.'
+      ca: '€63/mes facturat anualment',
+      es: '€63/mes facturado anualmente',
+      en: '€63/month when billed annually'
     },
     popular: true,
-    delay: 300,
+    delay: 200,
     limits: {
-      leads: '-',
-      aiCredits: '-',
-      users: '-',
-      searches: '-'
+      leads: 500,
+      aiCredits: '100',
+      users: '1',
+      searches: '5'
     }
   },
   {
-    id: 'ultimate',
+    id: 'professional',
     name: {
-      ca: 'Ultimate',
-      es: 'Ultimate',
-      en: 'Ultimate'
+      ca: 'Professional',
+      es: 'Professional',
+      en: 'Professional'
+    },
+    price: 199,
+    period: {
+      ca: 'mes',
+      es: 'mes',
+      en: 'month'
+    },
+    description: {
+      ca: 'Per PYMES i agències: anàlisi competitiva, scoring predictiu i integracions CRM.',
+      es: 'Para PYMES y agencias: análisis competitivo, scoring predictivo e integraciones CRM.',
+      en: 'For SMBs and agencies: competitive analysis, predictive scoring and CRM integrations.'
+    },
+    features: {
+      ca: [
+        '2.000 leads/mes de negocis locals',
+        'Tot del Local Business',
+        'Anàlisi competitiva automàtica',
+        'Scoring predictiu de potencial',
+        'Monitorització de canvis (verificació mensual)',
+        'Integracions CRM (HubSpot, Pipedrive)',
+        'Campanyes il·limitades',
+        'Equip fins a 10 membres',
+        'Suport prioritari'
+      ],
+      es: [
+        '2.000 leads/mes de negocis locals',
+        'Todo de Local Business',
+        'Análisis competitivo automático',
+        'Scoring predictivo de potencial',
+        'Monitorización de cambios (verificación mensual)',
+        'Integraciones CRM (HubSpot, Pipedrive)',
+        'Campañas ilimitadas',
+        'Equipo hasta 10 miembros',
+        'Soporte prioritario'
+      ],
+      en: [
+        '2,000 local business leads/month',
+        'Everything in Local Business',
+        'Automatic competitive analysis',
+        'Predictive potential scoring',
+        'Change monitoring (monthly verification)',
+        'CRM integrations (HubSpot, Pipedrive)',
+        'Unlimited campaigns',
+        'Team up to 10 members',
+        'Priority support'
+      ]
+    },
+    buttonText: {
+      ca: 'Començar ara',
+      es: 'Empezar ahora',
+      en: 'Get started'
+    },
+    buttonHref: '/get-started',
+    billingNote: {
+      ca: '€159/mes facturat anualment',
+      es: '€159/mes facturado anualmente',
+      en: '€159/month when billed annually'
+    },
+    popular: false,
+    delay: 300,
+    limits: {
+      leads: 2000,
+      aiCredits: 'Il·limitats',
+      users: '10',
+      searches: 'Il·limitades'
+    }
+  },
+  {
+    id: 'enterprise',
+    name: {
+      ca: 'Enterprise',
+      es: 'Enterprise',
+      en: 'Enterprise'
     },
     price: null,
     priceLabel: {
       ca: 'Contacta amb vendes',
       es: 'Contacta con ventas',
-      en: 'Contact with sales'
+      en: 'Contact sales'
     },
     period: {
-      ca: 'seient/mes',
-      es: 'puesto/mes',
-      en: 'seat/month'
+      ca: 'mes',
+      es: 'mes',
+      en: 'month'
     },
     description: {
-      ca: 'Ara amb IA. Optimitza el rendiment amb el conjunt complet de capacitats.',
-      es: 'Ahora con IA. Optimiza el rendimiento con el conjunto completo de capacidades.',
-      en: 'Now with AI. Optimize performance with a complete feature set.'
+      ca: 'Per empreses grans i franquícies: API, white-label i account manager dedicat.',
+      es: 'Para empresas grandes y franquicias: API, white-label y account manager dedicado.',
+      en: 'For large companies and franchises: API, white-label and dedicated account manager.'
     },
     features: {
       ca: [
-        'Tot el Premium',
-        'Seguretat reforçada amb regles i alertes',
-        'Enriquiment de dades de correu i telèfon',
-        'Entorn de prova Sandbox',
-        'Suport telefònic ampliat',
-        'Descomptes per associació'
+        'Leads il·limitats de negocis locals',
+        'Tot del Professional',
+        'API pública (10k requests/hora)',
+        'Anàlisi territorial avançada',
+        'Predicció de tendències',
+        'White-label (marca pròpia)',
+        'Onboarding dedicat i account manager',
+        'SLA 99,9%',
+        'Suport 24/7'
       ],
       es: [
-        'Todo lo de Premium',
-        'Seguridad reforzada con reglas y alertas',
-        'Enriquecimiento de datos de correo y teléfono',
-        'Entorno de prueba Sandbox',
-        'Soporte telefónico ampliado',
-        'Descuentos por asociación'
+        'Leads ilimitados de negocios locales',
+        'Todo de Professional',
+        'API pública (10k requests/hora)',
+        'Análisis territorial avanzado',
+        'Predicción de tendencias',
+        'White-label (marca propia)',
+        'Onboarding dedicado y account manager',
+        'SLA 99,9%',
+        'Soporte 24/7'
       ],
       en: [
-        'Everything in Premium',
-        'Enhanced security with rules and alerts',
-        'Email and phone data enrichment',
-        'Sandbox test environment',
-        'Extended phone support',
-        'Partner discounts'
+        'Unlimited local business leads',
+        'Everything in Professional',
+        'Public API (10k requests/hour)',
+        'Advanced territory analysis',
+        'Trend prediction',
+        'White-label',
+        'Dedicated onboarding and account manager',
+        '99.9% SLA',
+        '24/7 support'
       ]
     },
     buttonText: {
       ca: 'Contacta amb vendes',
       es: 'Contacta con ventas',
-      en: 'Contact with sales'
+      en: 'Contact sales'
     },
     buttonHref: '/contact',
     popular: false,
     delay: 400,
     limits: {
-      leads: '-',
-      aiCredits: '-',
-      users: '-',
-      searches: '-'
+      leads: '∞',
+      aiCredits: '∞',
+      users: '∞',
+      searches: '∞'
     }
   }
 ]
 
 export const comparisonFeatures: ComparisonFeature[] = [
   {
-    id: 'lead-management',
+    id: 'leads-google-maps',
     name: {
-      ca: 'Gestió de prospectes',
-      es: 'Gestión de prospectos',
-      en: 'Lead management'
+      ca: 'Leads de negocis locals / mes',
+      es: 'Leads de negocios locales / mes',
+      en: 'Local business leads / month'
     },
     description: {
-      ca: 'Organització de calendari i embuts de vendes.',
-      es: 'Organización de calendario y embudos de ventas.',
-      en: 'Calendars and sales pipeline organization.'
+      ca: 'Volum de negocis locals que pots exportar.',
+      es: 'Volumen de negocios locales que puedes exportar.',
+      en: 'Volume of local businesses you can export.'
     },
     values: {
-      growth: true,
-      premium: true,
-      ultimate: true
+      localBusiness: 500,
+      professional: '2.000',
+      enterprise: '∞'
     }
   },
   {
-    id: 'ai-insights',
+    id: 'dades-enriquides',
     name: {
-      ca: 'Informes amb IA',
-      es: 'Informes con IA',
-      en: 'AI insights'
+      ca: 'Dades enriquides',
+      es: 'Datos enriquecidos',
+      en: 'Enriched data'
     },
     description: {
-      ca: 'Nivell d\'informes i resums amb IA.',
-      es: 'Nivel de informes y resúmenes con IA.',
-      en: 'Level of AI insights and summaries.'
+      ca: 'Rating, ressenyes, fotos, horaris i nivell de preus.',
+      es: 'Valoración, reseñas, fotos, horarios y nivel de precios.',
+      en: 'Rating, reviews, photos, opening hours and price level.'
     },
     values: {
-      growth: 'Bàsics',
-      premium: 'Avançats',
-      ultimate: 'Avançats'
+      localBusiness: true,
+      professional: true,
+      enterprise: true
     }
   },
   {
-    id: 'email-sync',
+    id: 'analisi-ressenyes-ia',
     name: {
-      ca: 'Sincronització de correu',
-      es: 'Sincronización de correo',
-      en: 'Email sync'
+      ca: 'Anàlisi de ressenyes amb IA',
+      es: 'Análisis de reseñas con IA',
+      en: 'AI review analysis'
     },
     description: {
-      ca: 'Sincronització completa amb seguiment d\'emails.',
-      es: 'Sincronización completa con seguimiento de emails.',
-      en: 'Full sync with email tracking.'
+      ca: 'Sentiment, keywords, problemes i oportunitats detectats per IA.',
+      es: 'Sentimiento, keywords, problemas y oportunidades detectados por IA.',
+      en: 'Sentiment, keywords, problems and opportunities detected by AI.'
     },
     values: {
-      growth: true,
-      premium: true,
-      ultimate: true
+      localBusiness: true,
+      professional: true,
+      enterprise: true
     }
   },
   {
-    id: 'automations',
+    id: 'mapa-visual',
     name: {
-      ca: 'Automatitzacions',
-      es: 'Automatizaciones',
-      en: 'Automations'
+      ca: 'Mapa visual interactiu',
+      es: 'Mapa visual interactivo',
+      en: 'Interactive visual map'
     },
     description: {
-      ca: 'Seqüències de nutrició i fluxos automatitzats.',
-      es: 'Secuencias de nutrición y flujos automatizados.',
-      en: 'Nurturing sequences and automated workflows.'
+      ca: 'Visualitza leads al mapa, heat map i planificació de rutes.',
+      es: 'Visualiza leads en el mapa, heat map y planificación de rutas.',
+      en: 'View leads on map, heat map and route planning.'
     },
     values: {
-      growth: true,
-      premium: true,
-      ultimate: true
+      localBusiness: true,
+      professional: true,
+      enterprise: true
     }
   },
   {
-    id: 'scheduler',
+    id: 'alertes-noves-obertures',
     name: {
-      ca: 'Planificador de reunions',
-      es: 'Planificador de reuniones',
-      en: 'Meeting scheduler'
+      ca: 'Alertes noves obertures',
+      es: 'Alertas nuevas aperturas',
+      en: 'New business alerts'
     },
     description: {
-      ca: 'Disponibilitats, calendaris i línia temporal.',
-      es: 'Disponibilidad, calendarios y línea temporal.',
-      en: 'Availability, calendars and timeline.'
+      ca: 'Detecció de negocis nous per zona i categoria.',
+      es: 'Detección de negocios nuevos por zona y categoría.',
+      en: 'Detection of new businesses by area and category.'
     },
     values: {
-      growth: true,
-      premium: true,
-      ultimate: true
+      localBusiness: true,
+      professional: true,
+      enterprise: true
     }
   },
   {
-    id: 'lead-routing',
+    id: 'analisi-competitiva',
     name: {
-      ca: 'Generació i transferència de leads',
-      es: 'Generación y transferencia de leads',
-      en: 'Lead generation and routing'
+      ca: 'Anàlisi competitiva',
+      es: 'Análisis competitivo',
+      en: 'Competitive analysis'
     },
     description: {
-      ca: 'Captura i assignació de nous prospects.',
-      es: 'Captura y asignación de nuevos prospectos.',
-      en: 'Capture and assign new prospects.'
+      ca: 'Benchmark de rating, ressenyes i preus vs competència local.',
+      es: 'Benchmark de valoración, reseñas y precios vs competencia local.',
+      en: 'Benchmark of rating, reviews and prices vs local competition.'
     },
     values: {
-      growth: false,
-      premium: true,
-      ultimate: true
+      localBusiness: false,
+      professional: true,
+      enterprise: true
     }
   },
   {
-    id: 'security',
+    id: 'scoring-predictiu',
     name: {
-      ca: 'Seguretat avançada',
-      es: 'Seguridad avanzada',
-      en: 'Advanced security'
+      ca: 'Scoring predictiu de potencial',
+      es: 'Scoring predictivo de potencial',
+      en: 'Predictive potential scoring'
     },
     description: {
-      ca: 'Regles, alertes i controls de compte.',
-      es: 'Reglas, alertas y controles de cuenta.',
-      en: 'Rules, alerts and account controls.'
+      ca: 'Priorització de leads segons mida, creixement i capacitat econòmica.',
+      es: 'Priorización de leads según tamaño, crecimiento y capacidad económica.',
+      en: 'Lead prioritization by size, growth and economic capacity.'
     },
     values: {
-      growth: false,
-      premium: false,
-      ultimate: true
+      localBusiness: false,
+      professional: true,
+      enterprise: true
     }
   },
   {
-    id: 'sandbox',
+    id: 'integracions-crm',
     name: {
-      ca: 'Entorn Sandbox',
-      es: 'Entorno Sandbox',
-      en: 'Sandbox environment'
+      ca: 'Integracions CRM',
+      es: 'Integraciones CRM',
+      en: 'CRM integrations'
     },
     description: {
-      ca: 'Espai de prova abans de publicar canvis.',
-      es: 'Espacio de prueba antes de publicar cambios.',
-      en: 'Test environment before rolling out changes.'
+      ca: 'HubSpot, Pipedrive, Salesforce i exportació avançada.',
+      es: 'HubSpot, Pipedrive, Salesforce y exportación avanzada.',
+      en: 'HubSpot, Pipedrive, Salesforce and advanced export.'
     },
     values: {
-      growth: false,
-      premium: false,
-      ultimate: true
+      localBusiness: 'CSV, Excel, KML',
+      professional: 'CRM + CSV, Excel, KML',
+      enterprise: 'CRM + API'
     }
   },
   {
-    id: 'support',
+    id: 'api',
+    name: {
+      ca: 'API pública',
+      es: 'API pública',
+      en: 'Public API'
+    },
+    description: {
+      ca: 'Accés programàtic per integrar amb les teves eines.',
+      es: 'Acceso programático para integrar con tus herramientas.',
+      en: 'Programmatic access to integrate with your tools.'
+    },
+    values: {
+      localBusiness: false,
+      professional: false,
+      enterprise: true
+    }
+  },
+  {
+    id: 'suport',
     name: {
       ca: 'Suport',
       es: 'Soporte',
@@ -431,30 +460,12 @@ export const comparisonFeatures: ComparisonFeature[] = [
     description: {
       ca: 'Canals i nivell d\'assistència.',
       es: 'Canales y nivel de asistencia.',
-      en: 'Support channels and level.'
+      en: 'Channels and level of assistance.'
     },
     values: {
-      growth: 'Email + xat',
-      premium: 'Xat en viu',
-      ultimate: 'Telèfon ampliat'
-    }
-  },
-  {
-    id: 'integrations',
-    name: {
-      ca: 'Integracions',
-      es: 'Integraciones',
-      en: 'Integrations'
-    },
-    description: {
-      ca: 'Aplicacions disponibles per connectar fluxos.',
-      es: 'Aplicaciones disponibles para conectar flujos.',
-      en: 'Apps available to connect workflows.'
-    },
-    values: {
-      growth: '500+',
-      premium: '500+',
-      ultimate: '500+'
+      localBusiness: 'Email',
+      professional: 'Prioritari',
+      enterprise: '24/7 + Account manager'
     }
   }
 ]
@@ -462,20 +473,16 @@ export const comparisonFeatures: ComparisonFeature[] = [
 export const faqData = {
   ca: [
     {
-      question: 'Què inclou la prova gratuïta?',
-      answer: 'Accés complet durant 14 dies i sense targeta. Pots convidar el teu equip i provar totes les funcions del pla.'
-    },
-    {
       question: 'Quina diferència hi ha entre facturació anual i mensual?',
-      answer: 'La mensual es cobra cada mes. L\'anual es cobra en un sol pagament i inclou descompte.'
+      answer: 'La mensual es cobra cada mes. L\'anual es cobra en un sol pagament i inclou descompte (Local Business €63/mes, Professional €159/mes).'
     },
     {
       question: 'Els preus inclouen l\'IVA?',
       answer: 'No. Per a clients de la UE, s\'aplica l\'IVA segons el país si no es facilita un NIF-IVA vàlid.'
     },
     {
-      question: 'Puc afegir complements al meu pla?',
-      answer: 'Sí, pots afegir LeadBooster, Projects, Campaigns, Web Visitors o Smart Docs a qualsevol pla.'
+      question: 'D\'on provenen les dades dels leads?',
+      answer: 'Disposem d\'una amplia base de dades de negocis locals amb ubicació verificada, horaris, ressenyes i dades actualitzades constantment. Ideal per negocis tradicionals que no trobaràs a LinkedIn.'
     },
     {
       question: 'Quins mètodes de pagament accepteu?',
@@ -488,20 +495,16 @@ export const faqData = {
   ],
   es: [
     {
-      question: '¿Qué incluye la prueba gratuita?',
-      answer: 'Acceso completo durante 14 días y sin tarjeta. Puedes invitar a tu equipo y probar todas las funciones del plan.'
-    },
-    {
       question: '¿Cuál es la diferencia entre facturación anual y mensual?',
-      answer: 'La mensual se cobra cada mes. La anual se cobra en un solo pago e incluye descuento.'
+      answer: 'La mensual se cobra cada mes. La anual se cobra en un solo pago e incluye descuento (Local Business €63/mes, Professional €159/mes).'
     },
     {
       question: '¿Los precios incluyen el IVA?',
       answer: 'No. Para clientes de la UE, se aplica IVA según el país si no se facilita un NIF-IVA válido.'
     },
     {
-      question: '¿Puedo añadir complementos a mi plan?',
-      answer: 'Sí, puedes añadir LeadBooster, Projects, Campaigns, Web Visitors o Smart Docs a cualquier plan.'
+      question: '¿De dónde provienen los datos de los leads?',
+      answer: 'Disponemos de una amplia base de datos de negocios locales con ubicación verificada, horarios, reseñas y datos actualizados constantemente. Ideal para negocios tradicionales que no encontrarás en LinkedIn.'
     },
     {
       question: '¿Qué métodos de pago aceptáis?',
@@ -514,24 +517,20 @@ export const faqData = {
   ],
   en: [
     {
-      question: 'What does the free trial include?',
-      answer: 'Full access for 14 days with no card required. Invite your team and try all plan features.'
-    },
-    {
       question: 'What is the difference between annual and monthly billing?',
-      answer: 'Monthly is charged every month. Annual is charged in one payment and includes a discount.'
+      answer: 'Monthly is charged every month. Annual is charged in one payment and includes a discount (Local Business €63/month, Professional €159/month).'
     },
     {
       question: 'Do prices include VAT?',
       answer: 'No. For EU customers, VAT is applied based on country unless a valid VAT ID is provided.'
     },
     {
-      question: 'Can I add add-ons to my plan?',
-      answer: 'Yes, you can add LeadBooster, Projects, Campaigns, Web Visitors or Smart Docs to any plan.'
+      question: 'Where do lead data come from?',
+      answer: 'We have a wide database of local businesses with verified location, opening hours, reviews and data updated constantly. Ideal for traditional businesses you won\'t find on LinkedIn.'
     },
     {
       question: 'What payment methods do you accept?',
-      answer: 'Credit/debit cards and PayPal, depending on your country.'
+      answer: 'Credit/debit cards and PayPal, depending on country.'
     },
     {
       question: 'Can I change or cancel anytime?',
