@@ -87,7 +87,7 @@ nextleadin-landing/
 ├── tailwind.config.ts     # Configuració Tailwind
 ├── tsconfig.json          # Configuració TypeScript
 ├── next.config.js         # Configuració Next.js 16
-└── middleware.ts          # Middleware per i18n
+└── proxy.ts               # Proxy (Next.js 16) per i18n
 ```
 
 ## 🎨 Components

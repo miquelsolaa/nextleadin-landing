@@ -110,7 +110,7 @@ Les millores implementades haurien de millorar:
 - **FCP (First Contentful Paint)**: Font optimization amb display swap
 - **FID (First Input Delay)**: Next.js 16 i React 19 milloren el rendiment general
 
-### 🔍 SEO/AEO Improvements
+###  SEO/AEO Improvements
 
 - **Structured Data**: Schemas expandits per millor indexació per AI search engines
 - **FAQ Schema**: 20 preguntes per idioma per millor visibilitat a AI assistants

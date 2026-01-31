@@ -11,8 +11,8 @@ const inter = Inter({
   adjustFontFallback: true,
 })
 
-// Metadata per defecte optimitzat per a AI
-export const metadata: Metadata = generateAIOptimizedMetadata('home', 'ca')
+// Metadata per defecte (locale per defecte del projecte: es)
+export const metadata: Metadata = generateAIOptimizedMetadata('home', 'es')
 
 export default function RootLayout({
   children,
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ca" className={inter.variable}>
+    <html lang="es" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
