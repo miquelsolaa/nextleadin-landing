@@ -16,6 +16,7 @@ const Header = () => {
       return {
         nav: {
           features: 'Funcionalidades',
+          comparator: 'Comparador',
           pricing: 'Precios',
           blog: 'Blog',
           faq: 'FAQ',
@@ -31,6 +32,7 @@ const Header = () => {
       return {
         nav: {
           features: 'Features',
+          comparator: 'Comparisons',
           pricing: 'Pricing',
           blog: 'Blog',
           faq: 'FAQ',
@@ -45,6 +47,7 @@ const Header = () => {
     return {
       nav: {
         features: 'Funcionalitats',
+        comparator: 'Comparador',
         pricing: 'Preus',
         blog: 'Blog',
         faq: 'FAQ',
@@ -71,6 +74,7 @@ const Header = () => {
 
   const navigation = [
     { name: translations.nav.features, href: {pathname: '/', hash: 'funcionalitats'} as any },
+    { name: translations.nav.comparator, href: '/comparador' },
     { name: translations.nav.pricing, href: '/pricing' },
     { name: translations.nav.blog, href: '/blog' },
     { name: translations.nav.faq, href: '/faq' },

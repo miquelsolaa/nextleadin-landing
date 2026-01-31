@@ -1,11 +1,13 @@
 import { MetadataRoute } from 'next'
 import { getAllPostSlugs, getBlogPostUrl, getAllPosts, type Locale } from '@/lib/blog'
+import { getAllComparisonSlugs, getComparisonUrl } from '@/lib/comparisons'
 
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nextleadin.com'
   const allPostSlugs = getAllPostSlugs()
+  const allComparisonSlugs = getAllComparisonSlugs()
   
   // Obtenir tots els posts amb les seves dates reals
   const allPosts = {
@@ -40,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const pages = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
+    { path: '/compare', priority: 0.7, changeFrequency: 'weekly' as const },
     { path: '/pricing', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
@@ -59,9 +62,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   )
 
+  const comparisonUrls = allComparisonSlugs.map(({ slug, locale }) => ({
+    url: `${baseUrl}${getComparisonUrl(slug, locale as Locale)}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
   return [
     ...staticUrls,
     ...blogUrls,
+    ...comparisonUrls,
   ]
 }
 

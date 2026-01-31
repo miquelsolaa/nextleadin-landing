@@ -239,6 +239,89 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     }
   },
+  comparador: {
+    ca: {
+      title: 'Comparador de Lead Acquisition | NextLeadIn',
+      description: 'Comparatives clares entre eines de prospecció i NextLeadIn. Descobreix diferències en dades, automatització, multicanalitat i qualitat dels leads.',
+      keywords: [
+        'comparador lead acquisition',
+        'comparativa prospecció',
+        'alternatives hunter io',
+        'alternatives apollo io',
+        'eines generació de leads',
+        'software outbound',
+        'prospecció b2b',
+        'captació de leads',
+        'nextleadin vs',
+        'comparativa sales engagement'
+      ],
+      canonical: 'https://nextleadin.com/comparador',
+      ogImage: '/images/og/comparador-ca.jpg',
+      structuredData: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Comparador NextLeadIn',
+          description: 'Comparatives entre eines de lead acquisition i NextLeadIn',
+          url: 'https://nextleadin.com/comparador'
+        }
+      ]
+    },
+    es: {
+      title: 'Comparador de Lead Acquisition | NextLeadIn',
+      description: 'Comparativas claras entre herramientas de prospección y NextLeadIn. Descubre diferencias en datos, automatización, multicanalidad y calidad de leads.',
+      keywords: [
+        'comparador lead acquisition',
+        'comparativa prospección',
+        'alternativas hunter io',
+        'alternativas apollo io',
+        'herramientas generación de leads',
+        'software outbound',
+        'prospección b2b',
+        'captación de leads',
+        'nextleadin vs',
+        'comparativa sales engagement'
+      ],
+      canonical: 'https://nextleadin.com/es/comparador',
+      ogImage: '/images/og/comparador-es.jpg',
+      structuredData: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Comparador NextLeadIn',
+          description: 'Comparativas entre herramientas de lead acquisition y NextLeadIn',
+          url: 'https://nextleadin.com/es/comparador'
+        }
+      ]
+    },
+    en: {
+      title: 'Lead Acquisition Comparisons | NextLeadIn',
+      description: 'Clear comparisons between prospecting tools and NextLeadIn. See differences in data quality, automation, multichannel outreach and lead fit.',
+      keywords: [
+        'lead acquisition comparisons',
+        'prospecting tools comparison',
+        'hunter io alternatives',
+        'apollo io alternatives',
+        'lead generation software',
+        'outbound software',
+        'b2b prospecting',
+        'lead acquisition',
+        'nextleadin vs',
+        'sales engagement comparison'
+      ],
+      canonical: 'https://nextleadin.com/en/comparador',
+      ogImage: '/images/og/comparador-en.jpg',
+      structuredData: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'NextLeadIn Comparisons',
+          description: 'Comparisons between lead acquisition tools and NextLeadIn',
+          url: 'https://nextleadin.com/en/comparador'
+        }
+      ]
+    }
+  },
   pricing: {
     ca: {
       title: 'Preus | NextLeadIn',
