@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
-import {useLocale} from 'next-intl'
+import { Link } from '@/i18n/routing'
+import { useLocale } from 'next-intl'
 
 const CTASection = () => {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
@@ -32,9 +32,9 @@ const CTASection = () => {
   }[locale]
 
   return (
-    <section className="section-padding bg-gradient-to-br from-primary-600 to-primary-800 relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-primary-600 to-primary-800 relative overflow-hidden w-full">
       <div className="absolute inset-0 bg-black opacity-10" />
-      <div className="container-custom relative">
+      <div className="container-custom relative min-w-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="text-center lg:text-left">
             <h6 className="text-sm font-semibold text-primary-100 uppercase tracking-wider mb-4">
@@ -59,10 +59,10 @@ const CTASection = () => {
           <div className="relative">
             <Image
               src="/images/cta/mockup.png"
-              alt="CTA illustration"
+              alt="Mockup de la plataforma NextLeadIn amb llistat de leads de negocis locals i mapa visual"
               width={752}
               height={423}
-              className="w-full h-auto rounded-xl shadow-2xl"
+              className="w-full h-auto"
             />
           </div>
         </div>

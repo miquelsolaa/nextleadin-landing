@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { setRequestLocale } from 'next-intl/server'
 import { pricingPlans, faqData } from '@/lib/pricing-data'
-import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import { generateAIOptimizedMetadata, generateAIStructuredData } from '@/lib/seo-metadata'
 import type { Metadata } from 'next'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -188,6 +188,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
         page="pricing" 
         locale={validLocale as 'ca' | 'es' | 'en'} 
         breadcrumbs={breadcrumbs}
+        customData={generateAIStructuredData('pricing', validLocale as 'ca' | 'es' | 'en')}
       />
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-white">
@@ -278,37 +279,28 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
       />
 
       {/* CTA Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/crm-shape-2.svg"
-            alt="Background decoration"
-            fill
-            className="object-cover opacity-5"
-          />
-        </div>
-        
+      <section className="py-20 bg-primary-600 relative overflow-hidden w-full">
         <div className="container-custom relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h6 className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-4">
+              <h6 className="text-sm font-semibold text-primary-100 uppercase tracking-wider mb-4">
                 {pageTexts[validLocale].ctaEyebrow}
               </h6>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
                 {pageTexts[validLocale].ctaTitle.split(' ').map((word, index) => 
                   word === 'leads' || word === 'leads' || word === 'leads' ? 
-                    <span key={index} className="gradient-text">{word} </span> : 
+                    <span key={index} className="text-primary-200">{word} </span> : 
                     word + ' '
                 )}
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
+              <p className="text-xl text-primary-100 leading-relaxed mb-8">
                 {pageTexts[validLocale].ctaDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/get-started" className="btn-primary">
+                <Link href="/get-started" className="btn-primary bg-white text-primary-600 hover:bg-primary-50">
                   {pageTexts[validLocale].ctaButton1}
                 </Link>
-                <Link href="/contact" className="btn-secondary">
+                <Link href="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600">
                   {pageTexts[validLocale].ctaButton2}
                 </Link>
               </div>
@@ -320,7 +312,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
                 alt="Mockup de la plataforma CRM mostrant el tauler i analytics"
                 width={752}
                 height={423}
-                className="w-full h-auto rounded-xl shadow-2xl"
+                className="w-full h-auto"
               />
             </div>
           </div>

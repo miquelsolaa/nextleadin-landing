@@ -5,8 +5,8 @@ date: "2025-11-24"
 image: "https://images.pexels.com/photos/34804018/pexels-photo-34804018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "Equip de NextLeadIn"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Vendes", "IA"]
-tags: ["Vendes IA", "Prospecció B2B", "Generació de leads", "Estratègia de sortida"]
+categories: ["B2B Sales"]
+tags: ["AI for Sales","Prospecting"]
 published: true
 ---
 

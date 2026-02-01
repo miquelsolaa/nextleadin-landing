@@ -159,19 +159,19 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
         url: currentUrl,
         offers: {
           '@type': 'AggregateOffer',
-          lowPrice: '19',
-          highPrice: '99',
+          lowPrice: '79',
+          highPrice: '599',
           priceCurrency: 'EUR',
           offerCount: '3',
           offers: [
             {
               '@type': 'Offer',
-              name: locale === 'ca' ? 'Pla Inici' : locale === 'es' ? 'Plan Inicio' : 'Start Plan',
-              price: '19',
+              name: 'Local Business',
+              price: '79',
               priceCurrency: 'EUR',
               priceSpecification: {
                 '@type': 'PriceSpecification',
-                price: '19',
+                price: '79',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
                 unitText: 'MONTH'
@@ -179,12 +179,12 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
             },
             {
               '@type': 'Offer',
-              name: locale === 'ca' ? 'Pla Pro' : locale === 'es' ? 'Plan Pro' : 'Pro Plan',
-              price: '49',
+              name: 'Professional',
+              price: '199',
               priceCurrency: 'EUR',
               priceSpecification: {
                 '@type': 'PriceSpecification',
-                price: '49',
+                price: '199',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
                 unitText: 'MONTH'
@@ -192,12 +192,12 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
             },
             {
               '@type': 'Offer',
-              name: locale === 'ca' ? 'Pla Elite' : locale === 'es' ? 'Plan Elite' : 'Elite Plan',
-              price: '99',
+              name: 'Enterprise',
+              price: '599',
               priceCurrency: 'EUR',
               priceSpecification: {
                 '@type': 'PriceSpecification',
-                price: '99',
+                price: '599',
                 priceCurrency: 'EUR',
                 billingIncrement: '1',
                 unitText: 'MONTH'
@@ -250,7 +250,7 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
         estimatedCost: {
           '@type': 'MonetaryAmount',
           currency: 'EUR',
-          value: '19'
+          value: '79'
         },
         step: [
           {
@@ -318,10 +318,10 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
             '@type': 'HowToStep',
             name: locale === 'ca' ? 'Evalua el teu volum de leads necessari' : locale === 'es' ? 'Evalúa tu volumen de leads necesario' : 'Evaluate your required lead volume',
             text: locale === 'ca'
-              ? 'Calcula quantes empreses necessites contactar mensualment. Plans: Inici (500), Pro (2500), Elite (il·limitat)'
+              ? 'Calcula quantes empreses necessites contactar mensualment. Plans: Local Business (500), Professional (2.000), Enterprise (il·limitat)'
               : locale === 'es'
-              ? 'Calcula cuántas empresas necesitas contactar mensualmente. Planes: Inicio (500), Pro (2500), Elite (ilimitado)'
-              : 'Calculate how many companies you need to contact monthly. Plans: Start (500), Pro (2500), Elite (unlimited)',
+              ? 'Calcula cuántas empresas necesitas contactar mensualmente. Planes: Local Business (500), Professional (2.000), Enterprise (ilimitado)'
+              : 'Calculate how many companies you need to contact monthly. Plans: Local Business (500), Professional (2,000), Enterprise (unlimited)',
             url: `${currentUrl}#plans`
           },
           {

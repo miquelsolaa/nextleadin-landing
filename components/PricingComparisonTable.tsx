@@ -26,15 +26,16 @@ export default function PricingComparisonTable({ locale }: PricingComparisonTabl
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="w-full max-w-full overflow-x-auto">
+      <div className="bg-white rounded-2xl shadow-lg overflow-hidden min-w-[600px]">
       {/* Header */}
       <div className="grid bg-gray-50 border-b" style={columnsStyle}>
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900">{buttonText[locale].features}</h3>
         </div>
         {pricingPlans.map((plan) => (
-          <div key={plan.id} className="p-6 text-center">
-            <h4 className="text-lg font-semibold text-gray-900">{plan.name?.[locale] || plan.name?.ca || 'Plan'}</h4>
+          <div key={plan.id} className="p-4 sm:p-6 text-center">
+            <h4 className="text-base sm:text-lg font-semibold text-gray-900">{plan.name?.[locale] || plan.name?.ca || 'Plan'}</h4>
             {plan.priceLabel?.[locale] ? (
               <p className="text-sm font-medium text-gray-700">{plan.priceLabel[locale]}</p>
             ) : (
@@ -53,15 +54,15 @@ export default function PricingComparisonTable({ locale }: PricingComparisonTabl
           }`}
           style={columnsStyle}
         >
-          <div className="p-6">
-            <h5 className="font-semibold text-gray-900 mb-2">{feature.name[locale]}</h5>
-            <p className="text-sm text-gray-600">{feature.description[locale]}</p>
+          <div className="p-4 sm:p-6">
+            <h5 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{feature.name[locale]}</h5>
+            <p className="text-xs sm:text-sm text-gray-600">{feature.description[locale]}</p>
           </div>
 
           {pricingPlans.map((plan) => {
             const value = feature.values[plan.id]
             return (
-              <div key={`${feature.id}-${plan.id}`} className="p-6 text-center flex items-center justify-center">
+              <div key={`${feature.id}-${plan.id}`} className="p-4 sm:p-6 text-center flex items-center justify-center">
                 {typeof value === 'boolean' ? (
                   value ? (
                     <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -80,13 +81,13 @@ export default function PricingComparisonTable({ locale }: PricingComparisonTabl
       ))}
 
       {/* Action Buttons */}
-      <div className="grid bg-gray-50 p-6 gap-4" style={columnsStyle}>
+      <div className="grid bg-gray-50 p-4 sm:p-6 gap-3 sm:gap-4" style={columnsStyle}>
         <div></div>
         {pricingPlans.map((plan) => (
           <Link
             key={plan.id}
             href={plan.buttonHref}
-            className={`w-full py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
+            className={`w-full min-w-0 py-4 sm:py-3 px-4 sm:px-6 rounded-full font-semibold transition-all duration-300 text-center text-sm sm:text-base ${
               plan.popular 
                 ? 'bg-primary-600 text-white hover:bg-primary-700' 
                 : 'bg-gray-100 text-gray-900 hover:bg-primary-600 hover:text-white'
@@ -95,6 +96,7 @@ export default function PricingComparisonTable({ locale }: PricingComparisonTabl
             {buttonText[locale].select} {plan.name?.[locale] || plan.name?.ca || 'Plan'}
           </Link>
         ))}
+      </div>
       </div>
     </div>
   )

@@ -5,8 +5,8 @@ date: "2026-01-14"
 image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Generació de Leads", "Vendes amb IA", "Màrqueting B2B"]
-tags: ["generació de leads hipersegmentada", "IA per a vendes", "prospecció B2B", "automatització de vendes"]
+categories: ["Lead Generation"]
+tags: ["Lead Generation","Sales Automation"]
 published: true
 ---
 

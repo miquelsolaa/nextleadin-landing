@@ -6,6 +6,8 @@ import { CalendarDays, User, Tag } from 'lucide-react'
 import { useLocale } from 'next-intl'
 import type { BlogPost } from '@/lib/blog'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
+import CategoryLabel from './CategoryLabel'
+import TagLabel from './TagLabel'
 
 interface BlogPostProps {
   post: BlogPost
@@ -53,7 +55,7 @@ export default function BlogPost({ post, showExcerpt = true, featured = false }:
                   key={category}
                   className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
                 >
-                  {category}
+                  <CategoryLabel category={category} />
                 </span>
               ))}
             </div>
@@ -99,7 +101,7 @@ export default function BlogPost({ post, showExcerpt = true, featured = false }:
                     key={tag}
                     className="text-xs text-gray-500 hover:text-blue-600 transition-colors duration-200"
                   >
-                    #{tag}
+                    #<TagLabel tag={tag} />
                   </span>
                 ))}
                 {post.tags.length > 3 && (

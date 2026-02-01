@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { CalendarDays, User, Tag } from 'lucide-react'
 import { BlogPost } from '@/lib/blog'
+import CategoryLabel from './CategoryLabel'
+import TagLabel from './TagLabel'
 import styles from './BlogPostContent.module.css'
 
 interface BlogPostContentProps {
@@ -17,7 +19,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
   }
 
   return (
-    <article className="max-w-4xl mx-auto">
+    <article className="max-w-4xl mx-auto w-full min-w-0 overflow-x-hidden px-4 sm:px-6">
       {/* Header de l'article */}
       <header className="mb-8">
         {/* Categories */}
@@ -28,7 +30,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
                 key={category}
                 className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
               >
-                {category}
+                <CategoryLabel category={category} />
               </span>
             ))}
           </div>
@@ -67,7 +69,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
                 key={tag}
                 className="text-sm text-gray-500 hover:text-blue-600 transition-colors duration-200"
               >
-                #{tag}
+                #<TagLabel tag={tag} />
               </span>
             ))}
           </div>

@@ -5,8 +5,8 @@ date: "2025-12-05"
 image: "https://images.pexels.com/photos/2556018/pexels-photo-2556018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "Equipo de NextLeadIn"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Generación de Leads", "Ventas con IA"]
-tags: ["Generación de leads con IA", "Ventas B2B", "Automatización de ventas"]
+categories: ["Lead Generation"]
+tags: ["Lead Generation","B2B Sales"]
 published: true
 ---
 

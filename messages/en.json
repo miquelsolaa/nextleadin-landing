@@ -178,7 +178,29 @@
     "authorDescription": "Expert in lead generation and B2B sales. I share knowledge and strategies to help companies accelerate their growth.",
     "relatedPostsTitle": "Related Posts",
     "relatedPostsDescription": "Discover more interesting content",
-    "comments": "comments"
+    "comments": "comments",
+    "categoryLabels": {
+      "leadGeneration": "Lead Generation",
+      "b2bSales": "B2B Sales",
+      "aiProspecting": "AI Prospecting",
+      "aiForSales": "AI for Sales",
+      "salesAutomation": "Sales Automation",
+      "b2bStrategy": "B2B Strategy",
+      "localBusiness": "Local Business",
+      "crmIntegration": "CRM Integration"
+    },
+    "tagLabels": {
+      "leadGeneration": "Lead Generation",
+      "b2bSales": "B2B Sales",
+      "aiProspecting": "AI Prospecting",
+      "aiForSales": "AI for Sales",
+      "salesAutomation": "Sales Automation",
+      "crmIntegration": "CRM Integration",
+      "outboundSales": "Outbound Sales",
+      "leadEnrichment": "Lead Enrichment",
+      "hyperSegmentation": "Hyper-segmentation",
+      "prospecting": "Prospecting"
+    }
   },
   "cookieConsent": {
     "consentModal": {

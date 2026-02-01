@@ -406,12 +406,12 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
     <>
       <SeoJsonLd data={structuredData} />
 
-      <div id="main-content">
+      <div className="overflow-x-hidden min-w-0 w-full">
         <article
           id={`post-${comparison.slug}`}
           className="post type-page status-publish has-post-thumbnail hentry"
         >
-          <div className="entry-content">
+          <div className="entry-content overflow-x-hidden min-w-0">
             <div className="et-l et-l--post">
               <div className="et_builder_inner_content et_pb_gutters3">
                 <div className="et_pb_section et_pb_section_0 et_section_regular">

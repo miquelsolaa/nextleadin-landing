@@ -52,9 +52,15 @@ export default async function LocaleLayout({children, params}: {children: React.
         locale={localeParam as AppLocale} 
         breadcrumbs={breadcrumbs}
       />
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col min-w-0 w-full overflow-x-hidden">
+        <a
+          href="#main-content"
+          className="skip-link"
+        >
+          {localeParam === 'ca' ? 'Salta al contingut' : localeParam === 'es' ? 'Saltar al contenido' : 'Skip to main content'}
+        </a>
         <Header />
-        <main className="flex-grow">
+        <main id="main-content" className="flex-grow min-w-0 w-full overflow-x-hidden" tabIndex={-1}>
           {children}
         </main>
         <Footer />

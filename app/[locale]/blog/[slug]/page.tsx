@@ -9,7 +9,9 @@ import BlogRecentPosts from '@/components/BlogRecentPosts'
 import BlogTags from '@/components/BlogTags'
 import LanguageAvailability from '@/components/LanguageAvailability'
 import RecommendedPosts from '@/components/RecommendedPosts'
-import Tag from '@/components/Tag'
+import CategoryTag from '@/components/CategoryTag'
+import BlogTagLink from '@/components/BlogTagLink'
+import { getTagSlug } from '@/lib/blog-tags'
 import Link from 'next/link'
 import { CalendarDays, User, ArrowLeft, ArrowRight } from 'lucide-react'
 import styles from '@/components/BlogPostContent.module.css'
@@ -136,10 +138,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* Contingut principal */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full min-w-0 overflow-x-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
               {/* Article principal */}
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-3 min-w-0">
                 <article className="bg-white">
                   {/* Language Availability */}
                   <div className="px-8 pt-8">
@@ -150,9 +152,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <div className="px-8">
                     <div className="flex flex-wrap gap-2 mb-4">
                       {post.categories?.map((category, index) => (
-                        <Tag
+                        <CategoryTag
                           key={index}
-                          tag={category}
+                          category={category}
                           href={`${blogBaseUrl}/category/${category.toLowerCase()}`}
                           variant="outline"
                           size="sm"
@@ -248,10 +250,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="text-sm text-gray-500">{t('tagsLabel')}</span>
                         {post.tags.map((tag) => (
-                          <Tag
+                          <BlogTagLink
                             key={tag}
                             tag={tag}
-                            href={`${blogBaseUrl}/tag/${tag.toLowerCase()}`}
+                            href={`${blogBaseUrl}/tag/${getTagSlug(tag)}`}
                             variant="default"
                             size="sm"
                           />

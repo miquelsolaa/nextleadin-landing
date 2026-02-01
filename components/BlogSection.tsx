@@ -3,7 +3,9 @@
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import Image from 'next/image'
+import { CalendarDays, User } from 'lucide-react'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
+import CategoryLabel from './CategoryLabel'
 
 interface BlogPost {
   title: string
@@ -12,7 +14,6 @@ interface BlogPost {
   categories: string[]
   author: { name: string }
   date: string
-  comments: number
   slug: string
 }
 
@@ -134,7 +135,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                                 {post.categories.map((category, catIndex) => (
                                   <span key={catIndex}>
                                     <Link href={`/category/${(category || '').toLowerCase()}`} rel="category tag">
-                                      {category || ''}
+                                      <CategoryLabel category={category || ''} />
                                     </Link>
                                   </span>
                                 ))}
@@ -145,19 +146,15 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                           
                           <div className="elementskit-post-body">
                             <div className="post-meta-list">
-                              <span className="meta-author">
-                                <i aria-hidden="true" className="far fa-user"></i>
+                              <span className="meta-author flex items-center gap-1.5">
+                                <User className="w-4 h-4 shrink-0" aria-hidden />
                                 <Link href={`/author/${(post.author?.name || 'unknown').toLowerCase().replace(' ', '-')}`} className="author-name">
                                   {post.author?.name || 'Unknown'}
                                 </Link>
                               </span>
-                              <span className="meta-date">
-                                <i aria-hidden="true" className="far fa-calendar"></i>
+                              <span className="meta-date flex items-center gap-1.5">
+                                <CalendarDays className="w-4 h-4 shrink-0" aria-hidden />
                                 <span className="meta-date-text">{post.date}</span>
-                              </span>
-                              <span className="post-comment">
-                                <i aria-hidden="true" className="far fa-comment-alt"></i>
-                                <Link href={`${getBlogPostUrl(post.slug, locale)}#comments`}>{post.comments}</Link>
                               </span>
                             </div>
                             

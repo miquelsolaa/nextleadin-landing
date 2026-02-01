@@ -4,8 +4,8 @@ description: "Aprende cómo usar la inteligencia artificial para enriquecer tus 
 date: "2025-09-10"
 author: "NextLeadIn Team"
 image: "https://images.pexels.com/photos/33844309/pexels-photo-33844309.jpeg"
-categories: ["IA", "Leads", "Personalización"]
-tags: ["inteligencia artificial", "enriquecimiento de leads", "personalización", "automatización"]
+categories: ["AI for Sales"]
+tags: ["AI for Sales","Lead Enrichment"]
 published: true
 ---
 

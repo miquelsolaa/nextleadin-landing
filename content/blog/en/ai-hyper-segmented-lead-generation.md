@@ -5,8 +5,8 @@ date: "2025-12-15"
 image: "https://images.pexels.com/photos/5632407/pexels-photo-5632407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Lead Generation", "AI in Sales", "Sales Strategy"]
-tags: ["AI B2B Lead Generation", "hyper-segmented prospecting", "AI sales automation", "lead enrichment AI", "B2B sales strategy", "sales efficiency AI"]
+categories: ["Lead Generation"]
+tags: ["Lead Generation","AI Prospecting"]
 published: true
 ---
 

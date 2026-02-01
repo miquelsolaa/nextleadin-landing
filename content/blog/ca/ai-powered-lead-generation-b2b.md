@@ -5,8 +5,8 @@ date: "2026-01-23"
 image: "https://images.pexels.com/photos/18069493/pexels-photo-18069493.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Vendes B2B", "Tecnologia IA", "Generació de Leads"]
-tags: ["Automatització vendes IA", "Prospecció B2B", "Plataforma leads IA", "Eficiència comercial", "Integració CRM"]
+categories: ["B2B Sales"]
+tags: ["Sales Automation","Prospecting"]
 published: true
 ---
 

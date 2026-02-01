@@ -178,7 +178,29 @@
     "authorDescription": "Expert en generació de leads i vendes B2B. Comparteixo coneixements i estratègies per ajudar empreses a accelerar el seu creixement.",
     "relatedPostsTitle": "Posts Relacionats",
     "relatedPostsDescription": "Descobreix més contingut interessant",
-    "comments": "comentaris"
+    "comments": "comentaris",
+    "categoryLabels": {
+      "leadGeneration": "Generació de Leads",
+      "b2bSales": "Vendes B2B",
+      "aiProspecting": "Prospecció amb IA",
+      "aiForSales": "IA per a Vendes",
+      "salesAutomation": "Automatització de Vendes",
+      "b2bStrategy": "Estratègia B2B",
+      "localBusiness": "Negocis Locals",
+      "crmIntegration": "Integració CRM"
+    },
+    "tagLabels": {
+      "leadGeneration": "Generació de Leads",
+      "b2bSales": "Vendes B2B",
+      "aiProspecting": "Prospecció amb IA",
+      "aiForSales": "IA per a Vendes",
+      "salesAutomation": "Automatització de Vendes",
+      "crmIntegration": "Integració CRM",
+      "outboundSales": "Vendes Outbound",
+      "leadEnrichment": "Enriquiment de Leads",
+      "hyperSegmentation": "Hipersegmentació",
+      "prospecting": "Prospecció"
+    }
   },
   "cookieConsent": {
     "consentModal": {

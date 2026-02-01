@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import {useTranslations, useLocale} from 'next-intl'
 import AIStructuredData from '@/components/AIStructuredData'
+import { generateAIStructuredData } from '@/lib/seo-metadata'
 
 export default function ContactPage() {
   const t = useTranslations('pages.contact')
@@ -95,6 +96,7 @@ export default function ContactPage() {
         page="contact" 
         locale={locale as 'ca' | 'es' | 'en'} 
         breadcrumbs={breadcrumbs}
+        customData={generateAIStructuredData('contact', locale as 'ca' | 'es' | 'en')}
       />
       {/* Hero */}
       <section className="pt-32 pb-16 bg-white">
@@ -107,9 +109,9 @@ export default function ContactPage() {
       </section>
 
       {/* Contingut principal */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 overflow-x-hidden">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 min-w-0">
             {/* Formulari */}
             <div className="lg:col-span-2">
               {!submitted ? (

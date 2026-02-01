@@ -2,8 +2,10 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { CalendarDays, User } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
+import CategoryLabel from './CategoryLabel'
 
 interface BlogPost {
   id: number
@@ -14,7 +16,6 @@ interface BlogPost {
   categories: string[]
   author: string
   date: string
-  comments: number
   url?: string
 }
 
@@ -63,7 +64,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                       href={`${blogBaseUrl}/category/${category.toLowerCase()}`}
                       className="text-sm font-medium text-green-600 hover:text-green-700 uppercase tracking-wide"
                     >
-                      {category}
+                      <CategoryLabel category={category} />
                     </Link>
                     {index < post.categories.length - 1 && (
                       <span className="text-gray-400 ml-1">,</span>
@@ -81,26 +82,17 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
 
               {/* Meta */}
               <div className="flex items-center text-sm text-gray-500 mb-4 space-x-4">
-                <span className="flex items-center">
-                  <span className="mr-1">📅</span>
+                <span className="flex items-center gap-1.5">
+                  <CalendarDays className="w-4 h-4 shrink-0" aria-hidden />
                   {post.date}
                 </span>
-                <span className="flex items-center">
-                  <span className="mr-1">👤</span>
+                <span className="flex items-center gap-1.5">
+                  <User className="w-4 h-4 shrink-0" aria-hidden />
                   <Link
                     href={`${blogBaseUrl}/author/${(post.author || 'unknown').toLowerCase().replace(' ', '-')}`}
                     className="hover:text-green-600 transition-colors"
                   >
                     {post.author || 'Unknown'}
-                  </Link>
-                </span>
-                <span className="flex items-center">
-                  <span className="mr-1">💬</span>
-                  <Link
-                    href={`${postUrl}#comments`}
-                    className="hover:text-green-600 transition-colors"
-                  >
-                    {post.comments} {t('comments')}
                   </Link>
                 </span>
               </div>

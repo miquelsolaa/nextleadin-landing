@@ -97,6 +97,61 @@ a {
   text-decoration: none;
 }
 
+/* Skip link: visible només en focus (accessibilitat) */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  z-index: 100;
+}
+.skip-link:focus {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--e-global-color-secondary, #004050);
+  color: #fff;
+  border-radius: 0.5rem;
+  outline: 2px solid var(--e-global-color-primary, #00CC61);
+  outline-offset: 2px;
+}
+
+/* Focus visible per a teclat (accessibilitat) */
+a:focus-visible,
+button:focus-visible,
+[href]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--e-global-color-primary, #00CC61);
+  outline-offset: 2px;
+}
+
+/* Footer legal links - wrap a mòbil */
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  justify-content: center;
+}
+@media (min-width: 640px) {
+  .footer-legal-links {
+    justify-content: flex-end;
+  }
+}
+
 /* Custom Tailwind components */
 @layer components {
   
@@ -173,6 +228,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  overflow-x: hidden;
 }
 
 /* Header Section */
@@ -181,6 +237,19 @@ a {
   grid-template-columns: 1.5fr 1.3fr 1fr;
   gap: 40px;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .elementor-element-7e5f4e3 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+  .elementor-element-7e5f4e3 > div:first-child,
+  .elementor-element-7e5f4e3 > div:nth-child(2),
+  .elementor-element-7e5f4e3 > div:last-child {
+    text-align: center;
+  }
 }
 
 /* Left side - Title */
@@ -206,6 +275,8 @@ a {
   line-height: 1.2;
   margin: 0;
   white-space: pre-line;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .ekit-heading--title span span {

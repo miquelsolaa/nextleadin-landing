@@ -5,8 +5,8 @@ date: "2026-01-14"
 image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Lead Generation", "AI Sales", "B2B Marketing"]
-tags: ["hyper-segmented lead generation", "AI lead generation", "B2B prospecting", "sales automation AI"]
+categories: ["Lead Generation"]
+tags: ["Lead Generation","Prospecting"]
 published: true
 ---
 

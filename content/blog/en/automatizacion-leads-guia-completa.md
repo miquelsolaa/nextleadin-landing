@@ -4,8 +4,8 @@ description: "Descubre cómo automatizar completamente tu proceso de generación
 date: "2025-09-08"
 author: "NextLeadIn Team"
 image: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Automatización", "Leads", "Escalado"]
-tags: ["automatización de leads", "pipeline de ventas", "escalado", "workflow"]
+categories: ["Sales Automation"]
+tags: ["Sales Automation"]
 published: true
 ---
 

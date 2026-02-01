@@ -59,7 +59,6 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       month: 'long',
       day: 'numeric'
     }),
-    comments: 0,
     url: getBlogPostUrl(post.slug, validLocale)
   }))
   

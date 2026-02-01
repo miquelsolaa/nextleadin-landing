@@ -5,8 +5,8 @@ date: "2025-11-26"
 image: "https://images.pexels.com/photos/7937363/pexels-photo-7937363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "Equip de NextLeadIn"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["IA en vendes", "Generació de leads"]
-tags: ["prospecció amb IA", "vendes B2B", "generació de leads", "automatització de vendes"]
+categories: ["AI for Sales"]
+tags: ["AI Prospecting","B2B Sales"]
 published: true
 ---
 

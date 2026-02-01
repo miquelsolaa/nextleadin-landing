@@ -4,8 +4,8 @@ description: "Descubre las mejores estrategias para encontrar leads cualificados
 date: "2025-09-09"
 author: "NextLeadIn Team"
 image: "https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg"
-categories: ["Leads", "Ventas", "Segmentación"]
-tags: ["leads cualificados", "prospección", "segmentación geográfica", "B2B"]
+categories: ["Lead Generation"]
+tags: ["Lead Generation","Prospecting"]
 published: true
 ---
 

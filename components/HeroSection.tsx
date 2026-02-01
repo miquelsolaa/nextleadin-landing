@@ -124,7 +124,7 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
                 </span>
                 <br />
                 {t.titleMid}
-                <span className="whitespace-nowrap">
+                <span className="sm:whitespace-nowrap">
                   <span className="relative inline-block after:block after:h-1 after:bg-green-500 after:rounded-full after:mt-1">
                   {t.titleSuffix}
                   </span>

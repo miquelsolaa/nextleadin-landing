@@ -3,7 +3,7 @@ import AIStructuredData from '@/components/AIStructuredData'
 import { setRequestLocale } from 'next-intl/server'
 import { getTranslations } from 'next-intl/server'
 import { faqSections, navigationItems, pageTexts } from '@/lib/faq-data'
-import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import { generateAIOptimizedMetadata, generateAIStructuredData } from '@/lib/seo-metadata'
 import type { Metadata } from 'next'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -38,6 +38,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
         page="faq" 
         locale={validLocale as 'ca' | 'es' | 'en'} 
         breadcrumbs={breadcrumbs}
+        customData={generateAIStructuredData('faq', validLocale as 'ca' | 'es' | 'en')}
       />
       <div className="min-h-screen bg-gray-50">
       {/* Page Header */}

@@ -5,8 +5,8 @@ date: "2025-12-02"
 image: "https://images.pexels.com/photos/6973191/pexels-photo-6973191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "Equip de NextLeadIn"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Generació de Leads", "Estratègia de Vendes"]
-tags: ["hipersegmentació", "generació de leads", "vendes B2B", "leads de vendes"]
+categories: ["Lead Generation"]
+tags: ["Hyper-segmentation","Lead Generation"]
 published: true
 ---
 

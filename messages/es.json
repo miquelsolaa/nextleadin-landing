@@ -178,7 +178,29 @@
     "authorDescription": "Experto en generación de leads y ventas B2B. Comparto conocimientos y estrategias para ayudar empresas a acelerar su crecimiento.",
     "relatedPostsTitle": "Posts Relacionados",
     "relatedPostsDescription": "Descubre más contenido interesante",
-    "comments": "comentarios"
+    "comments": "comentarios",
+    "categoryLabels": {
+      "leadGeneration": "Generación de Leads",
+      "b2bSales": "Ventas B2B",
+      "aiProspecting": "Prospección con IA",
+      "aiForSales": "IA para Ventas",
+      "salesAutomation": "Automatización de Ventas",
+      "b2bStrategy": "Estrategia B2B",
+      "localBusiness": "Negocios Locales",
+      "crmIntegration": "Integración CRM"
+    },
+    "tagLabels": {
+      "leadGeneration": "Generación de Leads",
+      "b2bSales": "Ventas B2B",
+      "aiProspecting": "Prospección con IA",
+      "aiForSales": "IA para Ventas",
+      "salesAutomation": "Automatización de Ventas",
+      "crmIntegration": "Integración CRM",
+      "outboundSales": "Ventas Outbound",
+      "leadEnrichment": "Enriquecimiento de Leads",
+      "hyperSegmentation": "Hipersegmentación",
+      "prospecting": "Prospección"
+    }
   },
   "cookieConsent": {
     "consentModal": {

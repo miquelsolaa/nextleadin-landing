@@ -30,7 +30,6 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
       month: 'long',
       day: 'numeric'
     }) : '',
-    comments: 0,
     slug: post.slug || ''
   }))
   

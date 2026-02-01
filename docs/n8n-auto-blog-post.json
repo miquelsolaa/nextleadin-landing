@@ -1,0 +1,675 @@
+{
+    "nodes": [
+      {
+        "parameters": {
+          "jsCode": "// Obtenir la resposta de Pexels\nconst pexelsResponse = $input.item.json;\nconst photo = pexelsResponse.photos && pexelsResponse.photos[0];\n\n// Obtenir la URL de la imatge\nlet imageUrl = 'https://images.pexels.com/photos/270632/pexels-photo-270632.jpeg?auto=compress&cs=tinysrgb&w=1200'; // Fallback\n\nif (photo && photo.src) {\n  // Utilitzar large2x per millor qualitat (1920x1080 o similar)\n  imageUrl = photo.src.large2x || photo.src.large || photo.src.original;\n  console.log(`Imatge trobada a Pexels: ${imageUrl}`);\n} else {\n  console.warn('No s\\'ha trobat cap imatge a Pexels, utilitzant fallback');\n}\n\n// Obtenir els articles\nconst articles = $('Extract Articles').item.json.articles || [];\n\nif (articles.length === 0) {\n  throw new Error('No s\\'han trobat articles per actualitzar');\n}\n\n// Actualitzar cada article amb la URL de la imatge\nconst updatedArticles = articles.map(article => {\n  let markdown = article.markdown;\n  \n  // Actualitzar el frontmatter\n  const frontmatterMatch = markdown.match(/^(---\\n)([\\s\\S]*?)(\\n---)/);\n  \n  if (!frontmatterMatch) {\n    throw new Error(`L'article ${article.locale} no té frontmatter vàlid`);\n  }\n  \n  const frontmatterStart = frontmatterMatch[1];\n  let frontmatter = frontmatterMatch[2];\n  const frontmatterEnd = frontmatterMatch[3];\n  \n  // Reemplaçar o afegir el camp image\n  if (frontmatter.match(/^image:\\s*[\"'][^\"']+[\"']/m)) {\n    frontmatter = frontmatter.replace(\n      /^image:\\s*[\"'][^\"']+[\"']/m,\n      `image: \"${imageUrl}\"`\n    );\n  } else {\n    const dateMatch = frontmatter.match(/^(date:\\s*[\"'][^\"']+[\"'])/m);\n    if (dateMatch) {\n      frontmatter = frontmatter.replace(\n        /^(date:\\s*[\"'][^\"']+[\"'])/m,\n        `$1\\nimage: \"${imageUrl}\"`\n\n      );\n    } else {\n      frontmatter = `${frontmatter}\\nimage: \"${imageUrl}\"`;\n    }\n  }\n  \n  const updatedMarkdown = `${frontmatterStart}${frontmatter}${frontmatterEnd}${markdown.substring(frontmatterMatch[0].length)}`;\n  \n  return {\n    ...article,\n    markdown: updatedMarkdown\n  };\n});\n\nreturn {\n  json: {\n    articles: updatedArticles,\n    slug: $('Extract Articles').item.json.slug,\n    title: $('Extract Articles').item.json.title,\n    imageUrl: imageUrl\n  }\n};"
+        },
+        "id": "12fdf5e7-7a5d-4f66-bb97-aeb7f94aed55",
+        "name": "Update Markdowns with Image URL",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1040,
+          640
+        ]
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "daysInterval": 3,
+                "triggerAtHour": 1
+              }
+            ]
+          }
+        },
+        "id": "b8596407-ed4f-4009-817e-a017a8f76694",
+        "name": "Schedule Trigger",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.2,
+        "position": [
+          -384,
+          640
+        ]
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "file",
+          "owner": {
+            "__rl": true,
+            "value": "miquelsolaa",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "nextleadin-landing",
+            "mode": "list",
+            "cachedResultName": "nextleadin-landing",
+            "cachedResultUrl": "https://github.com/miquelsolaa/nextleadin-landing"
+          },
+          "filePath": "={{ $json.filePath }}",
+          "fileContent": "={{ $json.markdown }}",
+          "commitMessage": "={{ $json.commitMessage }}"
+        },
+        "id": "cc42861d-cf1e-4de2-af63-31be08958019",
+        "name": "Create /en Blog Post",
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "position": [
+          1664,
+          480
+        ],
+        "webhookId": "9bf1ac16-a408-4406-b6b4-73940b2c8d1d",
+        "credentials": {
+          "githubOAuth2Api": {
+            "id": "j8qhfZy0IdoAbkQJ",
+            "name": "GitHub account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "file",
+          "owner": {
+            "__rl": true,
+            "value": "miquelsolaa",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "nextleadin-landing",
+            "mode": "list",
+            "cachedResultName": "nextleadin-landing",
+            "cachedResultUrl": "https://github.com/miquelsolaa/nextleadin-landing"
+          },
+          "filePath": "={{ $json.filePath }}",
+          "fileContent": "={{ $json.markdown }}",
+          "commitMessage": "={{ $json.commitMessage }}"
+        },
+        "id": "7a4d23dd-1783-4ae4-bedc-d871fbceff01",
+        "name": "Create /ca Blog Post",
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "position": [
+          1856,
+          896
+        ],
+        "webhookId": "a5e5ff40-be4b-4786-a714-dd0e5fd2aa56",
+        "credentials": {
+          "githubOAuth2Api": {
+            "id": "j8qhfZy0IdoAbkQJ",
+            "name": "GitHub account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "file",
+          "owner": {
+            "__rl": true,
+            "value": "miquelsolaa",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "nextleadin-landing",
+            "mode": "list",
+            "cachedResultName": "nextleadin-landing",
+            "cachedResultUrl": "https://github.com/miquelsolaa/nextleadin-landing"
+          },
+          "filePath": "={{ $json.filePath }}",
+          "fileContent": "={{ $json.markdown }}",
+          "commitMessage": "={{ $json.commitMessage }}"
+        },
+        "id": "8a7518ab-f78a-4af0-aadd-3cd81142bdd6",
+        "name": "Create /es Blog Post",
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "position": [
+          1856,
+          672
+        ],
+        "webhookId": "c57b3478-4067-472a-882c-65426cdf633d",
+        "credentials": {
+          "githubOAuth2Api": {
+            "id": "j8qhfZy0IdoAbkQJ",
+            "name": "GitHub account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "https://api.pexels.com/v1/search",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "query",
+                "value": "={{ $input.item.json.topic }}"
+              },
+              {
+                "name": "per_page",
+                "value": "1"
+              },
+              {
+                "name": "orientation",
+                "value": "landscape"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          736,
+          640
+        ],
+        "id": "0b0c278e-580e-40d9-9c01-4cec4c5ff7b2",
+        "name": "Get Image from Pexels1",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "KNMWLiVOIOdVBZkW",
+            "name": "Pexels API"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "5b703556-7349-42e7-bdf2-8224cd36fc19",
+                "leftValue": "={{ $json.locale }}",
+                "rightValue": "en",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1472,
+          640
+        ],
+        "id": "1ef842ef-c675-44d9-a96d-1716c56fac35",
+        "name": "If EN"
+      },
+      {
+        "parameters": {
+          "jsCode": "return {\n  json: {\n    $today: new Date().toISOString().slice(0,10) // \"YYYY-MM-DD\"\n  }\n};"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -224,
+          640
+        ],
+        "id": "f66bb0a0-75de-4882-8550-a53b809ebe5b",
+        "name": "getTodayDate"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Codi simplificat per processar resposta JSON de Gemini\n// Aquest codi és molt més simple i robust que parsejar markdown\n\nlet response = '';\n\n// Obtenir el text de la resposta\nif ($input.item.json.content && $input.item.json.content.parts && $input.item.json.content.parts[0]) {\n  response = $input.item.json.content.parts[0].text || '';\n} else if ($input.item.json.message) {\n  response = $input.item.json.message;\n} else if ($input.item.json.text) {\n  response = $input.item.json.text;\n} else if (typeof $input.item.json.content === 'string') {\n  response = $input.item.json.content;\n}\n\nconsole.log('Response length:', response.length);\n\nif (!response || response.length === 0) {\n  throw new Error('No s\\'ha rebut cap resposta de Gemini');\n}\n\n// Netejar la resposta per eliminar possibles code blocks markdown\n// Si Gemini retorna el JSON dins d'un code block, extreure'l\nlet jsonString = response.trim();\n\n// Eliminar code blocks markdown si n'hi ha\nif (jsonString.startsWith('```')) {\n  // Eliminar el primer ``` i el tipus si existeix\n  jsonString = jsonString.replace(/^```(?:json)?\\n?/, '');\n  // Eliminar el ``` final\n  jsonString = jsonString.replace(/\\n?```$/, '');\n  jsonString = jsonString.trim();\n}\n\n// Escapar caràcters de control dins de strings JSON (Gemini pot retornar \\n literals)\nfunction escapeControlCharsInJsonStrings(str) {\n  let result = '';\n  let inString = false;\n  let escapeNext = false;\n  for (let i = 0; i < str.length; i++) {\n    const c = str[i];\n    if (escapeNext) {\n      result += c;\n      escapeNext = false;\n      continue;\n    }\n    if (c === '\\\\' && inString) {\n      result += c;\n      escapeNext = true;\n      continue;\n    }\n    if (c === '\"') {\n      inString = !inString;\n      result += c;\n      continue;\n    }\n    if (inString && (c === '\\n' || c === '\\r' || c === '\\t')) {\n      if (c === '\\n') result += '\\\\n';\n      else if (c === '\\r') result += '\\\\r';\n      else if (c === '\\t') result += '\\\\t';\n      continue;\n    }\n    result += c;\n  }\n  return result;\n}\njsonString = escapeControlCharsInJsonStrings(jsonString);\n\n// Intentar parsejar el JSON\nlet data;\ntry {\n  data = JSON.parse(jsonString);\n} catch (error) {\n  console.error('Error parsejant JSON:', error.message);\n  console.log('Primers 500 caràcters de la resposta:', jsonString.substring(0, 500));\n  throw new Error(`Error parsejant la resposta JSON: ${error.message}`);\n}\n\n// Verificar l'estructura\nif (!data.articles || !Array.isArray(data.articles)) {\n  throw new Error('La resposta JSON no conté un array \"articles\"');\n}\n\nif (data.articles.length !== 3) {\n  throw new Error(`S\\'esperaven 3 articles però s\\'han trobat ${data.articles.length}`);\n}\n\n// Processar cada article\nconst articles = [];\nconst slug = data.slug || 'untitled-post';\n\nfor (const article of data.articles) {\n  // Verificar camps obligatoris\n  if (!article.locale) {\n    throw new Error('Un article no té camp \"locale\"');\n  }\n  \n  if (!article.content) {\n    throw new Error(`L'article ${article.locale} no té camp \"content\"`);\n  }\n  \n  // Verificar que el locale és vàlid\n  const validLocales = ['en', 'ca', 'es'];\n  if (!validLocales.includes(article.locale)) {\n    throw new Error(`Locale invàlid: ${article.locale}. Ha de ser un de: ${validLocales.join(', ')}`);\n  }\n  \n  // Extreure el títol del frontmatter si no està al nivell superior\n  let title = article.title;\n  if (!title && article.content) {\n    const titleMatch = article.content.match(/title:\\s*[\"']([^\"']+)[\"']/);\n    if (titleMatch) {\n      title = titleMatch[1];\n    }\n  }\n  \n  // Generar el markdown final\n  // Si el content ja inclou el frontmatter, usar-lo directament\n  // Sinó, construir-lo\n  let markdown = article.content;\n  \n  // Verificar si el content ja té frontmatter\n  if (!markdown.match(/^---\\n/)) {\n    // Construir el frontmatter\n    const frontmatter = `---\\ntitle: \"${article.title || title || 'Untitled'}\"\\ndescription: \"${article.description || ''}\"\\ndate: \"${article.date || '2025-11-22'}\"\\nimage: \"/blog/placeholder.png\"\\n---`;\n    markdown = `${frontmatter}\\n\\n${article.content}`;\n  }\n  \n  articles.push({\n    locale: article.locale,\n    markdown: markdown,\n    slug: slug,\n    title: title || article.title || 'Untitled',\n    filename: `${slug}-${article.locale}.md`\n  });\n}\n\n// Verificar que tenim els 3 idiomes\nconst locales = articles.map(a => a.locale);\nif (!locales.includes('en')) {\n  throw new Error('Falta l\\'article en anglès');\n}\nif (!locales.includes('ca')) {\n  throw new Error('Falta l\\'article en català');\n}\nif (!locales.includes('es')) {\n  throw new Error('Falta l\\'article en espanyol');\n}\n\n// Assegurar que tots els articles tenen el mateix slug\narticles.forEach(article => {\n  article.slug = slug;\n});\n\nconst enArticle = articles.find(a => a.locale === 'en');\nconst mainTitle = enArticle ? enArticle.title : data.topic || 'Blog Post';\n\nconsole.log(`Articles processats: ${articles.length}`);\nconsole.log(`Slug: ${slug}`);\nconsole.log(`Títol: ${mainTitle}`);\n\nreturn {\n  json: {\n    articles: articles,\n    slug: slug,\n    title: mainTitle,\n    count: articles.length,\n    locales: locales,\n    topic: data.topic || '',\n    justification: data.justification || ''\n  }\n};\n\n"
+        },
+        "id": "1da37e2f-6af9-4e93-b495-b45dbf774b96",
+        "name": "Extract Articles",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          432,
+          640
+        ]
+      },
+      {
+        "parameters": {
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-2.5-flash",
+            "mode": "list",
+            "cachedResultName": "models/gemini-2.5-flash"
+          },
+          "messages": {
+            "values": [
+              {
+                "content": "=You are an expert content strategist, senior SEO copywriter, and multilingual technical writer creating high-value blog content for NextLeadIn, a B2B AI-powered lead-generation platform. Your mission is to produce ready-to-publish SEO blog articles that drive organic acquisition and convert readers into leads for NextLeadIn.\n\n🎯 Context & Goals (NextLeadIn-specific)\n\nAbout NextLeadIn:\nNextLeadIn is an AI-powered B2B lead generation platform offering hyper-segmented prospecting, actionable company lists, enriched business insights, AI-generated dossiers, CRM integrations, and automated lead workflows. Users can start with 100 free leads, no credit card required.\n\nTarget audience:\nB2B sales teams, commercial reps, SaaS companies, consulting firms, agencies, businesses scaling outbound, companies prospecting by sector + territory, SMEs entering new markets, sales teams wanting to automate prospecting with AI.\n\nObjective:\nGenerate organic traffic and qualified inbound leads for NextLeadIn.\n\nLanguages:\nGenerate three complete localized articles: EN, CA, ES. Each must be independent, naturally localized, fully tailored to the B2B sales audience, and SEO-optimized for high-intent keywords.\n\n🧩 JSON Output Specification\n\nReturn ONLY a JSON object with the following structure:\n\n{\n  \"topic\": \"Brief topic description\",\n  \"justification\": \"Why this topic will attract traffic (1-2 sentences)\",\n  \"slug\": \"url-friendly-slug-for-all-articles\",\n  \"articles\": [\n    {\n      \"locale\": \"en\",\n      \"title\": \"Article title with focus keyword\",\n      \"description\": \"SEO meta description, 140–160 chars, includes focus keyword\",\n      \"date\": \"{{ $('getTodayDate').item.json.$today }}\",\n      \"content\": \"Full markdown content including frontmatter and body in the format below\",\n      \"keywords\": {\n        \"primary\": \"Main keyword\",\n        \"secondary\": [\"Secondary keyword 1\", \"Secondary keyword 2\"]\n      },\n      \"seoTitle\": \"SEO title tag (<= 60 chars)\",\n      \"metaDescription\": \"Meta description (140-160 chars)\",\n      \"internalLink\": \"Suggested internal link anchor text\",\n      \"externalLink\": \"Suggested external authoritative link URL\"\n    },\n    { \"locale\": \"ca\", ... },\n    { \"locale\": \"es\", ... }\n  ]\n}\n\n📝 Markdown Format Requirements (for each article)\n\nEach \"content\" field must use this frontmatter + content style:\n\n---\ntitle: \"Article title\"\ndescription: \"SEO description\"\ndate: \"{{ $('getTodayDate').item.json.$today }}\"\nauthor: \"NextLeadIn Team\"\nfeaturedImage: \"https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg\"\ncategories: [\"Lead Generation\"] — use exactly ONE category from this list (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, B2B Strategy, Local Business, CRM Integration\ntags: [\"Lead Generation\", \"AI Prospecting\"] — use 2 or 3 tags from this list only (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, CRM Integration, Outbound Sales, Lead Enrichment, Hyper-segmentation, Prospecting\npublished: true\n---\n\n# Article Title (H1)\n\n**Introduction/Contextual Overview**\n\n## **Section Title (H2)**\n\nBody text with actionable insights and local examples (Barcelona, Terrassa, Sant Cugat when relevant).\n\nInclude 3+ LSI keywords naturally inside paragraphs or bullet points (do NOT write “LSI Keyword 1”, write real semantic keywords).\n\n### **Subsection Title (H3)**  \nInclude real content here.\n\n| Feature | Option A | Option B |\n|---------|----------|----------|\n| Row 1  | Value A  | Value B  |\n| Row 2  | Value A  | Value B  |\n\n**Conclusion**\n\nCTA (localized):  \nEnglish: \"Ready to scale your outbound? Contact us at contact@nextleadin.com\"  \nCatalan: \"Vols fer créixer el teu equip comercial? Escriu-nos a contact@nextleadin.com\"  \nSpanish: \"¿Quieres mejorar tu prospección? Contáctanos en contact@nextleadin.com\"\n\n⚡ Behavioral Rules\n\nDo NOT ask for clarifications.\n\nCategories: in the frontmatter of each article use exactly ONE category from this list (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, B2B Strategy, Local Business, CRM Integration. Choose the one that best fits the article topic.\n\nTags: in the frontmatter of each article use 2 or 3 tags from this list only (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, CRM Integration, Outbound Sales, Lead Enrichment, Hyper-segmentation, Prospecting. Choose those that best fit the article topic. Do not use any other tags.\n\nTopic: {{ $json.keyword }} \n\nPriority related keywords: AI sales automation, hyper-segmented lead generation, AI prospecting, B2B outbound strategy.\n\nEach article: 900–1,500 words, one H1 only, bolded H2/H3, minimum 3 LSI keywords naturally inserted, at least one comparison table, and 6 FAQs at the end.\n\nTone: B2B, sales-focused, simple, value-driven.\n\nLocalization guidelines:\n\nCatalan: professional, native\n\nSpanish: neutral, business-friendly\n\nEnglish: clear, concise\n\nReturn ONLY valid JSON. No markdown fences except inside the \"content\" field where required by structure."
+              }
+            ]
+          },
+          "jsonOutput": true,
+          "options": {}
+        },
+        "id": "1a64bfb1-dd9c-4a78-b154-2d6f2bb04a5e",
+        "name": "Write Articles",
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1,
+        "position": [
+          80,
+          640
+        ],
+        "credentials": {
+          "googlePalmApi": {
+            "id": "VhKYJonr34aHxVDY",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "5b703556-7349-42e7-bdf2-8224cd36fc19",
+                "leftValue": "={{ $json.locale }}",
+                "rightValue": "es",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1648,
+          784
+        ],
+        "id": "ac64ae73-7174-4706-b93b-1c407c2a2038",
+        "name": "If ES"
+      },
+      {
+        "parameters": {
+          "jsCode": "const articles = $input.item.json.articles || [];\nconst slug = $input.item.json.slug;\nconst title = $input.item.json.title;\nconst imageUrl = $input.item.json.imageUrl;\n\nif (articles.length !== 3) {\n  throw new Error(`S'esperaven 3 articles però s'han trobat ${articles.length}`);\n}\n\n// Crear 3 items separats (un per cada idioma)\nreturn articles.map(article => {\n  const localeNames = {\n    'en': 'EN',\n    'ca': 'CA',\n    'es': 'ES'\n  };\n  \n  return {\n    json: {\n      locale: article.locale,\n      markdown: article.markdown,\n      slug: slug,\n      title: article.title,\n      imageUrl: imageUrl,\n      filePath: `content/blog/${article.locale}/${slug}.md`,\n      commitMessage: `Add blog post: ${title} (${localeNames[article.locale] || article.locale.toUpperCase()})`\n    }\n  };\n});"
+        },
+        "id": "4b1b5169-ff4c-4862-b6c0-2063937e6aed",
+        "name": "Split Articles",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1264,
+          640
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "FzxheZYY5SkJgBnd",
+            "mode": "list",
+            "cachedResultName": "Keywords NextLeadIn",
+            "cachedResultUrl": "/projects/LHX5Y8sPKhGRanzA/datatables/FzxheZYY5SkJgBnd"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "processed",
+                "condition": "isFalse"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          -80,
+          640
+        ],
+        "id": "bb5f7725-59a5-4967-a91f-e67754b2292a",
+        "name": "Get row(s)"
+      },
+      {
+        "parameters": {
+          "maxItems": 1,
+          "options": {}
+        },
+        "id": "a7b8c9d0-limit-keyword-e1f2a3b4c5d6e7f8",
+        "name": "Limit 1 Keyword",
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          0,
+          640
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "FzxheZYY5SkJgBnd",
+            "mode": "list",
+            "cachedResultName": "Keywords NextLeadIn",
+            "cachedResultUrl": "/projects/LHX5Y8sPKhGRanzA/datatables/FzxheZYY5SkJgBnd"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Get row(s)').item.json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "processed": true
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "keyword",
+                "displayName": "keyword",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "processed",
+                "displayName": "processed",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "boolean",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          2032,
+          896
+        ],
+        "id": "9133eadb-6bda-4078-b710-44c08b53b045",
+        "name": "Update row(s)"
+      },
+      {
+        "parameters": {
+          "mode": "append",
+          "options": {}
+        },
+        "id": "a1b2c3d4-merge1-4e5f-6a7b-8c9d0e1f2a3b",
+        "name": "Merge After Blog Posts",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          2048,
+          672
+        ]
+      },
+      {
+        "parameters": {
+          "maxItems": 1,
+          "options": {}
+        },
+        "id": "b2c3d4e5-limit-5f6a-7b8c-9d0e1f2a3b4c",
+        "name": "Limit 1",
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          2176,
+          672
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "append",
+          "options": {}
+        },
+        "id": "c3d4e5f6-merge2-6a7b-8c9d-0e1f2a3b4c5d",
+        "name": "Merge After Blog Posts 2",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          2112,
+          672
+        ]
+      }
+    ],
+    "connections": {
+      "Update Markdowns with Image URL": {
+        "main": [
+          [
+            {
+              "node": "Split Articles",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "getTodayDate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create /en Blog Post": {
+        "main": [
+          [
+            {
+              "node": "Merge After Blog Posts",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create /ca Blog Post": {
+        "main": [
+          [
+            {
+              "node": "Merge After Blog Posts",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Create /es Blog Post": {
+        "main": [
+          [
+            {
+              "node": "Merge After Blog Posts 2",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Merge After Blog Posts": {
+        "main": [
+          [
+            {
+              "node": "Merge After Blog Posts 2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge After Blog Posts 2": {
+        "main": [
+          [
+            {
+              "node": "Limit 1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit 1": {
+        "main": [
+          [
+            {
+              "node": "Update row(s)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Image from Pexels1": {
+        "main": [
+          [
+            {
+              "node": "Update Markdowns with Image URL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If EN": {
+        "main": [
+          [
+            {
+              "node": "Create /en Blog Post",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "If ES",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "getTodayDate": {
+        "main": [
+          [
+            {
+              "node": "Get row(s)",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract Articles": {
+        "main": [
+          [
+            {
+              "node": "Get Image from Pexels1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Write Articles": {
+        "main": [
+          [
+            {
+              "node": "Extract Articles",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If ES": {
+        "main": [
+          [
+            {
+              "node": "Create /es Blog Post",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Create /ca Blog Post",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Articles": {
+        "main": [
+          [
+            {
+              "node": "If EN",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get row(s)": {
+        "main": [
+          [
+            {
+              "node": "Limit 1 Keyword",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit 1 Keyword": {
+        "main": [
+          [
+            {
+              "node": "Write Articles",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "pinData": {},
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "1162154a2ee98baa18f6ffa9fe8e7e158b5df6620b89fd96809f0077888da523"
+    }
+  }

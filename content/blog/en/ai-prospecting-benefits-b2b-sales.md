@@ -5,8 +5,8 @@ date: "2025-11-26"
 image: "https://images.pexels.com/photos/7937363/pexels-photo-7937363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["AI Sales", "Lead Generation"]
-tags: ["AI prospecting", "B2B sales", "lead generation", "sales automation"]
+categories: ["AI for Sales"]
+tags: ["AI Prospecting","Lead Generation"]
 published: true
 ---
 

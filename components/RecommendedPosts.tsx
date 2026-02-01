@@ -6,7 +6,7 @@ import { useLocale } from 'next-intl'
 import type { BlogPostMeta } from '@/lib/blog'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 import { CalendarDays } from 'lucide-react'
-import Tag from './Tag'
+import CategoryTag from './CategoryTag'
 
 interface RecommendedPostsProps {
   posts: BlogPostMeta[]
@@ -68,9 +68,9 @@ export default function RecommendedPosts({ posts, currentSlug }: RecommendedPost
               <div className="p-6">
                 <div className="flex flex-wrap gap-2 mb-3">
                   {post.categories?.slice(0, 2).map((category, index) => (
-                    <Tag
+                    <CategoryTag
                       key={index}
-                      tag={category}
+                      category={category}
                       href={`${currentLocale === 'ca' ? '' : `/${currentLocale}`}/blog/category/${category.toLowerCase()}`}
                       variant="outline"
                       size="sm"

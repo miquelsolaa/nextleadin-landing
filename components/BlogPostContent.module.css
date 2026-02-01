@@ -1,5 +1,18 @@
 /* Estils personalitzats per al contingut del blog */
 
+/* Contenidor prose: scroll horitzontal si taules/codi són amples (mòbil) */
+.prose {
+  max-width: 100%;
+  overflow-x: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.prose th,
+.prose td {
+  word-break: break-word;
+}
+
 /* Blockquotes */
 .prose blockquote {
   @apply border-l-4 border-green-500 bg-green-50 px-6 py-4 rounded-lg my-6;

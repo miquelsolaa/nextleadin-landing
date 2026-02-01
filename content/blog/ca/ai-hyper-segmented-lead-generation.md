@@ -5,8 +5,8 @@ date: "2025-12-15"
 image: "https://images.pexels.com/photos/5632407/pexels-photo-5632407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
-categories: ["Generació de Leads", "IA en Vendes", "Estratègia Comercial"]
-tags: ["Generació de leads B2B amb IA", "prospecció hipersegmentada", "automatització de vendes amb IA", "enriquiment de leads amb IA", "estratègia de vendes B2B", "eficiència de vendes amb IA"]
+categories: ["Lead Generation"]
+tags: ["Lead Generation","AI Prospecting"]
 published: true
 ---
 
