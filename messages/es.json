@@ -9,9 +9,10 @@
   },
   "pages": {
     "blog": {
-      "title": "Blog",
+      "title": "Blog de Leads B2B e IA",
       "description": "Descubre materiales informativos sobre generación de leads, IA y ventas B2B para acelerar tu crecimiento.",
-      "breadcrumbHome": "Inicio"
+      "breadcrumbHome": "Inicio",
+      "breadcrumbBlog": "Blog"
     },
     "contact": {
       "title": "Habla con nuestro equipo",

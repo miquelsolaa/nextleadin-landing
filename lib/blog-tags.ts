@@ -31,23 +31,78 @@ export const TAG_TO_KEY: Record<string, BlogTagKey> = {
   'Prospecting': 'prospecting'
 }
 
-/**
- * Returns the translation key for a tag value from frontmatter (English).
- * If the tag is not in the map, returns null (caller can fallback to raw value).
- */
-export function getTagLabelKey(tag: string): string | null {
-  const key = TAG_TO_KEY[tag]
-  return key ?? null
-}
-
 /** Canonical English tag names (for URL slug → display) */
 const CANONICAL_TAGS: string[] = Object.keys(TAG_TO_KEY)
 
 /**
- * Returns the URL slug for a canonical tag (e.g. "Lead Generation" → "lead-generation").
+ * Map from any tag variant (CA/ES/EN) to canonical English tag.
+ * Used to normalize frontmatter tags and match posts across locales.
  */
-export function getTagSlug(canonicalTag: string): string {
-  return (canonicalTag || '').trim().toLowerCase().replace(/\s+/g, '-')
+export const TAG_VARIANT_TO_CANONICAL: Record<string, string> = {
+  // English canonical (identity)
+  'Lead Generation': 'Lead Generation',
+  'B2B Sales': 'B2B Sales',
+  'AI Prospecting': 'AI Prospecting',
+  'AI for Sales': 'AI for Sales',
+  'Sales Automation': 'Sales Automation',
+  'CRM Integration': 'CRM Integration',
+  'Outbound Sales': 'Outbound Sales',
+  'Lead Enrichment': 'Lead Enrichment',
+  'Hyper-segmentation': 'Hyper-segmentation',
+  'Prospecting': 'Prospecting',
+  // English variants
+  'AI-Powered Lead Generation': 'Lead Generation',
+  'Outbound Strategy': 'Outbound Sales',
+  // Spanish
+  'Captación de Leads con IA': 'Lead Generation',
+  'Ventas B2B': 'B2B Sales',
+  'Prospección con IA': 'AI Prospecting',
+  'Automatización de Ventas': 'Sales Automation',
+  'Estrategia Outbound': 'Outbound Sales',
+  'Enriquecimiento de Leads': 'Lead Enrichment',
+  'Hiper-segmentación': 'Hyper-segmentation',
+  'Prospección': 'Prospecting',
+  'Integración CRM': 'CRM Integration',
+  'Ventas Outbound': 'Outbound Sales',
+  // Catalan
+  'Captació de Leads amb IA': 'Lead Generation',
+  'Vendes B2B': 'B2B Sales',
+  'Prospecció amb IA': 'AI Prospecting',
+  'Automatització de Vendes': 'Sales Automation',
+  'Estratègia Outbound': 'Outbound Sales',
+  'Enriquiment de Leads': 'Lead Enrichment',
+  'Hiper-segmentació': 'Hyper-segmentation',
+  'Prospecció': 'Prospecting',
+  'Integració CRM': 'CRM Integration',
+  'Vendes Outbound': 'Outbound Sales'
+}
+
+/**
+ * Returns the canonical English tag for any variant (CA/ES/EN).
+ * If the tag is already canonical or mapped, returns it; otherwise returns the trimmed input.
+ */
+export function getCanonicalTag(tag: string): string {
+  const trimmed = (tag || '').trim()
+  return TAG_VARIANT_TO_CANONICAL[trimmed] ?? trimmed
+}
+
+/**
+ * Returns the translation key for a tag value from frontmatter (any language variant).
+ * If the tag is not in the map, returns null (caller can fallback to raw value).
+ */
+export function getTagLabelKey(tag: string): string | null {
+  const canonical = getCanonicalTag(tag)
+  const key = TAG_TO_KEY[canonical]
+  return key ?? null
+}
+
+/**
+ * Returns the URL slug for a tag (accepts any variant; normalizes to canonical first).
+ * e.g. "Lead Generation" → "lead-generation", "Captación de Leads con IA" → "lead-generation"
+ */
+export function getTagSlug(tag: string): string {
+  const canonical = getCanonicalTag(tag)
+  return (canonical || '').trim().toLowerCase().replace(/\s+/g, '-')
 }
 
 /**

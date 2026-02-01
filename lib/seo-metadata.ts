@@ -316,9 +316,78 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     }
   },
+  'terms-and-conditions': {
+    ca: {
+      title: 'Termes i Condicions',
+      description: 'Termes i condicions d\'ús del servei NextLeadIn. Informació sobre acceptació, descripció del servei, registre, preus, obligacions i drets.',
+      keywords: ['termes condicions', 'condicions ús', 'NextLeadIn legal', 'contracte servei'],
+      canonical: 'https://nextleadin.com/ca/terms-and-conditions',
+      ogImage: '/images/og/default.jpg',
+    },
+    es: {
+      title: 'Términos y Condiciones',
+      description: 'Términos y condiciones de uso del servicio NextLeadIn. Información sobre aceptación, descripción del servicio, registro, precios, obligaciones y derechos.',
+      keywords: ['términos condiciones', 'condiciones uso', 'NextLeadIn legal', 'contrato servicio'],
+      canonical: 'https://nextleadin.com/terms-and-conditions',
+      ogImage: '/images/og/default.jpg',
+    },
+    en: {
+      title: 'Terms and Conditions',
+      description: 'Terms and conditions of use for the NextLeadIn service. Information on acceptance, service description, registration, pricing, obligations and rights.',
+      keywords: ['terms conditions', 'terms of use', 'NextLeadIn legal', 'service agreement'],
+      canonical: 'https://nextleadin.com/en/terms-and-conditions',
+      ogImage: '/images/og/default.jpg',
+    },
+  },
+  'privacy-policy': {
+    ca: {
+      title: 'Política de Privacitat',
+      description: 'Política de privacitat de NextLeadIn. Informació sobre recollida de dades, finalitats del tractament, drets dels interessats i seguretat.',
+      keywords: ['política privacitat', 'protecció dades', 'RGPD', 'NextLeadIn privacitat'],
+      canonical: 'https://nextleadin.com/ca/privacy-policy',
+      ogImage: '/images/og/default.jpg',
+    },
+    es: {
+      title: 'Política de Privacidad',
+      description: 'Política de privacidad de NextLeadIn. Información sobre recopilación de datos, finalidades del tratamiento, derechos de los interesados y seguridad.',
+      keywords: ['política privacidad', 'protección datos', 'RGPD', 'NextLeadIn privacidad'],
+      canonical: 'https://nextleadin.com/privacy-policy',
+      ogImage: '/images/og/default.jpg',
+    },
+    en: {
+      title: 'Privacy Policy',
+      description: 'NextLeadIn privacy policy. Information on data collection, processing purposes, data subject rights and security.',
+      keywords: ['privacy policy', 'data protection', 'GDPR', 'NextLeadIn privacy'],
+      canonical: 'https://nextleadin.com/en/privacy-policy',
+      ogImage: '/images/og/default.jpg',
+    },
+  },
+  'cookie-policy': {
+    ca: {
+      title: 'Política de Cookies',
+      description: 'Política de cookies de NextLeadIn. Tipus de cookies, finalitats, gestió i drets dels usuaris sobre cookies i tecnologies similars.',
+      keywords: ['política cookies', 'cookies', 'consentiment cookies', 'NextLeadIn cookies'],
+      canonical: 'https://nextleadin.com/ca/cookie-policy',
+      ogImage: '/images/og/default.jpg',
+    },
+    es: {
+      title: 'Política de Cookies',
+      description: 'Política de cookies de NextLeadIn. Tipos de cookies, finalidades, gestión y derechos de los usuarios sobre cookies y tecnologías similares.',
+      keywords: ['política cookies', 'cookies', 'consentimiento cookies', 'NextLeadIn cookies'],
+      canonical: 'https://nextleadin.com/cookie-policy',
+      ogImage: '/images/og/default.jpg',
+    },
+    en: {
+      title: 'Cookie Policy',
+      description: 'NextLeadIn cookie policy. Types of cookies, purposes, management and user rights regarding cookies and similar technologies.',
+      keywords: ['cookie policy', 'cookies', 'cookie consent', 'NextLeadIn cookies'],
+      canonical: 'https://nextleadin.com/en/cookie-policy',
+      ogImage: '/images/og/default.jpg',
+    },
+  },
   pricing: {
     ca: {
-      title: 'Preus | NextLeadIn',
+      title: 'Preus i plans — Des de 79€/mes',
       description: 'Plans per trobar negocis locals. Local Business €79/mes (500 leads, dades enriquides, anàlisi ressenyes IA). Professional €199/mes. Enterprise a mida.',
       keywords: [
         'preus leads negocis locals',
@@ -448,7 +517,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     es: {
-      title: 'Precios | NextLeadIn',
+      title: 'Precios y planes — Desde 79€/mes',
       description: 'Planes para encontrar negocios locales. Local Business €79/mes (500 leads, datos enriquecidos, análisis reseñas IA). Professional €199/mes. Enterprise a medida.',
       keywords: [
         'precios leads negocios locales',
@@ -554,7 +623,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     en: {
-      title: 'Pricing | NextLeadIn',
+      title: 'Pricing and plans — From €79/month',
       description: 'Plans to find local businesses. Local Business €79/month (500 leads, enriched data, AI review analysis). Professional €199/month. Enterprise custom.',
       keywords: [
         'local business leads pricing',
@@ -784,7 +853,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
   },
   faq: {
     ca: {
-      title: 'Preguntes freqüents | NextLeadIn',
+      title: 'Preguntes freqüents sobre leads B2B i IA',
       description: 'Respostes a les preguntes més comunes sobre la nostra plataforma de generació de leads amb IA. Descobreix com funciona la segmentació, els informes IA i les integracions.',
       keywords: [
         'preguntes freqüents leads',
@@ -961,7 +1030,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     es: {
-      title: 'Preguntas frecuentes | NextLeadIn',
+      title: 'Preguntas frecuentes sobre leads B2B e IA',
       description: 'Respuestas a las preguntas más comunes sobre nuestra plataforma de generación de leads con IA. Descubre cómo funciona la segmentación, los informes IA y las integraciones.',
       keywords: [
         'preguntas frecuentes leads',
@@ -1138,7 +1207,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     en: {
-      title: 'Frequently Asked Questions | NextLeadIn',
+      title: 'FAQ about B2B leads and AI',
       description: 'Answers to the most common questions about our AI-powered lead generation platform. Discover how segmentation, AI reports and integrations work.',
       keywords: [
         'lead generation FAQ',

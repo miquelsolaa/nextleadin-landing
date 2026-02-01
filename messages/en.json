@@ -9,9 +9,10 @@
   },
   "pages": {
     "blog": {
-      "title": "Blog",
+      "title": "B2B Leads and AI Blog",
       "description": "Discover insights about lead generation, AI and B2B sales to accelerate your growth.",
-      "breadcrumbHome": "Home"
+      "breadcrumbHome": "Home",
+      "breadcrumbBlog": "Blog"
     },
     "contact": {
       "title": "Talk to our team",

@@ -37,8 +37,15 @@ export async function generateStaticParams() {
   return params
 }
 
+const categoryTitleSuffix: Record<string, string> = {
+  ca: '— Articles i guies',
+  es: '— Artículos y guías',
+  en: '— Articles and guides',
+}
+
 export async function generateMetadata({ params }: BlogCategoryPageProps): Promise<Metadata> {
   const { locale, category: categorySlug } = await params
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
   const canonical = getCategoryCanonicalFromSlug(decodeURIComponent(categorySlug))
   if (!canonical) {
     return { title: 'Category' }
@@ -47,7 +54,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
   const key = getCategoryLabelKey(canonical)
   const categoryTitle = key ? t(`categoryLabels.${key}` as 'categoryLabels.leadGeneration') : canonical
   return {
-    title: `${categoryTitle} - NextLeadIn Blog`,
+    title: `${categoryTitle} ${categoryTitleSuffix[validLocale]}`,
     description: t('description')
   }
 }

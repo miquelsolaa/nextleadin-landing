@@ -6,7 +6,7 @@ image: "https://images.pexels.com/photos/34804018/pexels-photo-34804018.jpeg?aut
 author: "Equip de NextLeadIn"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["B2B Sales"]
-tags: ["AI for Sales","Prospecting"]
+tags: ["AI for Sales", "Prospecting"]
 published: true
 ---
 

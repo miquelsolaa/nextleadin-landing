@@ -17,8 +17,12 @@ export const localePrefix = 'as-needed' as const
 export const pathnames: Pathnames<typeof locales> = {
   '/': '/',
   '/blog': '/blog',
+  '/blog/[slug]': '/blog/[slug]',
+  '/blog/category/[category]': '/blog/category/[category]',
+  '/blog/tag/[tag]': '/blog/tag/[tag]',
   '/contact': '/contact',
   '/compare': '/compare',
+  '/compare/[slug]': '/compare/[slug]',
   '/pricing': '/pricing',
   '/faq': '/faq'
 }

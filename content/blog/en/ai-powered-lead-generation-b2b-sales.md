@@ -6,7 +6,7 @@ image: "https://images.pexels.com/photos/2556018/pexels-photo-2556018.jpeg?auto=
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["Lead Generation"]
-tags: ["Lead Generation","Sales Automation"]
+tags: ["Lead Generation", "Sales Automation"]
 published: true
 ---
 

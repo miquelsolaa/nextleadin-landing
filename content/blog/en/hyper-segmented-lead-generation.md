@@ -6,7 +6,7 @@ image: "https://images.pexels.com/photos/6973191/pexels-photo-6973191.jpeg?auto=
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["Lead Generation"]
-tags: ["Hyper-segmentation","Lead Generation"]
+tags: ["Hyper-segmentation", "Lead Generation"]
 published: true
 ---
 

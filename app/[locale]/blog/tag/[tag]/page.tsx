@@ -25,20 +25,29 @@ interface BlogTagPageProps {
 export async function generateStaticParams() {
   const locales: Locale[] = ['ca', 'es', 'en']
   const params: { locale: string; tag: string }[] = []
+  const seen = new Set<string>()
   for (const locale of locales) {
     const tags = getAllTags(locale)
     for (const tag of tags) {
-      params.push({
-        locale,
-        tag: getTagSlug(tag)
-      })
+      const slug = getTagSlug(tag)
+      const key = `${locale}:${slug}`
+      if (seen.has(key)) continue
+      seen.add(key)
+      params.push({ locale, tag: slug })
     }
   }
   return params
 }
 
+const tagTitleSuffix: Record<string, string> = {
+  ca: '— Recursos',
+  es: '— Recursos',
+  en: '— Resources',
+}
+
 export async function generateMetadata({ params }: BlogTagPageProps): Promise<Metadata> {
   const { locale, tag: tagSlug } = await params
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
   const canonical = getTagCanonicalFromSlug(decodeURIComponent(tagSlug))
   if (!canonical) {
     return { title: 'Tag' }
@@ -47,7 +56,7 @@ export async function generateMetadata({ params }: BlogTagPageProps): Promise<Me
   const key = getTagLabelKey(canonical)
   const tagTitle = key ? t(`tagLabels.${key}` as 'tagLabels.leadGeneration') : canonical
   return {
-    title: `${tagTitle} - NextLeadIn Blog`,
+    title: `${tagTitle} ${tagTitleSuffix[validLocale]}`,
     description: t('description')
   }
 }

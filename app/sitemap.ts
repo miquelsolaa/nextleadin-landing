@@ -1,14 +1,34 @@
 import { MetadataRoute } from 'next'
-import { getAllPostSlugs, getBlogPostUrl, getAllPosts, type Locale } from '@/lib/blog'
+import {
+  getAllPostSlugs,
+  getBlogPostUrl,
+  getAllPosts,
+  getAllCategories,
+  getAllTags,
+  type Locale
+} from '@/lib/blog'
+import { getTagSlug } from '@/lib/blog-tags'
 import { getAllComparisonSlugs, getComparisonUrl } from '@/lib/comparisons'
 
 export const dynamic = 'force-static'
+
+/** Helper per a l'URL de categoria/tag del blog segons locale (consistent amb blog-utils) */
+function getBlogArchiveUrl(
+  type: 'category' | 'tag',
+  slug: string,
+  locale: Locale
+): string {
+  const path = `/blog/${type}/${slug}`
+  if (locale === 'ca') return path
+  return `/${locale}${path}`
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nextleadin.com'
   const allPostSlugs = getAllPostSlugs()
   const allComparisonSlugs = getAllComparisonSlugs()
-  
+  const locales: Locale[] = ['ca', 'es', 'en']
+
   // Obtenir tots els posts amb les seves dates reals
   const allPosts = {
     ca: getAllPosts('ca'),
@@ -69,9 +89,49 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
+  // Pàgines de categories del blog (per idioma)
+  const categoryUrls: MetadataRoute.Sitemap = []
+  const seenCategories = new Set<string>()
+  for (const locale of locales) {
+    const categories = getAllCategories(locale)
+    for (const cat of categories) {
+      const slug = encodeURIComponent(cat.name.toLowerCase())
+      const key = `${locale}:${slug}`
+      if (seenCategories.has(key)) continue
+      seenCategories.add(key)
+      categoryUrls.push({
+        url: `${baseUrl}${getBlogArchiveUrl('category', slug, locale)}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.65,
+      })
+    }
+  }
+
+  // Pàgines de tags del blog (per idioma)
+  const tagUrls: MetadataRoute.Sitemap = []
+  const seenTags = new Set<string>()
+  for (const locale of locales) {
+    const tags = getAllTags(locale)
+    for (const tag of tags) {
+      const slug = getTagSlug(tag)
+      const key = `${locale}:${slug}`
+      if (seenTags.has(key)) continue
+      seenTags.add(key)
+      tagUrls.push({
+        url: `${baseUrl}${getBlogArchiveUrl('tag', slug, locale)}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.65,
+      })
+    }
+  }
+
   return [
     ...staticUrls,
     ...blogUrls,
+    ...categoryUrls,
+    ...tagUrls,
     ...comparisonUrls,
   ]
 }

@@ -9,6 +9,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import type { AppLocale } from '@/i18n/routing'
 import type { Locale } from './blog-utils'
+import { getCanonicalTag } from './blog-tags'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 
@@ -198,14 +199,14 @@ export function getPostsByCategory(category: string, locale?: Locale): BlogPostM
 }
 
 /**
- * Obté posts per tag per a un idioma específic
+ * Obté posts per tag per a un idioma específic.
+ * Compara per tag canònic (CA/ES/EN es normalitzen a anglès).
  */
 export function getPostsByTag(tag: string, locale?: Locale): BlogPostMeta[] {
   const allPosts = getAllPosts(locale)
-  return allPosts.filter((post) => 
-    post.tags?.some((t) => 
-      t.toLowerCase() === tag.toLowerCase()
-    )
+  const canonical = getCanonicalTag(tag)
+  return allPosts.filter((post) =>
+    post.tags?.some((t) => getCanonicalTag(t) === canonical)
   )
 }
 

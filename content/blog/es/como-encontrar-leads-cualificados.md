@@ -5,7 +5,7 @@ date: "2025-09-09"
 author: "NextLeadIn Team"
 image: "https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg"
 categories: ["Lead Generation"]
-tags: ["Lead Generation","Prospecting"]
+tags: ["Lead Generation", "Prospecting"]
 published: true
 ---
 

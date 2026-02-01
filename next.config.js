@@ -2,9 +2,6 @@
 const withNextIntl = require('next-intl/plugin')('./i18n/request.ts')
 
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -16,7 +13,6 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['sierra.keydesign.xyz', 'images.pexels.com', 'ui-avatars.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -38,8 +34,9 @@ const nextConfig = {
       },
     ],
   },
-  // optimizePackageImports ara és estable a Next.js 16
-  optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+  },
   serverExternalPackages: ['stripe'],
   compress: true,
   poweredByHeader: false,

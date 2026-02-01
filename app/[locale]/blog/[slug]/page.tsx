@@ -43,8 +43,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       }
     }
 
+    const postUrl = getBlogPostUrl(slug, validLocale)
+    const fullUrl = `https://nextleadin.com${postUrl}`
+    const imageUrl = post.image?.startsWith('http') ? post.image : post.image ? `https://nextleadin.com${post.image}` : undefined
+
     return {
-      title: `${post.title} - NextLeadIn Blog`,
+      title: `${post.title} | Blog NextLeadIn`,
       description: post.description,
       openGraph: {
         title: post.title,
@@ -52,21 +56,21 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         type: 'article',
         publishedTime: post.date,
         authors: [post.author],
-        images: post.image ? [
+        url: fullUrl,
+        images: imageUrl ? [
           {
-            url: post.image,
+            url: imageUrl,
             width: 1200,
             height: 630,
             alt: post.title,
           }
         ] : [],
-        url: `https://codixperts.com${getBlogPostUrl(slug, validLocale)}`,
       },
       twitter: {
         card: 'summary_large_image',
         title: post.title,
         description: post.description,
-        images: post.image ? [post.image] : [],
+        images: imageUrl ? [imageUrl] : [],
       },
     }
   } catch (error) {

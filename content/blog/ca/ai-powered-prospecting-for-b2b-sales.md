@@ -6,7 +6,7 @@ image: "https://images.pexels.com/photos/2182981/pexels-photo-2182981.jpeg?auto=
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["Lead Generation"]
-tags: ["AI Prospecting","B2B Sales"]
+tags: ["AI Prospecting", "B2B Sales"]
 published: true
 ---
 

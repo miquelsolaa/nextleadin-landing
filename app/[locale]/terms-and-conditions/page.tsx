@@ -1,7 +1,15 @@
 import { setRequestLocale } from 'next-intl/server'
+import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import type { Metadata } from 'next'
 
 interface TermsAndConditionsPageProps {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: TermsAndConditionsPageProps): Promise<Metadata> {
+  const { locale } = await params
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? (locale as 'ca' | 'es' | 'en') : 'es'
+  return generateAIOptimizedMetadata('terms-and-conditions', validLocale)
 }
 
 export default async function TermsAndConditionsPage({ params }: TermsAndConditionsPageProps) {

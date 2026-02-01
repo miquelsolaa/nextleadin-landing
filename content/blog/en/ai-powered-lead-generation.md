@@ -6,7 +6,7 @@ image: "https://images.pexels.com/photos/17485741/pexels-photo-17485741.png?auto
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["Lead Generation"]
-tags: ["AI-Powered Lead Generation", "B2B Sales", "AI Prospecting", "Sales Automation", "Outbound Strategy"]
+tags: ["Lead Generation", "B2B Sales", "AI Prospecting", "Sales Automation", "Outbound Sales"]
 published: true
 ---
 

@@ -6,7 +6,7 @@ image: "https://images.pexels.com/photos/17485741/pexels-photo-17485741.png?auto
 author: "NextLeadIn Team"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["Lead Generation"]
-tags: ["Captació de Leads amb IA", "Vendes B2B", "Prospecció amb IA", "Automatització de Vendes", "Estratègia Outbound"]
+tags: ["Lead Generation", "B2B Sales", "AI Prospecting", "Sales Automation", "Outbound Sales"]
 published: true
 ---
 

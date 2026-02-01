@@ -1,7 +1,15 @@
 import { setRequestLocale } from 'next-intl/server'
+import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import type { Metadata } from 'next'
 
 interface CookiePolicyPageProps {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: CookiePolicyPageProps): Promise<Metadata> {
+  const { locale } = await params
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? (locale as 'ca' | 'es' | 'en') : 'es'
+  return generateAIOptimizedMetadata('cookie-policy', validLocale)
 }
 
 export default async function CookiePolicyPage({ params }: CookiePolicyPageProps) {
