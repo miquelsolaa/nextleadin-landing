@@ -78,16 +78,25 @@ export default function CookieConsent() {
         
         // Funció per inicialitzar Google Analytics quan es dona consentiment
         const initAnalytics = () => {
-          if (typeof window !== 'undefined' && (window as any).gtag) {
-            // Si ja tens Google Analytics configurat, activar-lo aquí
-            console.log('Analytics initialized')
-          }
+          if (typeof window === 'undefined') return
+          const w = window as any
+          if (!w.gtag) return
+
+          // Actualitzar el Consent Mode per permetre l'emmagatzematge d'analytics
+          w.gtag('consent', 'update', {
+            analytics_storage: 'granted',
+          })
         }
 
-        // Funció per desactivar analytics
+        // Funció per desactivar analytics (mode consent: denegat)
         const disableAnalytics = () => {
-          // Implementar lògica per desactivar analytics
-          console.log('Analytics disabled')
+          if (typeof window === 'undefined') return
+          const w = window as any
+          if (!w.gtag) return
+
+          w.gtag('consent', 'update', {
+            analytics_storage: 'denied',
+          })
         }
 
         const config = {

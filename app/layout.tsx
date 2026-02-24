@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
@@ -13,6 +14,9 @@ const inter = Inter({
 
 // Metadata per defecte (locale per defecte del projecte: es)
 export const metadata: Metadata = generateAIOptimizedMetadata('home', 'es')
+
+// GA4: ID principal per a aquesta propietat
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Y07BPPDXKF'
 
 export default function RootLayout({
   children,
@@ -33,7 +37,32 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                // Consent Mode per defecte: analítica denegada fins que l'usuari accepti
+                gtag('consent', 'default', {
+                  analytics_storage: 'denied'
+                });
+                gtag('config', '${GA_MEASUREMENT_ID}', {
+                  anonymize_ip: true
+                });
+              `}
+            </Script>
+          </>
+        )}
+        {children}
+      </body>
     </html>
   )
 }

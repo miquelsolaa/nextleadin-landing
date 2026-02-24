@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {useTranslations, useLocale} from 'next-intl'
 import AIStructuredData from '@/components/AIStructuredData'
 import { generateAIStructuredData } from '@/lib/seo-metadata'
+import { trackContactSubmit } from '@/lib/analytics'
 
 export default function ContactPage() {
   const t = useTranslations('pages.contact')
@@ -70,6 +71,8 @@ export default function ContactPage() {
       })
 
       if (!res.ok) throw new Error('Network response was not ok')
+      // Tracking GA4: formulari de contacte enviat correctament
+      trackContactSubmit(String(locale))
       setSubmitted(true)
     } catch (err) {
       setSubmitError(t('submitError'))
