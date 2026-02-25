@@ -17,7 +17,7 @@ interface BlogRecentPostsProps {
 }
 
 const BlogRecentPosts = ({ posts }: BlogRecentPostsProps) => {
-  const locale = (useLocale() as Locale) ?? 'ca'
+  const locale = (useLocale() as Locale) ?? 'es'
 
   const translations = (() => {
     if (locale === 'es') {

@@ -99,7 +99,7 @@ export const pricingPlans: PricingPlan[] = [
         'Suport per email'
       ],
       es: [
-        '500 leads/mes de negocis locals',
+        '500 leads/mes de negocios locales',
         'Datos enriquecidos: valoración, reseñas, fotos, horarios',
         'Análisis de reseñas con IA (100 análisis/mes)',
         'Mapa visual interactivo',
@@ -170,7 +170,7 @@ export const pricingPlans: PricingPlan[] = [
         'Suport prioritari'
       ],
       es: [
-        '2.000 leads/mes de negocis locals',
+        '2.000 leads/mes de negocios locales',
         'Todo de Local Business',
         'Análisis competitivo automático',
         'Scoring predictivo de potencial',

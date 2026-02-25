@@ -23,19 +23,19 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
   const translations = (() => {
     if (locale === 'es') {
       return {
-        title: 'Lo que dicen nuestros',
-        titleHighlight: 'clientes',
-        description: 'Descubre cómo NextLeadIn está transformando la generación de leads para empresas de todos los tamaños.',
-        cta: 'Ver más testimonios',
-        readMore: 'Ver más reseñas'
+        title: 'Cómo ayudan los leads de',
+        titleHighlight: 'negocios locales',
+        description: 'Equipos comerciales y agencias que generan reuniones a partir de llamadas en frío a restaurantes, talleres y comercios en España usando NextLeadIn.',
+        cta: 'Ver casos de éxito',
+        readMore: 'Leer más reseñas'
       }
     }
     if (locale === 'en') {
       return {
-        title: 'What our clients',
-        titleHighlight: 'think',
-        description: 'Discover how NextLeadIn is transforming lead generation for companies of all sizes.',
-        cta: 'View more testimonials',
+        title: 'How local business',
+        titleHighlight: 'leads perform',
+        description: 'Sales teams and agencies booking meetings from cold calls to restaurants, workshops and local shops thanks to NextLeadIn and AI-powered context.',
+        cta: 'View success stories',
         readMore: 'Read more reviews'
       }
     }

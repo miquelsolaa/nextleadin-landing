@@ -1,5 +1,6 @@
 "use client"
 import {useEffect, useRef, useState, useTransition} from 'react'
+import {useParams} from 'next/navigation'
 import {
   locales,
   type AppLocale,
@@ -12,6 +13,7 @@ import {ChevronDown} from 'lucide-react'
 
 export default function LanguageSwitcher() {
   const pathname = usePathname()
+  const params = useParams()
   const router = useRouter()
   const currentLocale = useLocale() as AppLocale
   const [isPending, startTransition] = useTransition()
@@ -22,8 +24,13 @@ export default function LanguageSwitcher() {
   const nextOf = (l: AppLocale): AppLocale => order[(order.indexOf(l) + 1) % order.length]
 
   /** URL per a un locale: usa l’API de next-intl per generar el path correcte. */
+  const hasDynamicSegments = pathname.includes('[')
+  const hrefForNavigation = hasDynamicSegments
+    ? { pathname, params: params as Record<string, string> }
+    : pathname
+
   const getTargetHref = (locale: AppLocale): string =>
-    getPathname({ locale, href: pathname })
+    getPathname({ locale, href: hrefForNavigation })
 
   function onChange(next: AppLocale) {
     if (next === currentLocale) {
@@ -34,7 +41,7 @@ export default function LanguageSwitcher() {
       document.cookie = `NEXT_LOCALE=${next}; Path=/; Max-Age=31536000; SameSite=Lax`
     } catch {}
     startTransition(() => {
-      router.replace(pathname, { locale: next })
+      router.replace(hrefForNavigation, { locale: next })
       router.refresh()
     })
     setOpen(false)
@@ -115,7 +122,7 @@ export default function LanguageSwitcher() {
                 } catch {}
                 setOpen(false)
                 startTransition(() => {
-                  router.replace(pathname, { locale: l })
+                  router.replace(hrefForNavigation, { locale: l })
                   router.refresh()
                 })
               }}

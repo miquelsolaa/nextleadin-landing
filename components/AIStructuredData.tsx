@@ -80,6 +80,35 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
       }))
     })
 
+    // Organization i WebSite per a la pàgina principal (home)
+    if (page === 'home') {
+      structuredData.push({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'NextLeadIn',
+        url: baseUrl,
+        logo: `${baseUrl}/images/logo/logo.png`,
+        description:
+          locale === 'ca'
+            ? 'Plataforma de leads de negocis locals per a equips comercials i agències B2B.'
+            : locale === 'es'
+            ? 'Plataforma de leads de negocios locales para equipos comerciales y agencias B2B.'
+            : 'Local business leads platform for B2B sales teams and agencies.',
+        sameAs: [
+          'https://linkedin.com/company/nextleadin',
+          'https://twitter.com/nextleadin'
+        ]
+      })
+
+      structuredData.push({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'NextLeadIn',
+        url: baseUrl,
+        inLanguage: locale === 'ca' ? 'ca-ES' : locale === 'es' ? 'es-ES' : 'en-US'
+      })
+    }
+
     // LocalBusiness schema per a GEO signals
     if (page === 'home' || page === 'contact') {
       structuredData.push({

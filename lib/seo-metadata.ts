@@ -20,23 +20,21 @@ export interface LocalizedSEOConfig {
 export const seoConfig: Record<string, LocalizedSEOConfig> = {
   home: {
     ca: {
-      title: 'NextLeadIn — Leads de negocis locals',
-      description: 'Troba TOTS els negocis locals (restaurants, tallers, comerços). Dades enriquides (rating, ressenyes, horaris) i anàlisi de ressenyes amb IA. Alternativa a LinkedIn per negocis tradicionals.',
+      title: 'NextLeadIn — Leads de negocis locals que altres plataformes no tenen',
+      description: 'Genera llistes de negocis locals amb telèfon, dades enriquides i anàlisi de ressenyes amb IA per preparar trucades en fred i vendre més B2B a PIMES que no trobes a LinkedIn.',
       keywords: [
         'leads negocis locals',
         'negocis locals',
-        'generació de leads',
+        'generació de leads locals',
         'restaurants tallers comerços',
-        'prospecció local',
+        'prospecció local B2B',
         'anàlisi ressenyes IA',
         'segmentació geogràfica',
-        'vendes B2B locals',
-        'empreses LinkedIn no té',
-        'dades enriquides',
-        'mapa visual leads',
-        'alertes noves obertures',
-        'anàlisi competitiva local',
-        'scoring potencial negoci'
+        'trucades en fred negocis locals',
+        'dades enriquides i telèfon',
+        'equips comercials i agències',
+        'scoring potencial negoci',
+        'pipeline de leads locals'
       ],
       canonical: 'https://nextleadin.com/',
       ogImage: '/images/og/home-ca.jpg',
@@ -111,23 +109,22 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     es: {
-      title: 'NextLeadIn — Leads de negocios locales',
-      description: 'Encuentra TODOS los negocios locales (restaurantes, talleres, comercios). Datos enriquecidos (valoración, reseñas, horarios) y análisis de reseñas con IA. Alternativa a LinkedIn para negocios tradicionales.',
+      title: 'NextLeadIn — Leads de negocios locales que otras plataformas no tienen',
+      description: 'Genera listas de negocios locales en España con teléfono, datos enriquecidos y análisis de reseñas con IA para preparar llamadas en frío y cerrar más ventas B2B con PYMES que no están en LinkedIn.',
       keywords: [
         'leads negocios locales',
         'negocios locales',
         'generación de leads',
         'restaurantes talleres comercios',
-        'prospección local',
+        'prospección local B2B',
         'análisis reseñas IA',
-        'segmentación geográfica',
+        'segmentación geográfica España',
         'ventas B2B locales',
-        'empresas LinkedIn no tiene',
-        'datos enriquecidos',
-        'mapa visual leads',
-        'alertas nuevas aperturas',
-        'análisis competitivo local',
-        'scoring potencial negocio'
+        'llamadas en frío negocios locales',
+        'datos enriquecidos y teléfono',
+        'equipos comerciales y agencias',
+        'scoring potencial negocio',
+        'pipeline de leads locales'
       ],
       canonical: 'https://nextleadin.com/es',
       ogImage: '/images/og/home-es.jpg',
@@ -175,21 +172,20 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     en: {
-      title: 'NextLeadIn — AI-Powered Hyper-Segmented Lead Generation',
-      description: 'Advanced lead generation platform with artificial intelligence. Find qualified clients by location, sector and keywords with AI reports to prepare calls and close more opportunities.',
+      title: 'NextLeadIn — Local business leads beyond LinkedIn',
+      description: 'AI-powered platform that turns hard-to-find local businesses into ready-to-call lists, with phone numbers, enriched data and review analysis to prepare cold calls and close more B2B deals.',
       keywords: [
+        'local business leads',
         'lead generation',
-        'artificial intelligence',
+        'hard-to-find local businesses',
         'geographic segmentation',
-        'lead qualification',
+        'cold calling',
         'B2B sales',
-        'sales team',
-        'prospect companies',
-        'find potential clients',
+        'sales teams and agencies',
+        'AI review analysis',
         'AI data enrichment',
-        'sales automation',
         'CRM integration',
-        'qualified leads',
+        'qualified local leads',
         'sales conversion',
         'sales pipeline'
       ],
@@ -237,6 +233,56 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           }
         }
       ]
+    }
+  },
+  blog: {
+    ca: {
+      title: 'Blog NextLeadIn — Leads de negocis locals i IA',
+      description: 'Guies i articles sobre com generar leads de negocis locals que no són a LinkedIn, preparar trucades en fred amb IA i escalar vendes B2B.',
+      keywords: [
+        'blog leads negocis locals',
+        'blog generació de leads',
+        'negocis locals més enllà de LinkedIn',
+        'trucades en fred',
+        'IA per a vendes',
+        'vendes B2B locals',
+        'anàlisi de ressenyes',
+        'prospecció comercial'
+      ],
+      canonical: 'https://nextleadin.com/blog',
+      ogImage: '/images/og/blog-ca.jpg'
+    },
+    es: {
+      title: 'Blog NextLeadIn — Leads de negocios locales e IA',
+      description: 'Guías y artículos sobre cómo conseguir leads de negocios locales que no están en LinkedIn, preparar llamadas en frío con IA y escalar ventas B2B.',
+      keywords: [
+        'blog leads negocios locales',
+        'blog generación de leads',
+        'negocios locales más allá de LinkedIn',
+        'llamadas en frío',
+        'IA para ventas',
+        'ventas B2B locales',
+        'análisis de reseñas',
+        'prospección comercial'
+      ],
+      canonical: 'https://nextleadin.com/es/blog',
+      ogImage: '/images/og/blog-es.jpg'
+    },
+    en: {
+      title: 'NextLeadIn Blog — Local business leads and AI',
+      description: 'Guides and articles on getting local business leads beyond LinkedIn, preparing AI-powered cold calls and scaling B2B sales.',
+      keywords: [
+        'local business leads blog',
+        'lead generation blog',
+        'local leads beyond LinkedIn',
+        'cold calling',
+        'AI for sales',
+        'local B2B sales',
+        'review analysis',
+        'sales prospecting'
+      ],
+      canonical: 'https://nextleadin.com/en/blog',
+      ogImage: '/images/og/blog-en.jpg'
     }
   },
   comparador: {
@@ -1024,6 +1070,46 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
                 '@type': 'Answer',
                 text: 'Pots cancel·lar en qualsevol moment sense penalitzacions. Et reemborsem la part proporcional del període no utilitzat.'
               }
+            },
+            {
+              '@type': 'Question',
+              name: 'És legal utilitzar dades públiques per generar leads B2B?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn està pensat per a ús B2B amb dades de negocis, no de particulars. No gestionem els teus guions ni missatges, i cada empresa ha de definir la seva política de contacte i de compliment amb RGPD/LOPD i la normativa del seu sector. Si tens dubtes, recomanem comentar-ho amb el teu equip legal o de compliance.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Com compleix NextLeadIn amb RGPD/LOPD si faig trucades en fred?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn proporciona registres d\'activitat, mecanismes per marcar empreses que no volen ser contactades i eines per exercir drets d\'accés i supressió. Tu decideixes guions i freqüència de contacte, i és important informar clarament de qui ets, per què truques i com poden demanar que no els tornis a contactar.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Quin tipus de negocis locals puc trobar amb NextLeadIn?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Restaurants, tallers mecànics, comerços de barri, clíniques, centres de salut, salons de bellesa, gimnasos, immobiliàries, serveis professionals locals i moltes altres PIMES tradicionals amb presència física i ressenyes en línia.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Necessito tenir un CRM com HubSpot o Pipedrive per utilitzar la plataforma?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'No és imprescindible. Pots treballar només amb la taula de leads, el pipeline Kanban i les exportacions CSV. Les integracions amb CRM són recomanables quan vols sincronitzar oportunitats i automatitzar encara més el seguiment.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Puc començar a trucar des del primer dia?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, en menys d\'una hora pots definir un nínxol, generar la primera llista de negocis locals i tenir informes amb IA per preparar les primeres trucades. Molts clients comencen a trucar el mateix dia que creen el compte.'
+              }
             }
           ]
         }
@@ -1201,6 +1287,46 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
                 '@type': 'Answer',
                 text: 'Puedes cancelar en cualquier momento sin penalizaciones. Te reembolsamos la parte proporcional del período no utilizado.'
               }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Es legal usar datos públicos para generar leads B2B?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn está pensado para uso B2B con datos de negocio, no de particulares. No gestionamos tus guiones ni mensajes, y cada empresa debe definir su propia política de contacto y de cumplimiento con RGPD/LOPD y la normativa de su sector. Si tienes dudas, te recomendamos consultarlo con tu equipo legal o de compliance.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Cómo cumple NextLeadIn con RGPD/LOPD si hago llamadas en frío?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn proporciona registros de actividad, mecanismos para marcar empresas que no quieren ser contactadas y herramientas para ejercer derechos de acceso y supresión. Tú decides guiones y frecuencia de contacto, y es importante informar claramente de quién eres, por qué llamas y cómo pueden pedir que no se les vuelva a contactar.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Qué tipo de negocios locales puedo encontrar con NextLeadIn?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Restaurantes, talleres mecánicos, comercios de barrio, clínicas, centros de salud, salones de belleza, gimnasios, inmobiliarias, servicios profesionales locales y muchas otras pymes tradicionales con presencia física y reseñas online.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Necesito tener un CRM como HubSpot o Pipedrive para usar la plataforma?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'No es imprescindible. Puedes trabajar solo con la tabla de leads, el pipeline Kanban y las exportaciones CSV. Las integraciones con CRM son recomendables cuando quieres sincronizar oportunidades y automatizar aún más el seguimiento.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: '¿Puedo empezar a llamar desde el primer día?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí, en menos de una hora puedes definir un nicho, generar la primera lista de negocios locales y tener informes con IA para preparar las primeras llamadas. Muchos clientes empiezan a llamar el mismo día que crean la cuenta.'
+              }
             }
           ]
         }
@@ -1377,6 +1503,46 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
               acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'You can cancel at any time without penalties. We refund the proportional part of the unused period.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Is it legal to use public data to generate B2B leads?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn is designed for B2B use with business data, not private individuals. We do not manage your scripts or messaging, and each company must define its own contact policy and compliance with GDPR and sector regulations. If you are unsure, we recommend checking with your legal or compliance team.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'How does NextLeadIn comply with GDPR when I do cold calling?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'NextLeadIn provides activity logs, mechanisms to flag companies that do not want to be contacted and tools to exercise access and deletion rights. You decide scripts and contact frequency, and it is important to clearly state who you are, why you call and how they can request not to be contacted again.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'What types of local businesses can I find with NextLeadIn?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Restaurants, workshops, local shops, clinics, health centers, beauty salons, gyms, real estate agencies, local professional services and many other traditional SMEs with physical presence and online reviews.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Do I need a CRM like HubSpot or Pipedrive to use the platform?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'It is not required. You can work only with the leads table, Kanban pipeline and CSV exports. CRM integrations are recommended once you want to sync opportunities and further automate follow-up.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: 'Can I start calling from day one?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes, in less than an hour you can define a niche, generate your first list of local businesses and have AI reports ready to prepare your first calls. Many customers start calling on the same day they create their account.'
               }
             }
           ]

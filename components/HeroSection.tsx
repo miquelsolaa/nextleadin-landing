@@ -26,46 +26,46 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
     helper: string
   }> = {
     es: {
-      badge: '🗺️ Leads de negocios locales verificados',
-      titlePrefix: 'Encuentra ',
-      animatedWords: ['restaurantes', 'talleres', 'comercios'],
-      titleMid: 'y negocios locales que ',
+      badge: '📞 Leads de negocios locales listos para llamar',
+      titlePrefix: 'Genera leads de ',
+      animatedWords: ['restaurantes', 'talleres', 'comercios locales'],
+      titleMid: 'en España que ',
       titleSuffix: 'LinkedIn no tiene',
-      description: 'La única plataforma que encuentra TODOS los negocios locales: rating, reseñas, horarios y análisis con IA.',
-      trust1: 'Configuración en 5 minutos',
-      trust2: 'Sin tarjeta de crédito',
+      description: 'NextLeadIn encuentra los negocios locales de tu territorio que otras bases B2B no tienen y los convierte en listas listas para llamar, con teléfono, contexto y análisis de reseñas con IA.',
+      trust1: 'Listas listas para llamar desde el primer día',
+      trust2: 'Cumple RGPD/LOPD para prospección B2B',
       emailLabel: 'Correo electrónico',
-      emailPlaceholder: 'Introduce tu email',
-      primaryCta: 'Empezar ahora',
-      helper: 'Prueba la plataforma con leads de negocios locales. Sin tarjeta de crédito.'
+      emailPlaceholder: 'Introduce tu email de trabajo',
+      primaryCta: 'Solicitar demo',
+      helper: 'Te enviamos acceso a una demo guiada y primeros leads de prueba de tu zona.'
     },
     ca: {
-      badge: '🗺️ Leads de negocis locals verificats',
-      titlePrefix: 'Troba ',
-      animatedWords: ['restaurants', 'tallers', 'comerços'],
-      titleMid: 'i negocis locals que ',
+      badge: '📞 Leads de negocis locals a punt per trucar',
+      titlePrefix: 'Genera leads de ',
+      animatedWords: ['restaurants', 'tallers', 'comerços locals'],
+      titleMid: 'que ',
       titleSuffix: 'LinkedIn no té',
-      description: 'L\'única plataforma que troba TOTS els negocis locals: rating, ressenyes, horaris i anàlisi amb IA.',
-      trust1: 'Configuració en 5 minuts',
-      trust2: 'Sense targeta de crèdit',
+      description: 'NextLeadIn troba els negocis locals del teu territori que altres bases B2B no tenen i els converteix en llistes a punt per trucar, amb telèfon, context i anàlisi de ressenyes amb IA.',
+      trust1: 'Llistes a punt per trucar des del primer dia',
+      trust2: 'Compliment RGPD/LOPD per a prospecció B2B',
       emailLabel: 'Adreça electrònica',
-      emailPlaceholder: 'Introdueix el teu email',
-      primaryCta: 'Començar ara',
-      helper: 'Prova la plataforma amb leads de negocis locals. Sense targeta de crèdit.'
+      emailPlaceholder: 'Introdueix el teu email de feina',
+      primaryCta: 'Sol·licitar demo',
+      helper: 'T\'enviem accés a una demo guiada i primers leads de prova de la teva zona.'
     },
     en: {
-      badge: '🗺️ Verified local business leads',
-      titlePrefix: 'Find ',
-      animatedWords: ['restaurants', 'workshops', 'shops'],
-      titleMid: 'and local businesses ',
+      badge: '📞 Local business leads ready to call',
+      titlePrefix: 'Generate leads from ',
+      animatedWords: ['restaurants', 'workshops', 'local shops'],
+      titleMid: 'that ',
       titleSuffix: "LinkedIn doesn't have",
-      description: 'The only platform that finds ALL local businesses: rating, reviews, opening hours and AI analysis.',
-      trust1: 'Setup in 5 minutes',
-      trust2: 'No credit card required',
+      description: 'NextLeadIn turns hard-to-find local businesses into prioritized ready-to-call lists, with phone numbers, context and AI review analysis so you can start calling from day one.',
+      trust1: 'Ready-to-call lists from day one',
+      trust2: 'GDPR-compliant B2B prospecting',
       emailLabel: 'Email address',
-      emailPlaceholder: 'Enter your email',
-      primaryCta: 'Get started',
-      helper: 'Try the platform with local business leads. No credit card required.'
+      emailPlaceholder: 'Enter your work email',
+      primaryCta: 'Request demo',
+      helper: 'We’ll send you access to a guided demo and sample leads from your territory.'
     }
   }
 

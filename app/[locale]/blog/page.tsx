@@ -1,4 +1,3 @@
-import { Metadata } from 'next'
 import { getAllPosts, getAllCategories, getAllTags, getBlogPostUrl, type Locale } from '@/lib/blog'
 import BlogPageSection from '@/components/BlogPageSection'
 import BlogSearch from '@/components/BlogSearch'
@@ -7,9 +6,15 @@ import BlogRecentPosts from '@/components/BlogRecentPosts'
 import BlogTags from '@/components/BlogTags'
 import BlogPagination from '@/components/BlogPagination'
 
-// Metadata is handled by the parent layout
+const POSTS_PER_PAGE = 12
 
-export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function BlogPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>
+  searchParams?: Promise<{ page?: string }>
+}) {
   const { locale } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'ca'
   
@@ -36,18 +41,27 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   })()
   
   const allPosts = getAllPosts(validLocale)
+  const totalPosts = allPosts.length
+  const totalPages = Math.max(1, Math.ceil(totalPosts / POSTS_PER_PAGE))
+
+  const resolvedSearchParams = (await searchParams) ?? {}
+  const rawPage = Number(resolvedSearchParams.page ?? '1')
+  const currentPage = Number.isNaN(rawPage) || rawPage < 1 ? 1 : Math.min(rawPage, totalPages)
   const categories = getAllCategories(validLocale)
   const tags = getAllTags(validLocale)
   
   // Format de data segons l'idioma
   const dateLocale = validLocale === 'ca' ? 'ca-ES' : validLocale === 'en' ? 'en-US' : 'es-ES'
   
-  // URL base per al blog segons l'idioma
-  const blogBaseUrl = validLocale === 'ca' ? '/blog' : `/${validLocale}/blog`
+  // URL base per al blog segons l'idioma (ES sense prefix)
+  const blogBaseUrl = validLocale === 'es' ? '/blog' : `/${validLocale}/blog`
   
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE
+  const pageItems = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE)
+
   // Mapejar posts reals al format esperat per BlogPageSection
-  const blogPosts = allPosts.map((post, index) => ({
-    id: index + 1,
+  const blogPosts = pageItems.map((post, index) => ({
+    id: startIndex + index + 1,
     title: post.title,
     slug: post.slug,
     excerpt: post.description,
@@ -95,7 +109,11 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
           {/* Main Content */}
           <div className="lg:col-span-2">
             <BlogPageSection posts={blogPosts} />
-            <BlogPagination currentPage={1} totalPages={2} />
+            <BlogPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              basePath={blogBaseUrl}
+            />
           </div>
 
           {/* Sidebar */}

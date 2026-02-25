@@ -22,25 +22,26 @@ interface BlogSectionProps {
 }
 
 const BlogSection = ({ blogPosts }: BlogSectionProps) => {
-  const locale = (useLocale() as Locale) ?? 'ca'
+  const locale = (useLocale() as Locale) ?? 'es'
+  const blogBaseUrl = locale === 'es' ? '/blog' : `/${locale}/blog`
 
   const translations = (() => {
     if (locale === 'es') {
       return {
-        title: 'Últimos artículos del',
-        titleHighlight: 'blog',
-        titleSuffix: '',
-        description: 'Descubre estrategias, consejos y tendencias para mejorar tu generación de leads y ventas B2B.',
+        title: 'Guías sobre',
+        titleHighlight: 'leads de negocios locales',
+        titleSuffix: ' y cold call',
+        description: 'Descubre estrategias para conseguir leads de negocios locales que no están en LinkedIn, preparar llamadas en frío con IA y cerrar más ventas B2B en España.',
         cta: 'Ver todos los artículos',
         readMore: 'Leer más'
       }
     }
     if (locale === 'en') {
       return {
-        title: 'Latest',
-        titleHighlight: 'blog',
-        titleSuffix: ' articles',
-        description: 'Discover strategies, tips and trends to improve your B2B lead generation and sales.',
+        title: 'Guides on',
+        titleHighlight: 'local business leads',
+        titleSuffix: ' and cold calling',
+        description: 'Discover strategies to get local business leads beyond LinkedIn, prepare AI-powered cold calls and close more B2B deals.',
         cta: 'View all articles',
         readMore: 'Read more'
       }
@@ -98,7 +99,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                   <div className="elementor-widget-container">
                     <div className="ekit-wid-con">
                       <div className="ekit-btn-wraper">
-                        <Link href="/blog" className="elementskit-btn whitespace--normal" id="" data-text={translations.cta}>
+                        <Link href={blogBaseUrl} className="elementskit-btn whitespace--normal" id="" data-text={translations.cta}>
                           <span className="button-wrapper">{translations.cta}</span>
                         </Link>
                       </div>
@@ -118,7 +119,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                     {/* Blog Carousel markup render */}
                     {blogPosts.map((post, index) => (
                       <div key={index} className="col-lg-4 col-md-6">
-                        <div className="elementskit-post-image-card">
+                        <div className="elementskit-post-image-card group rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md flex flex-col">
                           <div className="elementskit-entry-header">
                             <Link href={getBlogPostUrl(post.slug, locale)} className="elementskit-entry-thumb">
                               <Image 
@@ -126,15 +127,19 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                                 alt={post.title}
                                 width={400}
                                 height={250}
-                                className="w-full h-48 object-cover"
+                                className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
                               />
                             </Link>
                             {/* .elementskit-entry-thumb END */}
-                            <div className="elementskit-meta-categories">
+                            <div className="elementskit-meta-categories mt-3 flex flex-wrap gap-2">
                               <span className="elementskit-meta-wraper">
                                 {post.categories.map((category, catIndex) => (
                                   <span key={catIndex}>
-                                    <Link href={`/category/${(category || '').toLowerCase()}`} rel="category tag">
+                                    <Link
+                                      href={`${blogBaseUrl}/category/${(category || '').toLowerCase()}`}
+                                      rel="category tag"
+                                      className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-800 shadow-sm"
+                                    >
                                       <CategoryLabel category={category || ''} />
                                     </Link>
                                   </span>
@@ -144,32 +149,42 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                           </div>
                           {/* .elementskit-entry-header END */}
                           
-                          <div className="elementskit-post-body">
-                            <div className="post-meta-list">
-                              <span className="meta-author flex items-center gap-1.5">
+                          <div className="elementskit-post-body p-6 flex flex-col flex-1">
+                            <div className="mb-2 flex flex-wrap items-center gap-4 text-xs font-medium text-gray-500">
+                              <div className="flex items-center gap-1.5">
                                 <User className="w-4 h-4 shrink-0" aria-hidden />
-                                <Link href={`/author/${(post.author?.name || 'unknown').toLowerCase().replace(' ', '-')}`} className="author-name">
+                                <Link
+                                  href={`${blogBaseUrl}/author/${(post.author?.name || 'unknown')
+                                    .toLowerCase()
+                                    .replace(' ', '-')}`}
+                                  className="hover:text-green-600 transition-colors"
+                                >
                                   {post.author?.name || 'Unknown'}
                                 </Link>
-                              </span>
-                              <span className="meta-date flex items-center gap-1.5">
+                              </div>
+                              <div className="flex items-center gap-1.5">
                                 <CalendarDays className="w-4 h-4 shrink-0" aria-hidden />
-                                <span className="meta-date-text">{post.date}</span>
-                              </span>
+                                <span>{post.date}</span>
+                              </div>
                             </div>
                             
-                            <h2 className="entry-title">
-                              <Link href={getBlogPostUrl(post.slug, locale)}>
+                            <h2 className="entry-title mt-1 text-lg md:text-xl font-semibold text-gray-900 leading-snug line-clamp-2">
+                              <Link
+                                href={getBlogPostUrl(post.slug, locale)}
+                                className="hover:text-green-600 transition-colors duration-200"
+                              >
                                 {post.title}
                               </Link>
                             </h2>
                             
-                            <p>{post.excerpt}</p>
+                            <p className="mt-3 text-sm md:text-base text-gray-600 line-clamp-3">
+                              {post.excerpt}
+                            </p>
                             
-                            <div className="btn-wraper">
+                            <div className="btn-wraper mt-4">
                               <Link 
                                 href={getBlogPostUrl(post.slug, locale)} 
-                                className="elementskit-btn keydesign-underline whitespace--normal" 
+                                className="elementskit-btn keydesign-underline whitespace--normal inline-flex items-center text-sm font-medium text-green-600 hover:text-green-700 transition-colors duration-200" 
                                 data-text={translations.readMore}
                               >
                                 <span className="button-wrapper">{translations.readMore}</span>

@@ -1,6 +1,7 @@
 {
   "common": {
     "brand": "NextLeadIn",
+    "scrollToTop": "Volver arriba",
     "cta": {
       "getStarted": "Empieza ahora",
       "talkToSales": "Habla con ventas",

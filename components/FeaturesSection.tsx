@@ -16,27 +16,27 @@ const FeaturesSection = () => {
     items: {icon: any, title: string, description: string}[]
   }> = {
     es: {
-      headingA: 'Generación de leads ',
-      headingB: 'con IA',
-      headingC: ' para vender más',
-      lead: 'Selecciona territorio, elige el nicho y obtén listas con inteligencia accionable. Menos prospección manual, más conversaciones de calidad.',
-      more: 'Más información',
+      headingA: 'Generación de leads locales ',
+      headingB: 'hipersegmentados',
+      headingC: ' listos para llamar',
+      lead: 'Selecciona ciudad o zona, define el nicho y obtén listas de negocios locales en España con teléfono, contexto y scoring IA para priorizar llamadas.',
+      more: 'Ver cómo funciona',
       items: [
-        {icon: Target, title: 'Segmentación hiperprecisa', description: 'Define zona y sector. La plataforma identifica negocios con intención y ajusta el target con criterios avanzados.'},
-        {icon: BarChart3, title: 'Informes con IA por empresa', description: 'Enriquecimiento automático con puntos clave, insights y ángulo de contacto para que cada llamada sea relevante.'},
-        {icon: Workflow, title: 'Flujo comercial más rápido', description: 'Listas de leads listas para exportar, integraciones y seguimiento para que el equipo no pierda tiempo.'}
+        {icon: Target, title: 'Segmentación hiperlocal', description: 'Busca negocios por ciudad, barrio, código postal o radio en km, filtrando por tipo de negocio y palabras clave para encontrar comercios que otras bases B2B no tienen.'},
+        {icon: BarChart3, title: 'Informes de IA para cada negocio', description: 'Análisis de reseñas, rating y contexto para preparar llamadas en frío con argumentos específicos y detectar oportunidades reales.'},
+        {icon: Workflow, title: 'Workflow completo de llamadas', description: 'Listas listas para llamar, priorización por scoring, exportación a tu CRM y seguimiento de llamadas y emails desde NextLeadIn.'}
       ]
     },
     ca: {
-      headingA: 'Generació de leads ',
-      headingB: 'amb IA',
-      headingC: ' per vendre més',
-      lead: 'Selecciona territori, tria el nínxol i obtén llistes amb intel·ligència accionable. Menys prospecció manual, més converses de qualitat.',
-      more: 'Més informació',
+      headingA: 'Generació de leads locals ',
+      headingB: 'hipersegmentats',
+      headingC: ' a punt per trucar',
+      lead: 'Selecciona ciutat o zona, tria el nínxol i obtén llistes de negocis locals amb telèfon, context i scoring amb IA per prioritzar les trucades.',
+      more: 'Veure com funciona',
       items: [
-        {icon: Target, title: 'Segmentació hiperprecisa', description: 'Defineix zona i sector. La plataforma identifica negocis amb intenció i ajusta el target amb criteris avançats.'},
-        {icon: BarChart3, title: 'Informes amb IA per a cada empresa', description: 'Enriquiment automàtic amb punts clau, insights i angle de contacte perquè cada trucada sigui rellevant.'},
-        {icon: Workflow, title: 'Flux de treball comercial ràpid', description: 'Llistes de leads preparades per exportar, integracions i seguiment perquè l\'equip no perdi temps.'}
+        {icon: Target, title: 'Segmentació hiperlocal', description: 'Busca negocis per ciutat, barri, codi postal o radi en km, filtrant per tipus de negoci i paraules clau per trobar comerços que altres bases B2B no tenen.'},
+        {icon: BarChart3, title: 'Informes d\'IA per a cada negoci', description: 'Anàlisi de ressenyes, rating i context per preparar trucades en fred amb arguments específics i detectar oportunitats reals.'},
+        {icon: Workflow, title: 'Workflow complet de trucades', description: 'Llistes a punt per trucar, priorització per scoring, exportació al teu CRM i seguiment de trucades i emails des de NextLeadIn.'}
       ]
     },
     en: {

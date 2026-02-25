@@ -3,6 +3,7 @@ import {createNavigation, Pathnames} from 'next-intl/navigation'
 export const locales = ['es', 'en', 'ca'] as const
 export type AppLocale = typeof locales[number]
 
+// L'espanyol és l'idioma per defecte (sense prefix a l'URL)
 export const defaultLocale: AppLocale = 'es'
 
 export const localePrefix = 'as-needed' as const

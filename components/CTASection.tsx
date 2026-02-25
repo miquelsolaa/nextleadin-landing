@@ -9,24 +9,24 @@ const CTASection = () => {
 
   const t = {
     es: {
-      kicker: 'Empieza',
-      title: <>¿Preparado para multiplicar tus <span className="text-primary-200">leads cualificados</span>?</>,
-      desc: 'Pasa de la prospección manual a una operativa guiada por IA. Más reuniones, mejores conversaciones y un ciclo de venta más corto.',
-      primary: 'Empieza ahora',
-      secondary: 'Habla con ventas'
+      kicker: 'Leads locales listos para llamar',
+      title: <>¿Preparado para multiplicar tus <span className="text-primary-200">reuniones con negocios locales</span>?</>,
+      desc: 'Pasa de buscar negocios uno a uno en directorios y listados a tener listas priorizadas con teléfono, informes IA y un workflow de llamadas en frío y emails ya montado.',
+      primary: 'Solicitar demo',
+      secondary: 'Hablar con ventas'
     },
     ca: {
-      kicker: 'Comença',
-      title: <>Preparat per multiplicar els teus <span className="text-primary-200">leads qualificats</span>?</>,
-      desc: 'Passa de la prospecció manual a una operativa guiada per IA. Més reunions, millors converses i un cicle de venda més curt.',
-      primary: 'Comença ara',
-      secondary: 'Parla amb vendes'
+      kicker: 'Leads locals a punt per trucar',
+      title: <>Preparat per multiplicar les teves <span className="text-primary-200">reunions amb negocis locals</span>?</>,
+      desc: 'Passa de buscar negocis un a un en directoris i llistats a tenir llistes prioritzades amb telèfon, informes d’IA i un workflow de trucades en fred i emails ja muntat.',
+      primary: 'Sol·licitar demo',
+      secondary: 'Parlar amb vendes'
     },
     en: {
-      kicker: 'Get started',
-      title: <>Ready to multiply your <span className="text-primary-200">qualified leads</span>?</>,
-      desc: 'Move from manual prospecting to an AI-guided operation. More meetings, better conversations and a shorter sales cycle.',
-      primary: 'Start now',
+      kicker: 'Local leads ready to call',
+      title: <>Ready to multiply your <span className="text-primary-200">meetings with local businesses</span>?</>,
+      desc: 'Stop copying local business data by hand. Get prioritized lists with phone numbers, AI reports and a cold-calling and email workflow already set up.',
+      primary: 'Request demo',
       secondary: 'Talk to sales'
     }
   }[locale]

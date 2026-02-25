@@ -112,8 +112,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     // Format de data segons l'idioma
     const dateLocale = validLocale === 'ca' ? 'ca-ES' : validLocale === 'en' ? 'en-US' : 'es-ES'
 
-    // URL base per al blog segons l'idioma
-    const blogBaseUrl = validLocale === 'ca' ? '/blog' : `/${validLocale}/blog`
+    // URL base per al blog segons l'idioma (ES sense prefix)
+    const blogBaseUrl = validLocale === 'es' ? '/blog' : `/${validLocale}/blog`
 
     // Calcular quins idiomes estan disponibles per a aquest article
     const availableLocales = (['ca', 'en', 'es'] as Locale[]).filter(locale => 

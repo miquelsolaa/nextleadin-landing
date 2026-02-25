@@ -8,6 +8,7 @@ import ScrollAnimation from '@/components/ScrollAnimation'
 import SetHtmlLang from '@/components/SetHtmlLang'
 import AIStructuredData from '@/components/AIStructuredData'
 import CookieConsent from '@/components/CookieConsent'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 import '../globals.css'
 
@@ -65,6 +66,7 @@ export default async function LocaleLayout({children, params}: {children: React.
         </main>
         <Footer />
         <ScrollAnimation />
+        <ScrollToTopButton />
         <CookieConsent />
       </div>
     </NextIntlClientProvider>

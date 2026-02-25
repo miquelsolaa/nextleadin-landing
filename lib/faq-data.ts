@@ -120,6 +120,76 @@ export const faqSections: FAQSection[] = [
           en: 'Yes. From the Local Business plan you can filter by minimum rating (e.g. 4+ stars), review count, price level ($ $$ $$$), opening hours (open now), has website or phone and recently opened businesses.'
         },
         isOpen: false
+      },
+      {
+        id: 17,
+        question: {
+          ca: 'És legal utilitzar dades públiques per generar leads B2B?',
+          es: '¿Es legal usar datos públicos para generar leads B2B?',
+          en: 'Is it legal to use public data to generate B2B leads?'
+        },
+        answer: {
+          ca: 'NextLeadIn està pensat per a ús B2B amb dades de negocis, no de particulars. No gestionem scripts ni missatges, i cada empresa ha de definir la seva política de contacte i de compliment amb RGPD/LOPD i la normativa del seu sector. Si tens dubtes, recomanem comentar-ho amb el teu equip legal o de compliance.',
+          es: 'NextLeadIn está pensado para uso B2B con datos de negocio, no de particulares. No gestionamos scripts ni mensajes, y cada empresa debe definir su propia política de contacto y de cumplimiento con RGPD/LOPD y la normativa de su sector. Si tienes dudas, te recomendamos consultarlo con tu equipo legal o de compliance.',
+          en: 'NextLeadIn is designed for B2B use with business data, not private individuals. We do not manage your scripts or messaging, and each company must define its own contact policy and compliance with GDPR and sector regulations. If you are unsure, we recommend checking with your legal or compliance team.'
+        },
+        isOpen: false
+      },
+      {
+        id: 18,
+        question: {
+          ca: 'Com compleix NextLeadIn amb RGPD/LOPD si faig trucades en fred?',
+          es: '¿Cómo cumple NextLeadIn con RGPD/LOPD si hago llamadas en frío?',
+          en: 'How does NextLeadIn comply with GDPR when I do cold calling?'
+        },
+        answer: {
+          ca: 'NextLeadIn et dona eines per treballar amb interès legítim B2B: registres d\'activitat, drets d\'accés i supressió, i mecanismes per marcar empreses que no volen ser contactades. Tu decideixes guions i freqüència de contacte, i és important que informis clarament de qui ets, per què truques i com poden demanar que no els tornis a contactar.',
+          es: 'NextLeadIn te da herramientas para trabajar con interés legítimo B2B: registros de actividad, derechos de acceso y supresión, y mecanismos para marcar empresas que no quieren ser contactadas. Tú decides guiones y frecuencia de contacto, y es importante que informes claramente de quién eres, por qué llamas y cómo pueden pedir que no se les vuelva a contactar.',
+          en: 'NextLeadIn provides tools to work under B2B legitimate interest: activity logs, access and deletion rights, and mechanisms to flag companies that don’t want to be contacted. You decide scripts and contact frequency, and it is important that you clearly state who you are, why you call and how they can request not to be contacted again.'
+        },
+        isOpen: false
+      },
+      {
+        id: 19,
+        question: {
+          ca: 'Quin tipus de negocis locals puc trobar amb NextLeadIn?',
+          es: '¿Qué tipo de negocios locales puedo encontrar con NextLeadIn?',
+          en: 'What types of local businesses can I find with NextLeadIn?'
+        },
+        answer: {
+          ca: 'Restaurants, tallers mecànics, comerços de barri, clíniques, centres de salut, salons de bellesa, gimnasos, immobiliàries, serveis professionals locals i moltes altres PIMES tradicionals. El focus són negocis amb presència física i ressenyes en línia.',
+          es: 'Restaurantes, talleres mecánicos, comercios de barrio, clínicas, centros de salud, salones de belleza, gimnasios, inmobiliarias, servicios profesionales locales y muchas otras pymes tradicionales. El foco son negocios con presencia física y reseñas online.',
+          en: 'Restaurants, workshops, local shops, clinics, health centers, beauty salons, gyms, real estate agencies, local professional services and many other traditional SMEs. The focus is on businesses with physical presence and online reviews.'
+        },
+        isOpen: false
+      },
+      {
+        id: 20,
+        question: {
+          ca: 'Necessito tenir un CRM com HubSpot o Pipedrive per utilitzar la plataforma?',
+          es: '¿Necesito tener un CRM como HubSpot o Pipedrive para usar la plataforma?',
+          en: 'Do I need a CRM like HubSpot or Pipedrive to use the platform?'
+        },
+        answer: {
+          ca: 'No és imprescindible. Pots treballar només amb la taula de leads, el pipeline Kanban i les exportacions CSV. Les integracions amb CRM (HubSpot, Pipedrive...) són recomanables quan ja tens un equip de vendes estructurat o vols automatitzar encara més el seguiment.',
+          es: 'No es imprescindible. Puedes trabajar solo con la tabla de leads, el pipeline Kanban y las exportaciones CSV. Las integraciones con CRM (HubSpot, Pipedrive...) son recomendables cuando ya tienes un equipo de ventas estructurado o quieres automatizar aún más el seguimiento.',
+          en: 'It is not required. You can work only with the leads table, Kanban pipeline and CSV exports. CRM integrations (HubSpot, Pipedrive, etc.) are recommended once you have a structured sales team or want to further automate follow-up.'
+        },
+        isOpen: false
+      },
+      {
+        id: 21,
+        question: {
+          ca: 'Puc començar a trucar des del primer dia?',
+          es: '¿Puedo empezar a llamar desde el primer día?',
+          en: 'Can I start calling from day one?'
+        },
+        answer: {
+          ca: 'Sí. En menys d\'una hora pots definir un nínxol, generar la primera llista de negocis locals i tenir informes amb IA per preparar les primeres trucades. La majoria de clients fan les primeres trucades el mateix dia que creen el compte.',
+          es: 'Sí. En menos de una hora puedes definir un nicho, generar la primera lista de negocios locales y tener informes con IA para preparar las primeras llamadas. La mayoría de clientes hace sus primeras llamadas el mismo día que crea la cuenta.',
+          en: 'Yes. In less than an hour you can define a niche, generate your first list of local businesses and have AI reports ready to prepare your first calls. Most customers start calling on the same day they create their account.'
+        },
+        isOpen: false
       }
     ]
   },

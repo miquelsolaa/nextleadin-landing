@@ -19,17 +19,17 @@ export default function IntegrationsSection({ integrations }: IntegrationsSectio
   const translations = (() => {
     if (locale === 'es') {
       return {
-        title: 'Integraciones',
-        subtitle: 'potentes',
-        description: 'Conecta NextLeadIn con tus herramientas favoritas y automatiza tu flujo de trabajo de generación de leads.',
+        title: 'Integraciones para activar',
+        subtitle: 'llamadas y seguimiento',
+        description: 'Conecta NextLeadIn con n8n, tu CRM (HubSpot, Pipedrive...), Resend y herramientas de telefonía para automatizar la generación de leads, las llamadas en frío y las secuencias de email.',
         cta: 'Ver todas las integraciones'
       }
     }
     if (locale === 'en') {
       return {
-        title: 'Powerful',
-        subtitle: 'integrations',
-        description: 'Connect NextLeadIn with your favorite tools and automate your lead generation workflow.',
+        title: 'Integrations to power',
+        subtitle: 'calling and follow-up',
+        description: 'Connect NextLeadIn with n8n, your CRM (HubSpot, Pipedrive...), Resend and telephony tools to automate lead generation, cold calls and email sequences.',
         cta: 'View all integrations'
       }
     }

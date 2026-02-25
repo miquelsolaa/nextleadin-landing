@@ -25,10 +25,10 @@ const TrustedBySection = () => {
       title: "Logo #1"
     },
     {
-      src: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/logo-2-black.svg",
+      src: "/images/testimonials/sumacommerce.png",
       alt: "Partner logo",
-      width: 108,
-      height: 21,
+      width: 150,
+      height: 150,
       title: "Logo #2"
     },
     {

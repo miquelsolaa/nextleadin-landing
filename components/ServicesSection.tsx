@@ -11,13 +11,13 @@ const ServicesSection = () => {
       return [
         {
           id: 'segmentacio',
-          title: 'Segmentación geográfica',
-          subtitle: 'Elige la zona y encuentra las empresas clave',
-          description: 'Barcelona, Girona o donde necesites. Localiza negocios con potencial dentro de tu territorio con filtros avanzados.',
+          title: 'Segmentación geográfica en España',
+          subtitle: 'Elige la zona y encuentra los negocios locales clave',
+          description: 'Barcelona, Madrid, Valencia o donde necesites. Localiza restaurantes, talleres y comercios con potencial dentro de tu territorio con filtros avanzados por zona y tipo de negocio.',
           features: [
-            'Mapa y filtros por barrio/municipio',
-            'Volumen estimado de leads disponibles',
-            'Exportación rápida a CSV/CRM'
+            'Mapa y filtros por barrio, municipio y código postal',
+            'Volumen estimado de negocios locales disponibles para contactar',
+            'Exportación rápida a CSV y CRM para activar campañas'
           ],
           image: '/images/features/location.png',
           badge: null
@@ -26,24 +26,24 @@ const ServicesSection = () => {
           id: 'sector',
           title: 'Selección de sector',
           subtitle: 'Define nichos y verticales con precisión',
-          description: '¿Restaurantes vegetarianos? ¿Fabricantes de pressfittings? ¿Especialistas médicos? Segmenta por CNAE, keywords e intención.',
+          description: '¿Restaurantes vegetarianos? ¿Fabricantes de pressfittings? ¿Clínicas dentales? Segmenta por CNAE, keywords e intención para encontrar PYMES locales con encaje claro.',
           features: [
-            'Filtros por actividad y tamaño',
-            'Exclusión de sectores no deseados',
-            'Sugerencias inteligentes de nichos'
+            'Filtros por actividad, tamaño y ticket medio',
+            'Exclusión de sectores no deseados o ya trabajados',
+            'Sugerencias inteligentes de nichos según resultados anteriores'
           ],
           image: '/images/features/business.png',
           badge: 'NUEVO'
         },
         {
           id: 'informes-ia',
-          title: 'Informes con IA',
-          subtitle: 'Enriquecimiento automático para convertir mejor',
-          description: 'Nuestra IA genera dosieres con puntos de conversación, necesidades detectadas y propuesta de ángulo para la llamada.',
+          title: 'Informes con IA para cold call',
+          subtitle: 'Enriquecimiento automático para preparar cada llamada',
+          description: 'Nuestra IA genera dosieres con puntos de conversación, necesidades detectadas y propuesta de ángulo para la llamada en frío, a partir de reseñas y datos públicos.',
           features: [
-            'Resúmenes ejecutivos por empresa',
-            'Ángulos de contacto personalizados',
-            'Notas para objeciones frecuentes'
+            'Resúmenes ejecutivos por negocio local',
+            'Ángulos de contacto personalizados para la llamada',
+            'Notas y bullets para gestionar objeciones típicas'
           ],
           image: '/images/features/report.png',
           badge: null
@@ -55,8 +55,8 @@ const ServicesSection = () => {
         {
           id: 'segmentacio',
           title: 'Geographic targeting',
-          subtitle: 'Choose the area and find key companies',
-          description: 'Barcelona, Girona or wherever you need. Locate high-potential businesses in your territory with advanced filters.',
+          subtitle: 'Choose the area and find key local businesses',
+          description: 'Barcelona, Lisbon or wherever you need. Locate high-potential restaurants, workshops and local shops in your territory with advanced filters by area and business type.',
           features: [
             'Map and neighborhood/municipality filters',
             'Estimated volume of available leads',
@@ -69,7 +69,7 @@ const ServicesSection = () => {
           id: 'sector',
           title: 'Sector selection',
           subtitle: 'Define niches and verticals precisely',
-          description: 'Vegetarian restaurants? Pressfittings manufacturers? Medical specialists? Segment by CNAE, keywords and intent.',
+          description: 'Vegetarian restaurants? Pressfittings manufacturers? Medical specialists? Segment by industry codes, keywords and intent to find local SMEs with clear fit.',
           features: [
             'Filters by activity and company size',
             'Exclude undesired sectors',
@@ -80,9 +80,9 @@ const ServicesSection = () => {
         },
         {
           id: 'informes-ia',
-          title: 'AI reports',
-          subtitle: 'Automatic enrichment to convert better',
-          description: 'Our AI creates dossiers with talking points, detected needs and a suggested angle for the call.',
+          title: 'AI reports for cold calling',
+          subtitle: 'Automatic enrichment to prepare every call',
+          description: 'Our AI creates dossiers with talking points, detected needs and a suggested angle for cold calls, based on public data and online reviews.',
           features: [
             'Executive summaries per company',
             'Personalized contact angles',

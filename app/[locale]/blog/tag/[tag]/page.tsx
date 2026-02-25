@@ -79,7 +79,7 @@ export default async function BlogTagPage({ params }: BlogTagPageProps) {
   const tags = getAllTags(validLocale)
 
   const dateLocale = validLocale === 'ca' ? 'ca-ES' : validLocale === 'en' ? 'en-US' : 'es-ES'
-  const blogBaseUrl = validLocale === 'ca' ? '/blog' : `/${validLocale}/blog`
+  const blogBaseUrl = validLocale === 'es' ? '/blog' : `/${validLocale}/blog`
 
   const breadcrumbHome = validLocale === 'ca' ? 'Inici' : validLocale === 'en' ? 'Home' : 'Inicio'
   const breadcrumbBlog = t('breadcrumbBlog')
