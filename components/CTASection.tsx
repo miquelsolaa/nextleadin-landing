@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { Link } from '@/i18n/routing'
 import { useLocale } from 'next-intl'
+import { trackRegisterStart } from '@/lib/analytics'
 
 const CTASection = () => {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
@@ -47,10 +48,18 @@ const CTASection = () => {
               {t.desc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="/contact" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+              <Link
+                href="/contact"
+                className="btn-primary bg-white text-primary-600 hover:bg-gray-100"
+                onClick={() => trackRegisterStart('primary', locale)}
+              >
                 {t.primary}
               </Link>
-              <Link href="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600">
+              <Link
+                href="/contact"
+                className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600"
+                onClick={() => trackRegisterStart('secondary', locale)}
+              >
                 {t.secondary}
               </Link>
             </div>
