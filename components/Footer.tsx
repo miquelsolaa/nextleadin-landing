@@ -31,10 +31,10 @@ const Footer = () => {
           { name: 'Pipeline y Analytics', href: '/features/pipeline-analytics' }
         ],
         resources: [
-          { name: 'Centro de soporte', href: '#' },
-          { name: 'Documentación', href: '#' },
-          { name: 'Comunidad', href: '#' },
-          { name: 'Calculadora ROI', href: '/resources/roi-calculator' }
+          { name: 'Todos los recursos', href: '/resources' },
+          { name: 'Calculadora ROI', href: '/resources/roi-calculator' },
+          { name: 'Blog', href: '/blog' },
+          { name: 'FAQ', href: '/faq' }
         ],
         company: [
           { name: 'Sobre nosotros', href: '#' },
@@ -74,10 +74,10 @@ const Footer = () => {
           { name: 'Pipeline i Analytics', href: '/features/pipeline-analytics' }
         ],
         resources: [
-          { name: 'Centre de suport', href: '#' },
-          { name: 'Documentació', href: '#' },
-          { name: 'Comunitat', href: '#' },
-          { name: 'Calculadora ROI', href: '/resources/roi-calculator' }
+          { name: 'Tots els recursos', href: '/resources' },
+          { name: 'Calculadora ROI', href: '/resources/roi-calculator' },
+          { name: 'Blog', href: '/blog' },
+          { name: 'FAQ', href: '/faq' }
         ],
         company: [
           { name: 'Sobre nosaltres', href: '#' },
@@ -117,10 +117,10 @@ const Footer = () => {
           { name: 'Pipeline & Analytics', href: '/features/pipeline-analytics' }
         ],
         resources: [
-          { name: 'Support center', href: '#' },
-          { name: 'Documentation', href: '#' },
-          { name: 'Community', href: '#' },
-          { name: 'ROI Calculator', href: '/resources/roi-calculator' }
+          { name: 'All resources', href: '/resources' },
+          { name: 'ROI Calculator', href: '/resources/roi-calculator' },
+          { name: 'Blog', href: '/blog' },
+          { name: 'FAQ', href: '/faq' }
         ],
         company: [
           { name: 'About us', href: '#' },
@@ -213,8 +213,6 @@ const Footer = () => {
                     <Link
                       href={item.href}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
-                      target="_blank"
-                      rel="noopener noreferrer"
                     >
                       {item.name}
                     </Link>

@@ -122,7 +122,7 @@ const TrustedBySection = () => {
                       className="flex-shrink-0 w-[256px] bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
                     >
                       <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden">
+                        <div className="w-14 h-14 rounded-xl bg-transparent flex items-center justify-center overflow-hidden">
                           <Image
                             src={client.logo}
                             alt={t(`clients.${slide.id}.name`)}

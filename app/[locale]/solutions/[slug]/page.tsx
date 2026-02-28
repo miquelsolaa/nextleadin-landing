@@ -11,6 +11,22 @@ import {
   type SolutionLocale
 } from '@/lib/solutions'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import * as LucideIcons from 'lucide-react'
+
+function getLucideIcon(iconName: string, className: string = "w-6 h-6"): React.ReactNode {
+  const iconNamePascal = iconName
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+  
+  const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[iconNamePascal];
+  
+  if (IconComponent) {
+    return <IconComponent className={className} />;
+  }
+  
+  return <LucideIcons.Lightbulb className={className} />;
+}
 
 interface SolutionPageProps {
   params: Promise<{
@@ -152,50 +168,7 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
   }
 
   const getBenefitIcon = (icon: string) => {
-    switch (icon) {
-      case 'clock':
-        return (
-          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )
-      case 'brain':
-        return (
-          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-          </svg>
-        )
-      case 'chart':
-        return (
-          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-        )
-      case 'scale':
-        return (
-          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-          </svg>
-        )
-      case 'tag':
-        return (
-          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-          </svg>
-        )
-      case 'code':
-        return (
-          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        )
-      default:
-        return (
-          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        )
-    }
+    return getLucideIcon(icon, "w-8 h-8 text-primary-600");
   }
 
   return (
@@ -219,7 +192,7 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
             </nav>
 
             <div className="max-w-4xl mx-auto text-center">
-              <span className="text-5xl mb-6 block">{solution.icon}</span>
+              <span className="text-primary-600 mb-6 block">{getLucideIcon(solution.icon, "w-16 h-16 mx-auto")}</span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 {solution.heroTitle}
               </h1>
