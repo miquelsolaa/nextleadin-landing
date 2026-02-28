@@ -24,6 +24,8 @@ interface BlogPostPageProps {
   }>
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const allSlugs = getAllPostSlugs()
   return allSlugs.map(({ slug, locale }) => ({

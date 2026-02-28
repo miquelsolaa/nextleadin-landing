@@ -41,8 +41,12 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
-  // Configuració per a Netlify (SSR amb plugin)
   trailingSlash: false,
+  outputFileTracingIncludes: {
+    '/sitemap.xml': ['./content/**/*'],
+    '/robots.txt': ['./content/**/*'],
+    '/\\[locale\\]/**': ['./content/**/*'],
+  },
 }
 
 module.exports = withNextIntl(nextConfig)

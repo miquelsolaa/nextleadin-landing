@@ -19,6 +19,8 @@ interface LocationPageProps {
   }>
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return getAllLocationSlugs()
 }

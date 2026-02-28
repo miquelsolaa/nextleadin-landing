@@ -22,6 +22,8 @@ interface BlogCategoryPageProps {
   params: Promise<{ locale: string; category: string }>
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const locales: Locale[] = ['ca', 'es', 'en']
   const params: { locale: string; category: string }[] = []

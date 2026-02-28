@@ -22,6 +22,8 @@ interface BlogTagPageProps {
   params: Promise<{ locale: string; tag: string }>
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const locales: Locale[] = ['ca', 'es', 'en']
   const params: { locale: string; tag: string }[] = []

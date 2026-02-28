@@ -14,6 +14,8 @@ interface FeaturePageProps {
   }>;
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const slugs = getAllFeatureSlugs();
   const locales = ['ca', 'es', 'en'];
