@@ -16,39 +16,39 @@ const FeaturesSection = () => {
     items: {icon: any, title: string, description: string}[]
   }> = {
     es: {
-      headingA: 'Generación de leads locales ',
-      headingB: 'hipersegmentados',
-      headingC: ' listos para llamar',
-      lead: 'Selecciona ciudad o zona, define el nicho y obtén listas de negocios locales en España con teléfono, contexto y scoring IA para priorizar llamadas.',
-      more: 'Ver cómo funciona',
+      headingA: 'De 8 horas buscando leads a ',
+      headingB: '3 reuniones',
+      headingC: ' en tu calendario',
+      lead: 'Cada hora que tu equipo pierde buscando contactos es una llamada que no hace. NextLeadIn elimina el trabajo manual para que dediques 100% del tiempo a cerrar.',
+      more: 'Ver resultados',
       items: [
-        {icon: Target, title: 'Segmentación hiperlocal', description: 'Busca negocios por ciudad, barrio, código postal o radio en km, filtrando por tipo de negocio y palabras clave para encontrar comercios que otras bases B2B no tienen.'},
-        {icon: BarChart3, title: 'Informes de IA para cada negocio', description: 'Análisis de reseñas, rating y contexto para preparar llamadas en frío con argumentos específicos y detectar oportunidades reales.'},
-        {icon: Workflow, title: 'Workflow completo de llamadas', description: 'Listas listas para llamar, priorización por scoring, exportación a tu CRM y seguimiento de llamadas y emails desde NextLeadIn.'}
+        {icon: Target, title: 'Ahorra 8h/semana por comercial', description: 'Deja de copiar datos de Google Maps. En 10 minutos tienes 100 leads locales con teléfono, scoring y contexto. Lo que antes tomaba un día, ahora son minutos.'},
+        {icon: BarChart3, title: 'Triplica tu tasa de contacto', description: 'Llama con contexto: qué vende, qué opinan sus clientes, qué problemas tiene. Nuestros usuarios pasan del 5% al 15-20% de contactos efectivos.'},
+        {icon: Workflow, title: 'Cierra 3x más reuniones', description: 'Pipeline siempre lleno, priorización automática y seguimiento integrado. El resultado: de 2-3 reuniones/mes a 8-12 con el mismo esfuerzo.'}
       ]
     },
     ca: {
-      headingA: 'Generació de leads locals ',
-      headingB: 'hipersegmentats',
-      headingC: ' a punt per trucar',
-      lead: 'Selecciona ciutat o zona, tria el nínxol i obtén llistes de negocis locals amb telèfon, context i scoring amb IA per prioritzar les trucades.',
-      more: 'Veure com funciona',
+      headingA: 'De 8 hores buscant leads a ',
+      headingB: '3 reunions',
+      headingC: ' al teu calendari',
+      lead: 'Cada hora que el teu equip perd buscant contactes és una trucada que no fa. NextLeadIn elimina el treball manual perquè dediquis 100% del temps a tancar.',
+      more: 'Veure resultats',
       items: [
-        {icon: Target, title: 'Segmentació hiperlocal', description: 'Busca negocis per ciutat, barri, codi postal o radi en km, filtrant per tipus de negoci i paraules clau per trobar comerços que altres bases B2B no tenen.'},
-        {icon: BarChart3, title: 'Informes d\'IA per a cada negoci', description: 'Anàlisi de ressenyes, rating i context per preparar trucades en fred amb arguments específics i detectar oportunitats reals.'},
-        {icon: Workflow, title: 'Workflow complet de trucades', description: 'Llistes a punt per trucar, priorització per scoring, exportació al teu CRM i seguiment de trucades i emails des de NextLeadIn.'}
+        {icon: Target, title: 'Estalvia 8h/setmana per comercial', description: 'Deixa de copiar dades de Google Maps. En 10 minuts tens 100 leads locals amb telèfon, scoring i context. El que abans prenia un dia, ara són minuts.'},
+        {icon: BarChart3, title: 'Triplica la teva taxa de contacte', description: 'Truca amb context: què ven, què opinen els seus clients, quins problemes té. Els nostres usuaris passen del 5% al 15-20% de contactes efectius.'},
+        {icon: Workflow, title: 'Tanca 3x més reunions', description: 'Pipeline sempre ple, priorització automàtica i seguiment integrat. El resultat: de 2-3 reunions/mes a 8-12 amb el mateix esforç.'}
       ]
     },
     en: {
-      headingA: 'Lead generation ',
-      headingB: 'with AI',
-      headingC: ' to sell more',
-      lead: 'Pick a territory, choose a niche and get lists with actionable intelligence. Less manual prospecting, more quality conversations.',
-      more: 'Learn more',
+      headingA: 'From 8 hours finding leads to ',
+      headingB: '3 meetings',
+      headingC: ' on your calendar',
+      lead: 'Every hour your team wastes finding contacts is a call they are not making. NextLeadIn eliminates manual work so you spend 100% of your time closing.',
+      more: 'See results',
       items: [
-        {icon: Target, title: 'Hyper-precise targeting', description: 'Set zone and sector. The platform finds in-intent businesses and refines the target with advanced criteria.'},
-        {icon: BarChart3, title: 'AI reports per company', description: 'Automatic enrichment with key points, insights and contact angle so every call is relevant.'},
-        {icon: Workflow, title: 'Faster sales workflow', description: 'Lead lists ready to export, integrations and tracking so the team doesn\'t waste time.'}
+        {icon: Target, title: 'Save 8h/week per rep', description: 'Stop copying data from Google Maps. In 10 minutes you have 100 local leads with phone, scoring and context. What used to take a day now takes minutes.'},
+        {icon: BarChart3, title: 'Triple your contact rate', description: 'Call with context: what they sell, what their customers think, what problems they have. Our users go from 5% to 15-20% effective contacts.'},
+        {icon: Workflow, title: 'Close 3x more meetings', description: 'Pipeline always full, automatic prioritization and integrated follow-up. The result: from 2-3 meetings/month to 8-12 with the same effort.'}
       ]
     }
   }

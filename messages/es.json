@@ -2,6 +2,9 @@
   "common": {
     "brand": "NextLeadIn",
     "scrollToTop": "Volver arriba",
+    "startFreeTrial": "Prueba Gratuita",
+    "learnMore": "Saber Más",
+    "contactSales": "Contacta Ventas",
     "cta": {
       "getStarted": "Empieza ahora",
       "talkToSales": "Habla con ventas",
@@ -146,6 +149,34 @@
       "description": "Guías e insights para encontrar negocios locales, analizar reseñas y cerrar más oportunidades.",
       "cta": "Ver todos los artículos",
       "readMore": "Leer más"
+    },
+    "trustedBy": {
+      "title": "Equipos que ya están generando oportunidades",
+      "titleHighlight": "con NextLeadIn",
+      "clients": {
+        "summaCommerce": {
+          "name": "Summa Commerce",
+          "description": "Logística y comercio internacional"
+        },
+        "clManager": {
+          "name": "CLManager",
+          "description": "SaaS para gestión de ópticas"
+        }
+      },
+      "metrics": {
+        "leads": {
+          "value": "+2.400",
+          "label": "leads cualificados generados"
+        },
+        "time": {
+          "value": "-40%",
+          "label": "tiempo dedicado a prospección manual"
+        },
+        "implementation": {
+          "value": "<7",
+          "label": "días para implementar"
+        }
+      }
     }
   },
   "metadata": {

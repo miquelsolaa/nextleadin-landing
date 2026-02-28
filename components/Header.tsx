@@ -124,7 +124,7 @@ const Header = () => {
                 {translations.common.login}
               </Link>
               <Link
-                href="/get-started"
+                href="https://app.nextleadin.com/register"
                 className="header-cta-button primary bg-green-500 hover:bg-green-600 text-white px-5 py-3 text-sm font-medium"
               >
                 {translations.common.getStarted}
@@ -174,7 +174,7 @@ const Header = () => {
                 {translations.common.login}
               </Link>
               <Link
-                href="/get-started"
+                href="https://app.nextleadin.com/register"
                 className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-sm font-medium rounded-md"
                 onClick={() => setMobileOpen(false)}
               >

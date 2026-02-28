@@ -15,6 +15,7 @@ import { getTagSlug } from '@/lib/blog-tags'
 import Link from 'next/link'
 import { CalendarDays, User, ArrowLeft, ArrowRight } from 'lucide-react'
 import styles from '@/components/BlogPostContent.module.css'
+import BlogPostCTA from '@/components/BlogPostCTA'
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -247,6 +248,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       dangerouslySetInnerHTML={{ __html: post.contentHtml }}
                     />
                   </div>
+
+                  {/* CTA automàtic al final de l'article */}
+                  {post.showCTA !== false && (
+                    <div className="px-8 pb-8">
+                      <BlogPostCTA />
+                    </div>
+                  )}
 
                   {/* Tags */}
                   {post.tags && post.tags.length > 0 && (

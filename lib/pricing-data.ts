@@ -72,9 +72,9 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: 'localBusiness',
     name: {
-      ca: 'Local Business',
-      es: 'Local Business',
-      en: 'Local Business'
+      ca: 'Starter',
+      es: 'Starter',
+      en: 'Starter'
     },
     price: 79,
     period: {
@@ -83,9 +83,9 @@ export const pricingPlans: PricingPlan[] = [
       en: 'month'
     },
     description: {
-      ca: 'Per freelancers i comercials: dades enriquides, mapa i anàlisi de ressenyes amb IA.',
-      es: 'Para freelancers y comerciales: datos enriquecidos, mapa y análisis de reseñas con IA.',
-      en: 'For freelancers and sales reps: enriched data, map and AI review analysis.'
+      ca: 'Ideal per comercials que volen tancar 2-3 clients nous al mes amb menys esforç.',
+      es: 'Ideal para comerciales que quieren cerrar 2-3 clientes nuevos al mes con menos esfuerzo.',
+      en: 'Ideal for sales reps who want to close 2-3 new clients per month with less effort.'
     },
     features: {
       ca: [
@@ -124,7 +124,7 @@ export const pricingPlans: PricingPlan[] = [
       es: 'Empezar ahora',
       en: 'Get started'
     },
-    buttonHref: '/get-started',
+    buttonHref: 'https://app.nextleadin.com/register',
     billingNote: {
       ca: '€63/mes facturat anualment',
       es: '€63/mes facturado anualmente',
@@ -142,9 +142,9 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: 'professional',
     name: {
-      ca: 'Professional',
-      es: 'Professional',
-      en: 'Professional'
+      ca: 'Equip',
+      es: 'Equipo',
+      en: 'Team'
     },
     price: 199,
     period: {
@@ -153,9 +153,9 @@ export const pricingPlans: PricingPlan[] = [
       en: 'month'
     },
     description: {
-      ca: 'Per PYMES i agències: anàlisi competitiva, scoring predictiu i integracions CRM.',
-      es: 'Para PYMES y agencias: análisis competitivo, scoring predictivo e integraciones CRM.',
-      en: 'For SMBs and agencies: competitive analysis, predictive scoring and CRM integrations.'
+      ca: 'Per equips que volen triplicar reunions sense triplicar esforç. Fins a 10 membres.',
+      es: 'Para equipos que quieren triplicar reuniones sin triplicar esfuerzo. Hasta 10 miembros.',
+      en: 'For teams that want to triple meetings without tripling effort. Up to 10 members.'
     },
     features: {
       ca: [
@@ -197,7 +197,7 @@ export const pricingPlans: PricingPlan[] = [
       es: 'Empezar ahora',
       en: 'Get started'
     },
-    buttonHref: '/get-started',
+    buttonHref: 'https://app.nextleadin.com/register',
     billingNote: {
       ca: '€159/mes facturat anualment',
       es: '€159/mes facturado anualmente',
@@ -215,15 +215,15 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: 'enterprise',
     name: {
-      ca: 'Enterprise',
-      es: 'Enterprise',
-      en: 'Enterprise'
+      ca: 'Escala',
+      es: 'Escala',
+      en: 'Scale'
     },
     price: null,
     priceLabel: {
-      ca: 'Contacta amb vendes',
-      es: 'Contacta con ventas',
-      en: 'Contact sales'
+      ca: 'Parlem',
+      es: 'Hablemos',
+      en: 'Let\'s talk'
     },
     period: {
       ca: 'mes',
@@ -231,9 +231,9 @@ export const pricingPlans: PricingPlan[] = [
       en: 'month'
     },
     description: {
-      ca: 'Per empreses grans i franquícies: API, white-label i account manager dedicat.',
-      es: 'Para empresas grandes y franquicias: API, white-label y account manager dedicado.',
-      en: 'For large companies and franchises: API, white-label and dedicated account manager.'
+      ca: 'Per empreses que volen dominar el seu mercat sense ampliar plantilla comercial.',
+      es: 'Para empresas que quieren dominar su mercado sin ampliar plantilla comercial.',
+      en: 'For companies that want to dominate their market without expanding their sales team.'
     },
     features: {
       ca: [
@@ -301,7 +301,7 @@ export const comparisonFeatures: ComparisonFeature[] = [
       en: 'Volume of local businesses you can export.'
     },
     values: {
-      localBusiness: 500,
+      localBusiness: '500',
       professional: '2.000',
       enterprise: '∞'
     }
@@ -473,20 +473,24 @@ export const comparisonFeatures: ComparisonFeature[] = [
 export const faqData = {
   ca: [
     {
-      question: 'Quina diferència hi ha entre facturació anual i mensual?',
-      answer: 'La mensual es cobra cada mes. L\'anual es cobra en un sol pagament i inclou descompte (Local Business €63/mes, Professional €159/mes).'
+      question: 'Quant temps triga a veure resultats?',
+      answer: 'La majoria d\'usuaris generen la seva primera llista de leads en 10 minuts i fan les primeres trucades el mateix dia. El setup és immediat.'
     },
     {
-      question: 'Els preus inclouen l\'IVA?',
-      answer: 'No. Per a clients de la UE, s\'aplica l\'IVA segons el país si no es facilita un NIF-IVA vàlid.'
+      question: 'Quantes reunions puc esperar?',
+      answer: 'Depèn del teu sector i esforç, però els nostres usuaris reporten una mitjana de 8+ reunions/mes amb el pla Starter. Amb context IA, la taxa de contacte sol triplicar-se.'
+    },
+    {
+      question: 'Com es compara amb buscar leads manualment?',
+      answer: 'Buscar 100 leads a Google Maps porta 6-8 hores. Amb NextLeadIn, 10 minuts. A més, cada lead inclou context IA per preparar trucades en segons.'
+    },
+    {
+      question: 'Quina diferència hi ha entre facturació anual i mensual?',
+      answer: 'La mensual es cobra cada mes. L\'anual es cobra en un sol pagament i inclou descompte (Starter €63/mes, Equip €159/mes).'
     },
     {
       question: 'D\'on provenen les dades dels leads?',
-      answer: 'Disposem d\'una amplia base de dades de negocis locals amb ubicació verificada, horaris, ressenyes i dades actualitzades constantment. Ideal per negocis tradicionals que no trobaràs a LinkedIn.'
-    },
-    {
-      question: 'Quins mètodes de pagament accepteu?',
-      answer: 'Targetes de crèdit/dèbit i PayPal, segons el país.'
+      answer: 'Disposem d\'una àmplia base de dades de negocis locals amb ubicació verificada, horaris, ressenyes i dades actualitzades constantment. Ideal per negocis tradicionals que no trobaràs a LinkedIn.'
     },
     {
       question: 'Puc canviar o cancel·lar el pla quan vulgui?',
@@ -495,20 +499,24 @@ export const faqData = {
   ],
   es: [
     {
-      question: '¿Cuál es la diferencia entre facturación anual y mensual?',
-      answer: 'La mensual se cobra cada mes. La anual se cobra en un solo pago e incluye descuento (Local Business €63/mes, Professional €159/mes).'
+      question: '¿Cuánto tiempo tarda en ver resultados?',
+      answer: 'La mayoría de usuarios generan su primera lista de leads en 10 minutos y hacen las primeras llamadas el mismo día. El setup es inmediato.'
     },
     {
-      question: '¿Los precios incluyen el IVA?',
-      answer: 'No. Para clientes de la UE, se aplica IVA según el país si no se facilita un NIF-IVA válido.'
+      question: '¿Cuántas reuniones puedo esperar?',
+      answer: 'Depende de tu sector y esfuerzo, pero nuestros usuarios reportan una media de 8+ reuniones/mes con el plan Starter. Con contexto IA, la tasa de contacto suele triplicarse.'
+    },
+    {
+      question: '¿Cómo se compara con buscar leads manualmente?',
+      answer: 'Buscar 100 leads en Google Maps lleva 6-8 horas. Con NextLeadIn, 10 minutos. Además, cada lead incluye contexto IA para preparar llamadas en segundos.'
+    },
+    {
+      question: '¿Cuál es la diferencia entre facturación anual y mensual?',
+      answer: 'La mensual se cobra cada mes. La anual se cobra en un solo pago e incluye descuento (Starter €63/mes, Equipo €159/mes).'
     },
     {
       question: '¿De dónde provienen los datos de los leads?',
       answer: 'Disponemos de una amplia base de datos de negocios locales con ubicación verificada, horarios, reseñas y datos actualizados constantemente. Ideal para negocios tradicionales que no encontrarás en LinkedIn.'
-    },
-    {
-      question: '¿Qué métodos de pago aceptáis?',
-      answer: 'Tarjetas de crédito/débito y PayPal, según el país.'
     },
     {
       question: '¿Puedo cambiar o cancelar el plan cuando quiera?',
@@ -517,20 +525,24 @@ export const faqData = {
   ],
   en: [
     {
-      question: 'What is the difference between annual and monthly billing?',
-      answer: 'Monthly is charged every month. Annual is charged in one payment and includes a discount (Local Business €63/month, Professional €159/month).'
+      question: 'How long does it take to see results?',
+      answer: 'Most users generate their first lead list in 10 minutes and make their first calls the same day. Setup is immediate.'
     },
     {
-      question: 'Do prices include VAT?',
-      answer: 'No. For EU customers, VAT is applied based on country unless a valid VAT ID is provided.'
+      question: 'How many meetings can I expect?',
+      answer: 'It depends on your sector and effort, but our users report an average of 8+ meetings/month with the Starter plan. With AI context, contact rates typically triple.'
+    },
+    {
+      question: 'How does it compare to searching for leads manually?',
+      answer: 'Searching for 100 leads on Google Maps takes 6-8 hours. With NextLeadIn, 10 minutes. Plus, each lead includes AI context to prepare calls in seconds.'
+    },
+    {
+      question: 'What is the difference between annual and monthly billing?',
+      answer: 'Monthly is charged every month. Annual is charged in one payment and includes a discount (Starter €63/month, Team €159/month).'
     },
     {
       question: 'Where do lead data come from?',
       answer: 'We have a wide database of local businesses with verified location, opening hours, reviews and data updated constantly. Ideal for traditional businesses you won\'t find on LinkedIn.'
-    },
-    {
-      question: 'What payment methods do you accept?',
-      answer: 'Credit/debit cards and PayPal, depending on country.'
     },
     {
       question: 'Can I change or cancel anytime?',

@@ -23,6 +23,7 @@ export interface BlogPost {
   categories: string[]
   tags: string[]
   published: boolean
+  showCTA?: boolean
   content: string
   contentHtml: string
 }
@@ -37,6 +38,7 @@ export interface BlogPostMeta {
   categories: string[]
   tags: string[]
   published: boolean
+  showCTA?: boolean
 }
 
 /**

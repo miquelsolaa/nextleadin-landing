@@ -24,147 +24,117 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   // Textos multiidioma per a la pàgina
   const pageTexts = {
     ca: {
-      heroKicker: 'Des de €79/mes',
-      heroTitle: 'Plans per trobar negocis locals',
-      heroSubtitle: 'Des de Free fins a Enterprise. Dades enriquides, anàlisi de ressenyes amb IA i mapa visual.',
-      heroNote: 'Facturació mensual o anual · Local Business €63/mes i Professional €159/mes amb anual',
+      heroKicker: 'Menys que 1 hora d\'un comercial',
+      heroTitle: 'Tria quantes reunions vols tancar',
+      heroSubtitle: 'Cada pla inclou leads amb context IA perquè cada trucada compti. Tria segons el volum que necessitis.',
+      heroNote: 'Cost per lead des de €0,16 · Facturació mensual o anual disponible',
       breadcrumbHome: 'Inici',
       breadcrumb: 'Preus',
       compare: 'Compara plans',
       compareSubtitle: 'Leads de negocis locals, dades enriquides, anàlisi IA i integracions per pla.',
-      addOnsTitle: 'Completa el teu pla amb complements',
-      addOnsSubtitle: 'Afegeix funcionalitats especialitzades quan les necessitis.',
+      addOnsTitle: 'Potencia el teu pla',
+      addOnsSubtitle: 'Afegeix campanyes d\'email per contactar més leads automàticament.',
       faqTitle: 'Preguntes freqüents',
-      faqSubtitle: 'Preus, facturació i complements',
-      faqDescription: 'Tot el que cal saber abans de començar la prova gratuïta.',
-      ctaEyebrow: 'Uneix-te als experts en vendes',
-      ctaTitle: 'Multiplica els teus leads qualificats',
-      ctaDescription: 'Automatitza seguiments, ordena el pipeline i converteix més oportunitats en reunions.',
-      ctaButton1: 'Prova-ho gratis',
-      ctaButton2: 'Parla amb vendes'
+      faqSubtitle: 'Preus, resultats i facturació',
+      faqDescription: 'Tot el que cal saber abans de començar.',
+      ctaEyebrow: 'Prova 7 dies gratis',
+      ctaTitle: 'Comença a tancar més reunions aquesta setmana',
+      ctaDescription: 'Setup en 10 minuts. Primers leads de prova de la teva zona el mateix dia.',
+      ctaButton1: 'Començar prova gratuïta',
+      ctaButton2: 'Veure demo de 3 min'
     },
     es: {
-      heroKicker: 'Desde €79/mes',
-      heroTitle: 'Planes para encontrar negocios locales',
-      heroSubtitle: 'Desde Free hasta Enterprise. Datos enriquecidos, análisis de reseñas con IA y mapa visual.',
-      heroNote: 'Facturación mensual o anual · Local Business €63/mes y Professional €159/mes con anual',
+      heroKicker: 'Menos que 1 hora de un comercial',
+      heroTitle: 'Elige cuántas reuniones quieres cerrar',
+      heroSubtitle: 'Cada plan incluye leads con contexto IA para que cada llamada cuente. Elige según el volumen que necesites.',
+      heroNote: 'Coste por lead desde €0,16 · Facturación mensual o anual disponible',
       breadcrumbHome: 'Inicio',
       breadcrumb: 'Precios',
       compare: 'Compara planes',
       compareSubtitle: 'Leads de negocios locales, datos enriquecidos, análisis IA e integraciones por plan.',
-      addOnsTitle: 'Completa tu plan con complementos',
-      addOnsSubtitle: 'Añade funcionalidades especializadas cuando las necesites.',
+      addOnsTitle: 'Potencia tu plan',
+      addOnsSubtitle: 'Añade campañas de email para contactar más leads automáticamente.',
       faqTitle: 'Preguntas frecuentes',
-      faqSubtitle: 'Precios, facturación y complementos',
-      faqDescription: 'Todo lo que necesitas saber antes de iniciar la prueba gratuita.',
-      ctaEyebrow: 'Únete a los expertos en ventas',
-      ctaTitle: 'Multiplica tus leads cualificados',
-      ctaDescription: 'Automatiza seguimientos, ordena el pipeline y convierte más oportunidades en reuniones.',
-      ctaButton1: 'Pruébalo gratis',
-      ctaButton2: 'Habla con ventas'
+      faqSubtitle: 'Precios, resultados y facturación',
+      faqDescription: 'Todo lo que necesitas saber antes de empezar.',
+      ctaEyebrow: 'Prueba 7 días gratis',
+      ctaTitle: 'Empieza a cerrar más reuniones esta semana',
+      ctaDescription: 'Setup en 10 minutos. Primeros leads de prueba de tu zona el mismo día.',
+      ctaButton1: 'Empezar prueba gratuita',
+      ctaButton2: 'Ver demo de 3 min'
     },
     en: {
-      heroKicker: 'From €79/month',
-      heroTitle: 'Plans to find local businesses',
-      heroSubtitle: 'From Free to Enterprise. Enriched data, AI review analysis and visual map.',
-      heroNote: 'Monthly or annual billing · Local Business €63/month and Professional €159/month with annual',
+      heroKicker: 'Less than 1 hour of a sales rep',
+      heroTitle: 'Choose how many meetings you want to close',
+      heroSubtitle: 'Each plan includes leads with AI context so every call counts. Choose based on the volume you need.',
+      heroNote: 'Cost per lead from €0.16 · Monthly or annual billing available',
       breadcrumbHome: 'Home',
       breadcrumb: 'Pricing',
       compare: 'Compare plans',
       compareSubtitle: 'Local business leads, enriched data, AI analysis and integrations per plan.',
-      addOnsTitle: 'Complete your plan with add-ons',
-      addOnsSubtitle: 'Add specialized capabilities when you need them.',
+      addOnsTitle: 'Power up your plan',
+      addOnsSubtitle: 'Add email campaigns to contact more leads automatically.',
       faqTitle: 'Frequently asked questions',
-      faqSubtitle: 'Pricing, billing and add-ons',
-      faqDescription: 'Everything you need to know before starting your free trial.',
-      ctaEyebrow: 'Join sales experts',
-      ctaTitle: 'Multiply your qualified leads',
-      ctaDescription: 'Automate follow-ups, organize your pipeline and convert more opportunities into meetings.',
-      ctaButton1: 'Try free',
-      ctaButton2: 'Talk to sales'
+      faqSubtitle: 'Pricing, results and billing',
+      faqDescription: 'Everything you need to know before getting started.',
+      ctaEyebrow: 'Try 7 days free',
+      ctaTitle: 'Start closing more meetings this week',
+      ctaDescription: 'Setup in 10 minutes. First sample leads from your area the same day.',
+      ctaButton1: 'Start free trial',
+      ctaButton2: 'Watch 3-min demo'
     }
   }
 
   const addOns = {
     ca: [
       {
-        title: 'LeadBooster',
-        description: 'Captura més prospectes amb formularis, xatbot i prospecció.',
-        price: 'Des de 32,50 €'
+        title: 'Campanyes Email',
+        description: 'Envia seqüències d\'email automatitzades als teus leads. Inclou 2.000 emails/mes, plantilles personalitzables i seguiment de respostes.',
+        price: '€29/mes'
       },
       {
-        title: 'Projects',
-        description: 'Gestió de projectes per entregar treballs i fer-ne seguiment.',
-        price: 'Des de 6,67 €'
+        title: 'Leads Extra',
+        description: 'Necessites més leads? Afegeix 500 leads addicionals al teu pla mensual per ampliar el teu pipeline.',
+        price: '€29/pack'
       },
       {
-        title: 'Campaigns',
-        description: 'Envia campanyes de màrqueting per email amb segmentació.',
-        price: 'Des de 13,33 €'
-      },
-      {
-        title: 'Web Visitors',
-        description: 'Descobreix qui visita el teu web i prioritza contactes.',
-        price: 'Des de 41 €'
-      },
-      {
-        title: 'Smart Docs',
-        description: 'Gestiona documents i propostes en un sol lloc.',
-        price: 'Des de 32,50 €'
+        title: 'Informes IA Extra',
+        description: 'Més anàlisis IA per preparar trucades. Pack de 100 informes addicionals amb context, objeccions i angles de contacte.',
+        price: '€19/pack'
       }
     ],
     es: [
       {
-        title: 'LeadBooster',
-        description: 'Captura más prospectos con formularios, chatbot y prospección.',
-        price: 'Desde 32,50 €'
+        title: 'Campañas Email',
+        description: 'Envía secuencias de email automatizadas a tus leads. Incluye 2.000 emails/mes, plantillas personalizables y seguimiento de respuestas.',
+        price: '€29/mes'
       },
       {
-        title: 'Projects',
-        description: 'Gestión de proyectos para entregar trabajos y hacer seguimiento.',
-        price: 'Desde 6,67 €'
+        title: 'Leads Extra',
+        description: '¿Necesitas más leads? Añade 500 leads adicionales a tu plan mensual para ampliar tu pipeline.',
+        price: '€29/pack'
       },
       {
-        title: 'Campaigns',
-        description: 'Envía campañas de marketing por email con segmentación.',
-        price: 'Desde 13,33 €'
-      },
-      {
-        title: 'Web Visitors',
-        description: 'Descubre quién visita tu web y prioriza contactos.',
-        price: 'Desde 41 €'
-      },
-      {
-        title: 'Smart Docs',
-        description: 'Gestiona documentos y propuestas en un solo lugar.',
-        price: 'Desde 32,50 €'
+        title: 'Informes IA Extra',
+        description: 'Más análisis IA para preparar llamadas. Pack de 100 informes adicionales con contexto, objeciones y ángulos de contacto.',
+        price: '€19/pack'
       }
     ],
     en: [
       {
-        title: 'LeadBooster',
-        description: 'Capture more prospects with forms, chatbot and prospecting.',
-        price: 'From €32.50'
+        title: 'Email Campaigns',
+        description: 'Send automated email sequences to your leads. Includes 2,000 emails/month, customizable templates and response tracking.',
+        price: '€29/month'
       },
       {
-        title: 'Projects',
-        description: 'Project management to deliver work and track outcomes.',
-        price: 'From €6.67'
+        title: 'Extra Leads',
+        description: 'Need more leads? Add 500 additional leads to your monthly plan to expand your pipeline.',
+        price: '€29/pack'
       },
       {
-        title: 'Campaigns',
-        description: 'Send email marketing campaigns with segmentation.',
-        price: 'From €13.33'
-      },
-      {
-        title: 'Web Visitors',
-        description: 'See who visits your website and prioritize contacts.',
-        price: 'From €41'
-      },
-      {
-        title: 'Smart Docs',
-        description: 'Manage documents and proposals in one place.',
-        price: 'From €32.50'
+        title: 'Extra AI Reports',
+        description: 'More AI analyses to prepare calls. Pack of 100 additional reports with context, objections and contact angles.',
+        price: '€19/pack'
       }
     ]
   }
@@ -297,7 +267,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
                 {pageTexts[validLocale].ctaDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/get-started" className="btn-primary bg-white text-primary-600 hover:bg-primary-50">
+                <Link href="https://app.nextleadin.com/register" className="btn-primary bg-white text-primary-600 hover:bg-primary-50">
                   {pageTexts[validLocale].ctaButton1}
                 </Link>
                 <Link href="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600">

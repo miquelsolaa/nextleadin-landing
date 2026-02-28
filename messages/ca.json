@@ -2,6 +2,9 @@
   "common": {
     "brand": "NextLeadIn",
     "scrollToTop": "Tornar a dalt",
+    "startFreeTrial": "Prova Gratuïta",
+    "learnMore": "Saber Més",
+    "contactSales": "Contacta Vendes",
     "cta": {
       "getStarted": "Comença ara",
       "talkToSales": "Parla amb vendes",
@@ -146,6 +149,34 @@
       "description": "Guies i insights per trobar negocis locals, analitzar ressenyes i tancar més oportunitats.",
       "cta": "Veure tots els articles",
       "readMore": "Llegir més"
+    },
+    "trustedBy": {
+      "title": "Equips que ja estan generant oportunitats",
+      "titleHighlight": "amb NextLeadIn",
+      "clients": {
+        "summaCommerce": {
+          "name": "Summa Commerce",
+          "description": "Logística i comerç internacional"
+        },
+        "clManager": {
+          "name": "CLManager",
+          "description": "SaaS per a gestió d'òptiques"
+        }
+      },
+      "metrics": {
+        "leads": {
+          "value": "+2.400",
+          "label": "leads qualificats generats"
+        },
+        "time": {
+          "value": "-40%",
+          "label": "temps dedicat a prospecció manual"
+        },
+        "implementation": {
+          "value": "<7",
+          "label": "dies per implementar"
+        }
+      }
     }
   },
   "metadata": {

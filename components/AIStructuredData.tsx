@@ -96,7 +96,7 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
             : 'Local business leads platform for B2B sales teams and agencies.',
         sameAs: [
           'https://linkedin.com/company/nextleadin',
-          'https://twitter.com/nextleadin'
+          'https://instagram.com/nextleadin'
         ]
       })
 
@@ -167,7 +167,7 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
         ],
         sameAs: [
           'https://linkedin.com/company/nextleadin',
-          'https://twitter.com/nextleadin'
+          'https://instagram.com/nextleadin'
         ]
       })
     }

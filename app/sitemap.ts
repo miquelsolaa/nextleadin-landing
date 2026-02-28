@@ -9,6 +9,10 @@ import {
 } from '@/lib/blog'
 import { getTagSlug } from '@/lib/blog-tags'
 import { getAllComparisonSlugs, getComparisonUrl } from '@/lib/comparisons'
+import { getAllIndustrySlugs } from '@/lib/industries'
+import { getAllSolutionSlugs } from '@/lib/solutions'
+import { getAllFeatureSlugs } from '@/lib/features'
+import { getAllLocationSlugs } from '@/lib/locations'
 
 export const dynamic = 'force-static'
 
@@ -67,6 +71,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/industries', priority: 0.75, changeFrequency: 'weekly' as const },
+    { path: '/solutions', priority: 0.75, changeFrequency: 'weekly' as const },
+    { path: '/features', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/locations', priority: 0.7, changeFrequency: 'weekly' as const },
+    { path: '/resources', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/resources/roi-calculator', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/privacy-policy', priority: 0.2, changeFrequency: 'yearly' as const },
     { path: '/terms-and-conditions', priority: 0.2, changeFrequency: 'yearly' as const },
     { path: '/cookie-policy', priority: 0.2, changeFrequency: 'yearly' as const },
@@ -127,12 +137,64 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Industries URLs (multiidioma)
+  const allIndustrySlugs = getAllIndustrySlugs()
+  const industryUrls = allIndustrySlugs.map(({ slug, locale }) => {
+    const localePath = locale === 'ca' ? '' : `/${locale}`
+    return {
+      url: `${baseUrl}${localePath}/industries/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }
+  })
+
+  // Solutions URLs (multiidioma)
+  const allSolutionSlugsData = getAllSolutionSlugs()
+  const solutionUrls = allSolutionSlugsData.map(({ slug, locale }) => {
+    const localePath = locale === 'ca' ? '' : `/${locale}`
+    return {
+      url: `${baseUrl}${localePath}/solutions/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }
+  })
+
+  // Features URLs (multiidioma)
+  const allFeatureSlugsData = getAllFeatureSlugs()
+  const featureUrls = locales.flatMap(locale => {
+    const localePath = locale === 'ca' ? '' : `/${locale}`
+    return allFeatureSlugsData.map(slug => ({
+      url: `${baseUrl}${localePath}/features/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    }))
+  })
+
+  // Locations URLs (multiidioma)
+  const allLocationSlugsData = getAllLocationSlugs()
+  const locationUrls = allLocationSlugsData.map(({ slug, locale }) => {
+    const localePath = locale === 'ca' ? '' : `/${locale}`
+    return {
+      url: `${baseUrl}${localePath}/locations/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.65,
+    }
+  })
+
   return [
     ...staticUrls,
     ...blogUrls,
     ...categoryUrls,
     ...tagUrls,
     ...comparisonUrls,
+    ...industryUrls,
+    ...solutionUrls,
+    ...featureUrls,
+    ...locationUrls,
   ]
 }
 

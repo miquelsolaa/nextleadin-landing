@@ -23,32 +23,107 @@
   @apply mb-0;
 }
 
-/* Blockquotes de CTA (amb emoji) */
+/* ============================================
+   CTAs INLINE PER ARTICLES DE BLOG
+   ============================================
+   
+   Sintaxi per crear un CTA inline dins del Markdown:
+   
+   > **🚀 Títol del CTA**
+   >
+   > Text descriptiu amb més detalls sobre l'oferta o benefici.
+   >
+   > [Text del botó](/contact)
+   
+   NOTES:
+   - El blockquote ha de començar amb **text en negreta** (strong)
+   - Es pot afegir un emoji al títol per més impacte visual
+   - L'enllaç es converteix automàticament en botó
+   - El CTA apareixerà amb gradient verd i estil destacat
+   
+   Per desactivar el CTA automàtic al final de l'article,
+   afegir al frontmatter: showCTA: false
+   ============================================ */
+
+/* Blockquotes de CTA (amb strong al principi) */
 .prose blockquote:has(strong:first-child) {
-  @apply border-l-4 border-green-600 bg-green-100 px-6 py-6 rounded-lg my-8;
+  @apply border-l-0 border-0 rounded-xl my-10 p-0;
   @apply text-gray-800 not-italic;
-  @apply shadow-md;
+  @apply shadow-lg overflow-hidden;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #d1fae5 100%);
+  position: relative;
+}
+
+.prose blockquote:has(strong:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #16a34a 0%, #059669 100%);
+}
+
+.prose blockquote:has(strong:first-child)::after {
+  content: '🚀';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  opacity: 0.3;
+}
+
+.prose blockquote:has(strong:first-child) p {
+  @apply px-6 py-0;
+}
+
+.prose blockquote:has(strong:first-child) p:first-child {
+  @apply pt-6;
+}
+
+.prose blockquote:has(strong:first-child) p:last-child {
+  @apply pb-6;
 }
 
 .prose blockquote:has(strong:first-child) strong {
-  @apply text-green-800 text-lg font-semibold;
+  @apply text-green-800 text-xl font-bold block mb-2;
 }
 
 .prose blockquote:has(strong:first-child) a {
-  @apply bg-green-600 text-white px-4 py-2 rounded-lg;
-  @apply font-semibold hover:bg-green-700;
-  @apply transition-colors duration-200;
-  @apply inline-block mt-2;
+  @apply bg-green-600 text-white px-6 py-3 rounded-lg;
+  @apply font-semibold hover:bg-green-700 no-underline;
+  @apply transition-all duration-200;
+  @apply inline-flex items-center mt-3;
+  @apply shadow-md hover:shadow-lg;
 }
 
-/* CTAs i enllaços destacats */
+.prose blockquote:has(strong:first-child) a:hover {
+  @apply transform scale-105;
+}
+
+/* CTAs i enllaços destacats (classe explícita) */
 .prose .cta {
-  @apply bg-green-600 text-white px-6 py-4 rounded-lg my-6 text-center;
+  @apply rounded-xl my-10 text-center;
   @apply font-semibold text-lg;
+  @apply shadow-lg overflow-hidden;
+  @apply p-8;
+  background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+}
+
+.prose .cta p {
+  @apply text-white mb-0;
+}
+
+.prose .cta strong {
+  @apply text-white text-2xl font-bold block mb-2;
 }
 
 .prose .cta a {
-  @apply text-white hover:text-green-100 no-underline;
+  @apply bg-white text-green-700 px-6 py-3 rounded-lg;
+  @apply font-semibold hover:bg-green-50 no-underline;
+  @apply transition-all duration-200;
+  @apply inline-flex items-center mt-4;
+  @apply shadow-md hover:shadow-lg;
 }
 
 /* Taules millorades */

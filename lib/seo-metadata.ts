@@ -897,6 +897,273 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     }
   },
+  features: {
+    ca: {
+      title: 'Funcionalitats de Generació de Leads amb IA | NextLeadIn',
+      description: 'Eines per trobar negocis locals: anàlisi de ressenyes de Google amb IA, enriquiment de dades amb telèfon i email, cerca d\'emails verificats i exportació directa a HubSpot, Pipedrive i CRM.',
+      keywords: [
+        'funcionalitats generació leads',
+        'anàlisi ressenyes Google IA',
+        'enriquiment dades negocis',
+        'cerca emails verificats',
+        'exportació CRM HubSpot',
+        'eines prospecció B2B',
+        'nextleadin funcionalitats'
+      ],
+      canonical: 'https://nextleadin.com/features',
+      ogImage: '/images/og/features-ca.jpg'
+    },
+    es: {
+      title: 'Funcionalidades de Generación de Leads con IA | NextLeadIn',
+      description: 'Herramientas para encontrar negocios locales: análisis de reseñas de Google con IA, enriquecimiento de datos con teléfono y email, búsqueda de emails verificados y exportación directa a HubSpot, Pipedrive y CRM.',
+      keywords: [
+        'funcionalidades generación leads',
+        'análisis reseñas Google IA',
+        'enriquecimiento datos negocios',
+        'búsqueda emails verificados',
+        'exportación CRM HubSpot',
+        'herramientas prospección B2B',
+        'nextleadin funcionalidades'
+      ],
+      canonical: 'https://nextleadin.com/es/features',
+      ogImage: '/images/og/features-es.jpg'
+    },
+    en: {
+      title: 'AI-Powered Lead Generation Features | NextLeadIn',
+      description: 'Tools to find local businesses: Google review analysis with AI, data enrichment with phone and email, verified email finder, and direct export to HubSpot, Pipedrive and CRM.',
+      keywords: [
+        'lead generation features',
+        'Google review analysis AI',
+        'business data enrichment',
+        'verified email finder',
+        'CRM export HubSpot',
+        'B2B prospecting tools',
+        'nextleadin features'
+      ],
+      canonical: 'https://nextleadin.com/en/features',
+      ogImage: '/images/og/features-en.jpg'
+    }
+  },
+  locations: {
+    ca: {
+      title: 'Leads de Negocis Locals per Ciutat i Zona | NextLeadIn',
+      description: 'Troba negocis locals a Barcelona, Madrid i tota Espanya segmentats per barri, codi postal o radi. Dades amb telèfon, email i anàlisi de ressenyes de Google amb IA.',
+      keywords: [
+        'leads negocis locals ciutat',
+        'leads Barcelona negocis',
+        'leads Madrid empreses',
+        'negocis locals per zona',
+        'prospecció geogràfica Espanya',
+        'segmentació per barri',
+        'leads per codi postal'
+      ],
+      canonical: 'https://nextleadin.com/locations',
+      ogImage: '/images/og/locations-ca.jpg'
+    },
+    es: {
+      title: 'Leads de Negocios Locales por Ciudad y Zona | NextLeadIn',
+      description: 'Encuentra negocios locales en Barcelona, Madrid y toda España segmentados por barrio, código postal o radio. Datos con teléfono, email y análisis de reseñas de Google con IA.',
+      keywords: [
+        'leads negocios locales ciudad',
+        'leads Barcelona negocios',
+        'leads Madrid empresas',
+        'negocios locales por zona',
+        'prospección geográfica España',
+        'segmentación por barrio',
+        'leads por código postal'
+      ],
+      canonical: 'https://nextleadin.com/es/locations',
+      ogImage: '/images/og/locations-es.jpg'
+    },
+    en: {
+      title: 'Local Business Leads by City and Area | NextLeadIn',
+      description: 'Find local businesses in Barcelona, Madrid, and all of Spain segmented by neighborhood, postal code, or radius. Data with phone, email, and AI-powered Google review analysis.',
+      keywords: [
+        'local business leads city',
+        'Barcelona business leads',
+        'Madrid company leads',
+        'local businesses by area',
+        'geographic prospecting Spain',
+        'neighborhood segmentation',
+        'leads by postal code'
+      ],
+      canonical: 'https://nextleadin.com/en/locations',
+      ogImage: '/images/og/locations-en.jpg'
+    }
+  },
+  solutions: {
+    ca: {
+      title: 'Solucions per a SDRs, Agències i Equips Comercials | NextLeadIn',
+      description: 'Generació de leads de negocis locals per a SDRs que prospecten, agències de màrqueting que gestionen múltiples clients i equips comercials B2B. Llistes preparades per trucar amb context IA.',
+      keywords: [
+        'solucions SDR leads',
+        'leads per agències màrqueting',
+        'prospecció equips comercials',
+        'generació leads B2B',
+        'llistes trucades fred',
+        'context IA per vendes',
+        'gestió múltiples clients leads'
+      ],
+      canonical: 'https://nextleadin.com/solutions',
+      ogImage: '/images/og/solutions-ca.jpg'
+    },
+    es: {
+      title: 'Soluciones para SDRs, Agencias y Equipos Comerciales | NextLeadIn',
+      description: 'Generación de leads de negocios locales para SDRs que prospectan, agencias de marketing que gestionan múltiples clientes y equipos comerciales B2B. Listas preparadas para llamar con contexto IA.',
+      keywords: [
+        'soluciones SDR leads',
+        'leads para agencias marketing',
+        'prospección equipos comerciales',
+        'generación leads B2B',
+        'listas llamadas frío',
+        'contexto IA para ventas',
+        'gestión múltiples clientes leads'
+      ],
+      canonical: 'https://nextleadin.com/es/solutions',
+      ogImage: '/images/og/solutions-es.jpg'
+    },
+    en: {
+      title: 'Solutions for SDRs, Agencies and Sales Teams | NextLeadIn',
+      description: 'Local business lead generation for SDRs prospecting, marketing agencies managing multiple clients, and B2B sales teams. Ready-to-call lists with AI-powered context.',
+      keywords: [
+        'SDR lead solutions',
+        'leads for marketing agencies',
+        'sales team prospecting',
+        'B2B lead generation',
+        'cold calling lists',
+        'AI context for sales',
+        'multi-client lead management'
+      ],
+      canonical: 'https://nextleadin.com/en/solutions',
+      ogImage: '/images/og/solutions-en.jpg'
+    }
+  },
+  industries: {
+    ca: {
+      title: 'Leads de Negocis Locals per Sector i Indústria | NextLeadIn',
+      description: 'Genera llistes de restaurants, gimnasos, clíniques, tallers mecànics i altres negocis locals per sector. Dades amb telèfon, email i anàlisi de ressenyes de Google per preparar trucades en fred.',
+      keywords: [
+        'leads negocis locals sector',
+        'leads restaurants hostaleria',
+        'leads gimnasos fitness',
+        'leads clíniques salut',
+        'leads tallers mecànics',
+        'prospecció per indústria',
+        'negocis locals per nínxol'
+      ],
+      canonical: 'https://nextleadin.com/industries',
+      ogImage: '/images/og/industries-ca.jpg'
+    },
+    es: {
+      title: 'Leads de Negocios Locales por Sector e Industria | NextLeadIn',
+      description: 'Genera listas de restaurantes, gimnasios, clínicas, talleres mecánicos y otros negocios locales por sector. Datos con teléfono, email y análisis de reseñas de Google para preparar llamadas en frío.',
+      keywords: [
+        'leads negocios locales sector',
+        'leads restaurantes hostelería',
+        'leads gimnasios fitness',
+        'leads clínicas salud',
+        'leads talleres mecánicos',
+        'prospección por industria',
+        'negocios locales por nicho'
+      ],
+      canonical: 'https://nextleadin.com/es/industries',
+      ogImage: '/images/og/industries-es.jpg'
+    },
+    en: {
+      title: 'Local Business Leads by Sector and Industry | NextLeadIn',
+      description: 'Generate lists of restaurants, gyms, clinics, auto repair shops and other local businesses by sector. Data with phone, email and Google review analysis to prepare cold calls.',
+      keywords: [
+        'local business leads sector',
+        'restaurant hospitality leads',
+        'gym fitness leads',
+        'clinic health leads',
+        'auto repair shop leads',
+        'industry prospecting',
+        'local businesses by niche'
+      ],
+      canonical: 'https://nextleadin.com/en/industries',
+      ogImage: '/images/og/industries-en.jpg'
+    }
+  },
+  resources: {
+    ca: {
+      title: 'Recursos Gratuïts per a Generació de Leads | NextLeadIn',
+      description: 'Calculadora de ROI, plantilles i eines gratuïtes per optimitzar la teva estratègia de generació de leads de negocis locals.',
+      keywords: [
+        'recursos generació leads',
+        'calculadora ROI leads',
+        'plantilles prospecció',
+        'eines gratuïtes vendes',
+        'recursos B2B gratuïts'
+      ],
+      canonical: 'https://nextleadin.com/resources',
+      ogImage: '/images/og/resources-ca.jpg'
+    },
+    es: {
+      title: 'Recursos Gratuitos para Generación de Leads | NextLeadIn',
+      description: 'Calculadora de ROI, plantillas y herramientas gratuitas para optimizar tu estrategia de generación de leads de negocios locales.',
+      keywords: [
+        'recursos generación leads',
+        'calculadora ROI leads',
+        'plantillas prospección',
+        'herramientas gratuitas ventas',
+        'recursos B2B gratuitos'
+      ],
+      canonical: 'https://nextleadin.com/es/resources',
+      ogImage: '/images/og/resources-es.jpg'
+    },
+    en: {
+      title: 'Free Resources for Lead Generation | NextLeadIn',
+      description: 'ROI calculator, templates and free tools to optimize your local business lead generation strategy.',
+      keywords: [
+        'lead generation resources',
+        'lead ROI calculator',
+        'prospecting templates',
+        'free sales tools',
+        'free B2B resources'
+      ],
+      canonical: 'https://nextleadin.com/en/resources',
+      ogImage: '/images/og/resources-en.jpg'
+    }
+  },
+  'roi-calculator': {
+    ca: {
+      title: 'Calculadora de ROI per a Generació de Leads | NextLeadIn',
+      description: 'Calcula el retorn de la inversió de la teva estratègia de generació de leads. Descobreix quant pots estalviar amb NextLeadIn.',
+      keywords: [
+        'calculadora ROI leads',
+        'retorn inversió prospecció',
+        'càlcul ROI vendes B2B',
+        'estalvi generació leads'
+      ],
+      canonical: 'https://nextleadin.com/resources/roi-calculator',
+      ogImage: '/images/og/roi-calculator-ca.jpg'
+    },
+    es: {
+      title: 'Calculadora de ROI para Generación de Leads | NextLeadIn',
+      description: 'Calcula el retorno de la inversión de tu estrategia de generación de leads. Descubre cuánto puedes ahorrar con NextLeadIn.',
+      keywords: [
+        'calculadora ROI leads',
+        'retorno inversión prospección',
+        'cálculo ROI ventas B2B',
+        'ahorro generación leads'
+      ],
+      canonical: 'https://nextleadin.com/es/resources/roi-calculator',
+      ogImage: '/images/og/roi-calculator-es.jpg'
+    },
+    en: {
+      title: 'Lead Generation ROI Calculator | NextLeadIn',
+      description: 'Calculate the return on investment of your lead generation strategy. Discover how much you can save with NextLeadIn.',
+      keywords: [
+        'lead ROI calculator',
+        'prospecting return on investment',
+        'B2B sales ROI calculation',
+        'lead generation savings'
+      ],
+      canonical: 'https://nextleadin.com/en/resources/roi-calculator',
+      ogImage: '/images/og/roi-calculator-en.jpg'
+    }
+  },
   faq: {
     ca: {
       title: 'Preguntes freqüents sobre leads B2B i IA',

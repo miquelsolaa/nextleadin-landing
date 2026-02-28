@@ -2,6 +2,9 @@
   "common": {
     "brand": "NextLeadIn",
     "scrollToTop": "Back to top",
+    "startFreeTrial": "Start Free Trial",
+    "learnMore": "Learn More",
+    "contactSales": "Contact Sales",
     "cta": {
       "getStarted": "Get started",
       "talkToSales": "Talk to sales",
@@ -146,6 +149,34 @@
       "description": "Guides and insights to find local businesses, analyze reviews and close more opportunities.",
       "cta": "See all articles",
       "readMore": "Read more"
+    },
+    "trustedBy": {
+      "title": "Teams already generating opportunities",
+      "titleHighlight": "with NextLeadIn",
+      "clients": {
+        "summaCommerce": {
+          "name": "Summa Commerce",
+          "description": "Logistics & International Trade"
+        },
+        "clManager": {
+          "name": "CLManager",
+          "description": "SaaS for Optical Store Management"
+        }
+      },
+      "metrics": {
+        "leads": {
+          "value": "+2,400",
+          "label": "qualified leads generated"
+        },
+        "time": {
+          "value": "-40%",
+          "label": "time spent on manual prospecting"
+        },
+        "implementation": {
+          "value": "<7",
+          "label": "days to implement"
+        }
+      }
     }
   },
   "metadata": {

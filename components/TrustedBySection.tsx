@@ -2,336 +2,176 @@
 
 import Image from 'next/image'
 import { useRef, useEffect, useState, useCallback } from 'react'
-import styles from './TrustedBySection.module.css'
+import { useTranslations } from 'next-intl'
+
+interface SlideItem {
+  type: 'client' | 'metric'
+  id: string
+}
 
 const TrustedBySection = () => {
+  const t = useTranslations('home.trustedBy')
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [dragStartX, setDragStartX] = useState(0)
-  const [velocity, setVelocity] = useState(0)
-  const [lastX, setLastX] = useState(0)
-  const [lastTime, setLastTime] = useState(0)
   const sliderRef = useRef<HTMLDivElement>(null)
-  const animationRef = useRef<number | null>(null)
-  const [hoveredLogoIndex, setHoveredLogoIndex] = useState<number | null>(null)
-  
-  const partnerLogos = [
+
+  const clients = [
     {
-      src: "/images/testimonials/clmanager.png",
-      alt: "Partner logo",
-      width: 150,
-      height: 150,
-      title: "Logo #1"
+      id: 'summaCommerce',
+      logo: '/images/testimonials/sumacommerce.png',
     },
     {
-      src: "/images/testimonials/sumacommerce.png",
-      alt: "Partner logo",
-      width: 150,
-      height: 150,
-      title: "Logo #2"
+      id: 'clManager',
+      logo: '/images/testimonials/clmanager.png',
     },
-    {
-      src: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/logo-3-black.svg",
-      alt: "Partner logo",
-      width: 110,
-      height: 37,
-      title: "Logo #3"
-    },
-    {
-      src: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/logo-4-black.svg",
-      alt: "Partner logo",
-      width: 123,
-      height: 39,
-      title: "Logo #4"
-    },
-    {
-      src: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/logo-5-black.svg",
-      alt: "Partner logo",
-      width: 121,
-      height: 26,
-      title: "Logo #5"
-    }
   ]
 
-  // Auto-scroll effect - moviment automàtic continu
+  const metrics = [
+    { id: 'leads', icon: 'target' },
+    { id: 'time', icon: 'clock' },
+    { id: 'implementation', icon: 'rocket' },
+  ]
+
+  const slideItems: SlideItem[] = [
+    { type: 'client', id: 'summaCommerce' },
+    { type: 'client', id: 'clManager' },
+    { type: 'metric', id: 'leads' },
+    { type: 'metric', id: 'time' },
+    { type: 'metric', id: 'implementation' },
+  ]
+
+  const infiniteSlides: SlideItem[] = []
+  for (let i = 0; i < 10; i++) {
+    infiniteSlides.push(...slideItems)
+  }
+
   useEffect(() => {
-    if (isDragging) return
-    
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex: number) => {
-        // Incrementa l'índex per crear moviment continu
-        const newIndex = prevIndex + 0.095 // Moviment més lent
-        return newIndex
-      })
-    }, 100) // Interval menys freqüent per moviment més lent
+      setCurrentIndex((prev) => prev + 0.02)
+    }, 50)
 
     return () => clearInterval(interval)
-  }, [isDragging])
-
-  // Smooth animation with inertia
-  const animateToIndex = useCallback((targetIndex: number, duration: number = 500) => {
-    const startIndex = currentIndex
-    const startTime = performance.now()
-    
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      
-      // Easing function for smooth deceleration
-      const easeOut = 1 - Math.pow(1 - progress, 3)
-      const currentIndex = startIndex + (targetIndex - startIndex) * easeOut
-      
-      setCurrentIndex(currentIndex)
-      
-      if (progress < 1) {
-        animationRef.current = requestAnimationFrame(animate)
-      }
-    }
-    
-    animationRef.current = requestAnimationFrame(animate)
-  }, [currentIndex])
-
-  // Mouse events for drag and drop
-  const handleMouseDown = (e: React.MouseEvent, logoIndex: number) => {
-    setIsDragging(true)
-    setStartX(e.pageX)
-    setDragStartX(currentIndex)
-    setLastX(e.pageX)
-    setLastTime(performance.now())
-    setVelocity(0)
-    e.preventDefault() // Prevent page scroll
-    e.stopPropagation() // Stop event bubbling
-    return false // Prevent default behavior
-  }
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return
-    
-    e.preventDefault() // Prevent page scroll while dragging
-    e.stopPropagation() // Stop event bubbling
-    
-    const currentTime = performance.now()
-    const deltaX = e.pageX - startX
-    const slideWidth = 187 // 172px width + 15px margin
-    
-    // Calculate velocity for momentum
-    if (currentTime - lastTime > 0) {
-      const newVelocity = (e.pageX - lastX) / (currentTime - lastTime)
-      setVelocity(newVelocity)
-    }
-    
-    setLastX(e.pageX)
-    setLastTime(currentTime)
-    
-    // Smooth drag with resistance - allow unlimited movement to the right
-    const resistance = 0.8
-    const newIndex = dragStartX - (deltaX * resistance / slideWidth)
-    
-    // Allow unlimited movement to the right, only limit left movement
-    const clampedIndex = Math.max(0, newIndex)
-    setCurrentIndex(clampedIndex)
-    
-    return false // Prevent default behavior
-  }
-
-  const handleMouseUp = (e: React.MouseEvent) => {
-    if (isDragging) {
-      e.preventDefault() // Prevent page scroll
-      e.stopPropagation() // Stop event bubbling
-    }
-    
-    setIsDragging(false)
-    
-    // Don't snap back - let logos stay exactly where they are
-    // The logos will stay at the current position without forcing them back
-    
-    // Aplicar momentum suau quan l'usuari fa drag
-    if (Math.abs(velocity) > 1.0) {
-      const slideWidth = 187
-      const momentumDistance = velocity * 30 // Sensibilitat ajustada
-      const targetIndex = currentIndex - (momentumDistance / slideWidth)
-      
-      // Aplicar momentum si hi ha moviment significatiu
-      if (Math.abs(targetIndex - currentIndex) > 0.3) {
-        const finalIndex = Math.max(0, targetIndex)
-        animateToIndex(finalIndex, 300)
-      }
-    }
-    
-    return false // Prevent default behavior
-  }
-
-  const handleMouseEnter = (logoIndex: number) => {
-    setHoveredLogoIndex(logoIndex)
-  }
-
-  const handleMouseLeave = (e: React.MouseEvent) => {
-    setHoveredLogoIndex(null)
-    if (isDragging) {
-      e.preventDefault() // Prevent page scroll
-      e.stopPropagation() // Stop event bubbling
-      handleMouseUp(e)
-    }
-  }
-
-  // Touch events for mobile
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true)
-    setStartX(e.touches[0].pageX)
-    setDragStartX(currentIndex)
-    setLastX(e.touches[0].pageX)
-    setLastTime(performance.now())
-    setVelocity(0)
-    e.preventDefault() // Prevent page scroll
-    e.stopPropagation() // Stop event bubbling
-    return false // Prevent default behavior
-  }
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return
-    
-    e.preventDefault() // Prevent page scroll while dragging
-    e.stopPropagation() // Stop event bubbling
-    
-    const currentTime = performance.now()
-    const deltaX = e.touches[0].pageX - startX
-    const slideWidth = 187
-    
-    // Calculate velocity for momentum
-    if (currentTime - lastTime > 0) {
-      const newVelocity = (e.touches[0].pageX - lastX) / (currentTime - lastTime)
-      setVelocity(newVelocity)
-    }
-    
-    setLastX(e.touches[0].pageX)
-    setLastTime(currentTime)
-    
-    // Smooth drag with resistance - allow unlimited movement to the right
-    const resistance = 0.8
-    const newIndex = dragStartX - (deltaX * resistance / slideWidth)
-    
-    // Allow unlimited movement to the right, only limit left movement
-    const clampedIndex = Math.max(0, newIndex)
-    setCurrentIndex(clampedIndex)
-    
-    return false // Prevent default behavior
-  }
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (isDragging) {
-      e.preventDefault() // Prevent page scroll
-      e.stopPropagation() // Stop event bubbling
-      
-      // Don't snap back - let logos stay exactly where they are
-      setIsDragging(false)
-      
-      // Aplicar momentum suau quan l'usuari fa touch
-      if (Math.abs(velocity) > 1.0) {
-        const slideWidth = 187
-        const momentumDistance = velocity * 30 // Sensibilitat ajustada
-        const targetIndex = currentIndex - (momentumDistance / slideWidth)
-        
-        // Aplicar momentum si hi ha moviment significatiu
-        if (Math.abs(targetIndex - currentIndex) > 0.3) {
-          const finalIndex = Math.max(0, targetIndex)
-          animateToIndex(finalIndex, 300)
-        }
-      }
-    }
-    
-    return false // Prevent default behavior
-  }
-
-  // Cleanup animation on unmount
-  useEffect(() => {
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
-    }
   }, [])
 
-  // Calculate transform for infinite scrolling
-  const slideWidth = 187 // 172px width + 15px margin
-  
-  // Create a much longer array of logos for infinite scrolling
-  const infiniteLogos = []
-  for (let i = 0; i < 20; i++) {
-    infiniteLogos.push(...partnerLogos)
-  }
-  
-  // Allow unlimited movement to the right
+  const slideWidth = 280
   const translateX = -currentIndex * slideWidth
 
+  const getClient = (id: string) => clients.find((c) => c.id === id)
+  const getMetric = (id: string) => metrics.find((m) => m.id === id)
+
+  const renderIcon = (iconType: string) => {
+    switch (iconType) {
+      case 'target':
+        return (
+          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        )
+      case 'clock':
+        return (
+          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        )
+      case 'rocket':
+        return (
+          <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        )
+      default:
+        return null
+    }
+  }
+
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="container-custom">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Text a l'esquerra */}
-          <div className="lg:w-auto">
-            <p className="text-gray-600 font-medium text-lg">Confien en nosaltres equips comercials d'alt rendiment:</p>
-          </div>
-          
-          {/* Carrusel a la dreta */}
-          <div className={`${styles['elementskit-clients-slider']} flex-1 lg:max-w-4xl`}>
-            <div 
-              ref={sliderRef}
-              className={`${styles['ekit-main-swiper']} ${isDragging ? 'cursor-grabbing dragging' : 'cursor-grab'}`}
-              onMouseDown={(e) => handleMouseDown(e, Math.floor(e.currentTarget.scrollLeft / 187))}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseLeave}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-              onDragStart={(e) => e.preventDefault()} // Prevent drag and drop
-              onDrop={(e) => e.preventDefault()} // Prevent drop
-              onDragOver={(e) => e.preventDefault()} // Prevent drag over
-              style={{ userSelect: 'none' }}
+        {/* Titular SaaS Premium */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
+            {t('title')}{' '}
+            <span className="text-primary-600">{t('titleHighlight')}</span>
+          </h2>
+        </div>
+
+        {/* Slider híbrid */}
+        <div className="relative">
+          {/* Gradient masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+          <div
+            ref={sliderRef}
+            className="overflow-hidden"
+          >
+            <div
+              className="flex gap-6"
+              style={{
+                transform: `translate3d(${translateX}px, 0, 0)`,
+                transition: 'transform 0.05s linear',
+              }}
             >
-              <div 
-                className={styles['swiper-wrapper']}
-                style={{
-                  transform: `translate3d(${translateX}px, 0px, 0px)`,
-                  transitionDuration: isDragging ? '0ms' : '300ms',
-                  transitionProperty: 'transform',
-                  transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                }}
-              >
-                {infiniteLogos.map((logo, index) => (
-                  <div 
-                    key={index} 
-                    className={styles['elementskit-client-slider-item']}
-                    style={{ width: '172px', marginRight: '15px' }}
-                    role="group"
-                    aria-label={`${index + 1} / ${infiniteLogos.length}`}
-                    data-swiper-slide-index={index}
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <div className={styles['swiper-slide-inner']}>
-                      <div className={`${styles['single-client']} ${styles['image-switcher']}`} title={logo.title}>
-                        <a href="#">
-                          <span className={styles['content-image']}>
-                            <Image
-                              src={logo.src}
-                              alt={logo.alt}
-                              width={logo.width}
-                              height={logo.height}
-                              className={`transition-all duration-300 ${
-                                (isDragging && hoveredLogoIndex === index)
-                                  ? 'filter-none opacity-100'
-                                  : 'filter grayscale opacity-60'
-                              }`}
-                            />
-                          </span>
-                        </a>
+              {infiniteSlides.map((slide, index) => {
+                if (slide.type === 'client') {
+                  const client = getClient(slide.id)
+                  if (!client) return null
+
+                  return (
+                    <div
+                      key={`${slide.id}-${index}`}
+                      className="flex-shrink-0 w-[256px] bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden">
+                          <Image
+                            src={client.logo}
+                            alt={t(`clients.${slide.id}.name`)}
+                            width={48}
+                            height={48}
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">
+                            {t(`clients.${slide.id}.name`)}
+                          </h3>
+                          <p className="text-sm text-gray-500">
+                            {t(`clients.${slide.id}.description`)}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  )
+                }
+
+                if (slide.type === 'metric') {
+                  const metric = getMetric(slide.id)
+                  if (!metric) return null
+
+                  return (
+                    <div
+                      key={`${slide.id}-${index}`}
+                      className="flex-shrink-0 w-[256px] bg-gradient-to-br from-primary-50 to-white rounded-2xl border border-primary-100 p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm">
+                          {renderIcon(metric.icon)}
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-2xl font-bold text-primary-600">
+                            {t(`metrics.${slide.id}.value`)}
+                          </p>
+                          <p className="text-sm text-gray-600 leading-tight">
+                            {t(`metrics.${slide.id}.label`)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+
+                return null
+              })}
             </div>
           </div>
         </div>

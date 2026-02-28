@@ -10,25 +10,25 @@ const CTASection = () => {
 
   const t = {
     es: {
-      kicker: 'Leads locales listos para llamar',
-      title: <>¿Preparado para multiplicar tus <span className="text-primary-200">reuniones con negocios locales</span>?</>,
-      desc: 'Pasa de buscar negocios uno a uno en directorios y listados a tener listas priorizadas con teléfono, informes IA y un workflow de llamadas en frío y emails ya montado.',
-      primary: 'Solicitar demo',
-      secondary: 'Hablar con ventas'
+      kicker: 'Prueba 7 días sin compromiso',
+      title: <>¿Listo para cerrar <span className="text-primary-200">3x más reuniones</span> este mes?</>,
+      desc: 'Únete a los equipos comerciales que ya generan 8+ reuniones/mes con NextLeadIn.',
+      primary: 'Probar 7 días gratis',
+      secondary: 'Hablar con un experto'
     },
     ca: {
-      kicker: 'Leads locals a punt per trucar',
-      title: <>Preparat per multiplicar les teves <span className="text-primary-200">reunions amb negocis locals</span>?</>,
-      desc: 'Passa de buscar negocis un a un en directoris i llistats a tenir llistes prioritzades amb telèfon, informes d’IA i un workflow de trucades en fred i emails ja muntat.',
-      primary: 'Sol·licitar demo',
-      secondary: 'Parlar amb vendes'
+      kicker: 'Prova 7 dies sense compromís',
+      title: <>Preparat per tancar <span className="text-primary-200">3x més reunions</span> aquest mes?</>,
+      desc: "Uneix-te als equips comercials que ja generen 8+ reunions/mes amb NextLeadIn.",
+      primary: 'Provar 7 dies gratis',
+      secondary: 'Parlar amb un expert'
     },
     en: {
-      kicker: 'Local leads ready to call',
-      title: <>Ready to multiply your <span className="text-primary-200">meetings with local businesses</span>?</>,
-      desc: 'Stop copying local business data by hand. Get prioritized lists with phone numbers, AI reports and a cold-calling and email workflow already set up.',
-      primary: 'Request demo',
-      secondary: 'Talk to sales'
+      kicker: 'Try 7 days free, no commitment',
+      title: <>Ready to close <span className="text-primary-200">3x more meetings</span> this month?</>,
+      desc: 'Join the sales teams already generating 8+ meetings/month with NextLeadIn.',
+      primary: 'Try 7 days free',
+      secondary: 'Talk to an expert'
     }
   }[locale]
 

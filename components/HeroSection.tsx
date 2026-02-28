@@ -19,53 +19,53 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
     titleSuffix: string
     description: string
     trust1: string
-    trust2: string
+    trust3: string
     emailLabel: string
     emailPlaceholder: string
     primaryCta: string
     helper: string
   }> = {
     es: {
-      badge: '📞 Leads de negocios locales listos para llamar',
-      titlePrefix: 'Genera leads de ',
-      animatedWords: ['restaurantes', 'talleres', 'comercios locales'],
-      titleMid: 'en España que ',
-      titleSuffix: 'LinkedIn no tiene',
-      description: 'NextLeadIn encuentra los negocios locales de tu territorio que otras bases B2B no tienen y los convierte en listas listas para llamar, con teléfono, contexto y análisis de reseñas con IA.',
-      trust1: 'Listas listas para llamar desde el primer día',
-      trust2: 'Cumple RGPD/LOPD para prospección B2B',
+      badge: '🎯 +8 reuniones/mes de media por usuario',
+      titlePrefix: 'Leads de ',
+      animatedWords: ['restaurantes', 'gimnasios', 'clínicas', 'comercios', 'talleres'],
+      titleMid: '',
+      titleSuffix: 'que LinkedIn no tiene',
+      description: 'Deja de perder 8 horas buscando a quién llamar. NextLeadIn te da leads locales cualificados con contexto IA para que cada llamada cuente. Nuestros usuarios cierran 3x más reuniones con la mitad del esfuerzo.',
+      trust1: '7 días gratis para probarlo',
+      trust3: 'ROI medio de 15x',
       emailLabel: 'Correo electrónico',
       emailPlaceholder: 'Introduce tu email de trabajo',
-      primaryCta: 'Solicitar demo',
-      helper: 'Te enviamos acceso a una demo guiada y primeros leads de prueba de tu zona.'
+      primaryCta: 'Ver leads de mi zona',
+      helper: 'Te enviamos leads de prueba de tu territorio en menos de 24h. Sin tarjeta, sin compromiso.'
     },
     ca: {
-      badge: '📞 Leads de negocis locals a punt per trucar',
-      titlePrefix: 'Genera leads de ',
-      animatedWords: ['restaurants', 'tallers', 'comerços locals'],
-      titleMid: 'que ',
-      titleSuffix: 'LinkedIn no té',
-      description: 'NextLeadIn troba els negocis locals del teu territori que altres bases B2B no tenen i els converteix en llistes a punt per trucar, amb telèfon, context i anàlisi de ressenyes amb IA.',
-      trust1: 'Llistes a punt per trucar des del primer dia',
-      trust2: 'Compliment RGPD/LOPD per a prospecció B2B',
+      badge: '🎯 +8 reunions/mes de mitjana per usuari',
+      titlePrefix: 'Leads de ',
+      animatedWords: ['restaurants', 'gimnasos', 'clíniques', 'comerços', 'tallers'],
+      titleMid: '',
+      titleSuffix: 'que LinkedIn no té',
+      description: 'Deixa de perdre 8 hores buscant a qui trucar. NextLeadIn et dona leads locals qualificats amb context IA perquè cada trucada compti. Els nostres usuaris tanquen 3x més reunions amb la meitat de l\'esforç.',
+      trust1: '7 dies gratis per provar-ho',
+      trust3: 'ROI mitjà de 15x',
       emailLabel: 'Adreça electrònica',
       emailPlaceholder: 'Introdueix el teu email de feina',
-      primaryCta: 'Sol·licitar demo',
-      helper: 'T\'enviem accés a una demo guiada i primers leads de prova de la teva zona.'
+      primaryCta: 'Veure leads de la meva zona',
+      helper: 'T\'enviem leads de prova del teu territori en menys de 24h. Sense targeta, sense compromís.'
     },
     en: {
-      badge: '📞 Local business leads ready to call',
-      titlePrefix: 'Generate leads from ',
-      animatedWords: ['restaurants', 'workshops', 'local shops'],
-      titleMid: 'that ',
-      titleSuffix: "LinkedIn doesn't have",
-      description: 'NextLeadIn turns hard-to-find local businesses into prioritized ready-to-call lists, with phone numbers, context and AI review analysis so you can start calling from day one.',
-      trust1: 'Ready-to-call lists from day one',
-      trust2: 'GDPR-compliant B2B prospecting',
+      badge: '🎯 +8 meetings/month average per user',
+      titlePrefix: 'Leads from ',
+      animatedWords: ['restaurants', 'gyms', 'clinics', 'retail stores', 'workshops'],
+      titleMid: '',
+      titleSuffix: 'that LinkedIn doesn\'t have',
+      description: 'Stop wasting 8 hours finding who to call. NextLeadIn gives you qualified local leads with AI context so every call counts. Our users book 3x more meetings with half the effort.',
+      trust1: '7-day free trial',
+      trust3: 'Average ROI of 15x',
       emailLabel: 'Email address',
       emailPlaceholder: 'Enter your work email',
-      primaryCta: 'Request demo',
-      helper: 'We’ll send you access to a guided demo and sample leads from your territory.'
+      primaryCta: 'See leads in my area',
+      helper: 'We send you sample leads from your territory in under 24h. No card, no commitment.'
     }
   }
 
@@ -123,11 +123,8 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
                   {animatedText}
                 </span>
                 <br />
-                {t.titleMid}
-                <span className="sm:whitespace-nowrap">
-                  <span className="relative inline-block after:block after:h-1 after:bg-green-500 after:rounded-full after:mt-1">
+                <span className="border-b-4 border-green-500 pb-1">
                   {t.titleSuffix}
-                  </span>
                 </span>
               </h1>
             </div>
@@ -163,8 +160,8 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
                 <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>{t.trust2}</span>
-              </div>  
+                <span>{t.trust3}</span>
+              </div>
             </div>
 
             {/* Email Form */}

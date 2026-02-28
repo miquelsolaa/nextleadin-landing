@@ -11,39 +11,39 @@ const ServicesSection = () => {
       return [
         {
           id: 'segmentacio',
-          title: 'Segmentación geográfica en España',
-          subtitle: 'Elige la zona y encuentra los negocios locales clave',
-          description: 'Barcelona, Madrid, Valencia o donde necesites. Localiza restaurantes, talleres y comercios con potencial dentro de tu territorio con filtros avanzados por zona y tipo de negocio.',
+          title: 'Ahorra 6 horas de búsqueda',
+          subtitle: '100 leads cualificados en 10 minutos',
+          description: 'Lo que antes te llevaba un día entero buscando en Google Maps, ahora son 10 minutos. Selecciona tu zona, define el sector y obtén leads con teléfono listos para llamar.',
           features: [
-            'Mapa y filtros por barrio, municipio y código postal',
-            'Volumen estimado de negocios locales disponibles para contactar',
-            'Exportación rápida a CSV y CRM para activar campañas'
+            'De 8 horas buscando a 10 minutos (ahorro del 99%)',
+            '100+ leads locales con teléfono verificado por búsqueda',
+            'Coste por lead: €0.05 vs €2-5 con alternativas'
           ],
           image: '/images/features/location.png',
           badge: null
         },
         {
           id: 'sector',
-          title: 'Selección de sector',
-          subtitle: 'Define nichos y verticales con precisión',
-          description: '¿Restaurantes vegetarianos? ¿Fabricantes de pressfittings? ¿Clínicas dentales? Segmenta por CNAE, keywords e intención para encontrar PYMES locales con encaje claro.',
+          title: 'Encuentra tu nicho rentable',
+          subtitle: 'Llega primero a los negocios que nadie contacta',
+          description: 'El 80% de los negocios locales no están en LinkedIn ni Apollo. NextLeadIn los encuentra y te da acceso exclusivo antes que tu competencia.',
           features: [
-            'Filtros por actividad, tamaño y ticket medio',
-            'Exclusión de sectores no deseados o ya trabajados',
-            'Sugerencias inteligentes de nichos según resultados anteriores'
+            'Acceso a +2M de negocios locales en España',
+            'Filtros por facturación, empleados y potencial',
+            'Exclusión automática de ya contactados o descartados'
           ],
           image: '/images/features/business.png',
-          badge: 'NUEVO'
+          badge: 'VENTAJA'
         },
         {
           id: 'informes-ia',
-          title: 'Informes con IA para cold call',
-          subtitle: 'Enriquecimiento automático para preparar cada llamada',
-          description: 'Nuestra IA genera dosieres con puntos de conversación, necesidades detectadas y propuesta de ángulo para la llamada en frío, a partir de reseñas y datos públicos.',
+          title: 'Del 5% al 15% de contactos efectivos',
+          subtitle: 'Contexto IA que triplica tu éxito en llamadas',
+          description: 'Cada lead viene con un informe: qué vende, qué opinan sus clientes, problemas detectados y el mejor ángulo para tu llamada. Resultado: 3x más respuestas.',
           features: [
-            'Resúmenes ejecutivos por negocio local',
-            'Ángulos de contacto personalizados para la llamada',
-            'Notas y bullets para gestionar objeciones típicas'
+            'Script personalizado por lead (no genérico)',
+            'Objeciones anticipadas y cómo superarlas',
+            'Mejor momento para llamar según actividad'
           ],
           image: '/images/features/report.png',
           badge: null
@@ -54,39 +54,39 @@ const ServicesSection = () => {
       return [
         {
           id: 'segmentacio',
-          title: 'Geographic targeting',
-          subtitle: 'Choose the area and find key local businesses',
-          description: 'Barcelona, Lisbon or wherever you need. Locate high-potential restaurants, workshops and local shops in your territory with advanced filters by area and business type.',
+          title: 'Save 6 hours of searching',
+          subtitle: '100 qualified leads in 10 minutes',
+          description: 'What used to take a full day searching Google Maps now takes 10 minutes. Select your area, define the sector and get leads with phone numbers ready to call.',
           features: [
-            'Map and neighborhood/municipality filters',
-            'Estimated volume of available leads',
-            'Fast export to CSV/CRM'
+            'From 8 hours searching to 10 minutes (99% savings)',
+            '100+ local leads with verified phone per search',
+            'Cost per lead: €0.05 vs €2-5 with alternatives'
           ],
           image: '/images/features/location.png',
           badge: null
         },
         {
           id: 'sector',
-          title: 'Sector selection',
-          subtitle: 'Define niches and verticals precisely',
-          description: 'Vegetarian restaurants? Pressfittings manufacturers? Medical specialists? Segment by industry codes, keywords and intent to find local SMEs with clear fit.',
+          title: 'Find your profitable niche',
+          subtitle: 'Reach businesses nobody else contacts',
+          description: '80% of local businesses are not on LinkedIn or Apollo. NextLeadIn finds them and gives you exclusive access before your competition.',
           features: [
-            'Filters by activity and company size',
-            'Exclude undesired sectors',
-            'Smart niche suggestions'
+            'Access to +2M local businesses in Spain',
+            'Filters by revenue, employees and potential',
+            'Auto-exclude already contacted or discarded'
           ],
           image: '/images/features/business.png',
-          badge: 'NEW'
+          badge: 'ADVANTAGE'
         },
         {
           id: 'informes-ia',
-          title: 'AI reports for cold calling',
-          subtitle: 'Automatic enrichment to prepare every call',
-          description: 'Our AI creates dossiers with talking points, detected needs and a suggested angle for cold calls, based on public data and online reviews.',
+          title: 'From 5% to 15% effective contacts',
+          subtitle: 'AI context that triples your call success',
+          description: 'Each lead comes with a report: what they sell, what customers say, detected problems and the best angle for your call. Result: 3x more responses.',
           features: [
-            'Executive summaries per company',
-            'Personalized contact angles',
-            'Notes for common objections'
+            'Personalized script per lead (not generic)',
+            'Anticipated objections and how to overcome them',
+            'Best time to call based on activity'
           ],
           image: '/images/features/report.png',
           badge: null
@@ -96,39 +96,39 @@ const ServicesSection = () => {
     return [
       {
         id: 'segmentacio',
-        title: 'Segmentació geogràfica',
-        subtitle: 'Tria la zona i troba les empreses clau',
-        description: 'Barcelona, Girona o on necessitis. Localitza negocis amb potencial dins del teu territori amb filtres avançats.',
+        title: 'Estalvia 6 hores de cerca',
+        subtitle: '100 leads qualificats en 10 minuts',
+        description: 'El que abans et portava un dia sencer buscant a Google Maps, ara són 10 minuts. Selecciona la teva zona, defineix el sector i obtén leads amb telèfon a punt per trucar.',
         features: [
-          'Mapa i filtres per barri/municipi',
-          'Volum estimat de leads disponibles',
-          'Exportació ràpida a CSV/CRM'
+          'De 8 hores buscant a 10 minuts (estalvi del 99%)',
+          '100+ leads locals amb telèfon verificat per cerca',
+          'Cost per lead: 0,05€ vs 2-5€ amb alternatives'
         ],
         image: '/images/features/location.png',
         badge: null
       },
       {
         id: 'sector',
-        title: 'Selecció de sector',
-        subtitle: 'Defineix nínxols i verticals amb precisió',
-        description: 'Restaurants vegetarians? Fabricants de pressfittings? Especialistes mèdics? Segmenta per CNAE, keywords i intenció.',
+        title: 'Troba el teu nínxol rentable',
+        subtitle: 'Arriba primer als negocis que ningú contacta',
+        description: 'El 80% dels negocis locals no són a LinkedIn ni Apollo. NextLeadIn els troba i et dona accés exclusiu abans que la teva competència.',
         features: [
-          'Filtres per activitat i mida',
-          'Exclusió de sectors no desitjats',
-          'Suggeriments intel·ligents de nínxols'
+          'Accés a +2M de negocis locals a Espanya',
+          'Filtres per facturació, empleats i potencial',
+          'Exclusió automàtica de ja contactats o descartats'
         ],
         image: '/images/features/business.png',
-        badge: 'NOU'
+        badge: 'AVANTATGE'
       },
       {
         id: 'informes-ia',
-        title: 'Informes amb IA',
-        subtitle: 'Enriquiment automàtic per convertir millor',
-        description: 'La nostra IA genera dossiers amb punts de conversa, necessitats detectades i proposta d’angle per a la trucada.',
+        title: 'Del 5% al 15% de contactes efectius',
+        subtitle: 'Context IA que triplica el teu èxit en trucades',
+        description: 'Cada lead ve amb un informe: què ven, què opinen els seus clients, problemes detectats i el millor angle per a la teva trucada. Resultat: 3x més respostes.',
         features: [
-          'Resums executius per empresa',
-          'Angles de contacte personalitzats',
-          'Notes per objeccions freqüents'
+          'Script personalitzat per lead (no genèric)',
+          'Objeccions anticipades i com superar-les',
+          'Millor moment per trucar segons activitat'
         ],
         image: '/images/features/report.png',
         badge: null
