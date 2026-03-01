@@ -79,6 +79,17 @@ export default function CookieConsent() {
             analytics_storage: granted ? 'granted' : 'denied',
           })
           console.log('GA4 consent updated:', granted ? 'granted' : 'denied')
+
+          if (granted) {
+            const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Y07BPPDXKF'
+            w.gtag('event', 'page_view', {
+              page_title: document.title,
+              page_location: window.location.href,
+              page_path: window.location.pathname,
+              send_to: GA_ID,
+            })
+            console.log('GA4 page_view sent after consent granted')
+          }
         }
 
         const config = {
