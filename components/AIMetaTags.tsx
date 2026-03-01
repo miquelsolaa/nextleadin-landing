@@ -21,7 +21,7 @@ const AIMetaTags: React.FC<AIMetaTagsProps> = ({
   structuredData = []
 }) => {
   const baseUrl = 'https://nextleadin.com'
-  const localePath = locale === 'ca' ? '' : `/${locale}`
+  const localePath = locale === 'es' ? '' : `/${locale}`
   const fullUrl = `${baseUrl}${localePath}${page === 'home' ? '' : `/${page}`}`
   
   // Meta tags optimitzats per a AI search engines
@@ -103,7 +103,7 @@ const AIMetaTags: React.FC<AIMetaTagsProps> = ({
     
     // Meta tags de localització
     { name: 'available-languages', content: 'ca, es, en' },
-    { name: 'default-language', content: 'ca' },
+    { name: 'default-language', content: 'es' },
     { name: 'hreflang-alternates', content: 'ca-ES, es-ES, en-US' },
     
     // Meta tags de contingut específic

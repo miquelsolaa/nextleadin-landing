@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { useRef, useEffect, useState, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 
 interface SlideItem {
@@ -11,8 +10,6 @@ interface SlideItem {
 
 const TrustedBySection = () => {
   const t = useTranslations('home.trustedBy')
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const sliderRef = useRef<HTMLDivElement>(null)
 
   const clients = [
     {
@@ -39,21 +36,8 @@ const TrustedBySection = () => {
     { type: 'metric', id: 'implementation' },
   ]
 
-  const infiniteSlides: SlideItem[] = []
-  for (let i = 0; i < 10; i++) {
-    infiniteSlides.push(...slideItems)
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => prev + 0.02)
-    }, 50)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  const slideWidth = 280
-  const translateX = -currentIndex * slideWidth
+  const infiniteSlides: SlideItem[] = [...slideItems, ...slideItems, ...slideItems, ...slideItems]
+  const totalWidth = infiniteSlides.length * 280
 
   const getClient = (id: string) => clients.find((c) => c.id === id)
   const getMetric = (id: string) => metrics.find((m) => m.id === id)
@@ -101,14 +85,12 @@ const TrustedBySection = () => {
           <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
           <div
-            ref={sliderRef}
             className="overflow-hidden"
           >
             <div
-              className="flex gap-6"
+              className="flex gap-6 animate-scroll"
               style={{
-                transform: `translate3d(${translateX}px, 0, 0)`,
-                transition: 'transform 0.05s linear',
+                width: `${totalWidth * 2}px`,
               }}
             >
               {infiniteSlides.map((slide, index) => {

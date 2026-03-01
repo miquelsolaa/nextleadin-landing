@@ -36,7 +36,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'scoring potencial negoci',
         'pipeline de leads locals'
       ],
-      canonical: 'https://nextleadin.com/',
+      canonical: 'https://nextleadin.com/ca',
       ogImage: '/images/og/og-image.png',
       structuredData: [
         {
@@ -71,7 +71,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
           name: 'NextLeadIn',
-          url: 'https://nextleadin.com',
+          url: 'https://nextleadin.com/ca',
           inLanguage: 'ca-ES',
           potentialAction: {
             '@type': 'SearchAction',
@@ -126,7 +126,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'scoring potencial negocio',
         'pipeline de leads locales'
       ],
-      canonical: 'https://nextleadin.com/es',
+      canonical: 'https://nextleadin.com/',
       ogImage: '/images/og/og-image.png',
       structuredData: [
         {
@@ -249,7 +249,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'anàlisi de ressenyes',
         'prospecció comercial'
       ],
-      canonical: 'https://nextleadin.com/blog',
+      canonical: 'https://nextleadin.com/ca/blog',
       ogImage: '/images/og/blog-ca.jpg'
     },
     es: {
@@ -265,7 +265,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'análisis de reseñas',
         'prospección comercial'
       ],
-      canonical: 'https://nextleadin.com/es/blog',
+      canonical: 'https://nextleadin.com/blog',
       ogImage: '/images/og/blog-es.jpg'
     },
     en: {
@@ -299,7 +299,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'alternatives apollo io',
         'eines negocis locals'
       ],
-      canonical: 'https://nextleadin.com/compare',
+      canonical: 'https://nextleadin.com/ca/compare',
       ogImage: '/images/og/compare-ca.jpg',
       structuredData: [
         {
@@ -324,7 +324,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'alternativas apollo io',
         'herramientas negocios locales'
       ],
-      canonical: 'https://nextleadin.com/es/compare',
+      canonical: 'https://nextleadin.com/compare',
       ogImage: '/images/og/compare-es.jpg',
       structuredData: [
         {
@@ -445,7 +445,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'preus mapa visual',
         'preus NextLeadIn'
       ],
-      canonical: 'https://nextleadin.com/pricing',
+      canonical: 'https://nextleadin.com/ca/pricing',
       ogImage: '/images/og/pricing-ca.jpg',
       structuredData: [
         {
@@ -575,7 +575,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'precios mapa visual',
         'precios NextLeadIn'
       ],
-      canonical: 'https://nextleadin.com/es/pricing',
+      canonical: 'https://nextleadin.com/pricing',
       ogImage: '/images/og/pricing-es.jpg',
       structuredData: [
         {
@@ -788,7 +788,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'contacte vendes',
         'consulta personalitzada'
       ],
-      canonical: 'https://nextleadin.com/contact',
+      canonical: 'https://nextleadin.com/ca/contact',
       ogImage: '/images/og/contact-ca.jpg',
       structuredData: [
         {
@@ -828,7 +828,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'contacto ventas',
         'consulta personalizada'
       ],
-      canonical: 'https://nextleadin.com/es/contact',
+      canonical: 'https://nextleadin.com/contact',
       ogImage: '/images/og/contact-es.jpg',
       structuredData: [
         {
@@ -910,7 +910,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'eines prospecció B2B',
         'nextleadin funcionalitats'
       ],
-      canonical: 'https://nextleadin.com/features',
+      canonical: 'https://nextleadin.com/ca/features',
       ogImage: '/images/og/features-ca.jpg'
     },
     es: {
@@ -925,7 +925,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'herramientas prospección B2B',
         'nextleadin funcionalidades'
       ],
-      canonical: 'https://nextleadin.com/es/features',
+      canonical: 'https://nextleadin.com/features',
       ogImage: '/images/og/features-es.jpg'
     },
     en: {
@@ -957,7 +957,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'segmentació per barri',
         'leads per codi postal'
       ],
-      canonical: 'https://nextleadin.com/locations',
+      canonical: 'https://nextleadin.com/ca/locations',
       ogImage: '/images/og/locations-ca.jpg'
     },
     es: {
@@ -972,7 +972,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'segmentación por barrio',
         'leads por código postal'
       ],
-      canonical: 'https://nextleadin.com/es/locations',
+      canonical: 'https://nextleadin.com/locations',
       ogImage: '/images/og/locations-es.jpg'
     },
     en: {
@@ -1004,7 +1004,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'context IA per vendes',
         'gestió múltiples clients leads'
       ],
-      canonical: 'https://nextleadin.com/solutions',
+      canonical: 'https://nextleadin.com/ca/solutions',
       ogImage: '/images/og/solutions-ca.jpg'
     },
     es: {
@@ -1019,7 +1019,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'contexto IA para ventas',
         'gestión múltiples clientes leads'
       ],
-      canonical: 'https://nextleadin.com/es/solutions',
+      canonical: 'https://nextleadin.com/solutions',
       ogImage: '/images/og/solutions-es.jpg'
     },
     en: {
@@ -1051,7 +1051,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'prospecció per indústria',
         'negocis locals per nínxol'
       ],
-      canonical: 'https://nextleadin.com/industries',
+      canonical: 'https://nextleadin.com/ca/industries',
       ogImage: '/images/og/industries-ca.jpg'
     },
     es: {
@@ -1066,7 +1066,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'prospección por industria',
         'negocios locales por nicho'
       ],
-      canonical: 'https://nextleadin.com/es/industries',
+      canonical: 'https://nextleadin.com/industries',
       ogImage: '/images/og/industries-es.jpg'
     },
     en: {
@@ -1096,7 +1096,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'eines gratuïtes vendes',
         'recursos B2B gratuïts'
       ],
-      canonical: 'https://nextleadin.com/resources',
+      canonical: 'https://nextleadin.com/ca/resources',
       ogImage: '/images/og/resources-ca.jpg'
     },
     es: {
@@ -1109,7 +1109,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'herramientas gratuitas ventas',
         'recursos B2B gratuitos'
       ],
-      canonical: 'https://nextleadin.com/es/resources',
+      canonical: 'https://nextleadin.com/resources',
       ogImage: '/images/og/resources-es.jpg'
     },
     en: {
@@ -1136,7 +1136,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'càlcul ROI vendes B2B',
         'estalvi generació leads'
       ],
-      canonical: 'https://nextleadin.com/resources/roi-calculator',
+      canonical: 'https://nextleadin.com/ca/resources/roi-calculator',
       ogImage: '/images/og/roi-calculator-ca.jpg'
     },
     es: {
@@ -1148,7 +1148,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'cálculo ROI ventas B2B',
         'ahorro generación leads'
       ],
-      canonical: 'https://nextleadin.com/es/resources/roi-calculator',
+      canonical: 'https://nextleadin.com/resources/roi-calculator',
       ogImage: '/images/og/roi-calculator-es.jpg'
     },
     en: {
@@ -1177,7 +1177,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'informes IA',
         'suport tècnic'
       ],
-      canonical: 'https://nextleadin.com/faq',
+      canonical: 'https://nextleadin.com/ca/faq',
       ogImage: '/images/og/faq-ca.jpg',
       structuredData: [
         {
@@ -1394,7 +1394,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'informes IA',
         'soporte técnico'
       ],
-      canonical: 'https://nextleadin.com/es/faq',
+      canonical: 'https://nextleadin.com/faq',
       ogImage: '/images/og/faq-es.jpg',
       structuredData: [
         {
@@ -1832,7 +1832,7 @@ export function generateAIOptimizedMetadata(
 
   const finalConfig = { ...config, ...customData }
   const baseUrl = 'https://nextleadin.com'
-  const localePath = locale === 'ca' ? '' : `/${locale}`
+  const localePath = locale === 'es' ? '' : `/${locale}`
   const fullUrl = `${baseUrl}${localePath}${page === 'home' ? '' : `/${page}`}`
 
   // Evitar duplicació "| NextLeadIn | NextLeadIn": el layout aplica template '%s | NextLeadIn',
@@ -1872,9 +1872,9 @@ export function generateAIOptimizedMetadata(
     alternates: {
       canonical: finalConfig.canonical,
       languages: {
-        'x-default': `${baseUrl}/es${page === 'home' ? '' : `/${page}`}`,
-        'ca-ES': `${baseUrl}${page === 'home' ? '' : `/${page}`}`,
-        'es-ES': `${baseUrl}/es${page === 'home' ? '' : `/${page}`}`,
+        'x-default': `${baseUrl}${page === 'home' ? '' : `/${page}`}`,
+        'es-ES': `${baseUrl}${page === 'home' ? '' : `/${page}`}`,
+        'ca-ES': `${baseUrl}/ca${page === 'home' ? '' : `/${page}`}`,
         'en-US': `${baseUrl}/en${page === 'home' ? '' : `/${page}`}`
       }
     },
