@@ -125,13 +125,15 @@ export default function CookieConsent() {
             sameSite: 'Lax' as const,
             secure: window.location.protocol === 'https:',
           },
-          onFirstConsent: ({ cookie }: { cookie: { categories: Record<string, boolean> } }) => {
+          onFirstConsent: ({ cookie }: { cookie: { categories: string[] } }) => {
             console.log('First consent:', cookie.categories)
-            updateGtagConsent(!!cookie.categories.analytics)
+            const hasAnalytics = Array.isArray(cookie.categories) && cookie.categories.includes('analytics')
+            updateGtagConsent(hasAnalytics)
           },
-          onConsent: ({ cookie }: { cookie: { categories: Record<string, boolean> } }) => {
+          onConsent: ({ cookie }: { cookie: { categories: string[] } }) => {
             console.log('On consent:', cookie.categories)
-            updateGtagConsent(!!cookie.categories.analytics)
+            const hasAnalytics = Array.isArray(cookie.categories) && cookie.categories.includes('analytics')
+            updateGtagConsent(hasAnalytics)
           },
           onChange: ({ changedCategories }: { changedCategories: string[] }) => {
             console.log('Changed categories:', changedCategories)

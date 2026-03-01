@@ -28,14 +28,6 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
-        {/* Preload de fonts crítiques per millorar FCP */}
-        <link
-          rel="preload"
-          href="/fonts/inter-var.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className={`${inter.className} antialiased`}>
         {GA_MEASUREMENT_ID && (
