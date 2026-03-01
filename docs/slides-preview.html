@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextLeadIn - Instagram Carousel Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #1a1a2e;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 24px;
+    }
+
+    .carousel-container {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .slide {
+      flex-shrink: 0;
+      width: 400px;
+      height: 500px;
+      border-radius: 0; /* Instagram mostra cantonades rectes */
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      scroll-snap-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Slide 1: Hook - Gradient vibrant */
+    .slide-1 {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* Slide 2: Problema - Vermell/taronja */
+    .slide-2 {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    /* Slide 3: Insight/Dada - Blau fosc */
+    .slide-3 {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    /* Slide 4: Solució - Verd */
+    .slide-4 {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    /* Slide 5: CTA - Groc/daurat */
+    .slide-5 {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+
+    .slide-number {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .slide-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+      width: fit-content;
+    }
+
+    .slide-title {
+      color: white;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      flex-grow: 0;
+    }
+
+    .slide-body {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .slide-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      background: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #667eea;
+    }
+
+    .brand-name {
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #333;
+      padding: 16px 32px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 18px;
+      margin-top: 20px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Decorative elements */
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -30%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Stats highlight for slide 3 */
+    .stat-highlight {
+      font-size: 72px;
+      font-weight: 800;
+      color: white;
+      margin: 20px 0;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Instructions */
+    .instructions {
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    /* Real size preview */
+    .real-size-container {
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .real-size-title {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .real-size-slide {
+      width: 1080px;
+      height: 1350px;
+      transform: scale(0.35);
+      transform-origin: top center;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 NextLeadIn - Preview Carrusel Instagram</h1>
+  
+  <div class="carousel-container">
+    <!-- Slide 1: Hook -->
+    <div class="slide slide-1">
+      <div class="slide-number">1/5</div>
+      <span class="slide-badge">🎯 Hook</span>
+      <h2 class="slide-title">La teva pipeline de vendes sembla un desert?</h2>
+      <p class="slide-body">
+        Estàs perdent hores valuoses amb 'leads' que mai converteixen? 
+        No ets l'únic. Aquest és el teu moment per canviar el joc de la 
+        generació de leads B2B.
+      </p>
+      <div class="slide-footer">
+        <div class="logo">NL</div>
+        <span class="brand-name">NextLeadIn</span>
+      </div>
+    </div>
+
+    <!-- Slide 2: Problema -->
+    <div class="slide slide-2">
+      <div class="slide-number">2/5</div>
+      <span class="slide-badge">😤 El Problema</span>
+      <h2 class="slide-title">El dilema dels 'leads' B2B ineficients</h2>
+      <p class="slide-body">
+        El teu equip de vendes passa hores buscant contactes, qualificant-los 
+        de manera rudimentària i enviant missatges genèrics. El resultat? 
+        Baixes taxes de resposta, pipelines estancades i oportunitats perdudes.
+      </p>
+      <div class="slide-footer">
+        <div class="logo">NL</div>
+        <span class="brand-name">NextLeadIn</span>
+      </div>
+    </div>
+
+    <!-- Slide 3: Insight/Dada -->
+    <div class="slide slide-3">
+      <div class="slide-number">3/5</div>
+      <span class="slide-badge">📊 La Dada</span>
+      <h2 class="slide-title">L'Eficàcia dels Leads Qualificats</h2>
+      <div class="stat-highlight">+200%</div>
+      <p class="stat-label">Més respostes amb personalització</p>
+      <p class="slide-body" style="margin-top: 20px;">
+        Els equips de vendes dediquen més del 60% del seu temps a tasques 
+        administratives que no generen ingressos.
+      </p>
+      <div class="slide-footer">
+        <div class="logo">NL</div>
+        <span class="brand-name">NextLeadIn</span>
+      </div>
+    </div>
+
+    <!-- Slide 4: Solució -->
+    <div class="slide slide-4">
+      <div class="slide-number">4/5</div>
+      <span class="slide-badge">✅ La Solució</span>
+      <h2 class="slide-title">NextLeadIn: La Teva Solució Intel·ligent</h2>
+      <p class="slide-body">
+        Amb NextLeadIn, oblida't de la recerca manual. La nostra IA identifica 
+        els teus ICP amb precisió, qualifica els leads en temps real i 
+        automatitza campanyes hiperpersonalitzades, directes a la teva pipeline.
+      </p>
+      <div class="slide-footer">
+        <div class="logo">NL</div>
+        <span class="brand-name">NextLeadIn</span>
+      </div>
+    </div>
+
+    <!-- Slide 5: CTA -->
+    <div class="slide slide-5">
+      <div class="slide-number">5/5</div>
+      <span class="slide-badge">🚀 Acció</span>
+      <h2 class="slide-title">Estàs Preparat per Transformar la Teva Generació de Leads?</h2>
+      <p class="slide-body">
+        No perdis ni un lead més. Descobreix com NextLeadIn pot disparar 
+        les teves vendes B2B.
+      </p>
+      <a href="#" class="cta-button">Prova Gratuïta →</a>
+      <div class="slide-footer">
+        <div class="logo">NL</div>
+        <span class="brand-name">nextleadin.com</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="instructions">
+    ← Desplaça't horitzontalment per veure tots els slides →<br><br>
+    <strong>Mida real Instagram:</strong> 1080 x 1350 px (4:5 vertical)
+  </p>
+
+  <div class="real-size-container">
+    <h2 class="real-size-title">📱 Vista a escala real (35%)</h2>
+  </div>
+
+</body>
+</html>

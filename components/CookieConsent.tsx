@@ -6,97 +6,79 @@ import { useTranslations } from 'next-intl'
 import type { AppLocale } from '@/i18n/routing'
 import './cookieconsent-custom.css'
 
-// Importar estils de cookie consent
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 
 export default function CookieConsent() {
   const locale = useLocale() as AppLocale
   const t = useTranslations('cookieConsent')
 
-  // Memoitzar les traduccions per evitar re-renders
   const translations = useMemo(() => {
-    // Generar URL de la política de cookies segons l'idioma
     const cookiePolicyUrl = locale === 'es' ? '/cookie-policy' : `/${locale}/cookie-policy`
     
-    // Textos per a l'enllaç segons l'idioma
     const linkTexts: Record<AppLocale, string> = {
       ca: 'política de cookies',
       es: 'política de cookies',
       en: 'cookie policy'
     }
     
-    // Crear l'enllaç HTML
     const cookiePolicyLink = `<a href="${cookiePolicyUrl}" class="cc-link">${linkTexts[locale]}</a>`
     
-    // Obtenir la descripció amb el placeholder substituït
     const description = t('consentModal.description', { 
       cookiePolicyLink: cookiePolicyLink 
     })
     
     return {
-    consentModal: {
-      title: t('consentModal.title'),
-      description: description,
-      acceptAllBtn: t('consentModal.acceptAllBtn'),
-      acceptNecessaryBtn: t('consentModal.acceptNecessaryBtn'),
-      showPreferencesBtn: t('consentModal.showPreferencesBtn'),
-    },
-    preferencesModal: {
-      title: t('preferencesModal.title'),
-      acceptAllBtn: t('preferencesModal.acceptAllBtn'),
-      acceptNecessaryBtn: t('preferencesModal.acceptNecessaryBtn'),
-      savePreferencesBtn: t('preferencesModal.savePreferencesBtn'),
-      closeIconLabel: t('preferencesModal.closeIconLabel'),
-      sections: [
-        {
-          title: t('preferencesModal.sections.0.title'),
-          description: t('preferencesModal.sections.0.description'),
-        },
-        {
-          title: t('preferencesModal.sections.1.title'),
-          description: t('preferencesModal.sections.1.description'),
-          linkedCategory: 'necessary',
-        },
-        {
-          title: t('preferencesModal.sections.2.title'),
-          description: t('preferencesModal.sections.2.description'),
-          linkedCategory: 'analytics',
-        },
-      ],
-    },
+      consentModal: {
+        title: t('consentModal.title'),
+        description: description,
+        acceptAllBtn: t('consentModal.acceptAllBtn'),
+        acceptNecessaryBtn: t('consentModal.acceptNecessaryBtn'),
+        showPreferencesBtn: t('consentModal.showPreferencesBtn'),
+      },
+      preferencesModal: {
+        title: t('preferencesModal.title'),
+        acceptAllBtn: t('preferencesModal.acceptAllBtn'),
+        acceptNecessaryBtn: t('preferencesModal.acceptNecessaryBtn'),
+        savePreferencesBtn: t('preferencesModal.savePreferencesBtn'),
+        closeIconLabel: t('preferencesModal.closeIconLabel'),
+        sections: [
+          {
+            title: t('preferencesModal.sections.0.title'),
+            description: t('preferencesModal.sections.0.description'),
+          },
+          {
+            title: t('preferencesModal.sections.1.title'),
+            description: t('preferencesModal.sections.1.description'),
+            linkedCategory: 'necessary',
+          },
+          {
+            title: t('preferencesModal.sections.2.title'),
+            description: t('preferencesModal.sections.2.description'),
+            linkedCategory: 'analytics',
+          },
+        ],
+      },
     }
   }, [t, locale])
 
   useEffect(() => {
-    // Només executar al client
     if (typeof window === 'undefined') return
 
     const initCookieConsent = async () => {
       try {
-        // Importar la biblioteca
-        const cookieConsentModule = await import('vanilla-cookieconsent')
+        const CookieConsentLib = await import('vanilla-cookieconsent')
         
-        // Funció per inicialitzar Google Analytics quan es dona consentiment
-        const initAnalytics = () => {
-          if (typeof window === 'undefined') return
-          const w = window as any
-          if (!w.gtag) return
-
-          // Actualitzar el Consent Mode per permetre l'emmagatzematge d'analytics
-          w.gtag('consent', 'update', {
-            analytics_storage: 'granted',
-          })
-        }
-
-        // Funció per desactivar analytics (mode consent: denegat)
-        const disableAnalytics = () => {
-          if (typeof window === 'undefined') return
-          const w = window as any
-          if (!w.gtag) return
+        const updateGtagConsent = (granted: boolean) => {
+          const w = window as Window & { gtag?: (...args: unknown[]) => void }
+          if (!w.gtag) {
+            console.warn('gtag not found')
+            return
+          }
 
           w.gtag('consent', 'update', {
-            analytics_storage: 'denied',
+            analytics_storage: granted ? 'granted' : 'denied',
           })
+          console.log('GA4 consent updated:', granted ? 'granted' : 'denied')
         }
 
         const config = {
@@ -108,6 +90,12 @@ export default function CookieConsent() {
             analytics: {
               enabled: false,
               readOnly: false,
+              autoClear: {
+                cookies: [
+                  { name: /^_ga/ },
+                  { name: '_gid' },
+                ],
+              },
             },
           },
           language: {
@@ -118,91 +106,44 @@ export default function CookieConsent() {
           },
           guiOptions: {
             consentModal: {
-              layout: 'box',
-              position: 'bottom right',
+              layout: 'box' as const,
+              position: 'bottom right' as const,
               flipButtons: false,
               equalWeightButtons: false,
             },
             preferencesModal: {
-              layout: 'box',
-              position: 'right',
+              layout: 'box' as const,
+              position: 'right' as const,
               flipButtons: false,
               equalWeightButtons: false,
             },
           },
           cookie: {
+            name: 'cc_cookie',
             expiresAfterDays: 365,
             domain: window.location.hostname,
             sameSite: 'Lax' as const,
             secure: window.location.protocol === 'https:',
           },
-          theme: {
-            light: {
-              consentModal: {
-                layoutOptions: {
-                  primaryButtonPosition: 'right',
-                },
-              },
-              primaryButton: {
-                backgroundColor: '#00CC61',
-                textColor: '#fff',
-                hoverBackgroundColor: '#00B359',
-              },
-              secondaryButton: {
-                backgroundColor: 'transparent',
-                textColor: '#004050',
-                borderColor: '#004050',
-                hoverBackgroundColor: '#DFF9EB',
-              },
-            },
+          onFirstConsent: ({ cookie }: { cookie: { categories: Record<string, boolean> } }) => {
+            console.log('First consent:', cookie.categories)
+            updateGtagConsent(!!cookie.categories.analytics)
           },
-          onFirstConsent: ({ cookie }: any) => {
-            if (cookie.categories.analytics) {
-              initAnalytics()
+          onConsent: ({ cookie }: { cookie: { categories: Record<string, boolean> } }) => {
+            console.log('On consent:', cookie.categories)
+            updateGtagConsent(!!cookie.categories.analytics)
+          },
+          onChange: ({ changedCategories }: { changedCategories: string[] }) => {
+            console.log('Changed categories:', changedCategories)
+            if (changedCategories.includes('analytics')) {
+              const accepted = CookieConsentLib.acceptedCategory('analytics')
+              updateGtagConsent(accepted)
             }
-          },
-          onConsent: ({ cookie }: any) => {
-            if (cookie.categories.analytics) {
-              initAnalytics()
-            } else {
-              disableAnalytics()
-            }
-          },
-          onModalReject: () => {
-            disableAnalytics()
           },
         }
 
-        // vanilla-cookieconsent pot exportar-se de diferents formes segons l'entorn
-        // Provem diferents accés possibles
-        let CookieConsent: any = null
-        
-        // Intentar accedir al mòdul de diferents maneres
-        if ((cookieConsentModule as any).default) {
-          CookieConsent = (cookieConsentModule as any).default
-        } else if ((cookieConsentModule as any).CookieConsent) {
-          CookieConsent = (cookieConsentModule as any).CookieConsent
-        } else if ((cookieConsentModule as any).run) {
-          // Si run està directament al mòdul
-          CookieConsent = cookieConsentModule
-        } else {
-          CookieConsent = cookieConsentModule
-        }
-        
-        // Verificar i executar run
-        if (CookieConsent && typeof CookieConsent.run === 'function') {
-          CookieConsent.run(config)
-        } else {
-          // Log per debug - mostrar estructura del mòdul
-          console.warn('CookieConsent structure:', {
-            hasDefault: !!(cookieConsentModule as any).default,
-            hasCookieConsent: !!(cookieConsentModule as any).CookieConsent,
-            hasRun: !!(cookieConsentModule as any).run,
-            keys: Object.keys(cookieConsentModule),
-            moduleType: typeof cookieConsentModule
-          })
-          console.error('CookieConsent.run not found')
-        }
+        CookieConsentLib.run(config)
+        console.log('CookieConsent initialized successfully')
       } catch (error) {
         console.error('Error loading CookieConsent:', error)
       }

@@ -1,0 +1,341 @@
+{
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "daysInterval": 3,
+                "triggerAtHour": 14,
+                "triggerAtMinute": 6
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          -352,
+          -16
+        ],
+        "id": "02e7badb-5f10-4067-8ffd-ecbf84d2e10d",
+        "name": "Schedule Trigger",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "person": "119A6VqUru",
+          "text": "={{ $json.content.parts[0].text }}",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.linkedIn",
+        "typeVersion": 1,
+        "position": [
+          512,
+          272
+        ],
+        "id": "0bafd9c1-91c9-4411-924a-563d529d08a7",
+        "name": "Create a post",
+        "credentials": {
+          "linkedInOAuth2Api": {
+            "id": "lhf69Z0wjrrOzRqE",
+            "name": "Linkedin Personal"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-2.5-flash",
+            "mode": "list",
+            "cachedResultName": "models/gemini-2.5-flash"
+          },
+          "messages": {
+            "values": [
+              {
+                "content": "=Act as an expert in B2B personal branding, LinkedIn growth strategy, and SaaS marketing.\n\nI want you to write a LinkedIn post for my personal profile. The final post MUST be written in Spanish. The output should be only the post text itself, without any metadata, arrays, headings, or extra elements. Do not include \"###\" titles or \"Hashtags:\" labels—just plain text ready to publish. The writing style must feel natural, human, and professional, avoiding any AI-generated tone.\n\nHere is context about me:\n\nMy name is Miquel Solà\n\nI am a member of the NextLeadIn team\n\nI work with automation, AI workflows, web analysis, scraping, and commercial intelligence\n\nI like sharing real learnings, experiments, and honest reflections from my work\n\nContext about NextLeadIn:\n\nNextLeadIn is a SaaS platform that helps B2B companies, agencies, and SaaS businesses find and qualify potential clients automatically.\n\nIt goes beyond simple lead lists: it analyzes companies, detects commercial opportunities, and provides actionable insights before any contact.\n\nThe goal of NextLeadIn is to make sales prospecting smarter and more efficient, helping teams approach the right leads at the right time with the right context.\n\nIt is better than other lead generation tools because it has businesses that aren't on Linkedin.\n\nPOST OBJECTIVES:\n\nProvide real value to readers\n\nGenerate engagement and conversation\n\nPosition me as an expert in sales automation and commercial intelligence\n\nCreate interest in NextLeadIn in a subtle and non-promotional way\n\nPOST STRUCTURE:\n\nA strong hook (1–2 short sentences that create curiosity or highlight a real business or sales problem)\n\nA real situation, experience, or reflection about lead generation, B2B sales, or automation from my work at NextLeadIn\n\nA clear and actionable insight or lesson learned\n\nA natural introduction of NextLeadIn as part of the solution (without sounding like an advertisement)\n\nA final question to encourage comments and interaction\n\nLinkedIn-friendly formatting:\n\nShort paragraphs\n\nGood spacing\n\nCan include a few professional and subtle emojis\n\nBetween 120 and 220 words total\n\nIMPORTANT WRITING RULES:\n\nDo NOT use aggressive sales language\n\nDo NOT use generic marketing buzzwords\n\nWrite as if this was a real personal experience\n\nMaintain an honest, reflective, and educational tone\n\nAvoid unrealistic claims or exaggerations\n\nPrioritize storytelling and insights\n\nAt the end of the post, include 3 to 4 hashtags relevant to automation, B2B sales, SaaS, or AI, inline, without labels.\n\nTOPIC: {{ $json.property_topic }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1,
+        "position": [
+          128,
+          272
+        ],
+        "id": "37256192-4d6c-478d-ae8e-3af1877d86a7",
+        "name": "Message a model",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "VhKYJonr34aHxVDY",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "databasePage",
+          "operation": "getAll",
+          "databaseId": {
+            "__rl": true,
+            "value": "30812c47-171f-8083-9f4f-c3178717c0b3",
+            "mode": "list",
+            "cachedResultName": "Social Media Topics NextLeadIn DB",
+            "cachedResultUrl": "https://www.notion.so/30812c47171f80839f4fc3178717c0b3"
+          },
+          "limit": 1,
+          "filterType": "manual",
+          "filters": {
+            "conditions": [
+              {
+                "key": "Status|status",
+                "condition": "equals",
+                "statusValue": "Not processed"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.notion",
+        "typeVersion": 2.2,
+        "position": [
+          -96,
+          272
+        ],
+        "id": "18abbbd1-0e61-4261-93d4-ab78a7dfcc49",
+        "name": "Get many database pages",
+        "credentials": {
+          "notionApi": {
+            "id": "qjsokJGDHmhWUSbb",
+            "name": "Notion - NextLeadIn"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "databasePage",
+          "operation": "update",
+          "pageId": {
+            "__rl": true,
+            "value": "={{ $('Get many database pages').item.json.url }}",
+            "mode": "url"
+          },
+          "propertiesUi": {
+            "propertyValues": [
+              {
+                "key": "Status|status",
+                "statusValue": "Processed"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.notion",
+        "typeVersion": 2.2,
+        "position": [
+          768,
+          272
+        ],
+        "id": "77ba56bc-2662-455b-b1fc-088c1b82becb",
+        "name": "Update a database page",
+        "credentials": {
+          "notionApi": {
+            "id": "qjsokJGDHmhWUSbb",
+            "name": "Notion - NextLeadIn"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -80,
+          -288
+        ],
+        "id": "16c7a1c6-8593-4a37-b7f4-972d69cf3e94",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          448,
+          -96
+        ],
+        "id": "abddcda9-3c9e-42be-ac2c-92f020ee335b",
+        "name": "Code in JavaScript",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.canva.com/rest/v1/designs",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Authorization",
+                "value": "Bearer OC-AZymHXqV06vW"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          672,
+          -288
+        ],
+        "id": "f4939065-e09d-4fd6-ba26-8975e5e15153",
+        "name": "HTTP Request"
+      },
+      {
+        "parameters": {
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-2.5-flash",
+            "mode": "list",
+            "cachedResultName": "models/gemini-2.5-flash"
+          },
+          "messages": {
+            "values": [
+              {
+                "content": "=Actua com a expert en generació de leads B2B i fundador d'un SaaS anomenat NextLeadIn.\n\nCrea un carrusel d'Instagram de 5 slides amb aquesta estructura:\n\nSlide 1: Hook molt potent\nSlide 2: Problema real\nSlide 3: Dada o insight\nSlide 4: Solució\nSlide 5: CTA\n\nTema: {{$json[\"topic\"]}}\nTarget: {{$json[\"target\"]}}\nTo: {{$json[\"tone\"]}}\n\nDesprés genera:\n- Caption optimitzada per Instagram\n- 5 hashtags rellevants\n\nRetorna el resultat en format JSON així:\n\n{\n  \"slides\": [\n    {\"title\": \"...\", \"body\": \"...\"},\n    ...\n  ],\n  \"caption\": \"...\",\n  \"hashtags\": \"...\"\n}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1,
+        "position": [
+          112,
+          -288
+        ],
+        "id": "361eaabb-a293-45fb-9323-30853508c67e",
+        "name": "Message a Model",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "VhKYJonr34aHxVDY",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create a post": {
+        "main": [
+          [
+            {
+              "node": "Update a database page",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Message a model": {
+        "main": [
+          [
+            {
+              "node": "Create a post",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many database pages": {
+        "main": [
+          [
+            {
+              "node": "Message a model",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Message a Model",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Message a Model": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "pinData": {
+      "Message a Model": [
+        {
+          "content": {
+            "parts": [
+              {
+                "text": "Aquí teniu el carrusel d'Instagram, la caption i els hashtags optimitzats, assumint que el tema se centra en la dificultat de generar leads B2B qualificats de forma eficient per a equips de vendes i fundadors de SaaS.\n\n```json\n{\n  \"slides\": [\n    {\n      \"title\": \"La teva pipeline de vendes sembla un desert?\",\n      \"body\": \"Estàs perdent hores valuoses amb 'leads' que mai converteixen? No ets l'únic. Aquest és el teu moment per canviar el joc de la generació de leads B2B.\"\n    },\n    {\n      \"title\": \"El dilema dels 'leads' B2B ineficients\",\n      \"body\": \"El teu equip de vendes passa hores buscant contactes, qualificant-los de manera rudimentària i enviant missatges genèrics. El resultat? Baixes taxes de resposta, pipelines estancades i oportunitats perdudes.\"\n    },\n    {\n      \"title\": \"L'Eficàcia dels Leads Qualificats\",\n      \"body\": \"Els equips de vendes dediquen més del 60% del seu temps a tasques administratives que no generen ingressos. Però els leads qualificats adequadament tenen un 20% més de probabilitats de tancar, i la personalització pot augmentar les respostes un 200%!\"\n    },\n    {\n      \"title\": \"NextLeadIn: La Teva Solució Intel·ligent\",\n      \"body\": \"Amb NextLeadIn, oblida't de la recerca manual. La nostra IA identifica els teus ICP (Ideal Customer Profile) amb precisió, qualifica els leads en temps real i automatitza campanyes hiperpersonalitzades, directes a la teva pipeline.\"\n    },\n    {\n      \"title\": \"Estàs Preparat per Transformar la Teva Generació de Leads?\",\n      \"body\": \"No perdis ni un lead més. Visita nextleadin.com avui mateix per una demostració gratuïta i descobreix com NextLeadIn pot disparar les teves vendes B2B. El futur de la generació de leads és ara!\"\n    }\n  ],\n  \"caption\": \"Cansat de pipelines seques i 'leads' que no porten enlloc? 😩 Sabem que la generació de leads B2B pot ser un veritable repte, especialment quan el teu equip passa hores en tasques manuals i missatges genèrics que ningú llegeix.\\n\\nPerò, què passaria si poguessis accedir a una font inesgotable de leads altament qualificats, amb missatges personalitzats que realment connecten? 🚀\\n\\nHem creat aquest carrusel per desvetllar el problema real i presentar-te la solució que està transformant la manera com les empreses B2B creixen. Des de la frustració de les baixes conversions fins a l'èxit de l'hiperpersonalització a escala.\\n\\n➡️ Desliza per descobrir com NextLeadIn pot revolucionar la teva estratègia de generació de leads i omplir la teva pipeline amb oportunitats de venda reals.\\n\\nNo perdis més temps. És hora de treballar de manera més intel·ligent, no més dura. \\n👉 Visita nextleadin.com (link a la bio) per començar la teva prova gratuïta i veure NextLeadIn en acció!\",\n  \"hashtags\": [\n    \"#GeneracióDeLeadsB2B\",\n    \"#VendesB2B\",\n    \"#EstratègiaDeVendes\",\n    \"#AutomatitzacióDeVendes\",\n    \"#NextLeadIn\"\n  ]\n}\n```"
+              }
+            ],
+            "role": "model"
+          },
+          "finishReason": "STOP",
+          "index": 0
+        }
+      ]
+    },
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "1162154a2ee98baa18f6ffa9fe8e7e158b5df6620b89fd96809f0077888da523"
+    }
+  }

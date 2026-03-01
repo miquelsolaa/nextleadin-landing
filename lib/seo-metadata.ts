@@ -37,7 +37,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'pipeline de leads locals'
       ],
       canonical: 'https://nextleadin.com/',
-      ogImage: '/images/og/home-ca.jpg',
+      ogImage: '/images/og/og-image.png',
       structuredData: [
         {
           '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'pipeline de leads locales'
       ],
       canonical: 'https://nextleadin.com/es',
-      ogImage: '/images/og/home-es.jpg',
+      ogImage: '/images/og/og-image.png',
       structuredData: [
         {
           '@context': 'https://schema.org',
@@ -190,7 +190,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'sales pipeline'
       ],
       canonical: 'https://nextleadin.com/en',
-      ogImage: '/images/og/home-en.jpg',
+      ogImage: '/images/og/og-image-en.png',
       structuredData: [
         {
           '@context': 'https://schema.org',
@@ -368,21 +368,21 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       description: 'Termes i condicions d\'ús del servei NextLeadIn. Informació sobre acceptació, descripció del servei, registre, preus, obligacions i drets.',
       keywords: ['termes condicions', 'condicions ús', 'NextLeadIn legal', 'contracte servei'],
       canonical: 'https://nextleadin.com/ca/terms-and-conditions',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
     es: {
       title: 'Términos y Condiciones',
       description: 'Términos y condiciones de uso del servicio NextLeadIn. Información sobre aceptación, descripción del servicio, registro, precios, obligaciones y derechos.',
       keywords: ['términos condiciones', 'condiciones uso', 'NextLeadIn legal', 'contrato servicio'],
       canonical: 'https://nextleadin.com/terms-and-conditions',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
     en: {
       title: 'Terms and Conditions',
       description: 'Terms and conditions of use for the NextLeadIn service. Information on acceptance, service description, registration, pricing, obligations and rights.',
       keywords: ['terms conditions', 'terms of use', 'NextLeadIn legal', 'service agreement'],
       canonical: 'https://nextleadin.com/en/terms-and-conditions',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
   },
   'privacy-policy': {
@@ -391,21 +391,21 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       description: 'Política de privacitat de NextLeadIn. Informació sobre recollida de dades, finalitats del tractament, drets dels interessats i seguretat.',
       keywords: ['política privacitat', 'protecció dades', 'RGPD', 'NextLeadIn privacitat'],
       canonical: 'https://nextleadin.com/ca/privacy-policy',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
     es: {
       title: 'Política de Privacidad',
       description: 'Política de privacidad de NextLeadIn. Información sobre recopilación de datos, finalidades del tratamiento, derechos de los interesados y seguridad.',
       keywords: ['política privacidad', 'protección datos', 'RGPD', 'NextLeadIn privacidad'],
       canonical: 'https://nextleadin.com/privacy-policy',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
     en: {
       title: 'Privacy Policy',
       description: 'NextLeadIn privacy policy. Information on data collection, processing purposes, data subject rights and security.',
       keywords: ['privacy policy', 'data protection', 'GDPR', 'NextLeadIn privacy'],
       canonical: 'https://nextleadin.com/en/privacy-policy',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
   },
   'cookie-policy': {
@@ -414,21 +414,21 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       description: 'Política de cookies de NextLeadIn. Tipus de cookies, finalitats, gestió i drets dels usuaris sobre cookies i tecnologies similars.',
       keywords: ['política cookies', 'cookies', 'consentiment cookies', 'NextLeadIn cookies'],
       canonical: 'https://nextleadin.com/ca/cookie-policy',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
     es: {
       title: 'Política de Cookies',
       description: 'Política de cookies de NextLeadIn. Tipos de cookies, finalidades, gestión y derechos de los usuarios sobre cookies y tecnologías similares.',
       keywords: ['política cookies', 'cookies', 'consentimiento cookies', 'NextLeadIn cookies'],
       canonical: 'https://nextleadin.com/cookie-policy',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
     en: {
       title: 'Cookie Policy',
       description: 'NextLeadIn cookie policy. Types of cookies, purposes, management and user rights regarding cookies and similar technologies.',
       keywords: ['cookie policy', 'cookies', 'cookie consent', 'NextLeadIn cookies'],
       canonical: 'https://nextleadin.com/en/cookie-policy',
-      ogImage: '/images/og/default.jpg',
+      ogImage: '/images/og/og-image.png',
     },
   },
   pricing: {
@@ -1887,7 +1887,7 @@ export function generateAIOptimizedMetadata(
       siteName: 'NextLeadIn',
       images: [
         {
-          url: finalConfig.ogImage || '/images/og/default.jpg',
+          url: finalConfig.ogImage || '/images/og/og-image.png',
           alt: titleFull,
           width: 1200,
           height: 630
@@ -1902,7 +1902,7 @@ export function generateAIOptimizedMetadata(
       description: finalConfig.description,
       images: [
         {
-          url: finalConfig.ogImage || '/images/og/default.jpg',
+          url: finalConfig.ogImage || '/images/og/og-image.png',
           alt: titleFull,
           width: 1200,
           height: 630

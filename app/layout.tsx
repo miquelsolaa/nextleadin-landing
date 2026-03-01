@@ -50,7 +50,7 @@ export default function RootLayout({
                 function gtag(){dataLayer.push(arguments);}
                 window.gtag = gtag;
                 gtag('js', new Date());
-                // Consent Mode per defecte: analítica denegada fins que l'usuari accepti
+                // Consent Mode v2: per defecte denegat fins que l'usuari accepti cookies
                 gtag('consent', 'default', {
                   analytics_storage: 'denied'
                 });

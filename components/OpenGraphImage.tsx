@@ -18,28 +18,28 @@ const OpenGraphImage: React.FC<OpenGraphImageProps> = ({ title, description, loc
     // URLs d'imatges OpenGraph optimitzades per a cada pàgina i idioma
     const imageMap: Record<string, Record<string, string>> = {
       home: {
-        ca: `${baseUrl}/images/og/home-ca.jpg`,
-        es: `${baseUrl}/images/og/home-es.jpg`,
-        en: `${baseUrl}/images/og/home-en.jpg`
+        ca: `${baseUrl}/images/og/og-image.png`,
+        es: `${baseUrl}/images/og/og-image.png`,
+        en: `${baseUrl}/images/og/og-image-en.png`
       },
       pricing: {
-        ca: `${baseUrl}/images/og/pricing-ca.jpg`,
-        es: `${baseUrl}/images/og/pricing-es.jpg`,
-        en: `${baseUrl}/images/og/pricing-en.jpg`
+        ca: `${baseUrl}/images/og/og-image.png`,
+        es: `${baseUrl}/images/og/og-image.png`,
+        en: `${baseUrl}/images/og/og-image-en.png`
       },
       contact: {
-        ca: `${baseUrl}/images/og/contact-ca.jpg`,
-        es: `${baseUrl}/images/og/contact-es.jpg`,
-        en: `${baseUrl}/images/og/contact-en.jpg`
+        ca: `${baseUrl}/images/og/og-image.png`,
+        es: `${baseUrl}/images/og/og-image.png`,
+        en: `${baseUrl}/images/og/og-image-en.png`
       },
       faq: {
-        ca: `${baseUrl}/images/og/faq-ca.jpg`,
-        es: `${baseUrl}/images/og/faq-es.jpg`,
-        en: `${baseUrl}/images/og/faq-en.jpg`
+        ca: `${baseUrl}/images/og/og-image.png`,
+        es: `${baseUrl}/images/og/og-image.png`,
+        en: `${baseUrl}/images/og/og-image-en.png`
       }
     }
     
-    return imageMap[page]?.[locale] || `${baseUrl}/images/og/default.jpg`
+    return imageMap[page]?.[locale] || `${baseUrl}/images/og/og-image.png`
   }
 
   return (

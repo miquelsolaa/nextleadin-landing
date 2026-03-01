@@ -14,7 +14,7 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
   // Processar imatge amb URL completa
   const imageUrl = post.image 
     ? (post.image.startsWith('http') ? post.image : `${baseUrl}${post.image}`)
-    : `${baseUrl}/images/og/default.jpg`
+    : `${baseUrl}/images/og/og-image.png`
   
   // Processar dates
   const datePublished = post.date ? new Date(post.date).toISOString() : new Date().toISOString()
