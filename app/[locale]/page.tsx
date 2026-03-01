@@ -1,6 +1,5 @@
+import { Suspense } from 'react'
 import HeroSection from '@/components/HeroSection'
-import FeatureCard from '@/components/FeatureCard'
-import TestimonialCard from '@/components/TestimonialCard'
 import BlogSection from '@/components/BlogSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import StickyNavigation from '@/components/StickyNavigation'

@@ -98,7 +98,7 @@ const StickyNavigation = () => {
               <li key={service.id}>
                 <button
                   onClick={() => scrollToSection(service.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 relative ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-[background-color,color] duration-300 relative ${
                     activeSection === service.id
                       ? 'text-primary-600 bg-primary-50'
                       : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'

@@ -10,6 +10,8 @@ const inter = Inter({
   variable: '--font-inter',
   preload: true,
   adjustFontFallback: true,
+  weight: ['400', '500', '600', '700'],
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 })
 
 // Metadata per defecte (locale per defecte del projecte: es)
@@ -30,21 +32,24 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <meta name="theme-color" content="#0284c7" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${inter.className} antialiased`}>
+        {children}
         {GA_MEASUREMENT_ID && (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
-            <Script id="ga4-init" strategy="afterInteractive">
+            <Script id="ga4-init" strategy="lazyOnload">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 window.gtag = gtag;
                 gtag('js', new Date());
-                // Consent Mode v2: per defecte denegat fins que l'usuari accepti cookies
                 gtag('consent', 'default', {
                   analytics_storage: 'denied'
                 });
@@ -55,7 +60,6 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        {children}
       </body>
     </html>
   )

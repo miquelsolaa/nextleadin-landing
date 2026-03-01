@@ -116,7 +116,7 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
                 {t.titlePrefix}
                 <span
-                  className={`text-primary-600 transition-all duration-500 ${
+                  className={`text-primary-600 transition-[opacity,transform] duration-500 will-change-[opacity,transform] ${
                     isAnimating ? 'opacity-0 translate-x-1' : 'opacity-100 translate-x-0'
                   }`}
                 >
@@ -164,11 +164,11 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
               </div>
             </div>
 
-            {/* Email Form */}
-            <div className="mb-6">
+            {/* Email Form - min-h to prevent CLS */}
+            <div className="mb-6 min-h-[140px] sm:min-h-[100px]">
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg">
                 <div className="flex-1">
-                  <label htmlFor="hero-email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="hero-email" className="block text-sm font-medium text-gray-700 mb-2 h-5">
                     {t.emailLabel}
                   </label>
                   <input
@@ -177,18 +177,18 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={t.emailPlaceholder}
-                    className="w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors duration-200"
+                    className="w-full px-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 h-12"
                     required
                   />
                 </div>
                 <button
                   type="submit"
-                  className="px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors duration-200 whitespace-nowrap self-end"
+                  className="px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 whitespace-nowrap self-end h-12"
                 >
                   {t.primaryCta}
                 </button>
               </form>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-gray-500 mt-2 min-h-[40px]">
                 {t.helper}
               </p>
             </div>
@@ -207,6 +207,8 @@ const HeroSection = ({ locale }: HeroSectionProps) => {
                 sizes="(max-width: 1024px) 0px, (max-width: 1280px) 90vw, 1292px"
                 className="w-full h-auto object-contain"
                 priority
+                fetchPriority="high"
+                quality={85}
               />
             </div>
           </div>
