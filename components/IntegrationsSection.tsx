@@ -67,6 +67,7 @@ export default function IntegrationsSection({ integrations }: IntegrationsSectio
                 alt={`${integration.name} integration`}
                 width={80}
                 height={80}
+                sizes="48px"
                 className="w-12 h-12 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
               />
             </div>

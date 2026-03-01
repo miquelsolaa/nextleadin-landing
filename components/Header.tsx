@@ -153,6 +153,7 @@ const Header = () => {
                 alt="NextLeadIn Logo"
                 width={32}
                 height={32}
+                sizes="32px"
                 className="w-8 h-8"
               />
               <span className="text-xl font-bold text-gray-900">NextLeadIn</span>
@@ -247,6 +248,7 @@ const Header = () => {
           mobileOpen ? 'opacity-100 max-h-[calc(100vh-4rem)]' : 'opacity-0 max-h-0'
         )}
         aria-hidden={!mobileOpen}
+        inert={!mobileOpen ? true : undefined}
       >
         <div className="px-4 pt-2 pb-6 space-y-4 overflow-y-auto max-h-[calc(100vh-5rem)]">
           <nav className="flex flex-col space-y-1">

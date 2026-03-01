@@ -53,6 +53,7 @@ const BlogRecentPosts = ({ posts }: BlogRecentPostsProps) => {
                   alt={post.title}
                   width={64}
                   height={64}
+                  sizes="64px"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

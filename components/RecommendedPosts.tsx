@@ -61,6 +61,7 @@ export default function RecommendedPosts({ posts, currentSlug }: RecommendedPost
                     src={post.image || '/images/hero/hero.png'}
                     alt={post.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>

@@ -253,9 +253,9 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
         <div className="container-custom relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h6 className="text-sm font-semibold text-primary-100 uppercase tracking-wider mb-4">
+              <span className="block text-sm font-semibold text-primary-100 uppercase tracking-wider mb-4">
                 {pageTexts[validLocale].ctaEyebrow}
-              </h6>
+              </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
                 {pageTexts[validLocale].ctaTitle.split(' ').map((word, index) => 
                   word === 'leads' || word === 'leads' || word === 'leads' ? 
@@ -282,6 +282,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
                 alt="Mockup de la plataforma CRM mostrant el tauler i analytics"
                 width={752}
                 height={423}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="w-full h-auto"
               />
             </div>

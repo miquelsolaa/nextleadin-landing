@@ -28,6 +28,8 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <meta name="theme-color" content="#0284c7" />
       </head>
       <body className={`${inter.className} antialiased`}>
         {GA_MEASUREMENT_ID && (

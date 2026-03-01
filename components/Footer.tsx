@@ -180,6 +180,7 @@ const Footer = () => {
                   alt="NextLeadIn"
                   width={200}
                   height={40}
+                  sizes="200px"
                   className="h-10 w-auto"
                 />
               </Link>

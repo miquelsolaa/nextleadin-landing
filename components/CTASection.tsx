@@ -38,9 +38,9 @@ const CTASection = () => {
       <div className="container-custom relative min-w-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="text-center lg:text-left">
-            <h6 className="text-sm font-semibold text-primary-100 uppercase tracking-wider mb-4">
+            <span className="block text-sm font-semibold text-primary-100 uppercase tracking-wider mb-4">
               {t.kicker}
-            </h6>
+            </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               {t.title}
             </h2>
@@ -71,6 +71,7 @@ const CTASection = () => {
               alt="Mockup de la plataforma NextLeadIn amb llistat de leads de negocis locals i mapa visual"
               width={752}
               height={423}
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="w-full h-auto"
             />
           </div>

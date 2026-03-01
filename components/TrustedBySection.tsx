@@ -128,6 +128,7 @@ const TrustedBySection = () => {
                             alt={t(`clients.${slide.id}.name`)}
                             width={48}
                             height={48}
+                            sizes="48px"
                             className="object-contain"
                           />
                         </div>

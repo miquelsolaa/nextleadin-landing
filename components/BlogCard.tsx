@@ -42,6 +42,7 @@ const BlogCard = ({
           alt={title}
           width={400}
           height={250}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         
@@ -91,6 +92,7 @@ const BlogCard = ({
         <Link
           href={postUrl}
           className="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors duration-200 group-hover:translate-x-1 transform transition-transform"
+          aria-label={`Llegeix més sobre ${title}`}
         >
           Llegeix més
           <svg

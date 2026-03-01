@@ -144,10 +144,10 @@ const AIMetaTags: React.FC<AIMetaTagsProps> = ({
       <meta name="keywords" content={keywords.join(', ')} />
       <link rel="canonical" href={canonical} />
       
-      {/* Hreflang tags per a multilingüe */}
-      <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/es${page === 'home' ? '' : `/${page}`}`} />
-      <link rel="alternate" hrefLang="ca-ES" href={`${baseUrl}${page === 'home' ? '' : `/${page}`}`} />
-      <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}/es${page === 'home' ? '' : `/${page}`}`} />
+      {/* Hreflang tags per a multilingüe - es és el defaultLocale sense prefix */}
+      <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${page === 'home' ? '' : `/${page}`}`} />
+      <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${page === 'home' ? '' : `/${page}`}`} />
+      <link rel="alternate" hrefLang="ca-ES" href={`${baseUrl}/ca${page === 'home' ? '' : `/${page}`}`} />
       <link rel="alternate" hrefLang="en-US" href={`${baseUrl}/en${page === 'home' ? '' : `/${page}`}`} />
       
       {/* Meta tags AI-optimitzats */}

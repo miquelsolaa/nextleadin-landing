@@ -2,7 +2,10 @@ import createMiddleware from 'next-intl/middleware'
 import {routing} from './i18n/routing'
 import {NextRequest, NextResponse} from 'next/server'
 
-const intlMiddleware = createMiddleware(routing)
+const intlMiddleware = createMiddleware({
+  ...routing,
+  localeDetection: false,
+})
 
 export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/admin')) {

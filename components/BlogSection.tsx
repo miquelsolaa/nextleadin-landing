@@ -127,6 +127,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                                 alt={post.title}
                                 width={400}
                                 height={250}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
                               />
                             </Link>
@@ -186,6 +187,7 @@ const BlogSection = ({ blogPosts }: BlogSectionProps) => {
                                 href={getBlogPostUrl(post.slug, locale)} 
                                 className="elementskit-btn keydesign-underline whitespace--normal inline-flex items-center text-sm font-medium text-green-600 hover:text-green-700 transition-colors duration-200" 
                                 data-text={translations.readMore}
+                                aria-label={`${translations.readMore}: ${post.title}`}
                               >
                                 <span className="button-wrapper">{translations.readMore}</span>
                               </Link>

@@ -236,6 +236,7 @@ export function CleanTestimonial() {
               alt={t.author} 
               width={32} 
               height={32} 
+              sizes="32px"
               className="w-full h-full object-cover" 
             />
           </motion.button>
@@ -284,6 +285,7 @@ export function CleanTestimonial() {
                     alt={t.author}
                     width={64}
                     height={64}
+                    sizes="64px"
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-500"
                   />
                 </motion.div>

@@ -147,14 +147,14 @@ const ServicesSection = () => {
           >
             <div className={`space-y-8 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
               <div>
-                <h6 className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-4 flex items-center gap-2">
+                <span className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-4 flex items-center gap-2">
                   {service.title}
                   {service.badge && (
                     <span className="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">
                       {service.badge}
                     </span>
                   )}
-                </h6>
+                </span>
                 <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                   <span className="gradient-text">{service.subtitle.split(' ')[0]}</span>{' '}
                   {service.subtitle.split(' ').slice(1).join(' ')}

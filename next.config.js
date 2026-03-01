@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const withNextIntl = require('next-intl/plugin')('./i18n/request.ts')
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development',
+})
 
 const nextConfig = {
   typescript: {
@@ -13,6 +19,7 @@ const nextConfig = {
     return config;
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -49,4 +56,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withNextIntl(nextConfig)
+module.exports = withPWA(withNextIntl(nextConfig))
