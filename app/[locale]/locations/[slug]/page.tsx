@@ -11,6 +11,39 @@ import {
   type LocationLocale
 } from '@/lib/locations'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import {
+  UtensilsCrossed,
+  ShoppingBag,
+  Scissors,
+  Wrench,
+  Stethoscope,
+  Dumbbell,
+  Bed,
+  Home,
+  Calculator,
+  GraduationCap,
+  type LucideIcon
+} from 'lucide-react'
+
+const sectorIconMap: Record<string, LucideIcon> = {
+  utensils: UtensilsCrossed,
+  'shopping-bag': ShoppingBag,
+  scissors: Scissors,
+  wrench: Wrench,
+  hospital: Stethoscope,
+  stethoscope: Stethoscope,
+  dumbbell: Dumbbell,
+  bed: Bed,
+  home: Home,
+  calculator: Calculator,
+  'graduation-cap': GraduationCap
+}
+
+const SectorIcon = ({ iconKey }: { iconKey: string }) => {
+  const IconComponent = sectorIconMap[iconKey]
+  if (!IconComponent) return null
+  return <IconComponent className="w-8 h-8 text-primary-600" />
+}
 
 interface LocationPageProps {
   params: Promise<{
@@ -107,6 +140,21 @@ export default async function LocationPage({ params }: LocationPageProps) {
     { name: location.cityName, url: currentUrl }
   ]
 
+  const localeTitles = {
+    ca: {
+      serviceType: 'Generació de leads de negocis locals',
+      areaDescription: `Troba negocis locals a ${location.cityName} amb dades enriquides i anàlisi de ressenyes amb IA`
+    },
+    es: {
+      serviceType: 'Generación de leads de negocios locales',
+      areaDescription: `Encuentra negocios locales en ${location.cityName} con datos enriquecidos y análisis de reseñas con IA`
+    },
+    en: {
+      serviceType: 'Local business lead generation',
+      areaDescription: `Find local businesses in ${location.cityName} with enriched data and AI-powered review analysis`
+    }
+  }[validLocale]
+
   const structuredData: Record<string, unknown>[] = [
     {
       '@context': 'https://schema.org',
@@ -123,6 +171,74 @@ export default async function LocationPage({ params }: LocationPageProps) {
       '@type': 'Place',
       name: location.cityName,
       containedInPlace: { '@type': 'AdministrativeArea', name: location.region }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: `NextLeadIn ${location.cityName}`,
+      description: localeTitles.areaDescription,
+      serviceType: localeTitles.serviceType,
+      provider: {
+        '@type': 'Organization',
+        name: 'NextLeadIn',
+        url: baseUrl,
+        logo: `${baseUrl}/images/logo/logo.png`
+      },
+      areaServed: {
+        '@type': 'City',
+        name: location.cityName,
+        containedInPlace: {
+          '@type': 'AdministrativeArea',
+          name: location.region
+        }
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Plans NextLeadIn',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Local Business',
+              description: '500 leads/mes'
+            },
+            price: '79',
+            priceCurrency: 'EUR'
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Professional',
+              description: '2000 leads/mes'
+            },
+            price: '199',
+            priceCurrency: 'EUR'
+          }
+        ]
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: location.title,
+      description: location.description,
+      url: currentUrl,
+      inLanguage: validLocale === 'ca' ? 'ca-ES' : validLocale === 'es' ? 'es-ES' : 'en-US',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'NextLeadIn',
+        url: baseUrl
+      },
+      about: {
+        '@type': 'Thing',
+        name: location.cityName
+      },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '.prose']
+      }
     }
   ]
 
@@ -223,7 +339,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
                 {location.topSectors.map((sector, index) => (
                   <div key={index} className="bg-white rounded-xl p-4 text-center shadow-sm">
-                    <span className="text-3xl block mb-2">{sector.icon}</span>
+                    <div className="flex justify-center mb-2">
+                      <SectorIcon iconKey={sector.icon} />
+                    </div>
                     <h3 className="font-semibold text-gray-900 text-sm mb-1">{sector.name}</h3>
                     <p className="text-primary-600 font-bold">{sector.count}</p>
                   </div>

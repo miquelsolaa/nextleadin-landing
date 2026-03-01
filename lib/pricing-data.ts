@@ -126,9 +126,9 @@ export const pricingPlans: PricingPlan[] = [
     },
     buttonHref: 'https://app.nextleadin.com/register',
     billingNote: {
-      ca: '€63/mes facturat anualment',
-      es: '€63/mes facturado anualmente',
-      en: '€63/month when billed annually'
+      ca: '€59/mes facturat anualment (estalvia 25%)',
+      es: '€59/mes facturado anualmente (ahorra 25%)',
+      en: '€59/month billed annually (save 25%)'
     },
     popular: true,
     delay: 200,
@@ -146,7 +146,7 @@ export const pricingPlans: PricingPlan[] = [
       es: 'Equipo',
       en: 'Team'
     },
-    price: 199,
+    price: 229,
     period: {
       ca: 'mes',
       es: 'mes',
@@ -199,9 +199,9 @@ export const pricingPlans: PricingPlan[] = [
     },
     buttonHref: 'https://app.nextleadin.com/register',
     billingNote: {
-      ca: '€159/mes facturat anualment',
-      es: '€159/mes facturado anualmente',
-      en: '€159/month when billed annually'
+      ca: '€172/mes facturat anualment (estalvia 25%)',
+      es: '€172/mes facturado anualmente (ahorra 25%)',
+      en: '€172/month billed annually (save 25%)'
     },
     popular: false,
     delay: 300,
@@ -276,6 +276,11 @@ export const pricingPlans: PricingPlan[] = [
       en: 'Contact sales'
     },
     buttonHref: '/contact',
+    billingNote: {
+      ca: 'Facturació anual. Preu segons necessitats.',
+      es: 'Facturación anual. Precio según necesidades.',
+      en: 'Annual billing. Price based on needs.'
+    },
     popular: false,
     delay: 400,
     limits: {
@@ -485,8 +490,8 @@ export const faqData = {
       answer: 'Buscar 100 leads a Google Maps porta 6-8 hores. Amb NextLeadIn, 10 minuts. A més, cada lead inclou context IA per preparar trucades en segons.'
     },
     {
-      question: 'Quina diferència hi ha entre facturació anual i mensual?',
-      answer: 'La mensual es cobra cada mes. L\'anual es cobra en un sol pagament i inclou descompte (Starter €63/mes, Equip €159/mes).'
+      question: 'Com funciona la facturació?',
+      answer: 'Tots els plans es facturen anualment amb un sol pagament. Això et permet gaudir d\'un 25% de descompte: Starter a €59/mes (€708/any) i Equip a €172/mes (€2.064/any). Si necessites flexibilitat mensual, contacta amb nosaltres.'
     },
     {
       question: 'D\'on provenen les dades dels leads?',
@@ -511,8 +516,8 @@ export const faqData = {
       answer: 'Buscar 100 leads en Google Maps lleva 6-8 horas. Con NextLeadIn, 10 minutos. Además, cada lead incluye contexto IA para preparar llamadas en segundos.'
     },
     {
-      question: '¿Cuál es la diferencia entre facturación anual y mensual?',
-      answer: 'La mensual se cobra cada mes. La anual se cobra en un solo pago e incluye descuento (Starter €63/mes, Equipo €159/mes).'
+      question: '¿Cómo funciona la facturación?',
+      answer: 'Todos los planes se facturan anualmente con un solo pago. Esto te permite disfrutar de un 25% de descuento: Starter a €59/mes (€708/año) y Equipo a €172/mes (€2.064/año). Si necesitas flexibilidad mensual, contacta con nosotros.'
     },
     {
       question: '¿De dónde provienen los datos de los leads?',
@@ -537,8 +542,8 @@ export const faqData = {
       answer: 'Searching for 100 leads on Google Maps takes 6-8 hours. With NextLeadIn, 10 minutes. Plus, each lead includes AI context to prepare calls in seconds.'
     },
     {
-      question: 'What is the difference between annual and monthly billing?',
-      answer: 'Monthly is charged every month. Annual is charged in one payment and includes a discount (Starter €63/month, Team €159/month).'
+      question: 'How does billing work?',
+      answer: 'All plans are billed annually with a single payment. This allows you to enjoy a 25% discount: Starter at €59/month (€708/year) and Team at €172/month (€2,064/year). If you need monthly flexibility, contact us.'
     },
     {
       question: 'Where do lead data come from?',

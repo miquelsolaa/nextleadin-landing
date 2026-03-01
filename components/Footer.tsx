@@ -21,7 +21,7 @@ const Footer = () => {
         features: 'Funcionalidades',
         resources: 'Recursos',
         company: 'Empresa',
-        social: 'Redes'
+        comparisons: 'Comparativas'
       },
       nav: {
         features: [
@@ -42,9 +42,11 @@ const Footer = () => {
           { name: 'Contacto', href: '/contact' },
           { name: 'Empleo', href: '#' }
         ],
-        social: [
-          { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' },
-          { name: 'Instagram', href: 'https://instagram.com/nextleadin' }
+        comparisons: [
+          { name: 'NextLeadIn vs Apollo.io', href: '/compare/apollo' },
+          { name: 'NextLeadIn vs ZoomInfo', href: '/compare/zoominfo' },
+          { name: 'NextLeadIn vs Lusha', href: '/compare/lusha' },
+          { name: 'Todas las comparativas', href: '/compare' }
         ]
       },
       copyright: '© 2026 NextLeadIn. Todos los derechos reservados.',
@@ -64,7 +66,7 @@ const Footer = () => {
         features: 'Característiques',
         resources: 'Recursos',
         company: 'Empresa',
-        social: 'Xarxes'
+        comparisons: 'Comparatives'
       },
       nav: {
         features: [
@@ -85,9 +87,11 @@ const Footer = () => {
           { name: 'Contacte', href: '/contact' },
           { name: 'Carreres', href: '#' }
         ],
-        social: [
-          { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' },
-          { name: 'Instagram', href: 'https://instagram.com/nextleadin' }
+        comparisons: [
+          { name: 'NextLeadIn vs Apollo.io', href: '/compare/apollo' },
+          { name: 'NextLeadIn vs ZoomInfo', href: '/compare/zoominfo' },
+          { name: 'NextLeadIn vs Lusha', href: '/compare/lusha' },
+          { name: 'Totes les comparatives', href: '/compare' }
         ]
       },
       copyright: '© 2026 NextLeadIn. Tots els drets reservats.',
@@ -107,7 +111,7 @@ const Footer = () => {
         features: 'Features',
         resources: 'Resources',
         company: 'Company',
-        social: 'Social'
+        comparisons: 'Comparisons'
       },
       nav: {
         features: [
@@ -128,9 +132,11 @@ const Footer = () => {
           { name: 'Contact', href: '/contact' },
           { name: 'Careers', href: '#' }
         ],
-        social: [
-          { name: 'Linkedin', href: 'https://www.linkedin.com/company/nextleadin' },
-          { name: 'Instagram', href: 'https://instagram.com/nextleadin' }
+        comparisons: [
+          { name: 'NextLeadIn vs Apollo.io', href: '/compare/apollo' },
+          { name: 'NextLeadIn vs ZoomInfo', href: '/compare/zoominfo' },
+          { name: 'NextLeadIn vs Lusha', href: '/compare/lusha' },
+          { name: 'All comparisons', href: '/compare' }
         ]
       },
       copyright: '© 2026 NextLeadIn. All rights reserved.',
@@ -262,13 +268,13 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Social */}
+            {/* Comparisons */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                {dict.sections.social}
+                {dict.sections.comparisons}
               </h3>
               <ul role="list" className="space-y-3">
-                {(footerNavigation.social || []).map((item) => (
+                {(footerNavigation.comparisons || []).map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}

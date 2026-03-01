@@ -11,6 +11,22 @@ import {
   type IndustryLocale
 } from '@/lib/industries'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import * as LucideIcons from 'lucide-react'
+
+function getLucideIcon(iconName: string, className: string = "w-6 h-6"): React.ReactNode {
+  const iconNamePascal = iconName
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+  
+  const IconComponent = (LucideIcons as Record<string, React.ComponentType<{ className?: string }>>)[iconNamePascal];
+  
+  if (IconComponent) {
+    return <IconComponent className={className} />;
+  }
+  
+  return <LucideIcons.Building2 className={className} />;
+}
 
 interface IndustryPageProps {
   params: Promise<{
@@ -121,6 +137,24 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
     }
   ]
 
+  const localeTitles = {
+    ca: {
+      serviceType: 'Generació de leads per a',
+      howToName: 'Com trobar leads de',
+      howToDescription: 'Guia pas a pas per generar leads qualificats'
+    },
+    es: {
+      serviceType: 'Generación de leads para',
+      howToName: 'Cómo encontrar leads de',
+      howToDescription: 'Guía paso a paso para generar leads cualificados'
+    },
+    en: {
+      serviceType: 'Lead generation for',
+      howToName: 'How to find',
+      howToDescription: 'Step-by-step guide to generate qualified leads'
+    }
+  }[validLocale]
+
   const structuredData: Record<string, unknown>[] = [
     {
       '@context': 'https://schema.org',
@@ -137,12 +171,72 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
       '@type': 'Service',
       name: industry.title,
       description: industry.description,
+      serviceType: `${localeTitles.serviceType} ${industry.title}`,
       provider: {
         '@type': 'Organization',
-        name: 'NextLeadIn'
+        name: 'NextLeadIn',
+        url: baseUrl,
+        logo: `${baseUrl}/images/logo/logo.png`
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'Spain'
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Plans NextLeadIn',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Local Business'
+            },
+            price: '79',
+            priceCurrency: 'EUR'
+          }
+        ]
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: industry.title,
+      description: industry.description,
+      url: currentUrl,
+      inLanguage: validLocale === 'ca' ? 'ca-ES' : validLocale === 'es' ? 'es-ES' : 'en-US',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'NextLeadIn',
+        url: baseUrl
+      },
+      about: {
+        '@type': 'Thing',
+        name: industry.title
+      },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '.prose']
       }
     }
   ]
+
+  if (industry.solutions && industry.solutions.length > 0) {
+    const howToSteps = industry.solutions.slice(0, 4).map((solution, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: solution.title,
+      text: solution.description
+    }))
+    
+    structuredData.push({
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: `${localeTitles.howToName} ${industry.title}`,
+      description: localeTitles.howToDescription,
+      step: howToSteps
+    })
+  }
 
   if (industry.faq && industry.faq.length > 0) {
     structuredData.push({
@@ -230,7 +324,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
             </nav>
 
             <div className="max-w-4xl mx-auto text-center">
-              <span className="text-5xl mb-6 block">{industry.icon}</span>
+              <span className="text-primary-600 mb-6 block">{getLucideIcon(industry.icon, "w-16 h-16 mx-auto")}</span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 {industry.heroTitle}
               </h1>
