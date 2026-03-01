@@ -21,35 +21,35 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       author: "Agustí Navarro",
       role: "CTO",
       company: "CLManager",
-      avatar: "/images/testimonials/ramon.jpg"
+      avatar: "/images/testimonials/ramon.webp"
     },
     {
       quote: "De 4 reunions/mes a 11. La taxa de contacte ha passat del 6% al 18% gràcies al context IA. ROI del primer mes: 12x.",
       author: "Marta Rovira",
       role: "Head of Sales",
       company: "Agència Marketing",
-      avatar: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review3.jpg"
+      avatar: "/images/testimonials/marta.webp"
     },
     {
       quote: "8 hores menys a la setmana buscant leads. Ara el meu equip dedica aquest temps a trucar. 3 deals tancats el primer mes.",
       author: "Jordi Pons",
       role: "Business Development",
       company: "SaaS B2B",
-      avatar: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review2.jpg"
+      avatar: "/images/testimonials/jordi.webp"
     },
     {
       quote: "Abans feia 50 trucades per aconseguir 2 reunions. Ara amb 30 trucades en tinc 5. El context IA marca la diferència.",
       author: "Núria Serra",
       role: "Account Executive",
       company: "Consultoria",
-      avatar: "https://images.pexels.com/photos/4342352/pexels-photo-4342352.jpeg"
+      avatar: "/images/testimonials/nuria.webp"
     },
     {
       quote: "Implementació en 2 dies. El pipeline ha crescut un 180% en 3 mesos. Cost per lead: 0,08€ vs 3€ que pagàvem abans.",
       author: "Pol Garcia",
       role: "Revenue Operations",
       company: "Tech",
-      avatar: "https://images.pexels.com/photos/7752893/pexels-photo-7752893.jpeg"
+      avatar: "/images/testimonials/pol.webp"
     }
   ],
   es: [
@@ -58,35 +58,35 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       author: "Agustí Navarro",
       role: "CTO",
       company: "CLManager",
-      avatar: "/images/testimonials/ramon.jpg"
+      avatar: "/images/testimonials/ramon.webp"
     },
     {
       quote: "De 4 reuniones/mes a 11. La tasa de contacto ha pasado del 6% al 18% gracias al contexto IA. ROI del primer mes: 12x.",
       author: "Marta Rovira",
       role: "Head of Sales",
       company: "Agencia Marketing",
-      avatar: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review3.jpg"
+      avatar: "/images/testimonials/marta.webp"
     },
     {
       quote: "8 horas menos a la semana buscando leads. Ahora mi equipo dedica ese tiempo a llamar. 3 deals cerrados el primer mes.",
       author: "Jordi Pons",
       role: "Business Development",
       company: "SaaS B2B",
-      avatar: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review2.jpg"
+      avatar: "/images/testimonials/jordi.webp"
     },
     {
       quote: "Antes hacía 50 llamadas para conseguir 2 reuniones. Ahora con 30 llamadas consigo 5. El contexto IA marca la diferencia.",
       author: "Núria Serra",
       role: "Account Executive",
       company: "Consultoría",
-      avatar: "https://images.pexels.com/photos/4342352/pexels-photo-4342352.jpeg"
+      avatar: "/images/testimonials/nuria.webp"
     },
     {
       quote: "Implementación en 2 días. El pipeline ha crecido un 180% en 3 meses. Coste por lead: 0,08€ vs 3€ que pagábamos antes.",
       author: "Pol Garcia",
       role: "Revenue Operations",
       company: "Tech",
-      avatar: "https://images.pexels.com/photos/7752893/pexels-photo-7752893.jpeg"
+      avatar: "/images/testimonials/pol.webp"
     }
   ],
   en: [
@@ -95,35 +95,35 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       author: "Agustí Navarro",
       role: "CTO",
       company: "CLManager",
-      avatar: "/images/testimonials/ramon.jpg"
+      avatar: "/images/testimonials/ramon.webp"
     },
     {
       quote: "From 4 meetings/month to 11. Contact rate went from 6% to 18% thanks to AI context. First month ROI: 12x.",
       author: "Marta Rovira",
       role: "Head of Sales",
       company: "Marketing Agency",
-      avatar: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review3.jpg"
+      avatar: "/images/testimonials/marta.webp"
     },
     {
       quote: "8 fewer hours per week searching for leads. Now my team spends that time calling. 3 deals closed in the first month.",
       author: "Jordi Pons",
       role: "Business Development",
       company: "B2B SaaS",
-      avatar: "https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/review2.jpg"
+      avatar: "/images/testimonials/jordi.webp"
     },
     {
       quote: "I used to make 50 calls to get 2 meetings. Now with 30 calls I get 5. AI context makes all the difference.",
       author: "Núria Serra",
       role: "Account Executive",
       company: "Consulting",
-      avatar: "https://images.pexels.com/photos/4342352/pexels-photo-4342352.jpeg"
+      avatar: "/images/testimonials/nuria.webp"
     },
     {
       quote: "Implementation in 2 days. Pipeline grew 180% in 3 months. Cost per lead: €0.08 vs €3 we were paying before.",
       author: "Pol Garcia",
       role: "Revenue Operations",
       company: "Tech",
-      avatar: "https://images.pexels.com/photos/7752893/pexels-photo-7752893.jpeg"
+      avatar: "/images/testimonials/pol.webp"
     }
   ]
 }

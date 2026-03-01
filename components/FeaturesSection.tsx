@@ -61,7 +61,7 @@ const FeaturesSection = () => {
       className="py-24 px-0 overflow-hidden relative"
       style={{
         backgroundColor: '#004050',
-        backgroundImage: 'url("https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/10/crm-shape-3.svg")',
+        backgroundImage: 'url("/images/design/crm-shape-3.svg")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundAttachment: 'fixed'

@@ -23,19 +23,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'sierra.keydesign.xyz',
+        hostname: 'ui-avatars.com',
         port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'images.pexels.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'ui-avatars.com',
         port: '',
         pathname: '/**',
       },

@@ -37,16 +37,16 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
 
   // Integration partners data
   const integrations = [
-    { name: 'Slack', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-1.png' },
-    { name: 'Zoom', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-2.png' },
-    { name: 'Salesforce', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-3.png' },
-    { name: 'HubSpot', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-4.png' },
-    { name: 'Stripe', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-6.png' },
-    { name: 'Zapier', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-7.png' },
-    { name: 'Google Analytics', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-8.png' },
-    { name: 'WordPress', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-10.png' },
-    { name: 'Shopify', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-9.png' },
-    { name: 'Mailchimp', logo: 'https://sierra.keydesign.xyz/crm/wp-content/uploads/sites/13/2023/09/integrations-5.png' },
+    { name: 'Slack', logo: '/images/integrations/integrations-1.png' },
+    { name: 'Zoom', logo: '/images/integrations/integrations-2.png' },
+    { name: 'Salesforce', logo: '/images/integrations/integrations-3.png' },
+    { name: 'HubSpot', logo: '/images/integrations/integrations-4.png' },
+    { name: 'Stripe', logo: '/images/integrations/integrations-6.png' },
+    { name: 'Zapier', logo: '/images/integrations/integrations-7.png' },
+    { name: 'Google Analytics', logo: '/images/integrations/integrations-8.png' },
+    { name: 'WordPress', logo: '/images/integrations/integrations-10.png' },
+    { name: 'Shopify', logo: '/images/integrations/integrations-9.png' },
+    { name: 'Mailchimp', logo: '/images/integrations/integrations-5.png' },
   ]
 
   return (
