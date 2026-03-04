@@ -51,11 +51,11 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
         {/* Metadades */}
         <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
           <div className="flex items-center gap-2">
-            <User className="w-5 h-5" />
+            <User className="w-5 h-5" aria-hidden />
             <span className="font-medium">{post.author}</span>
           </div>
           <div className="flex items-center gap-2">
-            <CalendarDays className="w-5 h-5" />
+            <CalendarDays className="w-5 h-5" aria-hidden />
             <span>{formatDate(post.date)}</span>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (
           <div className="flex items-center gap-2 flex-wrap mb-8">
-            <Tag className="w-5 h-5 text-gray-400" />
+            <Tag className="w-5 h-5 text-gray-400" aria-hidden />
             {post.tags.map((tag) => (
               <span
                 key={tag}

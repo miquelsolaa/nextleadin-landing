@@ -1,8 +1,20 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
-import { CleanTestimonial } from '@/components/ui/clean-testimonial'
+
+const CleanTestimonial = dynamic(
+  () => import('@/components/ui/clean-testimonial').then((mod) => ({ default: mod.CleanTestimonial })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="min-h-[320px] flex items-center justify-center p-8 bg-gray-50 rounded-xl" aria-hidden="true">
+        <div className="animate-pulse h-4 bg-gray-200 rounded w-3/4" />
+      </div>
+    ),
+  }
+)
 
 const TestimonialsSection = () => {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'

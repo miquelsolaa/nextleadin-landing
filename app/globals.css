@@ -35,6 +35,26 @@
   background-clip: text;
 }
 
+/* MWC 2026 design system */
+.mwc-mesh-bg {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%, #f8fafc 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.mwc-dot-grid {
+  background-image: radial-gradient(rgba(0, 64, 80, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.mwc-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 /* Section Padding */
 .section-padding {
   padding: 90px 0;
@@ -61,6 +81,18 @@
   
   .container-custom {
     padding: 0 16px;
+  }
+}
+
+/* Respect prefers-reduced-motion (accessibility WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

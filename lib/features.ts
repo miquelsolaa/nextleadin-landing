@@ -6,6 +6,7 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
 import remarkRehype from 'remark-rehype';
+import rehypeSanitize from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
 
 export interface FeatureMeta {
@@ -82,7 +83,8 @@ export async function getFeatureData(slug: string, locale: string): Promise<Feat
     .use(remarkGfm)
     .use(remarkBreaks)
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeStringify, { allowDangerousHtml: true })
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
     .process(content);
 
   const contentHtml = processedContent.toString();

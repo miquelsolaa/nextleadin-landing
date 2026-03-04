@@ -12,6 +12,10 @@
     }
   },
   "pages": {
+    "mwc2026": {
+      "title": "NextLeadIn @ MWC Barcelona 2026 | AI Lead Intelligence",
+      "metaDescription": "Turn any company into qualified leads in 24 hours. AI-powered lead intelligence. Scrape, enrich, score, qualify—automatically."
+    },
     "blog": {
       "title": "B2B Leads and AI Blog",
       "description": "Discover insights about lead generation, AI and B2B sales to accelerate your growth.",

@@ -1,17 +1,31 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Syne, DM_Sans } from 'next/font/google'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 
 const inter = Inter({
-  subsets: ['latin'], 
-  display: 'swap', 
+  subsets: ['latin'],
+  display: 'swap',
   variable: '--font-inter',
   preload: true,
   adjustFontFallback: true,
   weight: ['400', '500', '600', '700'],
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+})
+
+const syne = Syne({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-syne',
+  weight: ['500', '600', '700', '800'],
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dm-sans',
+  weight: ['400', '500', '600', '700'],
 })
 
 // Metadata per defecte (locale per defecte del projecte: es)
@@ -26,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es" className={`${inter.variable} ${syne.variable} ${dmSans.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
@@ -35,6 +49,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        {/* LCP: preload hero image for homepage (desktop) */}
+        <link rel="preload" href="/images/hero/hero.png" as="image" fetchPriority="high" />
       </head>
       <body className={`${inter.className} antialiased`}>
         {children}

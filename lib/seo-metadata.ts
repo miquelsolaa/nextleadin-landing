@@ -451,7 +451,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         {
           '@context': 'https://schema.org',
           '@type': 'Product',
-          '@id': 'https://nextleadin.com/pricing',
+          '@id': 'https://nextleadin.com/ca/pricing',
           name: 'NextLeadIn - Plans de preus',
           description: 'Plans de preus per a la generació de leads amb intel·ligència artificial',
           image: 'https://nextleadin.com/images/og/pricing-ca.jpg',
@@ -494,12 +494,12 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           offers: [
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/pricing#plan-local-business',
+              '@id': 'https://nextleadin.com/ca/pricing#plan-local-business',
               name: 'Local Business',
               price: '79',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
-              url: 'https://nextleadin.com/pricing',
+              url: 'https://nextleadin.com/ca/pricing',
               priceSpecification: {
                 '@type': 'UnitPriceSpecification',
                 price: '79',
@@ -516,12 +516,12 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/pricing#plan-professional',
+              '@id': 'https://nextleadin.com/ca/pricing#plan-professional',
               name: 'Professional',
               price: '199',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
-              url: 'https://nextleadin.com/pricing',
+              url: 'https://nextleadin.com/ca/pricing',
               priceSpecification: {
                 '@type': 'UnitPriceSpecification',
                 price: '199',
@@ -538,12 +538,12 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/pricing#plan-enterprise',
+              '@id': 'https://nextleadin.com/ca/pricing#plan-enterprise',
               name: 'Enterprise',
               price: '599',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
-              url: 'https://nextleadin.com/pricing',
+              url: 'https://nextleadin.com/ca/pricing',
               priceSpecification: {
                 '@type': 'UnitPriceSpecification',
                 price: '599',
@@ -553,7 +553,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
                 valueAddedTaxIncluded: true,
                 referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' }
               },
-              description: 'Leads il·limitats, API, white-label, account manager',
+              description: 'Leads il·limitats, API, account manager',
               eligibleQuantity: { '@type': 'QuantitativeValue', value: -1, unitText: 'leads il·limitats' },
               itemOffered: { '@type': 'Service', name: 'NextLeadIn - Enterprise', serviceType: 'Lead Generation Service', areaServed: 'ES' },
               seller: { '@type': 'Organization', name: 'NextLeadIn' }
@@ -581,7 +581,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         {
           '@context': 'https://schema.org',
           '@type': 'Product',
-          '@id': 'https://nextleadin.com/es/pricing',
+          '@id': 'https://nextleadin.com/pricing',
           name: 'NextLeadIn - Planes de precios',
           description: 'Planes de precios para la generación de leads con inteligencia artificial',
           image: 'https://nextleadin.com/images/og/pricing-es.jpg',
@@ -624,12 +624,12 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           offers: [
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/es/pricing#plan-local-business',
+              '@id': 'https://nextleadin.com/pricing#plan-local-business',
               name: 'Local Business',
               price: '79',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
-              url: 'https://nextleadin.com/es/pricing',
+              url: 'https://nextleadin.com/pricing',
               priceSpecification: { '@type': 'UnitPriceSpecification', price: '79', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
               description: '500 leads/mes, datos enriquecidos, análisis reseñas IA, mapa visual',
               eligibleQuantity: { '@type': 'QuantitativeValue', value: 500, unitText: 'leads al mes' },
@@ -638,12 +638,12 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/es/pricing#plan-professional',
+              '@id': 'https://nextleadin.com/pricing#plan-professional',
               name: 'Professional',
               price: '199',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
-              url: 'https://nextleadin.com/es/pricing',
+              url: 'https://nextleadin.com/pricing',
               priceSpecification: { '@type': 'UnitPriceSpecification', price: '199', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
               description: '2.000 leads/mes, análisis competitivo, scoring predictivo, integraciones CRM',
               eligibleQuantity: { '@type': 'QuantitativeValue', value: 2000, unitText: 'leads al mes' },
@@ -652,14 +652,14 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
             },
             {
               '@type': 'Offer',
-              '@id': 'https://nextleadin.com/es/pricing#plan-enterprise',
+              '@id': 'https://nextleadin.com/pricing#plan-enterprise',
               name: 'Enterprise',
               price: '599',
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
-              url: 'https://nextleadin.com/es/pricing',
+              url: 'https://nextleadin.com/pricing',
               priceSpecification: { '@type': 'UnitPriceSpecification', price: '599', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
-              description: 'Leads ilimitados, API, white-label, account manager',
+              description: 'Leads ilimitados, API, account manager',
               eligibleQuantity: { '@type': 'QuantitativeValue', value: -1, unitText: 'leads ilimitados' },
               itemOffered: { '@type': 'Service', name: 'NextLeadIn - Enterprise', serviceType: 'Lead Generation Service', areaServed: 'ES' },
               seller: { '@type': 'Organization', name: 'NextLeadIn' }
@@ -765,7 +765,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
               availability: 'https://schema.org/InStock',
               url: 'https://nextleadin.com/en/pricing',
               priceSpecification: { '@type': 'UnitPriceSpecification', price: '599', priceCurrency: 'EUR', billingIncrement: '1', unitText: 'MONTH', valueAddedTaxIncluded: true, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' } },
-              description: 'Unlimited leads, API, white-label, account manager',
+              description: 'Unlimited leads, API, account manager',
               eligibleQuantity: { '@type': 'QuantitativeValue', value: -1, unitText: 'unlimited leads' },
               itemOffered: { '@type': 'Service', name: 'NextLeadIn - Enterprise', serviceType: 'Lead Generation Service', areaServed: 'ES' },
               seller: { '@type': 'Organization', name: 'NextLeadIn' }

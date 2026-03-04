@@ -133,10 +133,11 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
           <div className="space-y-6">
             {/* Leads per month */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="roi-leads-per-month" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.leadsLabel}: <span className="text-primary-600 font-bold">{leadsPerMonth}</span>
               </label>
               <input
+                id="roi-leads-per-month"
                 type="range"
                 min="50"
                 max="1000"
@@ -144,15 +145,19 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
                 value={leadsPerMonth}
                 onChange={(e) => setLeadsPerMonth(Number(e.target.value))}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                aria-valuenow={leadsPerMonth}
+                aria-valuemin={50}
+                aria-valuemax={1000}
               />
             </div>
 
             {/* Hours per week */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="roi-hours-per-week" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.hoursLabel}: <span className="text-primary-600 font-bold">{hoursPerWeekResearch}h</span>
               </label>
               <input
+                id="roi-hours-per-week"
                 type="range"
                 min="2"
                 max="20"
@@ -160,15 +165,19 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
                 value={hoursPerWeekResearch}
                 onChange={(e) => setHoursPerWeekResearch(Number(e.target.value))}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                aria-valuenow={hoursPerWeekResearch}
+                aria-valuemin={2}
+                aria-valuemax={20}
               />
             </div>
 
             {/* Hourly rate */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="roi-hourly-rate" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.hourlyLabel}: <span className="text-primary-600 font-bold">{hourlyRate}€</span>
               </label>
               <input
+                id="roi-hourly-rate"
                 type="range"
                 min="15"
                 max="100"
@@ -176,15 +185,19 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
                 value={hourlyRate}
                 onChange={(e) => setHourlyRate(Number(e.target.value))}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                aria-valuenow={hourlyRate}
+                aria-valuemin={15}
+                aria-valuemax={100}
               />
             </div>
 
             {/* Current contact rate */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="roi-contact-rate" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.contactRateLabel}: <span className="text-primary-600 font-bold">{currentContactRate}%</span>
               </label>
               <input
+                id="roi-contact-rate"
                 type="range"
                 min="1"
                 max="15"
@@ -192,15 +205,19 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
                 value={currentContactRate}
                 onChange={(e) => setCurrentContactRate(Number(e.target.value))}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                aria-valuenow={currentContactRate}
+                aria-valuemin={1}
+                aria-valuemax={15}
               />
             </div>
 
             {/* Current meetings */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="roi-meetings" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.meetingsLabel}: <span className="text-primary-600 font-bold">{currentMeetingsPerMonth}</span>
               </label>
               <input
+                id="roi-meetings"
                 type="range"
                 min="1"
                 max="20"
@@ -208,15 +225,19 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
                 value={currentMeetingsPerMonth}
                 onChange={(e) => setCurrentMeetingsPerMonth(Number(e.target.value))}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                aria-valuenow={currentMeetingsPerMonth}
+                aria-valuemin={1}
+                aria-valuemax={20}
               />
             </div>
 
             {/* Average deal value */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="roi-deal-value" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.dealValueLabel}: <span className="text-primary-600 font-bold">{formatCurrency(averageDealValue)}</span>
               </label>
               <input
+                id="roi-deal-value"
                 type="range"
                 min="500"
                 max="50000"
@@ -224,6 +245,9 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
                 value={averageDealValue}
                 onChange={(e) => setAverageDealValue(Number(e.target.value))}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                aria-valuenow={averageDealValue}
+                aria-valuemin={500}
+                aria-valuemax={50000}
               />
             </div>
           </div>

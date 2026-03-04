@@ -9,6 +9,7 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = {
   typescript: {
+    // TODO: treure quan es resolguin els errors TS (features, industries, resources, manifest, BlogJsonLd, BlogPostCTA, LanguageSwitcher, i18n/routing, etc.)
     ignoreBuildErrors: true,
   },
   webpack(config) {
@@ -20,6 +21,7 @@ const nextConfig = {
   },
   images: {
     formats: ['image/avif', 'image/webp'],
+    qualities: [75, 85],
     remotePatterns: [
       {
         protocol: 'https',
@@ -32,6 +34,12 @@ const nextConfig = {
         hostname: 'images.pexels.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        port: '',
+        pathname: '/vi/**',
       },
     ],
   },

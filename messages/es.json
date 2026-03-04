@@ -12,6 +12,10 @@
     }
   },
   "pages": {
+    "mwc2026": {
+      "title": "NextLeadIn @ MWC Barcelona 2026 | Inteligencia de leads con IA",
+      "metaDescription": "Convierte cualquier empresa en leads cualificados en 24 horas. Inteligencia de leads con IA."
+    },
     "blog": {
       "title": "Blog de Leads B2B e IA",
       "description": "Descubre materiales informativos sobre generación de leads, IA y ventas B2B para acelerar tu crecimiento.",

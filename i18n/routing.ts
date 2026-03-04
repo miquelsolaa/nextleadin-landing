@@ -25,7 +25,8 @@ export const pathnames: Pathnames<typeof locales> = {
   '/compare': '/compare',
   '/compare/[slug]': '/compare/[slug]',
   '/pricing': '/pricing',
-  '/faq': '/faq'
+  '/faq': '/faq',
+  '/mwc2026': '/mwc2026'
 }
 
 export const routing = {

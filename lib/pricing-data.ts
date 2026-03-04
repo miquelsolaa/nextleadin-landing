@@ -153,9 +153,9 @@ export const pricingPlans: PricingPlan[] = [
       en: 'month'
     },
     description: {
-      ca: 'Per equips que volen triplicar reunions sense triplicar esforç. Fins a 10 membres.',
-      es: 'Para equipos que quieren triplicar reuniones sin triplicar esfuerzo. Hasta 10 miembros.',
-      en: 'For teams that want to triple meetings without tripling effort. Up to 10 members.'
+      ca: 'Per equips que volen triplicar reunions sense triplicar esforç. Fins a 5 membres.',
+      es: 'Para equipos que quieren triplicar reuniones sin triplicar esfuerzo. Hasta 5 miembros.',
+      en: 'For teams that want to triple meetings without tripling effort. Up to 5 members.'
     },
     features: {
       ca: [
@@ -166,7 +166,7 @@ export const pricingPlans: PricingPlan[] = [
         'Monitorització de canvis (verificació mensual)',
         'Integracions CRM (HubSpot, Pipedrive)',
         'Campanyes il·limitades',
-        'Equip fins a 10 membres',
+        'Equip fins a 5 membres',
         'Suport prioritari'
       ],
       es: [
@@ -177,7 +177,7 @@ export const pricingPlans: PricingPlan[] = [
         'Monitorización de cambios (verificación mensual)',
         'Integraciones CRM (HubSpot, Pipedrive)',
         'Campañas ilimitadas',
-        'Equipo hasta 10 miembros',
+        'Equipo hasta 5 miembros',
         'Soporte prioritario'
       ],
       en: [
@@ -188,7 +188,7 @@ export const pricingPlans: PricingPlan[] = [
         'Change monitoring (monthly verification)',
         'CRM integrations (HubSpot, Pipedrive)',
         'Unlimited campaigns',
-        'Team up to 10 members',
+        'Team up to 5 members',
         'Priority support'
       ]
     },
@@ -242,7 +242,6 @@ export const pricingPlans: PricingPlan[] = [
         'API pública (10k requests/hora)',
         'Anàlisi territorial avançada',
         'Predicció de tendències',
-        'White-label (marca pròpia)',
         'Onboarding dedicat i account manager',
         'SLA 99,9%',
         'Suport 24/7'
@@ -253,7 +252,6 @@ export const pricingPlans: PricingPlan[] = [
         'API pública (10k requests/hora)',
         'Análisis territorial avanzado',
         'Predicción de tendencias',
-        'White-label (marca propia)',
         'Onboarding dedicado y account manager',
         'SLA 99,9%',
         'Soporte 24/7'
@@ -264,7 +262,6 @@ export const pricingPlans: PricingPlan[] = [
         'Public API (10k requests/hour)',
         'Advanced territory analysis',
         'Trend prediction',
-        'White-label',
         'Dedicated onboarding and account manager',
         '99.9% SLA',
         '24/7 support'

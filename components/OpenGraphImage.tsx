@@ -57,6 +57,7 @@ const OpenGraphImage: React.FC<OpenGraphImageProps> = ({ title, description, loc
         src={getImageUrl()} 
         alt={`${title} - NextLeadIn`}
         style={{ display: 'none' }}
+        aria-hidden="true"
       />
     </div>
   )

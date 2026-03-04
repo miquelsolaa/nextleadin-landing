@@ -80,6 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/privacy-policy', priority: 0.2, changeFrequency: 'yearly' as const },
     { path: '/terms-and-conditions', priority: 0.2, changeFrequency: 'yearly' as const },
     { path: '/cookie-policy', priority: 0.2, changeFrequency: 'yearly' as const },
+    { path: '/mwc2026', priority: 0.85, changeFrequency: 'weekly' as const },
   ]
 
   // Generar URLs per a cada pàgina i idioma
