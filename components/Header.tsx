@@ -3,7 +3,7 @@
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useState, useEffect } from 'react'
 import { Menu, X, Users, Phone, Mail, BarChart3, ChevronDown } from 'lucide-react'
 import {
@@ -25,6 +25,7 @@ type FeatureLink = {
 
 const Header = () => {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+  const tHeader = useTranslations('header')
   const [mobileOpen, setMobileOpen] = useState(false)
   const [featuresOpen, setFeaturesOpen] = useState(false)
 
@@ -164,7 +165,7 @@ const Header = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-700 hover:text-green-500 text-sm font-medium">
+                  <NavigationMenuTrigger className="text-gray-700 hover:text-primary-500 text-sm font-medium">
                     {translations.nav.features}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -179,7 +180,7 @@ const Header = () => {
                               )}
                             >
                               <div className="flex items-center gap-2">
-                                <span className="text-green-500">{feature.icon}</span>
+                                <span className="text-primary-500">{feature.icon}</span>
                                 <span className="text-sm font-medium leading-none text-gray-900">
                                   {feature.title}
                                 </span>
@@ -201,10 +202,10 @@ const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-green-500 px-4 py-2 text-sm font-medium transition-colors duration-300 relative group"
+                className="text-gray-700 hover:text-primary-500 px-4 py-2 text-sm font-medium transition-colors duration-300 relative group"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-[width] duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-[width] duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
@@ -221,7 +222,7 @@ const Header = () => {
               </Link>
               <Link
                 href="https://app.nextleadin.com/register"
-                className="header-cta-button primary bg-green-500 hover:bg-green-600 text-white px-5 py-3 text-sm font-medium"
+                className="header-cta-button primary bg-primary-500 hover:bg-primary-600 text-white px-5 py-3 text-sm font-medium"
               >
                 {translations.common.getStarted}
               </Link>
@@ -229,9 +230,9 @@ const Header = () => {
             {/* Burger menu button (mobile) */}
             <button
               type="button"
-              aria-label={mobileOpen ? 'Tanca el menú' : 'Obre el menú'}
+              aria-label={mobileOpen ? tHeader('menuClose') : tHeader('menuOpen')}
               aria-expanded={mobileOpen}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
               onClick={() => setMobileOpen((v) => !v)}
             >
               {mobileOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
@@ -280,7 +281,7 @@ const Header = () => {
                       className="flex items-center gap-2 px-3 py-2 rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                       onClick={() => setMobileOpen(false)}
                     >
-                      <span className="text-green-500">{feature.icon}</span>
+                      <span className="text-primary-500">{feature.icon}</span>
                       <span className="text-sm">{feature.title}</span>
                     </Link>
                   ))}
@@ -312,7 +313,7 @@ const Header = () => {
               </Link>
               <Link
                 href="https://app.nextleadin.com/register"
-                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 text-sm font-medium rounded-md"
+                className="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 text-sm font-medium rounded-md"
                 onClick={() => setMobileOpen(false)}
               >
                 {translations.common.getStarted}

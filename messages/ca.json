@@ -1,4 +1,8 @@
 {
+  "header": {
+    "menuOpen": "Obre el menú",
+    "menuClose": "Tanca el menú"
+  },
   "common": {
     "brand": "NextLeadIn",
     "scrollToTop": "Tornar a dalt",
@@ -61,7 +65,8 @@
         "seePlans": "Veure plans i funcionalitats",
         "goToFaq": "Preguntes freqüents"
       },
-      "submitError": "Hi ha hagut un problema en enviar el formulari. Torna-ho a provar.",
+      "submitError": "No hem pogut enviar el formulari. Torna-ho a provar.",
+      "honeypot": "No emplenar si ets humà",
       "aside": {
         "directTitle": "Contacte directe",
         "emailLabel": "Email",

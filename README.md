@@ -26,7 +26,7 @@ Una plataforma SaaS moderna i responsiva construïda amb Next.js 16 (App Router)
 - [next-intl 4.6.1](https://next-intl-docs.vercel.app/) - Internacionalització
 - [TailwindCSS](https://tailwindcss.com/) - Framework CSS utility-first
 - [Lucide React](https://lucide.dev/) - Icones SVG
-- [Inter Font](https://fonts.google.com/specimen/Inter) - Tipografia moderna optimitzada
+- [DM Sans](https://fonts.google.com/specimen/DM+Sans) i [Syne](https://fonts.google.com/specimen/Syne) - Tipografia via next/font
 
 ## 📦 Instal·lació
 

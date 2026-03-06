@@ -158,7 +158,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 py-20">
+      <section className="relative bg-primary-700 py-20">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
         <div className="container mx-auto px-4 relative">
           {/* Breadcrumbs */}

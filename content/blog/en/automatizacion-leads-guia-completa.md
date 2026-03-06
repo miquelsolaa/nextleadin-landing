@@ -285,7 +285,7 @@ const secuenciaNutricion = {
 
 ## Conclusión
 
-La automatización de leads no es solo una herramienta, sino una **transformación estratégica** que puede revolucionar tu negocio. Las empresas que implementen sistemas de automatización completos tendrán una ventaja competitiva insuperable.
+La automatización de leads no es solo una herramienta, sino una **transformación estratégica** que puede mejorar tu negocio. Las empresas que implementen sistemas de automatización completos tendrán una ventaja competitiva insuperable.
 
 ### Próximos Pasos
 

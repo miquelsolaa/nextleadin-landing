@@ -1,6 +1,6 @@
 ---
-title: "Prospecció basada en la IA: Augmenta les teves vendes B2B"
-description: "Descobreix com la prospecció impulsada per la IA transforma les vendes B2B. Genera leads hipersegmentats, automatitza fluxos de treball i tanca més acords amb IA. Comença amb 100 leads gratuïts!"
+title: "Prospecció basada en la IA: Vendes B2B amb leads qualificats"
+description: "Com la prospecció impulsada per la IA impulsa les vendes B2B. Genera leads hipersegmentats, automatitza fluxos i tanca més acords. Comença amb 100 leads gratuïts."
 date: "2025-11-23"
 image: "https://images.pexels.com/photos/2182981/pexels-photo-2182981.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 author: "NextLeadIn Team"

@@ -8,6 +8,7 @@ const withPWA = require('next-pwa')({
 })
 
 const nextConfig = {
+  productionBrowserSourceMaps: false,
   typescript: {
     // TODO: treure quan es resolguin els errors TS (features, industries, resources, manifest, BlogJsonLd, BlogPostCTA, LanguageSwitcher, i18n/routing, etc.)
     ignoreBuildErrors: true,

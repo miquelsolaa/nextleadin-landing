@@ -123,7 +123,7 @@ export default function ContactPage() {
                   <input type="hidden" name="locale" value={locale} />
                   <p className="hidden">
                     <label>
-                      Don’t fill this out if you’re human: <input name="bot-field" />
+                      {t('honeypot')}: <input name="bot-field" />
                     </label>
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -289,7 +289,7 @@ export default function ContactPage() {
               <div className="bg-white rounded-2xl border border-gray-200 p-6">
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('aside.demoTitle')}</h4>
                 <p className="text-gray-700 mb-4">{t('aside.demoDesc')}</p>
-                <Link href="/contact" className="btn-primary">{t('aside.demoCta')}</Link>
+                <Link href="https://calendly.com/nextleadin/demo-nextleadin" target="_blank" rel="noopener noreferrer" className="btn-primary">{t('aside.demoCta')}</Link>
               </div>
             </aside>
           </div>

@@ -101,20 +101,15 @@ export const getCookieConsentConfig = (
       secure: window.location.protocol === 'https:',
     },
     onFirstConsent: ({ cookie }: { cookie: any }) => {
-      // Gestionar quan es dona el primer consentiment
-      if (cookie.categories.analytics) {
-        // Inicialitzar Google Analytics o altres tools analítics
+      if (cookie.categories.analytics && process.env.NODE_ENV === 'development') {
         console.log('Analytics cookies enabled')
       }
     },
     onConsent: ({ cookie }: { cookie: any }) => {
-      // Gestionar quan hi ha un canvi en el consentiment
-      if (cookie.categories.analytics) {
-        // Activar analytics
-        console.log('Analytics cookies enabled')
-      } else {
-        // Desactivar analytics
-        console.log('Analytics cookies disabled')
+      if (process.env.NODE_ENV === 'development') {
+        console.log(
+          cookie.categories.analytics ? 'Analytics cookies enabled' : 'Analytics cookies disabled'
+        )
       }
     },
   }

@@ -71,14 +71,16 @@ export default function CookieConsent() {
         const updateGtagConsent = (granted: boolean) => {
           const w = window as Window & { gtag?: (...args: unknown[]) => void }
           if (!w.gtag) {
-            console.warn('gtag not found')
+            if (process.env.NODE_ENV === 'development') console.warn('gtag not found')
             return
           }
 
           w.gtag('consent', 'update', {
             analytics_storage: granted ? 'granted' : 'denied',
           })
-          console.log('GA4 consent updated:', granted ? 'granted' : 'denied')
+          if (process.env.NODE_ENV === 'development') {
+            console.log('GA4 consent updated:', granted ? 'granted' : 'denied')
+          }
 
           if (granted) {
             const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Y07BPPDXKF'
@@ -88,7 +90,9 @@ export default function CookieConsent() {
               page_path: window.location.pathname,
               send_to: GA_ID,
             })
-            console.log('GA4 page_view sent after consent granted')
+            if (process.env.NODE_ENV === 'development') {
+              console.log('GA4 page_view sent after consent granted')
+            }
           }
         }
 
@@ -137,17 +141,23 @@ export default function CookieConsent() {
             secure: window.location.protocol === 'https:',
           },
           onFirstConsent: ({ cookie }: { cookie: { categories: string[] } }) => {
-            console.log('First consent:', cookie.categories)
+            if (process.env.NODE_ENV === 'development') {
+              console.log('First consent:', cookie.categories)
+            }
             const hasAnalytics = Array.isArray(cookie.categories) && cookie.categories.includes('analytics')
             updateGtagConsent(hasAnalytics)
           },
           onConsent: ({ cookie }: { cookie: { categories: string[] } }) => {
-            console.log('On consent:', cookie.categories)
+            if (process.env.NODE_ENV === 'development') {
+              console.log('On consent:', cookie.categories)
+            }
             const hasAnalytics = Array.isArray(cookie.categories) && cookie.categories.includes('analytics')
             updateGtagConsent(hasAnalytics)
           },
           onChange: ({ changedCategories }: { changedCategories: string[] }) => {
-            console.log('Changed categories:', changedCategories)
+            if (process.env.NODE_ENV === 'development') {
+              console.log('Changed categories:', changedCategories)
+            }
             if (changedCategories.includes('analytics')) {
               const accepted = CookieConsentLib.acceptedCategory('analytics')
               updateGtagConsent(accepted)
@@ -156,7 +166,9 @@ export default function CookieConsent() {
         }
 
         CookieConsentLib.run(config)
-        console.log('CookieConsent initialized successfully')
+        if (process.env.NODE_ENV === 'development') {
+          console.log('CookieConsent initialized successfully')
+        }
       } catch (error) {
         console.error('Error loading CookieConsent:', error)
       }

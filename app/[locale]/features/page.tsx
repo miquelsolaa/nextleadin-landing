@@ -31,7 +31,7 @@ const seoContent = {
   ca: {
     title: 'Funcionalitats | NextLeadIn',
     description: 'Descobreix totes les funcionalitats de NextLeadIn: anàlisi de ressenyes amb IA, enriquiment de dades, cerca d\'emails verificats i exportació a CRM.',
-    heroTitle: 'Funcionalitats Potents per a la Teva Prospecció',
+    heroTitle: 'Funcionalitats per a la teva prospecció',
     heroDescription: 'Eines avançades per trobar, enriquir i convertir leads de negocis locals.',
     keyBenefits: 'Beneficis Clau',
     exploreFeatures: 'Explora les Funcionalitats',
@@ -47,12 +47,12 @@ const seoContent = {
     betterLeads: 'Leads Més Qualificats',
     betterLeadsDesc: 'Dades enriquides per prioritzar els millors prospectes.',
     moreConversions: 'Més Conversions',
-    moreConversionsDesc: 'Insights accionables per tancar més vendes.',
+    moreConversionsDesc: 'Context, objeccions i angles per tancar més vendes.',
   },
   es: {
     title: 'Funcionalidades | NextLeadIn',
     description: 'Descubre todas las funcionalidades de NextLeadIn: análisis de reseñas con IA, enriquecimiento de datos, búsqueda de emails verificados y exportación a CRM.',
-    heroTitle: 'Funcionalidades Potentes para Tu Prospección',
+    heroTitle: 'Funcionalidades para tu prospección',
     heroDescription: 'Herramientas avanzadas para encontrar, enriquecer y convertir leads de negocios locales.',
     keyBenefits: 'Beneficios Clave',
     exploreFeatures: 'Explora las Funcionalidades',
@@ -68,12 +68,12 @@ const seoContent = {
     betterLeads: 'Leads Más Cualificados',
     betterLeadsDesc: 'Datos enriquecidos para priorizar los mejores prospectos.',
     moreConversions: 'Más Conversiones',
-    moreConversionsDesc: 'Insights accionables para cerrar más ventas.',
+    moreConversionsDesc: 'Contexto, objeciones y ángulos para cerrar más ventas.',
   },
   en: {
     title: 'Features | NextLeadIn',
     description: 'Discover all NextLeadIn features: AI review analysis, data enrichment, verified email finder, and CRM export.',
-    heroTitle: 'Powerful Features for Your Prospecting',
+    heroTitle: 'Features for your prospecting',
     heroDescription: 'Advanced tools to find, enrich, and convert local business leads.',
     keyBenefits: 'Key Benefits',
     exploreFeatures: 'Explore Features',
@@ -89,7 +89,7 @@ const seoContent = {
     betterLeads: 'Better Qualified Leads',
     betterLeadsDesc: 'Enriched data to prioritize the best prospects.',
     moreConversions: 'More Conversions',
-    moreConversionsDesc: 'Actionable insights to close more sales.',
+    moreConversionsDesc: 'Context, objections and angles to close more sales.',
   },
 };
 
@@ -149,7 +149,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 py-20">
+      <section className="relative bg-primary-700 py-20">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
         <div className="container mx-auto px-4 relative">
           {/* Breadcrumbs */}
@@ -227,8 +227,8 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           <h2 className="text-3xl font-bold text-center mb-12">
             {content.keyBenefits}
           </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-6">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="text-center p-6 md:border-r md:border-gray-200">
               <div className="text-primary-600 mb-4 flex justify-center">{getLucideIcon('rocket', 'w-10 h-10')}</div>
               <h3 className="text-xl font-semibold mb-2">
                 {content.fasterProspecting}
@@ -246,12 +246,12 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
                 {content.betterLeadsDesc}
               </p>
             </div>
-            <div className="text-center p-6">
+            <div className="md:col-span-2 text-center p-6 bg-white rounded-xl border border-gray-100">
               <div className="text-primary-600 mb-4 flex justify-center">{getLucideIcon('trending-up', 'w-10 h-10')}</div>
               <h3 className="text-xl font-semibold mb-2">
                 {content.moreConversions}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 max-w-2xl mx-auto">
                 {content.moreConversionsDesc}
               </p>
             </div>

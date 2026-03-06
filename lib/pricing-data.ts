@@ -53,6 +53,8 @@ export interface PricingPlan {
   }
 }
 
+export type ComparisonValue = boolean | string | { ca: string; es: string; en: string }
+
 export interface ComparisonFeature {
   id: string
   name: {
@@ -65,7 +67,7 @@ export interface ComparisonFeature {
     es: string
     en: string
   }
-  values: Record<string, boolean | string>
+  values: Record<string, ComparisonValue>
 }
 
 export const pricingPlans: PricingPlan[] = [
@@ -466,7 +468,7 @@ export const comparisonFeatures: ComparisonFeature[] = [
     },
     values: {
       localBusiness: 'Email',
-      professional: 'Prioritari',
+      professional: { ca: 'Prioritari', es: 'Prioritario', en: 'Priority' },
       enterprise: '24/7 + Account manager'
     }
   }

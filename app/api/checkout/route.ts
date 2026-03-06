@@ -7,7 +7,7 @@ const priceEmpresa = process.env.STRIPE_PRICE_EMPRESA as string
 const successUrl = process.env.NEXT_PUBLIC_STRIPE_SUCCESS_URL || 'http://localhost:3000/success'
 const cancelUrl = process.env.NEXT_PUBLIC_STRIPE_CANCEL_URL || 'http://localhost:3000/pricing'
 
-if (!stripeSecretKey) {
+if (!stripeSecretKey && process.env.NODE_ENV === 'development') {
   console.warn('STRIPE_SECRET_KEY is not set')
 }
 

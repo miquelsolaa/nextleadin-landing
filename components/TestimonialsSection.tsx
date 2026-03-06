@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useLocale } from 'next-intl'
 
 const CleanTestimonial = dynamic(
@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
       <div className="container-custom">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {translations.title}{' '}
             <span className="text-primary-600">{translations.titleHighlight}</span>
           </h2>
@@ -66,7 +66,7 @@ const TestimonialsSection = () => {
         {/* CTA Button */}
         <div className="text-center mt-10">
           <Link 
-            href="#" 
+            href="/contact" 
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
           >
             {translations.cta}

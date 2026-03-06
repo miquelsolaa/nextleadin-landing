@@ -72,7 +72,7 @@ const TrustedBySection = () => {
       <div className="container-custom">
         {/* Titular SaaS Premium */}
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-gray-900">
             {t('title')}{' '}
             <span className="text-primary-600">{t('titleHighlight')}</span>
           </h2>
@@ -80,9 +80,9 @@ const TrustedBySection = () => {
 
         {/* Slider híbrid */}
         <div className="relative">
-          {/* Gradient masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          {/* Gradient masks - suaus */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-gray-50/90 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-white/90 to-transparent z-10 pointer-events-none" />
 
           <div
             className="overflow-hidden"

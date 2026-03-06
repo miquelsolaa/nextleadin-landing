@@ -7,8 +7,8 @@ import Footer from '@/components/Footer'
 import ScrollAnimation from '@/components/ScrollAnimation'
 import SetHtmlLang from '@/components/SetHtmlLang'
 import AIStructuredData from '@/components/AIStructuredData'
-import CookieConsent from '@/components/CookieConsent'
-import ScrollToTopButton from '@/components/ScrollToTopButton'
+import LazyLayoutParts from '@/components/LazyLayoutParts'
+import { VideoModalProvider } from '@/components/mwc/VideoModalContext'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 import '../globals.css'
 
@@ -47,28 +47,29 @@ export default async function LocaleLayout({children, params}: {children: React.
 
   return (
     <NextIntlClientProvider messages={messages} locale={localeParam}>
-      <SetHtmlLang locale={localeParam} />
-      <AIStructuredData 
-        page="home" 
-        locale={localeParam as AppLocale} 
-        breadcrumbs={breadcrumbs}
-      />
-      <div className="min-h-screen flex flex-col min-w-0 w-full overflow-x-hidden">
-        <a
-          href="#main-content"
-          className="skip-link"
-        >
-          {localeParam === 'ca' ? 'Salta al contingut' : localeParam === 'es' ? 'Saltar al contenido' : 'Skip to main content'}
-        </a>
-        <Header />
-        <main id="main-content" className="flex-grow min-w-0 w-full overflow-x-hidden" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <ScrollAnimation />
-        <ScrollToTopButton />
-        <CookieConsent />
-      </div>
+      <VideoModalProvider>
+        <SetHtmlLang locale={localeParam} />
+        <AIStructuredData 
+          page="home" 
+          locale={localeParam as AppLocale} 
+          breadcrumbs={breadcrumbs}
+        />
+        <div className="min-h-screen flex flex-col min-w-0 w-full overflow-x-hidden">
+          <a
+            href="#main-content"
+            className="skip-link"
+          >
+            {localeParam === 'ca' ? 'Salta al contingut' : localeParam === 'es' ? 'Saltar al contenido' : 'Skip to main content'}
+          </a>
+          <Header />
+          <main id="main-content" className="flex-grow min-w-0 w-full overflow-x-hidden" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
+          <ScrollAnimation />
+          <LazyLayoutParts />
+        </div>
+      </VideoModalProvider>
     </NextIntlClientProvider>
   )
 }

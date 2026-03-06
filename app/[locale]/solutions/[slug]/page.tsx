@@ -209,7 +209,7 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
                   {cta.primaryLabel}
                 </Link>
                 <Link
-                  href={`${localePrefix}/contact`}
+                  href={/demo/i.test(cta.secondaryLabel ?? '') ? `${localePrefix || '/'}?openVideo=1` : (cta.secondaryHref ? `${localePrefix}${cta.secondaryHref}` : `${localePrefix}/contact`)}
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-primary-600 bg-white border-2 border-primary-600 rounded-lg hover:bg-primary-50 transition-colors"
                 >
                   {cta.secondaryLabel}

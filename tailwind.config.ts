@@ -12,12 +12,13 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
+          50: '#f0fdf4',
+          100: '#dcfce7',
+          200: '#bbf7d0',
+          500: '#00CC61',
+          600: '#00B359',
+          700: '#059669',
+          800: '#047857',
         },
         mwc: {
           green: '#00CC61',
@@ -30,7 +31,7 @@ const config: Config = {
         xs: '2px',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-dm-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
         display: ['var(--font-syne)', 'Syne', 'system-ui', 'sans-serif'],
         body: ['var(--font-dm-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
       },
@@ -59,8 +60,23 @@ const config: Config = {
         'gradient-shift': 'gradientShift 8s ease infinite',
         float: 'float 4s ease-in-out infinite',
       },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            fontFamily: theme('fontFamily.sans').join(', '),
+            'h1, h2, h3, h4': {
+              fontFamily: theme('fontFamily.display').join(', '),
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [typography, animate],
+  plugins: [
+    typography({
+      target: 'modern',
+    }),
+    animate,
+  ],
 }
 export default config

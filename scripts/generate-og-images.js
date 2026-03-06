@@ -24,9 +24,9 @@ const ogConfig = {
     textSecondary: '#6B7280' // gray-500
   },
   fonts: {
-    title: 'Inter Bold',
-    subtitle: 'Inter Medium',
-    body: 'Inter Regular'
+    titleFont: 'Syne',
+    subtitleFont: 'DM Sans',
+    bodyFont: 'DM Sans'
   }
 }
 

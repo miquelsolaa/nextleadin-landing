@@ -1,4 +1,8 @@
 {
+  "header": {
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
   "common": {
     "brand": "NextLeadIn",
     "scrollToTop": "Back to top",
@@ -61,7 +65,8 @@
         "seePlans": "See plans and features",
         "goToFaq": "Frequently asked questions"
       },
-      "submitError": "There was a problem submitting the form. Please try again.",
+      "submitError": "We couldn't send the form. Please try again.",
+      "honeypot": "Don't fill this out if you're human",
       "aside": {
         "directTitle": "Direct contact",
         "emailLabel": "Email",

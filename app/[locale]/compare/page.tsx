@@ -27,7 +27,9 @@ export default async function ComparadorIndexPage({ params }: { params: Promise<
       breadcrumbHome: 'Inici',
       breadcrumb: 'Comparador',
       emptyTitle: 'Encara no hi ha comparatives publicades',
-      emptyDesc: 'Torna-ho a provar aviat: estem preparant comparatives noves.',
+      emptyDesc: 'Estem preparant comparatives noves. Mentrestant, descobreix les nostres funcionalitats o contacta amb vendes.',
+      emptyCta: 'Explorar funcionalitats',
+      emptyCtaContact: 'Contactar',
       readMore: 'Llegir comparativa'
     },
     es: {
@@ -37,7 +39,9 @@ export default async function ComparadorIndexPage({ params }: { params: Promise<
       breadcrumbHome: 'Inicio',
       breadcrumb: 'Comparador',
       emptyTitle: 'Todavía no hay comparativas publicadas',
-      emptyDesc: 'Vuelve pronto: estamos preparando nuevas comparativas.',
+      emptyDesc: 'Estamos preparando nuevas comparativas. Mientras tanto, explora funcionalidades o contacta con ventas.',
+      emptyCta: 'Explorar funcionalidades',
+      emptyCtaContact: 'Contactar',
       readMore: 'Leer comparativa'
     },
     en: {
@@ -47,7 +51,9 @@ export default async function ComparadorIndexPage({ params }: { params: Promise<
       breadcrumbHome: 'Home',
       breadcrumb: 'Comparisons',
       emptyTitle: 'No comparisons published yet',
-      emptyDesc: 'Check back soon: more comparisons are on the way.',
+      emptyDesc: 'We\'re preparing new comparisons. In the meantime, explore our features or contact sales.',
+      emptyCta: 'Explore features',
+      emptyCtaContact: 'Contact',
       readMore: 'Read comparison'
     }
   }[validLocale]
@@ -99,7 +105,15 @@ export default async function ComparadorIndexPage({ params }: { params: Promise<
           {comparisons.length === 0 ? (
             <div className="bg-white rounded-2xl border border-gray-200 p-8 text-center">
               <h2 className="text-2xl font-semibold text-gray-900 mb-2">{t.emptyTitle}</h2>
-              <p className="text-gray-600">{t.emptyDesc}</p>
+              <p className="text-gray-600 mb-6">{t.emptyDesc}</p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href={`${localePrefix}/features`} className="btn-primary">
+                  {t.emptyCta}
+                </Link>
+<Link href={`${localePrefix}/contact`} className="btn-secondary">
+                {t.emptyCtaContact}
+              </Link>
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

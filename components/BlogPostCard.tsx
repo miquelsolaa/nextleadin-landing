@@ -35,7 +35,7 @@ export default function BlogPostCard({ post, showExcerpt = true, featured = fals
         <div className="flex flex-col md:flex-row">
           {/* Imatge destacada */}
           {post.image && (
-            <div className="relative md:w-80 h-48 md:h-auto overflow-hidden flex-shrink-0">
+            <div className="relative md:w-80 h-48 md:h-auto overflow-hidden flex-shrink-0 aspect-[4/3] md:min-h-[240px]">
               <Image
                 src={post.image}
                 alt={`${post.title} - Imatge destacada`}

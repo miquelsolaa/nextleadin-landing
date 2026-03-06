@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import HeroSection from '@/components/HeroSection'
 import BlogSection from '@/components/BlogSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
@@ -11,11 +10,11 @@ import { getAllPosts } from '@/lib/blog'
 import CTASection from '@/components/CTASection'
 import { getTranslations } from 'next-intl/server'
 
-export default async function Home({params}: {params: Promise<{locale: string}>}) {
-  const {locale} = await params
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
   const t = await getTranslations({ locale: validLocale, namespace: 'home.testimonials' })
-  
+
   // Carregar últims posts del blog
   const allPosts = getAllPosts(validLocale as 'ca' | 'es' | 'en')
   const latestPosts = allPosts.slice(0, 3).map(post => ({
@@ -31,8 +30,6 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
     }) : '',
     slug: post.slug || ''
   }))
-  
-  // Testimonials are now handled by the TestimonialsSection component
 
   // Integration partners data
   const integrations = [
@@ -79,5 +76,4 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
     </>
   )
 }
-
 

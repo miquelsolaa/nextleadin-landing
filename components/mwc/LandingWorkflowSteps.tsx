@@ -18,7 +18,7 @@ const heading: Record<'es' | 'ca' | 'en', string> = {
   es: 'Cómo funciona',
 }
 
-export default function MWCWorkflowSteps() {
+export default function LandingWorkflowSteps() {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'en'
   const stepLabels = steps[locale]
   const headingText = heading[locale]

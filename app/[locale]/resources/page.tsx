@@ -68,13 +68,13 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
           slug: 'roi-calculator',
           icon: 'calculator',
           title: 'Calculadora ROI',
-          description: 'Calcula quant pots estalviar i guanyar amb NextLeadIn. Introdueix les teves dades i veu els resultats en temps real.'
+          description: 'Calcula quant pots estalviar i guanyar amb NextLeadIn. Introdueix les teves dades i veu els resultats en menys de 2 minuts.'
         }
       ],
       comingSoonTitle: 'Properament',
       comingSoonItems: [
         { icon: 'file-text', title: 'Scripts de trucades en fred', description: 'Plantilles provades per a trucades a negocis locals.' },
-        { icon: 'bar-chart-2', title: 'Guia de prospecció local', description: 'Tot el que necessites saber per vendre a negocis locals.' },
+        { icon: 'bar-chart-2', title: 'Guia de prospecció local', description: 'Sectors, objecions i tècniques per vendre a negocis locals.' },
         { icon: 'target', title: 'Quiz del prospector', description: 'Descobreix el teu perfil i com millorar.' }
       ]
     },
@@ -87,13 +87,13 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
           slug: 'roi-calculator',
           icon: 'calculator',
           title: 'Calculadora ROI',
-          description: 'Calcula cuánto puedes ahorrar y ganar con NextLeadIn. Introduce tus datos y ve los resultados en tiempo real.'
+          description: 'Calcula cuánto puedes ahorrar y ganar con NextLeadIn. Introduce tus datos y ve los resultados en menos de 2 minutos.'
         }
       ],
       comingSoonTitle: 'Próximamente',
       comingSoonItems: [
         { icon: 'file-text', title: 'Scripts de llamadas en frío', description: 'Plantillas probadas para llamadas a negocios locales.' },
-        { icon: 'bar-chart-2', title: 'Guía de prospección local', description: 'Todo lo que necesitas saber para vender a negocios locales.' },
+        { icon: 'bar-chart-2', title: 'Guía de prospección local', description: 'Sectores, objeciones y técnicas para vender a negocios locales.' },
         { icon: 'target', title: 'Quiz del prospector', description: 'Descubre tu perfil y cómo mejorar.' }
       ]
     },
@@ -106,13 +106,13 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
           slug: 'roi-calculator',
           icon: 'calculator',
           title: 'ROI Calculator',
-          description: 'Calculate how much you can save and earn with NextLeadIn. Enter your data and see results in real-time.'
+          description: 'Calculate how much you can save and earn with NextLeadIn. Enter your data and see results in under 2 minutes.'
         }
       ],
       comingSoonTitle: 'Coming Soon',
       comingSoonItems: [
         { icon: 'file-text', title: 'Cold calling scripts', description: 'Proven templates for local business calls.' },
-        { icon: 'bar-chart-2', title: 'Local prospecting guide', description: 'Everything you need to know to sell to local businesses.' },
+        { icon: 'bar-chart-2', title: 'Local prospecting guide', description: 'Sectors, objections and techniques to sell to local businesses.' },
         { icon: 'target', title: 'Prospector quiz', description: 'Discover your profile and how to improve.' }
       ]
     }
@@ -197,8 +197,8 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               {t.comingSoonTitle}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {t.comingSoonItems.map((item, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {t.comingSoonItems.slice(0, 2).map((item, index) => (
                 <div key={index} className="bg-white rounded-xl border border-gray-200 p-6 opacity-75">
                   <span className="text-gray-400 block mb-4">{getLucideIcon(item.icon, "w-10 h-10")}</span>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -209,6 +209,17 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
                   </p>
                 </div>
               ))}
+              {t.comingSoonItems[2] && (
+                <div className="md:col-span-2 bg-white rounded-xl border border-gray-200 p-6 opacity-75 max-w-2xl mx-auto w-full">
+                  <span className="text-gray-400 block mb-4">{getLucideIcon(t.comingSoonItems[2].icon, "w-10 h-10")}</span>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {t.comingSoonItems[2].title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {t.comingSoonItems[2].description}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </section>

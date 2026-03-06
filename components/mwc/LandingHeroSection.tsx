@@ -4,7 +4,10 @@ import { useState } from 'react'
 import { useLocale } from 'next-intl'
 import { trackContactSubmit } from '@/lib/analytics'
 import { motion } from 'framer-motion'
+import { Play } from 'lucide-react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { useVideoModal } from '@/components/mwc/VideoModalContext'
 
 const texts: Record<'es' | 'ca' | 'en', {
   badge: string
@@ -78,9 +81,10 @@ const item = {
   show: { opacity: 1, y: 0 },
 }
 
-export default function MWCHeroSection() {
+export default function LandingHeroSection() {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'en'
   const t = texts[locale]
+  const { openModal, thumbnailUrl, embedUrl, videoId, label: videoLabel } = useVideoModal()
 
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
@@ -125,8 +129,9 @@ export default function MWCHeroSection() {
   return (
     <section className="relative min-h-[85vh] flex items-center overflow-hidden mwc-mesh-bg mwc-dot-grid">
       <div className="container-custom py-20 lg:py-28 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <motion.div
-          className="max-w-3xl font-body"
+          className="max-w-3xl font-body lg:col-span-7"
           variants={container}
           initial="hidden"
           animate="show"
@@ -240,6 +245,66 @@ export default function MWCHeroSection() {
             {t.helper}
           </motion.p>
         </motion.div>
+
+        {/* Video thumbnail - clickable to open modal */}
+        {thumbnailUrl && embedUrl && videoId && (
+          <motion.div
+            variants={item}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="lg:col-span-5"
+          >
+            <button
+              type="button"
+              onClick={openModal}
+              className={cn(
+                'relative aspect-video w-full rounded-2xl overflow-hidden border border-slate-200/80 shadow-2xl shadow-slate-200/40 group cursor-pointer block',
+                'focus:outline-none focus-visible:ring-2 focus-visible:ring-mwc-green focus-visible:ring-offset-2'
+              )}
+              aria-label={videoLabel}
+            >
+              <Image
+                src={thumbnailUrl}
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+                }}
+              />
+              <div
+                className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"
+                aria-hidden
+              />
+              <span
+                className={cn(
+                  'absolute inset-0 flex items-center justify-center',
+                  'focus:outline-none'
+                )}
+              >
+                <motion.span
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.96 }}
+                  className={cn(
+                    'flex items-center justify-center w-20 h-20 rounded-full',
+                    'bg-mwc-green text-white shadow-xl shadow-mwc-green/30',
+                    'ring-4 ring-white/80 ring-offset-4 ring-offset-transparent'
+                  )}
+                >
+                  <Play className="w-9 h-9 ml-1" fill="currentColor" aria-hidden />
+                </motion.span>
+              </span>
+              <span className="absolute bottom-5 left-5 right-5 flex justify-center">
+                <span className="text-sm font-medium text-white/95 bg-black/40 backdrop-blur px-4 py-2 rounded-full">
+                  {videoLabel}
+                </span>
+              </span>
+            </button>
+          </motion.div>
+        )}
+        </div>
       </div>
       {/* Ambient gradient orbs */}
       <div

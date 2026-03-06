@@ -2,8 +2,8 @@
   "pages": {
     "home": {
       "ca": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "NextLeadIn",
+        "subtitle": "Generació de leads hipersegmentats amb IA",
         "description": "Troba clients qualificats per zona, sector i paraules clau amb informes IA per preparar trucades i tancar més oportunitats.",
         "cta": "Comença gratis",
         "url": "https://nextleadin.com",
@@ -15,11 +15,13 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       },
       "es": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "NextLeadIn",
+        "subtitle": "Generación de leads hipersegmentados con IA",
         "description": "Encuentra clientes cualificados por zona, sector y palabras clave con informes IA para preparar llamadas y cerrar más oportunidades.",
         "cta": "Comenzar gratis",
         "url": "https://nextleadin.com/es",
@@ -31,11 +33,13 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       },
       "en": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "NextLeadIn",
+        "subtitle": "AI-Powered Hyper-Segmented Lead Generation",
         "description": "Find qualified clients by location, sector and keywords with AI reports to prepare calls and close more opportunities.",
         "cta": "Start for free",
         "url": "https://nextleadin.com/en",
@@ -47,13 +51,15 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       }
     },
     "pricing": {
       "ca": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "Preus NextLeadIn",
+        "subtitle": "Plans que s'adapten al teu creixement",
         "description": "Des de 19€/mes per a empreses que comencen fins a solucions empresarials il·limitades.",
         "cta": "Veure plans",
         "url": "https://nextleadin.com/pricing",
@@ -65,11 +71,13 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       },
       "es": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "Precios NextLeadIn",
+        "subtitle": "Planes que se adaptan a tu crecimiento",
         "description": "Desde 19€/mes para empresas que comienzan hasta soluciones empresariales ilimitadas.",
         "cta": "Ver planes",
         "url": "https://nextleadin.com/es/pricing",
@@ -81,11 +89,13 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       },
       "en": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "NextLeadIn Pricing",
+        "subtitle": "Plans that scale with your growth",
         "description": "From €19/month for starting businesses to unlimited enterprise solutions.",
         "cta": "View plans",
         "url": "https://nextleadin.com/en/pricing",
@@ -97,13 +107,15 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       }
     },
     "contact": {
       "ca": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "Contacte NextLeadIn",
+        "subtitle": "Parla amb el nostre equip d'experts",
         "description": "Obtén una consulta personalitzada per optimitzar el teu pipeline comercial i augmentar la conversió de vendes.",
         "cta": "Contacta ara",
         "url": "https://nextleadin.com/contact",
@@ -115,11 +127,13 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       },
       "es": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "Contacto NextLeadIn",
+        "subtitle": "Habla con nuestro equipo de expertos",
         "description": "Obtén una consulta personalizada para optimizar tu pipeline comercial y aumentar la conversión de ventas.",
         "cta": "Contacta ahora",
         "url": "https://nextleadin.com/es/contact",
@@ -131,11 +145,13 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       },
       "en": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "NextLeadIn Contact",
+        "subtitle": "Talk to our team of experts",
         "description": "Get a personalized consultation to optimize your sales pipeline and increase sales conversion.",
         "cta": "Contact now",
         "url": "https://nextleadin.com/en/contact",
@@ -147,13 +163,15 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       }
     },
     "faq": {
       "ca": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "FAQ NextLeadIn",
+        "subtitle": "Preguntes freqüents",
         "description": "Respostes a les preguntes més comunes sobre la nostra plataforma de generació de leads amb IA.",
         "cta": "Veure respostes",
         "url": "https://nextleadin.com/faq",
@@ -165,11 +183,13 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       },
       "es": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "FAQ NextLeadIn",
+        "subtitle": "Preguntas frecuentes",
         "description": "Respuestas a las preguntas más comunes sobre nuestra plataforma de generación de leads con IA.",
         "cta": "Ver respuestas",
         "url": "https://nextleadin.com/es/faq",
@@ -181,11 +201,13 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       },
       "en": {
-        "title": "Inter Bold",
-        "subtitle": "Inter Medium",
+        "title": "NextLeadIn FAQ",
+        "subtitle": "Frequently asked questions",
         "description": "Answers to the most common questions about our AI-powered lead generation platform.",
         "cta": "View answers",
         "url": "https://nextleadin.com/en/faq",
@@ -197,7 +219,9 @@
         "background": "#F9FAFB",
         "text": "#111827",
         "textSecondary": "#6B7280",
-        "body": "Inter Regular"
+        "titleFont": "Syne",
+        "subtitleFont": "DM Sans",
+        "bodyFont": "DM Sans"
       }
     }
   },

@@ -1,19 +1,19 @@
-import MWCHeroSection from '@/components/mwc/MWCHeroSection'
-import MWCTrustSection from '@/components/mwc/MWCTrustSection'
-import MWCExplainerSection from '@/components/mwc/MWCExplainerSection'
-import MWCWorkflowSteps from '@/components/mwc/MWCWorkflowSteps'
-import MWCDemoVideo from '@/components/mwc/MWCDemoVideo'
-import MWCCTASection from '@/components/mwc/MWCCTASection'
+import LandingHeroSection from '@/components/mwc/LandingHeroSection'
+import LandingTrustSection from '@/components/mwc/LandingTrustSection'
+import LandingExplainerSection from '@/components/mwc/LandingExplainerSection'
+import LandingWorkflowSteps from '@/components/mwc/LandingWorkflowSteps'
+import LandingDemoVideo from '@/components/mwc/LandingDemoVideo'
+import LandingCTASection from '@/components/mwc/LandingCTASection'
 
 export default function MWC2026Page() {
   return (
     <>
-      <MWCHeroSection />
-      <MWCTrustSection />
-      <MWCExplainerSection />
-      <MWCWorkflowSteps />
-      <MWCDemoVideo />
-      <MWCCTASection />
+      <LandingHeroSection />
+      <LandingTrustSection />
+      <LandingExplainerSection />
+      <LandingWorkflowSteps />
+      <LandingDemoVideo />
+      <LandingCTASection />
     </>
   )
 }

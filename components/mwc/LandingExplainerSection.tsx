@@ -30,7 +30,7 @@ const accentColors = [
   'from-amber-500/15 to-mwc-green/10 border-amber-500/20',
 ]
 
-export default function MWCExplainerSection() {
+export default function LandingExplainerSection() {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'en'
   const items = bullets[locale]
 

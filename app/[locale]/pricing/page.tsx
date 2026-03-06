@@ -3,7 +3,7 @@ import PricingComparisonTable from '@/components/PricingComparisonTable'
 import FAQSection from '@/components/FAQSection'
 import AIStructuredData from '@/components/AIStructuredData'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { setRequestLocale } from 'next-intl/server'
 import { pricingPlans, faqData } from '@/lib/pricing-data'
 import { generateAIOptimizedMetadata, generateAIStructuredData } from '@/lib/seo-metadata'
@@ -36,12 +36,12 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
       addOnsSubtitle: 'Afegeix campanyes d\'email per contactar més leads automàticament.',
       faqTitle: 'Preguntes freqüents',
       faqSubtitle: 'Preus, resultats i facturació',
-      faqDescription: 'Tot el que cal saber abans de començar.',
+      faqDescription: 'Preus, plans, facturació i cancel·lació.',
       ctaEyebrow: 'Prova 7 dies gratis',
       ctaTitle: 'Comença a tancar més reunions aquesta setmana',
       ctaDescription: 'Setup en 10 minuts. Primers leads de prova de la teva zona el mateix dia.',
       ctaButton1: 'Començar prova gratuïta',
-      ctaButton2: 'Veure demo de 3 min'
+      ctaButton2: 'Veure demo de 30s'
     },
     es: {
       heroKicker: 'Menos que 1 hora de un comercial',
@@ -56,12 +56,12 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
       addOnsSubtitle: 'Añade campañas de email para contactar más leads automáticamente.',
       faqTitle: 'Preguntas frecuentes',
       faqSubtitle: 'Precios, resultados y facturación',
-      faqDescription: 'Todo lo que necesitas saber antes de empezar.',
+      faqDescription: 'Precios, planes, facturación y cancelación.',
       ctaEyebrow: 'Prueba 7 días gratis',
       ctaTitle: 'Empieza a cerrar más reuniones esta semana',
       ctaDescription: 'Setup en 10 minutos. Primeros leads de prueba de tu zona el mismo día.',
       ctaButton1: 'Empezar prueba gratuita',
-      ctaButton2: 'Ver demo de 3 min'
+      ctaButton2: 'Ver demo de 30s'
     },
     en: {
       heroKicker: 'Less than 1 hour of a sales rep',
@@ -76,12 +76,12 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
       addOnsSubtitle: 'Add email campaigns to contact more leads automatically.',
       faqTitle: 'Frequently asked questions',
       faqSubtitle: 'Pricing, results and billing',
-      faqDescription: 'Everything you need to know before getting started.',
+      faqDescription: 'Pricing, plans, billing and cancellation.',
       ctaEyebrow: 'Try 7 days free',
       ctaTitle: 'Start closing more meetings this week',
       ctaDescription: 'Setup in 10 minutes. First sample leads from your area the same day.',
       ctaButton1: 'Start free trial',
-      ctaButton2: 'Watch 3-min demo'
+      ctaButton2: 'Watch 30s demo'
     }
   }
 
@@ -153,7 +153,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   ]
 
   return (
-    <>
+    <div>
       <AIStructuredData 
         page="pricing" 
         locale={validLocale as 'ca' | 'es' | 'en'} 
@@ -228,14 +228,21 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
             <h3 className="text-3xl font-bold text-gray-900 mb-4">{pageTexts[validLocale].addOnsTitle}</h3>
             <p className="text-xl text-gray-600">{pageTexts[validLocale].addOnsSubtitle}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {addOns[validLocale].map((addOn) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {addOns[validLocale].slice(0, 2).map((addOn) => (
               <div key={addOn.title} className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">{addOn.title}</h4>
                 <p className="text-sm text-gray-600 mb-4">{addOn.description}</p>
                 <p className="text-sm font-semibold text-primary-600">{addOn.price}</p>
               </div>
             ))}
+            {addOns[validLocale][2] && (
+              <div className="md:col-span-2 bg-white rounded-2xl border border-gray-200 p-6 shadow-sm max-w-2xl mx-auto w-full">
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">{addOns[validLocale][2].title}</h4>
+                <p className="text-sm text-gray-600 mb-4">{addOns[validLocale][2].description}</p>
+                <p className="text-sm font-semibold text-primary-600">{addOns[validLocale][2].price}</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -270,7 +277,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
                 <Link href="https://app.nextleadin.com/register" className="btn-primary bg-white text-primary-600 hover:bg-primary-50">
                   {pageTexts[validLocale].ctaButton1}
                 </Link>
-                <Link href="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600">
+                <Link href="/?openVideo=1" className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600">
                   {pageTexts[validLocale].ctaButton2}
                 </Link>
               </div>
@@ -289,7 +296,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

@@ -60,7 +60,11 @@ export default function PricingComparisonTable({ locale }: PricingComparisonTabl
           </div>
 
           {pricingPlans.map((plan) => {
-            const value = feature.values[plan.id]
+            const rawValue = feature.values[plan.id]
+            const value =
+              typeof rawValue === 'object' && rawValue !== null && 'ca' in rawValue
+                ? rawValue[locale]
+                : rawValue
             return (
               <div key={`${feature.id}-${plan.id}`} className="p-4 sm:p-6 text-center flex items-center justify-center">
                 {typeof value === 'boolean' ? (

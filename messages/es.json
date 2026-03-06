@@ -1,4 +1,8 @@
 {
+  "header": {
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú"
+  },
   "common": {
     "brand": "NextLeadIn",
     "scrollToTop": "Volver arriba",
@@ -61,7 +65,8 @@
         "seePlans": "Ver planes y funcionalidades",
         "goToFaq": "Preguntas frecuentes"
       },
-      "submitError": "Ha ocurrido un problema al enviar el formulario. Vuelve a intentarlo.",
+      "submitError": "No hemos podido enviar el formulario. Inténtalo de nuevo.",
+      "honeypot": "No rellenar si eres humano",
       "aside": {
         "directTitle": "Contacto directo",
         "emailLabel": "Email",

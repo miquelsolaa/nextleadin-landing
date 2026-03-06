@@ -45,8 +45,9 @@ export default function IntegrationsSection({ integrations }: IntegrationsSectio
     <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-            <span className="gradient-text">{translations.title}</span> {translations.subtitle}
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+            {translations.title}{' '}
+            <span className="text-primary-600">{translations.subtitle}</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             {translations.description}
@@ -60,7 +61,7 @@ export default function IntegrationsSection({ integrations }: IntegrationsSectio
           {integrations.map((integration, index) => (
             <div
               key={integration.name}
-              className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 w-full flex items-center justify-center group"
+              className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300 w-full flex items-center justify-center group"
             >
               <Image
                 src={integration.logo}

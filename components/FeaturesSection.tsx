@@ -70,18 +70,18 @@ const FeaturesSection = () => {
       <div className="container-custom">
         {/* Títol i text al costat */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          <div className={`${styles['animated-fast']} ${styles.fadeIn}`} style={{ animationDelay: '100ms' }}>
-            <h2 className="text-5xl sm:text-6xl font-bold text-white mb-8 leading-tight">
+          <div className={`${styles.animatedFast} ${styles.fadeIn}`} style={{ animationDelay: '100ms' }}>
+            <h2 className="font-display text-5xl sm:text-6xl font-bold text-white mb-8 leading-tight">
               {t.headingA}
               <span className="relative">
                 {t.headingB}
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-green-500 rounded-full"></span>
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary-500 rounded-full"></span>
               </span>
               {t.headingC}
             </h2>
           </div>
           
-          <div className={`${styles['animated-fast']} ${styles.fadeIn}`} style={{ animationDelay: '200ms' }}>
+          <div className={`${styles.animatedFast} ${styles.fadeIn}`} style={{ animationDelay: '200ms' }}>
             <p className="text-xl text-white/90 leading-relaxed">
               {t.lead}
             </p>
@@ -95,36 +95,32 @@ const FeaturesSection = () => {
             return (
               <div 
                 key={index} 
-                className={`${styles['animated-fast']} ${styles.fadeInUp}`}
+                className={`${styles.animatedFast} ${styles.fadeInUp}`}
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
-                <div className={styles['elementskit-infobox']}>
-                  <div className={styles['elementskit-box-header']}>
-                    <div className={styles['elementskit-info-box-icon']}>
+                <div className={styles.featureCard}>
+                  <div className={styles.featureHeader}>
+                    <div className={styles.featureIcon}>
                       <IconComponent 
                         size={48}
-                        className="text-white"
                         aria-hidden="true"
                       />
                     </div>
                   </div>
                 
-                  <div className={styles['box-body']}>
-                    <h3 className={styles['elementskit-info-box-title']}>
+                  <div className={styles.featureBody}>
+                    <h3 className={styles.featureTitle}>
                       {feature.title}
                     </h3>
                     <p>{feature.description}</p>
                     
-                    <div className={styles['box-footer']}>
-                      <div className={styles['btn-wraper']}>
-                        <a 
-                          className={styles['elementskit-btn']}
-                          href="#" 
-                          data-text={t.more}
-                        >
-                          <span className={styles['button-wrapper']}>{t.more}</span>
-                        </a>
-                      </div>
+                    <div className={styles.featureFooter}>
+                      <a 
+                        className={styles.featureLink}
+                        href="#"
+                      >
+                        {t.more}
+                      </a>
                     </div>
                   </div>
                 </div>

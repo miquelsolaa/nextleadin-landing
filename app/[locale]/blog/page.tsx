@@ -22,20 +22,20 @@ export default async function BlogPage({
     if (validLocale === 'es') {
       return {
         title: 'Blog',
-        description: 'Descubre estrategias, consejos y tendencias para mejorar tu generación de leads y ventas B2B.',
+        description: 'Estrategias, consejos y casos prácticos para vender más a negocios locales.',
         breadcrumbHome: 'Inicio'
       }
     }
     if (validLocale === 'en') {
       return {
         title: 'Blog',
-        description: 'Discover strategies, tips and trends to improve your B2B lead generation and sales.',
+        description: 'Strategies, tips and case studies to sell more to local businesses.',
         breadcrumbHome: 'Home'
       }
     }
     return {
       title: 'Blog',
-      description: 'Descobreix estratègies, consells i tendències per millorar la teva generació de leads i vendes B2B.',
+      description: 'Estratègies, consells i casos pràctics per vendre més a negocis locals.',
       breadcrumbHome: 'Inici'
     }
   })()

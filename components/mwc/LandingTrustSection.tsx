@@ -15,7 +15,7 @@ const clients = [
   { id: 'clManager', logo: '/images/testimonials/clmanager.png', name: 'CLManager' },
 ]
 
-export default function MWCTrustSection() {
+export default function LandingTrustSection() {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'en'
   const t = trustLine[locale]
 

@@ -56,7 +56,7 @@ const encode = (data: Record<string, string | boolean>) =>
     .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(String(data[key] ?? '')))
     .join('&')
 
-export default function MWCCTASection() {
+export default function LandingCTASection() {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'en'
   const t = texts[locale]
 

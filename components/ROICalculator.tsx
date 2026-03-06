@@ -122,7 +122,7 @@ export default function ROICalculator({ locale }: ROICalculatorProps) {
 
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-      <div className="bg-gradient-to-r from-primary-600 to-primary-700 px-8 py-6 text-white">
+      <div className="bg-primary-600 px-8 py-6 text-white">
         <h2 className="text-2xl font-bold">{t.title}</h2>
         <p className="text-primary-100">{t.subtitle}</p>
       </div>
