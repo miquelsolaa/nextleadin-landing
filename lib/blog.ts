@@ -18,6 +18,7 @@ export interface BlogPost {
   title: string
   description: string
   date: string
+  dateModified?: string
   author: string
   image?: string
   categories: string[]
@@ -33,6 +34,7 @@ export interface BlogPostMeta {
   title: string
   description: string
   date: string
+  dateModified?: string
   author: string
   image?: string
   categories: string[]
@@ -119,11 +121,18 @@ export async function getPostData(slug: string, locale: Locale): Promise<BlogPos
     
     const contentHtml = processedContent.toString()
 
+    const data = matterResult.data as Record<string, unknown>
+    const dateModified =
+      data.dateModified != null && String(data.dateModified).trim() !== ''
+        ? String(data.dateModified)
+        : fs.statSync(fullPath).mtime.toISOString().split('T')[0]
+
     return {
       slug: normalizedSlug,
       content: matterResult.content,
       contentHtml,
-      ...matterResult.data,
+      ...data,
+      dateModified,
     } as BlogPost
   } catch (error) {
     console.error(`Error reading post ${slug} in locale ${locale}:`, error)

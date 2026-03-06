@@ -29,7 +29,7 @@
    
    Sintaxi per crear un CTA inline dins del Markdown:
    
-   > **🚀 Títol del CTA**
+   > **Títol del CTA**
    >
    > Text descriptiu amb més detalls sobre l'oferta o benefici.
    >
@@ -37,7 +37,6 @@
    
    NOTES:
    - El blockquote ha de començar amb **text en negreta** (strong)
-   - Es pot afegir un emoji al títol per més impacte visual
    - L'enllaç es converteix automàticament en botó
    - El CTA apareixerà amb gradient verd i estil destacat
    
@@ -52,6 +51,13 @@
   @apply shadow-lg overflow-hidden;
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #d1fae5 100%);
   position: relative;
+  /* Evitar cometes tipogràfiques de Tailwind Typography (open-quote/close-quote) */
+  quotes: none;
+}
+
+.prose blockquote:has(strong:first-child) p:first-of-type::before,
+.prose blockquote:has(strong:first-child) p:last-of-type::after {
+  content: none;
 }
 
 .prose blockquote:has(strong:first-child)::before {
@@ -65,12 +71,7 @@
 }
 
 .prose blockquote:has(strong:first-child)::after {
-  content: '🚀';
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
-  opacity: 0.3;
+  content: none;
 }
 
 .prose blockquote:has(strong:first-child) p {

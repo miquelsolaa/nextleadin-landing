@@ -4,13 +4,13 @@
       "parameters": {
         "jsCode": "// Obtenir la resposta de Pexels\nconst pexelsResponse = $input.item.json;\nconst photo = pexelsResponse.photos && pexelsResponse.photos[0];\n\n// Obtenir la URL de la imatge\nlet imageUrl = 'https://images.pexels.com/photos/270632/pexels-photo-270632.jpeg?auto=compress&cs=tinysrgb&w=1200'; // Fallback\n\nif (photo && photo.src) {\n  // Utilitzar large2x per millor qualitat (1920x1080 o similar)\n  imageUrl = photo.src.large2x || photo.src.large || photo.src.original;\n  console.log(`Imatge trobada a Pexels: ${imageUrl}`);\n} else {\n  console.warn('No s\\'ha trobat cap imatge a Pexels, utilitzant fallback');\n}\n\n// Obtenir els articles\nconst articles = $('Extract Articles').item.json.articles || [];\n\nif (articles.length === 0) {\n  throw new Error('No s\\'han trobat articles per actualitzar');\n}\n\n// Actualitzar cada article amb la URL de la imatge\nconst updatedArticles = articles.map(article => {\n  let markdown = article.markdown;\n  \n  // Actualitzar el frontmatter\n  const frontmatterMatch = markdown.match(/^(---\\n)([\\s\\S]*?)(\\n---)/);\n  \n  if (!frontmatterMatch) {\n    throw new Error(`L'article ${article.locale} no té frontmatter vàlid`);\n  }\n  \n  const frontmatterStart = frontmatterMatch[1];\n  let frontmatter = frontmatterMatch[2];\n  const frontmatterEnd = frontmatterMatch[3];\n  \n  // Reemplaçar o afegir el camp image\n  if (frontmatter.match(/^image:\\s*[\"'][^\"']+[\"']/m)) {\n    frontmatter = frontmatter.replace(\n      /^image:\\s*[\"'][^\"']+[\"']/m,\n      `image: \"${imageUrl}\"`\n    );\n  } else {\n    const dateMatch = frontmatter.match(/^(date:\\s*[\"'][^\"']+[\"'])/m);\n    if (dateMatch) {\n      frontmatter = frontmatter.replace(\n        /^(date:\\s*[\"'][^\"']+[\"'])/m,\n        `$1\\nimage: \"${imageUrl}\"`\n\n      );\n    } else {\n      frontmatter = `${frontmatter}\\nimage: \"${imageUrl}\"`;\n    }\n  }\n  \n  const updatedMarkdown = `${frontmatterStart}${frontmatter}${frontmatterEnd}${markdown.substring(frontmatterMatch[0].length)}`;\n  \n  return {\n    ...article,\n    markdown: updatedMarkdown\n  };\n});\n\nreturn {\n  json: {\n    articles: updatedArticles,\n    slug: $('Extract Articles').item.json.slug,\n    title: $('Extract Articles').item.json.title,\n    imageUrl: imageUrl\n  }\n};"
       },
-      "id": "75801f53-6ee3-48cb-a041-2553b1a673db",
+      "id": "d908e181-bcbe-42f3-ac24-1ca841916b0a",
       "name": "Update Markdowns with Image URL",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2416,
-        432
+        -3504,
+        384
       ]
     },
     {
@@ -24,13 +24,13 @@
           ]
         }
       },
-      "id": "87876359-00ee-4171-a081-7e7d25dc0f23",
+      "id": "e40d391b-f299-4d36-b668-4f53fc702cce",
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -3840,
-        432
+        -4928,
+        384
       ]
     },
     {
@@ -53,13 +53,13 @@
         "fileContent": "={{ $json.markdown }}",
         "commitMessage": "={{ $json.commitMessage }}"
       },
-      "id": "4043185f-06d4-4daa-8298-56972ad872f4",
+      "id": "4f7e9e9d-b1f3-4214-b6af-503d0ff142da",
       "name": "Create /en Blog Post",
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        -1792,
-        272
+        -2880,
+        224
       ],
       "webhookId": "9bf1ac16-a408-4406-b6b4-73940b2c8d1d",
       "credentials": {
@@ -89,13 +89,13 @@
         "fileContent": "={{ $json.markdown }}",
         "commitMessage": "={{ $json.commitMessage }}"
       },
-      "id": "23a8e0aa-4e38-41dc-996c-3aacb0a731d1",
+      "id": "abe6ae20-8e4b-42d0-a790-a3426cc16eac",
       "name": "Create /ca Blog Post",
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        -1600,
-        688
+        -2688,
+        640
       ],
       "webhookId": "a5e5ff40-be4b-4786-a714-dd0e5fd2aa56",
       "credentials": {
@@ -125,13 +125,13 @@
         "fileContent": "={{ $json.markdown }}",
         "commitMessage": "={{ $json.commitMessage }}"
       },
-      "id": "8f0babbb-3687-4c50-b0eb-32f3b511930e",
+      "id": "a78f9e18-7945-45ec-a238-d00dc4383ff2",
       "name": "Create /es Blog Post",
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        -1600,
-        464
+        -2688,
+        416
       ],
       "webhookId": "c57b3478-4067-472a-882c-65426cdf633d",
       "credentials": {
@@ -168,10 +168,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -2720,
-        432
+        -3808,
+        384
       ],
-      "id": "efae0e31-d0f3-41e0-8dbb-a80c99ef0083",
+      "id": "70ea63c2-a9db-4004-be9b-11b8749ddde1",
       "name": "Get Image from Pexels1",
       "credentials": {
         "httpHeaderAuth": {
@@ -208,10 +208,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1984,
-        432
+        -3072,
+        384
       ],
-      "id": "67dcfb47-d94c-401a-98f1-1875c91e133a",
+      "id": "e97d17fc-16ea-4c99-a503-e9f35479f5f7",
       "name": "If EN"
     },
     {
@@ -221,23 +221,23 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -3680,
-        432
+        -4768,
+        384
       ],
-      "id": "b8409d0f-0fc8-45ec-94b9-2640c15530cf",
+      "id": "585b3eb6-518f-4dc6-afac-65c35a5caebb",
       "name": "getTodayDate"
     },
     {
       "parameters": {
         "jsCode": "// Codi simplificat per processar resposta JSON de Gemini\n// Aquest codi és molt més simple i robust que parsejar markdown\n\nlet response = '';\n\n// Obtenir el text de la resposta\nif ($input.item.json.content && $input.item.json.content.parts && $input.item.json.content.parts[0]) {\n  response = $input.item.json.content.parts[0].text || '';\n} else if ($input.item.json.message) {\n  response = $input.item.json.message;\n} else if ($input.item.json.text) {\n  response = $input.item.json.text;\n} else if (typeof $input.item.json.content === 'string') {\n  response = $input.item.json.content;\n}\n\nconsole.log('Response length:', response.length);\n\nif (!response || response.length === 0) {\n  throw new Error('No s\\'ha rebut cap resposta de Gemini');\n}\n\n// Netejar la resposta per eliminar possibles code blocks markdown\n// Si Gemini retorna el JSON dins d'un code block, extreure'l\nlet jsonString = response.trim();\n\n// Eliminar code blocks markdown si n'hi ha\nif (jsonString.startsWith('```')) {\n  // Eliminar el primer ``` i el tipus si existeix\n  jsonString = jsonString.replace(/^```(?:json)?\\n?/, '');\n  // Eliminar el ``` final\n  jsonString = jsonString.replace(/\\n?```$/, '');\n  jsonString = jsonString.trim();\n}\n\n// Escapar caràcters de control dins de strings JSON (Gemini pot retornar \\n literals)\nfunction escapeControlCharsInJsonStrings(str) {\n  let result = '';\n  let inString = false;\n  let escapeNext = false;\n  for (let i = 0; i < str.length; i++) {\n    const c = str[i];\n    if (escapeNext) {\n      result += c;\n      escapeNext = false;\n      continue;\n    }\n    if (c === '\\\\' && inString) {\n      result += c;\n      escapeNext = true;\n      continue;\n    }\n    if (c === '\"') {\n      inString = !inString;\n      result += c;\n      continue;\n    }\n    if (inString && (c === '\\n' || c === '\\r' || c === '\\t')) {\n      if (c === '\\n') result += '\\\\n';\n      else if (c === '\\r') result += '\\\\r';\n      else if (c === '\\t') result += '\\\\t';\n      continue;\n    }\n    result += c;\n  }\n  return result;\n}\njsonString = escapeControlCharsInJsonStrings(jsonString);\n\n// Intentar parsejar el JSON\nlet data;\ntry {\n  data = JSON.parse(jsonString);\n} catch (error) {\n  console.error('Error parsejant JSON:', error.message);\n  console.log('Primers 500 caràcters de la resposta:', jsonString.substring(0, 500));\n  throw new Error(`Error parsejant la resposta JSON: ${error.message}`);\n}\n\n// Verificar l'estructura\nif (!data.articles || !Array.isArray(data.articles)) {\n  throw new Error('La resposta JSON no conté un array \"articles\"');\n}\n\nif (data.articles.length !== 3) {\n  throw new Error(`S\\'esperaven 3 articles però s\\'han trobat ${data.articles.length}`);\n}\n\n// Processar cada article\nconst articles = [];\nconst slug = data.slug || 'untitled-post';\n\nfor (const article of data.articles) {\n  // Verificar camps obligatoris\n  if (!article.locale) {\n    throw new Error('Un article no té camp \"locale\"');\n  }\n  \n  if (!article.content) {\n    throw new Error(`L'article ${article.locale} no té camp \"content\"`);\n  }\n  \n  // Verificar que el locale és vàlid\n  const validLocales = ['en', 'ca', 'es'];\n  if (!validLocales.includes(article.locale)) {\n    throw new Error(`Locale invàlid: ${article.locale}. Ha de ser un de: ${validLocales.join(', ')}`);\n  }\n  \n  // Extreure el títol del frontmatter si no està al nivell superior\n  let title = article.title;\n  if (!title && article.content) {\n    const titleMatch = article.content.match(/title:\\s*[\"']([^\"']+)[\"']/);\n    if (titleMatch) {\n      title = titleMatch[1];\n    }\n  }\n  \n  // Generar el markdown final\n  // Si el content ja inclou el frontmatter, usar-lo directament\n  // Sinó, construir-lo\n  let markdown = article.content;\n  \n  // Verificar si el content ja té frontmatter\n  if (!markdown.match(/^---\\n/)) {\n    // Construir el frontmatter\n    const frontmatter = `---\\ntitle: \"${article.title || title || 'Untitled'}\"\\ndescription: \"${article.description || ''}\"\\ndate: \"${article.date || '2025-11-22'}\"\\nimage: \"/blog/placeholder.png\"\\n---`;\n    markdown = `${frontmatter}\\n\\n${article.content}`;\n  }\n  \n  articles.push({\n    locale: article.locale,\n    markdown: markdown,\n    slug: slug,\n    title: title || article.title || 'Untitled',\n    filename: `${slug}-${article.locale}.md`\n  });\n}\n\n// Verificar que tenim els 3 idiomes\nconst locales = articles.map(a => a.locale);\nif (!locales.includes('en')) {\n  throw new Error('Falta l\\'article en anglès');\n}\nif (!locales.includes('ca')) {\n  throw new Error('Falta l\\'article en català');\n}\nif (!locales.includes('es')) {\n  throw new Error('Falta l\\'article en espanyol');\n}\n\n// Assegurar que tots els articles tenen el mateix slug\narticles.forEach(article => {\n  article.slug = slug;\n});\n\nconst enArticle = articles.find(a => a.locale === 'en');\nconst mainTitle = enArticle ? enArticle.title : data.topic || 'Blog Post';\n\nconsole.log(`Articles processats: ${articles.length}`);\nconsole.log(`Slug: ${slug}`);\nconsole.log(`Títol: ${mainTitle}`);\n\nreturn {\n  json: {\n    articles: articles,\n    slug: slug,\n    title: mainTitle,\n    count: articles.length,\n    locales: locales,\n    topic: data.topic || '',\n    justification: data.justification || ''\n  }\n};\n\n"
       },
-      "id": "b917625d-971e-489c-a3d6-09d7b064b0a1",
+      "id": "56ae127f-fdb9-4617-967e-e0aa5b94b8e6",
       "name": "Extract Articles",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -3024,
-        432
+        -4112,
+        384
       ]
     },
     {
@@ -251,20 +251,20 @@
         "messages": {
           "values": [
             {
-              "content": "=You are an expert content strategist, senior SEO copywriter, and multilingual technical writer creating high-value blog content for NextLeadIn, a B2B AI-powered lead-generation platform. Your mission is to produce ready-to-publish SEO blog articles that drive organic acquisition and convert readers into leads for NextLeadIn.\n\n🎯 Context & Goals (NextLeadIn-specific)\n\nAbout NextLeadIn:\nNextLeadIn is an AI-powered B2B lead generation platform offering hyper-segmented prospecting, actionable company lists, enriched business insights, AI-generated dossiers, CRM integrations, and automated lead workflows. Users can start with 100 free leads, no credit card required.\n\nTarget audience:\nB2B sales teams, commercial reps, SaaS companies, consulting firms, agencies, businesses scaling outbound, companies prospecting by sector + territory, SMEs entering new markets, sales teams wanting to automate prospecting with AI.\n\nObjective:\nGenerate organic traffic and qualified inbound leads for NextLeadIn.\n\nLanguages:\nGenerate three complete localized articles: EN, CA, ES. Each must be independent, naturally localized, fully tailored to the B2B sales audience, and SEO-optimized for high-intent keywords.\n\n🧩 JSON Output Specification\n\nReturn ONLY a JSON object with the following structure:\n\n{\n  \"topic\": \"Brief topic description\",\n  \"justification\": \"Why this topic will attract traffic (1-2 sentences)\",\n  \"slug\": \"url-friendly-slug-for-all-articles\",\n  \"articles\": [\n    {\n      \"locale\": \"en\",\n      \"title\": \"Article title with focus keyword\",\n      \"description\": \"SEO meta description, 140–160 chars, includes focus keyword\",\n      \"date\": \"{{ $('getTodayDate').item.json.$today }}\",\n      \"content\": \"Full markdown content including frontmatter and body in the format below\",\n      \"keywords\": {\n        \"primary\": \"Main keyword\",\n        \"secondary\": [\"Secondary keyword 1\", \"Secondary keyword 2\"]\n      },\n      \"seoTitle\": \"SEO title tag (<= 60 chars)\",\n      \"metaDescription\": \"Meta description (140-160 chars)\",\n      \"internalLink\": \"Suggested internal link anchor text\",\n      \"externalLink\": \"Suggested external authoritative link URL\"\n    },\n    { \"locale\": \"ca\", ... },\n    { \"locale\": \"es\", ... }\n  ]\n}\n\n📝 Markdown Format Requirements (for each article)\n\nEach \"content\" field must use this frontmatter + content style:\n\n---\ntitle: \"Article title\"\ndescription: \"SEO description\"\ndate: \"{{ $('getTodayDate').item.json.$today }}\"\nauthor: \"NextLeadIn Team\"\nfeaturedImage: \"https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg\"\ncategories: [\"Lead Generation\"] — use exactly ONE category from this list (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, B2B Strategy, Local Business, CRM Integration\ntags: [\"Lead Generation\", \"AI Prospecting\"] — use 2 or 3 tags from this list only (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, CRM Integration, Outbound Sales, Lead Enrichment, Hyper-segmentation, Prospecting\npublished: true\n---\n\n# Article Title (H1)\n\n**Introduction/Contextual Overview**\n\n## **Section Title (H2)**\n\nBody text with actionable insights and local examples (Barcelona, Terrassa, Sant Cugat when relevant).\n\nInclude 3+ LSI keywords naturally inside paragraphs or bullet points (do NOT write “LSI Keyword 1”, write real semantic keywords).\n\n### **Subsection Title (H3)**  \nInclude real content here.\n\n| Feature | Option A | Option B |\n|---------|----------|----------|\n| Row 1  | Value A  | Value B  |\n| Row 2  | Value A  | Value B  |\n\n**Conclusion**\n\n(Final CTA - REQUIRED - use blockquote syntax for styled CTA box):\n\n> **🚀 Ready to scale your outbound?**\n>\n> Discover how NextLeadIn can help you find high-quality B2B leads with AI-powered prospecting. Start with 100 free leads today.\n>\n> [Get Started Free](/contact)\n\n(Localized versions - use the same blockquote format):\n\nEnglish:\n> **🚀 Ready to scale your outbound?**\n>\n> Discover how NextLeadIn can help you find high-quality B2B leads with AI-powered prospecting. Start with 100 free leads today.\n>\n> [Get Started Free](/contact)\n\nCatalan:\n> **🚀 Vols fer créixer el teu equip comercial?**\n>\n> Descobreix com NextLeadIn pot ajudar-te a trobar leads B2B d'alta qualitat amb prospecció impulsada per IA. Comença amb 100 leads gratis avui.\n>\n> [Comença Gratis](/contact)\n\nSpanish:\n> **🚀 ¿Quieres mejorar tu prospección?**\n>\n> Descubre cómo NextLeadIn puede ayudarte a encontrar leads B2B de alta calidad con prospección impulsada por IA. Empieza con 100 leads gratis hoy.\n>\n> [Empieza Gratis](/contact)\n\nIMPORTANT CTA FORMAT RULES:\n- CTAs MUST use blockquote syntax (lines starting with >)\n- First line: > **emoji Title**\n- Empty line: >\n- Description line: > Description text\n- Empty line: >\n- Button line: > [Button Text](/contact)\n- Include ONE inline CTA mid-article (after a key section) using the same blockquote format with a different emoji like 💡 or ✨\n\n⚡ Behavioral Rules\n\nDo NOT ask for clarifications.\n\nCategories: in the frontmatter of each article use exactly ONE category from this list (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, B2B Strategy, Local Business, CRM Integration. Choose the one that best fits the article topic.\n\nTags: in the frontmatter of each article use 2 or 3 tags from this list only (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, CRM Integration, Outbound Sales, Lead Enrichment, Hyper-segmentation, Prospecting. Choose those that best fit the article topic. Do not use any other tags.\n\nTopic: {{ $json.keyword }} \n\nPriority related keywords: AI sales automation, hyper-segmented lead generation, AI prospecting, B2B outbound strategy.\n\nEach article: 900–1,500 words, one H1 only, bolded H2/H3, minimum 3 LSI keywords naturally inserted, at least one comparison table, and 6 FAQs at the end.\n\nTone: B2B, sales-focused, simple, value-driven.\n\nLocalization guidelines:\n\nCatalan: professional, native\n\nSpanish: neutral, business-friendly\n\nEnglish: clear, concise\n\nReturn ONLY valid JSON. No markdown fences except inside the \"content\" field where required by structure."
+              "content": "=You are an expert content strategist, senior SEO copywriter, and multilingual technical writer creating high-value blog content for NextLeadIn, a B2B AI-powered lead-generation platform. Your mission is to produce ready-to-publish SEO blog articles that drive organic acquisition and convert readers into leads for NextLeadIn.\n\n🎯 Context & Goals (NextLeadIn-specific)\n\nAbout NextLeadIn:\nNextLeadIn is an AI-powered B2B lead generation platform offering hyper-segmented prospecting, actionable company lists, enriched business insights, AI-generated dossiers, CRM integrations, and automated lead workflows. Users can start with 100 free leads, no credit card required.\n\nTarget audience:\nB2B sales teams, commercial reps, SaaS companies, consulting firms, agencies, businesses scaling outbound, companies prospecting by sector + territory, SMEs entering new markets, sales teams wanting to automate prospecting with AI.\n\nObjective:\nGenerate organic traffic and qualified inbound leads for NextLeadIn.\n\nOptimize for AEO (Answer Engine Optimization): AI assistants (ChatGPT, Google AI Overview, Perplexity) prefer content with direct answers first, question-style headings, step formats, and concrete data. Structure articles so AI can cite them as authoritative sources.\n\nLanguages:\nGenerate three complete localized articles: EN, CA, ES. Each must be independent, naturally localized, fully tailored to the B2B sales audience, and SEO-optimized for high-intent keywords.\n\n🧩 JSON Output Specification\n\nReturn ONLY a JSON object with the following structure:\n\n{\n  \"topic\": \"Brief topic description\",\n  \"justification\": \"Why this topic will attract traffic (1-2 sentences)\",\n  \"slug\": \"url-friendly-slug-for-all-articles\",\n  \"articles\": [\n    {\n      \"locale\": \"en\",\n      \"title\": \"Article title with focus keyword\",\n      \"description\": \"SEO meta description, 140–160 chars, includes focus keyword\",\n      \"date\": \"{{ $('getTodayDate').item.json.$today }}\",\n      \"content\": \"Full markdown content including frontmatter and body in the format below\",\n      \"keywords\": {\n        \"primary\": \"Main keyword\",\n        \"secondary\": [\"Secondary keyword 1\", \"Secondary keyword 2\"]\n      },\n      \"seoTitle\": \"SEO title tag (<= 60 chars)\",\n      \"metaDescription\": \"Meta description (140-160 chars)\",\n      \"internalLink\": \"Suggested internal link anchor text\",\n      \"externalLink\": \"Suggested external authoritative link URL\"\n    },\n    { \"locale\": \"ca\", ... },\n    { \"locale\": \"es\", ... }\n  ]\n}\n\n📝 Markdown Format Requirements (for each article)\n\nEach \"content\" field must use this frontmatter + content style:\n\n---\ntitle: \"Article title\"\ndescription: \"SEO description\"\ndate: \"{{ $('getTodayDate').item.json.$today }}\"\nauthor: \"NextLeadIn Team\"\nfeaturedImage: \"https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg\"\ncategories: [\"Lead Generation\"] — use exactly ONE category from this list (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, B2B Strategy, Local Business, CRM Integration\ntags: [\"Lead Generation\", \"AI Prospecting\"] — use 2 or 3 tags from this list only (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, CRM Integration, Outbound Sales, Lead Enrichment, Hyper-segmentation, Prospecting\npublished: true\n---\n\n# Article Title (H1)\n\n**AEO: Direct answer first.** Start with 1–2 paragraphs that directly answer the main question. Front-load the key insight—AI assistants prefer content that gives the answer immediately.\n\n## **Section as Question (H2)** — use explicit questions as headings when it fits: \"What is X?\", \"How does Y work?\"\n\nBody text with actionable insights and local examples (Barcelona, Terrassa, Sant Cugat when relevant). Use numbered steps or bullet lists for how-to content. Include concrete data (prices, dates, statistics) when relevant.\n\nInclude 3+ LSI keywords naturally inside paragraphs or bullet points (do NOT write “LSI Keyword 1”, write real semantic keywords).\n\n### **Subsection as Question (H3)** — e.g. \"How do I get started?\"\nInclude real content here.\n\n| Feature | Option A | Option B |\n|---------|----------|----------|\n| Row 1  | Value A  | Value B  |\n| Row 2  | Value A  | Value B  |\n\n**Conclusion**\n\n(Final CTA - REQUIRED - use blockquote syntax for styled CTA box):\n\n> **Ready to scale your outbound?**\n>\n> Discover how NextLeadIn can help you find high-quality B2B leads with AI-powered prospecting. Start with 100 free leads today.\n>\n> [Get Started Free](/contact)\n\n(Localized versions - use the same blockquote format):\n\nEnglish:\n> **Ready to scale your outbound?**\n>\n> Discover how NextLeadIn can help you find high-quality B2B leads with AI-powered prospecting. Start with 100 free leads today.\n>\n> [Get Started Free](/contact)\n\nCatalan:\n> **Vols fer créixer el teu equip comercial?**\n>\n> Descobreix com NextLeadIn pot ajudar-te a trobar leads B2B d'alta qualitat amb prospecció impulsada per IA. Comença amb 100 leads gratis avui.\n>\n> [Comença Gratis](/contact)\n\nSpanish:\n> **¿Quieres mejorar tu prospección?**\n>\n> Descubre cómo NextLeadIn puede ayudarte a encontrar leads B2B de alta calidad con prospección impulsada por IA. Empieza con 100 leads gratis hoy.\n>\n> [Empieza Gratis](/contact)\n\nIMPORTANT CTA FORMAT RULES:\n- CTAs MUST use blockquote syntax (lines starting with >)\n- First line: > **Title** (no emojis or icons)\n- Empty line: >\n- Description line: > Description text\n- Empty line: >\n- Button line: > [Button Text](/contact)\n- Include ONE inline CTA mid-article (after a key section) using the same blockquote format, no emojis\n\n⚡ Behavioral Rules\n\nDo NOT ask for clarifications.\n\nCategories: in the frontmatter of each article use exactly ONE category from this list (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, B2B Strategy, Local Business, CRM Integration. Choose the one that best fits the article topic.\n\nTags: in the frontmatter of each article use 2 or 3 tags from this list only (always in English): Lead Generation, B2B Sales, AI Prospecting, AI for Sales, Sales Automation, CRM Integration, Outbound Sales, Lead Enrichment, Hyper-segmentation, Prospecting. Choose those that best fit the article topic. Do not use any other tags.\n\nTopic: {{ $json.keyword }} \n\nPriority related keywords: AI sales automation, hyper-segmented lead generation, AI prospecting, B2B outbound strategy.\n\nEach article: 900–1,500 words, one H1 only, bolded H2/H3. AEO structure: (1) direct answer in first 1–2 paragraphs, (2) H2/H3 as questions when it makes sense, (3) step lists or bullet formats for how-to sections, (4) concrete data when relevant, (5) mini-FAQ (5–6 questions) at the end. Minimum 3 LSI keywords, at least one comparison table.\n\nTone: B2B, sales-focused, simple, value-driven.\n\nLocalization guidelines:\n\nCatalan: professional, native\n\nSpanish: neutral, business-friendly\n\nEnglish: clear, concise\n\nReturn ONLY valid JSON. No markdown fences except inside the \"content\" field where required by structure."
             }
           ]
         },
         "jsonOutput": true,
         "options": {}
       },
-      "id": "23c998ca-4dd3-4618-a6ba-5441457cf7a2",
+      "id": "ca90d3c5-9e82-4dc0-9a2f-e54598ee3bad",
       "name": "Write Articles",
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1,
       "position": [
-        -3376,
-        432
+        -4464,
+        384
       ],
       "credentials": {
         "googlePalmApi": {
@@ -301,23 +301,23 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1808,
-        576
+        -2896,
+        528
       ],
-      "id": "adf6c35a-3219-42fd-bc46-6a4235eb7bc8",
+      "id": "2a249610-c4d5-4593-91eb-a535d152bbd0",
       "name": "If ES"
     },
     {
       "parameters": {
         "jsCode": "const articles = $input.item.json.articles || [];\nconst slug = $input.item.json.slug;\nconst title = $input.item.json.title;\nconst imageUrl = $input.item.json.imageUrl;\n\nif (articles.length !== 3) {\n  throw new Error(`S'esperaven 3 articles però s'han trobat ${articles.length}`);\n}\n\n// Crear 3 items separats (un per cada idioma)\nreturn articles.map(article => {\n  const localeNames = {\n    'en': 'EN',\n    'ca': 'CA',\n    'es': 'ES'\n  };\n  \n  return {\n    json: {\n      locale: article.locale,\n      markdown: article.markdown,\n      slug: slug,\n      title: article.title,\n      imageUrl: imageUrl,\n      filePath: `content/blog/${article.locale}/${slug}.md`,\n      commitMessage: `Add blog post: ${title} (${localeNames[article.locale] || article.locale.toUpperCase()})`\n    }\n  };\n});"
       },
-      "id": "f11df402-d9d6-42b0-80a5-e03549057a9e",
+      "id": "1d8a25c7-550e-4317-936b-9193fa368800",
       "name": "Split Articles",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2192,
-        432
+        -3280,
+        384
       ]
     },
     {
@@ -342,21 +342,21 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1,
       "position": [
-        -3536,
-        432
+        -4624,
+        384
       ],
-      "id": "589b75c9-e7ce-45c8-b2ce-9b911da97ebb",
+      "id": "9046944a-02dc-45f5-803b-603e09c7219b",
       "name": "Get row(s)"
     },
     {
       "parameters": {},
-      "id": "0053ae5f-6497-4ba1-9c31-1f248ffe3eea",
+      "id": "b68d65de-3b42-4990-b828-08b5d895a05f",
       "name": "Limit 1 Keyword",
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -3456,
-        432
+        -4544,
+        384
       ]
     },
     {
@@ -412,43 +412,43 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1,
       "position": [
-        -1424,
-        688
+        -2512,
+        640
       ],
-      "id": "55c9e3af-083e-4909-a3c0-d28ff575f391",
+      "id": "e8abbed9-42a0-4efa-9890-9f93d0b0f882",
       "name": "Update row(s)"
     },
     {
       "parameters": {},
-      "id": "57c44c43-7dd5-43f5-9dad-41c4c9bfe29b",
+      "id": "fff625d3-311d-4dfe-92d2-8b8ac57927e5",
       "name": "Merge After Blog Posts",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -1408,
-        464
+        -2496,
+        416
       ]
     },
     {
       "parameters": {},
-      "id": "b2895740-c212-49fc-bb2c-e06a2c55fdc9",
+      "id": "3a4620f0-8aae-4b09-9dd3-dfb56e7e52a6",
       "name": "Limit 1",
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -1280,
-        464
+        -2368,
+        416
       ]
     },
     {
       "parameters": {},
-      "id": "d005a7f2-201b-4309-a902-8d28d08037c9",
+      "id": "b263a5cf-19d5-45d2-b94f-dc69a11b2ac1",
       "name": "Merge After Blog Posts 2",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -1344,
-        464
+        -2432,
+        416
       ]
     }
   ],

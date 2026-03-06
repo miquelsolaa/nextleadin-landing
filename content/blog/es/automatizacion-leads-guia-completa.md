@@ -296,5 +296,5 @@ La automatización de leads no es solo una herramienta, sino una **transformaci�
 
 ---
 
-> **💡 ¿Listo para automatizar completamente tu generación de leads?**  
+> **¿Listo para automatizar completamente tu generación de leads?**  
 > [Contacta con nosotros](/contact) para una demo gratuita de NextLeadIn y descubre cómo podemos ayudarte a escalar tu pipeline de ventas de forma automática.

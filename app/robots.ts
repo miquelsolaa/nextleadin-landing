@@ -91,6 +91,21 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 0,
       },
       {
+        userAgent: 'GPTBot',
+        allow: ['/'],
+        disallow: ['/api/', '/admin/', '/_next/', '/out/', '/private/', '/temp/'],
+      },
+      {
+        userAgent: 'Claude-Web',
+        allow: ['/'],
+        disallow: ['/api/', '/admin/', '/_next/', '/out/', '/private/', '/temp/'],
+      },
+      {
+        userAgent: 'PerplexityBot',
+        allow: ['/'],
+        disallow: ['/api/', '/admin/', '/_next/', '/out/', '/private/', '/temp/'],
+      },
+      {
         userAgent: 'AhrefsBot',
         disallow: '/',
       },

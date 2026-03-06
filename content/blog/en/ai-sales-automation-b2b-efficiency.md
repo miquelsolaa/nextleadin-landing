@@ -44,7 +44,7 @@ Getting a lead is one thing; understanding them is another. NextLeadIn’s AI go
 
 With AI-generated dossiers, your sales reps receive a ready-to-use profile for each prospect. This includes not just contact information, but deep company intelligence, recent activities, and personalized talking points. This level of insight transforms cold outreach into informed conversations, empowering your reps with **sales enablement tools** that directly impact their effectiveness. No more manual research; all the necessary context is provided for a compelling and personalized pitch.
 
-> **✨ Supercharge your sales now!**
+> **Supercharge your sales now!**
 >
 > Stop wasting time on manual lead generation. Let NextLeadIn's AI pinpoint your ideal customers with precision.
 >
@@ -101,7 +101,7 @@ The future of B2B sales is undeniably intertwined with AI sales automation. By a
 6.  **How does NextLeadIn ensure data quality and accuracy?**
     NextLeadIn leverages advanced AI algorithms and continuous data refreshing to provide real-time, validated insights, minimizing outdated information and ensuring high data quality for your prospecting efforts.
 
-> **🚀 Ready to scale your outbound?**
+> **Ready to scale your outbound?**
 >
 > Discover how NextLeadIn can help you find high-quality B2B leads with AI-powered prospecting. Start with 100 free leads today.
 >

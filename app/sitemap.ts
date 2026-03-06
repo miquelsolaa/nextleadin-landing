@@ -45,9 +45,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const post = allPosts[locale as Locale]?.find(p => p.slug === slug)
     const postDate = post?.date ? new Date(post.date) : new Date()
     
-    // Calcular priority basat en l'antiguitat del post (posts més recents tenen més priority)
+    // Calcular priority basat en l'antiguitat del post (posts més recents tenen més priority) - SEO: prioritzar per indexació
     const daysSincePublished = Math.floor((Date.now() - postDate.getTime()) / (1000 * 60 * 60 * 24))
-    const priority = daysSincePublished < 30 ? 0.8 : daysSincePublished < 90 ? 0.7 : 0.6
+    const priority = daysSincePublished < 30 ? 0.9 : daysSincePublished < 90 ? 0.85 : 0.75
     
     return {
       url: `${baseUrl}${getBlogPostUrl(slug, locale as Locale)}`,

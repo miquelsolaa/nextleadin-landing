@@ -72,7 +72,7 @@ Implementar la IA en la teva **estratègia outbound B2B** ofereix beneficis tran
 *   **Expansió de l'Abast de Mercat**: La IA pot identificar oportunitats en nous sectors o territoris que podrien haver estat passats per alt pels mètodes manuals.
 *   **Millor Assignació de Recursos**: Els equips de vendes poden centrar la seva energia en els leads més prometedors, optimitzant els seus esforços i reduint el temps perdut.
 
-> **💡 Vols veure la IA en acció?**
+> **Vols veure la IA en acció?**
 >
 > Prova NextLeadIn avui i aconsegueix els teus primers 100 leads gratis. Sense targeta de crèdit.
 >
@@ -112,7 +112,7 @@ Un gran primer pas és aprofitar les plataformes que ofereixen proves gratuïtes
 
 El panorama de les vendes B2B està evolucionant ràpidament, i adoptar la **captació de leads B2B amb IA** ja no és una opció, sinó una necessitat per a les empreses que busquen un creixement sostenible. En adoptar la prospecció hipersegmentada i aprofitar el poder de la IA per automatitzar i enriquir els seus processos de vendes, les empreses poden aconseguir una eficiència sense precedents, taxes de conversió més altes i un avantatge realment competitiu. El futur de les vendes és intel·ligent, basat en dades i increïblement precís.
 
-> **🚀 Vols fer créixer el teu equip comercial?**
+> **Vols fer créixer el teu equip comercial?**
 >
 > Descobreix com NextLeadIn pot ajudar-te a generar leads hipersegmentats i automatitzar el teu procés de vendes.
 >

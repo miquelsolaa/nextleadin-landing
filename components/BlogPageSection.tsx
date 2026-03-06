@@ -76,14 +76,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
 
                 <span className="inline-flex items-center gap-1.5">
                   <User className="h-4 w-4" aria-hidden />
-                  <Link
-                    href={`${blogBaseUrl}/author/${(post.author || 'unknown')
-                      .toLowerCase()
-                      .replace(' ', '-')}`}
-                    className="hover:text-green-600"
-                  >
-                    {post.author || 'Unknown'}
-                  </Link>
+                  <span>{post.author || 'Unknown'}</span>
                 </span>
               </div>
 

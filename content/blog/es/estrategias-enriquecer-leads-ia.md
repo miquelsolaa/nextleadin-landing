@@ -234,5 +234,5 @@ El enriquecimiento de leads con IA no es solo una tendencia, sino una **necesida
 
 ---
 
-> **💡 ¿Quieres implementar enriquecimiento de leads con IA en tu empresa?**  
+> **¿Quieres implementar enriquecimiento de leads con IA en tu empresa?**  
 > [Contacta con nosotros](/contact) para una demo gratuita de NextLeadIn y descubre cómo nuestra IA puede transformar tu proceso de generación de leads.

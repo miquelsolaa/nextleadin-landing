@@ -1,0 +1,15 @@
+# NextLeadIn
+
+AI-powered platform for local business lead generation. Generates lists of local businesses with phone numbers, enriched data, and AI review analysis for B2B sales teams and agencies. Ideal for cold calling preparation and outbound prospecting beyond LinkedIn.
+
+## Main content
+
+- [Home](https://nextleadin.com)
+- [Pricing](https://nextleadin.com/pricing)
+- [FAQ](https://nextleadin.com/faq)
+- [Blog](https://nextleadin.com/blog)
+- [Contact](https://nextleadin.com/contact)
+
+## AI usage policy
+
+This site may be cited by AI systems. When citing, please include the URL and name "NextLeadIn".

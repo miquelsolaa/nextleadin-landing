@@ -48,12 +48,33 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
 
     const postUrl = getBlogPostUrl(slug, validLocale)
-    const fullUrl = `https://nextleadin.com${postUrl}`
+    const baseUrl = 'https://nextleadin.com'
+    const fullUrl = `${baseUrl}${postUrl}`
     const imageUrl = post.image?.startsWith('http') ? post.image : post.image ? `https://nextleadin.com${post.image}` : undefined
+
+    // Hreflang per a versions en altres idiomes (SEO multiidioma)
+    const languages: { [locale: string]: string } = {}
+    const localesToCheck: Locale[] = ['ca', 'es', 'en']
+    for (const loc of localesToCheck) {
+      if (postExists(slug, loc)) {
+        const url = getBlogPostUrl(slug, loc)
+        const lang = loc === 'ca' ? 'ca-ES' : loc === 'es' ? 'es-ES' : 'en-US'
+        languages[lang] = `${baseUrl}${url}`
+      }
+    }
 
     return {
       title: `${post.title} | Blog NextLeadIn`,
       description: post.description,
+      alternates: {
+        canonical: fullUrl,
+        languages: Object.keys(languages).length > 0 ? languages : undefined,
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true },
+      },
       openGraph: {
         title: post.title,
         description: post.description,
@@ -61,6 +82,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         publishedTime: post.date,
         authors: [post.author],
         url: fullUrl,
+        locale: validLocale === 'ca' ? 'ca_ES' : validLocale === 'es' ? 'es_ES' : 'en_US',
         images: imageUrl ? [
           {
             url: imageUrl,
@@ -221,12 +243,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       </span>
                       <span className="flex items-center">
                         <User className="w-4 h-4 mr-2" />
-                        <Link
-                          href={`${blogBaseUrl}/author/${(post.author || 'unknown').toLowerCase().replace(' ', '-')}`}
-                          className="hover:text-green-600 transition-colors"
-                        >
-                          {post.author || 'Unknown'}
-                        </Link>
+                        <span>{post.author || 'Unknown'}</span>
                       </span>
                     </div>
                   </div>
@@ -296,12 +313,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       <div className="author-desc-wrapper flex-1">
                         <div className="author-name">
                         <h5 className="text-lg font-semibold text-gray-900">
-                          <Link
-                            href={`${blogBaseUrl}/author/${(post.author || 'unknown').toLowerCase().replace(' ', '-')}`}
-                            className="hover:text-green-600 transition-colors"
-                          >
-                            {post.author || 'Unknown'}
-                          </Link>
+                          {post.author || 'Unknown'}
                         </h5>
                         </div>
                         <div className="author-description">

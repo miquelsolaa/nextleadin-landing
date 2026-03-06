@@ -160,5 +160,5 @@ Encontrar leads cualificados no es solo cuestión de suerte, sino de estrategia,
 
 ---
 
-> **💡 ¿Quieres implementar estas estrategias en tu empresa?**  
+> **¿Quieres implementar estas estrategias en tu empresa?**  
 > [Contacta con nosotros](/contact) para una consulta gratuita y descubre cómo NextLeadIn puede ayudarte a encontrar leads cualificados de forma automática.

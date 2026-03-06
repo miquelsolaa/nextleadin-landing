@@ -44,7 +44,7 @@ Obtener un lead es una cosa; comprenderlo es otra. La IA de NextLeadIn va más a
 
 Con los dossiers generados por IA, tus representantes de ventas reciben un perfil listo para usar para cada prospecto. Esto incluye no solo información de contacto, sino también una profunda **inteligencia empresarial**, actividades recientes y puntos de conversación personalizados. Este nivel de conocimiento transforma el alcance frío en conversaciones informadas, empoderando a tus representantes con **herramientas de habilitación de ventas** que impactan directamente en su eficacia. No más investigación manual; todo el contexto necesario se proporciona para una propuesta convincente y personalizada.
 
-> **✨ ¡Potencia tus ventas ahora!**
+> **¡Potencia tus ventas ahora!**
 >
 > Deja de perder el tiempo con la generación manual de leads. Deja que la IA de NextLeadIn identifique a tus clientes ideales con precisión.
 >
@@ -101,7 +101,7 @@ El futuro de las ventas B2B está innegablemente entrelazado con la automatizaci
 6.  **¿Cómo garantiza NextLeadIn la calidad y precisión de los datos?**
     NextLeadIn aprovecha algoritmos de IA avanzados y una actualización continua de datos para proporcionar información validada en tiempo real, minimizando la información desactualizada y garantizando una alta calidad de datos para tus esfuerzos de prospección.
 
-> **🚀 ¿Quieres mejorar tu prospección?**
+> **¿Quieres mejorar tu prospección?**
 >
 > Descubre cómo NextLeadIn puede ayudarte a encontrar leads B2B de alta calidad con prospección impulsada por IA. Empieza con 100 leads gratis hoy.
 >
