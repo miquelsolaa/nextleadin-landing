@@ -9,6 +9,7 @@ import ServicesSection from '@/components/ServicesSection'
 import { getAllPosts } from '@/lib/blog'
 import CTASection from '@/components/CTASection'
 import { getTranslations } from 'next-intl/server'
+import { integrations } from '@/lib/integrations-data'
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -30,20 +31,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     }) : '',
     slug: post.slug || ''
   }))
-
-  // Integration partners data
-  const integrations = [
-    { name: 'Slack', logo: '/images/integrations/integrations-1.png' },
-    { name: 'Zoom', logo: '/images/integrations/integrations-2.png' },
-    { name: 'Salesforce', logo: '/images/integrations/integrations-3.png' },
-    { name: 'HubSpot', logo: '/images/integrations/integrations-4.png' },
-    { name: 'Stripe', logo: '/images/integrations/integrations-6.png' },
-    { name: 'Zapier', logo: '/images/integrations/integrations-7.png' },
-    { name: 'Google Analytics', logo: '/images/integrations/integrations-8.png' },
-    { name: 'WordPress', logo: '/images/integrations/integrations-10.png' },
-    { name: 'Shopify', logo: '/images/integrations/integrations-9.png' },
-    { name: 'Mailchimp', logo: '/images/integrations/integrations-5.png' },
-  ]
 
   return (
     <>

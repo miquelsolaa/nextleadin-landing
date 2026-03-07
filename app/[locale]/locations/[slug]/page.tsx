@@ -10,6 +10,7 @@ import {
   getLocationData,
   type LocationLocale
 } from '@/lib/locations'
+import { getLocationGeo } from '@/lib/location-geo'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 import {
   UtensilsCrossed,
@@ -67,15 +68,37 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
     return { title: 'Ubicació no trobada' }
   }
 
-  const canonical = validLocale === 'ca'
-    ? `https://nextleadin.com/locations/${location.slug}`
-    : `https://nextleadin.com/${validLocale}/locations/${location.slug}`
+  const baseUrl = 'https://nextleadin.com'
+  const localePath = validLocale === 'ca' ? '/ca' : validLocale === 'en' ? '/en' : ''
+  const pathSegment = `locations/${location.slug}`
+  const canonical = localePath
+    ? `${baseUrl}${localePath}/${pathSegment}`
+    : `${baseUrl}/${pathSegment}`
+
+  const geo = getLocationGeo(location.slug)
+  const other: Record<string, string> = {}
+  if (geo) {
+    other['geo.region'] = geo.geoRegion
+    other['geo.placename'] = location.cityName
+    other['geo.position'] = `${geo.coordinates.lat};${geo.coordinates.lng}`
+    other['ICBM'] = `${geo.coordinates.lat}, ${geo.coordinates.lng}`
+  }
 
   return generateAIOptimizedMetadata('locations', validLocale, {
     title: location.title,
     description: location.description,
     keywords: location.keywords,
-    canonical
+    canonical,
+    ogImage: location.image || undefined,
+    alternates: {
+      languages: {
+        'x-default': `${baseUrl}/${pathSegment}`,
+        'es-ES': `${baseUrl}/${pathSegment}`,
+        'ca-ES': `${baseUrl}/ca/${pathSegment}`,
+        'en-US': `${baseUrl}/en/${pathSegment}`
+      }
+    },
+    ...(Object.keys(other).length > 0 ? { other } : {})
   })
 }
 
@@ -140,6 +163,8 @@ export default async function LocationPage({ params }: LocationPageProps) {
     { name: location.cityName, url: currentUrl }
   ]
 
+  const geo = getLocationGeo(location.slug)
+
   const localeTitles = {
     ca: {
       serviceType: 'Generació de leads de negocis locals',
@@ -170,7 +195,14 @@ export default async function LocationPage({ params }: LocationPageProps) {
       '@context': 'https://schema.org',
       '@type': 'Place',
       name: location.cityName,
-      containedInPlace: { '@type': 'AdministrativeArea', name: location.region }
+      containedInPlace: { '@type': 'AdministrativeArea', name: location.region },
+      ...(geo && {
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: geo.coordinates.lat,
+          longitude: geo.coordinates.lng
+        }
+      })
     },
     {
       '@context': 'https://schema.org',
@@ -310,9 +342,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
 
         {/* Stats Section */}
         {location.stats && location.stats.length > 0 && (
-          <section className="py-16 bg-white">
+          <section className="py-16 bg-white" aria-labelledby="stats-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
+              <h2 id="stats-heading" className="text-2xl font-bold text-center text-gray-900 mb-8">
                 {t.statsTitle} {location.cityName}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -331,9 +363,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
 
         {/* Top Sectors */}
         {location.topSectors && location.topSectors.length > 0 && (
-          <section className="py-20 bg-gray-50">
+          <section className="py-20 bg-gray-50" aria-labelledby="sectors-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+              <h2 id="sectors-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                 {t.sectorsTitle}
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
@@ -365,9 +397,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
 
         {/* FAQ Section */}
         {location.faq && location.faq.length > 0 && (
-          <section className="py-20 bg-gray-50">
+          <section className="py-20 bg-gray-50" aria-labelledby="faq-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+              <h2 id="faq-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                 {t.faqTitle}
               </h2>
               <div className="max-w-3xl mx-auto space-y-4">

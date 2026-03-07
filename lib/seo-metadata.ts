@@ -1819,11 +1819,18 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
   }
 }
 
+/** Tipus estès per pàgines dinàmiques amb alternates, ogImage i meta custom */
+export type MetadataCustomData = Partial<SEOConfig> & {
+  alternates?: { languages?: Record<string, string> }
+  /** Meta tags custom (ex: geo.region, geo.placename) */
+  other?: Record<string, string>
+}
+
 // Funció per generar metadata optimitzada per a AI
 export function generateAIOptimizedMetadata(
   page: string,
   locale: 'ca' | 'es' | 'en',
-  customData?: Partial<SEOConfig>
+  customData?: MetadataCustomData
 ): Metadata {
   const config = seoConfig[page]?.[locale]
   if (!config) {
@@ -1854,6 +1861,13 @@ export function generateAIOptimizedMetadata(
     ? 'Business Software'
     : 'Business Software'
 
+  const defaultLanguages = {
+    'x-default': `${baseUrl}${page === 'home' ? '' : `/${page}`}`,
+    'es-ES': `${baseUrl}${page === 'home' ? '' : `/${page}`}`,
+    'ca-ES': `${baseUrl}/ca${page === 'home' ? '' : `/${page}`}`,
+    'en-US': `${baseUrl}/en${page === 'home' ? '' : `/${page}`}`
+  }
+
   return {
     title: {
       default: titleForLayout,
@@ -1871,12 +1885,7 @@ export function generateAIOptimizedMetadata(
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: finalConfig.canonical,
-      languages: {
-        'x-default': `${baseUrl}${page === 'home' ? '' : `/${page}`}`,
-        'es-ES': `${baseUrl}${page === 'home' ? '' : `/${page}`}`,
-        'ca-ES': `${baseUrl}/ca${page === 'home' ? '' : `/${page}`}`,
-        'en-US': `${baseUrl}/en${page === 'home' ? '' : `/${page}`}`
-      }
+      languages: customData?.alternates?.languages ?? defaultLanguages
     },
     openGraph: {
       type: 'website',
@@ -1930,7 +1939,10 @@ export function generateAIOptimizedMetadata(
     verification: {
       google: process.env.GOOGLE_SITE_VERIFICATION || '',
       yandex: process.env.YANDEX_VERIFICATION || ''
-    }
+    },
+    ...(customData?.other && Object.keys(customData.other).length > 0
+      ? { other: customData.other }
+      : {})
   }
 }
 

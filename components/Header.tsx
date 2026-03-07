@@ -28,6 +28,11 @@ const Header = () => {
   const tHeader = useTranslations('header')
   const [mobileOpen, setMobileOpen] = useState(false)
   const [featuresOpen, setFeaturesOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const translations = (() => {
     if (locale === 'es') {
@@ -162,41 +167,51 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-700 hover:text-primary-500 text-sm font-medium">
-                    {translations.nav.features}
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                      {featureLinks.map((feature) => (
-                        <li key={feature.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={feature.href}
-                              className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
-                              )}
-                            >
-                              <div className="flex items-center gap-2">
-                                <span className="text-primary-500">{feature.icon}</span>
-                                <span className="text-sm font-medium leading-none text-gray-900">
-                                  {feature.title}
-                                </span>
-                              </div>
-                              <p className="line-clamp-2 text-sm leading-snug text-gray-500 mt-1">
-                                {feature.description}
-                              </p>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+            {mounted ? (
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-gray-700 hover:text-primary-500 text-sm font-medium">
+                      {translations.nav.features}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                        {featureLinks.map((feature) => (
+                          <li key={feature.href}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={feature.href}
+                                className={cn(
+                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
+                                )}
+                              >
+                                <div className="flex items-center gap-2">
+                                  <span className="text-primary-500">{feature.icon}</span>
+                                  <span className="text-sm font-medium leading-none text-gray-900">
+                                    {feature.title}
+                                  </span>
+                                </div>
+                                <p className="line-clamp-2 text-sm leading-snug text-gray-500 mt-1">
+                                  {feature.description}
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            ) : (
+              <Link
+                href="/features/lead-management"
+                className="text-gray-700 hover:text-primary-500 px-4 py-2 text-sm font-medium transition-colors duration-300 relative group"
+              >
+                {translations.nav.features}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-[width] duration-300 group-hover:w-full" />
+              </Link>
+            )}
 
             {navigation.map((item) => (
               <Link

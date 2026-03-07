@@ -52,15 +52,27 @@ export async function generateMetadata({ params }: SolutionPageProps): Promise<M
     }
   }
 
-  const canonical = validLocale === 'ca'
-    ? `https://nextleadin.com/solutions/${solution.slug}`
-    : `https://nextleadin.com/${validLocale}/solutions/${solution.slug}`
+  const baseUrl = 'https://nextleadin.com'
+  const localePath = validLocale === 'ca' ? '/ca' : validLocale === 'en' ? '/en' : ''
+  const pathSegment = `solutions/${solution.slug}`
+  const canonical = localePath
+    ? `${baseUrl}${localePath}/${pathSegment}`
+    : `${baseUrl}/${pathSegment}`
 
   return generateAIOptimizedMetadata('solutions', validLocale, {
     title: solution.title,
     description: solution.description,
     keywords: solution.keywords,
-    canonical
+    canonical,
+    ogImage: solution.image || undefined,
+    alternates: {
+      languages: {
+        'x-default': `${baseUrl}/${pathSegment}`,
+        'es-ES': `${baseUrl}/${pathSegment}`,
+        'ca-ES': `${baseUrl}/ca/${pathSegment}`,
+        'en-US': `${baseUrl}/en/${pathSegment}`
+      }
+    }
   })
 }
 
@@ -221,8 +233,11 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
 
         {/* Stats Section */}
         {solution.stats && solution.stats.length > 0 && (
-          <section className="py-16 bg-white">
+          <section className="py-16 bg-white" aria-labelledby="stats-heading">
             <div className="container mx-auto px-4">
+              <h2 id="stats-heading" className="text-2xl font-bold text-center text-gray-900 mb-8">
+                {t.statsTitle}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 {solution.stats.map((stat, index) => (
                   <div key={index} className="text-center">
@@ -239,9 +254,9 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
 
         {/* Benefits Section */}
         {solution.benefits && solution.benefits.length > 0 && (
-          <section className="py-20 bg-gray-50">
+          <section className="py-20 bg-gray-50" aria-labelledby="benefits-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+              <h2 id="benefits-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                 {t.benefitsTitle}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -261,9 +276,9 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
 
         {/* Use Cases Section */}
         {solution.useCases && solution.useCases.length > 0 && (
-          <section className="py-20 bg-white">
+          <section className="py-20 bg-white" aria-labelledby="use-cases-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+              <h2 id="use-cases-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                 {t.useCasesTitle}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -292,9 +307,9 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
 
         {/* FAQ Section */}
         {solution.faq && solution.faq.length > 0 && (
-          <section className="py-20 bg-gray-50">
+          <section className="py-20 bg-gray-50" aria-labelledby="faq-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+              <h2 id="faq-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                 {t.faqTitle}
               </h2>
               <div className="max-w-3xl mx-auto space-y-4">

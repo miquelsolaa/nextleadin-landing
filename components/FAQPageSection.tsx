@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { ChevronDown } from 'lucide-react'
 import { FAQItem } from '@/lib/faq-data'
 
 interface FAQPageSectionProps {
@@ -55,7 +55,7 @@ const FAQPageSection = ({ id, title, description, questions, locale }: FAQPageSe
                 {index + 1}. {question.question[locale]}
               </span>
               <div className="flex-shrink-0">
-                <ChevronDownIcon
+                <ChevronDown
                   className={`h-5 w-5 text-gray-500 transform transition-transform duration-200 ${
                     openQuestions.has(question.id) ? 'rotate-180' : ''
                   }`}
