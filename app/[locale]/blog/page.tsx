@@ -65,7 +65,7 @@ export default async function BlogPage({
     title: post.title,
     slug: post.slug,
     excerpt: post.description,
-    image: post.image || '/images/hero/hero.png',
+    image: post.image || '/images/hero/hero.svg',
     categories: post.categories || [],
     author: post.author,
     date: new Date(post.date).toLocaleDateString(dateLocale, {
@@ -79,7 +79,7 @@ export default async function BlogPage({
   // Posts recents per al sidebar
   const recentPosts = allPosts.slice(0, 3).map(post => ({
     title: post.title,
-    image: post.image || '/images/hero/hero.png',
+    image: post.image || '/images/hero/hero.svg',
     slug: post.slug,
     url: getBlogPostUrl(post.slug, validLocale)
   }))

@@ -241,7 +241,7 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
           locale === 'ca' ? 'Qualificació automàtica de leads' : locale === 'es' ? 'Calificación automática de leads' : 'Automatic lead qualification',
           locale === 'ca' ? 'Analytics de conversió' : locale === 'es' ? 'Analytics de conversión' : 'Conversion analytics'
         ],
-        screenshot: `${baseUrl}/images/hero/hero.png`,
+        screenshot: `${baseUrl}/images/hero/hero.svg`,
         softwareVersion: '1.0',
         datePublished: '2024-01-01',
         dateModified: new Date().toISOString().split('T')[0],

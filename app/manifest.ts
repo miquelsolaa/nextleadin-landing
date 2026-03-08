@@ -30,13 +30,13 @@ export default function manifest(): MetadataRoute.Manifest {
         src: '/android-chrome-192x192.png',
         sizes: '192x192',
         type: 'image/png',
-        purpose: 'any maskable',
+        purpose: 'maskable',
       },
       {
         src: '/android-chrome-512x512.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any maskable',
+        purpose: 'maskable',
       },
       {
         src: '/apple-touch-icon.png',
@@ -54,24 +54,24 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     screenshots: [
       {
-        src: '/images/hero/hero.png',
+        src: '/images/hero/hero.svg',
         sizes: '1200x630',
-        type: 'image/png',
+        type: 'image/svg+xml',
         form_factor: 'wide',
         label: 'NextLeadIn Dashboard',
       },
       {
-        src: '/images/hero/hero.png',
+        src: '/images/hero/hero.svg',
         sizes: '750x1334',
-        type: 'image/png',
+        type: 'image/svg+xml',
         form_factor: 'narrow',
         label: 'NextLeadIn Mobile',
       },
       // Screenshots addicionals per millor presentació PWA
       {
-        src: '/images/hero/hero.png',
+        src: '/images/hero/hero.svg',
         sizes: '1280x720',
-        type: 'image/png',
+        type: 'image/svg+xml',
         form_factor: 'wide',
         label: 'NextLeadIn Platform Overview',
       },

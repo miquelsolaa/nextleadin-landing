@@ -3,7 +3,7 @@ title: "Boost Your B2B Sales: The Power of CRM Integration for AI Lead Generatio
 description: "Discover how seamless CRM integration supercharges your B2B lead generation efforts, enabling AI sales automation and hyper-segmented prospecting for NextLeadIn users."
 date: "2026-03-06"
 image: "https://images.pexels.com/photos/39559/ipad-mockup-apple-business-39559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-author: "NextLeadIn Team"
+author: "Laura Sánchez"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["CRM Integration"]
 tags: ["CRM Integration", "Lead Generation", "AI Prospecting"]

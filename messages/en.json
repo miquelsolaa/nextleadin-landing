@@ -27,10 +27,15 @@
       "breadcrumbBlog": "Blog"
     },
     "contact": {
-      "title": "Talk to our team",
-      "subtitle": "Local business leads: restaurants, workshops, shops. Enriched data and AI review analysis.",
-      "submit": "Submit request",
+      "eyebrow": "Let's talk",
+      "title": "Your market is bigger than any tool shows you.",
+      "titleHighlight": "any tool",
+      "subtitle": "Local businesses not on LinkedIn, Apollo or ZoomInfo. Contact our team and we’ll show you how many are in your area.",
+      "submit": "Send message",
+      "submitNote": "We reply within 24 business hours.",
       "seePricing": "See pricing",
+      "tabForm": "Send message",
+      "tabDemo": "Request live demo",
       "labels": {
         "name": "Full name",
         "email": "Email",
@@ -40,17 +45,17 @@
         "region": "Area of interest",
         "sector": "Sector / niche",
         "message": "How can we help?",
-        "consent": "I accept the"
+        "consent": "I accept the",
+        "consentSuffix": " and that NextLeadIn may contact me to handle my request."
       },
       "placeholders": {
-        "name": "First and last name",
-        "email": "you@email.com",
-        "company": "Company name",
+        "name": "John Smith",
+        "email": "john@company.com",
+        "company": "Company Ltd.",
         "phone": "+34 600 000 000",
-        "role": "e.g. Head of Sales",
-        "region": "e.g. Barcelona, Girona...",
-        "sector": "e.g. vegetarian restaurants, pressfittings manufacturers, doctors...",
-        "message": "Tell us goals, expected lead volume and timelines."
+        "role": "Select role…",
+        "sector": "Who do you prospect?",
+        "message": "Tell us briefly what type of businesses you’re looking for and in which area. The demo will be more useful for you."
       },
       "errors": {
         "name": "Name is required",
@@ -67,6 +72,59 @@
       },
       "submitError": "We couldn't send the form. Please try again.",
       "honeypot": "Don't fill this out if you're human",
+      "proof": {
+        "db": "Exclusive database of Spanish local businesses — restaurants, workshops, clinics, academies.",
+        "dbStrong": "Exclusive database",
+        "phone": "Verified phone number for each lead. No paying for contacts that don’t work.",
+        "phoneStrong": "Verified phone",
+        "ai": "AI context per lead: reviews, rating, hours and buying signals before calling.",
+        "aiStrong": "AI context per lead",
+        "integration": "Direct integration with HubSpot, Pipedrive, Salesforce and n8n.",
+        "integrationStrong": "Direct integration"
+      },
+      "stats": {
+        "businesses": "Local businesses",
+        "meetings": "Meetings/month avg.",
+        "demo": "Live demo"
+      },
+      "demo": {
+        "headline": "Live demo · 15 minutes",
+        "sub": "We show you in real time how many local businesses are in your area that don’t appear on Apollo, ZoomInfo or LinkedIn — with phone and AI context included.",
+        "item1": "Live search for businesses in your sector and city.",
+        "item1Strong": "Live search",
+        "item2": "AI report per lead — reviews, rating and buying signals.",
+        "item2Strong": "AI report per lead",
+        "item3": "Direct comparison with the data you have in your CRM today.",
+        "item4": "Integration with your current stack (HubSpot, Pipedrive, n8n…).",
+        "duration": "Duration",
+        "durationVal": "15 minutes",
+        "format": "Format",
+        "formatVal": "Video call",
+        "cost": "Cost",
+        "costVal": "Free",
+        "commitment": "Commitment",
+        "commitmentVal": "None",
+        "cta": "Book demo now",
+        "note": "Choose your time. Available Mon–Fri 9:00–18:00."
+      },
+      "roles": {
+        "director": "Sales Director",
+        "salesManager": "Sales Manager",
+        "ceo": "CEO / Founder",
+        "sdr": "SDR / BDR",
+        "marketing": "Marketing Manager",
+        "other": "Other"
+      },
+      "sectors": {
+        "restaurants": "Restaurants & Hospitality",
+        "dentists": "Dental Clinics",
+        "workshops": "Workshops & Automotive",
+        "realEstate": "Real Estate",
+        "academies": "Academies & Training",
+        "beauty": "Beauty & Spa",
+        "various": "Multiple sectors",
+        "other": "Other"
+      },
       "aside": {
         "directTitle": "Direct contact",
         "emailLabel": "Email",
@@ -170,6 +228,10 @@
         "clManager": {
           "name": "CLManager",
           "description": "SaaS for Optical Store Management"
+        },
+        "codixperts": {
+          "name": "Codixperts",
+          "description": "Web & software development agency"
         }
       },
       "metrics": {

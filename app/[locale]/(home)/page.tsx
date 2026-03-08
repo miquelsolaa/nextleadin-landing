@@ -20,7 +20,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const latestPosts = allPosts.slice(0, 3).map(post => ({
     title: post.title || '',
     excerpt: post.description || '',
-    image: post.image || '/images/hero/hero.png',
+    image: post.image || '/images/hero/hero.svg',
     categories: post.categories || [],
     author: { name: post.author || 'NextLeadIn Team' },
     date: post.date ? new Date(post.date).toLocaleDateString(validLocale === 'ca' ? 'ca-ES' : validLocale === 'en' ? 'en-US' : 'es-ES', {

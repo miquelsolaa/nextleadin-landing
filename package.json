@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npm run copy-sitemap",
+    "build": "next build",
     "copy-sitemap": "node scripts/copy-sitemap.js",
     "start": "next start",
     "lint": "next lint",

@@ -3,7 +3,7 @@ title: "Potencia les teves Vendes B2B: La Integració de CRM per a la Generació
 description: "Descobreix com la integració perfecta del CRM impulsa la teva generació de leads B2B, permetent l'automatització de vendes amb IA i la prospecció hipersegmentada per als usuaris de NextLeadIn."
 date: "2026-03-06"
 image: "https://images.pexels.com/photos/39559/ipad-mockup-apple-business-39559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-author: "NextLeadIn Team"
+author: "Laura Sánchez"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["CRM Integration"]
 tags: ["CRM Integration", "Lead Generation", "AI for Sales"]

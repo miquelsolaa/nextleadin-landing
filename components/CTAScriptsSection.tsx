@@ -1,34 +1,31 @@
 'use client'
 
 import Image from 'next/image'
-import { Link } from '@/i18n/routing'
 import { useLocale } from 'next-intl'
 import { trackRegisterStart } from '@/lib/analytics'
+import { ChevronRight } from 'lucide-react'
 
-const CTASection = () => {
+const CTAScriptsSection = () => {
   const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
 
   const t = {
     es: {
-      kicker: 'Prueba 7 días sin compromiso',
-      title: <>¿Listo para cerrar <span className="text-primary-100">3x más reuniones</span> este mes?</>,
-      desc: 'Únete a los equipos comerciales que ya generan 8+ reuniones/mes con NextLeadIn.',
-      primary: 'Probar 7 días gratis',
-      secondary: 'Hablar con un experto'
+      title1: 'Ahora tienes los scripts.',
+      title2: 'Falta la lista de a quién llamar.',
+      desc: 'Accede a miles de negocios locales en España con teléfono verificado y contexto IA por lead.',
+      primary: 'Probar NextLeadIn gratis'
     },
     ca: {
-      kicker: 'Prova 7 dies sense compromís',
-      title: <>Preparat per tancar <span className="text-primary-100">3x més reunions</span> aquest mes?</>,
-      desc: "Uneix-te als equips comercials que ja generen 8+ reunions/mes amb NextLeadIn.",
-      primary: 'Provar 7 dies gratis',
-      secondary: 'Parlar amb un expert'
+      title1: 'Ara tens els scripts.',
+      title2: 'Falta la llista de a qui trucar.',
+      desc: 'Accedeix a milers de negocis locals a Espanya amb telèfon verificat i context IA per lead.',
+      primary: 'Provar NextLeadIn gratis'
     },
     en: {
-      kicker: 'Try 7 days free, no commitment',
-      title: <>Ready to close <span className="text-primary-100">3x more meetings</span> this month?</>,
-      desc: 'Join the sales teams already generating 8+ meetings/month with NextLeadIn.',
-      primary: 'Try 7 days free',
-      secondary: 'Talk to an expert'
+      title1: 'Now you have the scripts.',
+      title2: 'You need the list of who to call.',
+      desc: 'Access thousands of local businesses in Spain with verified phone and AI context per lead.',
+      primary: 'Try NextLeadIn free'
     }
   }[locale]
 
@@ -37,30 +34,25 @@ const CTASection = () => {
       <div className="container-custom relative min-w-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="text-center lg:text-left">
-            <span className="block text-sm font-semibold text-primary-100 uppercase tracking-wider mb-4">
-              {t.kicker}
-            </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              {t.title}
+              {t.title1}
+              <br />
+              <span className="text-primary-100">{t.title2}</span>
             </h2>
             <p className="text-xl text-primary-100 leading-relaxed mb-8">
               {t.desc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link
-                href="/contact"
-                className="btn-primary bg-white text-primary-600 hover:bg-gray-100"
+              <a
+                href="https://app.nextleadin.com/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary bg-white text-primary-600 hover:bg-gray-100 inline-flex items-center justify-center gap-2"
                 onClick={() => trackRegisterStart('primary', locale)}
               >
                 {t.primary}
-              </Link>
-              <Link
-                href="/contact"
-                className="btn-secondary border-white text-white hover:bg-white hover:text-primary-600"
-                onClick={() => trackRegisterStart('secondary', locale)}
-              >
-                {t.secondary}
-              </Link>
+                <ChevronRight className="w-4 h-4 shrink-0" aria-hidden />
+              </a>
             </div>
           </div>
 
@@ -82,6 +74,4 @@ const CTASection = () => {
   )
 }
 
-export default CTASection
-
-
+export default CTAScriptsSection

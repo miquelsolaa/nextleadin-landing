@@ -18,7 +18,12 @@ collections:
       - {label: "Títol", name: "title", widget: "string"}
       - {label: "Descripció", name: "description", widget: "text"}
       - {label: "Data de publicació", name: "date", widget: "datetime"}
-      - {label: "Autor", name: "author", widget: "string"}
+      - label: "Autor"
+        name: "author"
+        widget: "select"
+        options:
+          - { label: "NextLeadIn Team", value: "NextLeadIn Team" }
+          - { label: "Laura Sánchez", value: "Laura Sánchez" }
       - {label: "Imatge destacada", name: "featuredImage", widget: "image", required: false}
       - {label: "Categories", name: "categories", widget: "list", default: []}
       - {label: "Tags", name: "tags", widget: "list", default: []}

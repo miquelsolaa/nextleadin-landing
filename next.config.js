@@ -65,6 +65,8 @@ const nextConfig = {
       { source: '/blog/tag/sales%20leads', destination: '/blog/tag/lead-generation', permanent: true },
       { source: '/:locale(en|es|ca)/blog/tag/sales-leads', destination: '/:locale/blog/tag/lead-generation', permanent: true },
       { source: '/:locale(en|es|ca)/blog/tag/sales%20leads', destination: '/:locale/blog/tag/lead-generation', permanent: true },
+      { source: '/resources/guia-prospeccion-local', destination: '/resources/local-prospecting-guide', permanent: true },
+      { source: '/:locale(en|es|ca)/resources/guia-prospeccion-local', destination: '/:locale/resources/local-prospecting-guide', permanent: true },
     ]
   },
   outputFileTracingIncludes: {

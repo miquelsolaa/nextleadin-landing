@@ -20,6 +20,10 @@ const TrustedBySection = () => {
       id: 'clManager',
       logo: '/images/testimonials/clmanager.png',
     },
+    {
+      id: 'codixperts',
+      logo: '/images/testimonials/codixperts.webp',
+    },
   ]
 
   const metrics = [
@@ -31,6 +35,7 @@ const TrustedBySection = () => {
   const slideItems: SlideItem[] = [
     { type: 'client', id: 'summaCommerce' },
     { type: 'client', id: 'clManager' },
+    { type: 'client', id: 'codixperts' },
     { type: 'metric', id: 'leads' },
     { type: 'metric', id: 'time' },
     { type: 'metric', id: 'implementation' },

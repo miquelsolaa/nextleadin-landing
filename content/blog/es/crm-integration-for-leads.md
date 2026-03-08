@@ -3,7 +3,7 @@ title: "¿Cómo la Integración de CRM Impulsa tu Generación de Leads B2B con I
 description: "Descubre cómo la integración de CRM optimiza tus esfuerzos de generación de leads B2B, habilitando la automatización de ventas con IA y la prospección hipersegmentada para los usuarios de NextLeadIn."
 date: "2026-03-06"
 image: "https://images.pexels.com/photos/39559/ipad-mockup-apple-business-39559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-author: "NextLeadIn Team"
+author: "Laura Sánchez"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["CRM Integration"]
 tags: ["CRM Integration", "Lead Generation", "Sales Automation"]

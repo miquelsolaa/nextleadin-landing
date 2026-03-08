@@ -1,5 +1,6 @@
 import type { BlogPost } from '@/lib/blog'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
+import { getAuthorInfo, type AuthorLocale } from '@/lib/authors'
 
 interface BlogJsonLdProps {
   post: BlogPost
@@ -23,6 +24,10 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
   // Determinar idioma
   const inLanguage = locale === 'ca' ? 'ca-ES' : locale === 'es' ? 'es-ES' : 'en-US'
   
+  const authorInfo = getAuthorInfo(post.author, locale as AuthorLocale)
+  const authorName = post.author || 'NextLeadIn Team'
+  const authorImageUrl = authorInfo?.image ? `${baseUrl}${authorInfo.image}` : undefined
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -40,9 +45,15 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
     ],
     author: {
       '@type': 'Person',
-      name: post.author || 'NextLeadIn Team',
+      name: authorName,
       url: `${baseUrl}`,
-      jobTitle: 'Content Creator',
+      jobTitle: authorInfo?.jobTitle ?? 'Content Creator',
+      ...(authorImageUrl && {
+        image: {
+          '@type': 'ImageObject',
+          url: authorImageUrl,
+        },
+      }),
       worksFor: {
         '@type': 'Organization',
         name: 'NextLeadIn',

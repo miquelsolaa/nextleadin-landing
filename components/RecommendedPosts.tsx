@@ -58,7 +58,7 @@ export default function RecommendedPosts({ posts, currentSlug }: RecommendedPost
               <Link href={getPostUrl(post.slug)}>
                 <div className="relative h-48">
                   <Image
-                    src={post.image || '/images/hero/hero.png'}
+                    src={post.image || '/images/hero/hero.svg'}
                     alt={post.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

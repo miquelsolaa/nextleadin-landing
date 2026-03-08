@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Prospección Local en España | NextLeadIn</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0a0a0a;
+  --bg2:      #111;
+  --bg3:      #161616;
+  --green:    #22c55e;
+  --green-lt: #4ade80;
+  --green-dk: #16a34a;
+  --g-dim:    rgba(34,197,94,.07);
+  --g-border: rgba(34,197,94,.18);
+  --white:    #f0ede8;
+  --off:      #c8c4bc;
+  --muted:    #6b7280;
+  --muted2:   #9ca3af;
+  --serif:    'DM Serif Display', Georgia, serif;
+  --body:     'DM Sans', sans-serif;
+  --mono:     'Space Mono', monospace;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--body);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* grain */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999; opacity:.45;
+}
+
+/* ── PROGRESS BAR ── */
+#progress-bar {
+  position:fixed; top:0; left:0; height:2px;
+  background:var(--green); width:0%; z-index:200;
+  transition:width .1s linear;
+}
+
+/* ── NAV ── */
+nav {
+  position:sticky; top:0; z-index:100;
+  background:rgba(10,10,10,.93); backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.05);
+  height:56px; display:flex; align-items:center;
+  justify-content:space-between; padding:0 2rem;
+}
+.nav-logo { font-family:var(--mono); font-size:.78rem; color:var(--green); text-decoration:none; letter-spacing:.06em; }
+.nav-back  { font-family:var(--mono); font-size:.68rem; color:var(--muted); text-decoration:none; display:flex; align-items:center; gap:.4rem; transition:color .2s; }
+.nav-back:hover { color:var(--white); }
+.nav-cta { font-family:var(--mono); font-size:.68rem; font-weight:700; background:var(--green); color:#0a0a0a; padding:.4rem 1rem; text-decoration:none; transition:background .2s; text-transform:uppercase; letter-spacing:.05em; }
+.nav-cta:hover { background:var(--green-lt); }
+
+/* ── HERO ── */
+.hero {
+  max-width:780px; margin:0 auto;
+  padding:6rem 2rem 4rem;
+  position:relative;
+}
+
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.13em;
+  color:var(--green); text-transform:uppercase;
+  background:var(--g-dim); border:1px solid var(--g-border);
+  padding:.3rem .8rem; margin-bottom:2rem;
+}
+
+.hero h1 {
+  font-family:var(--serif);
+  font-size:clamp(2.4rem,5vw,4rem);
+  line-height:1.08; letter-spacing:-.01em;
+  color:var(--white); margin-bottom:1.5rem;
+  font-weight:400;
+}
+
+.hero h1 em { font-style:italic; color:var(--green); }
+
+.hero-meta-row {
+  display:flex; gap:2rem; flex-wrap:wrap;
+  padding:1.25rem 0; border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  margin-bottom:2rem;
+}
+
+.hero-meta-item {
+  display:flex; align-items:center; gap:.5rem;
+  font-family:var(--mono); font-size:.65rem; color:var(--muted);
+  letter-spacing:.05em;
+}
+
+.hero-meta-item span { color:var(--muted2); }
+
+.hero-intro {
+  font-size:1.05rem; color:var(--off); line-height:1.8;
+  max-width:640px;
+}
+
+/* ── LAYOUT ── */
+.layout {
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:0;
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 2rem 8rem;
+  align-items:start;
+}
+
+/* ── TOC SIDEBAR ── */
+.toc {
+  position:sticky; top:72px;
+  padding:0 2rem 2rem 0;
+  border-right:1px solid rgba(255,255,255,.05);
+}
+
+.toc-title {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.13em;
+  color:var(--muted); text-transform:uppercase; margin-bottom:1rem;
+}
+
+.toc-list { list-style:none; display:flex; flex-direction:column; gap:.1rem; }
+
+.toc-item a {
+  display:flex; align-items:flex-start; gap:.5rem;
+  font-size:.75rem; color:var(--muted);
+  text-decoration:none; padding:.35rem .5rem;
+  transition:color .2s, background .2s;
+  line-height:1.4; border-left:2px solid transparent;
+}
+
+.toc-item a:hover { color:var(--white); }
+.toc-item a.active { color:var(--green); border-left-color:var(--green); background:var(--g-dim); }
+
+.toc-num {
+  font-family:var(--mono); font-size:.58rem; color:var(--muted);
+  flex-shrink:0; margin-top:1px;
+}
+
+/* ── CONTENT ── */
+.content { padding:0 0 0 3.5rem; }
+
+/* ── CHAPTER ── */
+.chapter {
+  margin-bottom:5rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.05);
+  animation:none;
+}
+
+.chapter:first-child { border-top:none; padding-top:0; }
+
+.chapter-header { margin-bottom:2rem; }
+
+.chapter-num {
+  font-family:var(--mono); font-size:.62rem; letter-spacing:.12em;
+  color:var(--green); text-transform:uppercase; margin-bottom:.6rem;
+  display:block;
+}
+
+.chapter h2 {
+  font-family:var(--serif);
+  font-size:clamp(1.6rem,2.5vw,2.2rem);
+  font-weight:400; line-height:1.15; letter-spacing:-.01em;
+  color:var(--white);
+}
+
+.chapter p {
+  font-size:.9rem; color:var(--off); line-height:1.85;
+  margin-bottom:1.25rem; max-width:640px;
+}
+
+.chapter h3 {
+  font-family:var(--serif); font-size:1.2rem; font-weight:400;
+  color:var(--white); margin:2rem 0 .75rem; letter-spacing:-.01em;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  background:var(--g-dim); border-left:3px solid var(--green);
+  padding:1.1rem 1.25rem; margin:1.5rem 0;
+  max-width:640px;
+}
+
+.callout-label {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.12em;
+  color:var(--green); text-transform:uppercase; margin-bottom:.4rem;
+}
+
+.callout p { font-size:.82rem; color:var(--off); margin:0; max-width:100%; line-height:1.7; }
+
+/* ── STAT CARDS ── */
+.stat-cards {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.05);
+  margin:1.5rem 0; max-width:640px;
+}
+
+.stat-card {
+  background:var(--bg3); padding:1.25rem 1rem;
+  display:flex; flex-direction:column; gap:.3rem;
+}
+
+.stat-card-num {
+  font-family:var(--mono); font-size:1.4rem; font-weight:700; color:var(--green);
+}
+
+.stat-card-label { font-size:.72rem; color:var(--muted2); line-height:1.4; }
+
+/* ── SECTOR TABLE ── */
+.sector-table { width:100%; max-width:640px; border-collapse:collapse; margin:1.5rem 0; }
+
+.sector-table th {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.1em;
+  color:var(--muted); text-transform:uppercase; text-align:left;
+  padding:.5rem .75rem; border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.sector-table td {
+  font-size:.8rem; color:var(--off);
+  padding:.65rem .75rem; border-bottom:1px solid rgba(255,255,255,.04);
+  vertical-align:top; line-height:1.5;
+}
+
+.sector-table tr:hover td { background:rgba(255,255,255,.02); }
+
+.tag {
+  display:inline-block;
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.07em;
+  padding:.15rem .45rem; text-transform:uppercase;
+}
+
+.tag-high { background:rgba(34,197,94,.12); color:#4ade80; border:1px solid rgba(34,197,94,.2); }
+.tag-med  { background:rgba(251,191,36,.1);  color:#fbbf24; border:1px solid rgba(251,191,36,.2); }
+.tag-low  { background:rgba(156,163,175,.1); color:#9ca3af; border:1px solid rgba(156,163,175,.15); }
+
+/* ── STEP LIST ── */
+.steps { list-style:none; display:flex; flex-direction:column; gap:0; max-width:640px; margin:1.5rem 0; }
+
+.step {
+  display:grid; grid-template-columns:40px 1fr;
+  gap:0 1rem; position:relative;
+}
+
+.step::before {
+  content:''; position:absolute;
+  left:19px; top:40px; bottom:0;
+  width:1px; background:rgba(255,255,255,.06);
+}
+
+.step:last-child::before { display:none; }
+
+.step-num {
+  width:40px; height:40px; flex-shrink:0;
+  background:var(--bg2); border:1px solid var(--g-border);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:.7rem; color:var(--green);
+  z-index:1; position:relative;
+}
+
+.step-body { padding-bottom:2rem; }
+
+.step-title {
+  font-size:.9rem; font-weight:600; color:var(--white);
+  margin-bottom:.4rem; line-height:1.4;
+  padding-top:.6rem;
+}
+
+.step-desc { font-size:.8rem; color:var(--muted2); line-height:1.7; }
+
+/* ── OBJECTION CARDS ── */
+.objection-list { display:flex; flex-direction:column; gap:1rem; max-width:640px; margin:1.5rem 0; }
+
+.obj-card {
+  background:var(--bg2); border:1px solid rgba(255,255,255,.06);
+  overflow:hidden; cursor:pointer; transition:border-color .2s;
+}
+
+.obj-card:hover { border-color:var(--g-border); }
+
+.obj-card-q {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.9rem 1.1rem; gap:.75rem;
+}
+
+.obj-card-q-text {
+  font-size:.82rem; color:var(--off); font-style:italic; line-height:1.4;
+}
+
+.obj-toggle {
+  font-family:var(--mono); font-size:1rem; color:var(--muted);
+  flex-shrink:0; transition:transform .25s, color .2s;
+}
+
+.obj-card.open .obj-toggle { transform:rotate(45deg); color:var(--green); }
+
+.obj-card-a {
+  display:none; padding:0 1.1rem 1rem;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+.obj-card.open .obj-card-a { display:block; animation:fadeUp .25s ease; }
+
+.obj-card-a-label {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.1em;
+  color:var(--green); text-transform:uppercase; margin:.75rem 0 .4rem;
+}
+
+.obj-card-a p { font-size:.8rem; color:var(--muted2); line-height:1.7; margin:0; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(6px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── CHECKLIST ── */
+.checklist { list-style:none; display:flex; flex-direction:column; gap:.5rem; max-width:640px; margin:1.25rem 0; }
+
+.checklist li {
+  display:flex; align-items:flex-start; gap:.7rem;
+  font-size:.82rem; color:var(--off); line-height:1.6;
+}
+
+.checklist li::before {
+  content:'→'; font-family:var(--mono); font-size:.7rem;
+  color:var(--green); flex-shrink:0; margin-top:2px;
+}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  background:var(--bg2);
+  border:1px solid var(--g-border);
+  padding:1.5rem 1.5rem 1.5rem 1.25rem;
+  margin:1.5rem 0; max-width:640px;
+  position:relative; overflow:hidden;
+}
+
+.highlight-box::before {
+  content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--green);
+}
+
+.highlight-box-title {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.12em;
+  color:var(--green); text-transform:uppercase; margin-bottom:.6rem;
+}
+
+.highlight-box p { font-size:.82rem; color:var(--off); line-height:1.75; margin:0; max-width:100%; }
+
+/* ── METRIC ROW ── */
+.metric-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.05);
+  margin:1.5rem 0; max-width:640px;
+}
+
+.metric-cell {
+  background:var(--bg3); padding:1rem 1.1rem;
+  display:flex; flex-direction:column; gap:.25rem;
+}
+
+.metric-label {
+  font-family:var(--mono); font-size:.58rem; letter-spacing:.1em;
+  color:var(--muted); text-transform:uppercase;
+}
+
+.metric-val { font-size:.88rem; color:var(--white); line-height:1.4; }
+.metric-note { font-size:.72rem; color:var(--muted); line-height:1.4; }
+
+/* ── CTA INLINE ── */
+.cta-inline {
+  background:var(--g-dim); border:1px solid var(--g-border);
+  padding:2rem; margin:3rem 0; max-width:640px;
+  display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
+  flex-wrap:wrap;
+}
+
+.cta-inline-text h4 {
+  font-family:var(--serif); font-size:1.1rem; font-weight:400;
+  color:var(--white); margin-bottom:.3rem;
+}
+
+.cta-inline-text p { font-size:.78rem; color:var(--muted2); margin:0; line-height:1.5; max-width:100%; }
+
+.cta-btn-sm {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--green); color:#0a0a0a;
+  font-family:var(--mono); font-size:.7rem; font-weight:700;
+  letter-spacing:.06em; text-transform:uppercase;
+  padding:.7rem 1.4rem; text-decoration:none; flex-shrink:0;
+  transition:background .2s;
+}
+.cta-btn-sm:hover { background:var(--green-lt); }
+
+/* ── CTA FOOTER ── */
+.cta-footer {
+  max-width:640px; margin:4rem 0 0;
+  padding:2.5rem;
+  background:var(--bg2);
+  border:1px solid var(--g-border);
+  text-align:center; position:relative; overflow:hidden;
+}
+
+.cta-footer::before {
+  content:''; position:absolute; top:-60px; left:50%; transform:translateX(-50%);
+  width:300px; height:120px;
+  background:radial-gradient(ellipse, rgba(34,197,94,.1), transparent 70%);
+  pointer-events:none;
+}
+
+.cta-footer h3 { font-family:var(--serif); font-size:1.5rem; font-weight:400; margin-bottom:.5rem; }
+.cta-footer p  { font-size:.82rem; color:var(--muted2); margin-bottom:1.5rem; line-height:1.6; }
+
+.cta-btn-lg {
+  display:inline-flex; align-items:center; gap:.6rem;
+  background:var(--green); color:#0a0a0a;
+  font-family:var(--mono); font-size:.78rem; font-weight:700;
+  letter-spacing:.06em; text-transform:uppercase;
+  padding:.9rem 2rem; text-decoration:none;
+  transition:all .2s;
+}
+.cta-btn-lg:hover { background:var(--green-lt); transform:translateY(-1px); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:860px) {
+  .layout { grid-template-columns:1fr; padding:0 1.25rem 6rem; }
+  .toc { display:none; }
+  .content { padding:0; }
+  .hero { padding:4rem 1.25rem 3rem; }
+  nav { padding:0 1.25rem; }
+  .stat-cards { grid-template-columns:1fr 1fr; }
+  .metric-row { grid-template-columns:1fr; }
+}
+
+@media (max-width:480px) {
+  .stat-cards { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">NextLeadIn</a>
+  <a href="/resources" class="nav-back">← Recursos</a>
+  <a href="https://app.nextleadin.com/register" class="nav-cta">Probar gratis</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span>📍</span> Guía Completa
+  </div>
+  <h1>Cómo prospectar<br><em>negocios locales</em><br>en España en 2025</h1>
+
+  <div class="hero-meta-row">
+    <div class="hero-meta-item"><span>🕐</span> 18 min de lectura</div>
+    <div class="hero-meta-item"><span>📋</span> 6 capítulos</div>
+    <div class="hero-meta-item"><span>🗂</span> 7 sectores cubiertos</div>
+    <div class="hero-meta-item"><span>🔄</span> Actualizado enero 2025</div>
+  </div>
+
+  <p class="hero-intro">
+    Los negocios locales son el segmento B2B más grande de España y el más invisible para las herramientas de prospección estándar. Esta guía te da el marco completo para identificarlos, cualificarlos, abordarlos y cerrar reuniones — sector a sector.
+  </p>
+</section>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- TOC -->
+  <aside class="toc">
+    <div class="toc-title">Contenidos</div>
+    <ul class="toc-list">
+      <li class="toc-item"><a href="#cap1"><span class="toc-num">01</span> Por qué local</a></li>
+      <li class="toc-item"><a href="#cap2"><span class="toc-num">02</span> Los 7 sectores</a></li>
+      <li class="toc-item"><a href="#cap3"><span class="toc-num">03</span> Cómo cualificar</a></li>
+      <li class="toc-item"><a href="#cap4"><span class="toc-num">04</span> El primer contacto</a></li>
+      <li class="toc-item"><a href="#cap5"><span class="toc-num">05</span> Objeciones</a></li>
+      <li class="toc-item"><a href="#cap6"><span class="toc-num">06</span> Métricas y cadencia</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <article class="content">
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- CAP 1 -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="chapter" id="cap1">
+      <div class="chapter-header">
+        <span class="chapter-num">Capítulo 01</span>
+        <h2>Por qué el mercado local es la oportunidad que nadie trabaja</h2>
+      </div>
+
+      <p>Cuando un equipo comercial busca leads B2B, el primer instinto es abrir Apollo, LinkedIn Sales Navigator o ZoomInfo. El problema es que estas plataformas fueron construidas para empresas medianas y grandes con presencia digital estructurada. El restaurante familiar con 40 cubiertos, la clínica dental independiente o el taller mecánico de barrio son invisibles para ellas.</p>
+
+      <p>Esto no es un bug, es una característica del mercado: los negocios locales en España no tienen ficha en LinkedIn, no exportan datos a directorios B2B, y rara vez tienen un <em>decision maker</em> identificable en ninguna base de datos pública. Resultado: el 80% de los equipos comerciales ignora este segmento por defecto.</p>
+
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-card-num">+3.5M</div>
+          <div class="stat-card-label">PYMEs y autónomos con local en España (INE 2024)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">&lt;12%</div>
+          <div class="stat-card-label">de ellos aparecen en bases de datos B2B estándar</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">×4</div>
+          <div class="stat-card-label">menos competencia de prospección frente al mercado enterprise</div>
+        </div>
+      </div>
+
+      <p>La consecuencia directa es que quien trabaja este mercado encuentra ratios de contacto y apertura significativamente más altos. Un comercial que prospecta restaurantes o clínicas dentales no compite contra otros diez SDRs que enviaron el mismo email con Apollo la semana pasada.</p>
+
+      <div class="callout">
+        <div class="callout-label">Principio clave</div>
+        <p>La ventaja competitiva en prospección local no viene de mejor copy ni mejor timing. Viene de <strong>tener acceso a los datos</strong> que la competencia no tiene. El primer paso es resolver el problema de información.</p>
+      </div>
+
+      <h3>El perfil del decisor local</h3>
+
+      <p>A diferencia del B2B enterprise, donde el decisor tiene un cargo definido (CPO, CMO, VP Sales), en el negocio local suele ser el dueño o gerente quien toma todas las decisiones. Esto simplifica el proceso de venta — no hay que navegar jerarquías — pero introduce otras fricciones:</p>
+
+      <ul class="checklist">
+        <li>El dueño recibe muchas llamadas comerciales y tiene el filtro alto desde la primera frase.</li>
+        <li>No tiene tiempo para procesos de decisión largos. La venta tiene que ser rápida o no es.</li>
+        <li>La confianza se construye demostrando conocimiento de su sector y su situación específica, no con pitches genéricos.</li>
+        <li>Responde mejor a beneficios concretos e inmediatos que a promesas de ROI abstracto.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- CAP 2 -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="chapter" id="cap2">
+      <div class="chapter-header">
+        <span class="chapter-num">Capítulo 02</span>
+        <h2>Los 7 sectores con mayor potencial en España</h2>
+      </div>
+
+      <p>No todos los sectores locales tienen el mismo atractivo para la prospección. La tabla siguiente evalúa cada uno por volumen de negocios, facilidad de acceso al decisor, ticket medio y nivel de competencia comercial que ya existe en el segmento.</p>
+
+      <table class="sector-table">
+        <thead>
+          <tr>
+            <th>Sector</th>
+            <th>Volumen</th>
+            <th>Acceso decisor</th>
+            <th>Ticket potencial</th>
+            <th>Competencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🍽 Restaurantes & Hostelería</td>
+            <td><span class="tag tag-high">Alto</span></td>
+            <td><span class="tag tag-high">Directo</span></td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-low">Baja</span></td>
+          </tr>
+          <tr>
+            <td>🦷 Clínicas Dentales</td>
+            <td><span class="tag tag-high">Alto</span></td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-high">Alto</span></td>
+            <td><span class="tag tag-low">Baja</span></td>
+          </tr>
+          <tr>
+            <td>🔧 Talleres Mecánicos</td>
+            <td><span class="tag tag-high">Alto</span></td>
+            <td><span class="tag tag-high">Directo</span></td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-low">Muy baja</span></td>
+          </tr>
+          <tr>
+            <td>🏠 Inmobiliarias Independientes</td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-high">Directo</span></td>
+            <td><span class="tag tag-high">Alto</span></td>
+            <td><span class="tag tag-med">Media</span></td>
+          </tr>
+          <tr>
+            <td>💆 Estética & Spa</td>
+            <td><span class="tag tag-high">Alto</span></td>
+            <td><span class="tag tag-high">Directo</span></td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-low">Baja</span></td>
+          </tr>
+          <tr>
+            <td>📚 Academias & Formación</td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-low">Baja</span></td>
+          </tr>
+          <tr>
+            <td>🏋 Gimnasios & Fitness</td>
+            <td><span class="tag tag-high">Alto</span></td>
+            <td><span class="tag tag-high">Directo</span></td>
+            <td><span class="tag tag-med">Medio</span></td>
+            <td><span class="tag tag-med">Media</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Cómo elegir tu sector de entrada</h3>
+
+      <p>Si estás empezando a trabajar el mercado local, la recomendación es especializarte en <strong>un sector durante los primeros 90 días</strong>. Las razones son prácticas:</p>
+
+      <ul class="checklist">
+        <li>Acumulas conocimiento del sector que mejora cada llamada: sabes las objeciones, el vocabulario, los problemas estacionales.</li>
+        <li>Puedes construir social proof sectorial más rápido: "ya trabajamos con 12 clínicas dentales en Madrid" cierra más que una propuesta genérica.</li>
+        <li>Los decisores del mismo sector se conocen entre ellos. Un cliente satisfecho puede referir activamente.</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-label">Recomendación de entrada</div>
+        <p>Para un equipo nuevo en prospección local, <strong>clínicas dentales o talleres mecánicos</strong> son los mejores puntos de partida: el decisor está siempre en el negocio, el beneficio de tener más clientes empresa es claro, y la competencia comercial es casi inexistente.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- CAP 3 -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="chapter" id="cap3">
+      <div class="chapter-header">
+        <span class="chapter-num">Capítulo 03</span>
+        <h2>Cómo cualificar un negocio local antes de contactar</h2>
+      </div>
+
+      <p>La prospección local eficiente empieza antes de coger el teléfono. Dedicar 3 minutos a investigar cada negocio puede doblar la tasa de apertura. Aquí el marco de cualificación que usamos.</p>
+
+      <h3>El modelo LOCA</h3>
+
+      <p>Cuatro preguntas que responden en menos de 5 minutos por lead:</p>
+
+      <ul class="steps">
+        <li class="step">
+          <div class="step-num">L</div>
+          <div class="step-body">
+            <div class="step-title">Localización — ¿Está en la zona correcta?</div>
+            <div class="step-desc">No solo ciudad: barrio y distancia a polígonos industriales o zonas de oficinas. Un taller en polígono tiene más potencial de flota empresa que uno en zona residencial.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">O</div>
+          <div class="step-body">
+            <div class="step-title">Operativo — ¿Está abierto y activo?</div>
+            <div class="step-desc">Confirma horario actualizado en Google Maps. Un negocio con horario desactualizado o sin reseñas recientes puede estar cerrando. Prioriza los que tienen actividad reciente.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">C</div>
+          <div class="step-body">
+            <div class="step-title">Capacidad — ¿Tiene margen para crecer?</div>
+            <div class="step-desc">Las reseñas de Google son una señal: un restaurante con "siempre lleno, difícil conseguir mesa" no es tu cliente. Busca los que tienen buenas valoraciones pero no están saturados.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">A</div>
+          <div class="step-body">
+            <div class="step-title">Accesible — ¿Tienes el contacto directo?</div>
+            <div class="step-desc">Teléfono verificado y nombre del propietario si es posible. Evitar negocios donde solo hay un formulario web — el ciclo de respuesta es demasiado lento para prospección outbound.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="metric-row">
+        <div class="metric-cell">
+          <div class="metric-label">Sin cualificación previa</div>
+          <div class="metric-val">3–5% tasa de apertura</div>
+          <div class="metric-note">Llamada a lista fría sin contexto</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Con modelo LOCA</div>
+          <div class="metric-val">12–18% tasa de apertura</div>
+          <div class="metric-note">Mismo sector, con contexto previo</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">LOCA + contexto IA</div>
+          <div class="metric-val">25–35% tasa de apertura</div>
+          <div class="metric-note">Con análisis de reseñas y señales de compra</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Tiempo por lead</div>
+          <div class="metric-val">3–5 minutos</div>
+          <div class="metric-note">Cualificación manual básica</div>
+        </div>
+      </div>
+
+      <h3>Señales de compra que debes buscar</h3>
+
+      <p>Más allá del modelo LOCA, hay señales específicas por sector que indican que un negocio está receptivo a servicios externos:</p>
+
+      <ul class="checklist">
+        <li><strong>Restaurantes:</strong> Menciones en reseñas de "ideal para grupos" o "eventos de empresa" — ya tienen la infraestructura y el interés.</li>
+        <li><strong>Clínicas dentales:</strong> Clínicas con más de 3 dentistas pero sin mención de convenios de empresa en su web — hay capacidad sin explotar.</li>
+        <li><strong>Talleres:</strong> Negocio cerca de polígono industrial + mención de "servicio a domicilio" o "recogida" — ya piensan en comodidad para empresa.</li>
+        <li><strong>Academias:</strong> Oferta de cursos en horario de tarde/noche — diseñados para trabajadores, receptivos a empresa como canal.</li>
+        <li><strong>Cualquier sector:</strong> Negocios con reseñas entre 4.1 y 4.6 — lo suficientemente buenos para presentarte, con margen de mejora para motivar cambio.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- CAP 4 -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="chapter" id="cap4">
+      <div class="chapter-header">
+        <span class="chapter-num">Capítulo 04</span>
+        <h2>El primer contacto: estructura y psicología</h2>
+      </div>
+
+      <p>El primer contacto con un negocio local es diferente al enterprise en un aspecto fundamental: no hay gatekeepers formales, pero la guardia es igual de alta. El dueño de un restaurante recibe llamadas comerciales cada semana. Tienes unos 15 segundos para diferenciarte antes de que cuelgue.</p>
+
+      <h3>La estructura de los primeros 30 segundos</h3>
+
+      <ul class="steps">
+        <li class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">Identifícate sin disculparte</div>
+            <div class="step-desc">Di tu nombre y empresa con tono seguro. Evita "perdona que te moleste" o "solo te robo un momento" — comunican inseguridad y bajan el valor percibido antes de empezar.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">Ancla la llamada con su negocio específico</div>
+            <div class="step-desc">Menciona el nombre del negocio y algo concreto que hayas visto. "Vi que el [nombre] tiene buenas reseñas en Google" o "aparecéis en nuestra base de datos de negocios en [ciudad]". Demuestra que no es una llamada masiva.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">Entrega el beneficio en una frase</div>
+            <div class="step-desc">Una frase, no un párrafo. "Trabajamos con equipos comerciales que buscan [sector] en [ciudad] y vosotros no aparecéis donde ellos buscan." El beneficio tiene que ser concreto y relevante para ellos, no para ti.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">Pide permiso para seguir</div>
+            <div class="step-desc">"¿Tienes 2 minutos?" o "¿Es buen momento?" antes de continuar. Invierte el control: si dicen que sí, han dado permiso implícito para escuchar. Si dicen que no, pides un momento mejor — no has perdido el lead.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="highlight-box">
+        <div class="highlight-box-title">El error más común en el primer contacto</div>
+        <p>Hablar demasiado del producto. En la primera llamada, el objetivo no es vender — es conseguir 15 minutos de demo. Cuanto más explicas el producto en frío, más objeciones generas antes de haber creado ningún interés. Vende la reunión, no el software.</p>
+      </div>
+
+      <h3>Email vs llamada: cuándo usar cada canal</h3>
+
+      <p>Para negocios locales, el <strong>teléfono es el canal primario</strong> sin excepciones. Las razones son simples: la mayoría no tienen email corporativo activo, los que tienen no lo revisan regularmente, y el ratio de respuesta a cold email en este segmento es significativamente inferior al del mercado enterprise.</p>
+
+      <div class="metric-row">
+        <div class="metric-cell">
+          <div class="metric-label">Cold email solo</div>
+          <div class="metric-val">0.5–2% respuesta</div>
+          <div class="metric-note">Negocios locales, email genérico</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Llamada fría directa</div>
+          <div class="metric-val">8–15% conversación</div>
+          <div class="metric-note">Con cualificación previa LOCA</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Llamada + email seguimiento</div>
+          <div class="metric-val">18–28% tasa demo</div>
+          <div class="metric-note">Secuencia multicanal en 72h</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">WhatsApp Business</div>
+          <div class="metric-val">35–50% apertura</div>
+          <div class="metric-note">Solo si tienes número verificado del negocio</div>
+        </div>
+      </div>
+
+      <div class="cta-inline">
+        <div class="cta-inline-text">
+          <h4>Scripts listos para usar por sector</h4>
+          <p>Aperturas, objeciones y cierres para restaurantes, clínicas, talleres y más.</p>
+        </div>
+        <a href="/resources/scripts-cold-calling" class="cta-btn-sm">Ver scripts →</a>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- CAP 5 -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="chapter" id="cap5">
+      <div class="chapter-header">
+        <span class="chapter-num">Capítulo 05</span>
+        <h2>Las 6 objeciones más comunes y cómo responderlas</h2>
+      </div>
+
+      <p>Las objeciones en negocios locales son predecibles. Conocerlas de antemano transforma cada "no" en una bifurcación con respuesta preparada. Estas son las seis que encontrarás en el 90% de las llamadas:</p>
+
+      <div class="objection-list">
+
+        <div class="obj-card" id="obj1" onclick="toggleObj('obj1')">
+          <div class="obj-card-q">
+            <span class="obj-card-q-text">"No tenemos tiempo ahora mismo, estamos muy liados."</span>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-card-a">
+            <div class="obj-card-a-label">Cómo responder</div>
+            <p>Reencuadra la objeción: "Precisamente por eso te llamo. Los negocios que van bien nunca tienen tiempo para buscar más trabajo, solo para hacerlo. Lo que te propongo es 15 minutos — tú eliges cuándo — para que veas si esto puede sumar a lo que ya funciona."</p>
+            <p style="margin-top:.5rem">La clave: no discutas que están ocupados. Valida y redirige hacia la facilidad del siguiente paso (una demo breve, a su hora).</p>
+          </div>
+        </div>
+
+        <div class="obj-card" id="obj2" onclick="toggleObj('obj2')">
+          <div class="obj-card-q">
+            <span class="obj-card-q-text">"Ya tenemos suficientes clientes, no necesitamos más."</span>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-card-a">
+            <div class="obj-card-a-label">Cómo responder</div>
+            <p>Pregunta por la estacionalidad: "Me alegra escucharlo. ¿Hay algún momento del año — o del mes — en que flojea un poco? Porque lo que hacemos es justamente cubrir esos huecos con clientes empresa que son más predecibles."</p>
+            <p style="margin-top:.5rem">Casi ningún negocio local está al 100% de capacidad todo el año. La pregunta por la estacionalidad casi siempre abre una grieta.</p>
+          </div>
+        </div>
+
+        <div class="obj-card" id="obj3" onclick="toggleObj('obj3')">
+          <div class="obj-card-q">
+            <span class="obj-card-q-text">"Mándame información por email y ya te digo."</span>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-card-a">
+            <div class="obj-card-a-label">Cómo responder</div>
+            <p>Acepta sin resistencia y ancla un próximo paso: "Sin problema, te lo mando ahora. Oye, antes de colgar — ¿tienes 30 segundos para que te diga un número concreto de negocios como el tuyo que están buscando nuestros clientes en [ciudad] ahora mismo? Así el email tiene más contexto."</p>
+            <p style="margin-top:.5rem">El email solo raramente convierte. Úsalo como puente para dar un dato concreto antes de colgar y quedar para el seguimiento.</p>
+          </div>
+        </div>
+
+        <div class="obj-card" id="obj4" onclick="toggleObj('obj4')">
+          <div class="obj-card-q">
+            <span class="obj-card-q-text">"¿Cuánto cuesta?"</span>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-card-a">
+            <div class="obj-card-a-label">Cómo responder</div>
+            <p>Si la pregunta llega antes de la demo, es una señal de interés que no debes resolver con precio todavía: "El precio depende de cuántos leads necesitas y para qué zona. Por eso tiene sentido que primero te enseñe lo que hay disponible — así el precio tiene contexto. ¿Mañana o pasado te va mejor para 15 minutos?"</p>
+            <p style="margin-top:.5rem">Dar precio sin contexto de valor es el camino más rápido al "es caro". Gana la demo antes de hablar de números.</p>
+          </div>
+        </div>
+
+        <div class="obj-card" id="obj5" onclick="toggleObj('obj5')">
+          <div class="obj-card-q">
+            <span class="obj-card-q-text">"Ya usamos [herramienta]. No necesitamos otra."</span>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-card-a">
+            <div class="obj-card-a-label">Cómo responder</div>
+            <p>Califica qué herramienta es y ataca el punto ciego: "Entendido. ¿Y esa herramienta te da restaurantes, clínicas y talleres con teléfono verificado en [ciudad]? Porque la mayoría no los tienen — son negocios que no están en LinkedIn ni en Apollo."</p>
+            <p style="margin-top:.5rem">Si la herramienta que usan es Apollo, LinkedIn o similar, el argumento de negocios locales no indexados es directo y difícil de rebatir.</p>
+          </div>
+        </div>
+
+        <div class="obj-card" id="obj6" onclick="toggleObj('obj6')">
+          <div class="obj-card-q">
+            <span class="obj-card-q-text">"No es el momento, llámame en unos meses."</span>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-card-a">
+            <div class="obj-card-a-label">Cómo responder</div>
+            <p>Acepta y concreta: "Sin problema. ¿Te va bien que te llame en [mes concreto]? Te agendo en el calendario ahora mismo así no se pierde." El lead que dice "en unos meses" sin fecha concreta normalmente no existe. Con fecha, sí.</p>
+            <p style="margin-top:.5rem">Pide siempre un mes concreto, y confirma si puede ser la primera o segunda semana. Convierte un "quizás" en una cita real.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- CAP 6 -->
+    <!-- ══════════════════════════════════════════ -->
+    <section class="chapter" id="cap6">
+      <div class="chapter-header">
+        <span class="chapter-num">Capítulo 06</span>
+        <h2>Métricas, cadencia y qué medir en prospección local</h2>
+      </div>
+
+      <p>La prospección local tiene benchmarks distintos al B2B enterprise. Antes de evaluar si tu equipo rinde bien o mal, tienes que comparar con los números correctos.</p>
+
+      <h3>Benchmarks de referencia</h3>
+
+      <div class="metric-row">
+        <div class="metric-cell">
+          <div class="metric-label">Llamadas para conseguir 1 conversación</div>
+          <div class="metric-val">6–10 intentos</div>
+          <div class="metric-note">Con teléfono verificado y cualificación previa</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Conversaciones para conseguir 1 demo</div>
+          <div class="metric-val">4–7 conversaciones</div>
+          <div class="metric-note">Con script de apertura optimizado por sector</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Demos para cerrar 1 cliente</div>
+          <div class="metric-val">3–5 demos</div>
+          <div class="metric-note">Depende de ticket y ciclo de decisión</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-label">Tiempo de ciclo de venta</div>
+          <div class="metric-val">3–10 días</div>
+          <div class="metric-note">Mucho más corto que enterprise (semanas/meses)</div>
+        </div>
+      </div>
+
+      <h3>La cadencia recomendada para prospección local</h3>
+
+      <p>A diferencia del enterprise, donde una cadencia de 14 pasos en 4 semanas es habitual, los negocios locales responden mejor a secuencias más cortas e intensas. El dueño del negocio no va a acordarse de ti si contactas una vez y desapareces dos semanas.</p>
+
+      <ul class="steps">
+        <li class="step">
+          <div class="step-num">D0</div>
+          <div class="step-body">
+            <div class="step-title">Llamada de apertura</div>
+            <div class="step-desc">Primera toma de contacto. Si no contesta, deja un voicemail breve (máx. 20 seg) con el beneficio principal y tu nombre.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">D1</div>
+          <div class="step-body">
+            <div class="step-title">Email o WhatsApp de seguimiento</div>
+            <div class="step-desc">Referencia el voicemail o la llamada. Incluye un dato concreto de tu base de datos relevante para su sector/ciudad. CTA: link a Calendly para demo.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">D3</div>
+          <div class="step-body">
+            <div class="step-title">Segunda llamada</div>
+            <div class="step-desc">Menciona que enviaste información. Si no ha visto el email, resumen verbal en 30 segundos. Si sigue sin interés, pregunta por el mejor momento para el seguimiento.</div>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num">D7</div>
+          <div class="step-body">
+            <div class="step-title">Toque final</div>
+            <div class="step-desc">Última llamada con framing de "cierre de ciclo": "Te llamo por última vez antes de dejar de contactar. Si no es el momento, sin problema — pero quería asegurarme de que tenías la información." Este tono honesto tiene alta tasa de respuesta.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-label">Regla de oro</div>
+        <p>Si en 4 intentos en 7 días no has conseguido ninguna respuesta, el lead no es para ahora. Márcalo para recontactar en 60 días y mueve al siguiente. La prospección local funciona por volumen cualificado, no por perseverancia ilimitada en un solo lead.</p>
+      </div>
+
+      <h3>El KPI que más importa: reuniones por semana</h3>
+
+      <p>En prospección local, la métrica que mejor predice el éxito comercial no es el número de llamadas ni de emails enviados. Es el número de demos cerradas por semana. Todo lo demás — tasa de contacto, tasa de apertura — son métricas de diagnóstico para optimizar ese número final.</p>
+
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-card-num">3–5</div>
+          <div class="stat-card-label">Demos/semana para un SDR a tiempo parcial en prospección local</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">8–12</div>
+          <div class="stat-card-label">Demos/semana con base de datos optimizada y secuencia multicanal</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">+15</div>
+          <div class="stat-card-label">Demos/semana posibles con herramienta de prospección local dedicada</div>
+        </div>
+      </div>
+
+      <!-- FINAL CTA -->
+      <div class="cta-footer">
+        <h3>Ahora tienes el marco.<br>Falta la base de datos.</h3>
+        <p>Accede a miles de negocios locales en España con teléfono verificado, contexto IA y señales de compra por lead.</p>
+        <a href="https://app.nextleadin.com/register" class="cta-btn-lg">
+          Probar NextLeadIn 7 días gratis →
+        </a>
+      </div>
+
+    </section>
+
+  </article>
+</div>
+
+<script>
+  // ── PROGRESS BAR ──
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+  // ── TOC ACTIVE ──
+  const sections = document.querySelectorAll('.chapter');
+  const tocLinks = document.querySelectorAll('.toc-item a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-item a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ── OBJECTION TOGGLE ──
+  function toggleObj(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

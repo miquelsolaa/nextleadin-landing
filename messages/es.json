@@ -27,10 +27,15 @@
       "breadcrumbBlog": "Blog"
     },
     "contact": {
-      "title": "Habla con nuestro equipo",
-      "subtitle": "Leads de negocios locales: restaurantes, talleres, comercios. Datos enriquecidos y análisis de reseñas con IA.",
-      "submit": "Enviar solicitud",
+      "eyebrow": "Hablemos",
+      "title": "Tu mercado es más grande de lo que cualquier tool te muestra.",
+      "titleHighlight": "cualquier tool",
+      "subtitle": "Negocios locales que no están en LinkedIn, Apollo ni ZoomInfo. Contacta con nuestro equipo y te mostramos cuántos hay en tu zona.",
+      "submit": "Enviar mensaje",
+      "submitNote": "Respondemos en menos de 24h hábiles.",
       "seePricing": "Ver precios",
+      "tabForm": "Enviar mensaje",
+      "tabDemo": "Pedir demo en vivo",
       "labels": {
         "name": "Nombre completo",
         "email": "Correo electrónico",
@@ -40,17 +45,17 @@
         "region": "Zona de interés",
         "sector": "Sector / nicho",
         "message": "¿Cómo podemos ayudarte?",
-        "consent": "Acepto la"
+        "consent": "Acepto la",
+        "consentSuffix": " y que NextLeadIn me contacte para gestionar mi solicitud."
       },
       "placeholders": {
-        "name": "Nombre y apellidos",
-        "email": "tu@correo.com",
-        "company": "Nombre de la empresa",
+        "name": "Marc García",
+        "email": "marc@empresa.com",
+        "company": "Empresa S.L.",
         "phone": "+34 600 000 000",
-        "role": "Ej. Head of Sales",
-        "region": "Ej. Barcelona, Girona...",
-        "sector": "Ej. restaurantes vegetarianos, fabricantes de pressfittings, doctores...",
-        "message": "Cuéntanos objetivos, volumen de leads esperado y plazos."
+        "role": "Selecciona cargo…",
+        "sector": "¿A quién prospectas?",
+        "message": "Cuéntanos brevemente qué tipo de negocios buscas y en qué zona. Así la demo será más útil para ti."
       },
       "errors": {
         "name": "El nombre es obligatorio",
@@ -60,13 +65,66 @@
         "consent": "Debes aceptar la política de privacidad"
       },
       "success": {
-        "title": "Gracias por tu interés",
-        "description": "Hemos recibido tu solicitud. Un especialista te contactará pronto para entender tu caso y proponer los siguientes pasos.",
+        "title": "Mensaje recibido",
+        "description": "Te escribimos en menos de 24 horas. Si prefieres hablar antes, llámanos.",
         "seePlans": "Ver planes y funcionalidades",
         "goToFaq": "Preguntas frecuentes"
       },
       "submitError": "No hemos podido enviar el formulario. Inténtalo de nuevo.",
       "honeypot": "No rellenar si eres humano",
+      "proof": {
+        "db": "Base de datos exclusiva de negocios locales españoles — restaurantes, talleres, clínicas, academias.",
+        "dbStrong": "Base de datos exclusiva",
+        "phone": "Teléfono verificado en cada lead. Sin pagar por contactos que no sirven.",
+        "phoneStrong": "Teléfono verificado",
+        "ai": "Contexto IA por lead: reseñas, valoración, horarios y señales de compra antes de llamar.",
+        "aiStrong": "Contexto IA por lead",
+        "integration": "Integración directa con HubSpot, Pipedrive, Salesforce y n8n.",
+        "integrationStrong": "Integración directa"
+      },
+      "stats": {
+        "businesses": "Negocios locales",
+        "meetings": "Reuniones/mes media",
+        "demo": "Demo en vivo"
+      },
+      "demo": {
+        "headline": "Demo en vivo · 15 minutos",
+        "sub": "Te mostramos en tiempo real cuántos negocios locales hay en tu zona y que no aparecen en Apollo, ZoomInfo ni LinkedIn — con teléfono y contexto IA incluido.",
+        "item1": "Búsqueda en vivo de negocios en tu sector y ciudad.",
+        "item1Strong": "Búsqueda en vivo",
+        "item2": "Informe IA por lead — reseñas, valoración y señales de compra.",
+        "item2Strong": "Informe IA por lead",
+        "item3": "Comparativa directa con los datos que tienes hoy en tu CRM.",
+        "item4": "Integración con tu stack actual (HubSpot, Pipedrive, n8n…).",
+        "duration": "Duración",
+        "durationVal": "15 minutos",
+        "format": "Formato",
+        "formatVal": "Videollamada",
+        "cost": "Coste",
+        "costVal": "Gratis",
+        "commitment": "Compromiso",
+        "commitmentVal": "Ninguno",
+        "cta": "Reservar demo ahora",
+        "note": "Elige tú la hora. Disponible Lu–Vi 9:00–18:00."
+      },
+      "roles": {
+        "director": "Director Comercial",
+        "salesManager": "Sales Manager",
+        "ceo": "CEO / Fundador",
+        "sdr": "SDR / BDR",
+        "marketing": "Responsable de Marketing",
+        "other": "Otro"
+      },
+      "sectors": {
+        "restaurants": "Restaurantes & Hostelería",
+        "dentists": "Clínicas Dentales",
+        "workshops": "Talleres & Automoción",
+        "realEstate": "Inmobiliarias",
+        "academies": "Academias & Formación",
+        "beauty": "Estética & Spa",
+        "various": "Varios sectores",
+        "other": "Otro"
+      },
       "aside": {
         "directTitle": "Contacto directo",
         "emailLabel": "Email",
@@ -170,6 +228,10 @@
         "clManager": {
           "name": "CLManager",
           "description": "SaaS para gestión de ópticas"
+        },
+        "codixperts": {
+          "name": "Codixperts",
+          "description": "Agencia de desarrollo web y software"
         }
       },
       "metrics": {
