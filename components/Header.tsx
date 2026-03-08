@@ -4,9 +4,17 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { useLocale, useTranslations } from 'next-intl'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X, Users, Phone, Mail, BarChart3, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu'
 
 type FeatureLink = {
   title: string
@@ -20,20 +28,11 @@ const Header = () => {
   const tHeader = useTranslations('header')
   const [mobileOpen, setMobileOpen] = useState(false)
   const [featuresOpen, setFeaturesOpen] = useState(false)
-  const [featuresDropdownOpen, setFeaturesDropdownOpen] = useState(false)
-  const featuresDropdownRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (featuresDropdownRef.current && !featuresDropdownRef.current.contains(event.target as Node)) {
-        setFeaturesDropdownOpen(false)
-      }
-    }
-    if (featuresDropdownOpen) {
-      document.addEventListener('click', handleClickOutside)
-      return () => document.removeEventListener('click', handleClickOutside)
-    }
-  }, [featuresDropdownOpen])
+    setMounted(true)
+  }, [])
 
   const translations = (() => {
     if (locale === 'es') {
@@ -168,61 +167,51 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            <div ref={featuresDropdownRef} className="relative">
-              <button
-                type="button"
-                onClick={() => setFeaturesDropdownOpen((v) => !v)}
-                aria-expanded={featuresDropdownOpen}
-                aria-haspopup="true"
-                className={cn(
-                  "inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-primary-500 focus:bg-gray-100 focus:text-primary-500 focus:outline-none",
-                  "text-gray-700",
-                  featuresDropdownOpen && "bg-gray-100/50 text-primary-500"
-                )}
+            {mounted ? (
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-gray-700 hover:text-primary-500 text-sm font-medium">
+                      {translations.nav.features}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                        {featureLinks.map((feature) => (
+                          <li key={feature.href}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={feature.href}
+                                className={cn(
+                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
+                                )}
+                              >
+                                <div className="flex items-center gap-2">
+                                  <span className="text-primary-500">{feature.icon}</span>
+                                  <span className="text-sm font-medium leading-none text-gray-900">
+                                    {feature.title}
+                                  </span>
+                                </div>
+                                <p className="line-clamp-2 text-sm leading-snug text-gray-500 mt-1">
+                                  {feature.description}
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            ) : (
+              <Link
+                href="/features/lead-management"
+                className="text-gray-700 hover:text-primary-500 px-4 py-2 text-sm font-medium transition-colors duration-300 relative group"
               >
                 {translations.nav.features}
-                <ChevronDown
-                  className={cn(
-                    "relative top-[1px] ml-1 h-3 w-3 transition duration-300",
-                    featuresDropdownOpen && "rotate-180"
-                  )}
-                  aria-hidden
-                />
-              </button>
-              <div
-                className={cn(
-                  "absolute left-0 top-full z-50 mt-1.5 w-[500px] origin-top-center overflow-hidden rounded-md border border-gray-200 bg-white py-4 shadow-lg transition-all",
-                  featuresDropdownOpen
-                    ? "scale-100 opacity-100"
-                    : "pointer-events-none scale-95 opacity-0"
-                )}
-                role="menu"
-                aria-hidden={!featuresDropdownOpen}
-              >
-                <ul className="grid grid-cols-2 gap-3 px-4">
-                  {featureLinks.map((feature) => (
-                    <li key={feature.href} role="none">
-                      <Link
-                        href={feature.href}
-                        role="menuitem"
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
-                        onClick={() => setFeaturesDropdownOpen(false)}
-                      >
-                        <div className="flex items-center gap-2">
-                          <span className="text-primary-500">{feature.icon}</span>
-                          <span className="text-sm font-medium leading-none text-gray-900">
-                            {feature.title}
-                          </span>
-                        </div>
-                        <p className="line-clamp-2 text-sm leading-snug text-gray-500 mt-1">
-                          {feature.description}
-                        </p>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-[width] duration-300 group-hover:w-full" />
+              </Link>
+            )}
 
             {navigation.map((item) => (
               <Link

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const withNextIntl = require('next-intl/plugin')('./i18n/request.ts')
-const withPWA = require('next-pwa')({
+const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
   register: true,
   skipWaiting: true,

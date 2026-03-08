@@ -1,6 +1,6 @@
 'use client'
 
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { Search } from 'lucide-react'
 import { useLocale } from 'next-intl'
 
 const BlogSearch = () => {
@@ -35,7 +35,7 @@ const BlogSearch = () => {
           type="submit"
           className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-500 hover:text-green-500 transition-colors"
         >
-          <MagnifyingGlassIcon className="h-5 w-5" />
+          <Search className="h-5 w-5" />
         </button>
       </form>
     </div>

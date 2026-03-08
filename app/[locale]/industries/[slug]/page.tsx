@@ -52,15 +52,27 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
     }
   }
 
-  const canonical = validLocale === 'ca'
-    ? `https://nextleadin.com/industries/${industry.slug}`
-    : `https://nextleadin.com/${validLocale}/industries/${industry.slug}`
+  const baseUrl = 'https://nextleadin.com'
+  const localePath = validLocale === 'ca' ? '/ca' : validLocale === 'en' ? '/en' : ''
+  const pathSegment = `industries/${industry.slug}`
+  const canonical = localePath
+    ? `${baseUrl}${localePath}/${pathSegment}`
+    : `${baseUrl}/${pathSegment}`
 
   return generateAIOptimizedMetadata('industries', validLocale, {
     title: industry.title,
     description: industry.description,
     keywords: industry.keywords,
-    canonical
+    canonical,
+    ogImage: industry.image || undefined,
+    alternates: {
+      languages: {
+        'x-default': `${baseUrl}/${pathSegment}`,
+        'es-ES': `${baseUrl}/${pathSegment}`,
+        'ca-ES': `${baseUrl}/ca/${pathSegment}`,
+        'en-US': `${baseUrl}/en/${pathSegment}`
+      }
+    }
   })
 }
 
@@ -351,8 +363,11 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
         {/* Stats Section */}
         {industry.stats && industry.stats.length > 0 && (
-          <section className="py-16 bg-white">
+          <section className="py-16 bg-white" aria-labelledby="stats-heading">
             <div className="container mx-auto px-4">
+              <h2 id="stats-heading" className="text-2xl font-bold text-center text-gray-900 mb-8">
+                {t.statsTitle}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 {industry.stats.map((stat, index) => (
                   <div key={index} className="text-center">
@@ -369,9 +384,9 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
         {/* Pain Points Section */}
         {industry.painPoints && industry.painPoints.length > 0 && (
-          <section className="py-20 bg-gray-50">
+          <section className="py-20 bg-gray-50" aria-labelledby="pain-points-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+              <h2 id="pain-points-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                 {t.painPointsTitle}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -393,9 +408,9 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
         {/* Solutions Section */}
         {industry.solutions && industry.solutions.length > 0 && (
-          <section className="py-20 bg-white">
+          <section className="py-20 bg-white" aria-labelledby="solutions-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+              <h2 id="solutions-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                 {t.solutionsTitle}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -427,9 +442,9 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
         {/* FAQ Section */}
         {industry.faq && industry.faq.length > 0 && (
-          <section className="py-20 bg-gray-50">
+          <section className="py-20 bg-gray-50" aria-labelledby="faq-heading">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+              <h2 id="faq-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
                 {t.faqTitle}
               </h2>
               <div className="max-w-3xl mx-auto space-y-4">
