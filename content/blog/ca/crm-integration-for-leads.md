@@ -68,7 +68,7 @@ Per assegurar una integració exitosa, estableix regles clares de govern de dade
 
 La convergència de la generació de leads amb IA i una robusta `integració de CRM` està remodelant el panorama de les vendes B2B. En eliminar tasques manuals, millorar la qualitat de les dades i automatitzar fluxos de treball crítics, plataformes com NextLeadIn permeten als equips de vendes ser més productius, precisos i rendibles. Per als equips de vendes B2B, representants comercials i empreses SaaS que busquen escalar les seves estratègies outbound, invertir en una integració de CRM sense fissures no és només una actualització – és una necessitat competitiva. Aprofita NextLeadIn per convertir el teu CRM en un motor de vendes dinàmic impulsat per IA.
 
-> **🚀 Vols fer créixer el teu equip comercial?**
+> ** Vols fer créixer el teu equip comercial?**
 >
 > Descobreix com NextLeadIn pot ajudar-te a trobar leads B2B d'alta qualitat amb prospecció impulsada per IA. Comença amb 100 leads gratis avui.
 >

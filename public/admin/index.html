@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NextLeadIn CMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
@@ -23,7 +24,21 @@
         var CMS = window.CMS;
         if (!CMS) return;
 
-        CMS.registerPreviewStyle("/admin/preview.css");
+        var base = (window.location.origin || "") + "/admin";
+        var fontsUrl = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Syne:wght@400;500;600;700&display=swap";
+
+        /* Fonts: URL directe (segons docs decapcms.org/docs/customization) */
+        CMS.registerPreviewStyle(fontsUrl);
+
+        /* CSS: raw per fiabilitat (evita problemes de path/iframe) - decapcms.org/docs/customization */
+        fetch(base + "/preview.css")
+          .then(function (r) { return r.text(); })
+          .then(function (css) {
+            CMS.registerPreviewStyle(css, { raw: true });
+          })
+          .catch(function () {
+            CMS.registerPreviewStyle(base + "/preview.css");
+          });
 
         var BlogPostPreview = CMS.createClass({
           render: function () {
@@ -103,9 +118,24 @@
                 ? CMS.h(
                     "div",
                     { className: "cta-block" },
-                    CMS.h("h3", {}, "Preparat per trobar més clients potencials?"),
-                    CMS.h("p", {}, "Descobreix com NextLeadIn pot ajudar-te a trobar negocis locals i tancar més vendes."),
-                    CMS.h("a", { href: "#", style: { color: "white", background: "white", color: "#059669", padding: "0.5rem 1rem", borderRadius: "0.5rem", textDecoration: "none", display: "inline-block", marginTop: "0.5rem" } }, "Provar 7 dies gratis")
+                    CMS.h(
+                      "div",
+                      { className: "cta-inner" },
+                      CMS.h(
+                        "div",
+                        { className: "cta-kicker" },
+                        CMS.h("div", { className: "cta-kicker-icon" }, ""),
+                        CMS.h("span", {}, "Comença a generar leads avui")
+                      ),
+                      CMS.h("h3", {}, "Preparat per trobar més clients potencials?"),
+                      CMS.h("p", { className: "cta-desc" }, "Descobreix com NextLeadIn pot ajudar-te a trobar negocis locals, analitzar ressenyes amb IA i tancar més vendes."),
+                      CMS.h(
+                        "div",
+                        { className: "cta-buttons" },
+                        CMS.h("a", { href: "#", className: "cta-btn-primary" }, "Provar 7 dies gratis"),
+                        CMS.h("a", { href: "#", className: "cta-btn-secondary" }, "Veure plans i preus")
+                      )
+                    )
                   )
                 : null,
               tagArr.length > 0

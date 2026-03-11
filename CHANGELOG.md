@@ -4,7 +4,7 @@ Tots els canvis notables d'aquest projecte es documentaran en aquest fitxer.
 
 ## [2025-01] - Actualització Next.js 16 i Millores SEO/AEO
 
-### 🚀 Actualització de Dependències
+###  Actualització de Dependències
 
 #### Principals
 - **Next.js**: `15.2.4` → `16.1.0` ✅

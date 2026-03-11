@@ -68,7 +68,7 @@ To ensure a successful integration, establish clear data governance rules.
 
 The convergence of AI lead generation and robust CRM integration is reshaping the landscape of B2B sales. By eliminating manual tasks, enhancing data quality, and automating critical workflows, platforms like NextLeadIn empower sales teams to be more productive, precise, and profitable. For B2B sales teams, commercial reps, and SaaS companies aiming to scale their outbound strategies, investing in seamless `CRM integration` is not just an upgrade – it's a competitive necessity. Leverage NextLeadIn to turn your CRM into a dynamic, AI-powered sales engine.
 
-> **🚀 Ready to scale your outbound?**
+> ** Ready to scale your outbound?**
 >
 > Discover how NextLeadIn can help you find high-quality B2B leads with AI-powered prospecting. Start with 100 free leads today.
 >

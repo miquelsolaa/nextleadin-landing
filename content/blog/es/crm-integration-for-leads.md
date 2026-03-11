@@ -68,7 +68,7 @@ Para asegurar una integración exitosa, establece reglas claras de gobierno de d
 
 La convergencia de la generación de leads con IA y una integración de CRM sólida está redefiniendo el panorama de las ventas B2B. Al eliminar tareas manuales, mejorar la calidad de los datos y automatizar flujos de trabajo críticos, plataformas como NextLeadIn empoderan a los equipos de ventas para ser más productivos, precisos y rentables. Para los equipos de ventas B2B, representantes comerciales y empresas SaaS que buscan escalar sus estrategias outbound, invertir en una integración de CRM sin interrupciones no es solo una actualización, es una necesidad competitiva. Aprovecha NextLeadIn para convertir tu CRM en un motor de ventas dinámico impulsado por IA.
 
-> **🚀 ¿Quieres mejorar tu prospección?**
+> ** ¿Quieres mejorar tu prospección?**
 >
 > Descubre cómo NextLeadIn puede ayudarte a encontrar leads B2B de alta calidad con prospección impulsada por IA. Empieza con 100 leads gratis hoy.
 >
