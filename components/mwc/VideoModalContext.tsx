@@ -1,9 +1,10 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { createContext, useCallback, useContext, useState, useEffect, useRef } from 'react'
 import { useLocale } from 'next-intl'
-import { XIcon } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+
+const VideoModalContent = dynamic(() => import('./VideoModalContent'), { ssr: false })
 
 const DEMO_VIDEO_URL = 'https://youtu.be/s3XfQRaZPyc'
 
@@ -199,53 +200,16 @@ export function VideoModalProvider({ children }: { children: React.ReactNode }) 
       }}
     >
       {children}
-      <AnimatePresence>
-        {modalOpen && embedUrl && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md"
-            onClick={handleClose}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="video-modal-title"
-          >
-            <motion.div
-              ref={modalRef}
-              initial={selectedAnimation.initial}
-              animate={selectedAnimation.animate}
-              exit={selectedAnimation.exit}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="relative w-full max-w-4xl aspect-video mx-4 md:mx-0"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                ref={closeButtonRef}
-                type="button"
-                onClick={handleClose}
-                className="absolute -top-16 right-0 text-white bg-neutral-900/50 ring-1 ring-white/20 backdrop-blur-md rounded-full p-2 hover:bg-neutral-800/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                aria-label={closeText}
-              >
-                <XIcon className="size-5" aria-hidden />
-              </button>
-              <div className="size-full border-2 border-white rounded-2xl overflow-hidden isolate relative">
-                <iframe
-                  src={embedUrl}
-                  title={t}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full rounded-2xl"
-                />
-              </div>
-              <span id="video-modal-title" className="sr-only">
-                {t}
-              </span>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <VideoModalContent
+        open={modalOpen}
+        embedUrl={embedUrl ?? ''}
+        title={t}
+        closeLabel={closeText}
+        animationVariants={selectedAnimation}
+        onClose={handleClose}
+        modalRef={modalRef}
+        closeButtonRef={closeButtonRef}
+      />
     </VideoModalContext.Provider>
   )
 }

@@ -174,7 +174,30 @@ AhrefsBot, SemrushBot, MJ12bot, DotBot, MajesticSEO estan a `disallow: '/'`.
 
 ---
 
-## 6. COMANDES ÚTILS
+## 6. OPTIMITZACIONS IMPLEMENTADES (11 març 2025)
+
+Segons pla Performance SEO Optimization:
+
+| Acció | Fitxers | Impacte esperat |
+|-------|---------|-----------------|
+| SSG home + cache Netlify | `(home)/page.tsx`, `netlify.toml` | TTFB -3–4s |
+| GA4 només post-consent | `layout.tsx`, `lib/analytics.ts`, `CookieConsent.tsx` | TBT -50–100ms, JS -148KB inicial |
+| Dynamic import BlogSection, IntegrationsSection, ServicesSection | `(home)/page.tsx` | TBT -50ms, FCP millorat |
+| Preconnect googletagmanager, fonts | `layout.tsx` | LCP -100–200ms |
+| Framer Motion defer (VideoModalContent) | `VideoModalContext.tsx`, `VideoModalContent.tsx` (nou) | TBT -50ms, JS deferit fins interacció |
+
+### Mètriques abans (Lighthouse preview deploy)
+- TTFB: 5.53s | TTI: 4.7s | Speed Index: 9.4s | FCP: 1.1s | LCP: 2.2s | TBT: 250ms | CLS: 0
+
+### Validació post-deploy
+Després de fer deploy a Netlify, executar Lighthouse i comparar:
+```powershell
+npx lighthouse https://nextleadin.com --only-categories=performance,seo --output=html --output-path=./lighthouse-report-optimized.html
+```
+
+---
+
+## 7. COMANDES ÚTILS
 
 ```powershell
 # Lighthouse contra producció

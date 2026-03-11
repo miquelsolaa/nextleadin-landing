@@ -18,7 +18,7 @@ export default function HeroImageBlock() {
         >
           <div className="w-full transition-transform duration-300 group-hover:scale-[1.02] [transform-style:preserve-3d] [transform:perspective(1200px)_rotateY(-6deg)_rotateX(2deg)] group-hover:[transform:perspective(1200px)_rotateY(-4deg)_rotateX(1deg)_scale(1.02)] shadow-[0_25px_50px_-12px_rgba(0,64,80,0.2),0_0_0_1px_rgba(0,64,80,0.05)] rounded-xl overflow-hidden ring-[12px] ring-black">
             <Image
-              src="/images/hero/hero-new.png"
+              src="/images/hero/hero-new.webp"
               alt="Panell de control NextLeadIn - Visualització de la plataforma de generació de leads amb IA, segmentació geogràfica i informes intel·ligents. Clica per veure la demo."
               width={1292}
               height={1012}

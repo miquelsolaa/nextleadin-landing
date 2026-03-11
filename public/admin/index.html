@@ -28,18 +28,9 @@
         var base = (window.location.origin || "") + "/admin";
         var fontsUrl = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Syne:wght@400;500;600;700&display=swap";
 
-        /* Fonts: URL directe (segons docs decapcms.org/docs/customization) */
+        /* Fonts i CSS: registrar abans del template per evitar FOUC al preview */
         CMS.registerPreviewStyle(fontsUrl);
-
-        /* CSS: raw per fiabilitat (evita problemes de path/iframe) - decapcms.org/docs/customization */
-        fetch(base + "/preview.css")
-          .then(function (r) { return r.text(); })
-          .then(function (css) {
-            CMS.registerPreviewStyle(css, { raw: true });
-          })
-          .catch(function () {
-            CMS.registerPreviewStyle(base + "/preview.css");
-          });
+        CMS.registerPreviewStyle(base + "/preview.css");
 
         var BlogPostPreview = CMS.createClass({
           render: function () {

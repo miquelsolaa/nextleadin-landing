@@ -32,6 +32,27 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Cache headers per pàgines pre-renderitzades (home i locales)
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/ca"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/es"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/en"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400"
+
 # Security headers globals
 [[headers]]
   for = "/*"

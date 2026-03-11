@@ -1,20 +1,35 @@
+import dynamicImport from 'next/dynamic'
 import HeroSection from '@/components/HeroSection'
-import BlogSection from '@/components/BlogSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import StickyNavigation from '@/components/StickyNavigation'
 import TrustedBySection from '@/components/TrustedBySection'
 import FeaturesSection from '@/components/FeaturesSection'
-import IntegrationsSection from '@/components/IntegrationsSection'
-import ServicesSection from '@/components/ServicesSection'
+import { integrations } from '@/lib/integrations-data'
+
+const BlogSection = dynamicImport(() => import('@/components/BlogSection'), {
+  loading: () => <section className="min-h-[280px] animate-pulse bg-gray-50 rounded-xl" aria-hidden="true" />,
+  ssr: true,
+})
+
+const IntegrationsSection = dynamicImport(() => import('@/components/IntegrationsSection'), {
+  loading: () => <section className="min-h-[200px] animate-pulse bg-gray-50 rounded-xl" aria-hidden="true" />,
+  ssr: true,
+})
+
+const ServicesSection = dynamicImport(() => import('@/components/ServicesSection'), {
+  loading: () => <section className="min-h-[200px] animate-pulse bg-gray-50 rounded-xl" aria-hidden="true" />,
+  ssr: true,
+})
+
 import { getAllPosts } from '@/lib/blog'
 import CTASection from '@/components/CTASection'
-import { getTranslations } from 'next-intl/server'
-import { integrations } from '@/lib/integrations-data'
+
+export const dynamic = 'force-static'
+export const revalidate = 3600
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
-  const t = await getTranslations({ locale: validLocale, namespace: 'home.testimonials' })
 
   // Carregar últims posts del blog
   const allPosts = getAllPosts(validLocale as 'ca' | 'es' | 'en')

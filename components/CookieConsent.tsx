@@ -4,6 +4,7 @@ import { useEffect, useMemo } from 'react'
 import { useLocale } from 'next-intl'
 import { useTranslations } from 'next-intl'
 import type { AppLocale } from '@/i18n/routing'
+import { loadGAScript } from '@/lib/analytics'
 import './cookieconsent-custom.css'
 
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
@@ -68,21 +69,12 @@ export default function CookieConsent() {
       try {
         const CookieConsentLib = await import('vanilla-cookieconsent')
         
-        const updateGtagConsent = (granted: boolean) => {
-          const w = window as Window & { gtag?: (...args: unknown[]) => void }
-          if (!w.gtag) {
-            if (process.env.NODE_ENV === 'development') console.warn('gtag not found')
-            return
-          }
-
-          w.gtag('consent', 'update', {
-            analytics_storage: granted ? 'granted' : 'denied',
-          })
-          if (process.env.NODE_ENV === 'development') {
-            console.log('GA4 consent updated:', granted ? 'granted' : 'denied')
-          }
-
+        const updateGtagConsent = async (granted: boolean) => {
           if (granted) {
+            await loadGAScript()
+            const w = window as Window & { gtag?: (...args: unknown[]) => void }
+            if (!w.gtag) return
+            w.gtag('consent', 'update', { analytics_storage: 'granted' })
             const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Y07BPPDXKF'
             w.gtag('event', 'page_view', {
               page_title: document.title,
@@ -90,9 +82,9 @@ export default function CookieConsent() {
               page_path: window.location.pathname,
               send_to: GA_ID,
             })
-            if (process.env.NODE_ENV === 'development') {
-              console.log('GA4 page_view sent after consent granted')
-            }
+          } else {
+            const w = window as Window & { gtag?: (...args: unknown[]) => void }
+            if (w.gtag) w.gtag('consent', 'update', { analytics_storage: 'denied' })
           }
         }
 
@@ -166,6 +158,10 @@ export default function CookieConsent() {
         }
 
         CookieConsentLib.run(config)
+        // Usuari que ja havia acceptat analytics (returning visitor)
+        if (CookieConsentLib.acceptedCategory('analytics')) {
+          updateGtagConsent(true)
+        }
         if (process.env.NODE_ENV === 'development') {
           console.log('CookieConsent initialized successfully')
         }
