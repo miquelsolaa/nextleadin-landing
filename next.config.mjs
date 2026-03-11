@@ -1,6 +1,7 @@
-/** @type {import('next').NextConfig} */
-const withNextIntl = require('next-intl/plugin')('./i18n/request.ts')
-const withSerwistInit = require('@serwist/next').default
+import createNextIntlPlugin from 'next-intl/plugin'
+import withSerwistInit from '@serwist/next'
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 const withSerwist = withSerwistInit({
   swSrc: 'app/sw.ts',
@@ -8,6 +9,7 @@ const withSerwist = withSerwistInit({
   disable: process.env.NODE_ENV === 'development',
 })
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   productionBrowserSourceMaps: false,
   typescript: {
@@ -17,9 +19,9 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
+      use: ['@svgr/webpack'],
+    })
+    return config
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -77,4 +79,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withSerwist(withNextIntl(nextConfig))
+export default withSerwist(withNextIntl(nextConfig))
