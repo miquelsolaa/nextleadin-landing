@@ -1,0 +1,206 @@
+/* Estils per a la preview del blog a Decap CMS - alineats amb BlogPostContent.module.css */
+
+.blog-preview {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #374151;
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blog-preview h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 1.5rem;
+  line-height: 1.2;
+}
+
+.blog-preview .meta {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.blog-preview .featured-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.blog-preview .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.blog-preview .tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #ecfdf5;
+  color: #059669;
+  border-radius: 0.25rem;
+}
+
+.blog-preview .category-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Prose content - Markdown renderitzat */
+.blog-preview .prose {
+  overflow-wrap: break-word;
+}
+
+.blog-preview .prose p {
+  margin: 0 0 1rem;
+  color: #374151;
+}
+
+.blog-preview .prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 2rem 0 1rem;
+}
+
+.blog-preview .prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.blog-preview .prose ul, .blog-preview .prose ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-preview .prose li {
+  margin: 0.5rem 0;
+}
+
+.blog-preview .prose a {
+  color: #059669;
+  text-decoration: underline;
+}
+
+.blog-preview .prose blockquote {
+  border-left: 4px solid #10b981;
+  background: #f0fdf4;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: #374151;
+}
+
+/* Blockquotes CTA (strong al principi) - gradient verd */
+.blog-preview .prose blockquote:has(strong:first-child) {
+  border-left: 0;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #d1fae5 100%);
+  font-style: normal;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.blog-preview .prose blockquote:has(strong:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #16a34a 0%, #059669 100%);
+  border-radius: 4px 0 0 4px;
+}
+
+.blog-preview .prose blockquote:has(strong:first-child) strong {
+  color: #166534;
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.blog-preview .prose blockquote:has(strong:first-child) a {
+  display: inline-flex;
+  background: #059669;
+  color: white !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none !important;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+/* Taules */
+.blog-preview .prose table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #d1d5db;
+  margin: 1.5rem 0;
+}
+
+.blog-preview .prose th, .blog-preview .prose td {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.blog-preview .prose th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #111827;
+}
+
+.blog-preview .prose tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* Codi */
+.blog-preview .prose code {
+  background: #ecfdf5;
+  color: #047857;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.blog-preview .prose pre {
+  background: #111827;
+  color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* CTA block simulació */
+.blog-preview .cta-block {
+  background: #059669;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  color: white;
+}
+
+.blog-preview .cta-block h3 {
+  color: white !important;
+  margin-top: 0 !important;
+}
+
+.blog-preview .cta-block p {
+  color: rgba(255,255,255,0.9) !important;
+}

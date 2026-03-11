@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const withNextIntl = require('next-intl/plugin')('./i18n/request.ts')
-const withPWA = require('@ducanh2912/next-pwa').default({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
+const withSerwistInit = require('@serwist/next').default
+
+const withSerwist = withSerwistInit({
+  swSrc: 'app/sw.ts',
+  swDest: 'public/sw.js',
   disable: process.env.NODE_ENV === 'development',
 })
 
@@ -76,4 +77,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPWA(withNextIntl(nextConfig))
+module.exports = withSerwist(withNextIntl(nextConfig))

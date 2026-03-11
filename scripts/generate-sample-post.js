@@ -1,12 +1,12 @@
 const fs = require('fs')
 const path = require('path')
 
-const samplePost = `---
+const samplePostCa = `---
 title: "Com Generar Més Leads amb Intel·ligència Artificial"
 description: "Descobreix com la IA pot transformar la teva estratègia de generació de leads i augmentar les conversions de manera significativa."
 date: 2024-09-10T14:00:00.000Z
 author: "NextLeadIn Team"
-featuredImage: "/images/blog/ia-leads.jpg"
+image: "/images/blog/ia-leads.jpg"
 categories: ["IA", "Marketing", "Leads"]
 tags: ["intel·ligència artificial", "generació de leads", "automatització", "B2B"]
 published: true
@@ -28,14 +28,14 @@ La IA permet segmentar el teu mercat objectiu de manera molt més precisa:
 
 ### 2. Automatització del Procés
 
-```javascript
+\`\`\`javascript
 // Exemple d'automatització amb IA
 const leadScoring = {
   email: "client@empresa.com",
   score: calculateAIScore(interactions),
   priority: determinePriority(score)
 }
-```
+\`\`\`
 
 ## Estratègies Pràctiques
 
@@ -87,17 +87,19 @@ La IA no és només una tendència, sinó una necessitat per competir en el merc
 
 *Vols saber més sobre com implementar la IA en la teva empresa? [Contacta amb nosaltres](/contact) per una consulta gratuïta.*`
 
-const blogDir = path.join(process.cwd(), 'content', 'blog')
-const filePath = path.join(blogDir, '2024-09-10-ia-leads-guide.md')
+const slug = 'ia-leads-guide'
+const blogBaseDir = path.join(process.cwd(), 'content', 'blog')
 
-// Crear directori si no existeix
-if (!fs.existsSync(blogDir)) {
-  fs.mkdirSync(blogDir, { recursive: true })
+// Crear només l'article en català com a exemple (pots traduir els altres des del CMS)
+const blogDirCa = path.join(blogBaseDir, 'ca')
+const filePathCa = path.join(blogDirCa, `${slug}.md`)
+
+if (!fs.existsSync(blogDirCa)) {
+  fs.mkdirSync(blogDirCa, { recursive: true })
 }
 
-// Escriure l'article
-fs.writeFileSync(filePath, samplePost, 'utf8')
+fs.writeFileSync(filePathCa, samplePostCa, 'utf8')
 
-console.log('✅ Article d\'exemple generat:', filePath)
+console.log('✅ Article d\'exemple generat:', filePathCa)
 console.log('📝 Pots editar-lo o utilitzar-lo com a plantilla')
-console.log('🌐 Visita /admin per gestionar articles amb DecapCMS')
+console.log('🌐 Visita /admin per gestionar articles amb Decap CMS (Blog Català, Blog English, Blog Español)')

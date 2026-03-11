@@ -127,11 +127,15 @@ export async function getPostData(slug: string, locale: Locale): Promise<BlogPos
         ? String(data.dateModified)
         : fs.statSync(fullPath).mtime.toISOString().split('T')[0]
 
+    // Compatibilitat amb articles antics que usen featuredImage
+    const image = (data.image as string) || (data.featuredImage as string)
+
     return {
       slug: normalizedSlug,
       content: matterResult.content,
       contentHtml,
       ...data,
+      image,
       dateModified,
     } as BlogPost
   } catch (error) {
@@ -166,10 +170,14 @@ export function getAllPosts(locale?: Locale): BlogPostMeta[] {
         const fullPath = path.join(blogDir, fileName)
         const fileContents = fs.readFileSync(fullPath, 'utf8')
         const matterResult = matter(fileContents)
+        const data = matterResult.data as Record<string, unknown>
+        // Compatibilitat amb articles antics que usen featuredImage
+        const image = (data.image as string) || (data.featuredImage as string)
 
         return {
           slug,
-          ...matterResult.data,
+          ...data,
+          image,
         } as BlogPostMeta
       })
       .filter((post) => post.published !== false)

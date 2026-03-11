@@ -18,6 +18,115 @@
           }
         });
       }
+
+      (function () {
+        var CMS = window.CMS;
+        if (!CMS) return;
+
+        CMS.registerPreviewStyle("/admin/preview.css");
+
+        var BlogPostPreview = CMS.createClass({
+          render: function () {
+            var entry = this.props.entry;
+            var widgetFor = this.props.widgetFor;
+            var getAsset = this.props.getAsset;
+
+            var title = entry.getIn(["data", "title"]) || "";
+            var date = entry.getIn(["data", "date"]);
+            var author = entry.getIn(["data", "author"]) || "";
+            var imageField = entry.getIn(["data", "image"]);
+            var categories = entry.getIn(["data", "categories"]);
+            var tags = entry.getIn(["data", "tags"]);
+            var showCTA = entry.getIn(["data", "showCTA"]);
+
+            var imageSrc = null;
+            if (imageField) {
+              if (typeof imageField === "string" && (imageField.startsWith("http") || imageField.startsWith("/"))) {
+                imageSrc = imageField;
+              } else if (getAsset) {
+                try {
+                  var asset = getAsset(imageField);
+                  imageSrc = asset ? (asset.url || asset.toString()) : null;
+                } catch (e) {
+                  imageSrc = null;
+                }
+              }
+            }
+
+            var dateStr = "";
+            if (date) {
+              try {
+                var d = new Date(date);
+                dateStr = d.toLocaleDateString("ca-ES", { year: "numeric", month: "long", day: "numeric" });
+              } catch (e) {
+                dateStr = String(date);
+              }
+            }
+
+            var toArr = function (v) {
+              return v && (v.toArray ? v.toArray() : Array.isArray(v) ? v : []);
+            };
+            var catArr = toArr(categories);
+            var tagArr = toArr(tags);
+
+            return CMS.h(
+              "div",
+              { className: "blog-preview" },
+              catArr.length > 0
+                ? CMS.h(
+                    "div",
+                    { className: "categories", style: { marginBottom: "1rem" } },
+                    catArr.map(function (c, i) {
+                      return CMS.h("span", { key: i, className: "category-tag" }, String(c));
+                    })
+                  )
+                : null,
+              CMS.h("h1", {}, title),
+              CMS.h(
+                "div",
+                { className: "meta" },
+                dateStr + (author ? " · " + author : "")
+              ),
+              imageSrc
+                ? CMS.h("img", {
+                    src: imageSrc,
+                    alt: title,
+                    className: "featured-image"
+                  })
+                : null,
+              CMS.h(
+                "div",
+                { className: "prose" },
+                widgetFor("body")
+              ),
+              showCTA !== false
+                ? CMS.h(
+                    "div",
+                    { className: "cta-block" },
+                    CMS.h("h3", {}, "Preparat per trobar més clients potencials?"),
+                    CMS.h("p", {}, "Descobreix com NextLeadIn pot ajudar-te a trobar negocis locals i tancar més vendes."),
+                    CMS.h("a", { href: "#", style: { color: "white", background: "white", color: "#059669", padding: "0.5rem 1rem", borderRadius: "0.5rem", textDecoration: "none", display: "inline-block", marginTop: "0.5rem" } }, "Provar 7 dies gratis")
+                  )
+                : null,
+              tagArr.length > 0
+                ? CMS.h(
+                    "div",
+                    { className: "tags", style: { display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.5rem", marginTop: "1.5rem" } },
+                    [CMS.h("span", { key: "label", style: { fontSize: "0.875rem", color: "#6b7280" } }, "Tags: ")].concat(
+                      tagArr.map(function (tag, i) {
+                        return CMS.h("span", { key: i, className: "tag" }, String(tag));
+                      })
+                    )
+                  )
+                : null
+            );
+          }
+        });
+
+        CMS.registerPreviewTemplate("blog-ca", BlogPostPreview);
+        CMS.registerPreviewTemplate("blog-en", BlogPostPreview);
+        CMS.registerPreviewTemplate("blog-es", BlogPostPreview);
+      })();
     </script>
   </body>
 </html>
