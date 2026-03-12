@@ -4,6 +4,7 @@ import {notFound} from 'next/navigation'
 import {locales, type AppLocale} from '@/i18n/routing'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import FooterSitemap from '@/components/FooterSitemap'
 import ScrollAnimation from '@/components/ScrollAnimation'
 import SetHtmlLang from '@/components/SetHtmlLang'
 import AIStructuredData from '@/components/AIStructuredData'
@@ -65,7 +66,9 @@ export default async function LocaleLayout({children, params}: {children: React.
           <main id="main-content" className="flex-grow min-w-0 w-full overflow-x-hidden" tabIndex={-1}>
             {children}
           </main>
-          <Footer />
+          <Footer>
+            <FooterSitemap locale={localeParam as AppLocale} />
+          </Footer>
           <ScrollAnimation />
           <LazyLayoutParts />
         </div>

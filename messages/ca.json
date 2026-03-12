@@ -1,7 +1,21 @@
 {
   "header": {
     "menuOpen": "Obre el menú",
-    "menuClose": "Tanca el menú"
+    "menuClose": "Tanca el menú",
+    "mobileMenu": {
+      "ariaLabel": "Menú de navegació mòbil",
+      "closeOverlay": "Tanca el menú",
+      "close": "Tanca",
+      "searchPlaceholder": "Cerca el que necessites...",
+      "features": "Funcionalitats",
+      "sectors": "Sectors",
+      "recursos": "Recursos",
+      "pricing": "Preus",
+      "blog": "Blog",
+      "contacte": "Contacte",
+      "canviarIdioma": "Canviar idioma",
+      "provaGratis": "Prova gratis"
+    }
   },
   "common": {
     "brand": "NextLeadIn",
@@ -251,7 +265,7 @@
     }
   },
   "metadata": {
-    "title": "NextLeadIn — Leads de negocis locals",
+    "title": "NextLeadIn - Leads de negocis locals",
     "description": "Troba TOTS els negocis locals (restaurants, tallers, comerços). Dades enriquides i anàlisi de ressenyes amb IA. Alternativa a LinkedIn per negocis tradicionals.",
     "keywords": "leads negocis locals,negocis locals,generació de leads,restaurants tallers comerços,prospecció local,IA ressenyes,segmentació geogràfica"
   },

@@ -22,7 +22,9 @@ const ServicesSection = dynamicImport(() => import('@/components/ServicesSection
 })
 
 import { getAllPosts } from '@/lib/blog'
+import { getAllIndustries } from '@/lib/industries'
 import CTASection from '@/components/CTASection'
+import IndustriesPreviewSection from '@/components/IndustriesPreviewSection'
 
 export const dynamic = 'force-static'
 export const revalidate = 3600
@@ -31,8 +33,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
 
-  // Carregar últims posts del blog
+  // Carregar últims posts del blog i industries per la secció sectors
   const allPosts = getAllPosts(validLocale as 'ca' | 'es' | 'en')
+  const industries = getAllIndustries(validLocale as 'ca' | 'es' | 'en')
   const latestPosts = allPosts.slice(0, 3).map(post => ({
     title: post.title || '',
     excerpt: post.description || '',
@@ -63,6 +66,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       {/* Services Tabbed Section */}
       <ServicesSection />
+
+      {/* Industries Preview Section - internal linking per SEO */}
+      <IndustriesPreviewSection industries={industries} locale={validLocale as 'ca' | 'es' | 'en'} />
 
       {/* Integrations Section */}
       <IntegrationsSection integrations={integrations} />

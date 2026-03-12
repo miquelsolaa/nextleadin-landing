@@ -1,11 +1,15 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import {useLocale} from 'next-intl'
 import { useState } from 'react'
 
-const Footer = () => {
+type FooterProps = {
+  children?: React.ReactNode
+}
+
+const Footer = ({ children }: FooterProps) => {
   const rawLocale = (useLocale() as string) || 'es'
   const base = rawLocale.split('-')[0] as 'es' | 'ca' | 'en'
   const locale = (['es','ca','en'].includes(base) ? base : 'es') as 'es' | 'ca' | 'en'
@@ -19,7 +23,6 @@ const Footer = () => {
       brandDesc: 'Genera leads hipersegmentados y prepara llamadas con informes creados por IA. Más calidad, menos tiempo perdido.',
       sections: {
         features: 'Funcionalidades',
-        resources: 'Recursos',
         company: 'Empresa',
         comparisons: 'Comparativas'
       },
@@ -30,17 +33,10 @@ const Footer = () => {
           { name: 'Secuencias de Email', href: '/features/email-sequences' },
           { name: 'Pipeline y Analytics', href: '/features/pipeline-analytics' }
         ],
-        resources: [
-          { name: 'Todos los recursos', href: '/resources' },
-          { name: 'Calculadora ROI', href: '/resources/roi-calculator' },
-          { name: 'Blog', href: '/blog' },
-          { name: 'FAQ', href: '/faq' }
-        ],
         company: [
-          { name: 'Sobre nosotros', href: '#' },
           { name: 'Blog', href: '/blog' },
           { name: 'Contacto', href: '/contact' },
-          { name: 'Empleo', href: '#' }
+          { name: 'FAQ', href: '/faq' }
         ],
         comparisons: [
           { name: 'NextLeadIn vs Apollo.io', href: '/compare/apollo' },
@@ -64,7 +60,6 @@ const Footer = () => {
       brandDesc: 'Genera leads hipersegmentats i prepara trucades amb informes creats per IA. Més qualitat, menys temps perdut.',
       sections: {
         features: 'Característiques',
-        resources: 'Recursos',
         company: 'Empresa',
         comparisons: 'Comparatives'
       },
@@ -75,17 +70,10 @@ const Footer = () => {
           { name: 'Seqüències d\'Email', href: '/features/email-sequences' },
           { name: 'Pipeline i Analytics', href: '/features/pipeline-analytics' }
         ],
-        resources: [
-          { name: 'Tots els recursos', href: '/resources' },
-          { name: 'Calculadora ROI', href: '/resources/roi-calculator' },
-          { name: 'Blog', href: '/blog' },
-          { name: 'FAQ', href: '/faq' }
-        ],
         company: [
-          { name: 'Sobre nosaltres', href: '#' },
           { name: 'Blog', href: '/blog' },
           { name: 'Contacte', href: '/contact' },
-          { name: 'Carreres', href: '#' }
+          { name: 'FAQ', href: '/faq' }
         ],
         comparisons: [
           { name: 'NextLeadIn vs Apollo.io', href: '/compare/apollo' },
@@ -109,7 +97,6 @@ const Footer = () => {
       brandDesc: 'Generate hyper-targeted leads and prepare calls with AI-generated reports. More quality, less wasted time.',
       sections: {
         features: 'Features',
-        resources: 'Resources',
         company: 'Company',
         comparisons: 'Comparisons'
       },
@@ -120,17 +107,10 @@ const Footer = () => {
           { name: 'Email Sequences', href: '/features/email-sequences' },
           { name: 'Pipeline & Analytics', href: '/features/pipeline-analytics' }
         ],
-        resources: [
-          { name: 'All resources', href: '/resources' },
-          { name: 'ROI Calculator', href: '/resources/roi-calculator' },
-          { name: 'Blog', href: '/blog' },
-          { name: 'FAQ', href: '/faq' }
-        ],
         company: [
-          { name: 'About us', href: '#' },
           { name: 'Blog', href: '/blog' },
           { name: 'Contact', href: '/contact' },
-          { name: 'Careers', href: '#' }
+          { name: 'FAQ', href: '/faq' }
         ],
         comparisons: [
           { name: 'NextLeadIn vs Apollo.io', href: '/compare/apollo' },
@@ -176,8 +156,8 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <Link href="/" className="inline-block mb-6 flex items-center space-x-3">
@@ -228,27 +208,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Resources */}
-            <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                {dict.sections.resources}
-              </h3>
-              <ul role="list" className="space-y-3">
-                {(footerNavigation.resources || []).map((item) => (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-200"
-                      target={item.href.startsWith('http') ? '_blank' : undefined}
-                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* Company */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
@@ -288,6 +247,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        {children}
 
         {/* Bottom Section */}
         <div className="border-t border-gray-700 py-8">

@@ -1,7 +1,21 @@
 {
   "header": {
     "menuOpen": "Abrir menú",
-    "menuClose": "Cerrar menú"
+    "menuClose": "Cerrar menú",
+    "mobileMenu": {
+      "ariaLabel": "Menú de navegación móvil",
+      "closeOverlay": "Cerrar menú",
+      "close": "Cerrar",
+      "searchPlaceholder": "Busca lo que necesites...",
+      "features": "Funcionalidades",
+      "sectors": "Sectores",
+      "recursos": "Recursos",
+      "pricing": "Precios",
+      "blog": "Blog",
+      "contacte": "Contacto",
+      "canviarIdioma": "Cambiar idioma",
+      "provaGratis": "Probar gratis"
+    }
   },
   "common": {
     "brand": "NextLeadIn",
@@ -251,7 +265,7 @@
     }
   },
   "metadata": {
-    "title": "NextLeadIn — Leads de negocios locales",
+    "title": "NextLeadIn - Leads de negocios locales",
     "description": "Encuentra TODOS los negocios locales (restaurantes, talleres, comercios). Datos enriquecidos y análisis de reseñas con IA. Alternativa a LinkedIn para negocios tradicionales.",
     "keywords": "leads negocios locales,negocios locales,generación de leads,restaurantes talleres comercios,prospección local,IA reseñas,segmentación geográfica"
   },
