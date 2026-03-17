@@ -12,7 +12,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: [
           '/',
           '/en/',
-          '/es/',
           '/ca/',
           '/blog/',
           '/pricing/',
@@ -34,8 +33,6 @@ export default function robots(): MetadataRoute.Robots {
           '/_next/',
           '/out/',
           '/node_modules/',
-          '/*.json$',
-          '/*.map$',
           '/private/',
           '/temp/',
         ],
@@ -45,7 +42,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: [
           '/',
           '/en/',
-          '/es/',
           '/ca/',
           '/blog/',
           '/pricing/',
@@ -70,7 +66,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: [
           '/',
           '/en/',
-          '/es/',
           '/ca/',
           '/blog/',
           '/pricing/',

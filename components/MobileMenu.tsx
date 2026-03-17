@@ -16,20 +16,25 @@ import LanguageSwitcher from '@/components/LanguageSwitcher'
 type MobileMenuProps = {
   isOpen: boolean
   onClose: () => void
+  panelId?: string
 }
 
 const FOCUSABLE_SELECTOR =
   'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
-const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
+const MobileMenu = ({ isOpen, onClose, panelId = 'mobile-menu-panel' }: MobileMenuProps) => {
   const t = useTranslations('header.mobileMenu')
   const panelRef = useRef<HTMLDivElement>(null)
+  const previouslyFocusedRef = useRef<Element | null>(null)
 
   useEffect(() => {
     if (!isOpen) return
+    previouslyFocusedRef.current = document.activeElement
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = ''
+      const previous = previouslyFocusedRef.current
+      if (previous instanceof HTMLElement) previous.focus()
     }
   }, [isOpen])
 
@@ -81,17 +86,12 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   if (!isOpen) return null
 
   return (
-    <div
-      className="fixed inset-0 z-[100] md:hidden"
-      aria-modal="true"
-      role="dialog"
-      aria-label={t('ariaLabel')}
-    >
+    <div className="fixed inset-0 z-[100] md:hidden overflow-hidden">
       {/* Overlay backdrop - click to close */}
       <button
         type="button"
         aria-label={t('closeOverlay')}
-        className="absolute inset-0 bg-black/50 transition-opacity duration-300 ease-out"
+        className="fixed inset-0 bg-black/50 transition-opacity duration-300 ease-out border-0 outline-none focus:outline-none focus:ring-0 appearance-none"
         onClick={onClose}
         tabIndex={-1}
       />
@@ -99,13 +99,20 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       {/* White panel - slides from right */}
       <div
         ref={panelRef}
+        id={panelId}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mobile-menu-title"
         className={cn(
-          'absolute right-0 top-0 bottom-0 w-full max-w-sm bg-white shadow-xl',
+          'fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white shadow-xl',
           'flex flex-col animate-in slide-in-from-right-5 duration-300 ease-out'
         )}
       >
         {/* Top bar */}
         <div className="flex items-center justify-between px-4 py-4 border-b border-[#e5e7eb] shrink-0">
+          <h2 id="mobile-menu-title" className="sr-only">
+            {t('ariaLabel')}
+          </h2>
           <Link
             href="/"
             className="flex items-center gap-3"

@@ -74,13 +74,14 @@ export default function CookieConsent() {
             await loadGAScript()
             const w = window as Window & { gtag?: (...args: unknown[]) => void }
             if (!w.gtag) return
+            const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+            if (!gaId) return
             w.gtag('consent', 'update', { analytics_storage: 'granted' })
-            const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Y07BPPDXKF'
             w.gtag('event', 'page_view', {
               page_title: document.title,
               page_location: window.location.href,
               page_path: window.location.pathname,
-              send_to: GA_ID,
+              send_to: gaId,
             })
           } else {
             const w = window as Window & { gtag?: (...args: unknown[]) => void }

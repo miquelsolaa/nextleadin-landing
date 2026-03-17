@@ -11,6 +11,7 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
   const postUrl = getBlogPostUrl(post.slug, locale)
   const baseUrl = 'https://nextleadin.com'
   const fullUrl = `${baseUrl}${postUrl}`
+  const localePath = locale === 'es' ? '' : `/${locale}`
   
   // Processar imatge amb URL completa
   const imageUrl = post.image 
@@ -108,13 +109,13 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
             '@type': 'ListItem',
             position: 1,
             name: locale === 'ca' ? 'Inici' : locale === 'es' ? 'Inicio' : 'Home',
-            item: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}`,
+            item: `${baseUrl}${localePath}`,
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Blog',
-            item: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}/blog`,
+            item: `${baseUrl}${localePath}/blog`,
           },
           {
             '@type': 'ListItem',
@@ -141,7 +142,7 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
     isPartOf: {
       '@type': 'Blog',
       name: 'NextLeadIn Blog',
-      url: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}/blog`,
+      url: `${baseUrl}${localePath}/blog`,
     },
     // Afegir breadcrumbs si estan disponibles (millorat)
     breadcrumb: {
@@ -151,13 +152,13 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
           '@type': 'ListItem',
           position: 1,
           name: locale === 'ca' ? 'Inici' : locale === 'es' ? 'Inicio' : 'Home',
-          item: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}`,
+          item: `${baseUrl}${localePath}`,
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
-          item: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}/blog`,
+          item: `${baseUrl}${localePath}/blog`,
         },
         {
           '@type': 'ListItem',

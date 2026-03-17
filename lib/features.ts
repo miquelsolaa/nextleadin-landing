@@ -82,7 +82,7 @@ export async function getFeatureData(slug: string, locale: string): Promise<Feat
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkBreaks)
-    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(remarkRehype)
     .use(rehypeSanitize)
     .use(rehypeStringify)
     .process(content);

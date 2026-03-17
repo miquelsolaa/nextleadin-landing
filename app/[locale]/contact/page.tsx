@@ -8,6 +8,7 @@ import AIStructuredData from '@/components/AIStructuredData'
 import { generateAIStructuredData } from '@/lib/seo-metadata'
 import { trackContactSubmit } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
+import { getAbsoluteHomeUrl, getAbsoluteLocaleUrl } from '@/lib/locale-url'
 
 type TabId = 'form' | 'demo'
 
@@ -38,6 +39,23 @@ export default function ContactPage() {
     if (!formData.message.trim()) newErrors.message = t('errors.message')
     if (!formData.consent) newErrors.consent = t('errors.consent')
     setErrors(newErrors)
+
+    const order: Array<keyof typeof newErrors> = ['name', 'email', 'company', 'message', 'consent']
+    const firstKey = order.find((k) => Boolean(newErrors[k]))
+    if (firstKey) {
+      const fieldIdByKey: Record<string, string> = {
+        name: 'name',
+        email: 'email',
+        company: 'company',
+        message: 'message',
+        consent: 'privacy',
+      }
+      const id = fieldIdByKey[firstKey]
+      requestAnimationFrame(() => {
+        const el = document.getElementById(id)
+        if (el instanceof HTMLElement) el.focus()
+      })
+    }
     return Object.keys(newErrors).length === 0
   }
 
@@ -87,11 +105,11 @@ export default function ContactPage() {
   const breadcrumbs = [
     {
       name: locale === 'ca' ? 'Inici' : locale === 'es' ? 'Inicio' : 'Home',
-      url: locale === 'ca' ? 'https://nextleadin.com' : `https://nextleadin.com/${locale}`,
+      url: getAbsoluteHomeUrl(locale as 'ca' | 'es' | 'en'),
     },
     {
       name: locale === 'ca' ? 'Contacte' : locale === 'es' ? 'Contacto' : 'Contact',
-      url: locale === 'ca' ? 'https://nextleadin.com/contact' : `https://nextleadin.com/${locale}/contact`,
+      url: getAbsoluteLocaleUrl(locale as 'ca' | 'es' | 'en', '/contact'),
     },
   ]
 
@@ -210,10 +228,39 @@ export default function ContactPage() {
 
         {/* Right panel */}
         <div className="bg-gray-50 px-6 py-12 lg:py-16 lg:px-12 xl:px-16 flex flex-col justify-center">
-          <div className="grid grid-cols-2 border border-gray-200 rounded overflow-hidden mb-8">
+          <div
+            role="tablist"
+            aria-label={t('tabsLabel')}
+            className="grid grid-cols-2 border border-gray-200 rounded overflow-hidden mb-8"
+            onKeyDown={(e) => {
+              if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Home' && e.key !== 'End') return
+              e.preventDefault()
+
+              const order: TabId[] = ['form', 'demo']
+              const currentIndex = Math.max(0, order.indexOf(activeTab))
+              const getNextTab = () => {
+                if (e.key === 'Home') return order[0]
+                if (e.key === 'End') return order[order.length - 1]
+                if (e.key === 'ArrowLeft') return order[(currentIndex - 1 + order.length) % order.length]
+                return order[(currentIndex + 1) % order.length]
+              }
+
+              const next = getNextTab()
+              setActiveTab(next)
+              requestAnimationFrame(() => {
+                const el = document.getElementById(next === 'form' ? 'contact-tab-form' : 'contact-tab-demo')
+                if (el instanceof HTMLElement) el.focus()
+              })
+            }}
+          >
             <button
               type="button"
               onClick={() => setActiveTab('form')}
+              role="tab"
+              id="contact-tab-form"
+              aria-selected={activeTab === 'form'}
+              aria-controls="contact-panel-form"
+              tabIndex={activeTab === 'form' ? 0 : -1}
               className={cn(
                 'px-4 py-3 font-mono text-xs tracking-wider uppercase transition-colors',
                 activeTab === 'form'
@@ -226,6 +273,11 @@ export default function ContactPage() {
             <button
               type="button"
               onClick={() => setActiveTab('demo')}
+              role="tab"
+              id="contact-tab-demo"
+              aria-selected={activeTab === 'demo'}
+              aria-controls="contact-panel-demo"
+              tabIndex={activeTab === 'demo' ? 0 : -1}
               className={cn(
                 'px-4 py-3 font-mono text-xs tracking-wider uppercase transition-colors',
                 activeTab === 'demo'
@@ -238,7 +290,12 @@ export default function ContactPage() {
           </div>
 
           {activeTab === 'form' && (
-            <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <div
+              id="contact-panel-form"
+              role="tabpanel"
+              aria-labelledby="contact-tab-form"
+              className="animate-in fade-in slide-in-from-bottom-2 duration-300"
+            >
               {!submitted ? (
                 <form
                   name="contact"
@@ -270,12 +327,18 @@ export default function ContactPage() {
                         onChange={onChange}
                         placeholder={t('placeholders.name')}
                         required
+                          aria-invalid={Boolean(errors.name)}
+                          aria-describedby={errors.name ? 'name-error' : undefined}
                         className={cn(
                           'w-full px-3 py-2.5 bg-gray-900/5 border rounded text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-500',
                           errors.name ? 'border-red-400' : 'border-gray-200'
                         )}
                       />
-                      {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
+                        {errors.name && (
+                          <p id="name-error" className="text-sm text-red-600" aria-live="polite">
+                            {errors.name}
+                          </p>
+                        )}
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="company" className="font-mono text-xs text-gray-500 uppercase tracking-wider">
@@ -289,12 +352,18 @@ export default function ContactPage() {
                         onChange={onChange}
                         placeholder={t('placeholders.company')}
                         required
+                          aria-invalid={Boolean(errors.company)}
+                          aria-describedby={errors.company ? 'company-error' : undefined}
                         className={cn(
                           'w-full px-3 py-2.5 bg-gray-900/5 border rounded text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-500',
                           errors.company ? 'border-red-400' : 'border-gray-200'
                         )}
                       />
-                      {errors.company && <p className="text-sm text-red-600">{errors.company}</p>}
+                        {errors.company && (
+                          <p id="company-error" className="text-sm text-red-600" aria-live="polite">
+                            {errors.company}
+                          </p>
+                        )}
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="email" className="font-mono text-xs text-gray-500 uppercase tracking-wider">
@@ -308,12 +377,18 @@ export default function ContactPage() {
                         onChange={onChange}
                         placeholder={t('placeholders.email')}
                         required
+                          aria-invalid={Boolean(errors.email)}
+                          aria-describedby={errors.email ? 'email-error' : undefined}
                         className={cn(
                           'w-full px-3 py-2.5 bg-gray-900/5 border rounded text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-500',
                           errors.email ? 'border-red-400' : 'border-gray-200'
                         )}
                       />
-                      {errors.email && <p className="text-sm text-red-600">{errors.email}</p>}
+                        {errors.email && (
+                          <p id="email-error" className="text-sm text-red-600" aria-live="polite">
+                            {errors.email}
+                          </p>
+                        )}
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="phone" className="font-mono text-xs text-gray-500 uppercase tracking-wider">
@@ -379,12 +454,18 @@ export default function ContactPage() {
                         onChange={onChange}
                         placeholder={t('placeholders.message')}
                         required
+                        aria-invalid={Boolean(errors.message)}
+                        aria-describedby={errors.message ? 'message-error' : undefined}
                         className={cn(
                           'w-full px-3 py-2.5 bg-gray-900/5 border rounded text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-500 resize-y min-h-[90px]',
                           errors.message ? 'border-red-400' : 'border-gray-200'
                         )}
                       />
-                      {errors.message && <p className="text-sm text-red-600">{errors.message}</p>}
+                      {errors.message && (
+                        <p id="message-error" className="text-sm text-red-600" aria-live="polite">
+                          {errors.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -396,6 +477,8 @@ export default function ContactPage() {
                       checked={formData.consent}
                       onChange={onChange}
                       required
+                      aria-invalid={Boolean(errors.consent)}
+                      aria-describedby={errors.consent ? 'consent-error' : undefined}
                       className="mt-1 h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500 accent-primary-500 cursor-pointer"
                     />
                     <label htmlFor="privacy" className="text-sm text-gray-600 leading-relaxed cursor-pointer">
@@ -403,7 +486,11 @@ export default function ContactPage() {
                       {t('labels.consentSuffix')}
                     </label>
                   </div>
-                  {errors.consent && <p className="text-sm text-red-600 -mt-2">{errors.consent}</p>}
+                  {errors.consent && (
+                    <p id="consent-error" className="text-sm text-red-600 -mt-2" aria-live="polite">
+                      {errors.consent}
+                    </p>
+                  )}
 
                   {submitError && (
                     <p className="text-sm text-red-600" role="alert" aria-live="polite">
@@ -442,7 +529,12 @@ export default function ContactPage() {
           )}
 
           {activeTab === 'demo' && (
-            <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-6">
+            <div
+              id="contact-panel-demo"
+              role="tabpanel"
+              aria-labelledby="contact-tab-demo"
+              className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-6"
+            >
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{t('demo.headline')}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{t('demo.sub')}</p>

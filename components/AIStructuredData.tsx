@@ -20,7 +20,7 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
   // Generar structured data específic per a AI
   const generateAIStructuredData = () => {
     const baseUrl = 'https://nextleadin.com'
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     const currentUrl = `${baseUrl}${localePath}${page === 'home' ? '' : `/${page}`}`
     
     const structuredData: Record<string, any>[] = []

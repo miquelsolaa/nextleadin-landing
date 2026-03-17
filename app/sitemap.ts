@@ -23,7 +23,7 @@ function getBlogArchiveUrl(
   locale: Locale
 ): string {
   const path = `/blog/${type}/${slug}`
-  if (locale === 'ca') return path
+  if (locale === 'es') return path
   return `/${locale}${path}`
 }
 
@@ -59,9 +59,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Generar URLs per a cada idioma
   const localePaths = [
-    { locale: '', lang: 'ca-ES' },
-    { locale: '/en', lang: 'en-US' },
-    { locale: '/es', lang: 'es-ES' }
+    { locale: '', lang: 'es-ES' },
+    { locale: '/ca', lang: 'ca-ES' },
+    { locale: '/en', lang: 'en-US' }
   ]
   
   const pages = [
@@ -143,7 +143,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Industries URLs (multiidioma)
   const allIndustrySlugs = getAllIndustrySlugs()
   const industryUrls = allIndustrySlugs.map(({ slug, locale }) => {
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     return {
       url: `${baseUrl}${localePath}/industries/${slug}`,
       lastModified: new Date(),
@@ -155,7 +155,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Solutions URLs (multiidioma)
   const allSolutionSlugsData = getAllSolutionSlugs()
   const solutionUrls = allSolutionSlugsData.map(({ slug, locale }) => {
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     return {
       url: `${baseUrl}${localePath}/solutions/${slug}`,
       lastModified: new Date(),
@@ -167,7 +167,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Features URLs (multiidioma)
   const allFeatureSlugsData = getAllFeatureSlugs()
   const featureUrls = locales.flatMap(locale => {
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     return allFeatureSlugsData.map(slug => ({
       url: `${baseUrl}${localePath}/features/${slug}`,
       lastModified: new Date(),
@@ -179,7 +179,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Locations URLs (multiidioma)
   const allLocationSlugsData = getAllLocationSlugs()
   const locationUrls = allLocationSlugsData.map(({ slug, locale }) => {
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     return {
       url: `${baseUrl}${localePath}/locations/${slug}`,
       lastModified: new Date(),

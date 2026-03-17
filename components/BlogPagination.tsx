@@ -4,15 +4,25 @@ interface BlogPaginationProps {
   currentPage: number
   totalPages: number
   basePath: string
+  query?: Record<string, string | undefined>
 }
 
-const BlogPagination = ({ currentPage, totalPages, basePath }: BlogPaginationProps) => {
+const BlogPagination = ({ currentPage, totalPages, basePath, query }: BlogPaginationProps) => {
   if (totalPages <= 1) {
     return null
   }
 
-  const getPageHref = (page: number) =>
-    page === 1 ? basePath : `${basePath}?page=${page}`
+  const getPageHref = (page: number) => {
+    const params = new URLSearchParams()
+    if (query) {
+      Object.entries(query).forEach(([key, value]) => {
+        if (value) params.set(key, value)
+      })
+    }
+    if (page > 1) params.set('page', String(page))
+    const qs = params.toString()
+    return qs ? `${basePath}?${qs}` : basePath
+  }
 
   return (
     <nav className="flex justify-center items-center space-x-2 mt-12">

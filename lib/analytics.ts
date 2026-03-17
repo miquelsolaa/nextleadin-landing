@@ -7,7 +7,7 @@ type GAEventParams = {
 
 const isBrowser = () => typeof window !== 'undefined'
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Y07BPPDXKF'
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 
 let gaLoaded = false
 let gaLoadPromise: Promise<void> | null = null
@@ -15,6 +15,7 @@ let gaLoadPromise: Promise<void> | null = null
 /** Carrega GA4 només quan l'usuari ha acceptat analytics (evita 148KB JS inicial). Retorna quan gtag està disponible. */
 export const loadGAScript = (): Promise<void> => {
   if (!isBrowser()) return Promise.resolve()
+  if (!GA_MEASUREMENT_ID) return Promise.resolve()
   if (gaLoadPromise) return gaLoadPromise
   const w = window as Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void }
   gaLoaded = true

@@ -1,15 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkGfm from 'remark-gfm'
-import remarkBreaks from 'remark-breaks'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
 import type { AppLocale } from '@/i18n/routing'
 import type { Locale } from './blog-utils'
 import { getCanonicalTag } from './blog-tags'
+import { renderMarkdownToSafeHtml } from './markdown'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 
@@ -110,16 +105,7 @@ export async function getPostData(slug: string, locale: Locale): Promise<BlogPos
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    // Processar el contingut amb el pipeline complet de remark/rehype
-    const processedContent = await unified()
-      .use(remarkParse) // Parsear markdown
-      .use(remarkGfm) // Suport per GitHub Flavored Markdown (taules, etc.)
-      .use(remarkBreaks) // Suport per salts de línia
-      .use(remarkRehype) // Convertir a rehype
-      .use(rehypeStringify) // Convertir a HTML string
-      .process(matterResult.content)
-    
-    const contentHtml = processedContent.toString()
+    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content)
 
     const data = matterResult.data as Record<string, unknown>
     const dateModified =

@@ -13,7 +13,7 @@ export default async function BlogPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>
-  searchParams?: Promise<{ page?: string }>
+  searchParams?: Promise<{ page?: string; query?: string }>
 }) {
   const { locale } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'ca'
@@ -40,11 +40,30 @@ export default async function BlogPage({
     }
   })()
   
+  const resolvedSearchParams = (await searchParams) ?? {}
+  const rawQuery = resolvedSearchParams.query?.trim() ?? ''
+  const query = rawQuery.length ? rawQuery : ''
+
   const allPosts = getAllPosts(validLocale)
-  const totalPosts = allPosts.length
+  const filteredPosts = query
+    ? allPosts.filter((post) => {
+        const haystack = [
+          post.title,
+          post.description,
+          post.author,
+          ...(post.categories ?? []),
+          ...(post.tags ?? []),
+        ]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase()
+        return haystack.includes(query.toLowerCase())
+      })
+    : allPosts
+
+  const totalPosts = filteredPosts.length
   const totalPages = Math.max(1, Math.ceil(totalPosts / POSTS_PER_PAGE))
 
-  const resolvedSearchParams = (await searchParams) ?? {}
   const rawPage = Number(resolvedSearchParams.page ?? '1')
   const currentPage = Number.isNaN(rawPage) || rawPage < 1 ? 1 : Math.min(rawPage, totalPages)
   const categories = getAllCategories(validLocale)
@@ -57,7 +76,7 @@ export default async function BlogPage({
   const blogBaseUrl = validLocale === 'es' ? '/blog' : `/${validLocale}/blog`
   
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE
-  const pageItems = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE)
+  const pageItems = filteredPosts.slice(startIndex, startIndex + POSTS_PER_PAGE)
 
   // Mapejar posts reals al format esperat per BlogPageSection
   const blogPosts = pageItems.map((post, index) => ({
@@ -113,6 +132,7 @@ export default async function BlogPage({
               currentPage={currentPage}
               totalPages={totalPages}
               basePath={blogBaseUrl}
+              query={query ? { query } : undefined}
             />
           </div>
 

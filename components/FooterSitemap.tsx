@@ -28,6 +28,12 @@ const SECTION_LABELS: Record<AppLocale, { industries: string; locations: string;
   ca: { industries: 'Sectors', locations: 'Ubicacions', solutions: 'Solucions', resources: 'Recursos' },
 }
 
+const SITEMAP_ARIA_LABEL: Record<AppLocale, string> = {
+  es: 'Mapa del sitio',
+  en: 'Site map',
+  ca: 'Mapa del lloc',
+}
+
 type FooterSitemapProps = {
   locale: AppLocale
 }
@@ -42,15 +48,15 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
   return (
     <nav
       className="border-t border-gray-700 py-6"
-      aria-label="Site map"
+      aria-label={SITEMAP_ARIA_LABEL[locale]}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Industries - 2 columns compact */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_2fr_1fr] gap-6">
+        {/* Industries - 4 columns compact */}
         <div>
           <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2">
             {labels.industries}
           </h3>
-          <ul role="list" className="columns-2 gap-x-4 space-y-1 text-xs">
+          <ul role="list" className="columns-4 gap-x-4 space-y-1 text-xs">
             <li>
               <Link
                 href="/industries"
@@ -99,7 +105,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
           </ul>
         </div>
 
-        {/* Solutions */}
+        {/* Solutions + Resources */}
         <div>
           <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2">
             {labels.solutions}
@@ -116,19 +122,15 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
             {solutions.map((item) => (
               <li key={item.slug}>
                 <Link
-                href={`/solutions/${item.slug}`}
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                  href={`/solutions/${item.slug}`}
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {item.title}
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* Resources */}
-        <div>
-          <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2">
+          <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2 mt-6">
             {labels.resources}
           </h3>
           <ul role="list" className="space-y-1 text-xs">
@@ -143,8 +145,8 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
             {resources.map((item) => (
               <li key={item.slug}>
                 <Link
-                href={`/resources/${item.slug}`}
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                  href={`/resources/${item.slug}`}
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {item.label}
                 </Link>

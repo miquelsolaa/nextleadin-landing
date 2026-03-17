@@ -1,39 +1,18 @@
-'use client'
-
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
-import { useLocale, useTranslations } from 'next-intl'
-import { useState, useEffect } from 'react'
-import { Users, Phone, Mail, BarChart3 } from 'lucide-react'
-import HamburgerButton from '@/components/HamburgerButton'
-import MobileMenu from '@/components/MobileMenu'
-import { cn } from '@/lib/utils'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from '@/components/ui/navigation-menu'
+import type { AppLocale } from '@/i18n/routing'
+import HeaderClientControls from '@/components/HeaderClientControls'
+import HeaderFeaturesMenuClient from '@/components/HeaderFeaturesMenuClient'
 
-type FeatureLink = {
-  title: string
-  href: string
-  description: string
-  icon: React.ReactNode
+type HeaderProps = {
+  locale?: AppLocale
 }
 
-const Header = () => {
-  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
-  const tHeader = useTranslations('header')
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+const Header = ({ locale = 'es' }: HeaderProps) => {
+  const mobileMenuButtonId = 'mobile-menu-button'
+  const mobileMenuPanelId = 'mobile-menu-panel'
+  const desktopNavLabel =
+    locale === 'ca' ? 'Navegació principal' : locale === 'es' ? 'Navegación principal' : 'Main navigation'
 
   const translations = (() => {
     if (locale === 'es') {
@@ -105,31 +84,31 @@ const Header = () => {
     }
   })()
 
-  const featureLinks: FeatureLink[] = [
+  const featureLinks = [
     {
       title: translations.featureItems.leadManagement.title,
       href: '/features/lead-management',
       description: translations.featureItems.leadManagement.description,
-      icon: <Users className="h-5 w-5" />
+      iconKey: 'leadManagement' as const,
     },
     {
       title: translations.featureItems.coldCalling.title,
       href: '/features/cold-calling',
       description: translations.featureItems.coldCalling.description,
-      icon: <Phone className="h-5 w-5" />
+      iconKey: 'coldCalling' as const,
     },
     {
       title: translations.featureItems.emailSequences.title,
       href: '/features/email-sequences',
       description: translations.featureItems.emailSequences.description,
-      icon: <Mail className="h-5 w-5" />
+      iconKey: 'emailSequences' as const,
     },
     {
       title: translations.featureItems.pipelineAnalytics.title,
       href: '/features/pipeline-analytics',
       description: translations.featureItems.pipelineAnalytics.description,
-      icon: <BarChart3 className="h-5 w-5" />
-    }
+      iconKey: 'pipelineAnalytics' as const,
+    },
   ]
 
   const navigation = [
@@ -160,53 +139,8 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            {mounted ? (
-              <NavigationMenu>
-                <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-700 hover:text-primary-500 text-sm font-medium">
-                      {translations.nav.features}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                        {featureLinks.map((feature) => (
-                          <li key={feature.href}>
-                            <NavigationMenuLink asChild>
-                              <Link
-                                href={feature.href}
-                                className={cn(
-                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
-                                )}
-                              >
-                                <div className="flex items-center gap-2">
-                                  <span className="text-primary-500">{feature.icon}</span>
-                                  <span className="text-sm font-medium leading-none text-gray-900">
-                                    {feature.title}
-                                  </span>
-                                </div>
-                                <p className="line-clamp-2 text-sm leading-snug text-gray-500 mt-1">
-                                  {feature.description}
-                                </p>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
-            ) : (
-              <Link
-                href="/features/lead-management"
-                className="text-gray-700 hover:text-primary-500 px-4 py-2 text-sm font-medium transition-colors duration-300 relative group"
-              >
-                {translations.nav.features}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-[width] duration-300 group-hover:w-full" />
-              </Link>
-            )}
-
+          <nav className="hidden md:flex items-center space-x-1" aria-label={desktopNavLabel}>
+            <HeaderFeaturesMenuClient label={translations.nav.features} items={featureLinks} />
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -222,7 +156,6 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-4">
-              <LanguageSwitcher />
               <Link
                 href="https://app.nextleadin.com"
                 className="header-cta-button bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-3 text-sm font-medium border border-gray-200 hover:border-gray-300"
@@ -236,16 +169,13 @@ const Header = () => {
                 {translations.common.getStarted}
               </Link>
             </div>
-            <HamburgerButton
-              isOpen={mobileOpen}
-              onClick={() => setMobileOpen((v) => !v)}
-              aria-label={mobileOpen ? tHeader('menuClose') : tHeader('menuOpen')}
+            <HeaderClientControls
+              mobileMenuButtonId={mobileMenuButtonId}
+              mobileMenuPanelId={mobileMenuPanelId}
             />
           </div>
         </div>
       </div>
-
-      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
     </header>
   )
 }

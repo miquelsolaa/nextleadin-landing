@@ -38,7 +38,10 @@ export async function generateMetadata({ params }: FeaturePageProps): Promise<Me
     };
   }
 
-  const canonicalUrl = `https://nextleadin.com/${locale}/features/${slug}`;
+  const canonicalUrl =
+    locale === 'es'
+      ? `https://nextleadin.com/features/${slug}`
+      : `https://nextleadin.com/${locale}/features/${slug}`;
 
   return {
     title: feature.meta.title,
@@ -47,9 +50,10 @@ export async function generateMetadata({ params }: FeaturePageProps): Promise<Me
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'ca': `https://nextleadin.com/ca/features/${slug}`,
-        'es': `https://nextleadin.com/es/features/${slug}`,
-        'en': `https://nextleadin.com/en/features/${slug}`,
+        'x-default': `https://nextleadin.com/features/${slug}`,
+        'es-ES': `https://nextleadin.com/features/${slug}`,
+        'ca-ES': `https://nextleadin.com/ca/features/${slug}`,
+        'en-US': `https://nextleadin.com/en/features/${slug}`,
       },
     },
     openGraph: {
@@ -122,7 +126,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
     }
   }[validLocale];
 
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`;
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`;
 
   const breadcrumbItems = [
     { name: t.breadcrumbHome, url: `https://nextleadin.com${localePrefix}` },

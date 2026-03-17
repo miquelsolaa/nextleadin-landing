@@ -7,6 +7,7 @@ import { Link } from '@/i18n/routing'
 import { setRequestLocale } from 'next-intl/server'
 import { pricingPlans, faqData } from '@/lib/pricing-data'
 import { generateAIOptimizedMetadata, generateAIStructuredData } from '@/lib/seo-metadata'
+import { getAbsoluteHomeUrl, getAbsoluteLocaleUrl } from '@/lib/locale-url'
 import type { Metadata } from 'next'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -144,11 +145,11 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   const breadcrumbs = [
     { 
       name: validLocale === 'ca' ? 'Inici' : validLocale === 'es' ? 'Inicio' : 'Home', 
-      url: validLocale === 'ca' ? 'https://nextleadin.com' : `https://nextleadin.com/${validLocale}` 
+      url: getAbsoluteHomeUrl(validLocale as 'ca' | 'es' | 'en'),
     },
     { 
       name: validLocale === 'ca' ? 'Preus' : validLocale === 'es' ? 'Precios' : 'Pricing', 
-      url: validLocale === 'ca' ? 'https://nextleadin.com/pricing' : `https://nextleadin.com/${validLocale}/pricing` 
+      url: getAbsoluteLocaleUrl(validLocale as 'ca' | 'es' | 'en', '/pricing'),
     }
   ]
 

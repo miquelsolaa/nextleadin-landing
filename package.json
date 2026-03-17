@@ -7,7 +7,7 @@
     "build": "next build",
     "copy-sitemap": "node scripts/copy-sitemap.js",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "powershell -NoProfile -Command \"$env:ESLINT_USE_FLAT_CONFIG='false'; .\\\\node_modules\\\\.bin\\\\eslint.cmd .\"",
     "netlify:dev": "netlify dev",
     "netlify:build": "netlify build",
     "netlify:serve": "netlify serve"
@@ -39,13 +39,14 @@
     "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@netlify/plugin-nextjs": "^5.15.3",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.0.1",
-    "eslint": "^10.0.2",
-    "eslint-config-next": "^0.2.4",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "16.1.6",
     "postcss": "^8",
     "serwist": "^9.5.6",
     "sharp": "^0.34.5",
