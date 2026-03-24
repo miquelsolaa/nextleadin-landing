@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {useLocale} from 'next-intl'
 
 const StickyNavigation = () => {
@@ -29,7 +29,12 @@ const StickyNavigation = () => {
   const [activeSection, setActiveSection] = useState<string>(services[0]?.id || '')
 
   useEffect(() => {
+    let rafId = 0
     const handleScroll = () => {
+      if (rafId) return
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0
+
       const sections = services.map(service => {
         const element = document.getElementById(service.id)
         if (element) {
@@ -44,12 +49,17 @@ const StickyNavigation = () => {
 
       const activeSection = sections.find(section => section.isInView)
       if (activeSection) {
-        setActiveSection(activeSection.id)
+        setActiveSection((prev) => (prev === activeSection.id ? prev : activeSection.id))
       }
+      })
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (rafId) window.cancelAnimationFrame(rafId)
+    }
   }, [services])
 
   const scrollToSection = (sectionId: string) => {

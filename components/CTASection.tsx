@@ -64,15 +64,17 @@ const CTASection = () => {
             </div>
           </div>
 
-          <div className="relative">
-            <Image
-              src="/images/cta/mockup.png"
-              alt="Mockup de la plataforma NextLeadIn amb llistat de leads de negocis locals i mapa visual"
-              width={752}
-              height={423}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="w-full h-auto"
-            />
+          <div className="relative [perspective:1000px]">
+            <div className="[transform:perspective(1000px)_rotateY(-5deg)_rotateX(2deg)] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.1)] rounded-xl overflow-hidden">
+              <Image
+                src="/images/cta/mockup.png"
+                alt="Mockup de la plataforma NextLeadIn amb llistat de leads de negocis locals i mapa visual"
+                width={752}
+                height={423}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="w-full h-auto rounded-xl"
+              />
+            </div>
           </div>
         </div>
       </div>

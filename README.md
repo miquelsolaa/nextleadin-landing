@@ -2,7 +2,7 @@
 
 Una plataforma SaaS moderna i responsiva construïda amb Next.js 16 (App Router), React 19, TypeScript i TailwindCSS per a la generació de leads amb intel·ligència artificial.
 
-## 🚀 Característiques
+##  Característiques
 
 - **Next.js 16.1.6** amb App Router per a màxim rendiment
 - **React 19.2.4** amb les últimes millores de rendiment
@@ -195,7 +195,7 @@ El projecte està configurat en català per defecte, però es pot estendre fàci
 - Contingut traduït
 - URLs localitzades
 
-## 🚀 Desenvolupament
+##  Desenvolupament
 
 ### Scripts Disponibles
 

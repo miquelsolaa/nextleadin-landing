@@ -11,7 +11,15 @@ import {
 import {useLocale} from 'next-intl'
 import {ChevronDown} from 'lucide-react'
 
-export default function LanguageSwitcher() {
+type LanguageSwitcherProps = {
+  dropdownPlacement?: 'bottom' | 'top'
+  dropdownAlign?: 'left' | 'right'
+}
+
+export default function LanguageSwitcher({
+  dropdownPlacement = 'bottom',
+  dropdownAlign = 'right',
+}: LanguageSwitcherProps) {
   const pathname = usePathname()
   const params = useParams()
   const router = useRouter()
@@ -97,7 +105,11 @@ export default function LanguageSwitcher() {
       </div>
 
       <div
-        className={`absolute right-0 mt-2 w-36 bg-white shadow-lg border border-gray-200 rounded-md overflow-hidden transition transform origin-top-right ${open ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
+        className={`absolute w-36 bg-white shadow-lg border border-gray-200 rounded-md overflow-hidden transition transform ${
+          dropdownPlacement === 'top'
+            ? 'bottom-full mb-2 origin-bottom-right right-0'
+            : `top-full mt-2 ${dropdownAlign === 'left' ? 'left-0 origin-top-left' : 'right-0 origin-top-right'}`
+        } ${open ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}
         role="listbox"
         aria-label="Language selector"
       >

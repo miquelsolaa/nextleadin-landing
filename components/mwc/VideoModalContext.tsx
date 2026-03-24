@@ -1,11 +1,68 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { createContext, useCallback, useContext, useState, useEffect, useRef } from 'react'
 import { useLocale } from 'next-intl'
-import { X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+
+const VideoModalContent = dynamic(() => import('./VideoModalContent'), { ssr: false })
 
 const DEMO_VIDEO_URL = 'https://youtu.be/s3XfQRaZPyc'
+
+type AnimationStyle =
+  | 'from-bottom'
+  | 'from-center'
+  | 'from-top'
+  | 'from-left'
+  | 'from-right'
+  | 'fade'
+  | 'top-in-bottom-out'
+  | 'left-in-right-out'
+
+const animationVariants: Record<
+  AnimationStyle,
+  { initial: object; animate: object; exit: object }
+> = {
+  'from-bottom': {
+    initial: { y: '100%', opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    exit: { y: '100%', opacity: 0 },
+  },
+  'from-center': {
+    initial: { scale: 0.5, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 0.5, opacity: 0 },
+  },
+  'from-top': {
+    initial: { y: '-100%', opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    exit: { y: '-100%', opacity: 0 },
+  },
+  'from-left': {
+    initial: { x: '-100%', opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: '-100%', opacity: 0 },
+  },
+  'from-right': {
+    initial: { x: '100%', opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: '100%', opacity: 0 },
+  },
+  fade: {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  },
+  'top-in-bottom-out': {
+    initial: { y: '-100%', opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    exit: { y: '100%', opacity: 0 },
+  },
+  'left-in-right-out': {
+    initial: { x: '-100%', opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: '100%', opacity: 0 },
+  },
+}
 
 function getYouTubeVideoId(url: string): string | null {
   if (!url) return null
@@ -129,6 +186,9 @@ export function VideoModalProvider({ children }: { children: React.ReactNode }) 
     return () => container.removeEventListener('keydown', onKeyDownTrap)
   }, [modalOpen])
 
+  const animationStyle: AnimationStyle = 'from-center'
+  const selectedAnimation = animationVariants[animationStyle]
+
   return (
     <VideoModalContext.Provider
       value={{
@@ -140,51 +200,16 @@ export function VideoModalProvider({ children }: { children: React.ReactNode }) 
       }}
     >
       {children}
-      <AnimatePresence>
-        {modalOpen && embedUrl && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-            onClick={handleClose}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="video-modal-title"
-          >
-            <motion.div
-              ref={modalRef}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="relative w-full max-w-4xl aspect-video rounded-xl overflow-hidden bg-black shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <iframe
-                src={embedUrl}
-                title={t}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full"
-              />
-              <button
-                ref={closeButtonRef}
-                type="button"
-                onClick={handleClose}
-                className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                aria-label={closeText}
-              >
-                <X className="w-6 h-6" aria-hidden />
-              </button>
-              <span id="video-modal-title" className="sr-only">
-                {t}
-              </span>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <VideoModalContent
+        open={modalOpen}
+        embedUrl={embedUrl ?? ''}
+        title={t}
+        closeLabel={closeText}
+        animationVariants={selectedAnimation}
+        onClose={handleClose}
+        modalRef={modalRef}
+        closeButtonRef={closeButtonRef}
+      />
     </VideoModalContext.Provider>
   )
 }

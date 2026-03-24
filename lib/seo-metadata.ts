@@ -20,7 +20,7 @@ export interface LocalizedSEOConfig {
 export const seoConfig: Record<string, LocalizedSEOConfig> = {
   home: {
     ca: {
-      title: 'NextLeadIn — Leads de negocis locals que altres plataformes no tenen',
+      title: 'NextLeadIn - Leads de negocis locals que altres plataformes no tenen',
       description: 'Genera llistes de negocis locals amb telèfon, dades enriquides i anàlisi de ressenyes amb IA per preparar trucades en fred i vendre més B2B a PIMES que no trobes a LinkedIn.',
       keywords: [
         'leads negocis locals',
@@ -109,7 +109,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     es: {
-      title: 'NextLeadIn — Leads de negocios locales que otras plataformas no tienen',
+      title: 'NextLeadIn - Leads de negocios locales que otras plataformas no tienen',
       description: 'Genera listas de negocios locales en España con teléfono, datos enriquecidos y análisis de reseñas con IA para preparar llamadas en frío y cerrar más ventas B2B con PYMES que no están en LinkedIn.',
       keywords: [
         'leads negocios locales',
@@ -172,7 +172,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     en: {
-      title: 'NextLeadIn — Local business leads beyond LinkedIn',
+      title: 'NextLeadIn - Local business leads beyond LinkedIn',
       description: 'AI-powered platform that turns hard-to-find local businesses into ready-to-call lists, with phone numbers, enriched data and review analysis to prepare cold calls and close more B2B deals.',
       keywords: [
         'local business leads',
@@ -237,7 +237,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
   },
   blog: {
     ca: {
-      title: 'Blog NextLeadIn — Leads de negocis locals i IA',
+      title: 'Blog NextLeadIn - Leads de negocis locals i IA',
       description: 'Guies i articles sobre com generar leads de negocis locals que no són a LinkedIn, preparar trucades en fred amb IA i escalar vendes B2B.',
       keywords: [
         'blog leads negocis locals',
@@ -253,7 +253,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ogImage: '/images/og/blog-ca.jpg'
     },
     es: {
-      title: 'Blog NextLeadIn — Leads de negocios locales e IA',
+      title: 'Blog NextLeadIn - Leads de negocios locales e IA',
       description: 'Guías y artículos sobre cómo conseguir leads de negocios locales que no están en LinkedIn, preparar llamadas en frío con IA y escalar ventas B2B.',
       keywords: [
         'blog leads negocios locales',
@@ -269,7 +269,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ogImage: '/images/og/blog-es.jpg'
     },
     en: {
-      title: 'NextLeadIn Blog — Local business leads and AI',
+      title: 'NextLeadIn Blog - Local business leads and AI',
       description: 'Guides and articles on getting local business leads beyond LinkedIn, preparing AI-powered cold calls and scaling B2B sales.',
       keywords: [
         'local business leads blog',
@@ -433,7 +433,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
   },
   pricing: {
     ca: {
-      title: 'Preus i plans — Des de 79€/mes',
+      title: 'Preus i plans - Des de 79€/mes',
       description: 'Plans per trobar negocis locals. Local Business €79/mes (500 leads, dades enriquides, anàlisi ressenyes IA). Professional €199/mes. Enterprise a mida.',
       keywords: [
         'preus leads negocis locals',
@@ -563,7 +563,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     es: {
-      title: 'Precios y planes — Desde 79€/mes',
+      title: 'Precios y planes - Desde 79€/mes',
       description: 'Planes para encontrar negocios locales. Local Business €79/mes (500 leads, datos enriquecidos, análisis reseñas IA). Professional €199/mes. Enterprise a medida.',
       keywords: [
         'precios leads negocios locales',
@@ -669,7 +669,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
       ]
     },
     en: {
-      title: 'Pricing and plans — From €79/month',
+      title: 'Pricing and plans - From €79/month',
       description: 'Plans to find local businesses. Local Business €79/month (500 leads, enriched data, AI review analysis). Professional €199/month. Enterprise custom.',
       keywords: [
         'local business leads pricing',

@@ -4,6 +4,7 @@ import { setRequestLocale } from 'next-intl/server'
 import AIStructuredData from '@/components/AIStructuredData'
 import { getAllComparisons, getComparisonUrl } from '@/lib/comparisons'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import { getAbsoluteHomeUrl, getAbsoluteLocaleUrl } from '@/lib/locale-url'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -17,7 +18,7 @@ export default async function ComparadorIndexPage({ params }: { params: Promise<
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
 
   const comparisons = getAllComparisons(validLocale as 'ca' | 'es' | 'en')
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const t = {
     ca: {
@@ -61,11 +62,11 @@ export default async function ComparadorIndexPage({ params }: { params: Promise<
   const breadcrumbs = [
     {
       name: validLocale === 'ca' ? 'Inici' : validLocale === 'es' ? 'Inicio' : 'Home',
-      url: validLocale === 'ca' ? 'https://nextleadin.com' : `https://nextleadin.com/${validLocale}`
+      url: getAbsoluteHomeUrl(validLocale as 'ca' | 'es' | 'en'),
     },
     {
       name: validLocale === 'ca' ? 'Comparador' : validLocale === 'es' ? 'Comparador' : 'Comparisons',
-      url: validLocale === 'ca' ? 'https://nextleadin.com/compare' : `https://nextleadin.com/${validLocale}/compare`
+      url: getAbsoluteLocaleUrl(validLocale as 'ca' | 'es' | 'en', '/compare'),
     }
   ]
 

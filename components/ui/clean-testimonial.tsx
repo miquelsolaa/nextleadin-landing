@@ -24,6 +24,13 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       avatar: "/images/testimonials/ramon.webp"
     },
     {
+      quote: "Com a agència, NextLeadIn ens ha permès qualificar leads per als nostres clients de forma molt més eficient. L'anàlisi de ressenyes amb IA marca la diferència en prospecció.",
+      author: "Laia",
+      role: "Estratega de Màrqueting Digital",
+      company: "Codixperts",
+      avatar: "/images/testimonials/laia.webp"
+    },
+    {
       quote: "De 4 reunions/mes a 11. La taxa de contacte ha passat del 6% al 18% gràcies al context IA. ROI del primer mes: 12x.",
       author: "Marta Rovira",
       role: "Head of Sales",
@@ -43,13 +50,6 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       role: "Account Executive",
       company: "Consultoria",
       avatar: "/images/testimonials/nuria.webp"
-    },
-    {
-      quote: "Implementació en 2 dies. El pipeline ha crescut un 180% en 3 mesos. Cost per lead: 0,08€ vs 3€ que pagàvem abans.",
-      author: "Pol Garcia",
-      role: "Revenue Operations",
-      company: "Tech",
-      avatar: "/images/testimonials/pol.webp"
     }
   ],
   es: [
@@ -59,6 +59,13 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       role: "CTO",
       company: "CLManager",
       avatar: "/images/testimonials/ramon.webp"
+    },
+    {
+      quote: "Como agencia, NextLeadIn nos ha permitido calificar leads para nuestros clientes de forma mucho más eficiente. El análisis de reseñas con IA marca la diferencia en prospección.",
+      author: "Laia",
+      role: "Estratega de Marketing Digital",
+      company: "Codixperts",
+      avatar: "/images/testimonials/laia.webp"
     },
     {
       quote: "De 4 reuniones/mes a 11. La tasa de contacto ha pasado del 6% al 18% gracias al contexto IA. ROI del primer mes: 12x.",
@@ -80,13 +87,6 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       role: "Account Executive",
       company: "Consultoría",
       avatar: "/images/testimonials/nuria.webp"
-    },
-    {
-      quote: "Implementación en 2 días. El pipeline ha crecido un 180% en 3 meses. Coste por lead: 0,08€ vs 3€ que pagábamos antes.",
-      author: "Pol Garcia",
-      role: "Revenue Operations",
-      company: "Tech",
-      avatar: "/images/testimonials/pol.webp"
     }
   ],
   en: [
@@ -96,6 +96,13 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       role: "CTO",
       company: "CLManager",
       avatar: "/images/testimonials/ramon.webp"
+    },
+    {
+      quote: "As an agency, NextLeadIn has allowed us to qualify leads for our clients much more efficiently. AI review analysis makes all the difference in prospecting.",
+      author: "Laia",
+      role: "Digital Marketing Strategist",
+      company: "Codixperts",
+      avatar: "/images/testimonials/laia.webp"
     },
     {
       quote: "From 4 meetings/month to 11. Contact rate went from 6% to 18% thanks to AI context. First month ROI: 12x.",
@@ -117,13 +124,6 @@ const testimonialsData: Record<string, TestimonialData[]> = {
       role: "Account Executive",
       company: "Consulting",
       avatar: "/images/testimonials/nuria.webp"
-    },
-    {
-      quote: "Implementation in 2 days. Pipeline grew 180% in 3 months. Cost per lead: €0.08 vs €3 we were paying before.",
-      author: "Pol Garcia",
-      role: "Revenue Operations",
-      company: "Tech",
-      avatar: "/images/testimonials/pol.webp"
     }
   ]
 }

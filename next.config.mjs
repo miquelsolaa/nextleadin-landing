@@ -1,24 +1,44 @@
-/** @type {import('next').NextConfig} */
-const withNextIntl = require('next-intl/plugin')('./i18n/request.ts')
-const withPWA = require('@ducanh2912/next-pwa').default({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
+import createNextIntlPlugin from 'next-intl/plugin'
+import withSerwistInit from '@serwist/next'
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
+
+const withSerwist = withSerwistInit({
+  swSrc: 'app/sw.ts',
+  swDest: 'public/sw.js',
   disable: process.env.NODE_ENV === 'development',
 })
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   productionBrowserSourceMaps: false,
   typescript: {
     // TODO: treure quan es resolguin els errors TS (features, industries, resources, manifest, BlogJsonLd, BlogPostCTA, LanguageSwitcher, i18n/routing, etc.)
     ignoreBuildErrors: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ]
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
+      use: ['@svgr/webpack'],
+    })
+    return config
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -86,6 +106,8 @@ const nextConfig = {
       { source: '/blog/tag/sales%20leads', destination: '/blog/tag/lead-generation', permanent: true },
       { source: '/:locale(en|es|ca)/blog/tag/sales-leads', destination: '/:locale/blog/tag/lead-generation', permanent: true },
       { source: '/:locale(en|es|ca)/blog/tag/sales%20leads', destination: '/:locale/blog/tag/lead-generation', permanent: true },
+      { source: '/resources/guia-prospeccion-local', destination: '/resources/local-prospecting-guide', permanent: true },
+      { source: '/:locale(en|es|ca)/resources/guia-prospeccion-local', destination: '/:locale/resources/local-prospecting-guide', permanent: true },
     ]
   },
   outputFileTracingIncludes: {
@@ -95,4 +117,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPWA(withNextIntl(nextConfig))
+export default withSerwist(withNextIntl(nextConfig))

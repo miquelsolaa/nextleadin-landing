@@ -61,8 +61,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Canonical URLs: defaultLocale (es) has no prefix; /es/* redirects to /* so never include /es/
   const localePaths = [
     { locale: '', lang: 'es-ES' },
-    { locale: '/en', lang: 'en-US' },
-    { locale: '/ca', lang: 'ca-ES' }
+    { locale: '/ca', lang: 'ca-ES' },
+    { locale: '/en', lang: 'en-US' }
   ]
   
   const pages = [
@@ -78,6 +78,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/locations', priority: 0.7, changeFrequency: 'weekly' as const },
     { path: '/resources', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/resources/roi-calculator', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/resources/cold-calling-scripts', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/resources/local-prospecting-guide', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/privacy-policy', priority: 0.2, changeFrequency: 'yearly' as const },
     { path: '/terms-and-conditions', priority: 0.2, changeFrequency: 'yearly' as const },
     { path: '/cookie-policy', priority: 0.2, changeFrequency: 'yearly' as const },

@@ -4,12 +4,10 @@ import {notFound} from 'next/navigation'
 import {locales, type AppLocale} from '@/i18n/routing'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import ScrollAnimation from '@/components/ScrollAnimation'
-import SetHtmlLang from '@/components/SetHtmlLang'
+import FooterSitemap from '@/components/FooterSitemap'
 import AIStructuredData from '@/components/AIStructuredData'
-import LazyLayoutParts from '@/components/LazyLayoutParts'
-import { VideoModalProvider } from '@/components/mwc/VideoModalContext'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
+import { getAbsoluteHomeUrl } from '@/lib/locale-url'
 import '../globals.css'
 
 type Props = {
@@ -42,13 +40,14 @@ export default async function LocaleLayout({children, params}: {children: React.
 
   // Breadcrumbs per a la pàgina d'inici
   const breadcrumbs = [
-    { name: localeParam === 'ca' ? 'Inici' : localeParam === 'es' ? 'Inicio' : 'Home', url: 'https://nextleadin.com' }
+    {
+      name: localeParam === 'ca' ? 'Inici' : localeParam === 'es' ? 'Inicio' : 'Home',
+      url: getAbsoluteHomeUrl(localeParam as AppLocale),
+    },
   ]
 
   return (
     <NextIntlClientProvider messages={messages} locale={localeParam}>
-      <VideoModalProvider>
-        <SetHtmlLang locale={localeParam} />
         <AIStructuredData 
           page="home" 
           locale={localeParam as AppLocale} 
@@ -61,15 +60,14 @@ export default async function LocaleLayout({children, params}: {children: React.
           >
             {localeParam === 'ca' ? 'Salta al contingut' : localeParam === 'es' ? 'Saltar al contenido' : 'Skip to main content'}
           </a>
-          <Header />
+          <Header locale={localeParam as AppLocale} />
           <main id="main-content" className="flex-grow min-w-0 w-full overflow-x-hidden" tabIndex={-1}>
             {children}
           </main>
-          <Footer />
-          <ScrollAnimation />
-          <LazyLayoutParts />
+          <Footer>
+            <FooterSitemap locale={localeParam as AppLocale} />
+          </Footer>
         </div>
-      </VideoModalProvider>
     </NextIntlClientProvider>
   )
 }

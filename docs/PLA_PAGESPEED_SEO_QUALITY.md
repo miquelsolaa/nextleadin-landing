@@ -1,8 +1,39 @@
 # Pla d'Optimització: PageSpeed Insights 100, SEO i Qualitat Web
 
 > **Data:** 6 març 2025  
+> **Última auditoria pre-push:** 8 març 2025  
 > **Objectiu:** Notes màximes a Google PageSpeed Insights, pàgina ràpida i bon SEO arreu del projecte  
 > **Referències:** skills accessibility, best-practices, core-web-vitals, performance, seo, web-quality-audit
+
+---
+
+## Auditoria pre-push (8 març 2025)
+
+### Mètriques Lighthouse (localhost, mobile throttling)
+
+| Mètrica | Valor | Objectiu | Estat |
+|---------|-------|----------|-------|
+| **FCP** | 1.2 s | < 1.8 s | ✅ Correcte |
+| **LCP** | 1.8 s | < 2.5 s | ✅ Correcte |
+| **CLS** | 0.006 | < 0.1 | ✅ Correcte |
+| **Speed Index** | 3.9 s | < 3.4 s | ⚠️ Millorable |
+| **TBT** | 350 ms | < 200 ms | ⚠️ Millorable |
+
+### Correcció aplicada
+- **Preload hero:** S'ha canviat de `hero.svg` a `hero-new.png` (imatge real del HeroImageBlock) i s'ha afegit `media="(min-width: 1024px)"` per no preloadar a mòbil on l'hero està amagat.
+
+### Checklist ràpid pre-push
+- [x] Preload hero coincideix amb la imatge real
+- [x] productionBrowserSourceMaps: false
+- [x] Skip link, focus visible, prefers-reduced-motion
+- [x] Structured data, meta tags, sitemap, canonical
+- [x] next/image amb priority/fetchPriority per hero
+- [x] GA4 amb strategy="lazyOnload"
+- [x] LazyLayoutParts per ScrollToTopButton i CookieConsent
+
+### Recomanacions post-push
+1. **Speed Index:** Reduir TBT (third-party, long tasks) per millorar Speed Index.
+2. **Producció:** Verificar PageSpeed a https://nextleadin.com — els resultats de producció poden variar per CDN, caching i xarxa.
 
 ---
 
@@ -186,7 +217,7 @@ El projecte NextLeadIn (Next.js 16, React 19) ja té bones bases: `next/image` a
 1. **Preload hero només a homepage** – evita carregar imatge innecessària a altres rutes.
 2. **Eliminar/condicionar console.log** – evita soroll i possibles penalitzacions.
 3. **Dynamic import per ScrollToTopButton i CookieConsent** – redueix JS inicial.
-4. **Verificar mida de hero.png** – si >500KB, optimitzar.
+4. **Verificar mida de hero.  png** – si >500KB, optimitzar.
 
 ### Fase 2 – Impacte mitjà (2–3 dies)
 5. **Hybrid HeroSection** – títol/descripció en Server Component.

@@ -69,12 +69,22 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
           icon: 'calculator',
           title: 'Calculadora ROI',
           description: 'Calcula quant pots estalviar i guanyar amb NextLeadIn. Introdueix les teves dades i veu els resultats en menys de 2 minuts.'
+        },
+        {
+          slug: 'cold-calling-scripts',
+          icon: 'file-text',
+          title: 'Scripts de trucades en fred',
+          description: 'Plantilles provades per a trucades a negocis locals. Copia, adapta i truca.'
+        },
+        {
+          slug: 'local-prospecting-guide',
+          icon: 'bar-chart-2',
+          title: 'Guia de prospecció local',
+          description: 'Sectors, objecions i tècniques per vendre a negocis locals. El model LOCA i mètriques.'
         }
       ],
       comingSoonTitle: 'Properament',
       comingSoonItems: [
-        { icon: 'file-text', title: 'Scripts de trucades en fred', description: 'Plantilles provades per a trucades a negocis locals.' },
-        { icon: 'bar-chart-2', title: 'Guia de prospecció local', description: 'Sectors, objecions i tècniques per vendre a negocis locals.' },
         { icon: 'target', title: 'Quiz del prospector', description: 'Descobreix el teu perfil i com millorar.' }
       ]
     },
@@ -88,12 +98,22 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
           icon: 'calculator',
           title: 'Calculadora ROI',
           description: 'Calcula cuánto puedes ahorrar y ganar con NextLeadIn. Introduce tus datos y ve los resultados en menos de 2 minutos.'
+        },
+        {
+          slug: 'cold-calling-scripts',
+          icon: 'file-text',
+          title: 'Scripts de llamadas en frío',
+          description: 'Plantillas probadas para llamadas a negocios locales. Copia, adapta y llama.'
+        },
+        {
+          slug: 'local-prospecting-guide',
+          icon: 'bar-chart-2',
+          title: 'Guía de prospección local',
+          description: 'Sectores, objeciones y técnicas para vender a negocios locales. El modelo LOCA y métricas.'
         }
       ],
       comingSoonTitle: 'Próximamente',
       comingSoonItems: [
-        { icon: 'file-text', title: 'Scripts de llamadas en frío', description: 'Plantillas probadas para llamadas a negocios locales.' },
-        { icon: 'bar-chart-2', title: 'Guía de prospección local', description: 'Sectores, objeciones y técnicas para vender a negocios locales.' },
         { icon: 'target', title: 'Quiz del prospector', description: 'Descubre tu perfil y cómo mejorar.' }
       ]
     },
@@ -107,12 +127,22 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
           icon: 'calculator',
           title: 'ROI Calculator',
           description: 'Calculate how much you can save and earn with NextLeadIn. Enter your data and see results in under 2 minutes.'
+        },
+        {
+          slug: 'cold-calling-scripts',
+          icon: 'file-text',
+          title: 'Cold calling scripts',
+          description: 'Proven templates for local business calls. Copy, adapt and call.'
+        },
+        {
+          slug: 'local-prospecting-guide',
+          icon: 'bar-chart-2',
+          title: 'Local prospecting guide',
+          description: 'Sectors, objections and techniques to sell to local businesses. The LOCA model and metrics.'
         }
       ],
       comingSoonTitle: 'Coming Soon',
       comingSoonItems: [
-        { icon: 'file-text', title: 'Cold calling scripts', description: 'Proven templates for local business calls.' },
-        { icon: 'bar-chart-2', title: 'Local prospecting guide', description: 'Sectors, objections and techniques to sell to local businesses.' },
         { icon: 'target', title: 'Prospector quiz', description: 'Discover your profile and how to improve.' }
       ]
     }

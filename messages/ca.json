@@ -1,7 +1,21 @@
 {
   "header": {
     "menuOpen": "Obre el menú",
-    "menuClose": "Tanca el menú"
+    "menuClose": "Tanca el menú",
+    "mobileMenu": {
+      "ariaLabel": "Menú de navegació mòbil",
+      "closeOverlay": "Tanca el menú",
+      "close": "Tanca",
+      "searchPlaceholder": "Cerca el que necessites...",
+      "features": "Funcionalitats",
+      "sectors": "Sectors",
+      "recursos": "Recursos",
+      "pricing": "Preus",
+      "blog": "Blog",
+      "contacte": "Contacte",
+      "canviarIdioma": "Canviar idioma",
+      "provaGratis": "Prova gratis"
+    }
   },
   "common": {
     "brand": "NextLeadIn",
@@ -27,10 +41,15 @@
       "breadcrumbBlog": "Blog"
     },
     "contact": {
-      "title": "Parla amb el nostre equip",
-      "subtitle": "Leads de negocis locals: restaurants, tallers, comerços. Dades enriquides i anàlisi de ressenyes amb IA.",
-      "submit": "Envia la sol·licitud",
+      "eyebrow": "Parlem",
+      "title": "El teu mercat és més gran del que qualsevol eina et mostra.",
+      "titleHighlight": "qualsevol eina",
+      "subtitle": "Negocis locals que no estan a LinkedIn, Apollo ni ZoomInfo. Contacta amb el nostre equip i et mostrem quants n'hi ha a la teva zona.",
+      "submit": "Envia el missatge",
+      "submitNote": "Responem en menys de 24h hàbils.",
       "seePricing": "Consulta els preus",
+      "tabForm": "Enviar missatge",
+      "tabDemo": "Demandar demo en viu",
       "labels": {
         "name": "Nom complet",
         "email": "Correu electrònic",
@@ -40,17 +59,17 @@
         "region": "Zona d'interès",
         "sector": "Sector / nínxol",
         "message": "Com podem ajudar-te?",
-        "consent": "Accepto la"
+        "consent": "Accepto la",
+        "consentSuffix": " i que NextLeadIn em contacti per gestionar la meva sol·licitud."
       },
       "placeholders": {
-        "name": "Nom i cognoms",
-        "email": "el-teu@correu.com",
-        "company": "Nom de l'empresa",
+        "name": "Marc García",
+        "email": "marc@empresa.com",
+        "company": "Empresa S.L.",
         "phone": "+34 600 000 000",
-        "role": "Ex. Head of Sales",
-        "region": "Ex. Barcelona, Girona...",
-        "sector": "Ex. restaurants vegetarians, fabricants de pressfittings, doctors...",
-        "message": "Explica'ns objectius, volum de leads esperat i terminis."
+        "role": "Selecciona el càrrec…",
+        "sector": "A qui prospectes?",
+        "message": "Explica'ns breument quin tipus de negocis busques i en quina zona. Així la demo serà més útil per a tu."
       },
       "errors": {
         "name": "El nom és obligatori",
@@ -60,13 +79,66 @@
         "consent": "Cal acceptar la política de privacitat"
       },
       "success": {
-        "title": "Gràcies pel teu interès",
-        "description": "Hem rebut la teva sol·licitud. Un especialista et contactarà aviat per entendre el teu cas i proposar els propers passos.",
+        "title": "Missatge rebut",
+        "description": "Et escrivim en menys de 24 hores. Si prefereixes parlar abans, truca'ns.",
         "seePlans": "Veure plans i funcionalitats",
         "goToFaq": "Preguntes freqüents"
       },
       "submitError": "No hem pogut enviar el formulari. Torna-ho a provar.",
       "honeypot": "No emplenar si ets humà",
+      "proof": {
+        "db": "Base de dades exclusiva de negocis locals espanyols — restaurants, tallers, clíniques, acadèmies.",
+        "dbStrong": "Base de dades exclusiva",
+        "phone": "Telèfon verificat en cada lead. Sense pagar per contactes que no serveixen.",
+        "phoneStrong": "Telèfon verificat",
+        "ai": "Context IA per lead: ressenyes, valoració, horaris i senyals de compra abans de trucar.",
+        "aiStrong": "Context IA per lead",
+        "integration": "Integració directa amb HubSpot, Pipedrive, Salesforce i n8n.",
+        "integrationStrong": "Integració directa"
+      },
+      "stats": {
+        "businesses": "Negocis locals",
+        "meetings": "Reunions/mes mitjana",
+        "demo": "Demo en viu"
+      },
+      "demo": {
+        "headline": "Demo en viu · 15 minuts",
+        "sub": "Et mostrem en temps real quants negocis locals hi ha a la teva zona que no apareixen a Apollo, ZoomInfo ni LinkedIn — amb telèfon i context IA inclòs.",
+        "item1": "Cerca en viu de negocis al teu sector i ciutat.",
+        "item1Strong": "Cerca en viu",
+        "item2": "Informe IA per lead — ressenyes, valoració i senyals de compra.",
+        "item2Strong": "Informe IA per lead",
+        "item3": "Comparativa directa amb les dades que tens avui al teu CRM.",
+        "item4": "Integració amb el teu stack actual (HubSpot, Pipedrive, n8n…).",
+        "duration": "Durada",
+        "durationVal": "15 minuts",
+        "format": "Format",
+        "formatVal": "Videotrucada",
+        "cost": "Cost",
+        "costVal": "Gratis",
+        "commitment": "Compromís",
+        "commitmentVal": "Cap",
+        "cta": "Reservar demo ara",
+        "note": "Tria tu l'hora. Disponible Dl–Dv 9:00–18:00."
+      },
+      "roles": {
+        "director": "Director Comercial",
+        "salesManager": "Sales Manager",
+        "ceo": "CEO / Fundador",
+        "sdr": "SDR / BDR",
+        "marketing": "Responsable de Marketing",
+        "other": "Altre"
+      },
+      "sectors": {
+        "restaurants": "Restaurants & Hostaleria",
+        "dentists": "Clíniques Dentals",
+        "workshops": "Tallers & Automoció",
+        "realEstate": "Immobiliàries",
+        "academies": "Acadèmies & Formació",
+        "beauty": "Estètica & Spa",
+        "various": "Varis sectors",
+        "other": "Altre"
+      },
       "aside": {
         "directTitle": "Contacte directe",
         "emailLabel": "Email",
@@ -170,6 +242,10 @@
         "clManager": {
           "name": "CLManager",
           "description": "SaaS per a gestió d'òptiques"
+        },
+        "codixperts": {
+          "name": "Codixperts",
+          "description": "Agència de desenvolupament web i software"
         }
       },
       "metrics": {
@@ -189,7 +265,7 @@
     }
   },
   "metadata": {
-    "title": "NextLeadIn — Leads de negocis locals",
+    "title": "NextLeadIn - Leads de negocis locals",
     "description": "Troba TOTS els negocis locals (restaurants, tallers, comerços). Dades enriquides i anàlisi de ressenyes amb IA. Alternativa a LinkedIn per negocis tradicionals.",
     "keywords": "leads negocis locals,negocis locals,generació de leads,restaurants tallers comerços,prospecció local,IA ressenyes,segmentació geogràfica"
   },

@@ -4,10 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NextLeadIn CMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- 3.0.0 per compatibilitat amb createClass i h (3.10+ els ha eliminat) -->
+    <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
@@ -18,6 +20,135 @@
           }
         });
       }
+
+      (function () {
+        var CMS = window.CMS;
+        if (!CMS) return;
+
+        var base = (window.location.origin || "") + "/admin";
+        var fontsUrl = "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Syne:wght@400;500;600;700&display=swap";
+
+        /* Fonts i CSS: registrar abans del template per evitar FOUC al preview */
+        CMS.registerPreviewStyle(fontsUrl);
+        CMS.registerPreviewStyle(base + "/preview.css");
+
+        var BlogPostPreview = CMS.createClass({
+          render: function () {
+            var entry = this.props.entry;
+            var widgetFor = this.props.widgetFor;
+            var getAsset = this.props.getAsset;
+
+            var title = entry.getIn(["data", "title"]) || "";
+            var date = entry.getIn(["data", "date"]);
+            var author = entry.getIn(["data", "author"]) || "";
+            var imageField = entry.getIn(["data", "image"]);
+            var categories = entry.getIn(["data", "categories"]);
+            var tags = entry.getIn(["data", "tags"]);
+            var showCTA = entry.getIn(["data", "showCTA"]);
+
+            var imageSrc = null;
+            if (imageField) {
+              if (typeof imageField === "string" && (imageField.startsWith("http") || imageField.startsWith("/"))) {
+                imageSrc = imageField;
+              } else if (getAsset) {
+                try {
+                  var asset = getAsset(imageField);
+                  imageSrc = asset ? (asset.url || asset.toString()) : null;
+                } catch (e) {
+                  imageSrc = null;
+                }
+              }
+            }
+
+            var dateStr = "";
+            if (date) {
+              try {
+                var d = new Date(date);
+                dateStr = d.toLocaleDateString("ca-ES", { year: "numeric", month: "long", day: "numeric" });
+              } catch (e) {
+                dateStr = String(date);
+              }
+            }
+
+            var toArr = function (v) {
+              return v && (v.toArray ? v.toArray() : Array.isArray(v) ? v : []);
+            };
+            var catArr = toArr(categories);
+            var tagArr = toArr(tags);
+
+            return CMS.h(
+              "div",
+              { className: "blog-preview" },
+              catArr.length > 0
+                ? CMS.h(
+                    "div",
+                    { className: "categories", style: { marginBottom: "1rem" } },
+                    catArr.map(function (c, i) {
+                      return CMS.h("span", { key: i, className: "category-tag" }, String(c));
+                    })
+                  )
+                : null,
+              CMS.h("h1", {}, title),
+              CMS.h(
+                "div",
+                { className: "meta" },
+                dateStr + (author ? " · " + author : "")
+              ),
+              imageSrc
+                ? CMS.h("img", {
+                    src: imageSrc,
+                    alt: title,
+                    className: "featured-image"
+                  })
+                : null,
+              CMS.h(
+                "div",
+                { className: "prose" },
+                widgetFor("body")
+              ),
+              showCTA !== false
+                ? CMS.h(
+                    "div",
+                    { className: "cta-block" },
+                    CMS.h(
+                      "div",
+                      { className: "cta-inner" },
+                      CMS.h(
+                        "div",
+                        { className: "cta-kicker" },
+                        CMS.h("div", { className: "cta-kicker-icon" }, ""),
+                        CMS.h("span", {}, "Comença a generar leads avui")
+                      ),
+                      CMS.h("h3", {}, "Preparat per trobar més clients potencials?"),
+                      CMS.h("p", { className: "cta-desc" }, "Descobreix com NextLeadIn pot ajudar-te a trobar negocis locals, analitzar ressenyes amb IA i tancar més vendes."),
+                      CMS.h(
+                        "div",
+                        { className: "cta-buttons" },
+                        CMS.h("a", { href: "#", className: "cta-btn-primary" }, "Provar 7 dies gratis"),
+                        CMS.h("a", { href: "#", className: "cta-btn-secondary" }, "Veure plans i preus")
+                      )
+                    )
+                  )
+                : null,
+              tagArr.length > 0
+                ? CMS.h(
+                    "div",
+                    { className: "tags", style: { display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.5rem", marginTop: "1.5rem" } },
+                    [CMS.h("span", { key: "label", style: { fontSize: "0.875rem", color: "#6b7280" } }, "Tags: ")].concat(
+                      tagArr.map(function (tag, i) {
+                        return CMS.h("span", { key: i, className: "tag" }, String(tag));
+                      })
+                    )
+                  )
+                : null
+            );
+          }
+        });
+
+        CMS.registerPreviewTemplate("blog-ca", BlogPostPreview);
+        CMS.registerPreviewTemplate("blog-en", BlogPostPreview);
+        CMS.registerPreviewTemplate("blog-es", BlogPostPreview);
+      })();
     </script>
   </body>
 </html>

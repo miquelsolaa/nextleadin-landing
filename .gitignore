@@ -40,3 +40,7 @@ next-env.d.ts
 
 # Generated sitemap (created during build)
 /public/sitemap.xml
+
+# Serwist (Service Worker generat)
+public/sw*
+public/swe-worker*

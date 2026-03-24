@@ -12,6 +12,7 @@ import RecommendedPosts from '@/components/RecommendedPosts'
 import CategoryTag from '@/components/CategoryTag'
 import BlogTagLink from '@/components/BlogTagLink'
 import { getTagSlug } from '@/lib/blog-tags'
+import { getAuthorInfo, type AuthorLocale } from '@/lib/authors'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CalendarDays, User, ArrowLeft, ArrowRight } from 'lucide-react'
@@ -126,7 +127,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     // Posts recents per al sidebar
     const recentPosts = allPosts.slice(0, 3).map(p => ({
       title: p.title,
-      image: p.image || '/images/hero/hero.png',
+      image: p.image || '/images/hero/hero.svg',
       slug: p.slug
     }))
 
@@ -299,30 +300,40 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                   {/* Secció d'autor */}
                   <div className="px-8 pb-8 border-t border-gray-100">
-                    <div className="author-box-wrapper flex items-start space-x-4 pt-8">
-                      <div className="author-avatar">
-                        <Image
-                          alt={post.author}
-                          src={`https://ui-avatars.com/api/?name=${encodeURIComponent(post.author)}&size=120&background=10b981&color=fff`}
-                          width={80}
-                          height={80}
-                          sizes="80px"
-                          className="w-20 h-20 rounded-full"
-                        />
-                      </div>
-                      <div className="author-desc-wrapper flex-1">
-                        <div className="author-name">
-                        <h5 className="text-lg font-semibold text-gray-900">
-                          {post.author || 'Unknown'}
-                        </h5>
+                    {(() => {
+                      const authorInfo = getAuthorInfo(post.author, validLocale as AuthorLocale)
+                      const authorName = post.author || 'Unknown'
+                      const authorAvatar = authorInfo?.image
+                        ? authorInfo.image
+                        : `https://ui-avatars.com/api/?name=${encodeURIComponent(authorName)}&size=120&background=10b981&color=fff`
+                      const authorDescription = authorInfo?.description?.[validLocale as AuthorLocale] ?? t('authorDescription')
+                      return (
+                        <div className="author-box-wrapper flex items-start space-x-4 pt-8">
+                          <div className="author-avatar">
+                            <Image
+                              alt={authorName}
+                              src={authorAvatar}
+                              width={80}
+                              height={80}
+                              sizes="80px"
+                              className="w-20 h-20 rounded-full object-cover"
+                            />
+                          </div>
+                          <div className="author-desc-wrapper flex-1">
+                            <div className="author-name">
+                              <h5 className="text-lg font-semibold text-gray-900">
+                                {authorName}
+                              </h5>
+                            </div>
+                            <div className="author-description">
+                              <p className="text-gray-600 mt-2">
+                                {authorDescription}
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="author-description">
-                          <p className="text-gray-600 mt-2">
-                            {t('authorDescription')}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                      )
+                    })()}
                   </div>
 
                   {/* Navegació entre posts */}

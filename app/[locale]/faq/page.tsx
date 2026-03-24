@@ -4,6 +4,8 @@ import { setRequestLocale } from 'next-intl/server'
 import { getTranslations } from 'next-intl/server'
 import { faqSections, navigationItems, pageTexts } from '@/lib/faq-data'
 import { generateAIOptimizedMetadata, generateAIStructuredData } from '@/lib/seo-metadata'
+import { Link } from '@/i18n/routing'
+import { getAbsoluteHomeUrl, getAbsoluteLocaleUrl } from '@/lib/locale-url'
 import type { Metadata } from 'next'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -24,11 +26,11 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
   const breadcrumbs = [
     { 
       name: validLocale === 'ca' ? 'Inici' : validLocale === 'es' ? 'Inicio' : 'Home', 
-      url: validLocale === 'ca' ? 'https://nextleadin.com' : `https://nextleadin.com/${validLocale}` 
+      url: getAbsoluteHomeUrl(validLocale as 'ca' | 'es' | 'en'),
     },
     { 
       name: validLocale === 'ca' ? 'Preguntes freqüents' : validLocale === 'es' ? 'Preguntas frecuentes' : 'FAQ', 
-      url: validLocale === 'ca' ? 'https://nextleadin.com/faq' : `https://nextleadin.com/${validLocale}/faq` 
+      url: getAbsoluteLocaleUrl(validLocale as 'ca' | 'es' | 'en', '/faq'),
     }
   ]
 
@@ -47,7 +49,12 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
           <h1 className="text-4xl font-bold text-gray-900 mb-6">{pageTexts[validLocale].title}</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             {pageTexts[validLocale].subtitle}<br />
-            {pageTexts[validLocale].contactText} <strong><a href="/contact" className="text-green-600 hover:text-green-700">{pageTexts[validLocale].contactLink}</a></strong>.
+            {pageTexts[validLocale].contactText}{' '}
+            <strong>
+              <Link href="/contact" className="text-green-600 hover:text-green-700">
+                {pageTexts[validLocale].contactLink}
+              </Link>
+            </strong>.
           </p>
         </div>
       </div>

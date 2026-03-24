@@ -1,5 +1,6 @@
 import type { BlogPost } from '@/lib/blog'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
+import { getAuthorInfo, type AuthorLocale } from '@/lib/authors'
 
 interface BlogJsonLdProps {
   post: BlogPost
@@ -10,6 +11,7 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
   const postUrl = getBlogPostUrl(post.slug, locale)
   const baseUrl = 'https://nextleadin.com'
   const fullUrl = `${baseUrl}${postUrl}`
+  const localePath = locale === 'es' ? '' : `/${locale}`
   
   // Processar imatge amb URL completa
   const imageUrl = post.image 
@@ -23,6 +25,10 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
   // Determinar idioma
   const inLanguage = locale === 'ca' ? 'ca-ES' : locale === 'es' ? 'es-ES' : 'en-US'
   
+  const authorInfo = getAuthorInfo(post.author, locale as AuthorLocale)
+  const authorName = post.author || 'NextLeadIn Team'
+  const authorImageUrl = authorInfo?.image ? `${baseUrl}${authorInfo.image}` : undefined
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -40,9 +46,15 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
     ],
     author: {
       '@type': 'Person',
-      name: post.author || 'NextLeadIn Team',
+      name: authorName,
       url: `${baseUrl}`,
-      jobTitle: 'Content Creator',
+      jobTitle: authorInfo?.jobTitle ?? 'Content Creator',
+      ...(authorImageUrl && {
+        image: {
+          '@type': 'ImageObject',
+          url: authorImageUrl,
+        },
+      }),
       worksFor: {
         '@type': 'Organization',
         name: 'NextLeadIn',
@@ -97,13 +109,13 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
             '@type': 'ListItem',
             position: 1,
             name: locale === 'ca' ? 'Inici' : locale === 'es' ? 'Inicio' : 'Home',
-            item: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}`,
+            item: `${baseUrl}${localePath}`,
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Blog',
-            item: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}/blog`,
+            item: `${baseUrl}${localePath}/blog`,
           },
           {
             '@type': 'ListItem',
@@ -130,7 +142,7 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
     isPartOf: {
       '@type': 'Blog',
       name: 'NextLeadIn Blog',
-      url: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}/blog`,
+      url: `${baseUrl}${localePath}/blog`,
     },
     // Afegir breadcrumbs si estan disponibles (millorat)
     breadcrumb: {
@@ -140,13 +152,13 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
           '@type': 'ListItem',
           position: 1,
           name: locale === 'ca' ? 'Inici' : locale === 'es' ? 'Inicio' : 'Home',
-          item: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}`,
+          item: `${baseUrl}${localePath}`,
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Blog',
-          item: `${baseUrl}${locale === 'ca' ? '' : `/${locale}`}/blog`,
+          item: `${baseUrl}${localePath}/blog`,
         },
         {
           '@type': 'ListItem',

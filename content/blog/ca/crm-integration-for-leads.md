@@ -3,7 +3,7 @@ title: "Potencia les teves Vendes B2B: La Integració de CRM per a la Generació
 description: "Descobreix com la integració perfecta del CRM impulsa la teva generació de leads B2B, permetent l'automatització de vendes amb IA i la prospecció hipersegmentada per als usuaris de NextLeadIn."
 date: "2026-03-06"
 image: "https://images.pexels.com/photos/39559/ipad-mockup-apple-business-39559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-author: "NextLeadIn Team"
+author: "Laura Sánchez"
 featuredImage: "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg"
 categories: ["CRM Integration"]
 tags: ["CRM Integration", "Lead Generation", "AI for Sales"]
@@ -68,7 +68,7 @@ Per assegurar una integració exitosa, estableix regles clares de govern de dade
 
 La convergència de la generació de leads amb IA i una robusta `integració de CRM` està remodelant el panorama de les vendes B2B. En eliminar tasques manuals, millorar la qualitat de les dades i automatitzar fluxos de treball crítics, plataformes com NextLeadIn permeten als equips de vendes ser més productius, precisos i rendibles. Per als equips de vendes B2B, representants comercials i empreses SaaS que busquen escalar les seves estratègies outbound, invertir en una integració de CRM sense fissures no és només una actualització – és una necessitat competitiva. Aprofita NextLeadIn per convertir el teu CRM en un motor de vendes dinàmic impulsat per IA.
 
-> **🚀 Vols fer créixer el teu equip comercial?**
+> ** Vols fer créixer el teu equip comercial?**
 >
 > Descobreix com NextLeadIn pot ajudar-te a trobar leads B2B d'alta qualitat amb prospecció impulsada per IA. Comença amb 100 leads gratis avui.
 >

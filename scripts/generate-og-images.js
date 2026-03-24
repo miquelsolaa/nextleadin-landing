@@ -309,7 +309,7 @@ Utilitza Google Search Console per monitorar:
 
 // Executar script
 function main() {
-  console.log('🚀 Generant configuració OpenGraph per a NextLeadIn...')
+  console.log(' Generant configuració OpenGraph per a NextLeadIn...')
   
   writeConfigFile()
   writeTypesFile()
