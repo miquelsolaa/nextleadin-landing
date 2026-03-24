@@ -9,7 +9,7 @@ import {
   getBlogPostUrl,
   type Locale
 } from '@/lib/blog'
-import { getCategoryCanonicalFromSlug, getCategoryLabelKey } from '@/lib/blog-categories'
+import { getCategoryCanonicalFromSlug, getCategoryLabelKey, getCategorySlug } from '@/lib/blog-categories'
 import BlogPageSection from '@/components/BlogPageSection'
 import BlogSearch from '@/components/BlogSearch'
 import BlogCategories from '@/components/BlogCategories'
@@ -32,7 +32,7 @@ export async function generateStaticParams() {
     for (const cat of categories) {
       params.push({
         locale,
-        category: cat.name.toLowerCase()
+        category: getCategorySlug(cat.name)
       })
     }
   }
@@ -48,16 +48,21 @@ const categoryTitleSuffix: Record<string, string> = {
 export async function generateMetadata({ params }: BlogCategoryPageProps): Promise<Metadata> {
   const { locale, category: categorySlug } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
-  const canonical = getCategoryCanonicalFromSlug(decodeURIComponent(categorySlug))
+  const decodedSlug = decodeURIComponent(categorySlug).trim()
+  const canonical = getCategoryCanonicalFromSlug(decodedSlug)
   if (!canonical) {
     return { title: 'Category' }
   }
   const t = await getTranslations('blog')
   const key = getCategoryLabelKey(canonical)
   const categoryTitle = key ? t(`categoryLabels.${key}` as 'categoryLabels.leadGeneration') : canonical
+  const slugForUrl = getCategorySlug(canonical)
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
+  const canonicalUrl = `https://nextleadin.com${localePrefix}/blog/category/${slugForUrl}`
   return {
     title: `${categoryTitle} ${categoryTitleSuffix[validLocale]}`,
-    description: t('description')
+    description: t('description'),
+    alternates: { canonical: canonicalUrl },
   }
 }
 
@@ -65,9 +70,8 @@ export default async function BlogCategoryPage({ params }: BlogCategoryPageProps
   const { locale, category: categorySlug } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? (locale as Locale) : 'ca'
   const categoryParam = decodeURIComponent(categorySlug).trim()
-
-  const posts = getPostsByCategory(categoryParam, validLocale)
   const canonicalCategory = getCategoryCanonicalFromSlug(categoryParam)
+  const posts = getPostsByCategory(canonicalCategory || categoryParam, validLocale)
 
   if (posts.length === 0 && !canonicalCategory) {
     notFound()

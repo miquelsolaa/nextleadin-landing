@@ -8,6 +8,7 @@ import {
   type Locale
 } from '@/lib/blog'
 import { getTagSlug } from '@/lib/blog-tags'
+import { getCategorySlug } from '@/lib/blog-categories'
 import { getAllComparisonSlugs, getComparisonUrl } from '@/lib/comparisons'
 import { getAllIndustrySlugs } from '@/lib/industries'
 import { getAllSolutionSlugs } from '@/lib/solutions'
@@ -16,14 +17,14 @@ import { getAllLocationSlugs } from '@/lib/locations'
 
 export const dynamic = 'force-static'
 
-/** Helper per a l'URL de categoria/tag del blog segons locale (consistent amb blog-utils) */
+/** Helper per a l'URL de categoria/tag del blog segons locale (consistent amb blog-utils, defaultLocale es) */
 function getBlogArchiveUrl(
   type: 'category' | 'tag',
   slug: string,
   locale: Locale
 ): string {
   const path = `/blog/${type}/${slug}`
-  if (locale === 'ca') return path
+  if (locale === 'es') return path
   return `/${locale}${path}`
 }
 
@@ -57,11 +58,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  // Generar URLs per a cada idioma
+  // Canonical URLs: defaultLocale (es) has no prefix; /es/* redirects to /* so never include /es/
   const localePaths = [
-    { locale: '', lang: 'ca-ES' },
+    { locale: '', lang: 'es-ES' },
     { locale: '/en', lang: 'en-US' },
-    { locale: '/es', lang: 'es-ES' }
+    { locale: '/ca', lang: 'ca-ES' }
   ]
   
   const pages = [
@@ -106,7 +107,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     const categories = getAllCategories(locale)
     for (const cat of categories) {
-      const slug = encodeURIComponent(cat.name.toLowerCase())
+      const slug = getCategorySlug(cat.name)
       const key = `${locale}:${slug}`
       if (seenCategories.has(key)) continue
       seenCategories.add(key)
@@ -141,7 +142,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Industries URLs (multiidioma)
   const allIndustrySlugs = getAllIndustrySlugs()
   const industryUrls = allIndustrySlugs.map(({ slug, locale }) => {
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     return {
       url: `${baseUrl}${localePath}/industries/${slug}`,
       lastModified: new Date(),
@@ -153,7 +154,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Solutions URLs (multiidioma)
   const allSolutionSlugsData = getAllSolutionSlugs()
   const solutionUrls = allSolutionSlugsData.map(({ slug, locale }) => {
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     return {
       url: `${baseUrl}${localePath}/solutions/${slug}`,
       lastModified: new Date(),
@@ -165,7 +166,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Features URLs (multiidioma)
   const allFeatureSlugsData = getAllFeatureSlugs()
   const featureUrls = locales.flatMap(locale => {
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     return allFeatureSlugsData.map(slug => ({
       url: `${baseUrl}${localePath}/features/${slug}`,
       lastModified: new Date(),
@@ -177,7 +178,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Locations URLs (multiidioma)
   const allLocationSlugsData = getAllLocationSlugs()
   const locationUrls = allLocationSlugsData.map(({ slug, locale }) => {
-    const localePath = locale === 'ca' ? '' : `/${locale}`
+    const localePath = locale === 'es' ? '' : `/${locale}`
     return {
       url: `${baseUrl}${localePath}/locations/${slug}`,
       lastModified: new Date(),

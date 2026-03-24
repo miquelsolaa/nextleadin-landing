@@ -12,7 +12,7 @@ interface BlogTagsProps {
 const BlogTags = ({ tags }: BlogTagsProps) => {
   const t = useTranslations('blog')
   const locale = (useLocale() as Locale) ?? 'ca'
-  const blogBaseUrl = locale === 'ca' ? '/blog' : `/${locale}/blog`
+  const blogBaseUrl = locale === 'es' ? '/blog' : `/${locale}/blog`
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">

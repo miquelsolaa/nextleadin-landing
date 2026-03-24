@@ -184,7 +184,7 @@ export function getAllLocationSlugs(
 }
 
 export function getLocationUrl(slug: string, locale: LocationLocale): string {
-  if (locale === 'ca') {
+  if (locale === 'es') {
     return `/locations/${normalizeSlug(slug)}`
   }
   return `/${locale}/locations/${normalizeSlug(slug)}`

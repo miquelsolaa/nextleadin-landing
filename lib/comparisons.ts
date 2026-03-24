@@ -172,7 +172,7 @@ export function getAllComparisonSlugs(
 }
 
 export function getComparisonUrl(slug: string, locale: ComparisonLocale): string {
-  if (locale === 'ca') {
+  if (locale === 'es') {
     return `/compare/${normalizeSlug(slug)}`
   }
   return `/${locale}/compare/${normalizeSlug(slug)}`

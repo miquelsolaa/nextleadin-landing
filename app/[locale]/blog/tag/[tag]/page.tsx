@@ -50,16 +50,20 @@ const tagTitleSuffix: Record<string, string> = {
 export async function generateMetadata({ params }: BlogTagPageProps): Promise<Metadata> {
   const { locale, tag: tagSlug } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
-  const canonical = getTagCanonicalFromSlug(decodeURIComponent(tagSlug))
-  if (!canonical) {
+  const canonicalTag = getTagCanonicalFromSlug(decodeURIComponent(tagSlug))
+  if (!canonicalTag) {
     return { title: 'Tag' }
   }
   const t = await getTranslations('blog')
-  const key = getTagLabelKey(canonical)
-  const tagTitle = key ? t(`tagLabels.${key}` as 'tagLabels.leadGeneration') : canonical
+  const key = getTagLabelKey(canonicalTag)
+  const tagTitle = key ? t(`tagLabels.${key}` as 'tagLabels.leadGeneration') : canonicalTag
+  const slugForUrl = getTagSlug(canonicalTag)
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
+  const canonicalUrl = `https://nextleadin.com${localePrefix}/blog/tag/${slugForUrl}`
   return {
     title: `${tagTitle} ${tagTitleSuffix[validLocale]}`,
-    description: t('description')
+    description: t('description'),
+    alternates: { canonical: canonicalUrl },
   }
 }
 

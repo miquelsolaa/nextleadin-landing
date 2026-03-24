@@ -190,7 +190,7 @@ export function getAllIndustrySlugs(
 }
 
 export function getIndustryUrl(slug: string, locale: IndustryLocale): string {
-  if (locale === 'ca') {
+  if (locale === 'es') {
     return `/industries/${normalizeSlug(slug)}`
   }
   return `/${locale}/industries/${normalizeSlug(slug)}`

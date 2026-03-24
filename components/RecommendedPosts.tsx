@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import type { BlogPostMeta } from '@/lib/blog'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
+import { getCategorySlug } from '@/lib/blog-categories'
 import { CalendarDays } from 'lucide-react'
 import CategoryTag from './CategoryTag'
 
@@ -72,7 +73,7 @@ export default function RecommendedPosts({ posts, currentSlug }: RecommendedPost
                     <CategoryTag
                       key={index}
                       category={category}
-                      href={`${currentLocale === 'ca' ? '' : `/${currentLocale}`}/blog/category/${category.toLowerCase()}`}
+                      href={`${currentLocale === 'es' ? '' : `/${currentLocale}`}/blog/category/${getCategorySlug(category)}`}
                       variant="outline"
                       size="sm"
                     />

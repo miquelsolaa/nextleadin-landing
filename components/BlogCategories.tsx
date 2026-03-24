@@ -2,7 +2,7 @@
 
 import Tag from './Tag'
 import { useTranslations, useLocale } from 'next-intl'
-import { getCategoryLabelKey } from '@/lib/blog-categories'
+import { getCategoryLabelKey, getCategorySlug } from '@/lib/blog-categories'
 import type { Locale } from '@/lib/blog-utils'
 
 interface Category {
@@ -17,7 +17,7 @@ interface BlogCategoriesProps {
 const BlogCategories = ({ categories }: BlogCategoriesProps) => {
   const t = useTranslations('blog')
   const locale = (useLocale() as Locale) ?? 'ca'
-  const blogBaseUrl = locale === 'ca' ? '/blog' : `/${locale}/blog`
+  const blogBaseUrl = locale === 'es' ? '/blog' : `/${locale}/blog`
 
   const getCategoryLabel = (name: string): string => {
     const key = getCategoryLabelKey(name)
@@ -33,7 +33,7 @@ const BlogCategories = ({ categories }: BlogCategoriesProps) => {
             <Tag
               key={category.name}
               tag={`${getCategoryLabel(category.name)} (${category.count})`}
-              href={`${blogBaseUrl}/category/${encodeURIComponent(category.name.toLowerCase())}`}
+              href={`${blogBaseUrl}/category/${getCategorySlug(category.name)}`}
               variant="outline"
               size="sm"
             />

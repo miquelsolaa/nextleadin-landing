@@ -12,6 +12,23 @@
 [functions]
   included_files = ["content/**/*"]
 
+# Canonical URL redirects (fix GSC "Page with redirect" indexing)
+[[redirects]]
+  from = "http://nextleadin.com/*"
+  to = "https://nextleadin.com/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.nextleadin.com/*"
+  to = "https://nextleadin.com/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "http://www.nextleadin.com/*"
+  to = "https://nextleadin.com/:splat"
+  status = 301
+  force = true
+
 # Configuració per DecapCMS
 [[redirects]]
   from = "/admin"

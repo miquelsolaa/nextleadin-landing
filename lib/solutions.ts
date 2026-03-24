@@ -190,7 +190,7 @@ export function getAllSolutionSlugs(
 }
 
 export function getSolutionUrl(slug: string, locale: SolutionLocale): string {
-  if (locale === 'ca') {
+  if (locale === 'es') {
     return `/solutions/${normalizeSlug(slug)}`
   }
   return `/${locale}/solutions/${normalizeSlug(slug)}`
