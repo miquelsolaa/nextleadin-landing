@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
+import { cn } from '@/lib/utils'
 
 interface SlideItem {
   type: 'client' | 'metric'
@@ -10,6 +12,7 @@ interface SlideItem {
 
 const TrustedBySection = () => {
   const t = useTranslations('home.trustedBy')
+  const reduceMotion = usePrefersReducedMotion()
 
   const clients = [
     {
@@ -89,14 +92,14 @@ const TrustedBySection = () => {
           <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-gray-50/90 to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-white/90 to-transparent z-10 pointer-events-none" />
 
-          <div
-            className="overflow-hidden"
-          >
+          <div className={cn(reduceMotion ? 'overflow-x-auto' : 'overflow-hidden')}>
             <div
-              className="flex gap-6 animate-scroll"
-              style={{
-                width: `${totalWidth * 2}px`,
-              }}
+              className={cn(
+                'flex gap-6',
+                !reduceMotion && 'animate-scroll',
+                reduceMotion && 'w-full max-w-full flex-wrap justify-center'
+              )}
+              style={!reduceMotion ? { width: `${totalWidth * 2}px` } : undefined}
             >
               {infiniteSlides.map((slide, index) => {
                 if (slide.type === 'client') {

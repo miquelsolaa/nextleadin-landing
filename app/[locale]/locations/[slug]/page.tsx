@@ -1,9 +1,12 @@
-import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import SeoJsonLd from '@/components/SeoJsonLd'
 import CTASection from '@/components/CTASection'
+import SeoFaqSection from '@/components/seo/SeoFaqSection'
+import SeoGradientHero from '@/components/seo/SeoGradientHero'
+import SeoPageShell from '@/components/seo/SeoPageShell'
+import SeoStatsSection from '@/components/seo/SeoStatsSection'
 import {
   locationExists,
   getAllLocationSlugs,
@@ -295,70 +298,39 @@ export default async function LocationPage({ params }: LocationPageProps) {
     secondaryHref: '/contact'
   }
 
+  const heroCrumbs = [
+    { label: t.breadcrumbHome, href: localePrefix || '/' },
+    { label: t.breadcrumbLocations, href: `${localePrefix}/locations` },
+    { label: location.cityName }
+  ]
+
   return (
     <>
       <SeoJsonLd data={structuredData} />
 
-      <div className="overflow-x-hidden min-w-0 w-full">
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-primary-50 to-white">
-          <div className="container mx-auto px-4">
-            <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-8">
-              <Link href={localePrefix || '/'} className="hover:text-primary-600 transition-colors">
-                {t.breadcrumbHome}
-              </Link>
-              <span className="text-gray-400">/</span>
-              <Link href={`${localePrefix}/locations`} className="hover:text-primary-600 transition-colors">
-                {t.breadcrumbLocations}
-              </Link>
-              <span className="text-gray-400">/</span>
-              <span className="text-gray-900">{location.cityName}</span>
-            </nav>
+      <SeoPageShell>
+        <SeoGradientHero
+          breadcrumbs={heroCrumbs}
+          localePrefix={localePrefix}
+          title={location.heroTitle}
+          description={location.heroSubtitle}
+          cta={{
+            primaryLabel: cta.primaryLabel,
+            secondaryLabel: cta.secondaryLabel,
+            primaryHref: cta.primaryHref,
+            secondaryHref: cta.secondaryHref
+          }}
+        />
 
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                {location.heroTitle}
-              </h1>
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                {location.heroSubtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href={`${localePrefix}/contact`}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
-                >
-                  {cta.primaryLabel}
-                </Link>
-                <Link
-                  href={/demo/i.test(cta.secondaryLabel ?? '') ? `${localePrefix || '/'}?openVideo=1` : (cta.secondaryHref ? `${localePrefix}${cta.secondaryHref}` : `${localePrefix}/contact`)}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-primary-600 bg-white border-2 border-primary-600 rounded-lg hover:bg-primary-50 transition-colors"
-                >
-                  {cta.secondaryLabel}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
         {location.stats && location.stats.length > 0 && (
-          <section className="py-16 bg-white" aria-labelledby="stats-heading">
-            <div className="container mx-auto px-4">
-              <h2 id="stats-heading" className="text-2xl font-bold text-center text-gray-900 mb-8">
+          <SeoStatsSection
+            title={
+              <>
                 {t.statsTitle} {location.cityName}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                {location.stats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-4xl sm:text-5xl font-bold text-primary-600 mb-2">
-                      {stat.value}
-                    </div>
-                    <div className="text-gray-600">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+              </>
+            }
+            stats={location.stats}
+          />
         )}
 
         {/* Top Sectors */}
@@ -370,7 +342,10 @@ export default async function LocationPage({ params }: LocationPageProps) {
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
                 {location.topSectors.map((sector, index) => (
-                  <div key={index} className="bg-white rounded-xl p-4 text-center shadow-sm">
+                  <div
+                    key={index}
+                    className="rounded-xl bg-white p-4 text-center shadow-sm transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  >
                     <div className="flex justify-center mb-2">
                       <SectorIcon iconKey={sector.icon} />
                     </div>
@@ -395,33 +370,12 @@ export default async function LocationPage({ params }: LocationPageProps) {
           </section>
         )}
 
-        {/* FAQ Section */}
         {location.faq && location.faq.length > 0 && (
-          <section className="py-20 bg-gray-50" aria-labelledby="faq-heading">
-            <div className="container mx-auto px-4">
-              <h2 id="faq-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
-                {t.faqTitle}
-              </h2>
-              <div className="max-w-3xl mx-auto space-y-4">
-                {location.faq.map((item, index) => (
-                  <details key={index} className="bg-white rounded-xl p-6 shadow-sm group">
-                    <summary className="flex items-center justify-between cursor-pointer list-none">
-                      <h3 className="text-lg font-semibold text-gray-900 pr-4">{item.question}</h3>
-                      <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </summary>
-                    <p className="mt-4 text-gray-600">{item.answer}</p>
-                  </details>
-                ))}
-              </div>
-            </div>
-          </section>
+          <SeoFaqSection title={t.faqTitle} items={location.faq} />
         )}
 
-        {/* CTA Section */}
         <CTASection />
-      </div>
+      </SeoPageShell>
     </>
   )
 }

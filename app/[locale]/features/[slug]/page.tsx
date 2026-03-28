@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { setRequestLocale } from 'next-intl/server';
 import { getFeatureData, getAllFeatureSlugs, featureExists } from '@/lib/features';
 import CTASection from '@/components/CTASection';
+import SeoBreadcrumbs from '@/components/seo/SeoBreadcrumbs';
+import SeoFaqSection from '@/components/seo/SeoFaqSection';
+import SeoPageShell from '@/components/seo/SeoPageShell';
 import SeoJsonLd from '@/components/SeoJsonLd';
 import * as LucideIcons from 'lucide-react';
 
@@ -134,7 +137,13 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
     { name: t.breadcrumbHome, url: `https://nextleadin.com${localePrefix}` },
     { name: t.breadcrumbFeatures, url: `https://nextleadin.com${localePrefix}/features` },
     { name: feature.meta.title, url: `https://nextleadin.com${localePrefix}/features/${slug}` },
-  ];
+  ]
+
+  const heroBreadcrumbs = [
+    { label: t.breadcrumbHome, href: `${localePrefix}/` },
+    { label: t.breadcrumbFeatures, href: `${localePrefix}/features` },
+    { label: feature.meta.title }
+  ]
 
   const faqItems = feature.faq.map(item => ({
     question: item.question,
@@ -186,28 +195,11 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
       {faqJsonLd ? <SeoJsonLd data={faqJsonLd} /> : null}
       <SeoJsonLd data={serviceJsonLd} />
 
-      {/* Hero Section */}
-      <section className="relative bg-primary-700 py-20">
+      <SeoPageShell>
+        <section className="relative bg-primary-700 py-20">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-        <div className="container mx-auto px-4 relative">
-          {/* Breadcrumbs */}
-          <nav className="mb-8">
-            <ol className="flex items-center space-x-2 text-sm text-white/70">
-              <li>
-                <Link href={`${localePrefix}/`} className="hover:text-white transition-colors">
-                  {t.breadcrumbHome}
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <Link href={`${localePrefix}/features`} className="hover:text-white transition-colors">
-                  {t.breadcrumbFeatures}
-                </Link>
-              </li>
-              <li>/</li>
-              <li className="text-white font-medium">{feature.meta.title}</li>
-            </ol>
-          </nav>
+        <div className="container relative mx-auto px-4">
+          <SeoBreadcrumbs variant="onDark" items={heroBreadcrumbs} />
           
           {/* Icon + Title */}
           <div className="flex items-center gap-4 mb-6">
@@ -239,9 +231,9 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             </Link>
           </div>
         </div>
-      </section>
+        </section>
 
-      {feature.stats.length > 0 && (
+        {feature.stats.length > 0 && (
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -254,9 +246,9 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             </div>
           </div>
         </section>
-      )}
+        )}
 
-      {feature.benefits.length > 0 && (
+        {feature.benefits.length > 0 && (
         <section id="benefits" className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">
@@ -264,7 +256,10 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {feature.benefits.map((benefit, index) => (
-                <div key={index} className="p-6 border border-gray-200 rounded-xl hover:shadow-lg transition-shadow">
+                <div
+                  key={index}
+                  className="rounded-xl border border-gray-200 p-6 transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                >
                   <div className="mb-4 text-primary-600">{getLucideIcon(benefit.icon, "w-8 h-8")}</div>
                   <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
                   <p className="text-gray-600">{benefit.description}</p>
@@ -273,9 +268,9 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             </div>
           </div>
         </section>
-      )}
+        )}
 
-      {feature.useCases.length > 0 && (
+        {feature.useCases.length > 0 && (
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">
@@ -283,7 +278,10 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {feature.useCases.map((useCase, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-sm">
+                <div
+                  key={index}
+                  className="rounded-xl bg-white p-6 shadow-sm transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                >
                   <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
                   <p className="text-gray-600">{useCase.description}</p>
                 </div>
@@ -291,9 +289,9 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             </div>
           </div>
         </section>
-      )}
+        )}
 
-      {feature.contentHtml && (
+        {feature.contentHtml && (
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div 
@@ -302,27 +300,12 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             />
           </div>
         </section>
-      )}
+        )}
 
-      {feature.faq.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              {t.faqTitle}
-            </h2>
-            <div className="max-w-3xl mx-auto space-y-6">
-              {feature.faq.map((item, index) => (
-                <div key={index} className="border border-gray-200 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-2">{item.question}</h3>
-                  <p className="text-gray-600">{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+        {feature.faq.length > 0 && <SeoFaqSection title={t.faqTitle} items={faqItems} />}
 
-      <CTASection />
+        <CTASection />
+      </SeoPageShell>
     </>
   );
 }

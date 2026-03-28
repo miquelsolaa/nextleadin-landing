@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Syne, DM_Sans } from 'next/font/google'
+import { Syne, DM_Sans, Geist } from 'next/font/google'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 import { headers } from 'next/headers'
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const syne = Syne({
   subsets: ['latin'],
@@ -34,7 +37,7 @@ export default async function RootLayout({
     intlLocale === 'ca' || intlLocale === 'en' || intlLocale === 'es' ? intlLocale : 'es'
 
   return (
-    <html lang={lang} className={`${syne.variable} ${dmSans.variable}`}>
+    <html lang={lang} className={cn(syne.variable, dmSans.variable, "font-sans", geist.variable)}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.webmanifest" />

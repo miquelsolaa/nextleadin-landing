@@ -1,9 +1,12 @@
-import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import SeoJsonLd from '@/components/SeoJsonLd'
 import CTASection from '@/components/CTASection'
+import SeoFaqSection from '@/components/seo/SeoFaqSection'
+import SeoGradientHero from '@/components/seo/SeoGradientHero'
+import SeoPageShell from '@/components/seo/SeoPageShell'
+import SeoStatsSection from '@/components/seo/SeoStatsSection'
 import {
   industryExists,
   getAllIndustrySlugs,
@@ -317,71 +320,33 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
     }
   }
 
+  const heroCrumbs = [
+    { label: t.breadcrumbHome, href: localePrefix || '/' },
+    { label: t.breadcrumbIndustries, href: `${localePrefix}/industries` },
+    { label: industry.title }
+  ]
+
   return (
     <>
       <SeoJsonLd data={structuredData} />
 
-      <div className="overflow-x-hidden min-w-0 w-full">
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-primary-50 to-white">
-          <div className="container mx-auto px-4">
-            <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-8">
-              <Link href={localePrefix || '/'} className="hover:text-primary-600 transition-colors">
-                {t.breadcrumbHome}
-              </Link>
-              <span className="text-gray-400">/</span>
-              <Link href={`${localePrefix}/industries`} className="hover:text-primary-600 transition-colors">
-                {t.breadcrumbIndustries}
-              </Link>
-              <span className="text-gray-400">/</span>
-              <span className="text-gray-900">{industry.title}</span>
-            </nav>
+      <SeoPageShell>
+        <SeoGradientHero
+          breadcrumbs={heroCrumbs}
+          localePrefix={localePrefix}
+          title={industry.heroTitle}
+          description={industry.heroSubtitle}
+          heroIcon={getLucideIcon(industry.icon, 'w-16 h-16 mx-auto')}
+          cta={{
+            primaryLabel: cta.primaryLabel,
+            secondaryLabel: cta.secondaryLabel,
+            primaryHref: cta.primaryHref,
+            secondaryHref: cta.secondaryHref
+          }}
+        />
 
-            <div className="max-w-4xl mx-auto text-center">
-              <span className="text-primary-600 mb-6 block">{getLucideIcon(industry.icon, "w-16 h-16 mx-auto")}</span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                {industry.heroTitle}
-              </h1>
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                {industry.heroSubtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href={`${localePrefix}/contact`}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
-                >
-                  {cta.primaryLabel}
-                </Link>
-                <Link
-                  href={/demo/i.test(cta.secondaryLabel ?? '') ? `${localePrefix || '/'}?openVideo=1` : (cta.secondaryHref ? `${localePrefix}${cta.secondaryHref}` : `${localePrefix}/contact`)}
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-primary-600 bg-white border-2 border-primary-600 rounded-lg hover:bg-primary-50 transition-colors"
-                >
-                  {cta.secondaryLabel}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
         {industry.stats && industry.stats.length > 0 && (
-          <section className="py-16 bg-white" aria-labelledby="stats-heading">
-            <div className="container mx-auto px-4">
-              <h2 id="stats-heading" className="text-2xl font-bold text-center text-gray-900 mb-8">
-                {t.statsTitle}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                {industry.stats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-4xl sm:text-5xl font-bold text-primary-600 mb-2">
-                      {stat.value}
-                    </div>
-                    <div className="text-gray-600">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <SeoStatsSection title={t.statsTitle} stats={industry.stats} />
         )}
 
         {/* Pain Points Section */}
@@ -393,7 +358,10 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 {industry.painPoints.map((point, index) => (
-                  <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
+                  <div
+                    key={index}
+                    className="rounded-xl bg-white p-6 shadow-sm transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  >
                     <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
                       <svg className="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -417,7 +385,10 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 {industry.solutions.map((solution, index) => (
-                  <div key={index} className="bg-primary-50 rounded-xl p-6">
+                  <div
+                    key={index}
+                    className="rounded-xl bg-primary-50 p-6 transition-shadow duration-200 hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  >
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
                       {getSolutionIcon(solution.icon)}
                     </div>
@@ -442,33 +413,12 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
           </section>
         )}
 
-        {/* FAQ Section */}
         {industry.faq && industry.faq.length > 0 && (
-          <section className="py-20 bg-gray-50" aria-labelledby="faq-heading">
-            <div className="container mx-auto px-4">
-              <h2 id="faq-heading" className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
-                {t.faqTitle}
-              </h2>
-              <div className="max-w-3xl mx-auto space-y-4">
-                {industry.faq.map((item, index) => (
-                  <details key={index} className="bg-white rounded-xl p-6 shadow-sm group">
-                    <summary className="flex items-center justify-between cursor-pointer list-none">
-                      <h3 className="text-lg font-semibold text-gray-900 pr-4">{item.question}</h3>
-                      <svg className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </summary>
-                    <p className="mt-4 text-gray-600">{item.answer}</p>
-                  </details>
-                ))}
-              </div>
-            </div>
-          </section>
+          <SeoFaqSection title={t.faqTitle} items={industry.faq} />
         )}
 
-        {/* CTA Section */}
         <CTASection />
-      </div>
+      </SeoPageShell>
     </>
   )
 }

@@ -43,7 +43,7 @@ export const loadGAScript = (): Promise<void> => {
       const gtag = w.gtag
       if (typeof gtag === 'function') {
         gtag('js', new Date())
-        gtag('config', GA_MEASUREMENT_ID)
+        gtag('config', GA_MEASUREMENT_ID, { send_page_view: false })
       }
       resolve()
     }

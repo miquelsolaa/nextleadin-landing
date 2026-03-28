@@ -4,12 +4,12 @@ import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import SeoJsonLd from '@/components/SeoJsonLd'
 import CTASection from '@/components/CTASection'
-import styles from '@/components/BlogPostContent.module.css'
+import ComparisonArticleBody from '@/components/comparison/ComparisonArticleBody'
+import SeoPageShell from '@/components/seo/SeoPageShell'
 import {
   comparisonExists,
   getAllComparisonSlugs,
   getComparisonData,
-  getComparisonUrl,
   type ComparisonLocale
 } from '@/lib/comparisons'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
@@ -69,29 +69,17 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
     ca: {
       breadcrumbHome: 'Inici',
       heroKicker: `Comparativa actualizada ${currentYear}`,
-      heroNote: 'Lead acquisition · Eines B2B',
-      ctaDefaultTitle: 'Vull veure com NextLeadIn s’adapta al meu sector',
-      ctaDefaultDescription: 'Demanem una demo i t’ensenyem com trobar leads qualificats amb IA.',
-      ctaPrimary: 'Sol·licitar demo',
-      ctaSecondary: 'Parlar amb vendes'
+      heroNote: 'Lead acquisition · Eines B2B'
     },
     es: {
       breadcrumbHome: 'Inicio',
       heroKicker: `Comparativa actualizada ${currentYear}`,
-      heroNote: 'Lead acquisition · Herramientas B2B',
-      ctaDefaultTitle: 'Quiero ver cómo NextLeadIn encaja en mi sector',
-      ctaDefaultDescription: 'Solicita una demo y te mostramos cómo generar leads cualificados con IA.',
-      ctaPrimary: 'Solicitar demo',
-      ctaSecondary: 'Hablar con ventas'
+      heroNote: 'Lead acquisition · Herramientas B2B'
     },
     en: {
       breadcrumbHome: 'Home',
       heroKicker: `Comparativa actualizada ${currentYear}`,
-      heroNote: 'Lead acquisition · B2B tools',
-      ctaDefaultTitle: 'See how NextLeadIn fits your market',
-      ctaDefaultDescription: 'Request a demo and learn how to generate qualified leads with AI.',
-      ctaPrimary: 'Request demo',
-      ctaSecondary: 'Talk to sales'
+      heroNote: 'Lead acquisition · B2B tools'
     }
   }[validLocale]
 
@@ -139,28 +127,11 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
     })
   }
 
-  const cta = comparison.cta ?? {
-    title: t.ctaDefaultTitle,
-    description: t.ctaDefaultDescription,
-    primaryLabel: t.ctaPrimary,
-    primaryHref: '/contact',
-    secondaryLabel: t.ctaSecondary,
-    secondaryHref: '/contact'
-  }
-
   const toolNames = comparison.tools ?? []
   const nextLeadInName = toolNames.find((name) => name.toLowerCase() === 'nextleadin') ?? 'NextLeadIn'
   const otherTools = toolNames.filter((name) => name.toLowerCase() !== 'nextleadin')
   const toolA = otherTools[0] ?? toolNames[0] ?? 'Tool A'
   const toolB = otherTools[1] ?? toolNames[1] ?? 'Tool B'
-
-  const escapeHtml = (value: string) =>
-    value
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;')
 
   const contentCopy = {
     ca: {
@@ -336,136 +307,62 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
     }
   ]
 
-  const tableHeader = `
-    <div class="custom-table-wrapper">
-      <table class="custom-table">
-        <thead>
-          <tr>
-            <th>${escapeHtml(contentCopy.tableTitle)}</th>
-            <th>${escapeHtml(nextLeadInName)}</th>
-            <th>${escapeHtml(toolA)}</th>
-            <th>${escapeHtml(toolB)}</th>
-          </tr>
-        </thead>
-        <tbody>
-  `
-
-  const tableRows = comparisonRows
-    .map(
-      (row) => `
-        <tr>
-          <td>${escapeHtml(row.label)}</td>
-          <td>${escapeHtml(row.next)}</td>
-          <td>${escapeHtml(row.a)}</td>
-          <td>${escapeHtml(row.b)}</td>
-        </tr>
-      `
-    )
-    .join('')
-
-  const tableFooter = `
-        </tbody>
-      </table>
-    </div>
-  `
-
-  const scenarioBlocks = contentCopy.scenarioItems
-    .map(
-      (item) => `
-        <div class="scenario-item">
-          <h3><span style="text-decoration: underline;">${escapeHtml(item.title)}</span></h3>
-          <p>${escapeHtml(item.body)}</p>
-        </div>
-      `
-    )
-    .join('')
-
-  const whyBetterList = contentCopy.whyBetterItems
-    .map((item) => `<li>${escapeHtml(item)}</li>`)
-    .join('')
-
-  const styledContentHtml = `
-    <h1 style="text-align: center;">${escapeHtml(comparison.title)}</h1>
-    <p style="text-align: center;">${escapeHtml(contentCopy.subtitle)}</p>
-    ${tableHeader}${tableRows}${tableFooter}
-    <h2 style="text-align: center;"><strong>${escapeHtml(contentCopy.scenarioTitle)}</strong></h2>
-    <p style="text-align: center;">${escapeHtml(contentCopy.scenarioSubtitle)}</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      ${scenarioBlocks}
-    </div>
-    <h2 style="text-align: left;">${escapeHtml(contentCopy.whyBetterTitle)}</h2>
-    <ul>${whyBetterList}</ul>
-  `
-
-  const withLocalePrefix = (href: string | undefined) => {
-    if (!href) return undefined
-    if (href.startsWith('http')) return href
-    if (!href.startsWith('/')) return `${localePrefix}/${href}`.replace('//', '/')
-    return `${localePrefix}${href}` || href
-  }
-
   return (
     <>
       <SeoJsonLd data={structuredData} />
 
-      <div className="overflow-x-hidden min-w-0 w-full">
-        <article
-          id={`post-${comparison.slug}`}
-          className="post type-page status-publish has-post-thumbnail hentry"
-        >
-          <div className="entry-content overflow-x-hidden min-w-0">
-            <div className="et-l et-l--post">
-              <div className="et_builder_inner_content et_pb_gutters3">
-                <div className="et_pb_section et_pb_section_0 et_section_regular">
-                  <div className="et_pb_row et_pb_row_0 container-custom">
-                    <div className="et_pb_column et_pb_column_4_4 et_pb_column_0 et_pb_css_mix_blend_mode_passthrough et-last-child">
-                      <section className="pt-32 pb-20 bg-white">
-                        <div className="text-center max-w-4xl mx-auto">
-                          <p className="text-sm font-semibold uppercase tracking-wider text-primary-600 mb-4">
-                            {t.heroKicker}
-                          </p>
-                          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                            {comparison.title}
-                          </h1>
-                          <p className="text-xl text-gray-600 leading-relaxed">
-                            {comparison.description}
-                          </p>
-                          <p className="text-sm text-gray-500 mt-4">
-                            {t.heroNote} · {comparison.tools?.join(' vs ')}
-                          </p>
-                        </div>
-                      </section>
-                      <nav className="flex items-center justify-center space-x-2 text-sm text-gray-500 pb-10">
-                        <Link href={localePrefix || '/'} className="hover:text-primary-600 transition-colors">
-                          {t.breadcrumbHome}
-                        </Link>
-                        <span className="text-gray-400">/</span>
-                        <span className="text-gray-900">{comparison.title}</span>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="et_pb_section et_pb_section_1 et_section_regular">
-                  <div className="et_pb_row et_pb_row_1 container-custom">
-                    <div className="et_pb_column et_pb_column_4_4 et_pb_column_1 et_pb_css_mix_blend_mode_passthrough et-last-child">
-                      <div className="et_pb_module et_pb_text et_pb_text_1 et_pb_text_align_left et_pb_bg_layout_light">
-                        <div className={`et_pb_text_inner prose prose-lg max-w-none ${styles.prose}`}>
-                          <div dangerouslySetInnerHTML={{ __html: styledContentHtml }} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="et_pb_section et_pb_section_2 et_pb_with_background et_section_regular mt-12">
-                  <CTASection />
-                </div>
+      <SeoPageShell>
+        <article id={`post-${comparison.slug}`} className="entry-content">
+          <section className="bg-white pb-12 pt-28 sm:pt-32">
+            <div className="container-custom">
+              <div className="mx-auto max-w-4xl text-center">
+                <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-600">{t.heroKicker}</p>
+                <h1 className="font-display mb-6 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
+                  {comparison.title}
+                </h1>
+                <p className="text-xl leading-relaxed text-gray-600">{comparison.description}</p>
+                <p className="mt-4 text-sm text-gray-500">
+                  {t.heroNote} · {comparison.tools?.join(' vs ')}
+                </p>
               </div>
+              <nav
+                aria-label="Breadcrumb"
+                className="mt-10 flex items-center justify-center gap-2 text-sm text-gray-500"
+              >
+                <Link href={localePrefix || '/'} className="transition-colors hover:text-primary-600">
+                  {t.breadcrumbHome}
+                </Link>
+                <span className="text-gray-400" aria-hidden>
+                  /
+                </span>
+                <span className="text-gray-900">{comparison.title}</span>
+              </nav>
             </div>
-          </div>
+          </section>
+
+          <section className="border-t border-gray-100 bg-gray-50 py-16">
+            <div className="container-custom max-w-4xl">
+              <ComparisonArticleBody
+                subtitle={contentCopy.subtitle}
+                tableTitle={contentCopy.tableTitle}
+                scenarioTitle={contentCopy.scenarioTitle}
+                scenarioSubtitle={contentCopy.scenarioSubtitle}
+                scenarioItems={contentCopy.scenarioItems}
+                whyBetterTitle={contentCopy.whyBetterTitle}
+                whyBetterItems={contentCopy.whyBetterItems}
+                comparisonRows={comparisonRows}
+                nextLeadInName={nextLeadInName}
+                toolA={toolA}
+                toolB={toolB}
+              />
+            </div>
+          </section>
+
+          <section className="mt-12">
+            <CTASection />
+          </section>
         </article>
-      </div>
+      </SeoPageShell>
     </>
   )
 }

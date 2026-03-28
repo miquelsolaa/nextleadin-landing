@@ -22,6 +22,7 @@ const Footer = ({ children, locale: localeProp }: FooterProps) => {
       emailLabel: 'Correo electrónico',
       emailPlaceholder: 'tu-correo@empresa.com',
       subscribe: 'Suscríbete',
+      subscribeSubmitting: 'Enviando…',
       brandDesc: 'Genera leads hipersegmentados y prepara llamadas con informes creados por IA. Más calidad, menos tiempo perdido.',
       sections: {
         features: 'Funcionalidades',
@@ -59,6 +60,7 @@ const Footer = ({ children, locale: localeProp }: FooterProps) => {
       emailLabel: 'Correu electrònic',
       emailPlaceholder: 'el-teu-correu@empresa.com',
       subscribe: 'Subscriu-te',
+      subscribeSubmitting: 'Enviant…',
       brandDesc: 'Genera leads hipersegmentats i prepara trucades amb informes creats per IA. Més qualitat, menys temps perdut.',
       sections: {
         features: 'Característiques',
@@ -96,6 +98,7 @@ const Footer = ({ children, locale: localeProp }: FooterProps) => {
       emailLabel: 'Email address',
       emailPlaceholder: 'your-email@company.com',
       subscribe: 'Subscribe',
+      subscribeSubmitting: 'Sending…',
       brandDesc: 'Generate hyper-targeted leads and prepare calls with AI-generated reports. More quality, less wasted time.',
       sections: {
         features: 'Features',
@@ -291,6 +294,7 @@ type NewsletterDict = {
   emailLabel: string
   emailPlaceholder: string
   subscribe: string
+  subscribeSubmitting: string
 }
 
 function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: NewsletterDict }) {
@@ -338,7 +342,16 @@ function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: Ne
   }
 
   return (
-    <form name="newsletter" method="POST" action="/netlify-forms.html" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md lg:max-w-none">
+    <form
+      name="newsletter"
+      method="POST"
+      action="/netlify-forms.html"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onSubmit={handleSubmit}
+      className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md lg:max-w-none"
+      aria-busy={isSubmitting}
+    >
       <input type="hidden" name="form-name" value="newsletter" />
       <input type="hidden" name="locale" value={locale} />
       <p className="hidden">
@@ -363,7 +376,7 @@ function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: Ne
         />
       </div>
       <button type="submit" className="btn-primary whitespace-nowrap" disabled={isSubmitting}>
-        {isSubmitting ? '...' : dict.subscribe}
+        {isSubmitting ? dict.subscribeSubmitting : dict.subscribe}
       </button>
       {(success || error) && (
         <p className={`text-sm ${success ? 'text-green-400' : 'text-red-400'}`} role={success ? 'status' : 'alert'} aria-live="polite">

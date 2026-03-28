@@ -51,7 +51,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
             {pageTexts[validLocale].subtitle}<br />
             {pageTexts[validLocale].contactText}{' '}
             <strong>
-              <Link href="/contact" className="text-green-600 hover:text-green-700">
+              <Link href="/contact" className="text-primary-600 hover:text-primary-700">
                 {pageTexts[validLocale].contactLink}
               </Link>
             </strong>.
@@ -69,7 +69,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className="block px-4 py-3 text-sm font-medium text-gray-600 hover:text-green-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="block px-4 py-3 text-sm font-medium text-gray-600 hover:text-primary-600 hover:bg-gray-100 rounded-lg transition-colors"
                 >
                   {item.title[validLocale]}
                 </a>

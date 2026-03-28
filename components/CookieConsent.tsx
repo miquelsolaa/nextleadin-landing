@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useLocale } from 'next-intl'
 import { useTranslations } from 'next-intl'
 import type { AppLocale } from '@/i18n/routing'
@@ -12,6 +12,7 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css'
 export default function CookieConsent() {
   const locale = useLocale() as AppLocale
   const t = useTranslations('cookieConsent')
+  const lastGtagGrantRef = useRef<boolean | null>(null)
 
   const translations = useMemo(() => {
     const cookiePolicyUrl = locale === 'es' ? '/cookie-policy' : `/${locale}/cookie-policy`
@@ -70,12 +71,13 @@ export default function CookieConsent() {
         const CookieConsentLib = await import('vanilla-cookieconsent')
         
         const updateGtagConsent = async (granted: boolean) => {
+          if (lastGtagGrantRef.current === granted) return
+          lastGtagGrantRef.current = granted
           if (granted) {
             await loadGAScript()
             const w = window as Window & { gtag?: (...args: unknown[]) => void }
             if (!w.gtag) return
-            const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-            if (!gaId) return
+            if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) return
             w.gtag('consent', 'update', { analytics_storage: 'granted' })
             w.gtag('event', 'page_view', {
               page_title: document.title,
@@ -136,8 +138,6 @@ export default function CookieConsent() {
             if (process.env.NODE_ENV === 'development') {
               console.log('First consent:', cookie.categories)
             }
-            const hasAnalytics = Array.isArray(cookie.categories) && cookie.categories.includes('analytics')
-            updateGtagConsent(hasAnalytics)
           },
           onConsent: ({ cookie }: { cookie: { categories: string[] } }) => {
             if (process.env.NODE_ENV === 'development') {
@@ -158,10 +158,6 @@ export default function CookieConsent() {
         }
 
         CookieConsentLib.run(config)
-        // Usuari que ja havia acceptat analytics (returning visitor)
-        if (CookieConsentLib.acceptedCategory('analytics')) {
-          updateGtagConsent(true)
-        }
         if (process.env.NODE_ENV === 'development') {
           console.log('CookieConsent initialized successfully')
         }
