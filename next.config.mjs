@@ -1,6 +1,14 @@
 import createNextIntlPlugin from 'next-intl/plugin'
 import withSerwistInit from '@serwist/next'
 
+// GA4 ID must be in the client bundle at build time. Netlify often defines GA_MEASUREMENT_ID only.
+if (
+  !process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() &&
+  process.env.GA_MEASUREMENT_ID?.trim()
+) {
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID.trim()
+}
+
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 const withSerwist = withSerwistInit({
@@ -13,8 +21,7 @@ const withSerwist = withSerwistInit({
 const nextConfig = {
   productionBrowserSourceMaps: false,
   typescript: {
-    // TODO: treure quan es resolguin els errors TS (features, industries, resources, manifest, BlogJsonLd, BlogPostCTA, LanguageSwitcher, i18n/routing, etc.)
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   async headers() {
     return [
@@ -29,16 +36,14 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains; preload',
           },
+          {
+            key: 'Content-Security-Policy-Report-Only',
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://checkout.stripe.com",
+          },
         ],
       },
     ]
-  },
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    })
-    return config
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -70,7 +75,6 @@ const nextConfig = {
   serverExternalPackages: ['stripe'],
   compress: true,
   poweredByHeader: false,
-  generateEtags: false,
   trailingSlash: false,
   // SEO: redireccions 301 per URLs 404 detectades per Google
   async redirects() {

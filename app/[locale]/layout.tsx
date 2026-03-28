@@ -5,14 +5,11 @@ import {locales, type AppLocale} from '@/i18n/routing'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import FooterSitemap from '@/components/FooterSitemap'
-import AIStructuredData from '@/components/AIStructuredData'
-import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
-import { getAbsoluteHomeUrl } from '@/lib/locale-url'
-import '../globals.css'
+import LazyLayoutParts from '@/components/LazyLayoutParts'
 
 type Props = {
   children: React.ReactNode
-  params: {locale: string}
+  params: Promise<{ locale: string }>
 }
 
 function isValidLocale(locale: string): locale is AppLocale {
@@ -24,11 +21,14 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}): Promise<Metadata> {
-  const {locale: rawLocale} = await params
-  const locale = isValidLocale(rawLocale) ? (rawLocale as AppLocale) : 'es'
-  
-  // Utilitzar la nova configuració SEO optimitzada per a AI
-  return generateAIOptimizedMetadata('home', locale)
+  await params
+  return {
+    metadataBase: new URL('https://nextleadin.com'),
+    title: {
+      default: 'NextLeadIn',
+      template: '%s | NextLeadIn',
+    },
+  }
 }
 
 export default async function LocaleLayout({children, params}: {children: React.ReactNode, params: Promise<{locale: string}>}) {
@@ -38,21 +38,8 @@ export default async function LocaleLayout({children, params}: {children: React.
   // Carrega directa dels missatges per evitar dependència de configuració implícita
   const messages = (await import(`@/messages/${localeParam}.json`)).default
 
-  // Breadcrumbs per a la pàgina d'inici
-  const breadcrumbs = [
-    {
-      name: localeParam === 'ca' ? 'Inici' : localeParam === 'es' ? 'Inicio' : 'Home',
-      url: getAbsoluteHomeUrl(localeParam as AppLocale),
-    },
-  ]
-
   return (
     <NextIntlClientProvider messages={messages} locale={localeParam}>
-        <AIStructuredData 
-          page="home" 
-          locale={localeParam as AppLocale} 
-          breadcrumbs={breadcrumbs}
-        />
         <div className="min-h-screen flex flex-col min-w-0 w-full overflow-x-hidden">
           <a
             href="#main-content"
@@ -64,10 +51,11 @@ export default async function LocaleLayout({children, params}: {children: React.
           <main id="main-content" className="flex-grow min-w-0 w-full overflow-x-hidden" tabIndex={-1}>
             {children}
           </main>
-          <Footer>
+          <Footer locale={localeParam as AppLocale}>
             <FooterSitemap locale={localeParam as AppLocale} />
           </Footer>
         </div>
+        <LazyLayoutParts />
     </NextIntlClientProvider>
   )
 }

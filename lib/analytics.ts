@@ -61,7 +61,7 @@ export const trackContactSubmit = (locale: string): void => {
   })
 }
 
-export const trackRegisterStart = (variant: 'primary' | 'secondary', locale: string): void => {
+export const trackRegisterStart = (variant: string, locale: string): void => {
   trackEvent('register_start', {
     category: 'engagement',
     label: `${variant}_${locale}`,

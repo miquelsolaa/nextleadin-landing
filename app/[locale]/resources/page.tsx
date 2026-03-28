@@ -11,7 +11,9 @@ function getLucideIcon(iconName: string, className: string = "w-6 h-6"): React.R
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
   
-  const IconComponent = (LucideIcons as Record<string, React.ComponentType<{ className?: string }>>)[iconNamePascal];
+  const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[
+    iconNamePascal
+  ]
   
   if (IconComponent) {
     return <IconComponent className={className} />;

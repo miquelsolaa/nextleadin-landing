@@ -32,13 +32,16 @@ export default function LanguageSwitcher({
   const nextOf = (l: AppLocale): AppLocale => order[(order.indexOf(l) + 1) % order.length]
 
   /** URL per a un locale: usa l’API de next-intl per generar el path correcte. */
-  const hasDynamicSegments = pathname.includes('[')
+  const pathKey = String(pathname)
+  const hasDynamicSegments = pathKey.includes('[')
   const hrefForNavigation = hasDynamicSegments
-    ? { pathname, params: params as Record<string, string> }
+    ? { pathname: pathKey, params: params as Record<string, string> }
     : pathname
 
+  type GetPathnameArgs = Parameters<typeof getPathname>[0]
+
   const getTargetHref = (locale: AppLocale): string =>
-    getPathname({ locale, href: hrefForNavigation })
+    getPathname({ locale, href: hrefForNavigation } as GetPathnameArgs)
 
   function onChange(next: AppLocale) {
     if (next === currentLocale) {

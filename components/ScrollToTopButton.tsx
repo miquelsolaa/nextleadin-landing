@@ -77,7 +77,7 @@ const ScrollToTopButton = () => {
           strokeLinecap="round"
           strokeDasharray={CIRCUMFERENCE}
           strokeDashoffset={strokeDashoffset}
-          transition="stroke-dashoffset 0.15s ease-out"
+          style={{ transition: 'stroke-dashoffset 0.15s ease-out' }}
         />
       </svg>
       {/* Icona fletxa cap amunt */}

@@ -47,7 +47,7 @@ const categoryTitleSuffix: Record<string, string> = {
 
 export async function generateMetadata({ params }: BlogCategoryPageProps): Promise<Metadata> {
   const { locale, category: categorySlug } = await params
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'es'
   const decodedSlug = decodeURIComponent(categorySlug).trim()
   const canonical = getCategoryCanonicalFromSlug(decodedSlug)
   if (!canonical) {
@@ -59,16 +59,22 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
   const slugForUrl = getCategorySlug(canonical)
   const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
   const canonicalUrl = `https://nextleadin.com${localePrefix}/blog/category/${slugForUrl}`
+  const languages: Record<string, string> = {
+    'x-default': `https://nextleadin.com/blog/category/${slugForUrl}`,
+    'ca-ES': `https://nextleadin.com/ca/blog/category/${slugForUrl}`,
+    'es-ES': `https://nextleadin.com/blog/category/${slugForUrl}`,
+    'en-US': `https://nextleadin.com/en/blog/category/${slugForUrl}`,
+  }
   return {
     title: `${categoryTitle} ${categoryTitleSuffix[validLocale]}`,
     description: t('description'),
-    alternates: { canonical: canonicalUrl },
+    alternates: { canonical: canonicalUrl, languages },
   }
 }
 
 export default async function BlogCategoryPage({ params }: BlogCategoryPageProps) {
   const { locale, category: categorySlug } = await params
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? (locale as Locale) : 'ca'
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? (locale as Locale) : 'es'
   const categoryParam = decodeURIComponent(categorySlug).trim()
   const canonicalCategory = getCategoryCanonicalFromSlug(categoryParam)
   const posts = getPostsByCategory(canonicalCategory || categoryParam, validLocale)

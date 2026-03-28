@@ -60,7 +60,7 @@ const config: Config = {
         'gradient-shift': 'gradientShift 8s ease infinite',
         float: 'float 4s ease-in-out infinite',
       },
-      typography: ({ theme }) => ({
+      typography: ({ theme }: { theme: (path: string) => string[] }) => ({
         DEFAULT: {
           css: {
             fontFamily: theme('fontFamily.sans').join(', '),

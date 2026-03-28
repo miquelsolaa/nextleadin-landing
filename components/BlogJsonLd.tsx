@@ -1,6 +1,7 @@
 import type { BlogPost } from '@/lib/blog'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 import { getAuthorInfo, type AuthorLocale } from '@/lib/authors'
+import { stringifyJsonLd } from '@/lib/json-ld-stringify'
 
 interface BlogJsonLdProps {
   post: BlogPost
@@ -130,8 +131,8 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
     inLanguage,
     keywords: post.tags?.join(', ') || '',
     articleSection: post.categories?.join(', ') || 'Business',
-    wordCount: post.content.split(' ').length,
-    articleBody: post.contentHtml || post.content,
+    wordCount: post.content.split(/\s+/).filter(Boolean).length,
+    articleBody: (post.contentHtml || post.content).slice(0, 8000),
     genre: 'Business',
     about: {
       '@type': 'Thing',
@@ -144,31 +145,6 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
       name: 'NextLeadIn Blog',
       url: `${baseUrl}${localePath}/blog`,
     },
-    // Afegir breadcrumbs si estan disponibles (millorat)
-    breadcrumb: {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: locale === 'ca' ? 'Inici' : locale === 'es' ? 'Inicio' : 'Home',
-          item: `${baseUrl}${localePath}`,
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Blog',
-          item: `${baseUrl}${localePath}/blog`,
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: post.title,
-          item: fullUrl,
-        },
-      ],
-    },
-    // Afegir informació addicional per millor SEO
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: ['h1', 'h2']
@@ -178,7 +154,7 @@ export default function BlogJsonLd({ post, locale = 'ca' }: BlogJsonLdProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: stringifyJsonLd(jsonLd) }}
     />
   )
 }

@@ -61,7 +61,7 @@ export default async function NotFound() {
         <main className="flex-1 flex items-center justify-center">
           <NotFoundContent />
         </main>
-        <Footer />
+        <Footer locale={locale} />
       </div>
     </NextIntlClientProvider>
   );

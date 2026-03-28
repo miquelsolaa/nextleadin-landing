@@ -72,7 +72,9 @@ function getLucideIcon(iconName: string, className: string = "w-6 h-6"): React.R
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
   
-  const IconComponent = (LucideIcons as Record<string, React.ComponentType<{ className?: string }>>)[iconNamePascal];
+  const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[
+    iconNamePascal
+  ]
   
   if (IconComponent) {
     return <IconComponent className={className} />;
@@ -84,7 +86,7 @@ function getLucideIcon(iconName: string, className: string = "w-6 h-6"): React.R
 export default async function FeaturePage({ params }: FeaturePageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca';
+  const validLocale = locale === 'ca' || locale === 'es' || locale === 'en' ? locale : 'es'
   
   if (!featureExists(slug, locale)) {
     notFound();
@@ -139,27 +141,50 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
     answer: item.answer,
   }));
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  }
+
+  const faqJsonLd =
+    faqItems.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqItems.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        }
+      : null
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: feature.meta.title,
+    description: feature.meta.description,
+    provider: {
+      '@type': 'Organization',
+      name: 'NextLeadIn',
+    },
+    url: `https://nextleadin.com${localePrefix}/features/${slug}`,
+  }
+
   return (
     <>
-      <SeoJsonLd 
-        type="BreadcrumbList" 
-        data={{ items: breadcrumbItems }} 
-      />
-      {faqItems.length > 0 && (
-        <SeoJsonLd 
-          type="FAQPage" 
-          data={{ faqs: faqItems }} 
-        />
-      )}
-      <SeoJsonLd 
-        type="Service" 
-        data={{
-          name: feature.meta.title,
-          description: feature.meta.description,
-          provider: 'NextLeadIn',
-          url: `https://nextleadin.com${localePrefix}/features/${slug}`,
-        }} 
-      />
+      <SeoJsonLd data={breadcrumbJsonLd} />
+      {faqJsonLd ? <SeoJsonLd data={faqJsonLd} /> : null}
+      <SeoJsonLd data={serviceJsonLd} />
 
       {/* Hero Section */}
       <section className="relative bg-primary-700 py-20">
@@ -297,14 +322,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
         </section>
       )}
 
-      <CTASection
-        title={feature.ctaTitle}
-        description={feature.ctaDescription}
-        primaryButtonText={t.ctaPrimary}
-        primaryButtonHref="https://app.nextleadin.com/register"
-        secondaryButtonText={validLocale === 'ca' ? 'Parlar amb vendes' : validLocale === 'es' ? 'Hablar con ventas' : 'Talk to sales'}
-        secondaryButtonHref={`${localePrefix}/contact`}
-      />
+      <CTASection />
     </>
   );
 }

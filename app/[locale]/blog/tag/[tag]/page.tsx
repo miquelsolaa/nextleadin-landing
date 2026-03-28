@@ -49,7 +49,7 @@ const tagTitleSuffix: Record<string, string> = {
 
 export async function generateMetadata({ params }: BlogTagPageProps): Promise<Metadata> {
   const { locale, tag: tagSlug } = await params
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'es'
   const canonicalTag = getTagCanonicalFromSlug(decodeURIComponent(tagSlug))
   if (!canonicalTag) {
     return { title: 'Tag' }
@@ -60,16 +60,22 @@ export async function generateMetadata({ params }: BlogTagPageProps): Promise<Me
   const slugForUrl = getTagSlug(canonicalTag)
   const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
   const canonicalUrl = `https://nextleadin.com${localePrefix}/blog/tag/${slugForUrl}`
+  const languages: Record<string, string> = {
+    'x-default': `https://nextleadin.com/blog/tag/${slugForUrl}`,
+    'ca-ES': `https://nextleadin.com/ca/blog/tag/${slugForUrl}`,
+    'es-ES': `https://nextleadin.com/blog/tag/${slugForUrl}`,
+    'en-US': `https://nextleadin.com/en/blog/tag/${slugForUrl}`,
+  }
   return {
     title: `${tagTitle} ${tagTitleSuffix[validLocale]}`,
     description: t('description'),
-    alternates: { canonical: canonicalUrl },
+    alternates: { canonical: canonicalUrl, languages },
   }
 }
 
 export default async function BlogTagPage({ params }: BlogTagPageProps) {
   const { locale, tag: tagSlug } = await params
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? (locale as Locale) : 'ca'
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? (locale as Locale) : 'es'
   const tagParam = decodeURIComponent(tagSlug).trim()
 
   const canonicalTag = getTagCanonicalFromSlug(tagParam)

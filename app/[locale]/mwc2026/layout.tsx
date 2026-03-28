@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { locales, type AppLocale } from '@/i18n/routing'
+import { defaultLocale, locales, type AppLocale } from '@/i18n/routing'
 
 type Props = {
   children: React.ReactNode
@@ -12,7 +12,7 @@ function isValidLocale(locale: string): locale is AppLocale {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: rawLocale } = await params
-  const locale = isValidLocale(rawLocale) ? (rawLocale as AppLocale) : 'en'
+  const locale = isValidLocale(rawLocale) ? (rawLocale as AppLocale) : defaultLocale
 
   const titles: Record<AppLocale, string> = {
     en: 'NextLeadIn @ MWC Barcelona 2026 | AI Lead Intelligence',

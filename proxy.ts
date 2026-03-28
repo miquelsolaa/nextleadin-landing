@@ -7,19 +7,31 @@ const intlMiddleware = createMiddleware({
   localeDetection: false,
 })
 
+function requestWithPathnameHeader(request: NextRequest) {
+  const headers = new Headers(request.headers)
+  headers.set('x-pathname', request.nextUrl.pathname)
+  return new NextRequest(request, {headers})
+}
+
+function nextWithPathname(request: NextRequest) {
+  const headers = new Headers(request.headers)
+  headers.set('x-pathname', request.nextUrl.pathname)
+  return NextResponse.next({request: {headers}})
+}
+
 export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/admin')) {
-    return NextResponse.next()
+    return nextWithPathname(request)
   }
   if (request.nextUrl.pathname === '/sitemap.xml') {
-    return NextResponse.next()
+    return nextWithPathname(request)
   }
-  return intlMiddleware(request)
+  return intlMiddleware(requestWithPathnameHeader(request))
 }
 
 export const config = {
   matcher: [
-    // Exclou API, _next, _vercel, admin, sitemap.xml i fitxers amb extensió (imatges, manifest, etc.)
-    '/((?!api|_next|_vercel|admin|sitemap\\.xml|.*\\..*).*)'
-  ]
+    // Exclou API, _next, _vercel i fitxers amb extensió. /admin i la resta passen per injectar x-pathname i aplicar intl.
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+  ],
 }

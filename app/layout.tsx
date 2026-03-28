@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Syne, DM_Sans } from 'next/font/google'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
-import { cookies } from 'next/headers'
+import { headers } from 'next/headers'
 
 const syne = Syne({
   subsets: ['latin'],
@@ -28,15 +28,16 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const cookieStore = await cookies()
-  const cookieLocale = cookieStore.get('NEXT_LOCALE')?.value
-  const lang = cookieLocale === 'ca' || cookieLocale === 'en' || cookieLocale === 'es' ? cookieLocale : 'es'
+  const headerList = await headers()
+  const intlLocale = headerList.get('x-next-intl-locale')
+  const lang =
+    intlLocale === 'ca' || intlLocale === 'en' || intlLocale === 'es' ? intlLocale : 'es'
 
   return (
     <html lang={lang} className={`${syne.variable} ${dmSans.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <meta name="theme-color" content="#00B359" />
       </head>

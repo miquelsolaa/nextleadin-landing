@@ -7,10 +7,12 @@ import { useState } from 'react'
 
 type FooterProps = {
   children?: React.ReactNode
+  locale?: 'es' | 'ca' | 'en'
 }
 
-const Footer = ({ children }: FooterProps) => {
-  const rawLocale = (useLocale() as string) || 'es'
+const Footer = ({ children, locale: localeProp }: FooterProps) => {
+  const hookLocale = useLocale() as string
+  const rawLocale = (localeProp ?? hookLocale) || 'es'
   const base = rawLocale.split('-')[0] as 'es' | 'ca' | 'en'
   const locale = (['es','ca','en'].includes(base) ? base : 'es') as 'es' | 'ca' | 'en'
 

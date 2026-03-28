@@ -1,12 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkGfm from 'remark-gfm'
-import remarkBreaks from 'remark-breaks'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
+import { renderMarkdownToSafeHtml } from '@/lib/markdown'
 import type { AppLocale } from '@/i18n/routing'
 
 export type ComparisonLocale = AppLocale
@@ -83,15 +78,7 @@ export async function getComparisonData(
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const processedContent = await unified()
-      .use(remarkParse)
-      .use(remarkGfm)
-      .use(remarkBreaks)
-      .use(remarkRehype)
-      .use(rehypeStringify)
-      .process(matterResult.content)
-
-    const contentHtml = processedContent.toString()
+    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content)
 
     return {
       slug: normalizedSlug,

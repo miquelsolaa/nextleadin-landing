@@ -18,6 +18,7 @@ import Image from 'next/image'
 import { CalendarDays, User, ArrowLeft, ArrowRight } from 'lucide-react'
 import styles from '@/components/BlogPostContent.module.css'
 import BlogPostCTA from '@/components/BlogPostCTA'
+import { getCategorySlug } from '@/lib/blog-categories'
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -39,7 +40,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   try {
     const { slug, locale } = await params
-    const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'ca'
+    const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'es'
     const post = await getPostData(slug, validLocale)
     
     if (!post) {
@@ -56,16 +57,21 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     // Hreflang per a versions en altres idiomes (SEO multiidioma)
     const languages: { [locale: string]: string } = {}
     const localesToCheck: Locale[] = ['ca', 'es', 'en']
+    let xDefaultUrl: string | undefined
     for (const loc of localesToCheck) {
       if (postExists(slug, loc)) {
         const url = getBlogPostUrl(slug, loc)
         const lang = loc === 'ca' ? 'ca-ES' : loc === 'es' ? 'es-ES' : 'en-US'
         languages[lang] = `${baseUrl}${url}`
+        if (loc === 'es') xDefaultUrl = `${baseUrl}${url}`
       }
+    }
+    if (xDefaultUrl) {
+      languages['x-default'] = xDefaultUrl
     }
 
     return {
-      title: `${post.title} | Blog NextLeadIn`,
+      title: { absolute: `${post.title} | Blog NextLeadIn` },
       description: post.description,
       alternates: {
         canonical: fullUrl,
@@ -111,7 +117,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   try {
     const { slug, locale } = await params
-    const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'ca'
+    const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'es'
     const post = await getPostData(slug, validLocale)
     const t = await getTranslations('blog')
 
@@ -186,7 +192,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         <CategoryTag
                           key={index}
                           category={category}
-                          href={`${blogBaseUrl}/category/${category.toLowerCase()}`}
+                          href={`${blogBaseUrl}/category/${getCategorySlug(category)}`}
                           variant="outline"
                           size="sm"
                         />

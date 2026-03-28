@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import { createContext, useCallback, useContext, useState, useEffect, useRef } from 'react'
 import { useLocale } from 'next-intl'
+import type { AnimationVariants } from './VideoModalContent'
 
 const VideoModalContent = dynamic(() => import('./VideoModalContent'), { ssr: false })
 
@@ -18,10 +19,7 @@ type AnimationStyle =
   | 'top-in-bottom-out'
   | 'left-in-right-out'
 
-const animationVariants: Record<
-  AnimationStyle,
-  { initial: object; animate: object; exit: object }
-> = {
+const animationVariants: Record<AnimationStyle, AnimationVariants> = {
   'from-bottom': {
     initial: { y: '100%', opacity: 0 },
     animate: { y: 0, opacity: 1 },

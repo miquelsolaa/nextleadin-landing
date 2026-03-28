@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { getAllPosts, getAllCategories, getAllTags, getBlogPostUrl, type Locale } from '@/lib/blog'
 import BlogPageSection from '@/components/BlogPageSection'
 import BlogSearch from '@/components/BlogSearch'
@@ -5,8 +6,66 @@ import BlogCategories from '@/components/BlogCategories'
 import BlogRecentPosts from '@/components/BlogRecentPosts'
 import BlogTags from '@/components/BlogTags'
 import BlogPagination from '@/components/BlogPagination'
+import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 
 const POSTS_PER_PAGE = 12
+
+function blogIndexCanonical(locale: Locale, page: number, query: string): string {
+  const prefix = locale === 'es' ? '' : `/${locale}`
+  const u = new URL(`https://nextleadin.com${prefix}/blog`)
+  if (query) u.searchParams.set('query', query)
+  if (page > 1) u.searchParams.set('page', String(page))
+  return u.pathname + u.search
+}
+
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>
+  searchParams?: Promise<{ page?: string; query?: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const validLocale =
+    locale === 'ca' || locale === 'es' || locale === 'en' ? (locale as Locale) : 'es'
+  const sp = (await searchParams) ?? {}
+  const rawPage = Number(sp.page ?? '1')
+  const page = Number.isNaN(rawPage) || rawPage < 1 ? 1 : rawPage
+  const query = sp.query?.trim() ?? ''
+  const base = generateAIOptimizedMetadata('blog', validLocale)
+  const canonicalUrl = blogIndexCanonical(validLocale, page, query)
+  const baseTitle =
+    typeof base.title === 'string'
+      ? base.title
+      : typeof base.title === 'object' && base.title && 'default' in base.title
+        ? String((base.title as { default: string }).default)
+        : 'Blog'
+
+  if (page <= 1 && !query) {
+    return {
+      ...base,
+      alternates: {...base.alternates, canonical: canonicalUrl},
+    }
+  }
+
+  const suffix =
+    page > 1
+      ? validLocale === 'en'
+        ? ` — Page ${page}`
+        : validLocale === 'ca'
+          ? ` — Pàgina ${page}`
+          : ` — Página ${page}`
+      : ` — ${query}`
+
+  return {
+    ...base,
+    title: `${baseTitle}${suffix}`,
+    alternates: {...base.alternates, canonical: canonicalUrl},
+    openGraph: base.openGraph
+      ? {...base.openGraph, url: canonicalUrl}
+      : base.openGraph,
+  }
+}
 
 export default async function BlogPage({
   params,
@@ -16,7 +75,7 @@ export default async function BlogPage({
   searchParams?: Promise<{ page?: string; query?: string }>
 }) {
   const { locale } = await params
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'ca'
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale as Locale : 'es'
   
   const translations = (() => {
     if (validLocale === 'es') {

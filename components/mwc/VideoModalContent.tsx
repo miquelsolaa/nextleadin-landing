@@ -1,12 +1,12 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, type HTMLMotionProps } from 'framer-motion'
 import { XIcon } from 'lucide-react'
 
-type AnimationVariants = {
-  initial: object
-  animate: object
-  exit: object
+export type AnimationVariants = {
+  initial: HTMLMotionProps<'div'>['initial']
+  animate: HTMLMotionProps<'div'>['animate']
+  exit: HTMLMotionProps<'div'>['exit']
 }
 
 type VideoModalContentProps = {

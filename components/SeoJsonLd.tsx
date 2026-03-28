@@ -1,4 +1,5 @@
 import React from 'react'
+import { stringifyJsonLd } from '@/lib/json-ld-stringify'
 
 type JsonLdProps = {
   data: Record<string, unknown> | Record<string, unknown>[]
@@ -13,7 +14,7 @@ const SeoJsonLd: React.FC<JsonLdProps> = ({ data }) => {
           // eslint-disable-next-line react/no-danger
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }}
+          dangerouslySetInnerHTML={{ __html: stringifyJsonLd(node) }}
         />
       ))}
     </>

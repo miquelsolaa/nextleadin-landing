@@ -12,7 +12,9 @@ function getLucideIcon(iconName: string, className: string = "w-6 h-6"): React.R
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
   
-  const IconComponent = (LucideIcons as Record<string, React.ComponentType<{ className?: string }>>)[iconNamePascal];
+  const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[
+    iconNamePascal
+  ]
   
   if (IconComponent) {
     return <IconComponent className={className} />;
@@ -121,10 +123,10 @@ export async function generateMetadata({ params }: FeaturesPageProps): Promise<M
 export default async function FeaturesPage({ params }: FeaturesPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca';
+  const validLocale = locale === 'ca' || locale === 'es' || locale === 'en' ? locale : 'es'
   const content = seoContent[validLocale];
   const features = getAllFeatures(locale);
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`;
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`;
 
   const breadcrumbItems = [
     { name: content.breadcrumbHome, url: `https://nextleadin.com${localePrefix}` },
@@ -137,16 +139,32 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
     url: `https://nextleadin.com${localePrefix}/features/${feature.slug}`,
   }));
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  }
+
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: featureListItems.map((item) => ({
+      '@type': 'ListItem',
+      position: item.position,
+      name: item.name,
+      item: item.url,
+    })),
+  }
+
   return (
     <>
-      <SeoJsonLd 
-        type="BreadcrumbList" 
-        data={{ items: breadcrumbItems }} 
-      />
-      <SeoJsonLd 
-        type="ItemList" 
-        data={{ items: featureListItems }} 
-      />
+      <SeoJsonLd data={breadcrumbJsonLd} />
+      <SeoJsonLd data={itemListJsonLd} />
 
       {/* Hero Section */}
       <section className="relative bg-primary-700 py-20">
@@ -259,14 +277,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
         </div>
       </section>
 
-      <CTASection
-        title={content.ctaTitle}
-        description={content.ctaDescription}
-        primaryButtonText={content.ctaPrimary}
-        primaryButtonHref="https://app.nextleadin.com/register"
-        secondaryButtonText={content.ctaContact}
-        secondaryButtonHref={`${localePrefix}/contact`}
-      />
+      <CTASection />
     </>
   );
 }

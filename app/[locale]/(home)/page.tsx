@@ -25,13 +25,29 @@ import { getAllPosts } from '@/lib/blog'
 import { getAllIndustries } from '@/lib/industries'
 import CTASection from '@/components/CTASection'
 import IndustriesPreviewSection from '@/components/IndustriesPreviewSection'
+import AIStructuredData from '@/components/AIStructuredData'
+import { getAbsoluteHomeUrl } from '@/lib/locale-url'
+import type { AppLocale } from '@/i18n/routing'
+import type { Metadata } from 'next'
+import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
 
 export const dynamic = 'force-static'
 export const revalidate = 3600
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const validLocale =
+    locale === 'ca' || locale === 'es' || locale === 'en' ? (locale as AppLocale) : 'es'
+  return generateAIOptimizedMetadata('home', validLocale)
+}
+
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
+  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'es'
 
   // Carregar últims posts del blog i industries per la secció sectors
   const allPosts = getAllPosts(validLocale as 'ca' | 'es' | 'en')
@@ -50,8 +66,21 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     slug: post.slug || ''
   }))
 
+  const crumbs = [
+    {
+      name:
+        validLocale === 'ca' ? 'Inici' : validLocale === 'es' ? 'Inicio' : 'Home',
+      url: getAbsoluteHomeUrl(validLocale as AppLocale),
+    },
+  ]
+
   return (
     <>
+      <AIStructuredData
+        page="home"
+        locale={validLocale as AppLocale}
+        breadcrumbs={crumbs}
+      />
       {/* Hero Section */}
       <HeroSection locale={validLocale} />
 

@@ -7,7 +7,8 @@
     "build": "next build",
     "copy-sitemap": "node scripts/copy-sitemap.js",
     "start": "next start",
-    "lint": "powershell -NoProfile -Command \"$env:ESLINT_USE_FLAT_CONFIG='false'; .\\\\node_modules\\\\.bin\\\\eslint.cmd .\"",
+    "lint": "eslint .",
+    "test:smoke": "npm run build",
     "netlify:dev": "netlify dev",
     "netlify:build": "netlify build",
     "netlify:serve": "netlify serve"
@@ -21,7 +22,7 @@
     "framer-motion": "^12.34.3",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.562.0",
-    "next": "16.1.6",
+    "next": "^16.2.1",
     "next-intl": "4.6.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -36,7 +37,8 @@
     "tailwind-merge": "^3.5.0",
     "tailwindcss-animate": "^1.0.7",
     "unified": "^11.0.5",
-    "vanilla-cookieconsent": "^3.1.0"
+    "vanilla-cookieconsent": "^3.1.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
@@ -46,7 +48,7 @@
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.0.1",
     "eslint": "^9.39.0",
-    "eslint-config-next": "16.1.6",
+    "eslint-config-next": "^16.2.1",
     "postcss": "^8",
     "serwist": "^9.5.6",
     "sharp": "^0.34.5",

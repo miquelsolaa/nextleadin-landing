@@ -1,4 +1,5 @@
-import {createNavigation, Pathnames} from 'next-intl/navigation'
+import type {Pathnames} from 'next-intl/routing'
+import {createNavigation} from 'next-intl/navigation'
 
 export const locales = ['es', 'en', 'ca'] as const
 export type AppLocale = typeof locales[number]
@@ -34,7 +35,9 @@ export const pathnames: Pathnames<typeof locales> = {
   '/solutions': '/solutions',
   '/solutions/[slug]': '/solutions/[slug]',
   '/resources': '/resources',
-  '/resources/[slug]': '/resources/[slug]'
+  '/resources/roi-calculator': '/resources/roi-calculator',
+  '/resources/cold-calling-scripts': '/resources/cold-calling-scripts',
+  '/resources/local-prospecting-guide': '/resources/local-prospecting-guide',
 }
 
 export const routing = {

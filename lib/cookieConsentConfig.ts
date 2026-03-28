@@ -1,4 +1,4 @@
-import type { Locale } from '@/i18n/routing'
+import type { AppLocale } from '@/i18n/routing'
 
 export interface CookieConsentTranslations {
   consentModal: {
@@ -36,7 +36,7 @@ export interface CookieConsentTranslations {
 }
 
 export const getCookieConsentConfig = (
-  locale: Locale,
+  locale: AppLocale,
   translations: CookieConsentTranslations
 ) => {
   const primaryColor = '#00CC61'

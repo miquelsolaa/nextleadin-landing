@@ -75,7 +75,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           inLanguage: 'ca-ES',
           potentialAction: {
             '@type': 'SearchAction',
-            target: 'https://nextleadin.com/search?q={search_term_string}',
+            target: 'https://nextleadin.com/ca/blog?query={search_term_string}',
             'query-input': 'required name=search_term_string'
           }
         },
@@ -165,7 +165,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           inLanguage: 'es-ES',
           potentialAction: {
             '@type': 'SearchAction',
-            target: 'https://nextleadin.com/search?q={search_term_string}',
+            target: 'https://nextleadin.com/blog?query={search_term_string}',
             'query-input': 'required name=search_term_string'
           }
         }
@@ -228,7 +228,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           inLanguage: 'en-US',
           potentialAction: {
             '@type': 'SearchAction',
-            target: 'https://nextleadin.com/search?q={search_term_string}',
+            target: 'https://nextleadin.com/en/blog?query={search_term_string}',
             'query-input': 'required name=search_term_string'
           }
         }
@@ -307,7 +307,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           '@type': 'CollectionPage',
           name: 'Comparador NextLeadIn',
           description: 'Comparatives entre eines de lead acquisition i NextLeadIn',
-          url: 'https://nextleadin.com/compare'
+          url: 'https://nextleadin.com/ca/compare'
         }
       ]
     },
@@ -332,7 +332,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
           '@type': 'CollectionPage',
           name: 'Comparador NextLeadIn',
           description: 'Comparativas entre herramientas de lead acquisition y NextLeadIn',
-          url: 'https://nextleadin.com/es/compare'
+          url: 'https://nextleadin.com/compare'
         }
       ]
     },
