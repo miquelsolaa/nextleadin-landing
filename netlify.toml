@@ -1,4 +1,5 @@
 [build]
+  # Next 16 defaults to Turbopack; Netlify edge middleware bundling needs webpack output.
   command = "npm run build"
   publish = ".next"
 
