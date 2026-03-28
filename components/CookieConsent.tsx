@@ -81,7 +81,6 @@ export default function CookieConsent() {
               page_title: document.title,
               page_location: window.location.href,
               page_path: window.location.pathname,
-              send_to: gaId,
             })
           } else {
             const w = window as Window & { gtag?: (...args: unknown[]) => void }

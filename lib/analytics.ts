@@ -9,40 +9,54 @@ const isBrowser = () => typeof window !== 'undefined'
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 
-let gaLoaded = false
 let gaLoadPromise: Promise<void> | null = null
 
-/** Carrega GA4 només quan l'usuari ha acceptat analytics (evita 148KB JS inicial). Retorna quan gtag està disponible. */
+type GtagWindow = Window & {
+  dataLayer?: unknown[]
+  gtag?: (...args: unknown[]) => void
+}
+
+/** Carrega GA4 només quan l'usuari ha acceptat analytics (evita ~150KB JS inicial). */
 export const loadGAScript = (): Promise<void> => {
   if (!isBrowser()) return Promise.resolve()
   if (!GA_MEASUREMENT_ID) return Promise.resolve()
   if (gaLoadPromise) return gaLoadPromise
-  const w = window as Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void }
-  gaLoaded = true
+
+  const w = window as GtagWindow
+  w.dataLayer = w.dataLayer || []
+  if (!w.gtag) {
+    w.gtag = function gtag() {
+      w.dataLayer!.push(arguments)
+    } as (...args: unknown[]) => void
+  }
+
+  w.gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    wait_for_update: 500,
+  })
 
   gaLoadPromise = new Promise<void>((resolve) => {
     const script = document.createElement('script')
     script.async = true
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
-    document.head.appendChild(script)
-
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`
     script.onload = () => {
-      w.dataLayer = w.dataLayer || []
-      const gtag = (...args: unknown[]) => { w.dataLayer!.push(args) }
-      w.gtag = gtag
-      gtag('js', new Date())
-      gtag('consent', 'default', { analytics_storage: 'denied' })
-      gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true })
+      const gtag = w.gtag
+      if (typeof gtag === 'function') {
+        gtag('js', new Date())
+        gtag('config', GA_MEASUREMENT_ID)
+      }
       resolve()
     }
     script.onerror = () => resolve()
+    document.head.appendChild(script)
   })
+
   return gaLoadPromise
 }
 
 const getGtag = (): ((...args: unknown[]) => void) | null => {
   if (!isBrowser()) return null
-  const w = window as any
+  const w = window as GtagWindow
   if (!w.gtag || typeof w.gtag !== 'function') return null
   return w.gtag
 }
@@ -67,4 +81,3 @@ export const trackRegisterStart = (variant: string, locale: string): void => {
     label: `${variant}_${locale}`,
   })
 }
-

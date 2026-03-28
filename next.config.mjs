@@ -36,11 +36,6 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains; preload',
           },
-          {
-            key: 'Content-Security-Policy-Report-Only',
-            value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://checkout.stripe.com",
-          },
         ],
       },
     ]
