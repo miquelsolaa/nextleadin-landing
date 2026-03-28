@@ -80,7 +80,8 @@ export function solutionExists(slug: string, locale: SolutionLocale): boolean {
 
 export async function getSolutionData(
   slug: string,
-  locale: SolutionLocale
+  locale: SolutionLocale,
+  linkLocale: SolutionLocale = locale
 ): Promise<SolutionPost | null> {
   try {
     const normalizedSlug = normalizeSlug(slug)
@@ -88,7 +89,7 @@ export async function getSolutionData(
     const fullPath = path.join(baseDir, `${normalizedSlug}.md`)
 
     if (!fs.existsSync(fullPath) && locale !== 'ca') {
-      return await getSolutionData(slug, 'ca')
+      return await getSolutionData(slug, 'ca', linkLocale)
     }
 
     if (!fs.existsSync(fullPath)) {
@@ -98,7 +99,7 @@ export async function getSolutionData(
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content)
+    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content, linkLocale)
 
     return {
       slug: normalizedSlug,
@@ -112,7 +113,7 @@ export async function getSolutionData(
   } catch (error) {
     console.error(`Error reading solution ${slug} in locale ${locale}:`, error)
     if (locale !== 'ca') {
-      return await getSolutionData(slug, 'ca')
+      return await getSolutionData(slug, 'ca', linkLocale)
     }
     return null
   }

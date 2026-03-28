@@ -60,7 +60,8 @@ export function comparisonExists(slug: string, locale: ComparisonLocale): boolea
 
 export async function getComparisonData(
   slug: string,
-  locale: ComparisonLocale
+  locale: ComparisonLocale,
+  linkLocale: ComparisonLocale = locale
 ): Promise<ComparisonPost | null> {
   try {
     const normalizedSlug = normalizeSlug(slug)
@@ -68,7 +69,7 @@ export async function getComparisonData(
     const fullPath = path.join(baseDir, `${normalizedSlug}.md`)
 
     if (!fs.existsSync(fullPath) && locale !== 'ca') {
-      return await getComparisonData(slug, 'ca')
+      return await getComparisonData(slug, 'ca', linkLocale)
     }
 
     if (!fs.existsSync(fullPath)) {
@@ -78,7 +79,7 @@ export async function getComparisonData(
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content)
+    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content, linkLocale)
 
     return {
       slug: normalizedSlug,
@@ -89,7 +90,7 @@ export async function getComparisonData(
   } catch (error) {
     console.error(`Error reading comparison ${slug} in locale ${locale}:`, error)
     if (locale !== 'ca') {
-      return await getComparisonData(slug, 'ca')
+      return await getComparisonData(slug, 'ca', linkLocale)
     }
     return null
   }

@@ -1,3 +1,5 @@
+import type { AppLocale } from '@/i18n/routing'
+import { localizeHtmlInternalLinks } from '@/lib/locale-url'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
@@ -6,7 +8,10 @@ import remarkRehype from 'remark-rehype'
 import rehypeSanitize from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
 
-export const renderMarkdownToSafeHtml = async (markdown: string): Promise<string> => {
+export const renderMarkdownToSafeHtml = async (
+  markdown: string,
+  locale: AppLocale = 'es'
+): Promise<string> => {
   const processed = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -16,6 +21,6 @@ export const renderMarkdownToSafeHtml = async (markdown: string): Promise<string
     .use(rehypeStringify)
     .process(markdown)
 
-  return processed.toString()
+  return localizeHtmlInternalLinks(processed.toString(), locale)
 }
 

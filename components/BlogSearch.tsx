@@ -2,7 +2,7 @@
 
 import { Search } from 'lucide-react'
 import { useLocale } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
 import { useState } from 'react'
 
 const BlogSearch = () => {
@@ -29,9 +29,7 @@ const BlogSearch = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const q = query.trim()
-    const localePath = locale === 'es' ? '' : `/${locale}`
-    const href = q ? `${localePath}/blog?query=${encodeURIComponent(q)}` : `${localePath}/blog`
-    router.push(href)
+    router.push(q ? `/blog?query=${encodeURIComponent(q)}` : '/blog')
   }
 
   return (

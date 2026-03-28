@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { CalendarDays, User, Tag } from 'lucide-react'
 import { useLocale } from 'next-intl'
 import type { BlogPost } from '@/lib/blog'

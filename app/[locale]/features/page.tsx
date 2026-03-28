@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 import { getAllFeatures } from '@/lib/features';
 import CTASection from '@/components/CTASection';

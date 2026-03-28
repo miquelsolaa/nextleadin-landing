@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import type { ReactNode } from 'react'
 import SeoBreadcrumbs, { type SeoCrumb } from './SeoBreadcrumbs'
 import { getSeoSecondaryCtaHref } from '@/lib/seo-cta'

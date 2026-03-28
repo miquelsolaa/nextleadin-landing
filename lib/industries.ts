@@ -80,7 +80,8 @@ export function industryExists(slug: string, locale: IndustryLocale): boolean {
 
 export async function getIndustryData(
   slug: string,
-  locale: IndustryLocale
+  locale: IndustryLocale,
+  linkLocale: IndustryLocale = locale
 ): Promise<IndustryPost | null> {
   try {
     const normalizedSlug = normalizeSlug(slug)
@@ -88,7 +89,7 @@ export async function getIndustryData(
     const fullPath = path.join(baseDir, `${normalizedSlug}.md`)
 
     if (!fs.existsSync(fullPath) && locale !== 'ca') {
-      return await getIndustryData(slug, 'ca')
+      return await getIndustryData(slug, 'ca', linkLocale)
     }
 
     if (!fs.existsSync(fullPath)) {
@@ -98,7 +99,7 @@ export async function getIndustryData(
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content)
+    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content, linkLocale)
 
     return {
       slug: normalizedSlug,
@@ -112,7 +113,7 @@ export async function getIndustryData(
   } catch (error) {
     console.error(`Error reading industry ${slug} in locale ${locale}:`, error)
     if (locale !== 'ca') {
-      return await getIndustryData(slug, 'ca')
+      return await getIndustryData(slug, 'ca', linkLocale)
     }
     return null
   }

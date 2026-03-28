@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import * as LucideIcons from 'lucide-react'
 import { guiaContent, type Locale } from '@/lib/guia-prospeccion-local-data'
 

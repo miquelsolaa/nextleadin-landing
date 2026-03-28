@@ -1,7 +1,6 @@
 "use client"
-import Link from 'next/link'
+import { Link, useRouter } from '@/i18n/routing'
 import { useTransition } from 'react'
-import { useRouter } from 'next/navigation'
 import { PricingPlan } from '@/lib/pricing-data'
 
 interface PricingCardProps {

@@ -16,7 +16,7 @@ import BlogCategories from '@/components/BlogCategories'
 import BlogRecentPosts from '@/components/BlogRecentPosts'
 import BlogTags from '@/components/BlogTags'
 import CategoryLabel from '@/components/CategoryLabel'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 
 interface BlogCategoryPageProps {
   params: Promise<{ locale: string; category: string }>

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { comparisonFeatures, pricingPlans } from '@/lib/pricing-data'
 
 interface PricingComparisonTableProps {

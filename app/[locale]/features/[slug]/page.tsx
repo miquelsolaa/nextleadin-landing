@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 import { getFeatureData, getAllFeatureSlugs, featureExists } from '@/lib/features';
 import CTASection from '@/components/CTASection';

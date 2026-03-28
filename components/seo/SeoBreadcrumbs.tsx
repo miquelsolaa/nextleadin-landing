@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { Fragment, type ReactNode } from 'react'
 
 export type SeoCrumb = { label: string; href?: string }

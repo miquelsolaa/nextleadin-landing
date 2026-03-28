@@ -2,6 +2,7 @@
 
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
+import { Button } from '@/components/ui/button'
 import {useLocale} from 'next-intl'
 import { useState } from 'react'
 
@@ -375,9 +376,14 @@ function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: Ne
           placeholder={dict.emailPlaceholder}
         />
       </div>
-      <button type="submit" className="btn-primary whitespace-nowrap" disabled={isSubmitting}>
+      <Button
+        type="submit"
+        size="lg"
+        disabled={isSubmitting}
+        className="h-auto min-h-[44px] whitespace-nowrap px-6 py-3 text-base font-semibold"
+      >
         {isSubmitting ? dict.subscribeSubmitting : dict.subscribe}
-      </button>
+      </Button>
       {(success || error) && (
         <p className={`text-sm ${success ? 'text-green-400' : 'text-red-400'}`} role={success ? 'status' : 'alert'} aria-live="polite">
           {success ?? error}

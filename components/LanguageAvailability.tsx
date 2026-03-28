@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useLocale } from 'next-intl'
 import { getBlogPostUrl, type Locale } from '@/lib/blog-utils'
 import { Globe } from 'lucide-react'

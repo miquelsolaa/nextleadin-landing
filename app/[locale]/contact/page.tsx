@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useTranslations, useLocale } from 'next-intl'
 import { ArrowRight, FolderOpen, Phone, Bot, Zap, Check } from 'lucide-react'
 import AIStructuredData from '@/components/AIStructuredData'

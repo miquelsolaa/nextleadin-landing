@@ -50,6 +50,7 @@
       "seePricing": "Consulta els preus",
       "tabForm": "Enviar missatge",
       "tabDemo": "Demandar demo en viu",
+      "tabsLabel": "Opcions de contacte",
       "labels": {
         "name": "Nom complet",
         "email": "Correu electrònic",

@@ -75,7 +75,8 @@ export function locationExists(slug: string, locale: LocationLocale): boolean {
 
 export async function getLocationData(
   slug: string,
-  locale: LocationLocale
+  locale: LocationLocale,
+  linkLocale: LocationLocale = locale
 ): Promise<LocationPost | null> {
   try {
     const normalizedSlug = normalizeSlug(slug)
@@ -83,7 +84,7 @@ export async function getLocationData(
     const fullPath = path.join(baseDir, `${normalizedSlug}.md`)
 
     if (!fs.existsSync(fullPath) && locale !== 'ca') {
-      return await getLocationData(slug, 'ca')
+      return await getLocationData(slug, 'ca', linkLocale)
     }
 
     if (!fs.existsSync(fullPath)) {
@@ -93,7 +94,7 @@ export async function getLocationData(
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content)
+    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content, linkLocale)
 
     return {
       slug: normalizedSlug,
@@ -106,7 +107,7 @@ export async function getLocationData(
   } catch (error) {
     console.error(`Error reading location ${slug} in locale ${locale}:`, error)
     if (locale !== 'ca') {
-      return await getLocationData(slug, 'ca')
+      return await getLocationData(slug, 'ca', linkLocale)
     }
     return null
   }

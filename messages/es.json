@@ -50,6 +50,7 @@
       "seePricing": "Ver precios",
       "tabForm": "Enviar mensaje",
       "tabDemo": "Pedir demo en vivo",
+      "tabsLabel": "Opciones de contacto",
       "labels": {
         "name": "Nombre completo",
         "email": "Correo electrónico",

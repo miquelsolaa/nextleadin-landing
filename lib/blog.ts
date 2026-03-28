@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import type { AppLocale } from '@/i18n/routing'
 import type { Locale } from './blog-utils'
 import { getCanonicalTag } from './blog-tags'
 import { renderMarkdownToSafeHtml } from './markdown'
@@ -86,7 +85,11 @@ export function postExists(slug: string, locale: Locale): boolean {
  * Llegeix un post específic per slug i idioma
  * Si no existeix en l'idioma sol·licitat, fa fallback a català
  */
-export async function getPostData(slug: string, locale: Locale): Promise<BlogPost | null> {
+export async function getPostData(
+  slug: string,
+  locale: Locale,
+  linkLocale: Locale = locale
+): Promise<BlogPost | null> {
   try {
     const normalizedSlug = normalizeSlug(slug)
     const blogDir = getBlogDirectory(locale)
@@ -94,7 +97,7 @@ export async function getPostData(slug: string, locale: Locale): Promise<BlogPos
     
     // Si no existeix l'article en l'idioma sol·licitat, provar amb català
     if (!fs.existsSync(fullPath) && locale !== 'ca') {
-      return await getPostData(slug, 'ca')
+      return await getPostData(slug, 'ca', linkLocale)
     }
     
     // Si encara no existeix, retornar null
@@ -105,7 +108,7 @@ export async function getPostData(slug: string, locale: Locale): Promise<BlogPos
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content)
+    const contentHtml = await renderMarkdownToSafeHtml(matterResult.content, linkLocale)
 
     const data = matterResult.data as Record<string, unknown>
     const dateModified =
@@ -129,7 +132,7 @@ export async function getPostData(slug: string, locale: Locale): Promise<BlogPos
     
     // Si hi ha error i no és català, provar fallback a català
     if (locale !== 'ca') {
-      return await getPostData(slug, 'ca')
+      return await getPostData(slug, 'ca', linkLocale)
     }
     
     return null
