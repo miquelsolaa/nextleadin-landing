@@ -64,13 +64,6 @@ const translations = {
   },
 };
 
-function buildUrl(locale: Locale, path: string): string {
-  if (locale === "es") {
-    return path;
-  }
-  return `/${locale}${path}`;
-}
-
 export default function NotFoundContent() {
   const intlLocale = useLocale();
   const [locale, setLocale] = useState<Locale>(() => {
@@ -115,7 +108,8 @@ export default function NotFoundContent() {
               </p>
 
               <Link
-                href={buildUrl(locale, "/")}
+                href="/"
+                locale={locale}
                 className="inline-flex items-center gap-2 px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors duration-200"
               >
                 <svg
@@ -141,7 +135,8 @@ export default function NotFoundContent() {
                   {t.links.map((link) => (
                     <Link
                       key={link.path}
-                      href={buildUrl(locale, link.path)}
+                      href={link.path}
+                      locale={locale}
                       className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200"
                     >
                       {link.name}

@@ -1,5 +1,6 @@
 import type {Metadata} from 'next'
 import {NextIntlClientProvider} from 'next-intl'
+import {setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
 import {locales, type AppLocale} from '@/i18n/routing'
 import Header from '@/components/Header'
@@ -35,6 +36,8 @@ export default async function LocaleLayout({children, params}: {children: React.
   const {locale: localeParam} = await params
   if (!isValidLocale(localeParam)) notFound()
 
+  setRequestLocale(localeParam)
+
   // Carrega directa dels missatges per evitar dependència de configuració implícita
   const messages = (await import(`@/messages/${localeParam}.json`)).default
 
@@ -47,11 +50,11 @@ export default async function LocaleLayout({children, params}: {children: React.
           >
             {localeParam === 'ca' ? 'Salta al contingut' : localeParam === 'es' ? 'Saltar al contenido' : 'Skip to main content'}
           </a>
-          <Header locale={localeParam as AppLocale} />
+          <Header />
           <main id="main-content" className="flex-grow min-w-0 w-full overflow-x-hidden" tabIndex={-1}>
             {children}
           </main>
-          <Footer locale={localeParam as AppLocale}>
+          <Footer>
             <FooterSitemap locale={localeParam as AppLocale} />
           </Footer>
         </div>

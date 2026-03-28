@@ -17,11 +17,17 @@ const CookieConsent = dynamic(
   }
 )
 
+const AnalyticsRouteTracker = dynamic(
+  () => import('@/components/AnalyticsRouteTracker'),
+  { ssr: false, loading: () => null }
+)
+
 export default function LazyLayoutParts() {
   return (
     <>
       <ScrollToTopButton />
       <CookieConsent />
+      <AnalyticsRouteTracker />
     </>
   )
 }

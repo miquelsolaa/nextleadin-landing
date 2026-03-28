@@ -1,14 +1,13 @@
+'use client'
+
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import type { AppLocale } from '@/i18n/routing'
 import HeaderClientControls from '@/components/HeaderClientControls'
 import HeaderFeaturesMenuClient from '@/components/HeaderFeaturesMenuClient'
+import { useAppLocale } from '@/lib/use-app-locale'
 
-type HeaderProps = {
-  locale?: AppLocale
-}
-
-const Header = ({ locale = 'es' }: HeaderProps) => {
+export default function Header() {
+  const locale = useAppLocale()
   const mobileMenuButtonId = 'mobile-menu-button'
   const mobileMenuPanelId = 'mobile-menu-panel'
   const desktopNavLabel =
@@ -24,18 +23,18 @@ const Header = ({ locale = 'es' }: HeaderProps) => {
           comparator: 'Comparador',
           pricing: 'Precios',
           blog: 'Blog',
-          contact: 'Contacto'
+          contact: 'Contacto',
         },
         featureItems: {
           leadManagement: { title: 'Gestión de Leads', description: 'Genera y gestiona leads hipersegmentados' },
           coldCalling: { title: 'Cold Calling', description: 'Prepara llamadas con informes de IA' },
           emailSequences: { title: 'Secuencias de Email', description: 'Automatiza tu outreach por email' },
-          pipelineAnalytics: { title: 'Pipeline & Analytics', description: 'Analiza y optimiza tu pipeline' }
+          pipelineAnalytics: { title: 'Pipeline & Analytics', description: 'Analiza y optimiza tu pipeline' },
         },
         common: {
           login: 'Iniciar sesión',
-          getStarted: 'Comenzar'
-        }
+          getStarted: 'Comenzar',
+        },
       }
     }
     if (locale === 'en') {
@@ -47,18 +46,18 @@ const Header = ({ locale = 'es' }: HeaderProps) => {
           comparator: 'Comparisons',
           pricing: 'Pricing',
           blog: 'Blog',
-          contact: 'Contact'
+          contact: 'Contact',
         },
         featureItems: {
           leadManagement: { title: 'Lead Management', description: 'Generate and manage hyper-targeted leads' },
           coldCalling: { title: 'Cold Calling', description: 'Prepare calls with AI reports' },
           emailSequences: { title: 'Email Sequences', description: 'Automate your email outreach' },
-          pipelineAnalytics: { title: 'Pipeline & Analytics', description: 'Analyze and optimize your pipeline' }
+          pipelineAnalytics: { title: 'Pipeline & Analytics', description: 'Analyze and optimize your pipeline' },
         },
         common: {
           login: 'Login',
-          getStarted: 'Get Started'
-        }
+          getStarted: 'Get Started',
+        },
       }
     }
     return {
@@ -69,18 +68,18 @@ const Header = ({ locale = 'es' }: HeaderProps) => {
         comparator: 'Comparador',
         pricing: 'Preus',
         blog: 'Blog',
-        contact: 'Contacte'
+        contact: 'Contacte',
       },
       featureItems: {
         leadManagement: { title: 'Gestió de Leads', description: 'Genera i gestiona leads hipersegmentats' },
         coldCalling: { title: 'Cold Calling', description: 'Prepara trucades amb informes d\'IA' },
         emailSequences: { title: 'Seqüències d\'Email', description: 'Automatitza el teu outreach per email' },
-        pipelineAnalytics: { title: 'Pipeline i Analytics', description: 'Analitza i optimitza el teu pipeline' }
+        pipelineAnalytics: { title: 'Pipeline i Analytics', description: 'Analitza i optimitza el teu pipeline' },
       },
       common: {
         login: 'Iniciar sessió',
-        getStarted: 'Començar'
-      }
+        getStarted: 'Començar',
+      },
     }
   })()
 
@@ -123,9 +122,8 @@ const Header = ({ locale = 'es' }: HeaderProps) => {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" locale={locale} className="flex items-center space-x-3">
               <Image
                 src="/images/logo/logo-icon.svg"
                 alt="NextLeadIn Logo"
@@ -138,13 +136,13 @@ const Header = ({ locale = 'es' }: HeaderProps) => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1" aria-label={desktopNavLabel}>
-            <HeaderFeaturesMenuClient label={translations.nav.features} items={featureLinks} />
+            <HeaderFeaturesMenuClient label={translations.nav.features} items={featureLinks} linkLocale={locale} />
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
+                locale={locale}
                 className="text-gray-700 hover:text-primary-500 px-4 py-2 text-sm font-medium transition-colors duration-300 relative group"
               >
                 {item.name}
@@ -153,7 +151,6 @@ const Header = ({ locale = 'es' }: HeaderProps) => {
             ))}
           </nav>
 
-          {/* CTA Buttons */}
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-4">
               <Link
@@ -179,5 +176,3 @@ const Header = ({ locale = 'es' }: HeaderProps) => {
     </header>
   )
 }
-
-export default Header

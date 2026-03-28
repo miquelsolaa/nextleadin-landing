@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Syne, DM_Sans } from 'next/font/google'
 import { generateAIOptimizedMetadata } from '@/lib/seo-metadata'
@@ -23,6 +23,12 @@ const dmSans = DM_Sans({
 // Metadata per defecte (locale per defecte del projecte: es)
 export const metadata: Metadata = generateAIOptimizedMetadata('home', 'es')
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#00B359',
+}
+
 export default async function RootLayout({
   children,
 }: {
@@ -39,7 +45,6 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <meta name="theme-color" content="#00B359" />
       </head>
       <body className={`${dmSans.className} antialiased`}>
         {children}

@@ -89,8 +89,6 @@ const nextConfig = {
     ])
     return [
       ...catRedirects,
-      { source: '/resources/local-prospecting-guide', destination: '/resources', permanent: true },
-      { source: '/:locale(en|es|ca)/resources/local-prospecting-guide', destination: '/:locale/resources', permanent: true },
       { source: '/get-started', destination: '/contact', permanent: true },
       { source: '/:locale(en|es|ca)/get-started', destination: '/:locale/contact', permanent: true },
       { source: '/comparador', destination: '/compare', permanent: true },

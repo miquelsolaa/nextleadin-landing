@@ -3,19 +3,15 @@
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import {useLocale} from 'next-intl'
+import { useAppLocale } from '@/lib/use-app-locale'
 import { useState } from 'react'
 
 type FooterProps = {
   children?: React.ReactNode
-  locale?: 'es' | 'ca' | 'en'
 }
 
-const Footer = ({ children, locale: localeProp }: FooterProps) => {
-  const hookLocale = useLocale() as string
-  const rawLocale = (localeProp ?? hookLocale) || 'es'
-  const base = rawLocale.split('-')[0] as 'es' | 'ca' | 'en'
-  const locale = (['es','ca','en'].includes(base) ? base : 'es') as 'es' | 'ca' | 'en'
+const Footer = ({ children }: FooterProps) => {
+  const locale = useAppLocale()
 
   const dict = {
     es: {
@@ -166,7 +162,7 @@ const Footer = ({ children, locale: localeProp }: FooterProps) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {/* Brand Section */}
             <div className="lg:col-span-2">
-              <Link href="/" className="inline-block mb-6 flex items-center space-x-3">
+              <Link href="/" locale={locale} className="inline-block mb-6 flex items-center space-x-3">
                 <Image
                   src="/images/logo/logo-dark.svg"
                   alt="NextLeadIn"
@@ -205,6 +201,7 @@ const Footer = ({ children, locale: localeProp }: FooterProps) => {
                   <li key={item.name}>
                     <Link
                       href={item.href}
+                      locale={locale}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {item.name}
@@ -224,6 +221,7 @@ const Footer = ({ children, locale: localeProp }: FooterProps) => {
                   <li key={item.name}>
                     <Link
                       href={item.href}
+                      locale={locale}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {item.name}
@@ -243,6 +241,7 @@ const Footer = ({ children, locale: localeProp }: FooterProps) => {
                   <li key={item.name}>
                     <Link
                       href={item.href}
+                      locale={locale}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {item.name}
@@ -265,18 +264,21 @@ const Footer = ({ children, locale: localeProp }: FooterProps) => {
             <div className="footer-legal-links">
               <Link
                 href="/terms-and-conditions"
+                locale={locale}
                 className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
               >
                 {dict.legal.terms}
               </Link>
               <Link
                 href="/privacy-policy"
+                locale={locale}
                 className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
               >
                 {dict.legal.privacy}
               </Link>
               <Link
                 href="/cookie-policy"
+                locale={locale}
                 className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
               >
                 {dict.legal.cookies}

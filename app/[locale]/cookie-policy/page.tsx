@@ -220,31 +220,9 @@ export default async function CookiePolicyPage({ params }: CookiePolicyPageProps
                 2.4 Cookies de Marketing
               </h3>
               <p className="text-gray-700 mb-4">
-                Aquestes cookies s'utilitzen per mostrar anuncis rellevants i mesurar l'efectivitat de les campanyes:
+                En aquest domini no instal·lem cookies de màrqueting ni pixels publicitaris. Si en el futur n&apos;afegíssim,
+                només es carregarien amb el vostre consentiment explícit mitjançant el centre de preferències.
               </p>
-              <div className="overflow-x-auto mb-6">
-                <table className="min-w-full bg-white border border-gray-300">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Nom</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Finalitat</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Durada</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">_fbp</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Facebook Pixel - Seguiment conversió</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">3 mesos</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">ads_preferences</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Preferències publicitàries</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">1 any</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </section>
 
             <section className="mb-8">
@@ -252,15 +230,9 @@ export default async function CookiePolicyPage({ params }: CookiePolicyPageProps
                 3. Cookies de Tercers
               </h2>
               <p className="text-gray-700 mb-4">
-                Utilitzem serveis de tercers que poden establir cookies al vostre dispositiu:
+                Actualment utilitzem només Google Analytics 4 (GA4) per entendre l&apos;ús del lloc, i només després que hàgiu acceptat la categoria d&apos;analítica.
+                El codi es carrega des del domini <code className="text-sm bg-gray-100 px-1 rounded">googletagmanager.com</code> (endpoint oficial de gtag per a GA4); no fem servir un contenidor de Google Tag Manager ni altres eines de tercers (com Facebook Pixel, Hotjar o Intercom) en aquest lloc.
               </p>
-              <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li><strong>Google Analytics:</strong> Per analitzar l'ús del lloc web</li>
-                <li><strong>Google Tag Manager:</strong> Per gestionar etiquetes de seguiment</li>
-                <li><strong>Facebook Pixel:</strong> Per mesurar l'efectivitat de la publicitat</li>
-                <li><strong>Hotjar:</strong> Per analitzar el comportament dels usuaris</li>
-                <li><strong>Intercom:</strong> Per suport al client i comunicació</li>
-              </ul>
             </section>
 
             <section className="mb-8">

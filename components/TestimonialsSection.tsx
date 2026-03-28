@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Link } from '@/i18n/routing'
-import { useLocale } from 'next-intl'
+import { useAppLocale } from '@/lib/use-app-locale'
 
 const CleanTestimonial = dynamic(
   () => import('@/components/ui/clean-testimonial').then((mod) => ({ default: mod.CleanTestimonial })),
@@ -17,7 +17,7 @@ const CleanTestimonial = dynamic(
 )
 
 const TestimonialsSection = () => {
-  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+  const locale = useAppLocale()
 
   const translations = (() => {
     if (locale === 'es') {
@@ -66,7 +66,8 @@ const TestimonialsSection = () => {
         {/* CTA Button */}
         <div className="text-center mt-10">
           <Link 
-            href="/contact" 
+            href="/contact"
+            locale={locale}
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
           >
             {translations.cta}

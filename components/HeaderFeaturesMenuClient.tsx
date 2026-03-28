@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
+import type { AppLocale } from '@/i18n/routing'
 
 type FeatureIconKey = 'leadManagement' | 'coldCalling' | 'emailSequences' | 'pipelineAnalytics'
 
@@ -20,9 +21,11 @@ const LazyMenu = dynamic(() => import('@/components/HeaderFeaturesMenuLazy'), {
 export default function HeaderFeaturesMenuClient({
   label,
   items,
+  linkLocale,
 }: {
   label: string
   items: FeatureLink[]
+  linkLocale: AppLocale
 }) {
   const [shouldLoad, setShouldLoad] = useState(false)
 
@@ -41,6 +44,6 @@ export default function HeaderFeaturesMenuClient({
     )
   }
 
-  return <LazyMenu label={label} items={items} />
+  return <LazyMenu label={label} items={items} linkLocale={linkLocale} />
 }
 

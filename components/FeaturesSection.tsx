@@ -2,12 +2,12 @@
 
 import styles from './FeaturesSection.module.css'
 import { Target, BarChart3, Workflow } from 'lucide-react'
-import { useLocale } from 'next-intl'
 import { Link } from '@/i18n/routing'
+import { useAppLocale } from '@/lib/use-app-locale'
 
 const FeaturesSection = () => {
   // Locale i textos
-  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+  const locale = useAppLocale()
   const texts: Record<'es' | 'ca' | 'en', {
     headingA: string
     headingB: string
@@ -118,6 +118,7 @@ const FeaturesSection = () => {
                     <div className={styles.featureFooter}>
                       <Link
                         href="/industries"
+                        locale={locale}
                         className={styles.featureLink}
                       >
                         {t.more}

@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { useAppLocale } from '@/lib/use-app-locale'
 
 type MobileMenuProps = {
   isOpen: boolean
@@ -23,6 +24,7 @@ const FOCUSABLE_SELECTOR =
   'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
 const MobileMenu = ({ isOpen, onClose, panelId = 'mobile-menu-panel' }: MobileMenuProps) => {
+  const locale = useAppLocale()
   const t = useTranslations('header.mobileMenu')
   const panelRef = useRef<HTMLDivElement>(null)
   const previouslyFocusedRef = useRef<Element | null>(null)
@@ -115,6 +117,7 @@ const MobileMenu = ({ isOpen, onClose, panelId = 'mobile-menu-panel' }: MobileMe
           </h2>
           <Link
             href="/"
+            locale={locale}
             className="flex items-center gap-3"
             onClick={onClose}
           >
@@ -146,6 +149,7 @@ const MobileMenu = ({ isOpen, onClose, panelId = 'mobile-menu-panel' }: MobileMe
             <Link
               key={item.href}
               href={item.href}
+              locale={locale}
               onClick={onClose}
               className="flex items-center justify-between w-full py-5 px-4 text-lg font-bold text-[#111827] hover:bg-gray-50 border-b border-[#e5e7eb] transition-colors min-h-[52px]"
             >
@@ -159,6 +163,7 @@ const MobileMenu = ({ isOpen, onClose, panelId = 'mobile-menu-panel' }: MobileMe
         <div className="shrink-0 px-4 py-3 border-t border-[#e5e7eb] space-y-1 overflow-visible">
           <Link
             href="/contact"
+            locale={locale}
             onClick={onClose}
             className="flex items-center gap-3 py-2.5 px-2 text-sm text-[#111827] hover:bg-gray-50 rounded-md"
           >

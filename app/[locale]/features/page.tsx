@@ -98,7 +98,10 @@ const seoContent = {
 export async function generateMetadata({ params }: FeaturesPageProps): Promise<Metadata> {
   const { locale } = await params;
   const content = seoContent[locale as keyof typeof seoContent] || seoContent.en;
-  const canonicalUrl = `https://nextleadin.com/${locale}/features`;
+  const canonicalUrl =
+    locale === 'es'
+      ? 'https://nextleadin.com/features'
+      : `https://nextleadin.com/${locale}/features`;
 
   return {
     title: content.title,
@@ -106,9 +109,10 @@ export async function generateMetadata({ params }: FeaturesPageProps): Promise<M
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'ca': 'https://nextleadin.com/ca/features',
-        'es': 'https://nextleadin.com/es/features',
-        'en': 'https://nextleadin.com/en/features',
+        'x-default': 'https://nextleadin.com/features',
+        'es-ES': 'https://nextleadin.com/features',
+        'ca-ES': 'https://nextleadin.com/ca/features',
+        'en-US': 'https://nextleadin.com/en/features',
       },
     },
     openGraph: {

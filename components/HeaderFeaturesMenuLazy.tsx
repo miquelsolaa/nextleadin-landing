@@ -2,6 +2,7 @@
 
 import { Users, Phone, Mail, BarChart3 } from 'lucide-react'
 import { Link } from '@/i18n/routing'
+import type { AppLocale } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 import {
   NavigationMenu,
@@ -31,9 +32,11 @@ const iconByKey: Record<FeatureIconKey, React.ReactNode> = {
 export default function HeaderFeaturesMenuLazy({
   label,
   items,
+  linkLocale,
 }: {
   label: string
   items: FeatureLink[]
+  linkLocale: AppLocale
 }) {
   return (
     <NavigationMenu>
@@ -49,6 +52,7 @@ export default function HeaderFeaturesMenuLazy({
                   <NavigationMenuLink asChild>
                     <Link
                       href={feature.href}
+                      locale={linkLocale}
                       className={cn(
                         'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100'
                       )}

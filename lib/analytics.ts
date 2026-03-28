@@ -11,6 +11,12 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 
 let gaLoadPromise: Promise<void> | null = null
 
+let analyticsStorageGranted = false
+
+export function setAnalyticsStorageGranted(granted: boolean): void {
+  analyticsStorageGranted = granted
+}
+
 type GtagWindow = Window & {
   dataLayer?: unknown[]
   gtag?: (...args: unknown[]) => void
@@ -66,6 +72,17 @@ export const trackEvent = (action: string, params: GAEventParams = {}): void => 
   if (!gtag) return
 
   gtag('event', action, params)
+}
+
+export function trackGtagPageView(): void {
+  if (!isBrowser() || !analyticsStorageGranted) return
+  const gtag = getGtag()
+  if (!gtag) return
+  gtag('event', 'page_view', {
+    page_title: document.title,
+    page_location: window.location.href,
+    page_path: `${window.location.pathname}${window.location.search}`,
+  })
 }
 
 export const trackContactSubmit = (locale: string): void => {

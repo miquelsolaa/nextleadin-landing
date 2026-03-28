@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import { useLocale } from 'next-intl'
 import { useTranslations } from 'next-intl'
 import type { AppLocale } from '@/i18n/routing'
-import { loadGAScript } from '@/lib/analytics'
+import { loadGAScript, setAnalyticsStorageGranted } from '@/lib/analytics'
 import './cookieconsent-custom.css'
 
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
@@ -73,6 +73,7 @@ export default function CookieConsent() {
         const updateGtagConsent = async (granted: boolean) => {
           if (lastGtagGrantRef.current === granted) return
           lastGtagGrantRef.current = granted
+          setAnalyticsStorageGranted(granted)
           if (granted) {
             await loadGAScript()
             const w = window as Window & { gtag?: (...args: unknown[]) => void }
@@ -82,7 +83,7 @@ export default function CookieConsent() {
             w.gtag('event', 'page_view', {
               page_title: document.title,
               page_location: window.location.href,
-              page_path: window.location.pathname,
+              page_path: `${window.location.pathname}${window.location.search}`,
             })
           } else {
             const w = window as Window & { gtag?: (...args: unknown[]) => void }
@@ -158,6 +159,14 @@ export default function CookieConsent() {
         }
 
         CookieConsentLib.run(config)
+        await new Promise((resolve) => setTimeout(resolve, 0))
+        try {
+          if (CookieConsentLib.acceptedCategory('analytics')) {
+            await updateGtagConsent(true)
+          }
+        } catch {
+          /* acceptedCategory may be unavailable in some builds */
+        }
         if (process.env.NODE_ENV === 'development') {
           console.log('CookieConsent initialized successfully')
         }

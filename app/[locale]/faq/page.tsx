@@ -51,7 +51,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
             {pageTexts[validLocale].subtitle}<br />
             {pageTexts[validLocale].contactText}{' '}
             <strong>
-              <Link href="/contact" className="text-primary-600 hover:text-primary-700">
+              <Link href="/contact" locale={validLocale as 'ca' | 'es' | 'en'} className="text-primary-600 hover:text-primary-700">
                 {pageTexts[validLocale].contactLink}
               </Link>
             </strong>.

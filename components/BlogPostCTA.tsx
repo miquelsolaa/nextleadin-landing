@@ -1,7 +1,7 @@
 'use client'
 
 import { Link } from '@/i18n/routing'
-import { useLocale } from 'next-intl'
+import { useAppLocale } from '@/lib/use-app-locale'
 import { trackRegisterStart } from '@/lib/analytics'
 import { Rocket } from 'lucide-react'
 
@@ -10,7 +10,7 @@ interface BlogPostCTAProps {
 }
 
 const BlogPostCTA = ({ variant = 'default' }: BlogPostCTAProps) => {
-  const locale = (useLocale() as 'es' | 'ca' | 'en') ?? 'es'
+  const locale = useAppLocale()
 
   const t = {
     es: {
@@ -52,6 +52,7 @@ const BlogPostCTA = ({ variant = 'default' }: BlogPostCTAProps) => {
           <div className="flex-shrink-0">
             <Link
               href="/contact"
+              locale={locale}
               className="inline-flex items-center px-5 py-2.5 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
               onClick={() => trackRegisterStart('blog_cta_minimal', locale)}
             >
@@ -89,6 +90,7 @@ const BlogPostCTA = ({ variant = 'default' }: BlogPostCTAProps) => {
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href="/contact"
+            locale={locale}
             className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors shadow-lg"
             onClick={() => trackRegisterStart('blog_cta_primary', locale)}
           >
@@ -96,6 +98,7 @@ const BlogPostCTA = ({ variant = 'default' }: BlogPostCTAProps) => {
           </Link>
           <Link
             href="/pricing"
+            locale={locale}
             className="inline-flex items-center justify-center px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
             onClick={() => trackRegisterStart('blog_cta_secondary', locale)}
           >

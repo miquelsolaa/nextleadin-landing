@@ -1,6 +1,8 @@
 import { Link } from '@/i18n/routing'
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
+import { getLocalePath } from '@/lib/locale-url'
+import type { AppLocale } from '@/i18n/routing'
 import SeoJsonLd from '@/components/SeoJsonLd'
 import CTASection from '@/components/CTASection'
 import * as LucideIcons from 'lucide-react'
@@ -30,7 +32,7 @@ interface ResourcesPageProps {
 
 export async function generateMetadata({ params }: ResourcesPageProps): Promise<Metadata> {
   const { locale } = await params
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
+  const validLocale: AppLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'es'
 
   const titles = {
     ca: 'Recursos Gratuïts | NextLeadIn',
@@ -44,9 +46,8 @@ export async function generateMetadata({ params }: ResourcesPageProps): Promise<
     en: 'Free tools to improve your prospecting: ROI calculator, cold calling guides, templates and more.'
   }
 
-  const canonical = validLocale === 'ca'
-    ? 'https://nextleadin.com/resources'
-    : `https://nextleadin.com/${validLocale}/resources`
+  const pathPrefix = getLocalePath(validLocale)
+  const canonical = `https://nextleadin.com${pathPrefix}/resources`
 
   return {
     title: titles[validLocale as keyof typeof titles],
@@ -58,7 +59,7 @@ export async function generateMetadata({ params }: ResourcesPageProps): Promise<
 export default async function ResourcesPage({ params }: ResourcesPageProps) {
   const { locale } = await params
   setRequestLocale(locale)
-  const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
+  const validLocale: AppLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'es'
 
   const t = {
     ca: {
@@ -151,9 +152,9 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
   }[validLocale as 'ca' | 'es' | 'en']
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = getLocalePath(validLocale)
   const currentUrl = `${baseUrl}${localePath}/resources`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = localePath
 
   const breadcrumbs = [
     { name: t.breadcrumbHome, url: `${baseUrl}${localePath}` },
@@ -182,7 +183,7 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
         <section className="pt-32 pb-20 bg-gradient-to-b from-primary-50 to-white">
           <div className="container mx-auto px-4">
             <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-8">
-              <Link href={localePrefix || '/'} className="hover:text-primary-600 transition-colors">
+              <Link href="/" locale={validLocale} className="hover:text-primary-600 transition-colors">
                 {t.breadcrumbHome}
               </Link>
               <span className="text-gray-400">/</span>
@@ -207,7 +208,8 @@ export default async function ResourcesPage({ params }: ResourcesPageProps) {
               {t.resources.map((resource) => (
                 <Link
                   key={resource.slug}
-                  href={`${localePrefix}/resources/${resource.slug}`}
+                  href={`/resources/${resource.slug}`}
+                  locale={validLocale}
                   className="group bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg hover:border-primary-300 transition-all"
                 >
                   <span className="text-primary-600 block mb-4">{getLucideIcon(resource.icon, "w-10 h-10")}</span>

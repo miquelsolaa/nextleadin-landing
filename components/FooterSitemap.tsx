@@ -60,6 +60,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
             <li>
               <Link
                 href="/industries"
+                locale={locale}
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 {labels.industries}
@@ -69,6 +70,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
               <li key={item.slug}>
                 <Link
                   href={`/industries/${item.slug}`}
+                  locale={locale}
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {item.title}
@@ -87,6 +89,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
             <li>
               <Link
                 href="/locations"
+                locale={locale}
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 {labels.locations}
@@ -96,6 +99,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
               <li key={item.slug}>
                 <Link
                   href={`/locations/${item.slug}`}
+                  locale={locale}
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {item.cityName || item.title}
@@ -114,6 +118,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
             <li>
               <Link
                 href="/solutions"
+                locale={locale}
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 {labels.solutions}
@@ -123,6 +128,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
               <li key={item.slug}>
                 <Link
                   href={`/solutions/${item.slug}`}
+                  locale={locale}
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {item.title}
@@ -137,6 +143,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
             <li>
               <Link
                 href="/resources"
+                locale={locale}
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 {labels.resources}
@@ -146,6 +153,7 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
               <li key={item.slug}>
                 <Link
                   href={`/resources/${item.slug}`}
+                  locale={locale}
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {item.label}

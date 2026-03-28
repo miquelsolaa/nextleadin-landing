@@ -57,11 +57,11 @@ export default async function NotFound() {
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
       <div className="min-h-screen flex flex-col bg-white">
-        <Header locale={locale} />
+        <Header />
         <main className="flex-1 flex items-center justify-center">
           <NotFoundContent />
         </main>
-        <Footer locale={locale} />
+        <Footer />
       </div>
     </NextIntlClientProvider>
   );
