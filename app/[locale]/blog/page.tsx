@@ -34,6 +34,8 @@ export async function generateMetadata({
   const query = sp.query?.trim() ?? ''
   const base = generateAIOptimizedMetadata('blog', validLocale)
   const canonicalUrl = blogIndexCanonical(validLocale, page, query)
+  const canonicalWithoutQuery = blogIndexCanonical(validLocale, page, '')
+  const canonicalMainBlog = blogIndexCanonical(validLocale, 1, '')
   const baseTitle =
     typeof base.title === 'string'
       ? base.title
@@ -60,10 +62,20 @@ export async function generateMetadata({
   return {
     ...base,
     title: `${baseTitle}${suffix}`,
-    alternates: {...base.alternates, canonical: canonicalUrl},
+    alternates: {...base.alternates, canonical: query ? canonicalMainBlog : canonicalWithoutQuery},
     openGraph: base.openGraph
       ? {...base.openGraph, url: canonicalUrl}
       : base.openGraph,
+    robots: query
+      ? {
+          index: false,
+          follow: true,
+          googleBot: {
+            index: false,
+            follow: true,
+          },
+        }
+      : base.robots,
   }
 }
 
@@ -172,7 +184,7 @@ export default async function BlogPage({
             {translations.description}
           </p>
           <nav className="text-sm text-gray-500">
-            <a href={validLocale === 'ca' ? '/' : `/${validLocale}`} className="hover:text-green-600 transition-colors">
+            <a href={validLocale === 'es' ? '/' : `/${validLocale}`} className="hover:text-green-600 transition-colors">
               {translations.breadcrumbHome}
             </a>
             <span className="mx-2">›</span>

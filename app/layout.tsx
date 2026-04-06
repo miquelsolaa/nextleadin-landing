@@ -42,9 +42,9 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${syne.variable} ${dmSans.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/logo/logo-icon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/images/logo/logo-icon.svg" />
       </head>
       <body className={`${dmSans.className} antialiased`}>
         {children}

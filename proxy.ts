@@ -19,12 +19,37 @@ function nextWithPathname(request: NextRequest) {
   return NextResponse.next({request: {headers}})
 }
 
+const normalizeTaxonomyPath = (pathname: string) => {
+  const match = pathname.match(/^\/(?:(es|en|ca)\/)?blog\/(category|tag)\/(.+)$/i)
+  if (!match) return null
+
+  const locale = match[1] ?? ''
+  const taxonomy = match[2].toLowerCase()
+  const rawSlug = match[3]
+  const decodedSlug = decodeURIComponent(rawSlug).trim()
+  const normalizedSlug = decodedSlug
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+
+  if (!normalizedSlug || normalizedSlug === decodedSlug) return null
+
+  const localePrefix = locale ? `/${locale}` : ''
+  return `${localePrefix}/blog/${taxonomy}/${normalizedSlug}`
+}
+
 export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/admin')) {
     return nextWithPathname(request)
   }
   if (request.nextUrl.pathname === '/sitemap.xml') {
     return nextWithPathname(request)
+  }
+  const normalizedTaxonomyPath = normalizeTaxonomyPath(request.nextUrl.pathname)
+  if (normalizedTaxonomyPath) {
+    const url = request.nextUrl.clone()
+    url.pathname = normalizedTaxonomyPath
+    return NextResponse.redirect(url, 301)
   }
   return intlMiddleware(requestWithPathnameHeader(request))
 }

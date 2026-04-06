@@ -9,7 +9,16 @@ import { getAbsoluteHomeUrl, getAbsoluteLocaleUrl } from '@/lib/locale-url'
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const validLocale = (locale === 'ca' || locale === 'es' || locale === 'en') ? locale : 'ca'
-  return generateAIOptimizedMetadata('comparador', validLocale as 'ca' | 'es' | 'en')
+  return generateAIOptimizedMetadata('comparador', validLocale as 'ca' | 'es' | 'en', {
+    alternates: {
+      languages: {
+        'x-default': 'https://nextleadin.com/compare',
+        'es-ES': 'https://nextleadin.com/compare',
+        'ca-ES': 'https://nextleadin.com/ca/compare',
+        'en-US': 'https://nextleadin.com/en/compare',
+      },
+    },
+  })
 }
 
 export default async function ComparadorIndexPage({ params }: { params: Promise<{ locale: string }> }) {

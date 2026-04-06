@@ -48,11 +48,17 @@ export async function generateMetadata({ params }: ResourcesPageProps): Promise<
 
   const pathPrefix = getLocalePath(validLocale)
   const canonical = `https://nextleadin.com${pathPrefix}/resources`
+  const languages = {
+    'x-default': 'https://nextleadin.com/resources',
+    'es-ES': 'https://nextleadin.com/resources',
+    'ca-ES': 'https://nextleadin.com/ca/resources',
+    'en-US': 'https://nextleadin.com/en/resources',
+  }
 
   return {
     title: titles[validLocale as keyof typeof titles],
     description: descriptions[validLocale as keyof typeof descriptions],
-    alternates: { canonical }
+    alternates: { canonical, languages }
   }
 }
 

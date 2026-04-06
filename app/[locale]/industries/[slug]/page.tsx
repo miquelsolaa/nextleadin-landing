@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
   }
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '/ca' : validLocale === 'en' ? '/en' : ''
+  const localePath = validLocale === 'en' ? '/en' : validLocale === 'ca' ? '/ca' : ''
   const pathSegment = `industries/${industry.slug}`
   const canonical = localePath
     ? `${baseUrl}${localePath}/${pathSegment}`
@@ -135,9 +135,9 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
   }[validLocale]
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/industries/${industry.slug}`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     {

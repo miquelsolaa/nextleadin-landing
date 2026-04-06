@@ -107,6 +107,14 @@ const nextConfig = {
       { source: '/:locale(en|es|ca)/resources/guia-prospeccion-local', destination: '/:locale/resources/local-prospecting-guide', permanent: true },
     ]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/images/logo/logo-icon.svg',
+      },
+    ]
+  },
   outputFileTracingIncludes: {
     '/sitemap.xml': ['./content/**/*'],
     '/robots.txt': ['./content/**/*'],

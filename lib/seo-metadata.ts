@@ -126,7 +126,7 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         'scoring potencial negocio',
         'pipeline de leads locales'
       ],
-      canonical: 'https://nextleadin.com/',
+      canonical: 'https://nextleadin.com',
       ogImage: '/images/og/og-image.png',
       structuredData: [
         {

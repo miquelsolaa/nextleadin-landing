@@ -113,6 +113,7 @@ export default function Header() {
   const navigation = [
     { name: translations.nav.industries, href: '/industries' },
     { name: translations.nav.resources, href: '/resources' },
+    { name: translations.nav.comparator, href: '/compare' },
     { name: translations.nav.pricing, href: '/pricing' },
     { name: translations.nav.blog, href: '/blog' },
     { name: translations.nav.contact, href: '/contact' },

@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: SolutionsPageProps): Promise<
     en: 'NextLeadIn for SDRs, agencies, consultants, and sales teams. Find the perfect solution for your role.'
   }
 
-  const canonical = validLocale === 'ca'
+  const canonical = validLocale === 'es'
     ? 'https://nextleadin.com/solutions'
     : `https://nextleadin.com/${validLocale}/solutions`
 
@@ -94,9 +94,9 @@ export default async function SolutionsPage({ params }: SolutionsPageProps) {
   }[validLocale]
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/solutions`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     { name: t.breadcrumbHome, url: `${baseUrl}${localePath}` },

@@ -10,10 +10,10 @@ import {
 import { getTagSlug } from '@/lib/blog-tags'
 import { getCategorySlug } from '@/lib/blog-categories'
 import { getAllComparisonSlugs, getComparisonUrl } from '@/lib/comparisons'
-import { getAllIndustrySlugs } from '@/lib/industries'
-import { getAllSolutionSlugs } from '@/lib/solutions'
-import { getAllFeatureSlugs } from '@/lib/features'
-import { getAllLocationSlugs } from '@/lib/locations'
+import { getAllIndustrySlugs, industryExists } from '@/lib/industries'
+import { getAllSolutionSlugs, solutionExists } from '@/lib/solutions'
+import { getAllFeatureSlugs, featureExists } from '@/lib/features'
+import { getAllLocationSlugs, locationExists } from '@/lib/locations'
 
 export const dynamic = 'force-static'
 
@@ -28,8 +28,25 @@ function getBlogArchiveUrl(
   return `/${locale}${path}`
 }
 
+function getLocaleUrl(baseUrl: string, locale: Locale, path: string): string {
+  const localePath = locale === 'es' ? '' : `/${locale}`
+  return `${baseUrl}${localePath}${path}`
+}
+
+function getAlternatesForPath(baseUrl: string, path: string, availableLocales: Locale[] = ['es', 'ca', 'en']) {
+  const languages: Record<string, string> = {}
+
+  if (availableLocales.includes('es')) languages['es-ES'] = getLocaleUrl(baseUrl, 'es', path)
+  if (availableLocales.includes('ca')) languages['ca-ES'] = getLocaleUrl(baseUrl, 'ca', path)
+  if (availableLocales.includes('en')) languages['en-US'] = getLocaleUrl(baseUrl, 'en', path)
+
+  const xDefault = languages['es-ES'] ?? languages['ca-ES'] ?? languages['en-US']
+  return xDefault ? { 'x-default': xDefault, ...languages } : languages
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nextleadin.com'
+  const stableLastModified = new Date('2026-01-01T00:00:00.000Z')
   const allPostSlugs = getAllPostSlugs()
   const allComparisonSlugs = getAllComparisonSlugs()
   const locales: Locale[] = ['ca', 'es', 'en']
@@ -44,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Generar URLs per als articles del blog amb dates reals
   const blogUrls = allPostSlugs.map(({ slug, locale }) => {
     const post = allPosts[locale as Locale]?.find(p => p.slug === slug)
-    const postDate = post?.date ? new Date(post.date) : new Date()
+    const postDate = post?.date ? new Date(post.date) : stableLastModified
     
     // Calcular priority basat en l'antiguitat del post (posts més recents tenen més priority) - SEO: prioritzar per indexació
     const daysSincePublished = Math.floor((Date.now() - postDate.getTime()) / (1000 * 60 * 60 * 24))
@@ -59,11 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   })
 
   // Canonical URLs: defaultLocale (es) has no prefix; /es/* redirects to /* so never include /es/
-  const localePaths = [
-    { locale: '', lang: 'es-ES' },
-    { locale: '/ca', lang: 'ca-ES' },
-    { locale: '/en', lang: 'en-US' }
-  ]
+  const localePaths = ['', '/ca', '/en']
   
   const pages = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
@@ -88,24 +101,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Generar URLs per a cada pàgina i idioma
   const staticUrls = pages.flatMap(page => 
-    localePaths.map(({ locale }) => ({
-      url: `${baseUrl}${locale}${page.path}`,
-      lastModified: new Date(),
+    localePaths.map((localePath) => ({
+      url: `${baseUrl}${localePath}${page.path}`,
+      lastModified: stableLastModified,
       changeFrequency: page.changeFrequency,
       priority: page.priority,
+      alternates: {
+        languages: getAlternatesForPath(baseUrl, page.path)
+      }
     }))
   )
 
   const comparisonUrls = allComparisonSlugs.map(({ slug, locale }) => ({
     url: `${baseUrl}${getComparisonUrl(slug, locale as Locale)}`,
-    lastModified: new Date(),
+    lastModified: stableLastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
+    alternates: {
+      languages: getAlternatesForPath(baseUrl, `/compare/${slug}`)
+    }
   }))
 
   // Pàgines de categories del blog (per idioma)
   const categoryUrls: MetadataRoute.Sitemap = []
   const seenCategories = new Set<string>()
+  const categoryLocaleMap = new Map<string, Locale[]>()
+  for (const locale of locales) {
+    const categories = getAllCategories(locale)
+    for (const cat of categories) {
+      const slug = getCategorySlug(cat.name)
+      const current = categoryLocaleMap.get(slug) ?? []
+      if (!current.includes(locale)) current.push(locale)
+      categoryLocaleMap.set(slug, current)
+    }
+  }
   for (const locale of locales) {
     const categories = getAllCategories(locale)
     for (const cat of categories) {
@@ -113,11 +142,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const key = `${locale}:${slug}`
       if (seenCategories.has(key)) continue
       seenCategories.add(key)
+      const availableLocales = categoryLocaleMap.get(slug) ?? [locale]
       categoryUrls.push({
         url: `${baseUrl}${getBlogArchiveUrl('category', slug, locale)}`,
-        lastModified: new Date(),
+        lastModified: stableLastModified,
         changeFrequency: 'weekly' as const,
         priority: 0.65,
+        alternates: {
+          languages: getAlternatesForPath(baseUrl, `/blog/category/${slug}`, availableLocales)
+        }
       })
     }
   }
@@ -125,6 +158,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Pàgines de tags del blog (per idioma)
   const tagUrls: MetadataRoute.Sitemap = []
   const seenTags = new Set<string>()
+  const tagLocaleMap = new Map<string, Locale[]>()
+  for (const locale of locales) {
+    const tags = getAllTags(locale)
+    for (const tag of tags) {
+      const slug = getTagSlug(tag)
+      const current = tagLocaleMap.get(slug) ?? []
+      if (!current.includes(locale)) current.push(locale)
+      tagLocaleMap.set(slug, current)
+    }
+  }
   for (const locale of locales) {
     const tags = getAllTags(locale)
     for (const tag of tags) {
@@ -132,11 +175,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const key = `${locale}:${slug}`
       if (seenTags.has(key)) continue
       seenTags.add(key)
+      const availableLocales = tagLocaleMap.get(slug) ?? [locale]
       tagUrls.push({
         url: `${baseUrl}${getBlogArchiveUrl('tag', slug, locale)}`,
-        lastModified: new Date(),
+        lastModified: stableLastModified,
         changeFrequency: 'weekly' as const,
         priority: 0.65,
+        alternates: {
+          languages: getAlternatesForPath(baseUrl, `/blog/tag/${slug}`, availableLocales)
+        }
       })
     }
   }
@@ -145,11 +192,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allIndustrySlugs = getAllIndustrySlugs()
   const industryUrls = allIndustrySlugs.map(({ slug, locale }) => {
     const localePath = locale === 'es' ? '' : `/${locale}`
+    const availableLocales = locales.filter((loc) => industryExists(slug, loc))
     return {
       url: `${baseUrl}${localePath}/industries/${slug}`,
-      lastModified: new Date(),
+      lastModified: stableLastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+      alternates: {
+        languages: getAlternatesForPath(baseUrl, `/industries/${slug}`, availableLocales)
+      }
     }
   })
 
@@ -157,11 +208,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allSolutionSlugsData = getAllSolutionSlugs()
   const solutionUrls = allSolutionSlugsData.map(({ slug, locale }) => {
     const localePath = locale === 'es' ? '' : `/${locale}`
+    const availableLocales = locales.filter((loc) => solutionExists(slug, loc))
     return {
       url: `${baseUrl}${localePath}/solutions/${slug}`,
-      lastModified: new Date(),
+      lastModified: stableLastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+      alternates: {
+        languages: getAlternatesForPath(baseUrl, `/solutions/${slug}`, availableLocales)
+      }
     }
   })
 
@@ -169,23 +224,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allFeatureSlugsData = getAllFeatureSlugs()
   const featureUrls = locales.flatMap(locale => {
     const localePath = locale === 'es' ? '' : `/${locale}`
-    return allFeatureSlugsData.map(slug => ({
-      url: `${baseUrl}${localePath}/features/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.75,
-    }))
+    return allFeatureSlugsData
+      .filter((slug) => featureExists(slug, locale))
+      .map(slug => {
+        const availableLocales = locales.filter((loc) => featureExists(slug, loc))
+        return {
+          url: `${baseUrl}${localePath}/features/${slug}`,
+          lastModified: stableLastModified,
+          changeFrequency: 'monthly' as const,
+          priority: 0.75,
+          alternates: {
+            languages: getAlternatesForPath(baseUrl, `/features/${slug}`, availableLocales)
+          }
+        }
+      })
   })
 
   // Locations URLs (multiidioma)
   const allLocationSlugsData = getAllLocationSlugs()
   const locationUrls = allLocationSlugsData.map(({ slug, locale }) => {
     const localePath = locale === 'es' ? '' : `/${locale}`
+    const availableLocales = locales.filter((loc) => locationExists(slug, loc))
     return {
       url: `${baseUrl}${localePath}/locations/${slug}`,
-      lastModified: new Date(),
+      lastModified: stableLastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.65,
+      alternates: {
+        languages: getAlternatesForPath(baseUrl, `/locations/${slug}`, availableLocales)
+      }
     }
   })
 

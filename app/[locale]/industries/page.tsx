@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: IndustriesPageProps): Promise
     en: 'Find local business leads by industry: restaurants, gyms, clinics, auto repair and more. Enriched data and AI analysis.'
   }
 
-  const canonical = validLocale === 'ca'
+  const canonical = validLocale === 'es'
     ? 'https://nextleadin.com/industries'
     : `https://nextleadin.com/${validLocale}/industries`
 
@@ -99,9 +99,9 @@ export default async function IndustriesPage({ params }: IndustriesPageProps) {
   }[validLocale]
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/industries`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     {

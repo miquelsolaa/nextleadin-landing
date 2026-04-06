@@ -33,14 +33,20 @@ export async function generateMetadata({
   }
 
   const canonical =
-    validLocale === 'ca'
+    validLocale === 'es'
       ? 'https://nextleadin.com/resources/local-prospecting-guide'
       : `https://nextleadin.com/${validLocale}/resources/local-prospecting-guide`
+  const languages = {
+    'x-default': 'https://nextleadin.com/resources/local-prospecting-guide',
+    'es-ES': 'https://nextleadin.com/resources/local-prospecting-guide',
+    'ca-ES': 'https://nextleadin.com/ca/resources/local-prospecting-guide',
+    'en-US': 'https://nextleadin.com/en/resources/local-prospecting-guide',
+  }
 
   return {
     title: titles[validLocale as keyof typeof titles],
     description: descriptions[validLocale as keyof typeof descriptions],
-    alternates: { canonical },
+    alternates: { canonical, languages },
     openGraph: {
       title: titles[validLocale as keyof typeof titles],
       description: descriptions[validLocale as keyof typeof descriptions],
@@ -86,9 +92,9 @@ export default async function LocalProspectingGuidePage({
   }[validLocale as 'ca' | 'es' | 'en']
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/resources/local-prospecting-guide`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     { name: t.breadcrumbHome, url: `${baseUrl}${localePath}` },

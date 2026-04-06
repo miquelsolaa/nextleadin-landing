@@ -27,14 +27,20 @@ export async function generateMetadata({ params }: ROICalculatorPageProps): Prom
     en: 'Calculate your ROI with NextLeadIn. Discover how much time you can save and how many more meetings and sales you can generate.'
   }
 
-  const canonical = validLocale === 'ca'
+  const canonical = validLocale === 'es'
     ? 'https://nextleadin.com/resources/roi-calculator'
     : `https://nextleadin.com/${validLocale}/resources/roi-calculator`
+  const languages = {
+    'x-default': 'https://nextleadin.com/resources/roi-calculator',
+    'es-ES': 'https://nextleadin.com/resources/roi-calculator',
+    'ca-ES': 'https://nextleadin.com/ca/resources/roi-calculator',
+    'en-US': 'https://nextleadin.com/en/resources/roi-calculator',
+  }
 
   return {
     title: titles[validLocale as keyof typeof titles],
     description: descriptions[validLocale as keyof typeof descriptions],
-    alternates: { canonical },
+    alternates: { canonical, languages },
     openGraph: {
       title: titles[validLocale as keyof typeof titles],
       description: descriptions[validLocale as keyof typeof descriptions],
@@ -89,9 +95,9 @@ export default async function ROICalculatorPage({ params }: ROICalculatorPagePro
   }[validLocale as 'ca' | 'es' | 'en']
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/resources/roi-calculator`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     { name: t.breadcrumbHome, url: `${baseUrl}${localePath}` },

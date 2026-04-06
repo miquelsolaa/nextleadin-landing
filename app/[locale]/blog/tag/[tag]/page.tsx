@@ -129,7 +129,7 @@ export default async function BlogTagPage({ params }: BlogTagPageProps) {
             <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <li>
                 <Link
-                  href={validLocale === 'ca' ? '/' : `/${validLocale}`}
+                  href={validLocale === 'es' ? '/' : `/${validLocale}`}
                   className="hover:text-green-600 transition-colors"
                 >
                   {breadcrumbHome}

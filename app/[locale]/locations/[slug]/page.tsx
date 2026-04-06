@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
   }
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '/ca' : validLocale === 'en' ? '/en' : ''
+  const localePath = validLocale === 'en' ? '/en' : validLocale === 'ca' ? '/ca' : ''
   const pathSegment = `locations/${location.slug}`
   const canonical = localePath
     ? `${baseUrl}${localePath}/${pathSegment}`
@@ -87,6 +87,19 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
     other['ICBM'] = `${geo.coordinates.lat}, ${geo.coordinates.lng}`
   }
 
+  const languageAlternates: Record<string, string> = {}
+  if (locationExists(location.slug, 'es')) {
+    languageAlternates['es-ES'] = `${baseUrl}/${pathSegment}`
+  }
+  if (locationExists(location.slug, 'ca')) {
+    languageAlternates['ca-ES'] = `${baseUrl}/ca/${pathSegment}`
+  }
+  if (locationExists(location.slug, 'en')) {
+    languageAlternates['en-US'] = `${baseUrl}/en/${pathSegment}`
+  }
+  languageAlternates['x-default'] =
+    languageAlternates['es-ES'] ?? languageAlternates['ca-ES'] ?? languageAlternates['en-US'] ?? canonical
+
   return generateAIOptimizedMetadata('locations', validLocale, {
     title: location.title,
     description: location.description,
@@ -94,12 +107,7 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
     canonical,
     ogImage: location.image || undefined,
     alternates: {
-      languages: {
-        'x-default': `${baseUrl}/${pathSegment}`,
-        'es-ES': `${baseUrl}/${pathSegment}`,
-        'ca-ES': `${baseUrl}/ca/${pathSegment}`,
-        'en-US': `${baseUrl}/en/${pathSegment}`
-      }
+      languages: languageAlternates
     },
     ...(Object.keys(other).length > 0 ? { other } : {})
   })
@@ -156,9 +164,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
   }[validLocale]
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/locations/${location.slug}`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     { name: t.breadcrumbHome, url: `${baseUrl}${localePath}` },

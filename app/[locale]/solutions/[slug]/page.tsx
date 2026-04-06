@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: SolutionPageProps): Promise<M
   }
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '/ca' : validLocale === 'en' ? '/en' : ''
+  const localePath = validLocale === 'en' ? '/en' : validLocale === 'ca' ? '/ca' : ''
   const pathSegment = `solutions/${solution.slug}`
   const canonical = localePath
     ? `${baseUrl}${localePath}/${pathSegment}`
@@ -133,9 +133,9 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
   }[validLocale]
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/solutions/${solution.slug}`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     { name: t.breadcrumbHome, url: `${baseUrl}${localePath}` },

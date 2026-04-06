@@ -15,72 +15,148 @@ export async function generateMetadata({ params }: CookiePolicyPageProps): Promi
 export default async function CookiePolicyPage({ params }: CookiePolicyPageProps) {
   const { locale } = await params
   setRequestLocale(locale)
-  const lang = (locale.split('-')[0] as 'es' | 'ca' | 'en')
+  const lang = (locale === 'ca' || locale === 'en' || locale === 'es' ? locale : 'es') as 'es' | 'ca' | 'en'
   const t = {
-    es: { h1: 'Política de Cookies', updated: 'Última actualización', date: 'es-ES',
-      s1: '1. Qué son las Cookies',
-      p11: 'Las cookies son archivos de texto que se guardan en su dispositivo al visitar un sitio web. Sirven para recordar preferencias y configuración.',
-      p12: 'NextLeadIn usa cookies para mejorar la experiencia, analizar el uso del sitio y personalizar el contenido.',
-      s2: '2. Tipos de Cookies que Utilizamos',
-      s21: '2.1 Cookies Técnicas (Necesarias)',
-      s22: '2.2 Cookies de Funcionalidad',
-      s23: '2.3 Cookies de Análisis',
-      s24: '2.4 Cookies de Marketing',
-      s3: '3. Cookies de Terceros',
-      p31: 'Utilizamos servicios de terceros que pueden establecer cookies en su dispositivo:',
-      s4: '4. Gestión de Cookies',
-      s41: '4.1 Configuración del Navegador',
-      s42: '4.2 Centro de Preferencias de Cookies',
-      s5: '5. Consecuencias de Desactivar Cookies',
-      s6: '6. Cookies en Dispositivos Móviles',
-      s7: '7. Actualizaciones de esta Política',
-      s8: '8. Base Legal',
-      s9: '9. Contacto',
-      s10: '10. Enlaces Útiles'
+    es: {
+      h1: 'Política de Cookies',
+      updated: 'Última actualización',
+      date: 'es-ES',
+      table: { name: 'Nombre', purpose: 'Finalidad', duration: 'Duración' },
+      sections: {
+        s1: '1. Qué son las Cookies',
+        p11: 'Las cookies son archivos de texto que se guardan en su dispositivo al visitar un sitio web. Sirven para recordar preferencias y configuración.',
+        p12: 'NextLeadIn utiliza cookies para mejorar la experiencia, analizar el uso del sitio y personalizar contenido.',
+        s2: '2. Tipos de Cookies que Utilizamos',
+        s21: '2.1 Cookies Técnicas (Necesarias)',
+        s22: '2.2 Cookies de Funcionalidad',
+        s23: '2.3 Cookies de Análisis',
+        s24: '2.4 Cookies de Marketing',
+        s3: '3. Cookies de Terceros',
+        p31: 'Actualmente utilizamos Google Analytics 4 (GA4) únicamente tras el consentimiento de analítica.',
+        s4: '4. Gestión de Cookies',
+        s41: '4.1 Configuración del navegador',
+        s42: '4.2 Centro de preferencias',
+        s5: '5. Consecuencias de desactivar cookies',
+        s6: '6. Cookies en dispositivos móviles',
+        s7: '7. Actualizaciones de esta política',
+        s8: '8. Base legal',
+        s9: '9. Contacto',
+        s10: '10. Enlaces útiles',
+      },
     },
-    ca: { h1: 'Política de Cookies', updated: 'Última actualització', date: 'ca-ES',
-      s1: '1. Què són les Cookies',
-      p11: 'Les cookies són arxius de text que s’emmagatzemen al dispositiu quan visiteu un lloc web. Serveixen per recordar preferències i configuració.',
-      p12: 'NextLeadIn utilitza cookies per millorar l’experiència, analitzar l’ús del lloc i personalitzar el contingut.',
-      s2: '2. Tipus de Cookies que Utilitzem',
-      s21: '2.1 Cookies Tècniques (Necessàries)',
-      s22: '2.2 Cookies de Funcionalitat',
-      s23: '2.3 Cookies d’Anàlisi',
-      s24: '2.4 Cookies de Màrqueting',
-      s3: '3. Cookies de Tercers',
-      p31: 'Utilitzem serveis de tercers que poden establir cookies al vostre dispositiu:',
-      s4: '4. Gestió de Cookies',
-      s41: '4.1 Configuració del Navegador',
-      s42: '4.2 Centre de Preferències de Cookies',
-      s5: '5. Conseqüències de Desactivar Cookies',
-      s6: '6. Cookies en Dispositius Mòbils',
-      s7: '7. Actualitzacions d’aquesta Política',
-      s8: '8. Base Legal',
-      s9: '9. Contacte',
-      s10: '10. Enllaços Útils'
+    ca: {
+      h1: 'Política de Cookies',
+      updated: 'Última actualització',
+      date: 'ca-ES',
+      table: { name: 'Nom', purpose: 'Finalitat', duration: 'Durada' },
+      sections: {
+        s1: '1. Què són les Cookies',
+        p11: 'Les cookies són arxius de text que s’emmagatzemen al dispositiu quan visiteu un lloc web. Serveixen per recordar preferències i configuració.',
+        p12: 'NextLeadIn utilitza cookies per millorar l’experiència, analitzar l’ús del lloc i personalitzar contingut.',
+        s2: '2. Tipus de Cookies que Utilitzem',
+        s21: '2.1 Cookies Tècniques (Necessàries)',
+        s22: '2.2 Cookies de Funcionalitat',
+        s23: '2.3 Cookies d’Anàlisi',
+        s24: '2.4 Cookies de Màrqueting',
+        s3: '3. Cookies de Tercers',
+        p31: 'Actualment utilitzem Google Analytics 4 (GA4) únicament després del consentiment d’analítica.',
+        s4: '4. Gestió de Cookies',
+        s41: '4.1 Configuració del navegador',
+        s42: '4.2 Centre de preferències',
+        s5: '5. Conseqüències de desactivar cookies',
+        s6: '6. Cookies en dispositius mòbils',
+        s7: '7. Actualitzacions d’aquesta política',
+        s8: '8. Base legal',
+        s9: '9. Contacte',
+        s10: '10. Enllaços útils',
+      },
     },
-    en: { h1: 'Cookie Policy', updated: 'Last updated', date: 'en-US',
-      s1: '1. What are Cookies',
-      p11: 'Cookies are text files stored on your device when you visit a website. They remember preferences and settings.',
-      p12: 'NextLeadIn uses cookies to improve the experience, analyse site usage and personalise content.',
-      s2: '2. Types of Cookies We Use',
-      s21: '2.1 Technical (Necessary) Cookies',
-      s22: '2.2 Functionality Cookies',
-      s23: '2.3 Analytics Cookies',
-      s24: '2.4 Marketing Cookies',
-      s3: '3. Third-Party Cookies',
-      p31: 'We use third-party services that may set cookies on your device:',
-      s4: '4. Managing Cookies',
-      s41: '4.1 Browser Settings',
-      s42: '4.2 Cookie Preference Center',
-      s5: '5. Consequences of Disabling Cookies',
-      s6: '6. Cookies on Mobile Devices',
-      s7: '7. Updates to this Policy',
-      s8: '8. Legal Basis',
-      s9: '9. Contact',
-      s10: '10. Useful Links'
-    }
+    en: {
+      h1: 'Cookie Policy',
+      updated: 'Last updated',
+      date: 'en-US',
+      table: { name: 'Name', purpose: 'Purpose', duration: 'Duration' },
+      sections: {
+        s1: '1. What are Cookies',
+        p11: 'Cookies are text files stored on your device when you visit a website. They help remember preferences and settings.',
+        p12: 'NextLeadIn uses cookies to improve experience, analyze site usage and personalize content.',
+        s2: '2. Types of Cookies We Use',
+        s21: '2.1 Technical (Necessary) Cookies',
+        s22: '2.2 Functionality Cookies',
+        s23: '2.3 Analytics Cookies',
+        s24: '2.4 Marketing Cookies',
+        s3: '3. Third-Party Cookies',
+        p31: 'We currently use Google Analytics 4 (GA4) only after analytics consent is granted.',
+        s4: '4. Cookie Management',
+        s41: '4.1 Browser settings',
+        s42: '4.2 Preference center',
+        s5: '5. Consequences of disabling cookies',
+        s6: '6. Cookies on mobile devices',
+        s7: '7. Updates to this policy',
+        s8: '8. Legal basis',
+        s9: '9. Contact',
+        s10: '10. Useful links',
+      },
+    },
   }[lang]
+
+  const technicalRows = [
+    ['session_id', 'Session management', 'Session'],
+    ['csrf_token', 'CSRF protection', 'Session'],
+    ['cookie_consent', 'Save cookie preferences', '1 year'],
+  ]
+  const functionalRows = [
+    ['user_preferences', 'Save user preferences', '6 months'],
+    ['language', 'Preferred language', '1 year'],
+    ['theme', 'Preferred visual theme', '1 year'],
+  ]
+  const analyticsRows = [
+    ['_ga', 'Google Analytics user identification', '2 years'],
+    ['_ga_[ID]', 'Google Analytics session state', '2 years'],
+    ['_gid', 'Google Analytics user identification', '24 hours'],
+  ]
+
+  const browserItems = [
+    'Chrome: Settings > Privacy and security > Cookies',
+    'Firefox: Settings > Privacy & Security > Cookies',
+    'Safari: Preferences > Privacy > Cookies',
+    'Edge: Settings > Cookies and site permissions',
+  ]
+  const disableItems = [
+    'Some website functionality may not work correctly',
+    'You may need to set preferences again on each visit',
+    'Experience personalization may be limited',
+    'Analytics reports may be less accurate',
+  ]
+  const legalItems = [
+    'Consent: for non-essential cookies (analytics/marketing)',
+    'Legitimate interest: for strictly necessary cookies',
+    'Contractual necessity: for functionality cookies',
+  ]
+
+  const renderTable = (rows: string[][]) => (
+    <div className="overflow-x-auto mb-6">
+      <table className="min-w-full bg-white border border-gray-300">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">{t.table.name}</th>
+            <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">{t.table.purpose}</th>
+            <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">{t.table.duration}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(([name, purpose, duration]) => (
+            <tr key={name}>
+              <td className="px-4 py-2 text-sm text-gray-700 border-b">{name}</td>
+              <td className="px-4 py-2 text-sm text-gray-700 border-b">{purpose}</td>
+              <td className="px-4 py-2 text-sm text-gray-700 border-b">{duration}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+
   return (
     <div className="min-h-screen bg-gray-50 pb-24 md:pb-32">
       <div className="container-custom pt-28 md:pt-10">
@@ -95,246 +171,85 @@ export default async function CookiePolicyPage({ params }: CookiePolicyPageProps
             </p>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                1. Què són les Cookies
-              </h2>
-              <p className="text-gray-700 mb-4">
-                Les cookies són petits arxius de text que s'emmagatzemen al vostre dispositiu quan visiteu un lloc web. Permeten al lloc web recordar informació sobre la vostra visita, com ara les vostres preferències i configuració.
-              </p>
-              <p className="text-gray-700 mb-4">
-                NextLeadIn utilitza cookies i tecnologies similars per millorar la vostra experiència d'usuari, analitzar l'ús del lloc web i personalitzar el contingut.
-              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s1}</h2>
+              <p className="text-gray-700 mb-4">{t.sections.p11}</p>
+              <p className="text-gray-700 mb-4">{t.sections.p12}</p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                2. Tipus de Cookies que Utilitzem
-              </h2>
-              
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                2.1 Cookies Tècniques (Necessàries)
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Aquestes cookies són essencials per al funcionament del lloc web i no es poden desactivar:
-              </p>
-              <div className="overflow-x-auto mb-6">
-                <table className="min-w-full bg-white border border-gray-300">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Nom</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Finalitat</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Durada</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">session_id</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Mantenir la sessió d'usuari</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Sessió</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">csrf_token</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Protecció contra atacs CSRF</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Sessió</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">cookie_consent</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Recordar les preferències de cookies</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">1 any</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                2.2 Cookies de Funcionalitat
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Aquestes cookies milloren la funcionalitat del lloc web:
-              </p>
-              <div className="overflow-x-auto mb-6">
-                <table className="min-w-full bg-white border border-gray-300">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Nom</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Finalitat</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Durada</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">user_preferences</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Recordar preferències d'usuari</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">6 mesos</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">language</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Idioma preferit</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">1 any</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">theme</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Tema visual preferit</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">1 any</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                2.3 Cookies d'Anàlisi
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Aquestes cookies ens ajuden a entendre com els usuaris interactuen amb el lloc web:
-              </p>
-              <div className="overflow-x-auto mb-6">
-                <table className="min-w-full bg-white border border-gray-300">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Nom</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Finalitat</th>
-                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-900 border-b">Durada</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">_ga</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Google Analytics - Distingir usuaris</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">2 anys</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">_ga_[ID]</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Google Analytics - Estat de sessió</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">2 anys</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">_gid</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">Google Analytics - Distingir usuaris</td>
-                      <td className="px-4 py-2 text-sm text-gray-700 border-b">24 hores</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                2.4 Cookies de Marketing
-              </h3>
-              <p className="text-gray-700 mb-4">
-                En aquest domini no instal·lem cookies de màrqueting ni pixels publicitaris. Si en el futur n&apos;afegíssim,
-                només es carregarien amb el vostre consentiment explícit mitjançant el centre de preferències.
-              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s2}</h2>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.sections.s21}</h3>
+              {renderTable(technicalRows)}
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.sections.s22}</h3>
+              {renderTable(functionalRows)}
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.sections.s23}</h3>
+              {renderTable(analyticsRows)}
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.sections.s24}</h3>
+              <p className="text-gray-700 mb-4">Marketing cookies are only activated after explicit consent.</p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                3. Cookies de Tercers
-              </h2>
-              <p className="text-gray-700 mb-4">
-                Actualment utilitzem només Google Analytics 4 (GA4) per entendre l&apos;ús del lloc, i només després que hàgiu acceptat la categoria d&apos;analítica.
-                El codi es carrega des del domini <code className="text-sm bg-gray-100 px-1 rounded">googletagmanager.com</code> (endpoint oficial de gtag per a GA4); no fem servir un contenidor de Google Tag Manager ni altres eines de tercers (com Facebook Pixel, Hotjar o Intercom) en aquest lloc.
-              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s3}</h2>
+              <p className="text-gray-700 mb-4">{t.sections.p31}</p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                4. Gestió de Cookies
-              </h2>
-              <p className="text-gray-700 mb-4">
-                Podeu gestionar les cookies de diverses maneres:
-              </p>
-              
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                4.1 Configuració del Navegador
-              </h3>
-              <p className="text-gray-700 mb-4">
-                La majoria de navegadors permeten controlar les cookies:
-              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s4}</h2>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.sections.s41}</h3>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li><strong>Chrome:</strong> Configuració &gt; Privadesa i seguretat &gt; Cookies</li>
-                <li><strong>Firefox:</strong> Opcions &gt; Privadesa i seguretat &gt; Cookies</li>
-                <li><strong>Safari:</strong> Preferències &gt; Privadesa &gt; Cookies</li>
-                <li><strong>Edge:</strong> Configuració &gt; Cookies i permisos del lloc</li>
+                {browserItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
 
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                4.2 Centre de Preferències de Cookies
-              </h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.sections.s42}</h3>
               <p className="text-gray-700 mb-4">
-                Utilitzeu el nostre centre de preferències per gestionar les cookies no essencials. Podeu trobar-lo al peu de la pàgina o accedir-hi des del banner de cookies.
+                You can manage non-essential cookies via the cookie banner and preference center.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                5. Conseqüències de Desactivar Cookies
-              </h2>
-              <p className="text-gray-700 mb-4">
-                Si desactiveu les cookies:
-              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s5}</h2>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Algunes funcionalitats del lloc web poden no funcionar correctament</li>
-                <li>Hauràs d'introduir les teves preferències cada vegada que visitis el lloc</li>
-                <li>No podrem personalitzar la teva experiència</li>
-                <li>L'anàlisi del lloc web serà menys precisa</li>
+                {disableItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                6. Cookies en Dispositius Mòbils
-              </h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s6}</h2>
               <p className="text-gray-700 mb-4">
-                Les cookies també s'utilitzen en aplicacions mòbils i dispositius mòbils. Podeu gestionar-les a través de la configuració del navegador mòbil o de l'aplicació.
+                Cookie settings can also be managed from mobile browser privacy options.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                7. Actualitzacions d'aquesta Política
-              </h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s7}</h2>
               <p className="text-gray-700 mb-4">
-                Podem actualitzar aquesta política de cookies per reflectir canvis en les nostres pràctiques o per altres motius operatius, legals o reglamentaris.
-              </p>
-              <p className="text-gray-700 mb-4">
-                Us notificarem qualsevol canvi significatiu mitjançant un avís prominent al lloc web o per correu electrònic.
+                This policy may be updated for legal, operational or product changes.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                8. Base Legal
-              </h2>
-              <p className="text-gray-700 mb-4">
-                L'ús de cookies es basa en:
-              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s8}</h2>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li><strong>Consentiment:</strong> Per a cookies no essencials (anàlisi, marketing)</li>
-                <li><strong>Interès legítim:</strong> Per a cookies tècniques necessàries</li>
-                <li><strong>Execució contractual:</strong> Per a cookies de funcionalitat</li>
+                {legalItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                9. Contacte
-              </h2>
-              <p className="text-gray-700 mb-4">
-                Si teniu preguntes sobre aquesta política de cookies:
-              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s9}</h2>
               <p className="text-gray-700 mb-4">
                 <strong>Email:</strong> contacto@nextleadin.com<br />
-                {/* <strong>Adreça:</strong> [DIRECCIÓ]<br /> */}
                 <strong>Telèfon:</strong> +34 684 781 855
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                10. Enllaços Útils
-              </h2>
-              <p className="text-gray-700 mb-4">
-                Més informació sobre cookies:
-              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.sections.s10}</h2>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li><a href="https://www.aepd.es" className="text-blue-600 hover:underline">Agència Espanyola de Protecció de Dades</a></li>
                 <li><a href="https://www.allaboutcookies.org" className="text-blue-600 hover:underline">All About Cookies</a></li>

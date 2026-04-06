@@ -102,23 +102,28 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: 'AhrefsBot',
-        disallow: '/',
+        allow: ['/'],
+        disallow: ['/api/', '/admin/', '/_next/', '/out/', '/private/', '/temp/'],
       },
       {
         userAgent: 'MJ12bot',
-        disallow: '/',
+        allow: ['/'],
+        disallow: ['/api/', '/admin/', '/_next/', '/out/', '/private/', '/temp/'],
       },
       {
         userAgent: 'DotBot',
-        disallow: '/',
+        allow: ['/'],
+        disallow: ['/api/', '/admin/', '/_next/', '/out/', '/private/', '/temp/'],
       },
       {
         userAgent: 'SemrushBot',
-        disallow: '/',
+        allow: ['/'],
+        disallow: ['/api/', '/admin/', '/_next/', '/out/', '/private/', '/temp/'],
       },
       {
         userAgent: 'MajesticSEO',
-        disallow: '/',
+        allow: ['/'],
+        disallow: ['/api/', '/admin/', '/_next/', '/out/', '/private/', '/temp/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: LocationsPageProps): Promise<
     en: 'Find local business leads in Barcelona, Madrid, and other Spanish cities. Enriched data and AI analysis.'
   }
 
-  const canonical = validLocale === 'ca'
+  const canonical = validLocale === 'es'
     ? 'https://nextleadin.com/locations'
     : `https://nextleadin.com/${validLocale}/locations`
 
@@ -78,9 +78,9 @@ export default async function LocationsPage({ params }: LocationsPageProps) {
   }[validLocale]
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/locations`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     { name: t.breadcrumbHome, url: `${baseUrl}${localePath}` },

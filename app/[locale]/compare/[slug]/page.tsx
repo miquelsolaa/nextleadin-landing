@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: ComparisonPageProps): Promise
     }
   }
 
-  const canonical = validLocale === 'ca'
+  const canonical = validLocale === 'es'
     ? `https://nextleadin.com/compare/${comparison.slug}`
     : `https://nextleadin.com/${validLocale}/compare/${comparison.slug}`
 
@@ -46,7 +46,15 @@ export async function generateMetadata({ params }: ComparisonPageProps): Promise
     title: comparison.title,
     description: comparison.description,
     keywords: comparison.keywords,
-    canonical
+    canonical,
+    alternates: {
+      languages: {
+        'x-default': `https://nextleadin.com/compare/${comparison.slug}`,
+        'es-ES': `https://nextleadin.com/compare/${comparison.slug}`,
+        'ca-ES': `https://nextleadin.com/ca/compare/${comparison.slug}`,
+        'en-US': `https://nextleadin.com/en/compare/${comparison.slug}`,
+      },
+    },
   })
 }
 
@@ -84,9 +92,9 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
   }[validLocale]
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/compare/${comparison.slug}`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     {

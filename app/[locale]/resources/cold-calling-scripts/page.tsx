@@ -30,14 +30,20 @@ export async function generateMetadata({
   }
 
   const canonical =
-    validLocale === 'ca'
+    validLocale === 'es'
       ? 'https://nextleadin.com/resources/cold-calling-scripts'
       : `https://nextleadin.com/${validLocale}/resources/cold-calling-scripts`
+  const languages = {
+    'x-default': 'https://nextleadin.com/resources/cold-calling-scripts',
+    'es-ES': 'https://nextleadin.com/resources/cold-calling-scripts',
+    'ca-ES': 'https://nextleadin.com/ca/resources/cold-calling-scripts',
+    'en-US': 'https://nextleadin.com/en/resources/cold-calling-scripts',
+  }
 
   return {
     title: titles[validLocale as keyof typeof titles],
     description: descriptions[validLocale as keyof typeof descriptions],
-    alternates: { canonical },
+    alternates: { canonical, languages },
     openGraph: {
       title: titles[validLocale as keyof typeof titles],
       description: descriptions[validLocale as keyof typeof descriptions],
@@ -93,9 +99,9 @@ export default async function ColdCallingScriptsPage({ params }: ColdCallingScri
   }[validLocale as 'ca' | 'es' | 'en']
 
   const baseUrl = 'https://nextleadin.com'
-  const localePath = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePath = validLocale === 'es' ? '' : `/${validLocale}`
   const currentUrl = `${baseUrl}${localePath}/resources/cold-calling-scripts`
-  const localePrefix = validLocale === 'ca' ? '' : `/${validLocale}`
+  const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
 
   const breadcrumbs = [
     { name: t.breadcrumbHome, url: `${baseUrl}${localePath}` },

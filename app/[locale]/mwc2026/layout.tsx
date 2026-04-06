@@ -13,6 +13,9 @@ function isValidLocale(locale: string): locale is AppLocale {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: rawLocale } = await params
   const locale = isValidLocale(rawLocale) ? (rawLocale as AppLocale) : defaultLocale
+  const baseUrl = 'https://nextleadin.com'
+  const localePath = locale === 'es' ? '' : `/${locale}`
+  const canonical = `${baseUrl}${localePath}/mwc2026`
 
   const titles: Record<AppLocale, string> = {
     en: 'NextLeadIn @ MWC Barcelona 2026 | AI Lead Intelligence',
@@ -29,9 +32,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: titles[locale],
     description: descriptions[locale],
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical,
+      languages: {
+        'x-default': `${baseUrl}/mwc2026`,
+        'es-ES': `${baseUrl}/mwc2026`,
+        'ca-ES': `${baseUrl}/ca/mwc2026`,
+        'en-US': `${baseUrl}/en/mwc2026`,
+      },
+    },
     openGraph: {
       title: titles[locale],
       description: descriptions[locale],
+      url: canonical,
     },
   }
 }
