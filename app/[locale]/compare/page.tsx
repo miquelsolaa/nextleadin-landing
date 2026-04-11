@@ -110,6 +110,64 @@ export default async function ComparadorIndexPage({ params }: { params: Promise<
         </div>
       </section>
 
+      <section className="border-t border-gray-100 bg-white py-14">
+        <div className="container-custom max-w-4xl">
+          <div className="prose prose-lg max-w-none text-gray-700 prose-p:leading-relaxed">
+            {validLocale === 'es' ? (
+              <>
+                <p>
+                  Las páginas de comparación responden a la pregunta que muchos equipos comerciales se hacen antes de
+                  contratar software: qué herramienta encaja con prospección real (llamadas, email y visitas), con qué
+                  datos trabajan y cuánto esfuerzo manual implica pasar de una lista a una conversación. Aquí reunimos
+                  comparativas entre NextLeadIn y plataformas populares de lead acquisition para que puedas evaluar
+                  foco (negocios locales frente a perfiles LinkedIn), calidad de datos y encaje con tu ICP.
+                </p>
+                <p>
+                  Si vendes a PYMES con presencia física, el criterio no es solo &quot;volumen de contactos&quot;: importan
+                  teléfonos útiles, contexto de negocio y señales como reseñas u horarios. Las tablas y escenarios de
+                  cada artículo traducen esas diferencias en decisiones prácticas. Usa el comparador como mapa: elige
+                  una comparativa, lee el resumen ejecutivo y enlaza a funcionalidades o precios cuando quieras
+                  profundizar.
+                </p>
+              </>
+            ) : validLocale === 'en' ? (
+              <>
+                <p>
+                  Comparison pages answer the question revenue teams ask before buying software: which tool matches
+                  real outbound (calls, email, and field work), what data you actually get, and how much manual work
+                  sits between a list and a conversation. Here we publish side-by-side views of NextLeadIn and popular
+                  lead-acquisition platforms so you can compare focus (local businesses versus LinkedIn-first profiles),
+                  data depth, and fit with your ICP.
+                </p>
+                <p>
+                  If you sell to SMBs with a physical footprint, the buying criteria go beyond contact volume: phone
+                  quality, business context, and signals like reviews or opening hours matter. Each article&apos;s tables
+                  and scenarios turn those differences into practical decisions. Use this hub as a map—open a
+                  comparison, read the executive summary, then follow through to features or pricing when you need
+                  detail.
+                </p>
+              </>
+            ) : (
+              <>
+                <p>
+                  Les pàgines de comparació responen a la pregunta que molts equips comercials es fan abans de contractar
+                  programari: quina eina encaixa amb la prospecció real (trucades, correu i visites), amb quines dades es
+                  treballa i quant esforç manual cal per passar d&apos;una llista a una conversa. Aquí recollim comparatives
+                  entre NextLeadIn i plataformes populars d&apos;adquisició de leads per avaluar el focus (negocis locals
+                  versus perfils a LinkedIn), la qualitat de dades i l&apos;encaix amb el teu ICP.
+                </p>
+                <p>
+                  Si vens a PIME amb presència física, el criteri no és només &quot;volum de contactes&quot;: importen telèfons
+                  útils, context de negoci i senyals com ressenyes o horaris. Les taules i escenaris de cada article
+                  tradueixen aquestes diferències en decisions pràctiques. Fes servir el comparador com a mapa: tria una
+                  comparativa, llegeix el resum executiu i enllaça a funcionalitats o preus quan vulguis aprofundir.
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+
       <section className="pt-6 pb-20 bg-gradient-to-br from-primary-50 to-primary-100">
         <div className="container-custom">
           {comparisons.length === 0 ? (

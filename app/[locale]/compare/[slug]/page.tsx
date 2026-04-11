@@ -348,6 +348,17 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
             </div>
           </section>
 
+          {comparison.contentHtml ? (
+            <section className="border-t border-gray-100 bg-white py-14">
+              <div className="container-custom max-w-4xl">
+                <div
+                  className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-table:text-sm prose-th:text-left"
+                  dangerouslySetInnerHTML={{ __html: comparison.contentHtml }}
+                />
+              </div>
+            </section>
+          ) : null}
+
           <section className="border-t border-gray-100 bg-gray-50 py-16">
             <div className="container-custom max-w-4xl">
               <ComparisonArticleBody

@@ -148,6 +148,9 @@ export function getAllComparisonSlugs(
         .filter((name) => name.endsWith('.md'))
         .forEach((fileName) => {
           const slug = normalizeSlug(fileName.replace(/\.md$/, ''))
+          const fullPath = path.join(baseDir, fileName)
+          const matterResult = matter(fs.readFileSync(fullPath, 'utf8'))
+          if (matterResult.data.published === false) return
           allSlugs.push({ slug, locale: loc })
         })
     })

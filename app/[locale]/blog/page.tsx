@@ -15,7 +15,7 @@ function blogIndexCanonical(locale: Locale, page: number, query: string): string
   const u = new URL(`https://nextleadin.com${prefix}/blog`)
   if (query) u.searchParams.set('query', query)
   if (page > 1) u.searchParams.set('page', String(page))
-  return u.pathname + u.search
+  return u.href
 }
 
 export async function generateMetadata({

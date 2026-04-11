@@ -1,4 +1,5 @@
 import { Link } from '@/i18n/routing'
+import { getAllComparisons } from '@/lib/comparisons'
 import { getAllIndustries } from '@/lib/industries'
 import { getAllLocations } from '@/lib/locations'
 import { getAllSolutions } from '@/lib/solutions'
@@ -22,10 +23,31 @@ const RESOURCE_ITEMS: Record<AppLocale, Array<{ slug: string; label: string }>> 
   ],
 }
 
-const SECTION_LABELS: Record<AppLocale, { industries: string; locations: string; solutions: string; resources: string }> = {
-  es: { industries: 'Sectores', locations: 'Ubicaciones', solutions: 'Soluciones', resources: 'Recursos' },
-  en: { industries: 'Industries', locations: 'Locations', solutions: 'Solutions', resources: 'Resources' },
-  ca: { industries: 'Sectors', locations: 'Ubicacions', solutions: 'Solucions', resources: 'Recursos' },
+const SECTION_LABELS: Record<
+  AppLocale,
+  { industries: string; locations: string; solutions: string; resources: string; comparisons: string }
+> = {
+  es: {
+    industries: 'Sectores',
+    locations: 'Ubicaciones',
+    solutions: 'Soluciones',
+    resources: 'Recursos',
+    comparisons: 'Comparativas',
+  },
+  en: {
+    industries: 'Industries',
+    locations: 'Locations',
+    solutions: 'Solutions',
+    resources: 'Resources',
+    comparisons: 'Comparisons',
+  },
+  ca: {
+    industries: 'Sectors',
+    locations: 'Ubicacions',
+    solutions: 'Solucions',
+    resources: 'Recursos',
+    comparisons: 'Comparatives',
+  },
 }
 
 const SITEMAP_ARIA_LABEL: Record<AppLocale, string> = {
@@ -38,10 +60,13 @@ type FooterSitemapProps = {
   locale: AppLocale
 }
 
+const COMPARISON_LINK_LIMIT = 10
+
 export default function FooterSitemap({ locale }: FooterSitemapProps) {
   const industries = getAllIndustries(locale)
   const locations = getAllLocations(locale)
   const solutions = getAllSolutions(locale)
+  const comparisons = getAllComparisons(locale)
   const resources = RESOURCE_ITEMS[locale]
   const labels = SECTION_LABELS[locale]
 
@@ -157,6 +182,31 @@ export default function FooterSitemap({ locale }: FooterSitemapProps) {
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h3 className="text-xs font-semibold text-white uppercase tracking-wider mb-2 mt-6">
+            {labels.comparisons}
+          </h3>
+          <ul role="list" className="space-y-1 text-xs">
+            <li>
+              <Link
+                href="/compare"
+                locale={locale}
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+              >
+                {labels.comparisons}
+              </Link>
+            </li>
+            {comparisons.slice(0, COMPARISON_LINK_LIMIT).map((item) => (
+              <li key={item.slug}>
+                <Link
+                  href={`/compare/${item.slug}`}
+                  locale={locale}
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  {item.title}
                 </Link>
               </li>
             ))}
