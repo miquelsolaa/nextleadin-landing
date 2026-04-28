@@ -95,17 +95,13 @@
 
 /* prefers-reduced-motion: TrustedBy carousel disables animation in component; strip still scrollable */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *:not(.animate-scroll),
+  *:not(.animate-scroll)::before,
+  *:not(.animate-scroll)::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .animate-scroll {
-    animation: none !important;
   }
 }
 
