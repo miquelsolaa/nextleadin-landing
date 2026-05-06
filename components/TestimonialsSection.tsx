@@ -25,7 +25,8 @@ const TestimonialsSection = () => {
         title: 'Resultados reales de',
         titleHighlight: 'nuestros clientes',
         description: 'Equipos que han pasado de 2-3 reuniones/mes a 8-12 con NextLeadIn.',
-        cta: 'Ver casos de éxito'
+        cta: 'Ver casos de éxito',
+        ctaHref: '/case-studies' as const,
       }
     }
     if (locale === 'en') {
@@ -33,14 +34,16 @@ const TestimonialsSection = () => {
         title: 'Real results from',
         titleHighlight: 'our clients',
         description: 'Teams that went from 2-3 meetings/month to 8-12 with NextLeadIn.',
-        cta: 'View success stories'
+        cta: 'View success stories',
+        ctaHref: '/case-studies' as const,
       }
     }
     return {
       title: 'Resultats reals dels',
       titleHighlight: 'nostres clients',
       description: 'Equips que han passat de 2-3 reunions/mes a 8-12 amb NextLeadIn.',
-      cta: 'Veure casos d\'èxit'
+      cta: 'Veure casos d\'èxit',
+      ctaHref: '/case-studies' as const,
     }
   })()
 
@@ -65,8 +68,8 @@ const TestimonialsSection = () => {
 
         {/* CTA Button */}
         <div className="text-center mt-10">
-          <Link 
-            href="/contact"
+          <Link
+            href={translations.ctaHref}
             locale={locale}
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
           >

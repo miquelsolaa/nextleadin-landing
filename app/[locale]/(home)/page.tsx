@@ -24,6 +24,7 @@ const ServicesSection = dynamicImport(() => import('@/components/ServicesSection
 import { getAllPosts } from '@/lib/blog'
 import { getAllIndustries } from '@/lib/industries'
 import CTASection from '@/components/CTASection'
+import SimpleHowItWorksSection from '@/components/home/SimpleHowItWorksSection'
 import IndustriesPreviewSection from '@/components/IndustriesPreviewSection'
 import AIStructuredData from '@/components/AIStructuredData'
 import { getAbsoluteHomeUrl } from '@/lib/locale-url'
@@ -87,6 +88,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Trusted By Section */}
       <TrustedBySection />
 
+      {/* Social proof — moved up for perceived value */}
+      <TestimonialsSection />
+
+      {/* How it works — lightweight CSS loop */}
+      <SimpleHowItWorksSection />
+
       {/* Features Section */}
       <FeaturesSection />
 
@@ -104,9 +111,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       {/* Blog Section */}
       <BlogSection blogPosts={latestPosts} />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* CTA Section */}
       <CTASection />

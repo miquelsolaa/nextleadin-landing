@@ -9,6 +9,7 @@ AI-powered platform for local business lead generation. Generates lists of local
 - [FAQ](https://nextleadin.com/faq)
 - [Blog](https://nextleadin.com/blog)
 - [Contact](https://nextleadin.com/contact)
+- [Customer stories / Casos de éxito](https://nextleadin.com/case-studies)
 
 ## AI usage policy
 

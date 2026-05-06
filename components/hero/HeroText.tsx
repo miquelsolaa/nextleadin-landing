@@ -18,13 +18,13 @@ export default function HeroText({ locale, children }: HeroTextProps) {
 
       {children}
 
+      <p className="mb-4 text-xl font-medium text-gray-900 leading-snug max-w-lg">{t.tagline}</p>
+
       <div className="mb-8">
-        <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-          {t.description}
-        </p>
+        <p className="text-lg text-gray-600 leading-relaxed max-w-lg">{t.description}</p>
       </div>
 
-      <div className="mb-8 flex flex-wrap gap-6 text-sm text-gray-600">
+      <div className="mb-6 flex flex-wrap gap-6 text-sm text-gray-600">
         <div className="flex items-center gap-2">
           <svg
             className="w-4 h-4 text-primary-500 shrink-0"
@@ -56,6 +56,10 @@ export default function HeroText({ locale, children }: HeroTextProps) {
           <span>{t.trust3}</span>
         </div>
       </div>
+
+      <p className="mb-8 text-sm text-gray-500 leading-relaxed max-w-lg border-l-2 border-primary-200 pl-4">
+        {t.exposureNote}
+      </p>
     </>
   )
 }

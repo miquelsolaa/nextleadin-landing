@@ -51,24 +51,26 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
   const decodedSlug = decodeURIComponent(categorySlug).trim()
   const canonical = getCategoryCanonicalFromSlug(decodedSlug)
   if (!canonical) {
-    return { title: 'Category' }
+    return { title: 'Category', robots: { index: false, follow: true } }
   }
+  const localeAvailability = (['es', 'ca', 'en'] as Locale[]).filter((loc) => getPostsByCategory(canonical, loc).length > 0)
+  const hasPostsForLocale = getPostsByCategory(canonical, validLocale as Locale).length > 0
   const t = await getTranslations('blog')
   const key = getCategoryLabelKey(canonical)
   const categoryTitle = key ? t(`categoryLabels.${key}` as 'categoryLabels.leadGeneration') : canonical
   const slugForUrl = getCategorySlug(canonical)
   const localePrefix = validLocale === 'es' ? '' : `/${validLocale}`
   const canonicalUrl = `https://nextleadin.com${localePrefix}/blog/category/${slugForUrl}`
-  const languages: Record<string, string> = {
-    'x-default': `https://nextleadin.com/blog/category/${slugForUrl}`,
-    'ca-ES': `https://nextleadin.com/ca/blog/category/${slugForUrl}`,
-    'es-ES': `https://nextleadin.com/blog/category/${slugForUrl}`,
-    'en-US': `https://nextleadin.com/en/blog/category/${slugForUrl}`,
-  }
+  const languages: Record<string, string> = {}
+  if (localeAvailability.includes('es')) languages['es-ES'] = `https://nextleadin.com/blog/category/${slugForUrl}`
+  if (localeAvailability.includes('ca')) languages['ca-ES'] = `https://nextleadin.com/ca/blog/category/${slugForUrl}`
+  if (localeAvailability.includes('en')) languages['en-US'] = `https://nextleadin.com/en/blog/category/${slugForUrl}`
+  if (languages['es-ES']) languages['x-default'] = languages['es-ES']
   return {
     title: `${categoryTitle} ${categoryTitleSuffix[validLocale]}`,
     description: t('description'),
     alternates: { canonical: canonicalUrl, languages },
+    robots: { index: hasPostsForLocale, follow: true },
   }
 }
 
@@ -79,7 +81,7 @@ export default async function BlogCategoryPage({ params }: BlogCategoryPageProps
   const canonicalCategory = getCategoryCanonicalFromSlug(categoryParam)
   const posts = getPostsByCategory(canonicalCategory || categoryParam, validLocale)
 
-  if (posts.length === 0 && !canonicalCategory) {
+  if (!canonicalCategory || posts.length === 0) {
     notFound()
   }
 

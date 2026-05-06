@@ -43,6 +43,7 @@ export const pathnames: Pathnames<typeof locales> = {
   '/resources/roi-calculator': '/resources/roi-calculator',
   '/resources/cold-calling-scripts': '/resources/cold-calling-scripts',
   '/resources/local-prospecting-guide': '/resources/local-prospecting-guide',
+  '/case-studies': '/case-studies',
 }
 
 export const routing = {

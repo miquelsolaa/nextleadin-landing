@@ -83,6 +83,7 @@ const MobileMenu = ({ isOpen, onClose, panelId = 'mobile-menu-panel' }: MobileMe
     { name: t('recursos'), href: '/resources' },
     { name: t('pricing'), href: '/pricing' },
     { name: t('blog'), href: '/blog' },
+    { name: t('caseStudies'), href: '/case-studies' },
   ]
 
   if (!isOpen) return null

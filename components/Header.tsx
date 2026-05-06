@@ -4,7 +4,9 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import HeaderClientControls from '@/components/HeaderClientControls'
 import HeaderFeaturesMenuClient from '@/components/HeaderFeaturesMenuClient'
+import HeaderNavGridMenuClient from '@/components/HeaderNavGridMenuClient'
 import { useAppLocale } from '@/lib/use-app-locale'
+import type { NavGridLink } from '@/components/HeaderNavGridMenuLazy'
 
 export default function Header() {
   const locale = useAppLocale()
@@ -18,12 +20,53 @@ export default function Header() {
       return {
         nav: {
           features: 'Funcionalidades',
-          industries: 'Sectores',
-          resources: 'Recursos',
-          comparator: 'Comparador',
-          pricing: 'Precios',
-          blog: 'Blog',
           contact: 'Contacto',
+        },
+        discoverMenu: {
+          label: 'Descubre',
+          items: [
+            {
+              title: 'Sectores',
+              description: 'Leads por tipo de negocio y zona',
+              href: '/industries',
+              iconKey: 'building' as const,
+            },
+            {
+              title: 'Recursos',
+              description: 'Guías, scripts y calculadora ROI',
+              href: '/resources',
+              iconKey: 'folder' as const,
+            },
+            {
+              title: 'Comparador',
+              description: 'NextLeadIn frente a otras herramientas',
+              href: '/compare',
+              iconKey: 'scale' as const,
+            },
+            {
+              title: 'Precios',
+              description: 'Planes y prueba gratuita',
+              href: '/pricing',
+              iconKey: 'pricing' as const,
+            },
+          ] satisfies NavGridLink[],
+        },
+        contentMenu: {
+          label: 'Contenido',
+          items: [
+            {
+              title: 'Blog',
+              description: 'Estrategias de prospección y ventas B2B',
+              href: '/blog',
+              iconKey: 'newspaper' as const,
+            },
+            {
+              title: 'Casos de éxito',
+              description: 'Resultados de equipos que usan NextLeadIn',
+              href: '/case-studies',
+              iconKey: 'sparkles' as const,
+            },
+          ] satisfies NavGridLink[],
         },
         featureItems: {
           leadManagement: { title: 'Gestión de Leads', description: 'Genera y gestiona leads hipersegmentados' },
@@ -41,12 +84,53 @@ export default function Header() {
       return {
         nav: {
           features: 'Features',
-          industries: 'Industries',
-          resources: 'Resources',
-          comparator: 'Comparisons',
-          pricing: 'Pricing',
-          blog: 'Blog',
           contact: 'Contact',
+        },
+        discoverMenu: {
+          label: 'Discover',
+          items: [
+            {
+              title: 'Industries',
+              description: 'Leads by business type and area',
+              href: '/industries',
+              iconKey: 'building' as const,
+            },
+            {
+              title: 'Resources',
+              description: 'Guides, scripts and ROI calculator',
+              href: '/resources',
+              iconKey: 'folder' as const,
+            },
+            {
+              title: 'Comparisons',
+              description: 'How we compare to other tools',
+              href: '/compare',
+              iconKey: 'scale' as const,
+            },
+            {
+              title: 'Pricing',
+              description: 'Plans and free trial',
+              href: '/pricing',
+              iconKey: 'pricing' as const,
+            },
+          ] satisfies NavGridLink[],
+        },
+        contentMenu: {
+          label: 'Learn',
+          items: [
+            {
+              title: 'Blog',
+              description: 'Prospecting and B2B sales playbooks',
+              href: '/blog',
+              iconKey: 'newspaper' as const,
+            },
+            {
+              title: 'Customer stories',
+              description: 'Outcomes from teams using NextLeadIn',
+              href: '/case-studies',
+              iconKey: 'sparkles' as const,
+            },
+          ] satisfies NavGridLink[],
         },
         featureItems: {
           leadManagement: { title: 'Lead Management', description: 'Generate and manage hyper-targeted leads' },
@@ -63,12 +147,53 @@ export default function Header() {
     return {
       nav: {
         features: 'Funcionalitats',
-        industries: 'Sectors',
-        resources: 'Recursos',
-        comparator: 'Comparador',
-        pricing: 'Preus',
-        blog: 'Blog',
         contact: 'Contacte',
+      },
+      discoverMenu: {
+        label: 'Descobreix',
+        items: [
+          {
+            title: 'Sectors',
+            description: 'Leads per tipus de negoci i zona',
+            href: '/industries',
+            iconKey: 'building' as const,
+          },
+          {
+            title: 'Recursos',
+            description: 'Guies, scripts i calculadora ROI',
+            href: '/resources',
+            iconKey: 'folder' as const,
+          },
+          {
+            title: 'Comparador',
+            description: 'NextLeadIn comparat amb altres eines',
+            href: '/compare',
+            iconKey: 'scale' as const,
+          },
+          {
+            title: 'Preus',
+            description: 'Plans i prova gratuïta',
+            href: '/pricing',
+            iconKey: 'pricing' as const,
+          },
+        ] satisfies NavGridLink[],
+      },
+      contentMenu: {
+        label: 'Contingut',
+        items: [
+          {
+            title: 'Blog',
+            description: 'Estratègies de prospecció i vendes B2B',
+            href: '/blog',
+            iconKey: 'newspaper' as const,
+          },
+          {
+            title: "Casos d'èxit",
+            description: "Resultats d'equips amb NextLeadIn",
+            href: '/case-studies',
+            iconKey: 'sparkles' as const,
+          },
+        ] satisfies NavGridLink[],
       },
       featureItems: {
         leadManagement: { title: 'Gestió de Leads', description: 'Genera i gestiona leads hipersegmentats' },
@@ -110,15 +235,6 @@ export default function Header() {
     },
   ]
 
-  const navigation = [
-    { name: translations.nav.industries, href: '/industries' },
-    { name: translations.nav.resources, href: '/resources' },
-    { name: translations.nav.comparator, href: '/compare' },
-    { name: translations.nav.pricing, href: '/pricing' },
-    { name: translations.nav.blog, href: '/blog' },
-    { name: translations.nav.contact, href: '/contact' },
-  ]
-
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,17 +255,25 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center space-x-1" aria-label={desktopNavLabel}>
             <HeaderFeaturesMenuClient label={translations.nav.features} items={featureLinks} linkLocale={locale} />
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                locale={locale}
-                className="text-gray-700 hover:text-primary-500 px-4 py-2 text-sm font-medium transition-colors duration-300 relative group"
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-[width] duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
+            <HeaderNavGridMenuClient
+              label={translations.discoverMenu.label}
+              items={translations.discoverMenu.items}
+              linkLocale={locale}
+            />
+            <HeaderNavGridMenuClient
+              label={translations.contentMenu.label}
+              items={translations.contentMenu.items}
+              linkLocale={locale}
+              gridClassName="md:max-w-[340px]"
+            />
+            <Link
+              href="/contact"
+              locale={locale}
+              className="text-gray-700 hover:text-primary-500 px-4 py-2 text-sm font-medium transition-colors duration-300 relative group"
+            >
+              {translations.nav.contact}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-[width] duration-300 group-hover:w-full" />
+            </Link>
           </nav>
 
           <div className="flex items-center space-x-4">

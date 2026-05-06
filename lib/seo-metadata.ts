@@ -1,4 +1,43 @@
 import { Metadata } from 'next'
+import { testimonialsByLocale } from '@/lib/testimonials-data'
+
+const testimonialQuoteSnippet = (quote: string, max = 200): string =>
+  quote.length <= max ? quote : `${quote.slice(0, max - 3)}...`
+
+function caseStudiesStructuredData(
+  locale: 'ca' | 'es' | 'en',
+  pageUrl: string,
+  pageTitle: string,
+  pageDescription: string
+): Record<string, any>[] {
+  const items = testimonialsByLocale[locale] ?? testimonialsByLocale.es
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: pageTitle,
+      description: pageDescription,
+      url: pageUrl,
+      inLanguage: locale === 'ca' ? 'ca-ES' : locale === 'es' ? 'es-ES' : 'en-US',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: pageTitle,
+      description: pageDescription,
+      numberOfItems: items.length,
+      itemListElement: items.map((t, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'Thing',
+          name: t.author,
+          description: testimonialQuoteSnippet(t.quote),
+        },
+      })),
+    },
+  ]
+}
 
 export interface SEOConfig {
   title: string
@@ -1816,7 +1855,77 @@ export const seoConfig: Record<string, LocalizedSEOConfig> = {
         }
       ]
     }
-  }
+  },
+  'case-studies': {
+    ca: {
+      title: "Casos d'èxit | NextLeadIn",
+      description:
+        "Històries reals: més reunions qualificades, menys temps buscant leads, ROI 12x i taxa de contacte fins al 18%. Prova social d'equips comercials, agències i SaaS B2B amb NextLeadIn.",
+      keywords: [
+        "casos d'èxit leads",
+        'testimonials NextLeadIn',
+        'reunions comercials',
+        'ROI prospecció',
+        'estalvi temps SDR',
+        'taxa contacte cold calling',
+        'negocis locals B2B',
+        'prova social vendes',
+      ],
+      canonical: 'https://nextleadin.com/ca/case-studies',
+      ogImage: '/images/og/og-image.png',
+      structuredData: caseStudiesStructuredData(
+        'ca',
+        'https://nextleadin.com/ca/case-studies',
+        "Casos d'èxit | NextLeadIn",
+        "Històries reals: més reunions qualificades, menys temps buscant leads, ROI 12x i taxa de contacte fins al 18%. Prova social d'equips comercials, agències i SaaS B2B amb NextLeadIn."
+      ),
+    },
+    es: {
+      title: 'Casos de éxito | NextLeadIn',
+      description:
+        'Historias reales: más reuniones cualificadas, menos tiempo buscando leads, ROI 12x y tasa de contacto hasta el 18%. Prueba social de equipos comerciales, agencias y SaaS B2B con NextLeadIn.',
+      keywords: [
+        'casos de éxito leads',
+        'testimonios NextLeadIn',
+        'reuniones comerciales',
+        'ROI prospección',
+        'ahorro tiempo SDR',
+        'tasa contacto cold calling',
+        'negocios locales B2B',
+        'prueba social ventas',
+      ],
+      canonical: 'https://nextleadin.com/case-studies',
+      ogImage: '/images/og/og-image.png',
+      structuredData: caseStudiesStructuredData(
+        'es',
+        'https://nextleadin.com/case-studies',
+        'Casos de éxito | NextLeadIn',
+        'Historias reales: más reuniones cualificadas, menos tiempo buscando leads, ROI 12x y tasa de contacto hasta el 18%. Prueba social de equipos comerciales, agencias y SaaS B2B con NextLeadIn.'
+      ),
+    },
+    en: {
+      title: 'Customer stories | NextLeadIn',
+      description:
+        'Real outcomes: more qualified meetings, less time hunting leads, 12x first-month ROI and contact rates up to 18%. Social proof from sales teams, agencies and B2B SaaS using NextLeadIn.',
+      keywords: [
+        'customer stories lead generation',
+        'NextLeadIn testimonials',
+        'sales meetings ROI',
+        'SDR time savings',
+        'cold call contact rate',
+        'local business B2B',
+        'social proof sales',
+      ],
+      canonical: 'https://nextleadin.com/en/case-studies',
+      ogImage: '/images/og/og-image.png',
+      structuredData: caseStudiesStructuredData(
+        'en',
+        'https://nextleadin.com/en/case-studies',
+        'Customer stories | NextLeadIn',
+        'Real outcomes: more qualified meetings, less time hunting leads, 12x first-month ROI and contact rates up to 18%. Social proof from sales teams, agencies and B2B SaaS using NextLeadIn.'
+      ),
+    },
+  },
 }
 
 /** Tipus estès per pàgines dinàmiques amb alternates, ogImage i meta custom */

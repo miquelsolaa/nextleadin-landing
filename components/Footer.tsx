@@ -4,6 +4,7 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { useAppLocale } from '@/lib/use-app-locale'
+import { submitNewsletterForm } from '@/lib/submit-netlify-newsletter'
 import { useState } from 'react'
 
 type FooterProps = {
@@ -35,6 +36,7 @@ const Footer = ({ children }: FooterProps) => {
         ],
         company: [
           { name: 'Blog', href: '/blog' },
+          { name: 'Casos de éxito', href: '/case-studies' },
           { name: 'Contacto', href: '/contact' },
           { name: 'FAQ', href: '/faq' }
         ],
@@ -73,6 +75,7 @@ const Footer = ({ children }: FooterProps) => {
         ],
         company: [
           { name: 'Blog', href: '/blog' },
+          { name: "Casos d'èxit", href: '/case-studies' },
           { name: 'Contacte', href: '/contact' },
           { name: 'FAQ', href: '/faq' }
         ],
@@ -111,6 +114,7 @@ const Footer = ({ children }: FooterProps) => {
         ],
         company: [
           { name: 'Blog', href: '/blog' },
+          { name: 'Customer stories', href: '/case-studies' },
           { name: 'Contact', href: '/contact' },
           { name: 'FAQ', href: '/faq' }
         ],
@@ -306,11 +310,6 @@ function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: Ne
   const [success, setSuccess] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const encode = (data: Record<string, string>) =>
-    Object.keys(data)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(String(data[key] ?? '')))
-      .join('&')
-
   const messages: Record<typeof locale, { success: string; error: string }> = {
     es: { success: '¡Gracias! Te hemos suscrito a la newsletter.', error: 'No se pudo suscribir. Inténtalo de nuevo.' },
     ca: { success: 'Gràcies! T’hem subscrit al butlletí.', error: 'No s’ha pogut subscriure. Torna-ho a provar.' },
@@ -323,18 +322,8 @@ function NewsletterForm({ locale, dict }: { locale: 'es' | 'ca' | 'en', dict: Ne
     setError(null)
     setIsSubmitting(true)
     try {
-      const payload = {
-        'form-name': 'newsletter',
-        'bot-field': '',
-        locale,
-        email,
-      }
-      const res = await fetch('/netlify-forms.html', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode(payload),
-      })
-      if (!res.ok) throw new Error('Network error')
+      const ok = await submitNewsletterForm(email, locale)
+      if (!ok) throw new Error('Network error')
       setSuccess(messages[locale].success)
       setEmail('')
     } catch (err) {

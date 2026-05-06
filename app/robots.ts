@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/~offline'],
+        disallow: ['/api/', '/admin/', '/~offline', '/*?openVideo=*'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

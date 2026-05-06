@@ -5,6 +5,8 @@ import {
   getAllPosts,
   getAllCategories,
   getAllTags,
+  getPostsByCategory,
+  getPostsByTag,
   type Locale
 } from '@/lib/blog'
 import { getTagSlug } from '@/lib/blog-tags'
@@ -85,6 +87,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/blog', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/case-studies', priority: 0.85, changeFrequency: 'monthly' as const },
     { path: '/industries', priority: 0.75, changeFrequency: 'weekly' as const },
     { path: '/solutions', priority: 0.75, changeFrequency: 'weekly' as const },
     { path: '/features', priority: 0.8, changeFrequency: 'weekly' as const },
@@ -139,10 +142,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const categories = getAllCategories(locale)
     for (const cat of categories) {
       const slug = getCategorySlug(cat.name)
+      const canonicalCategory = cat.name
+      if (getPostsByCategory(canonicalCategory, locale).length === 0) continue
       const key = `${locale}:${slug}`
       if (seenCategories.has(key)) continue
       seenCategories.add(key)
-      const availableLocales = categoryLocaleMap.get(slug) ?? [locale]
+      const availableLocales = (categoryLocaleMap.get(slug) ?? [locale]).filter(
+        (loc) => getPostsByCategory(canonicalCategory, loc).length > 0
+      )
       categoryUrls.push({
         url: `${baseUrl}${getBlogArchiveUrl('category', slug, locale)}`,
         lastModified: stableLastModified,
@@ -172,10 +179,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const tags = getAllTags(locale)
     for (const tag of tags) {
       const slug = getTagSlug(tag)
+      const canonicalTag = tag
+      if (getPostsByTag(canonicalTag, locale).length === 0) continue
       const key = `${locale}:${slug}`
       if (seenTags.has(key)) continue
       seenTags.add(key)
-      const availableLocales = tagLocaleMap.get(slug) ?? [locale]
+      const availableLocales = (tagLocaleMap.get(slug) ?? [locale]).filter(
+        (loc) => getPostsByTag(canonicalTag, loc).length > 0
+      )
       tagUrls.push({
         url: `${baseUrl}${getBlogArchiveUrl('tag', slug, locale)}`,
         lastModified: stableLastModified,

@@ -54,6 +54,11 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
             ca: 'Contacte',
             es: 'Contacto',
             en: 'Contact'
+          },
+          'case-studies': {
+            ca: "Casos d'èxit",
+            es: 'Casos de éxito',
+            en: 'Case studies'
           }
         }
         
@@ -138,10 +143,10 @@ const AIStructuredData: React.FC<AIStructuredDataProps> = ({
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name: locale === 'ca'
-        ? (page === 'home' ? 'NextLeadIn — Generació de leads amb IA' : page === 'pricing' ? 'Preus | NextLeadIn' : page === 'contact' ? 'Contacte | NextLeadIn' : page === 'faq' ? 'Preguntes freqüents | NextLeadIn' : 'NextLeadIn')
+        ? (page === 'home' ? 'NextLeadIn — Generació de leads amb IA' : page === 'pricing' ? 'Preus | NextLeadIn' : page === 'contact' ? 'Contacte | NextLeadIn' : page === 'faq' ? 'Preguntes freqüents | NextLeadIn' : page === 'case-studies' ? "Casos d'èxit | NextLeadIn" : 'NextLeadIn')
         : locale === 'es'
-        ? (page === 'home' ? 'NextLeadIn — Generación de leads con IA' : page === 'pricing' ? 'Precios | NextLeadIn' : page === 'contact' ? 'Contacto | NextLeadIn' : page === 'faq' ? 'Preguntas frecuentes | NextLeadIn' : 'NextLeadIn')
-        : (page === 'home' ? 'NextLeadIn — AI-Powered Lead Generation' : page === 'pricing' ? 'Pricing | NextLeadIn' : page === 'contact' ? 'Contact | NextLeadIn' : page === 'faq' ? 'FAQ | NextLeadIn' : 'NextLeadIn'),
+        ? (page === 'home' ? 'NextLeadIn — Generación de leads con IA' : page === 'pricing' ? 'Precios | NextLeadIn' : page === 'contact' ? 'Contacto | NextLeadIn' : page === 'faq' ? 'Preguntas frecuentes | NextLeadIn' : page === 'case-studies' ? 'Casos de éxito | NextLeadIn' : 'NextLeadIn')
+        : (page === 'home' ? 'NextLeadIn — AI-Powered Lead Generation' : page === 'pricing' ? 'Pricing | NextLeadIn' : page === 'contact' ? 'Contact | NextLeadIn' : page === 'faq' ? 'FAQ | NextLeadIn' : page === 'case-studies' ? 'Customer stories | NextLeadIn' : 'NextLeadIn'),
       url: currentUrl,
       description: locale === 'ca'
         ? 'Plataforma de generació de leads amb intel·ligència artificial per a empreses B2B'

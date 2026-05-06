@@ -89,6 +89,8 @@ const nextConfig = {
     ])
     return [
       ...catRedirects,
+      { source: '/es', destination: '/', permanent: true },
+      { source: '/es/:path*', destination: '/:path*', permanent: true },
       { source: '/get-started', destination: '/contact', permanent: true },
       { source: '/:locale(en|es|ca)/get-started', destination: '/:locale/contact', permanent: true },
       { source: '/comparador', destination: '/compare', permanent: true },
@@ -101,8 +103,12 @@ const nextConfig = {
       { source: '/:locale(en|es|ca)/blog/category/prospecting', destination: '/:locale/blog/tag/prospecting', permanent: true },
       { source: '/blog/tag/sales-leads', destination: '/blog/tag/lead-generation', permanent: true },
       { source: '/blog/tag/sales%20leads', destination: '/blog/tag/lead-generation', permanent: true },
+      { source: '/blog/tag/sales+leads', destination: '/blog/tag/lead-generation', permanent: true },
       { source: '/:locale(en|es|ca)/blog/tag/sales-leads', destination: '/:locale/blog/tag/lead-generation', permanent: true },
       { source: '/:locale(en|es|ca)/blog/tag/sales%20leads', destination: '/:locale/blog/tag/lead-generation', permanent: true },
+      { source: '/:locale(en|es|ca)/blog/tag/sales+leads', destination: '/:locale/blog/tag/lead-generation', permanent: true },
+      { source: '/es/blog/author/equipo-de%20nextleadin', destination: '/blog', permanent: true },
+      { source: '/es/blog/author/equipo-de+nextleadin', destination: '/blog', permanent: true },
       { source: '/resources/guia-prospeccion-local', destination: '/resources/local-prospecting-guide', permanent: true },
       { source: '/:locale(en|es|ca)/resources/guia-prospeccion-local', destination: '/:locale/resources/local-prospecting-guide', permanent: true },
     ]

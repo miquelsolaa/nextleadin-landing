@@ -4,29 +4,23 @@ import dynamic from 'next/dynamic'
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import type { AppLocale } from '@/i18n/routing'
+import type { NavGridLink } from '@/components/HeaderNavGridMenuLazy'
 
-type FeatureIconKey = 'leadManagement' | 'coldCalling' | 'emailSequences' | 'pipelineAnalytics'
-
-type FeatureLink = {
-  title: string
-  href: string
-  description: string
-  iconKey: FeatureIconKey
-}
-
-const LazyMenu = dynamic(() => import('@/components/HeaderFeaturesMenuLazy'), {
+const LazyMenu = dynamic(() => import('@/components/HeaderNavGridMenuLazy'), {
   ssr: false,
   loading: () => null,
 })
 
-export default function HeaderFeaturesMenuClient({
+export default function HeaderNavGridMenuClient({
   label,
   items,
   linkLocale,
+  gridClassName,
 }: {
   label: string
-  items: FeatureLink[]
+  items: NavGridLink[]
   linkLocale: AppLocale
+  gridClassName?: string
 }) {
   const [shouldLoad, setShouldLoad] = useState(false)
 
@@ -49,6 +43,5 @@ export default function HeaderFeaturesMenuClient({
     )
   }
 
-  return <LazyMenu label={label} items={items} linkLocale={linkLocale} />
+  return <LazyMenu label={label} items={items} linkLocale={linkLocale} gridClassName={gridClassName} />
 }
-
