@@ -29,16 +29,10 @@
   to = "https://nextleadin.com/:splat"
   status = 301
   force = true
-[[redirects]]
-  from = "https://nextleadin.com/es"
-  to = "https://nextleadin.com/"
-  status = 301
-  force = true
-[[redirects]]
-  from = "https://nextleadin.com/es/*"
-  to = "https://nextleadin.com/:splat"
-  status = 301
-  force = true
+
+# /es → / is handled by next.config.mjs redirects only. Duplicating it here with
+# force = true made Netlify apply the rule to next-intl internal rewrites (/ → /es),
+# causing ERR_TOO_MANY_REDIRECTS on the homepage.
 
 # Configuració per DecapCMS
 [[redirects]]
