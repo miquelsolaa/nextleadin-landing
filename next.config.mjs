@@ -89,8 +89,7 @@ const nextConfig = {
     ])
     return [
       ...catRedirects,
-      { source: '/es', destination: '/', permanent: true },
-      { source: '/es/:path*', destination: '/:path*', permanent: true },
+      // Avoid /es → / here: conflicts with next-intl rewrite of / to /es on Netlify (redirect loop).
       { source: '/get-started', destination: '/contact', permanent: true },
       { source: '/:locale(en|es|ca)/get-started', destination: '/:locale/contact', permanent: true },
       { source: '/comparador', destination: '/compare', permanent: true },
